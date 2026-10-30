@@ -1,0 +1,50 @@
+/* ۲۳) Transitions UI */
+.demo-tui .nav-link {
+  color: #1a3a5c;
+  text-decoration: none;
+  padding: 6px 10px;
+  border-bottom: 2px solid transparent;
+  transition: color 0.2s, border-color 0.2s;
+}
+.demo-tui .nav-link:hover,
+.demo-tui .nav-link:focus-visible {
+  color: #0b6e4f;
+  border-color: #0b6e4f;
+  outline: none;
+}
+.demo-tui .drop { position: relative; display: inline-block; }
+.demo-tui .drop-btn {
+  padding: 8px 14px;
+  background: #1a3a5c;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+.demo-tui .drop-menu {
+  position: absolute;
+  top: 110%;
+  right: 0;
+  min-width: 160px;
+  background: #fff;
+  border: 1px solid #cfd8e3;
+  border-radius: 6px;
+  padding: 8px 0;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-6px);
+  transition: opacity 0.2s, transform 0.2s, visibility 0.2s;
+}
+.demo-tui .drop:hover .drop-menu,
+.demo-tui .drop:focus-within .drop-menu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+.demo-tui .drop-menu a {
+  display: block;
+  padding: 8px 14px;
+  color: #222;
+  text-decoration: none;
+}
+.demo-tui .drop-menu a:hover { background: #eef2f7; }

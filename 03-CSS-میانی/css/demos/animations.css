@@ -1,0 +1,29 @@
+/* ۲۴) Animations */
+@keyframes demo-pulse {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.08); opacity: 0.85; }
+}
+@keyframes demo-slide {
+  from { transform: translateX(20px); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+.demo-an .pulse {
+  display: inline-block;
+  padding: 12px 18px;
+  background: #0b6e4f;
+  color: #fff;
+  border-radius: 8px;
+  animation: demo-pulse 1.4s ease-in-out infinite;
+}
+.demo-an .slide {
+  display: inline-block;
+  padding: 12px 18px;
+  background: #1a5fb4;
+  color: #fff;
+  border-radius: 8px;
+  animation: demo-slide 0.6s ease-out both;
+}
+@media (prefers-reduced-motion: reduce) {
+  .demo-an .pulse,
+  .demo-an .slide { animation: none; }
+}

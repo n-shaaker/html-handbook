@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>۷) متغیرهای CSS | آبشاری بودن CSS</title>
+  <link rel="stylesheet" href="../css/layout.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="../css/demos/variables.css">
+</head>
+
+<body>
+
+  <header class="page-header">
+    <h1>آبشاری بودن CSS</h1>
+    <p>۷) متغیرهای CSS (Custom Properties)</p>
+  </header>
+
+  <div class="container">
+
+    <nav class="page-nav" aria-label="ناوبری">
+      <a href="06-tie-break.html">→ قبلی: کلاس هم‌قدرت</a>
+      <a href="../index.html">فهرست</a>
+      <span></span>
+    </nav>
+
+    <section class="lesson">
+      <h2>۷) متغیرهای CSS (Custom Properties)</h2>
+
+      <p>
+        متغیر CSS (Custom Property) با <code>--</code> تعریف می‌شود و با <code>var()</code> خوانده می‌شود.
+        برای تم، فاصله‌ها و یک منبع حقیقت برای رنگ برند ضروری است.
+      </p>
+      <pre class="code"><code>:root {
+  --brand: #1a5fb4;
+  --radius: 8px;
+}
+.card {
+  background: var(--brand);
+  border-radius: var(--radius);
+}</code></pre>
+      <h3>مثال: یک تم، دو ظاهر</h3>
+      <div class="result demo-var" id="var-demo">
+        <div class="card">کارت با رنگ برند</div>
+        <button type="button" class="btn" id="toggle-theme">تغییر تم (سبز/آبی)</button>
+      </div>
+      <p class="tip">روی یک والد کلاس تم بگذارید تا همه <code>var(--brand)</code>ها عوض شوند — پایه Dark Mode ساده.</p>
+      <p class="mistake"><strong>اشتباه:</strong> نوشتن <code>$brand</code> مثل Sass؛ در CSS خام باید <code>--</code> باشد.</p>
+      <p class="exercise"><strong>تمرین:</strong> سه متغیر برای رنگ متن، پس‌زمینه و فاصله تعریف کنید و یک کارت بسازید.</p>
+      <script>
+        document.getElementById("toggle-theme").addEventListener("click", function () {
+          document.getElementById("var-demo").classList.toggle("theme-green");
+        });
+      </script>
+
+    </section>
+
+    <nav class="page-nav" aria-label="ناوبری پایین">
+      <a href="06-tie-break.html">→ قبلی: کلاس هم‌قدرت</a>
+      <a href="../index.html">فهرست</a>
+      <span></span>
+    </nav>
+
+  </div>
+
+  <footer class="page-footer">آبشاری بودن CSS</footer>
+
+</body>
+
+</html>

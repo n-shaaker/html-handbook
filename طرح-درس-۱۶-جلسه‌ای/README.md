@@ -19,26 +19,28 @@
 
 > جلسات ۷، ۱۳، ۱۵، ۱۶ پروژه‌ای‌اند و زمان‌بندی داخل README همان جلسه است.
 
-## نقشه جلسات
+## نقشه جلسات + پیوند به جزوه
 
-| # | فولدر | خروجی |
-|---|--------|--------|
-| ۱ | [`sessions/01-html-fundamentals`](./sessions/01-html-fundamentals/) | Personal Profile |
-| ۲ | [`sessions/02-semantic-html-forms`](./sessions/02-semantic-html-forms/) | Registration Form |
-| ۳ | [`sessions/03-css-fundamentals`](./sessions/03-css-fundamentals/) | Contact styled |
-| ۴ | [`sessions/04-box-model-display-position`](./sessions/04-box-model-display-position/) | Product Card |
-| ۵ | [`sessions/05-flexbox`](./sessions/05-flexbox/) | Navbar + Pricing |
-| ۶ | [`sessions/06-grid-responsive`](./sessions/06-grid-responsive/) | Responsive Grid |
-| ۷ | [`sessions/07-landing-page-project`](./sessions/07-landing-page-project/) | Landing Page + Git init |
-| ۸ | [`sessions/08-javascript-fundamentals`](./sessions/08-javascript-fundamentals/) | Conditional exercises |
-| ۹ | [`sessions/09-functions-arrays`](./sessions/09-functions-arrays/) | Products array practice |
-| ۱۰ | [`sessions/10-objects-modern-js`](./sessions/10-objects-modern-js/) | User Cards |
-| ۱۱ | [`sessions/11-dom`](./sessions/11-dom/) | Dynamic Product Cards |
-| ۱۲ | [`sessions/12-events-forms`](./sessions/12-events-forms/) | Login + Validation |
-| ۱۳ | [`sessions/13-todo-app-project`](./sessions/13-todo-app-project/) | Todo + LocalStorage |
-| ۱۴ | [`sessions/14-async-api`](./sessions/14-async-api/) | Fetch users demo |
-| ۱۵ | [`sessions/15-movie-search-project`](./sessions/15-movie-search-project/) | Show Search (TVMaze) |
-| ۱۶ | [`sessions/16-mini-ecommerce-final`](./sessions/16-mini-ecommerce-final/) | Mini E-commerce |
+برای تکلیف بیشتر یا جبران عقب‌ماندگی، دانشجو را به صفحات جزوه بفرستید (ترتیب مطالعه جزوه: `01–06 → 12 → 13 → 07 → 08–11`).
+
+| # | فولدر جلسه | خروجی | جزوه پیشنهادی |
+|---|--------|--------|--------|
+| ۱ | [`sessions/01-html-fundamentals`](./sessions/01-html-fundamentals/) | Personal Profile | [01 HTML](../01-HTML-مقدماتی/) |
+| ۲ | [`sessions/02-semantic-html-forms`](./sessions/02-semantic-html-forms/) | Registration Form | [01 — semantic و forms](../01-HTML-مقدماتی/pages/13-semantic.html) |
+| ۳ | [`sessions/03-css-fundamentals`](./sessions/03-css-fundamentals/) | Contact styled | [02 CSS مقدماتی](../02-CSS-مقدماتی/) |
+| ۴ | [`sessions/04-box-model-display-position`](./sessions/04-box-model-display-position/) | Product Card | [02 box model](../02-CSS-مقدماتی/pages/12-boxmodel.html) · [03 display/position](../03-CSS-میانی/) |
+| ۵ | [`sessions/05-flexbox`](./sessions/05-flexbox/) | Navbar + Pricing | [12 Flexbox](../12-CSS-Flexbox/) · [تمرین ۲](../تمرین-۲-Flexbox/) |
+| ۶ | [`sessions/06-grid-responsive`](./sessions/06-grid-responsive/) | Responsive Grid | [13 Grid](../13-CSS-Grid/) · [03 Media Queries](../03-CSS-میانی/pages/21-media-queries.html) |
+| ۷ | [`sessions/07-landing-page-project`](./sessions/07-landing-page-project/) | Landing Page + Git init | [07 رستوران استاتیک](../07-پروژه-منوی-رستوران/) (الگو) |
+| ۸ | [`sessions/08-javascript-fundamentals`](./sessions/08-javascript-fundamentals/) | Conditional exercises | [08 JS پایه](../08-JS-پایه/) |
+| ۹ | [`sessions/09-functions-arrays`](./sessions/09-functions-arrays/) | Products array practice | [08 functions](../08-JS-پایه/pages/08-functions.html) · [09 arrays](../09-JS-میانی/) |
+| ۱۰ | [`sessions/10-objects-modern-js`](./sessions/10-objects-modern-js/) | User Cards | [08 objects](../08-JS-پایه/pages/09-objects.html) · [09 destructuring](../09-JS-میانی/pages/11-destructuring-spread.html) |
+| ۱۱ | [`sessions/11-dom`](./sessions/11-dom/) | Dynamic Product Cards | [08 DOM](../08-JS-پایه/pages/10-dom-basics.html) · [09 DOM](../09-JS-میانی/pages/14-dom-selecting.html) |
+| ۱۲ | [`sessions/12-events-forms`](./sessions/12-events-forms/) | Login + Validation | [08 events](../08-JS-پایه/pages/11-events.html) · [09 forms](../09-JS-میانی/pages/18-forms.html) |
+| ۱۳ | [`sessions/13-todo-app-project`](./sessions/13-todo-app-project/) | Todo + LocalStorage | [09 Todo](../09-JS-میانی/pages/20-practice.html) · [10 storage](../10-JS-پیشرفته/pages/13-web-storage.html) |
+| ۱۴ | [`sessions/14-async-api`](./sessions/14-async-api/) | Fetch users demo | [10 fetch](../10-JS-پیشرفته/pages/11-fetch.html) |
+| ۱۵ | [`sessions/15-movie-search-project`](./sessions/15-movie-search-project/) | Show Search (TVMaze) | [10 async + fetch](../10-JS-پیشرفته/) |
+| ۱۶ | [`sessions/16-mini-ecommerce-final`](./sessions/16-mini-ecommerce-final/) | Mini E-commerce | [10 فروشگاه](../10-JS-پیشرفته/pages/20-practice.html) · [11 رستوران JS](../11-پروژه-منوی-رستوران-JS/) · [Deploy](../10-JS-پیشرفته/pages/19-deploy.html) |
 
 ## Git تدریجی
 

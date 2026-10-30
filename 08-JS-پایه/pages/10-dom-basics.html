@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>۱۰) DOM چیست؟ | آموزش JavaScript سطح پایه</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <script src="../js/log.js" defer></script>
+  <script src="../js/demos/dom-basics.js" defer></script>
+</head>
+
+<body>
+
+  <header class="page-header" id="top">
+    <h1>آموزش JavaScript — سطح پایه</h1>
+    <p>۱۰) DOM چیست و چطور عنصر را پیدا کنیم؟</p>
+  </header>
+
+  <div class="container">
+
+    <nav class="page-nav" aria-label="ناوبری درس">
+      <a href="09-objects.html">→ قبلی: Objects</a>
+      <a href="../index.html">فهرست درس‌ها</a>
+      <a href="11-events.html">بعدی: Events ←</a>
+    </nav>
+
+    <section class="lesson" id="dom-basics">
+      <h2>۱۰) DOM چیست؟</h2>
+      <p>
+        مرورگر HTML را به یک درخت شیء به نام <strong>DOM</strong> (Document Object Model) تبدیل می‌کند.
+        JavaScript با DOM عنصرها را پیدا می‌کند، متن‌شان را عوض می‌کند و به کلیک گوش می‌دهد.
+        بدون این مفهوم، درس رویدادها گیج‌کننده است.
+      </p>
+      <pre class="code"><code>const title = document.getElementById("demo-title");
+const box = document.querySelector(".demo-box");
+title.textContent = "سلام از DOM";
+box.style.backgroundColor = "#0b6e4f";</code></pre>
+
+      <h3>مثال زنده</h3>
+      <div class="result">
+        <h3 id="demo-title">عنوان اولیه</h3>
+        <p class="demo-box" style="padding:10px;background:#eef2f7;border-radius:6px">جعبه نمونه</p>
+        <button type="button" class="btn" id="dom-btn">اعمال تغییر DOM</button>
+        <p id="dom-log" aria-live="polite"></p>
+      </div>
+
+      <table class="ref">
+        <thead><tr><th>روش</th><th>کاربرد</th></tr></thead>
+        <tbody>
+          <tr><td><code>getElementById("id")</code></td><td>یک عنصر با id یکتا</td></tr>
+          <tr><td><code>querySelector(".class")</code></td><td>اولین عنصری که با CSS selector جور است</td></tr>
+          <tr><td><code>querySelectorAll(...)</code></td><td>همه موارد؛ بعداً با حلقه</td></tr>
+          <tr><td><code>textContent</code></td><td>خواندن/نوشتن متن امن</td></tr>
+        </tbody>
+      </table>
+      <p class="tip">اگر عنصر پیدا نشود نتیجه <code>null</code> است — قبل از استفاده چک کنید. درس عمیق‌تر DOM در <a href="../../09-JS-میانی/index.html">JS میانی</a> است.</p>
+      <p class="mistake"><strong>اشتباه:</strong> اسکریپت را در <code>head</code> بدون <code>defer</code> بگذارید؛ DOM هنوز آماده نیست.</p>
+      <p class="exercise"><strong>تمرین:</strong> دکمه‌ای بسازید که متن یک پاراگراف را عوض کند.</p>
+    </section>
+
+    <nav class="page-nav" aria-label="ناوبری درس پایین">
+      <a href="09-objects.html">→ قبلی: Objects</a>
+      <a href="../index.html">فهرست درس‌ها</a>
+      <a href="11-events.html">بعدی: Events ←</a>
+    </nav>
+
+  </div>
+
+  <footer class="page-footer">آموزش JavaScript سطح پایه</footer>
+
+</body>
+
+</html>

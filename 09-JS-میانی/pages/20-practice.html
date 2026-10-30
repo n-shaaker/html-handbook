@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>۱۹) پروژه جمع‌بندی: فهرست کارها (Todo List) | آموزش JavaScript سطح میانی</title>
+  <title>۲۰) پروژه جمع‌بندی: فهرست کارها (Todo List) | آموزش JavaScript سطح میانی</title>
   <link rel="stylesheet" href="../css/style.css">
   <script src="../js/log.js" defer></script>
   <script src="../js/demos/practice.js" defer></script>
@@ -14,23 +14,23 @@
 
   <header class="page-header" id="top">
     <h1>آموزش JavaScript — سطح میانی</h1>
-    <p>۱۹) پروژه جمع‌بندی: فهرست کارها (Todo List)</p>
+    <p>۲۰) پروژه جمع‌بندی: فهرست کارها (Todo List)</p>
   </header>
 
   <div class="container">
 
     <nav class="page-nav" aria-label="ناوبری درس">
-      <a href="18-forms.html">→ قبلی: Forms</a>
+      <a href="19-debugging-intro.html">→ قبلی: Debugging</a>
       <a href="../index.html">فهرست درس‌ها</a>
       <span></span>
     </nav>
 
     <section class="lesson" id="practice">
-      <h2>۱۹) پروژه جمع‌بندی: فهرست کارها (Todo List)</h2>
+      <h2>۲۰) پروژه جمع‌بندی: فهرست کارها (Todo List)</h2>
 <p>این پروژه مهم‌ترین مباحث دوره را کنار هم می‌گذارد: آرایه اشیا، متدهای آرایه، تابع پیکانی، DOM، رویداد و فرم. اول نسخه زنده را امتحان کنید، بعد کد را بخوانید.</p>
 
 <div class="result">
-<form id="todo-form"><label for="todo-input">کار جدید:</label> <input type="text" id="todo-input" placeholder="مثلاً تمرین درس ۱۹"><button type="submit" class="btn">اضافه کن</button></form>
+<form id="todo-form"><label for="todo-input">کار جدید:</label> <input type="text" id="todo-input" placeholder="مثلاً تمرین درس ۲۰"><button type="submit" class="btn">اضافه کن</button></form>
 <div id="filters"><button type="button" class="btn" data-filter="all">همه</button><button type="button" class="btn secondary" data-filter="active">انجام نشده</button><button type="button" class="btn secondary" data-filter="done">انجام شده</button></div>
 <ul class="js-list" id="todo-list"></ul>
 <p id="todo-count" aria-live="polite"></p>
@@ -162,11 +162,18 @@ render();</code></pre>
 <li>فهرست را طوری نمایش دهید که کارهای انجام‌نشده بالا و انجام‌شده‌ها پایین باشند (راهنما: <code>todos.slice().sort((a, b) =&gt; a.done - b.done)</code>؛ چون <code>true - false</code> برابر ۱ است).</li>
 </ol>
 
-<p class="tip">در <a href="../../10-JS-پیشرفته/index.html">دوره پیشرفته</a> همین برنامه را با <code>localStorage</code> ماندگار می‌کنیم تا با بستن مرورگر کارها پاک نشوند.</p>
+<p class="tip">
+  <strong>گام بعدی — ماندگاری:</strong>
+  همین Todo با رفرش پاک می‌شود. بلافاصله بعد از این پروژه درس
+  <a href="../../10-JS-پیشرفته/pages/13-web-storage.html">localStorage</a>
+  را بخوانید و آرایه <code>todos</code> را با <code>JSON.stringify</code> /
+  <code>JSON.parse</code> ذخیره کنید. نسخه کلاس:
+  <a href="../../طرح-درس-۱۶-جلسه‌ای/sessions/13-todo-app-project/">جلسه ۱۳ طرح‌درس</a>.
+</p>
     </section>
 
     <nav class="page-nav" aria-label="ناوبری درس پایین">
-      <a href="18-forms.html">→ قبلی: Forms</a>
+      <a href="19-debugging-intro.html">→ قبلی: Debugging</a>
       <a href="../index.html">فهرست درس‌ها</a>
       <span></span>
     </nav>

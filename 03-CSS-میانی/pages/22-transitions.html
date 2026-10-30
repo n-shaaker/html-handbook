@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>۲۲) Transition پایه | آموزش CSS — سطح میانی</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/demos/transitions.css">
+  
+</head>
+
+<body>
+
+  <header class="page-header">
+    <h1>آموزش CSS — سطح میانی</h1>
+    <p>۲۲) Transition پایه</p>
+  </header>
+
+  <div class="container">
+
+    <nav class="page-nav" aria-label="ناوبری درس">
+      <a href="21-media-queries.html">→ قبلی: Media Queries</a>
+      <a href="../index.html">فهرست درس‌ها</a>
+      <a href="23-transitions-ui.html">Transitions در UI ←</a>
+    </nav>
+
+    <section class="lesson" id="transitions">
+      <h2>۲۲) Transition پایه</h2>
+
+      <p>
+        <code>transition</code> تغییر یک ویژگی را نرم می‌کند. بدون آن ظاهر «پرش» دارد.
+      </p>
+      <pre class="code"><code>.btn {
+  background: #1a5fb4;
+  transition: background-color 0.25s ease, transform 0.25s ease;
+}
+.btn:hover {
+  background: #0b6e4f;
+  transform: translateY(-2px);
+}</code></pre>
+      <h3>مثال ۱: دکمه</h3>
+      <div class="result demo-tr"><button type="button" class="btn-tr">ماوس را بیاورید</button></div>
+      <h3>مثال ۲: عرض و رنگ جعبه</h3>
+      <div class="result demo-tr"><div class="panel" title="hover"></div></div>
+      <table class="ref">
+        <thead><tr><th>بخش</th><th>توضیح</th></tr></thead>
+        <tbody>
+          <tr><td>ویژگی</td><td><code>color</code>، <code>opacity</code>، <code>transform</code> یا با احتیاط <code>all</code></td></tr>
+          <tr><td>مدت</td><td><code>0.3s</code> یا <code>300ms</code></td></tr>
+          <tr><td>timing</td><td><code>ease</code>، <code>linear</code>، <code>ease-in-out</code></td></tr>
+        </tbody>
+      </table>
+      <p class="tip">برای عملکرد بهتر، <code>transform</code> و <code>opacity</code> را ترجیح دهید.</p>
+      <p class="exercise"><strong>تمرین:</strong> لینکی با transition روی رنگ و border-bottom در ۰٫۲s بسازید.</p>
+
+    </section>
+
+    <nav class="page-nav" aria-label="ناوبری درس پایین">
+      <a href="21-media-queries.html">→ قبلی: Media Queries</a>
+      <a href="../index.html">فهرست درس‌ها</a>
+      <a href="23-transitions-ui.html">Transitions در UI ←</a>
+    </nav>
+
+  </div>
+
+  <footer class="page-footer">
+    آموزش CSS سطح میانی
+  </footer>
+
+</body>
+
+</html>

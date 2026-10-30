@@ -1,93 +1,67 @@
-# my-project
+# HTML Handbook — جزوه فرانت‌اند جونیور
 
+مسیر خودآموز HTML، CSS و JavaScript برای ساخت یک سایت واقعی (لندینگ + تعامل).  
+**لازم نیست خیلی پیشرفته باشد؛ باید کامل، کاربردی و قابل سلف‌استادی باشد.**
 
+## مهم: ترتیب یادگیری (نه شماره پوشه)
 
-## Getting started
+شماره پوشه‌ها ترتیب تاریخی/ساخت هستند. **ترتیب صحیح مطالعه این است:**
 
-To make it easy for you to get started with GitLab, here's a list of recommended next steps.
-
-Already a pro? Just edit this README.md and make it your own. Want to make it easy? [Use the template at the bottom](#editing-this-readme)!
-
-## Add your files
-
-* [Create](https://docs.gitlab.com/user/project/repository/web_editor/#create-a-file) or [upload](https://docs.gitlab.com/user/project/repository/web_editor/#upload-a-file) files
-* [Add files using the command line](https://docs.gitlab.com/topics/git/add_files/#add-files-to-a-git-repository) or push an existing Git repository with the following command:
-
-```
-cd existing_repo
-git remote add origin https://hamgit.ir/shaaker_n/my-project.git
-git branch -M main
-git push -uf origin main
+```text
+01 HTML → 02 CSS پایه → 03 CSS میانی → 04 آبشاری → 05 تصاویر → 06 رنگ
+    → 12 Flexbox → 13 Grid
+    → 07 پروژه رستوران (استاتیک)
+    → 08 JS پایه → 09 JS میانی → 10 JS پیشرفته
+    → 11 پروژه رستوران (JS)
 ```
 
-## Integrate with your tools
+### هشدار پیش‌نیاز
 
-* [Set up project integrations](https://hamgit.ir/shaaker_n/my-project/-/settings/integrations)
+- قبل از **[07-پروژه-منوی-رستوران](07-پروژه-منوی-رستوران/)** حتماً **[12-CSS-Flexbox](12-CSS-Flexbox/)** و **[13-CSS-Grid](13-CSS-Grid/)** را تمام کنید.
+- قبل از **[11-پروژه-منوی-رستوران-JS](11-پروژه-منوی-رستوران-JS/)** همان Flex/Grid + ماژول‌های JS (حداقل تا DOM و فرم‌ها) لازم است.
+- اگر فقط به ترتیب عددی `01…13` بروید، پروژه‌ها را قبل از درس layout می‌بینید و مسیر می‌شکند.
 
-## Collaborate with your team
+## نقشه ماژول‌ها
 
-* [Invite team members and collaborators](https://docs.gitlab.com/user/project/members/)
-* [Create a new merge request](https://docs.gitlab.com/user/project/merge_requests/creating_merge_requests/)
-* [Automatically close issues from merge requests](https://docs.gitlab.com/user/project/issues/managing_issues/#closing-issues-automatically)
-* [Enable merge request approvals](https://docs.gitlab.com/user/project/merge_requests/approvals/)
-* [Set auto-merge](https://docs.gitlab.com/user/project/merge_requests/auto_merge/)
+| ترتیب مطالعه | پوشه | درس‌ها | تمرین‌ها |
+| ---: | --- | --- | --- |
+| ۱ | [01-HTML-مقدماتی](01-HTML-مقدماتی/) | [index](01-HTML-مقدماتی/index.html) | [quizzes](01-HTML-مقدماتی/quizzes/README.md) |
+| ۲ | [02-CSS-مقدماتی](02-CSS-مقدماتی/) | [index](02-CSS-مقدماتی/index.html) | [quizzes](02-CSS-مقدماتی/quizzes/README.md) |
+| ۳ | [03-CSS-میانی](03-CSS-میانی/) | [index](03-CSS-میانی/index.html) | [quizzes](03-CSS-میانی/quizzes/README.md) |
+| ۴ | [04-CSS-آبشاری](04-CSS-آبشاری/) | [index](04-CSS-آبشاری/index.html) | [quizzes](04-CSS-آبشاری/quizzes/README.md) |
+| ۵ | [05-CSS-تصاویر](05-CSS-تصاویر/) | [index](05-CSS-تصاویر/index.html) | [quizzes](05-CSS-تصاویر/quizzes/README.md) |
+| ۶ | [06-آزمایشگاه-رنگ](06-آزمایشگاه-رنگ/) | [index](06-آزمایشگاه-رنگ/index.html) | [quizzes](06-آزمایشگاه-رنگ/quizzes/README.md) |
+| ۷ | [12-CSS-Flexbox](12-CSS-Flexbox/) | [index](12-CSS-Flexbox/index.html) | [quizzes](12-CSS-Flexbox/quizzes/README.md) |
+| ۸ | [13-CSS-Grid](13-CSS-Grid/) | [index](13-CSS-Grid/index.html) | [quizzes](13-CSS-Grid/quizzes/README.md) |
+| ۹ | [07-پروژه-منوی-رستوران](07-پروژه-منوی-رستوران/) | نمونه پروژه | [quizzes](07-پروژه-منوی-رستوران/quizzes/README.md) |
+| ۱۰ | [08-JS-پایه](08-JS-پایه/) | [index](08-JS-پایه/index.html) | [quizzes](08-JS-پایه/quizzes/README.md) |
+| ۱۱ | [09-JS-میانی](09-JS-میانی/) | [index](09-JS-میانی/index.html) | [quizzes](09-JS-میانی/quizzes/README.md) |
+| ۱۲ | [10-JS-پیشرفته](10-JS-پیشرفته/) | [index](10-JS-پیشرفته/index.html) | [quizzes](10-JS-پیشرفته/quizzes/README.md) |
+| ۱۳ | [11-پروژه-منوی-رستوران-JS](11-پروژه-منوی-رستوران-JS/) | نمونه پروژه | [quizzes](11-پروژه-منوی-رستوران-JS/quizzes/README.md) |
 
-## Test and Deploy
+### منابع کمکی
 
-Use the built-in continuous integration in GitLab.
+- [طرح-درس-۱۶-جلسه‌ای](طرح-درس-۱۶-جلسه‌ای/README.md) — مسیر کلاس (۳۲ ساعت)؛ ترتیب layout قبل از JS درست است
+- [تمرین-۱-صفحه-معرفی](تمرین-۱-صفحه-معرفی/) · [تمرین-۲-Flexbox](تمرین-۲-Flexbox/) · [تمرین-۳-Grid](تمرین-۳-Grid/) — دموهای مرجع (هنوز README معیار ندارند)
+- **[گزارش-ممیزی](گزارش-ممیزی/index.html)** — نمرات، گپ‌ها، پیوستگی و بک‌لاگ اصلاح
+- **[سوالات-از-استاد](سوالات-از-استاد/)** — پرسش‌های پرتکرار دانشجو، بخش‌به‌بخش برای آمادگی مدرس
 
-* [Get started with GitLab CI/CD](https://docs.gitlab.com/ci/quick_start/)
-* [Analyze your code for known vulnerabilities with Static Application Security Testing (SAST)](https://docs.gitlab.com/user/application_security/sast/)
-* [Deploy to Kubernetes, Amazon EC2, or Amazon ECS using Auto Deploy](https://docs.gitlab.com/topics/autodevops/requirements/)
-* [Use pull-based deployments for improved Kubernetes management](https://docs.gitlab.com/user/clusters/agent/)
-* [Set up protected environments](https://docs.gitlab.com/ci/environments/protected_environments/)
+## چطور مطالعه کنید
 
-***
+1. هر ماژول را از `index.html` شروع کنید، بعد `pages/` را به ترتیب بخوانید.
+2. بعد از هر بخش، پوشه `quizzes/` را انجام دهید (starter → خودتان → solution).
+3. برای فایل‌های JS ماژول و `type="module"`، از Live Server (یا سرور استاتیک محلی) استفاده کنید؛ باز کردن مستقیم `file://` بعضی درس‌ها را می‌شکند.
+4. پروژه ۰۷ را فقط بعد از Flex و Grid به‌عنوان کپ‌استون استاتیک بسازید؛ پروژه ۱۱ را بعد از DOM/فرم/storage.
 
-# Editing this README
+## وضعیت ممیزی (خلاصه)
 
-When you're ready to make this README your own, just edit this file and use the handy template below (or feel free to structure it however you want - this is just a starting point!). Thanks to [makeareadme.com](https://www.makeareadme.com/) for this template.
+فاز اصلاح محتوا اعمال شده: Media Queries / Transition / Variables، DOM قبل از Events، Debugging زودتر، a11y و Deploy، درس‌های رنگ، walkthrough پروژه‌ها، README تمرین‌ها، پیوند طرح ۱۶جلسه‌ای.
 
-## Suggestions for a good README
+| معیار | وضعیت تقریبی |
+| --- | --- |
+| کامل بودن موضوعی (با ترتیب درست) | ~۹/۱۰ |
+| کاربردی + تمرین | ~۸٫۵/۱۰ |
+| سلف‌استادی با پیروی از این README | ~۸/۱۰ |
+| سلف‌استادی فقط با شماره پوشهٔ خام | هنوز ضعیف — از جدول بالا پیروی کنید |
 
-Every project is different, so consider which of these sections apply to yours. The sections used in the template are suggestions for most open source projects. Also keep in mind that while a README can be too long and detailed, too long is better than too short. If you think your README is too long, consider utilizing another form of documentation rather than cutting out information.
-
-## Name
-Choose a self-explaining name for your project.
-
-## Description
-Let people know what your project can do specifically. Provide context and add a link to any reference visitors might be unfamiliar with. A list of Features or a Background subsection can also be added here. If there are alternatives to your project, this is a good place to list differentiating factors.
-
-## Badges
-On some READMEs, you may see small images that convey metadata, such as whether or not all the tests are passing for the project. You can use Shields to add some to your README. Many services also have instructions for adding a badge.
-
-## Visuals
-Depending on what you are making, it can be a good idea to include screenshots or even a video (you'll frequently see GIFs rather than actual videos). Tools like ttygif can help, but check out Asciinema for a more sophisticated method.
-
-## Installation
-Within a particular ecosystem, there may be a common way of installing things, such as using Yarn, NuGet, or Homebrew. However, consider the possibility that whoever is reading your README is a novice and would like more guidance. Listing specific steps helps remove ambiguity and gets people to using your project as quickly as possible. If it only runs in a specific context like a particular programming language version or operating system or has dependencies that have to be installed manually, also add a Requirements subsection.
-
-## Usage
-Use examples liberally, and show the expected output if you can. It's helpful to have inline the smallest example of usage that you can demonstrate, while providing links to more sophisticated examples if they are too long to reasonably include in the README.
-
-## Support
-Tell people where they can go to for help. It can be any combination of an issue tracker, a chat room, an email address, etc.
-
-## Roadmap
-If you have ideas for releases in the future, it is a good idea to list them in the README.
-
-## Contributing
-State if you are open to contributions and what your requirements are for accepting them.
-
-For people who want to make changes to your project, it's helpful to have some documentation on how to get started. Perhaps there is a script that they should run or some environment variables that they need to set. Make these steps explicit. These instructions could also be useful to your future self.
-
-You can also document commands to lint the code or run tests. These steps help to ensure high code quality and reduce the likelihood that the changes inadvertently break something. Having instructions for running tests is especially helpful if it requires external setup, such as starting a Selenium server for testing in a browser.
-
-## Authors and acknowledgment
-Show your appreciation to those who have contributed to the project.
-
-## License
-For open source projects, say how it is licensed.
-
-## Project status
-If you have run out of energy or time for your project, put a note at the top of the README saying that development has slowed down or stopped completely. Someone may choose to fork your project or volunteer to step in as a maintainer or owner, allowing your project to keep going. You can also make an explicit request for maintainers.
+جزئیات: **[گزارش-ممیزی/index.html](گزارش-ممیزی/index.html)**

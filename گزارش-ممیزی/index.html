@@ -1,0 +1,453 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="گزارش ممیزی سخت‌گیرانه جزوه HTML Handbook؛ نمرات، گپ‌ها، پیوستگی مسیر و بک‌لاگ اصلاح"
+    />
+    <title>گزارش ممیزی و اصلاح جزوه | HTML Handbook</title>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+
+  <body>
+    <header class="page-header">
+      <h1>گزارش ممیزی و اصلاح جزوه</h1>
+      <p>
+        معیار: جونیور سلف‌استادی بتواند فقط با این جزوه یک سایت کامل، کاربردی و خوب
+        بسازد
+      </p>
+    </header>
+
+    <div class="container">
+      <nav class="toc" aria-label="فهرست گزارش">
+        <strong>فهرست</strong>
+        <ol>
+          <li><a href="#verdict">حکم کلی</a></li>
+          <li><a href="#scores">نمرات ماژول‌ها</a></li>
+          <li><a href="#continuity">پیوستگی مسیر</a></li>
+          <li><a href="#gaps">گپ‌ها (P0 / P1 / P2)</a></li>
+          <li><a href="#backlog">بک‌لاگ اصلاح</a></li>
+          <li><a href="#summary">جمع‌بندی</a></li>
+        </ol>
+      </nav>
+
+      <section class="verdict" id="verdict">
+        <h2>حکم کلی (سخت‌گیرانه)</h2>
+        <p>
+          با ترتیب عددی خام پوشه‌ها مسیر می‌شکست. بعد از فاز اصلاح محتوا (نقشه
+          README، درس‌های MQ/Transition/Variables، DOM قبل از Events، walkthrough
+          پروژه‌ها، a11y و Deploy) مسیر سلف‌استادی قابل اتکاتر است — به‌شرط پیروی از
+          ترتیب رسمی در README ریشه: <code>01–06 → 12 → 13 → 07 → 08–11</code>.
+        </p>
+      </section>
+
+      <section class="section" id="done-fixes">
+        <h2>اصلاح‌های انجام‌شده</h2>
+        <ul class="checklist">
+          <li><input type="checkbox" checked disabled id="d1" /><label for="d1">README ریشه + هشدار/README روی ۰۷ و ۱۱ + بنر پیش‌نیاز</label></li>
+          <li><input type="checkbox" checked disabled id="d2" /><label for="d2">درس‌های Media Queries، Transition، Animation در ۰۳</label></li>
+          <li><input type="checkbox" checked disabled id="d3" /><label for="d3">CSS Variables در ۰۴ + درس‌های رنگ در ۰۶</label></li>
+          <li><input type="checkbox" checked disabled id="d4" /><label for="d4">DOM قبل از Events در ۰۸؛ Debugging زودتر در ۰۹؛ لینک storage در Todo</label></li>
+          <li><input type="checkbox" checked disabled id="d5" /><label for="d5">درس a11y-JS و Deploy در ۱۰</label></li>
+          <li><input type="checkbox" checked disabled id="d6" /><label for="d6">README تمرین‌۱/۲/۳ + پیوند طرح ۱۶جلسه‌ای به جزوه</label></li>
+        </ul>
+      </section>
+
+      <div class="stats" aria-label="نمرات معیارها">
+        <div class="stat danger">
+          <span class="value">۶/۱۰</span>
+          <span class="label">پیوستگی مسیر فعلی</span>
+        </div>
+        <div class="stat success">
+          <span class="value">۸/۱۰</span>
+          <span class="label">کامل بودن با ترتیب درست</span>
+        </div>
+        <div class="stat success">
+          <span class="value">۸٫۵/۱۰</span>
+          <span class="label">کاربردی + تمرین</span>
+        </div>
+        <div class="stat warning">
+          <span class="value">۵–۶/۱۰</span>
+          <span class="label">سلف‌استادی عددی</span>
+        </div>
+      </div>
+
+      <section class="section" id="scores">
+        <h2>نمرات ماژول‌ها (۰–۱۰)</h2>
+        <p class="lead">
+          نمره بر اساس آمادگی جونیور برای ساخت سایت واقعی است، نه حجم صفحه.
+        </p>
+        <table>
+          <thead>
+            <tr>
+              <th>ماژول</th>
+              <th>نمره</th>
+              <th>یادداشت</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>01 HTML مقدماتی</td>
+              <td><span class="badge badge-score">۸</span></td>
+              <td>قوی؛ Flex/MQ زود در درس ۲۳</td>
+            </tr>
+            <tr class="row-warning">
+              <td>02 CSS مقدماتی</td>
+              <td><span class="badge badge-score mid">۷</span></td>
+              <td>بدون Media Queries در pages</td>
+            </tr>
+            <tr class="row-warning">
+              <td>03 CSS میانی</td>
+              <td><span class="badge badge-score mid">۶٫۵</span></td>
+              <td>Navbar با Flex قبل از ماژول ۱۲</td>
+            </tr>
+            <tr>
+              <td>04 CSS آبشاری</td>
+              <td><span class="badge badge-score">۸</span></td>
+              <td>باریک و درست</td>
+            </tr>
+            <tr>
+              <td>05 CSS تصاویر</td>
+              <td><span class="badge badge-score mid">۷٫۵</span></td>
+              <td>مسیر فایل عالی؛ MQ کم</td>
+            </tr>
+            <tr class="row-danger">
+              <td>06 آزمایشگاه رنگ</td>
+              <td><span class="badge badge-score low">۵</span></td>
+              <td>بدون pages گام‌به‌گام</td>
+            </tr>
+            <tr class="row-warning">
+              <td>07 پروژه منوی رستوران</td>
+              <td><span class="badge badge-score mid">۶</span></td>
+              <td>Capstone قبل از Flex/Grid</td>
+            </tr>
+            <tr class="row-warning">
+              <td>08 JS پایه</td>
+              <td><span class="badge badge-score mid">۶٫۵</span></td>
+              <td>Events قبل از درس DOM</td>
+            </tr>
+            <tr>
+              <td>09 JS میانی</td>
+              <td><span class="badge badge-score">۸</span></td>
+              <td>بهترین لایه رفتار فرانت</td>
+            </tr>
+            <tr>
+              <td>10 JS پیشرفته</td>
+              <td><span class="badge badge-score mid">۷٫۵</span></td>
+              <td>Debugging دیر؛ OOP سنگین</td>
+            </tr>
+            <tr>
+              <td>11 پروژه رستوران JS</td>
+              <td><span class="badge badge-score">۸٫۵</span></td>
+              <td>قوی به‌عنوان پروژه؛ بدون TOC درس</td>
+            </tr>
+            <tr>
+              <td>12 CSS Flexbox</td>
+              <td><span class="badge badge-score">۹</span></td>
+              <td>کامل برای جونیور</td>
+            </tr>
+            <tr>
+              <td>13 CSS Grid</td>
+              <td><span class="badge badge-score">۹</span></td>
+              <td>کامل برای جونیور</td>
+            </tr>
+            <tr class="row-danger">
+              <td>README ریشه</td>
+              <td><span class="badge badge-score low">۰</span></td>
+              <td>قالب خالی GitLab (باید با نقشه یادگیری جایگزین شود)</td>
+            </tr>
+            <tr class="row-warning">
+              <td>پیوستگی کل مسیر</td>
+              <td><span class="badge badge-score mid">۶</span></td>
+              <td>مشکل اصلی سلف‌استادی</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section class="section" id="continuity">
+        <h2>پیوستگی مسیر</h2>
+        <div class="path-grid">
+          <article class="path-card bad">
+            <h3>ترتیب عددی فعلی — شکسته</h3>
+            <code>01–07 → 08–11 JS → 12–13 Layout</code>
+            <p>
+              پروژه‌های ۰۷ و ۱۱ از Flex/Grid و @media استفاده می‌کنند قبل از اینکه
+              درس‌شان در ۱۲ و ۱۳ خوانده شود. Navbar در ۰۳ هم از Flex استفاده می‌کند.
+            </p>
+          </article>
+          <article class="path-card good">
+            <h3>ترتیب لازم برای جونیور — درست</h3>
+            <code>01–06 → 12 Flex → 13 Grid → 07 → 08–11</code>
+            <p>
+              طرح‌درس ۱۶جلسه‌ای همین منطق را دارد؛ شماره‌گذاری جزوه و README خالی آن
+              را نقض می‌کنند.
+            </p>
+          </article>
+        </div>
+        <div class="callout">
+          <p>
+            <strong>هشدار پیش‌نیاز:</strong> تا وقتی نقشه README و علامت روی ۰۷/۱۱
+            درست نشود، جونیور CSS پروژه را کپی می‌کند بدون اینکه یاد بگیرد بنویسد.
+          </p>
+        </div>
+      </section>
+
+      <section class="section" id="gaps">
+        <h2>گپ‌ها</h2>
+        <p class="lead">فیلتر اولویت را انتخاب کنید تا فقط همان سطح نمایش داده شود.</p>
+        <div class="filters" role="group" aria-label="فیلتر اولویت گپ">
+          <button type="button" class="filter-btn" data-filter="all" aria-pressed="true">
+            همه
+          </button>
+          <button type="button" class="filter-btn" data-filter="P0" aria-pressed="false">
+            P0 مسدودکننده
+          </button>
+          <button type="button" class="filter-btn" data-filter="P1" aria-pressed="false">
+            P1 کاربردی
+          </button>
+          <button type="button" class="filter-btn" data-filter="P2" aria-pressed="false">
+            P2 پولیش
+          </button>
+        </div>
+        <table id="gaps-table">
+          <thead>
+            <tr>
+              <th>اولویت</th>
+              <th>عنوان</th>
+              <th>جزئیات</th>
+              <th>هدف</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr data-priority="P0" class="row-danger">
+              <td><span class="badge badge-p0">P0</span></td>
+              <td>Flex/Grid بعد از پروژه‌ها</td>
+              <td>
+                ماژول‌های ۰۷ و ۱۱ از Flex/Grid و @media استفاده می‌کنند؛ درس کامل در
+                ۱۲ و ۱۳ است.
+              </td>
+              <td>07، 11، 12، 13</td>
+            </tr>
+            <tr data-priority="P0" class="row-danger">
+              <td><span class="badge badge-p0">P0</span></td>
+              <td>README ریشه بی‌استفاده</td>
+              <td>هیچ نقشه یادگیری، پیش‌نیاز یا لینک ماژول ندارد.</td>
+              <td>README.md</td>
+            </tr>
+            <tr data-priority="P0" class="row-danger">
+              <td><span class="badge badge-p0">P0</span></td>
+              <td>دو مسیر موازی بدون اتصال</td>
+              <td>
+                طرح‌درس ۱۶جلسه‌ای ترتیب درست دارد؛ جزوه شماره‌گذاری‌شده آن را نقض
+                می‌کند و به هم لینک نیستند.
+              </td>
+              <td>طرح‌درس ↔ ماژول‌ها</td>
+            </tr>
+            <tr data-priority="P0" class="row-danger">
+              <td><span class="badge badge-p0">P0</span></td>
+              <td>Media Queries درس مستقل ندارد</td>
+              <td>فقط پراکنده در 03/20، 12/13، 13/13.</td>
+              <td>02 یا 03 pages</td>
+            </tr>
+            <tr data-priority="P0" class="row-danger">
+              <td><span class="badge badge-p0">P0</span></td>
+              <td>Transitions / Animations تقریباً غایب</td>
+              <td>
+                یک اشاره در opacity؛ برای سایت خوب، hover/focus/dropdown لازم است.
+              </td>
+              <td>03 یا ماژول کوتاه</td>
+            </tr>
+            <tr data-priority="P1" class="row-warning">
+              <td><span class="badge badge-p1">P1</span></td>
+              <td>CSS Variables فقط در کوییز رنگ</td>
+              <td>در pages ماژول‌های ۰۲/۰۳/۰۴ درس نیست.</td>
+              <td>02 یا 04 + 06</td>
+            </tr>
+            <tr data-priority="P1" class="row-warning">
+              <td><span class="badge badge-p1">P1</span></td>
+              <td>ماژول ۶ و ۷ و ۱۱ بدون pages درس</td>
+              <td>برای سلف‌استادی walkthrough گام‌به‌گام نیست.</td>
+              <td>06، 07، 11</td>
+            </tr>
+            <tr data-priority="P1" class="row-warning">
+              <td><span class="badge badge-p1">P1</span></td>
+              <td>Events قبل از DOM در JS پایه</td>
+              <td>درس ۱۰ از DOM API استفاده می‌کند؛ درس DOM واقعی در ۰۹ است.</td>
+              <td>08-JS-پایه/pages</td>
+            </tr>
+            <tr data-priority="P1" class="row-warning">
+              <td><span class="badge badge-p1">P1</span></td>
+              <td>Debugging خیلی دیر</td>
+              <td>درس ۱۷ در JS پیشرفته؛ نیاز از ۰۸–۰۹ شروع می‌شود.</td>
+              <td>09 یا اوایل ۱۰</td>
+            </tr>
+            <tr data-priority="P1" class="row-warning">
+              <td><span class="badge badge-p1">P1</span></td>
+              <td>Todo بدون localStorage</td>
+              <td>پروژه Todo در ۰۹ بدون persistence؛ storage در ۱۰ می‌آید.</td>
+              <td>09 + 10</td>
+            </tr>
+            <tr data-priority="P1" class="row-warning">
+              <td><span class="badge badge-p1">P1</span></td>
+              <td>a11y کاربردی ناقص</td>
+              <td>skip-link، focus trap، aria-expanded یکپارچه درس نیست.</td>
+              <td>01/23 + JS+a11y</td>
+            </tr>
+            <tr data-priority="P1" class="row-warning">
+              <td><span class="badge badge-p1">P1</span></td>
+              <td>Deployment غایب</td>
+              <td>GitHub Pages / Netlify برای انتشار سایت استاتیک نیست.</td>
+              <td>درس کوتاه Deploy</td>
+            </tr>
+            <tr data-priority="P1" class="row-warning">
+              <td><span class="badge badge-p1">P1</span></td>
+              <td>تمرین ۱–۳ فقط دمو</td>
+              <td>بدون README، معیار موفقیت، یا لینک از index ماژول‌ها.</td>
+              <td>تمرین-۱/۲/۳</td>
+            </tr>
+            <tr data-priority="P2">
+              <td><span class="badge badge-p2">P2</span></td>
+              <td>مباحث سنگین برای جونیور</td>
+              <td>call/apply/bind، وراثت عمیق، counters را اختیاری علامت بزنید.</td>
+              <td>03، 10</td>
+            </tr>
+            <tr data-priority="P2">
+              <td><span class="badge badge-p2">P2</span></td>
+              <td>SEO فقط meta پایه</td>
+              <td>Open Graph / canonical اختیاری؛ غیرمسدودکننده.</td>
+              <td>01 head-meta</td>
+            </tr>
+            <tr data-priority="P2">
+              <td><span class="badge badge-p2">P2</span></td>
+              <td>اتصال طرح ۱۶جلسه‌ای به صفحات جزوه</td>
+              <td>هر جلسه باید به pages و quizzes متناظر لینک شود.</td>
+              <td>طرح-درس-۱۶-جلسه‌ای</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section class="section" id="backlog">
+        <h2>بک‌لاگ اصلاح (فاز بعدی محتوا)</h2>
+        <p class="lead">
+          این فاز فقط گزارش و نقشه است. موارد زیر چک‌لیست نوشتن/اصلاح درس‌ها در
+          فاز بعد هستند.
+        </p>
+        <ul class="checklist">
+          <li>
+            <input type="checkbox" id="b1" />
+            <label for="b1">
+              <span class="badge badge-p0">P0</span>
+              اعلام ترتیب رسمی:
+              <code>01–06 → 12 → 13 → 07 → 08–11</code>
+              (+ هشدار روی ۷ و ۱۱) — هدف: README + indexهای ۷ و ۱۱
+            </label>
+          </li>
+          <li>
+            <input type="checkbox" id="b2" />
+            <label for="b2">
+              <span class="badge badge-p0">P0</span>
+              فصل کوتاه Media Queries (mobile-first) قبل از Flex یا داخل ۰۳ —
+              هدف: 02/03 pages
+            </label>
+          </li>
+          <li>
+            <input type="checkbox" id="b3" />
+            <label for="b3">
+              <span class="badge badge-p0">P0</span>
+              ۲–۳ درس Transition + یک صفحه Animation پایه — هدف: 03 یا ماژول کوتاه
+            </label>
+          </li>
+          <li>
+            <input type="checkbox" id="b4" />
+            <label for="b4">
+              <span class="badge badge-p1">P1</span>
+              CSS Variables در pages ماژول ۰۲ یا ۰۴ — هدف: 02 یا 04
+            </label>
+          </li>
+          <li>
+            <input type="checkbox" id="b5" />
+            <label for="b5">
+              <span class="badge badge-p1">P1</span>
+              pages گام‌به‌گام برای ۰۶ و walkthrough برای ۰۷ و ۱۱ — هدف: 06، 07، 11
+            </label>
+          </li>
+          <li>
+            <input type="checkbox" id="b6" />
+            <label for="b6">
+              <span class="badge badge-p1">P1</span>
+              درس DOM قبل از Events در ۰۸؛ Debugging زودتر؛ اشاره storage در Todo —
+              هدف: 08، 09، 10
+            </label>
+          </li>
+          <li>
+            <input type="checkbox" id="b7" />
+            <label for="b7">
+              <span class="badge badge-p1">P1</span>
+              یک درس JS+a11y و یک درس Deploy استاتیک — هدف: ماژول کوتاه جدید
+            </label>
+          </li>
+          <li>
+            <input type="checkbox" id="b8" />
+            <label for="b8">
+              <span class="badge badge-p2">P2</span>
+              README برای تمرین‌۱/۲/۳ و اتصال طرح ۱۶جلسه‌ای به صفحات جزوه
+            </label>
+          </li>
+        </ul>
+        <p class="lead" style="margin-top: 16px; margin-bottom: 0">
+          خارج از محدوده این فاز: جابه‌جایی فیزیکی پوشه‌ها، نوشتن درس‌های جدید
+          کامل، تغییر محتوای کوییزها.
+        </p>
+      </section>
+
+      <section class="section" id="summary">
+        <h2>جمع‌بندی</h2>
+        <div class="two-col">
+          <div class="note-box">
+            <h3>قوی است</h3>
+            <p>
+              Semantic HTML، فرم‌ها، Box Model، Typography، Cascade، Paths، Flex/Grid
+              (اگر به‌موقع خوانده شوند)، DOM در ۰۹، Fetch/Storage در ۱۰، حجم کوییزها
+              و پروژه‌های ترکیبی.
+            </p>
+          </div>
+          <div class="note-box">
+            <h3>تا اصلاح نشود سایت «خیلی خوب» نمی‌سازد</h3>
+            <p>
+              ترتیب مسیر، نقشه README، Media Queries متمرکز، Transitions، Variables
+              در درس، walkthrough پروژه‌ها، DOM قبل از Events، Deploy.
+            </p>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <footer class="page-footer">
+      گزارش ممیزی HTML Handbook · هم‌محتوا با پنل Canvas · برای فاز اصلاح محتوا
+    </footer>
+
+    <script>
+      (function () {
+        var buttons = document.querySelectorAll(".filter-btn");
+        var rows = document.querySelectorAll("#gaps-table tbody tr");
+
+        buttons.forEach(function (btn) {
+          btn.addEventListener("click", function () {
+            var filter = btn.getAttribute("data-filter");
+            buttons.forEach(function (b) {
+              b.setAttribute("aria-pressed", b === btn ? "true" : "false");
+            });
+            rows.forEach(function (row) {
+              var p = row.getAttribute("data-priority");
+              row.hidden = filter !== "all" && p !== filter;
+            });
+          });
+        });
+      })();
+    </script>
+  </body>
+</html>

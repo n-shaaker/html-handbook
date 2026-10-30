@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>۱۹) اشکال‌زدایی پایه | آموزش JavaScript سطح میانی</title>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <header class="page-header">
+    <h1>آموزش JavaScript — سطح میانی</h1>
+    <p>۱۹) اشکال‌زدایی پایه با DevTools</p>
+  </header>
+  <div class="container">
+    <nav class="page-nav" aria-label="ناوبری درس">
+      <a href="18-forms.html">→ قبلی: Forms</a>
+      <a href="../index.html">فهرست درس‌ها</a>
+      <a href="20-practice.html">بعدی: Todo ←</a>
+    </nav>
+    <section class="lesson" id="debugging-intro">
+      <h2>۱۹) اشکال‌زدایی پایه</h2>
+      <p>قبل از پروژه Todo، این عادت‌ها را بگیرید. درس عمیق‌تر در دوره پیشرفته است؛ اینجا حداقل لازم جونیور است.</p>
+      <ol>
+        <li>کلید <code>F12</code> یا راست‌کلیک → Inspect</li>
+        <li>تب <strong>Console</strong>: خطاهای قرمز را بخوانید (فایل و شماره خط)</li>
+        <li>تب <strong>Elements</strong>: ببینید DOM بعد از JS چه شکلی شده</li>
+        <li><code>console.log(value)</code> برای چاپ مقدار مشکوک</li>
+        <li>در Sources روی شماره خط کلیک کنید تا <strong>breakpoint</strong> بگذارید، بعد صفحه را رفرش کنید</li>
+      </ol>
+      <pre class="code"><code>const el = document.getElementById("todo-input");
+console.log("el =", el); // اگر null بود، id اشتباه است یا اسکریپت زود اجرا شده</code></pre>
+      <p class="tip">ادامه: <a href="../../10-JS-پیشرفته/pages/17-debugging.html">اشکال‌زدایی حرفه‌ای (درس ۱۷ پیشرفته)</a></p>
+      <p class="exercise"><strong>تمرین:</strong> عمداً یک id غلط بدهید، خطا را در Console پیدا و درست کنید.</p>
+    </section>
+    <nav class="page-nav" aria-label="ناوبری پایین">
+      <a href="18-forms.html">→ قبلی: Forms</a>
+      <a href="../index.html">فهرست درس‌ها</a>
+      <a href="20-practice.html">بعدی: Todo ←</a>
+    </nav>
+  </div>
+  <footer class="page-footer">آموزش JavaScript سطح میانی</footer>
+</body>
+</html>

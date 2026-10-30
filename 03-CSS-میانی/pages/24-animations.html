@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>۲۴) Animation و keyframes | آموزش CSS — سطح میانی</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/demos/animations.css">
+  
+</head>
+
+<body>
+
+  <header class="page-header">
+    <h1>آموزش CSS — سطح میانی</h1>
+    <p>۲۴) Animation و keyframes</p>
+  </header>
+
+  <div class="container">
+
+    <nav class="page-nav" aria-label="ناوبری درس">
+      <a href="23-transitions-ui.html">→ قبلی: Transitions در UI</a>
+      <a href="../index.html">فهرست درس‌ها</a>
+      <a href="25-practice.html">تمرین جمع‌بندی ←</a>
+    </nav>
+
+    <section class="lesson" id="animations">
+      <h2>۲۴) Animation و keyframes</h2>
+
+      <p>
+        <code>animation</code> و <code>@keyframes</code> برای حرکت تکرارشونده یا ورود عنصرند.
+        برای جونیور کم استفاده کنید؛ یک پالس روی CTA کافی است.
+      </p>
+      <pre class="code"><code>@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.08); }
+}
+.cta { animation: pulse 1.4s ease-in-out infinite; }</code></pre>
+      <h3>مثال</h3>
+      <div class="result demo-an">
+        <span class="pulse">پالس</span>
+        &nbsp;
+        <span class="slide">ورود</span>
+      </div>
+      <p class="tip">همیشه <code>prefers-reduced-motion: reduce</code> را احترام بگذارید.</p>
+      <p class="mistake"><strong>اشتباه:</strong> چند انیمیشن بی‌وقفه روی کل صفحه.</p>
+      <p class="exercise"><strong>تمرین:</strong> badge «جدید» با یک‌بار slide-in بسازید.</p>
+
+    </section>
+
+    <nav class="page-nav" aria-label="ناوبری درس پایین">
+      <a href="23-transitions-ui.html">→ قبلی: Transitions در UI</a>
+      <a href="../index.html">فهرست درس‌ها</a>
+      <a href="25-practice.html">تمرین جمع‌بندی ←</a>
+    </nav>
+
+  </div>
+
+  <footer class="page-footer">
+    آموزش CSS سطح میانی
+  </footer>
+
+</body>
+
+</html>

@@ -1,0 +1,26 @@
+/* ۷) CSS Variables */
+.demo-var {
+  --brand: #1a5fb4;
+  --brand-dark: #0b3d73;
+  --radius: 8px;
+  --space: 12px;
+}
+.demo-var .card {
+  background: var(--brand);
+  color: #fff;
+  padding: var(--space);
+  border-radius: var(--radius);
+  margin-bottom: 10px;
+}
+.demo-var.theme-green {
+  --brand: #0b6e4f;
+  --brand-dark: #064c37;
+}
+.demo-var .btn {
+  background: var(--brand-dark);
+  color: #fff;
+  border: none;
+  padding: 8px 14px;
+  border-radius: var(--radius);
+  cursor: pointer;
+}

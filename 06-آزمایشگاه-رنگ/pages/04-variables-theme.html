@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>۴) متغیر CSS و تم رنگ | آزمایشگاه رنگ</title>
+  <link rel="stylesheet" href="../css/pages.css">
+</head>
+<body>
+  <header class="page-header">
+    <h1>آزمایشگاه رنگ — درس‌ها</h1>
+    <p>۴) متغیر CSS و تم رنگ</p>
+  </header>
+  <div class="container">
+    <nav class="page-nav" aria-label="ناوبری">
+      <a href="03-hsl.html">→ قبلی: HSL</a>
+      <a href="index.html">فهرست درس‌ها</a>
+      <a href="05-contrast.html">بعدی: کنتراست ←</a>
+    </nav>
+    <section class="lesson" id="vars">
+      <h2>۴) متغیر CSS و تم رنگ</h2>
+
+      <p>رنگ‌ها را در متغیر نگه دارید تا تم عوض شود بدون شکار همه کلاس‌ها.</p>
+      <pre class="code"><code>:root {
+  --bg: #f4f7fb;
+  --text: #222;
+  --brand: #1a5fb4;
+}
+.theme-dark {
+  --bg: #1a1a1a;
+  --text: #eee;
+  --brand: #6cb6ff;
+}
+body { background: var(--bg); color: var(--text); }</code></pre>
+      <p class="tip">درس کامل‌تر: <a href="../../04-CSS-آبشاری/pages/07-variables.html">متغیرهای CSS در ماژول آبشاری</a>.</p>
+
+    </section>
+    <nav class="page-nav" aria-label="ناوبری پایین">
+      <a href="03-hsl.html">→ قبلی: HSL</a>
+      <a href="index.html">فهرست درس‌ها</a>
+      <a href="05-contrast.html">بعدی: کنتراست ←</a>
+    </nav>
+  </div>
+  <footer class="page-footer">آزمایشگاه رنگ</footer>
+</body>
+</html>

@@ -1,0 +1,27 @@
+/* ۲۱) Media Queries */
+.demo-mq .box {
+  background: #1a5fb4;
+  color: #fff;
+  padding: 16px;
+  border-radius: 8px;
+  text-align: center;
+}
+.demo-mq .box::after { content: "عرض بزرگ (دسکتاپ)"; }
+@media (max-width: 700px) {
+  .demo-mq .box { background: #0b6e4f; }
+  .demo-mq .box::after { content: "عرض کوچک (موبایل — max-width: 700px)"; }
+}
+.demo-mq .cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 10px;
+}
+.demo-mq .cards .card {
+  background: #eef2f7;
+  border: 1px solid #cfd8e3;
+  border-radius: 6px;
+  padding: 12px;
+}
+@media (max-width: 700px) {
+  .demo-mq .cards { grid-template-columns: 1fr; }
+}

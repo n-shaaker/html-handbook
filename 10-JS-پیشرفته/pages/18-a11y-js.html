@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>۱۸) JavaScript و دسترس‌پذیری | آموزش JavaScript سطح پیشرفته</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <script src="../js/log.js" defer></script>
+  <script src="../js/demos/a11y-js.js" defer></script>
+</head>
+
+<body>
+
+  <header class="page-header">
+    <h1>آموزش JavaScript — سطح پیشرفته</h1>
+    <p>۱۸) JavaScript و دسترس‌پذیری</p>
+  </header>
+
+  <div class="container">
+
+    <nav class="page-nav" aria-label="ناوبری درس">
+      <a href="17-debugging.html">→ قبلی: Debugging</a>
+      <a href="../index.html">فهرست درس‌ها</a>
+      <a href="19-deploy.html">بعدی: Deploy ←</a>
+    </nav>
+
+    <section class="lesson" id="a11y-js">
+      <h2>۱۸) JavaScript و دسترس‌پذیری</h2>
+      <p>تعامل با JS نباید کیبورد و صفحه‌خوان را بشکند. حداقل‌های جونیور:</p>
+      <ul>
+        <li>برای باز/بسته کردن پنل از <code>&lt;button&gt;</code> استفاده کنید نه <code>div</code> با کلیک</li>
+        <li><code>aria-expanded</code> را با وضعیت پنل هماهنگ کنید</li>
+        <li>با <code>Escape</code> پنل را ببندید و فوکوس را برگردانید</li>
+        <li>پیام‌های وضعیت را در <code>aria-live="polite"</code> بگذارید</li>
+      </ul>
+
+      <h3>مثال: پنل ساده</h3>
+      <div class="result">
+        <button type="button" class="btn" id="panel-btn" aria-expanded="false" aria-controls="panel-box">باز کردن پنل</button>
+        <div id="panel-box" hidden style="margin-top:12px;padding:12px;border:1px solid #cfd8e3;border-radius:8px">
+          <p>محتوای پنل — با Escape یا دکمه ببندید.</p>
+          <button type="button" class="btn secondary" id="panel-close">بستن</button>
+        </div>
+        <p id="panel-live" aria-live="polite"></p>
+      </div>
+
+      <pre class="code"><code>btn.addEventListener("click", () => {
+  const open = !panel.hidden;
+  panel.hidden = open;
+  btn.setAttribute("aria-expanded", String(!open));
+  if (!open) closeBtn.focus();
+  else btn.focus();
+});
+document.addEventListener("keydown", (e) => {
+  if (e.key === "Escape" && !panel.hidden) closePanel();
+});</code></pre>
+
+      <p class="tip">نمونه کامل‌تر در کوییز panel-toggle پروژه رستوران JS.</p>
+      <p class="exercise"><strong>تمرین:</strong> منوی موبایل همبرگری با aria-expanded و Escape بسازید.</p>
+    </section>
+
+    <nav class="page-nav" aria-label="ناوبری پایین">
+      <a href="17-debugging.html">→ قبلی: Debugging</a>
+      <a href="../index.html">فهرست درس‌ها</a>
+      <a href="19-deploy.html">بعدی: Deploy ←</a>
+    </nav>
+
+  </div>
+
+  <footer class="page-footer">آموزش JavaScript سطح پیشرفته</footer>
+
+</body>
+
+</html>

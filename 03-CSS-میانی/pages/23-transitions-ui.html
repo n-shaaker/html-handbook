@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>۲۳) Transition در UI (منو و فوکوس) | آموزش CSS — سطح میانی</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/demos/transitions-ui.css">
+  
+</head>
+
+<body>
+
+  <header class="page-header">
+    <h1>آموزش CSS — سطح میانی</h1>
+    <p>۲۳) Transition در UI (منو و فوکوس)</p>
+  </header>
+
+  <div class="container">
+
+    <nav class="page-nav" aria-label="ناوبری درس">
+      <a href="22-transitions.html">→ قبلی: Transitions</a>
+      <a href="../index.html">فهرست درس‌ها</a>
+      <a href="24-animations.html">Animations ←</a>
+    </nav>
+
+    <section class="lesson" id="transitions-ui">
+      <h2>۲۳) Transition در UI (منو و فوکوس)</h2>
+
+      <p>در UI واقعی transition را روی لینک منو، فوکوس کیبورد و منوی کشویی می‌گذارید.</p>
+      <h3>مثال ۱: لینک منو + focus-visible</h3>
+      <div class="result demo-tui">
+        <a class="nav-link" href="#a">خانه</a>
+        <a class="nav-link" href="#b">منو</a>
+        <a class="nav-link" href="#c">تماس</a>
+      </div>
+      <pre class="code"><code>.nav-link {
+  border-bottom: 2px solid transparent;
+  transition: color 0.2s, border-color 0.2s;
+}
+.nav-link:hover,
+.nav-link:focus-visible {
+  color: #0b6e4f;
+  border-color: #0b6e4f;
+}</code></pre>
+      <h3>مثال ۲: دراپ‌داون نرم</h3>
+      <div class="result demo-tui">
+        <div class="drop">
+          <button type="button" class="drop-btn">بخش‌ها</button>
+          <div class="drop-menu">
+            <a href="#1">پیش‌غذا</a>
+            <a href="#2">غذای اصلی</a>
+            <a href="#3">دسر</a>
+          </div>
+        </div>
+      </div>
+      <p class="tip">با opacity + visibility + transform منو نرم باز می‌شود. برای a11y کامل بعداً JS لازم است.</p>
+      <p class="mistake"><strong>اشتباه:</strong> transition روی <code>display</code> کار نمی‌کند.</p>
+      <p class="exercise"><strong>تمرین:</strong> کارت محصول با hover و translateY ملایم بسازید.</p>
+
+    </section>
+
+    <nav class="page-nav" aria-label="ناوبری درس پایین">
+      <a href="22-transitions.html">→ قبلی: Transitions</a>
+      <a href="../index.html">فهرست درس‌ها</a>
+      <a href="24-animations.html">Animations ←</a>
+    </nav>
+
+  </div>
+
+  <footer class="page-footer">
+    آموزش CSS سطح میانی
+  </footer>
+
+</body>
+
+</html>
