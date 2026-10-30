@@ -65,10 +65,68 @@
 
 html {
   font-family: var(--font-ui);
+  direction: rtl;
+}
+
+body {
+  text-align: right;
 }
 
 /* شماره‌های فهرست‌ها به ارقام فارسی: ۱، ۲، ۳، … */
 ol,
 .toc ol {
   list-style-type: persian;
+}
+
+/* فاصله شماره/گلوله از سمت شروع (در RTL = راست) */
+ul,
+ol {
+  padding-inline-start: 1.6em;
+  padding-inline-end: 0;
+  margin-inline: 0;
+}
+
+.toc ol {
+  column-count: 1; /* ستون‌بندی روی ol کوتاه در RTL می‌شکند */
+  padding-inline-start: 1.6em;
+}
+
+.toc ol li,
+ul li,
+ol li {
+  break-inside: avoid;
+  text-align: right;
+}
+
+/* کد انگلیسی وسط جمله فارسی را به‌هم نریزد (بی‌دی مشکل‌ساز) */
+code,
+kbd,
+samp {
+  unicode-bidi: isolate;
+  direction: ltr;
+}
+
+pre {
+  unicode-bidi: isolate;
+  direction: ltr;
+  text-align: left;
+}
+
+a[href^="http"],
+a[href^="mailto:"],
+a[href^="tel:"] {
+  unicode-bidi: isolate;
+}
+
+/* جداول درس‌ها راست‌چین بمانند (استایل اختصاصی می‌تواند override کند) */
+.lesson table th,
+.lesson table td,
+table.ref th,
+table.ref td {
+  text-align: right;
+}
+
+/* نوار قبلی/بعدی: ترتیب DOM در RTL درست است؛ جهت را قفل نکن */
+.page-nav {
+  direction: rtl;
 }

@@ -86,7 +86,15 @@ console.log(randomInt(1, 100));</code></pre>
 
 <p><code>Math.random</code> عددی اعشاری از صفر تا کمتر از یک می‌دهد. ضرب در <code>max - min + 1</code> این بازه را به اندازهٔ تعداد عددهای صحیح مطلوب کش می‌دهد. <code>floor</code> اعشار را حذف می‌کند تا به عدد صحیح برسید و جمع با <code>min</code> بازه را از نقطهٔ شروع جابه‌جا می‌کند. <code>+ 1</code> داخل پرانتز باعث می‌شود خود <code>max</code> هم شانس برابر داشته باشد. بدون آن، سقف بازه هرگز دیده نمی‌شود.</p>
 
-<p class="tip">فرمول را حفظ کنید: <code>Math.floor(Math.random() * تعداد) + شروع</code>. مثلاً برای ۱ تا ۱۰: <code>Math.floor(Math.random() * 10) + 1</code>. چرا؟ <code>Math.random() * 10</code> عددی از ۰ تا کمتر از ۱۰ است، <code>Math.floor</code> آن را به یکی از ۰ تا ۹ تبدیل می‌کند و <code>+ 1</code> بازه را به ۱ تا ۱۰ می‌برد.</p>
+<p class="tip">
+        فرمول را حفظ کنید: <code>Math.floor(Math.random() * تعداد) + شروع</code>.
+        مثلاً برای ۱ تا ۱۰: <code>Math.floor(Math.random() * 10) + 1</code>.
+      </p>
+      <ul>
+        <li><code>Math.random() * 10</code> — عددی از ۰ تا کمتر از ۱۰</li>
+        <li><code>Math.floor</code> — آن را به یکی از ۰ تا ۹ تبدیل می‌کند</li>
+        <li><code>+ 1</code> — بازه را به ۱ تا ۱۰ می‌برد</li>
+      </ul>
 
 <p class="tip">خروجی این بخش با هر بار بارگذاری صفحه (F5) عوض می‌شود؛ چون تصادفی است.</p>
 

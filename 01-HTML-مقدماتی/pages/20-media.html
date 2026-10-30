@@ -92,8 +92,13 @@
         <h3>زیرنویس با <code>&lt;track&gt;</code></h3>
         <p>
           برای کاربر ناشنوا، یا کسی که بدون صدا تماشا می‌کند، فایل زیرنویس با قالب WebVTT و پسوند <code>.vtt</code> را با عنصر <code>track</code> داخل <code>video</code> می‌گذارند.
-          <code>kind="subtitles"</code> نوع مسیر را زیرنویس می‌کند، <code>srclang</code> زبان آن است و <code>default</code> همان مسیر را از ابتدا فعال می‌کند.
+          ویژگی‌های مهم <code>track</code>:
         </p>
+        <ul>
+          <li><code>kind="subtitles"</code> — نوع مسیر را زیرنویس می‌کند</li>
+          <li><code>srclang</code> — زبان زیرنویس</li>
+          <li><code>default</code> — همان مسیر را از ابتدا فعال می‌کند</li>
+        </ul>
         <pre class="code"><code>&lt;video controls&gt;
   &lt;source src="videos/lesson-01.mp4" type="video/mp4"&gt;
   &lt;track src="videos/lesson-01-fa.vtt" kind="subtitles" srclang="fa" label="فارسی" default&gt;
