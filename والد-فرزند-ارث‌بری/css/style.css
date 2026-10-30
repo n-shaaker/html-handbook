@@ -247,6 +247,33 @@ code {
   border: 1px solid #cfd8e3;
   border-radius: 6px;
   background: #fff;
+  display: inline-block;
+}
+
+.viz-tree {
+  margin: 10px 0;
+  padding: 14px;
+  background: #fff;
+  border: 1px solid #cfd8e3;
+  border-radius: 8px;
+  text-align: center;
+}
+.viz-tree .node {
+  display: inline-block;
+  padding: 8px 16px;
+  border-radius: 6px;
+  color: #fff;
+  margin: 4px;
+  font-size: 0.9rem;
+}
+.viz-tree .n-parent { background: #1a3a5c; }
+.viz-tree .n-child { background: #1a5fb4; }
+.viz-tree .n-grand { background: #0b6e4f; }
+.viz-tree .branch {
+  color: #8a9bb0;
+  font-size: 1.2rem;
+  line-height: 1;
+  margin: 2px 0;
 }
 
 .toc-note {

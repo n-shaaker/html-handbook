@@ -23,9 +23,16 @@
       <h2>۱) والد، فرزند، نسل، خواهر/برادر</h2>
       <p>HTML یک <strong>درخت</strong> است. هر تگ داخل تگ دیگر = رابطهٔ خانوادگی.</p>
 
-      <figure style="text-align:center;margin:12px 0">
-        <img src="../images/parent-child.svg" width="440" height="180" alt="درخت والد و فرزند" style="max-width:100%;height:auto;border:1px solid #cfd8e3;border-radius:6px">
-      </figure>
+      <div class="viz-tree" role="img" aria-label="درخت والد و فرزند">
+        <div><span class="node n-parent">والد (parent)</span></div>
+        <div class="branch">▼</div>
+        <div>
+          <span class="node n-child">فرزند ۱</span>
+          <span class="node n-child">فرزند ۲</span>
+        </div>
+        <div class="branch">▼</div>
+        <div><span class="node n-grand">نوه (فرزندِ فرزند)</span></div>
+      </div>
 
       <table class="ref">
         <thead><tr><th>نام</th><th>یعنی چه؟</th><th>مثال</th></tr></thead>

@@ -39,9 +39,23 @@
           <strong>Inline:</strong> همان خط کنار متن · فقط به‌اندازه محتوا (مثل <code>span</code>، <code>a</code>).
           روی inline، <code>width</code>/<code>height</code> معمولاً اثر ندارد.
         </p>
-        <figure>
-          <img src="../images/block-vs-inline.svg" width="480" height="200" alt="مقایسه عنصر بلوکی و درون‌خطی">
-        </figure>
+        <div class="viz-compare" role="img" aria-label="مقایسه Block و Inline">
+          <div>
+            <h4>Block (بلوکی)</h4>
+            <span class="viz-block-row">div / p — خط ۱</span>
+            <span class="viz-block-row">div / p — خط ۲</span>
+            <p class="viz-caption">خط تازه · معمولاً کل عرض</p>
+          </div>
+          <div>
+            <h4>Inline (درون‌خطی)</h4>
+            <div class="viz-inline-row">
+              <span class="viz-chip">span</span>
+              <span class="viz-chip">span</span>
+              <span class="viz-chip">a</span>
+            </div>
+            <p class="viz-caption">همان خط · فقط به‌اندازه محتوا</p>
+          </div>
+        </div>
         <p style="margin:0">
           درس HTML:
           <a href="../../01-HTML-مقدماتی/pages/14-div-span.html">Block / Inline · div و span</a>

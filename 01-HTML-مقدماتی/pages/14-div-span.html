@@ -94,9 +94,23 @@
           </tbody>
         </table>
 
-        <figure style="margin:12px 0;text-align:center">
-          <img src="../images/block-vs-inline.svg" width="480" height="200" alt="مقایسه Block و Inline" style="max-width:100%;height:auto;border:1px solid #cfd8e3;border-radius:6px">
-        </figure>
+        <div class="viz-compare" role="img" aria-label="مقایسه Block و Inline">
+          <div>
+            <h4>Block (بلوکی)</h4>
+            <span class="viz-block-row">div / p — خط ۱</span>
+            <span class="viz-block-row">div / p — خط ۲</span>
+            <p class="viz-caption">خط تازه · معمولاً کل عرض</p>
+          </div>
+          <div>
+            <h4>Inline (درون‌خطی)</h4>
+            <div class="viz-inline-row">
+              <span class="viz-chip">span</span>
+              <span class="viz-chip">span</span>
+              <span class="viz-chip">a</span>
+            </div>
+            <p class="viz-caption">همان خط · فقط به‌اندازه محتوا</p>
+          </div>
+        </div>
 
         <p class="tip">
           <strong>نکته:</strong>

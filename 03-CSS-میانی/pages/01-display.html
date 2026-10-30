@@ -38,9 +38,23 @@
           Block = ردیف کامل · Inline = تکه متن در همان خط.
           اینجا با <code>display</code> همان رفتار را عوض می‌کنید.
         </p>
-        <figure>
-          <img src="../images/block-vs-inline.svg" width="480" height="200" alt="مقایسه Block و Inline">
-        </figure>
+        <div class="viz-compare" role="img" aria-label="مقایسه Block و Inline">
+          <div>
+            <h4>Block</h4>
+            <span class="viz-block-row">div / p — خط ۱</span>
+            <span class="viz-block-row">div / p — خط ۲</span>
+            <p class="viz-caption">خط تازه · کل عرض</p>
+          </div>
+          <div>
+            <h4>Inline</h4>
+            <div class="viz-inline-row">
+              <span class="viz-chip">span</span>
+              <span class="viz-chip">span</span>
+              <span class="viz-chip">a</span>
+            </div>
+            <p class="viz-caption">همان خط · عرض محتوا</p>
+          </div>
+        </div>
         <p style="margin:0">
           <a href="../../01-HTML-مقدماتی/pages/14-div-span.html">درس Block / Inline در HTML</a>
           ·
