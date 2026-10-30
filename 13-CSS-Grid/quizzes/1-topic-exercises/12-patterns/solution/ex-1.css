@@ -1,8 +1,9 @@
+@import url("../../../../../shared/fonts.css");
 /* تمرین ۱ — کادر ورود وسط صفحه (پاسخ) */
 
 body {
   margin: 0;
-  font-family: Tahoma, sans-serif;
+  font-family: "Inter", "Vazirmatn", Tahoma, sans-serif;
   background-color: #e7f5ff;
 }
 

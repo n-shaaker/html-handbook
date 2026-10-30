@@ -1,3 +1,4 @@
+@import url("../../../../../shared/fonts.css");
 /* ظاهر ساده و مشترک تمرین‌های این مبحث */
 
 * {
@@ -7,7 +8,7 @@
 body {
   margin: 0;
   padding: 24px 16px;
-  font-family: Tahoma, Arial, sans-serif;
+  font-family: "Inter", "Vazirmatn", Tahoma, sans-serif;
   line-height: 1.9;
   color: #1f2937;
   background-color: #f3f4f6;

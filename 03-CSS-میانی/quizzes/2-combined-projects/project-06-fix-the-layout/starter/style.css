@@ -1,8 +1,9 @@
+@import url("../../../../../shared/fonts.css");
 /* ===== تنظیمات کلی ===== */
 
 body {
   margin: 0;
-  font-family: Tahoma, Arial, sans-serif;
+  font-family: "Inter", "Vazirmatn", Tahoma, sans-serif;
   line-height: 1.8;
   color: #2b2b2b;
   background-color: #eef2f5;

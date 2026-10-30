@@ -1,8 +1,9 @@
+@import url("../../../../../shared/fonts.css");
 /* ===== صفحه ===== */
 body {
   margin: 0;
   background-color: #eef1f4;
-  font-family: Tahoma, sans-serif;
+  font-family: "Inter", "Vazirmatn", Tahoma, sans-serif;
 }
 
 .page {

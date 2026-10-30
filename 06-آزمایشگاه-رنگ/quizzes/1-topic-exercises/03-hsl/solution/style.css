@@ -1,3 +1,4 @@
+@import url("../../../../../shared/fonts.css");
 * {
   box-sizing: border-box;
 }
@@ -5,7 +6,7 @@
 body {
   margin: 0;
   padding: 24px 16px;
-  font-family: Tahoma, Arial, sans-serif;
+  font-family: "Inter", "Vazirmatn", Tahoma, sans-serif;
   line-height: 1.9;
   background-color: #f4f7fb;
   color: #222;

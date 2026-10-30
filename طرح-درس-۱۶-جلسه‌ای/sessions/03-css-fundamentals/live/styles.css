@@ -1,3 +1,4 @@
+@import url("../../../../shared/fonts.css");
 /* CSS custom properties keep theme values in one place */
 :root {
   --bg: #f8fafc;
@@ -20,7 +21,7 @@
 
 body {
   margin: 0;
-  font-family: Tahoma, "Segoe UI", Geneva, Verdana, sans-serif;
+  font-family: "Inter", "Vazirmatn", Tahoma, sans-serif;
   background: var(--bg);
   color: var(--text);
   line-height: 1.6;

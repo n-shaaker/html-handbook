@@ -1,8 +1,9 @@
+@import url("../../../../../../shared/fonts.css");
 /* base.css — این فایل اول لینک شده است */
 
 /* ===== کلی ===== */
 body {
-  font-family: Tahoma, sans-serif;
+  font-family: "Inter", "Vazirmatn", Tahoma, sans-serif;
   margin: 24px;
 }
 

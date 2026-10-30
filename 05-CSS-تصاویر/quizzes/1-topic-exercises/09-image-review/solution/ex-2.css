@@ -1,3 +1,4 @@
+@import url("../../../../../shared/fonts.css");
 /*
   اصلاح‌ها:
   ۱) عکس بالا width: 900px و height ثابت داشت → در گوشی بیرون می‌زد و کش می‌آمد.
@@ -9,7 +10,7 @@
 */
 
 body {
-  font-family: Tahoma, Arial, sans-serif;
+  font-family: "Inter", "Vazirmatn", Tahoma, sans-serif;
   line-height: 1.8;
   margin: 0;
 }

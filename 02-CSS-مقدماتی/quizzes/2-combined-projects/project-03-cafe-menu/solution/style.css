@@ -1,9 +1,10 @@
+@import url("../../../../../shared/fonts.css");
 /* ===== کل صفحه ===== */
 body {
   margin: 0;
   background-color: #fffaf0;
   color: #3b2f2f;
-  font-family: Tahoma, Arial, sans-serif;
+  font-family: "Inter", "Vazirmatn", Tahoma, sans-serif;
   line-height: 1.8;
 }
 

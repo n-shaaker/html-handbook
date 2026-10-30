@@ -1,3 +1,4 @@
+@import url("../../../../shared/fonts.css");
 *,
 *::before,
 *::after {
@@ -7,7 +8,7 @@
 body {
   margin: 0;
   min-height: 100vh;
-  font-family: Tahoma, "Segoe UI", system-ui, sans-serif;
+  font-family: "Inter", "Vazirmatn", Tahoma, sans-serif;
   background: linear-gradient(160deg, #ecfeff, #f8fafc 45%);
   color: #0f172a;
 }

@@ -1,9 +1,10 @@
+@import url("../../../../../shared/fonts.css");
 * {
   box-sizing: border-box;
 }
 
 body {
-  font-family: Tahoma, Arial, sans-serif;
+  font-family: "Inter", "Vazirmatn", Tahoma, sans-serif;
   line-height: 1.9;
   margin: 0;
 }

@@ -1,8 +1,9 @@
+@import url("../../../../../shared/fonts.css");
 /* پروژه ۴ — مجله خبری (پاسخ) */
 
 body {
   margin: 0;
-  font-family: Tahoma, sans-serif;
+  font-family: "Inter", "Vazirmatn", Tahoma, sans-serif;
   background-color: #fff9db;
   color: #212529;
 }

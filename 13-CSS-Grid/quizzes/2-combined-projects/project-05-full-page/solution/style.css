@@ -1,8 +1,9 @@
+@import url("../../../../../shared/fonts.css");
 /* پروژه ۵ — صفحه کامل: Grid برای اسکلت، Flex داخل اجزا (پاسخ) */
 
 body {
   margin: 0;
-  font-family: Tahoma, sans-serif;
+  font-family: "Inter", "Vazirmatn", Tahoma, sans-serif;
   background-color: #f8f9fa;
   color: #212529;
 }

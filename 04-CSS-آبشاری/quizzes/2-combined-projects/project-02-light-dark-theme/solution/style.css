@@ -1,7 +1,8 @@
+@import url("../../../../../shared/fonts.css");
 /* ===== پایه: رنگ متن فقط اینجا؛ بقیه ارث می‌برند ===== */
 body {
   margin: 0;
-  font-family: Tahoma, sans-serif;
+  font-family: "Inter", "Vazirmatn", Tahoma, sans-serif;
   line-height: 1.8;
   color: #212529;
   background-color: #ffffff;

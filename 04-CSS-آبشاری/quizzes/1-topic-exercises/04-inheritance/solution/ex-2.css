@@ -1,6 +1,7 @@
+@import url("../../../../../shared/fonts.css");
 /* فونت و رنگ فقط یک بار؛ فرزندان ارث می‌برند */
 body {
-  font-family: Tahoma, sans-serif;
+  font-family: "Inter", "Vazirmatn", Tahoma, sans-serif;
   color: #2d3748;
 }
 

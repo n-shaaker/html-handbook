@@ -1,3 +1,4 @@
+@import url("../../shared/fonts.css");
 /* =========================================
    Exercise 1 - Basic CSS practice
    ========================================= */
@@ -12,7 +13,7 @@
 
 /* ---------- Body: font, color, line height ---------- */
 body {
-  font-family: "Vazirmatn", Tahoma, Arial, sans-serif; /* fallback fonts */
+  font-family: "Inter", "Vazirmatn", Tahoma, sans-serif; /* fallback fonts */
   font-size: 16px;
   background-color: #eef2f7;
   color: #2d3748;

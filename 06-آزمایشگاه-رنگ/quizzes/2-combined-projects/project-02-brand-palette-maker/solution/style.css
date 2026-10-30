@@ -1,10 +1,11 @@
+@import url("../../../../../shared/fonts.css");
 /* مقدار اولیه رنگ برند؛ JavaScript این دو را عوض می‌کند */
 body {
   --brand-h: 175;
   --brand-s: 60%;
   margin: 0;
   padding: 24px 16px;
-  font-family: Tahoma, Arial, sans-serif;
+  font-family: "Inter", "Vazirmatn", Tahoma, sans-serif;
   line-height: 1.9;
   background-color: hsl(210, 30%, 97%);
   color: hsl(210, 20%, 15%);

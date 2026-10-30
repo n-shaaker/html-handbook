@@ -1,8 +1,9 @@
+@import url("../../../../../shared/fonts.css");
 /* پروژه ۴ — پنل پیام‌رسان (پاسخ) */
 
 body {
   margin: 0;
-  font-family: Tahoma, sans-serif;
+  font-family: "Inter", "Vazirmatn", Tahoma, sans-serif;
   color: #212529;
 }
 

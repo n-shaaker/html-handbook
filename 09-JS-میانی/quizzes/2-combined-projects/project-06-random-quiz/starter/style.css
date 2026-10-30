@@ -1,6 +1,7 @@
+@import url("../../../../../shared/fonts.css");
 body {
   margin: 0;
-  font-family: Tahoma, Arial, sans-serif;
+  font-family: "Inter", "Vazirmatn", Tahoma, sans-serif;
   background-color: #eef2ff;
   color: #1e1b4b;
   line-height: 1.8;

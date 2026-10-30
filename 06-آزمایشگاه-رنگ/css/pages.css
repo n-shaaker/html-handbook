@@ -1,5 +1,6 @@
+@import url("../../shared/fonts.css");
 
-body { font-family: Tahoma, Arial, sans-serif; line-height: 1.9; margin: 0; background: #f4f7fb; color: #222; }
+body { font-family: "Inter", "Vazirmatn", Tahoma, sans-serif; line-height: 1.9; margin: 0; background: #f4f7fb; color: #222; }
 .page-header { background: #1a3a5c; color: #fff; padding: 28px 20px; text-align: center; }
 .page-header h1, .page-header p { margin: 0; }
 .page-header p { margin-top: 6px; opacity: .95; }

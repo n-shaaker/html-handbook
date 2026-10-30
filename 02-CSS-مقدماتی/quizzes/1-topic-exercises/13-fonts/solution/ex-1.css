@@ -1,5 +1,6 @@
+@import url("../../../../../shared/fonts.css");
 body {
-  font-family: Tahoma, Arial, sans-serif;
+  font-family: "Inter", "Vazirmatn", Tahoma, sans-serif;
 }
 
 .quote {

@@ -1,3 +1,4 @@
+@import url("../../../../shared/fonts.css");
 :root {
   --bg: #f4f7fb;
   --surface: #ffffff;
@@ -29,7 +30,7 @@ html {
 
 body {
   margin: 0;
-  font-family: Tahoma, "Segoe UI", system-ui, sans-serif;
+  font-family: "Inter", "Vazirmatn", Tahoma, sans-serif;
   background: var(--bg);
   color: var(--text);
   line-height: 1.6;

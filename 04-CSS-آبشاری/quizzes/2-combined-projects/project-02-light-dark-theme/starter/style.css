@@ -1,6 +1,7 @@
+@import url("../../../../../shared/fonts.css");
 body {
   margin: 0;
-  font-family: Tahoma, sans-serif;
+  font-family: "Inter", "Vazirmatn", Tahoma, sans-serif;
   background-color: #ffffff;
 }
 
@@ -67,7 +68,7 @@ p {
 
 .newsletter input {
   padding: 8px;
-  font-family: Tahoma, sans-serif;
+  font-family: "Inter", "Vazirmatn", Tahoma, sans-serif;
   color: #212529;
   background-color: #ffffff;
   border: 1px solid #adb5bd;
@@ -75,7 +76,7 @@ p {
 
 .newsletter button {
   padding: 8px 16px;
-  font-family: Tahoma, sans-serif;
+  font-family: "Inter", "Vazirmatn", Tahoma, sans-serif;
   color: #ffffff;
   background-color: #1a5fb4;
   border: none;

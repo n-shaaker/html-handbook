@@ -1,3 +1,4 @@
+@import url("../../../../../../shared/fonts.css");
 /*
   این فایل در solution/css است.
   مسیر عکس‌ها از اینجا: css ← solution ← project-02 ← 2-combined-projects ← quizzes ← پوشه دوره
@@ -11,7 +12,7 @@
 }
 
 body {
-  font-family: Tahoma, Arial, sans-serif;
+  font-family: "Inter", "Vazirmatn", Tahoma, sans-serif;
   line-height: 1.8;
   margin: 0;
   color: #222;

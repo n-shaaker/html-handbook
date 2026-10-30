@@ -1,3 +1,4 @@
+@import url("../../../../../shared/fonts.css");
 /*
   ترتیب لایه‌ها از پایین به بالا:
   عکس بنر ← لایه تیره (::before، z-index: 1) ← متن و نشان (z-index: 2) ← سربرگ و زیرمنو (z-index: 100)
@@ -9,7 +10,7 @@
 }
 
 body {
-  font-family: Tahoma, Arial, sans-serif;
+  font-family: "Inter", "Vazirmatn", Tahoma, sans-serif;
   line-height: 1.8;
   margin: 0;
   color: #222;

@@ -1,7 +1,8 @@
+@import url("../../../../../shared/fonts.css");
 /* اندازه پیش‌فرض html در مرورگر ۱۶ پیکسل است */
 .card {
   font-size: 18px;
-  font-family: Tahoma, sans-serif;
+  font-family: "Inter", "Vazirmatn", Tahoma, sans-serif;
 }
 
 /* rem: نسبت به html ← ۱٫۵ × ۱۶ = ۲۴ پیکسل */

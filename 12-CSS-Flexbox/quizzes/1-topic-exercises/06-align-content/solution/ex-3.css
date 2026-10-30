@@ -1,7 +1,8 @@
+@import url("../../../../../shared/fonts.css");
 /* تمرین ۳ — سالن سینما: دو کادر، دو رفتار (پاسخ) */
 
 body {
-  font-family: Tahoma, sans-serif;
+  font-family: "Inter", "Vazirmatn", Tahoma, sans-serif;
   margin: 20px;
   background-color: #f8f9fa;
   color: #212529;
