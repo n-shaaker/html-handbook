@@ -1,0 +1,7 @@
+/* ظاهر صفحه کوچکی که داخل iframe درس ۱۵ نمایش داده می‌شود */
+body {
+  font-family: Tahoma, Arial, sans-serif;
+  margin: 12px;
+  background-color: #e7f5ff;
+  color: #1a3a5c;
+}

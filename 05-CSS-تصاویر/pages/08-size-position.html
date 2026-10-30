@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>cover و position | تصاویر در CSS</title>
+  <link rel="stylesheet" href="../css/layout.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="../css/demos/size-position.css">
+</head>
+
+<body>
+  <header class="page-header">
+    <h1>تصاویر در CSS</h1>
+    <p>۸) cover، contain و فوکوس چهره</p>
+  </header>
+
+  <div class="container">
+    <nav class="page-nav" aria-label="ناوبری درس‌ها">
+      <a href="07-responsive.html">→ قبلی</a>
+      <a href="../index.html">فهرست</a>
+      <a href="09-checklist.html">بعدی: چک‌لیست ←</a>
+    </nav>
+
+    <section class="lesson">
+      <h2>۸) اندازه و موقعیت پس‌زمینه</h2>
+      <p>
+        <code>background-image</code> فقط فایل عکس را به جعبه وصل می‌کند. اینکه عکس چقدر از جعبه را بپوشاند، تکرار شود یا نه، و کدام نقطه‌اش در قاب بماند، کار ویژگی‌های دیگری است.
+        دو تای پرکاربرد <code>background-size</code> و <code>background-position</code> هستند.
+        <code>background-size</code> اندازهٔ نقاشی‌شدهٔ عکس را نسبت به جعبه تعیین می‌کند و <code>background-position</code> می‌گوید آن عکسِ اندازه‌گرفته کجای جعبه قرار بگیرد.
+      </p>
+      <p>
+        اگر اندازه را ننویسید، مقدار اولیه <code>auto</code> است: عکس با اندازهٔ ذاتی خودش رسم می‌شود و اگر از جعبه کوچک‌تر باشد، بسته به <code>background-repeat</code> تکرار می‌شود.
+        برای هیرو و بنر معمولاً هر دو ویژگی را با هم می‌نویسند تا نتیجه به ابعاد فایل عکس وابسته نماند.
+      </p>
+
+      <h3>cover در برابر contain</h3>
+      <pre class="code"><code>.demo-size .box {
+  height: 160px;
+  background-image: url("../../images/food-1.jpg");
+  background-repeat: no-repeat;   /* بدون این، contain عکس را تکرار می‌کند */
+}
+
+.demo-size .cover {
+  background-size: cover;     /* کل جعبه را پر می‌کند */
+  background-position: center;
+}
+
+.demo-size .contain {
+  background-size: contain;   /* کل عکس دیده می‌شود */
+  background-position: center;
+  background-color: #1a3a5c;  /* فضای خالی را پر کنید */
+}</code></pre>
+
+      <div class="result">
+        <div class="demo-size">
+          <div class="box cover">cover — برای هیرو و بنر</div>
+          <div class="box contain">contain — برای لوگو/عکس کامل</div>
+        </div>
+      </div>
+
+      <p class="realuse">
+        <strong>قانون سرانگشتی:</strong>
+        وقتی جعبه باید کاملاً پر شود و بریده شدن لبه‌ها مهم نیست، مثل هیرو، بنر و کارت تزئینی، از <code>cover</code> استفاده کنید.
+        وقتی تمام عکس باید دیده شود، مثل لوگو یا نمودار، از <code>contain</code> استفاده کنید و برای نوار خالی کنار عکس یک <code>background-color</code> بگذارید.
+        <code>contain</code> به‌تنهایی فضای خالی را رنگ نمی‌کند؛ اگر <code>background-repeat</code> هم <code>no-repeat</code> نباشد، مرورگر عکس را در آن فضای خالی تکرار می‌کند.
+      </p>
+
+      <h3>فوکوس چهره با position</h3>
+      <p>
+        <code>cover</code> جعبه را پر می‌کند و هر بخشی از عکس را که در قاب جا نشود می‌بُرد.
+        اگر سوژه، مثلاً صورت، نزدیک بالای عکس باشد، مقدار <code>center</code> ممکن است پیشانی را بیرون بیندازد.
+        <code>background-position</code> نقطهٔ تراز را عوض می‌کند: <code>top center</code> لبهٔ بالای عکس را به لبهٔ بالای جعبه می‌چسباند و برش را به پایین عکس منتقل می‌کند.
+      </p>
+      <pre class="code"><code>.demo-pos .face {
+  height: 140px;
+  background-image: url("../../images/profile.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.demo-pos .top    { background-position: top center; }
+.demo-pos .center { background-position: center; }</code></pre>
+
+      <div class="result demo-pos">
+        <div class="faces">
+          <div class="face top">position: top</div>
+          <div class="face center">position: center</div>
+        </div>
+      </div>
+
+      <p class="tip">
+        اگر عکس عنصر <code>img</code> باشد نه پس‌زمینه، همان کار را <code>object-fit: cover</code> همراه با <code>object-position</code> انجام می‌دهد.
+        مثلاً <code>object-position: top center</code> لبهٔ بالای عکس را به لبهٔ بالای قاب می‌چسباند، درست مثل <code>background-position: top center</code> برای تصویر پس‌زمینه.
+      </p>
+
+      <h3>تکرار پترن (کم‌کاربردتر ولی مفید)</h3>
+      <pre class="code"><code>.pattern {
+  background-image: url("../../images/pattern.jpg");
+  background-size: 80px;
+  background-repeat: repeat;
+}</code></pre>
+      <div class="result">
+        <div class="demo-pattern"></div>
+      </div>
+      <p class="realuse">
+        در سایت‌های قدیمی‌تر برای بافت کاغذ/پارچه استفاده می‌شد.
+        امروز بیشتر برای پترن‌های SVG کوچک یا نقطه‌ای دیده می‌شود، نه عکس سنگین.
+      </p>
+
+      <h3>خلاصه یک‌خطی (Shorthand)</h3>
+      <pre class="code"><code>.hero {
+  background: #333 url("../../images/hero.jpg") no-repeat center / cover;
+}</code></pre>
+      <p class="tip">
+        ترتیب رایج shorthand: رنگ، تصویر، تکرار، موقعیت، اندازه.
+        ترتیب بیشتر بخش‌ها آزاد است، اما اندازه باید <strong>بلافاصله بعد از موقعیت</strong> و با <code>/</code> بیاید
+        (<code>center / cover</code>)؛ اندازه بدون موقعیت مجاز نیست.
+      </p>
+
+      <p class="mistake">
+        <strong>اشتباه رایج:</strong>
+        نوشتن <code>background: #333;</code> بعد از <code>background-image</code>.
+        shorthand همه زیرویژگی‌هایی را که ننوشته‌اید به مقدار اولیه برمی‌گرداند؛ پس تصویر پاک می‌شود.
+        برای تغییر فقط رنگ، از <code>background-color</code> استفاده کنید.
+      </p>
+
+      <p class="exercise">
+        <strong>تمرین:</strong> یک بنر بسازید که با <code>cover</code> پر شود و با
+        <code>background-position: right center</code> فوکوس به سمت راست برود.
+      </p>
+    </section>
+
+    <nav class="page-nav" aria-label="ناوبری درس‌ها">
+      <a href="07-responsive.html">→ قبلی</a>
+      <a href="../index.html">فهرست</a>
+      <a href="09-checklist.html">بعدی: چک‌لیست ←</a>
+    </nav>
+  </div>
+  <footer class="page-footer">تصاویر در CSS</footer>
+</body>
+</html>

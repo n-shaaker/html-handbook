@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>۶) رنگ‌ها (Colors) | آموزش CSS از صفر</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/demos/colors.css">
+</head>
+
+<body>
+
+  <header class="page-header">
+    <h1>آموزش CSS از صفر</h1>
+    <p>۶) رنگ‌ها (Colors)</p>
+  </header>
+
+  <div class="container">
+
+    <nav class="page-nav" aria-label="ناوبری درس">
+      <a href="05-comments.html">→ قبلی: Comments</a>
+      <a href="../index.html">فهرست درس‌ها</a>
+      <a href="07-backgrounds.html">بعدی: Backgrounds ←</a>
+    </nav>
+
+    <section class="lesson" id="colors">
+      <h2>۶) رنگ‌ها (Colors)</h2>
+      <p>
+        در CSS رنگ را به ویژگی‌هایی مثل <code>color</code> (رنگ متن) و <code>background-color</code> (رنگ پس‌زمینه) می‌دهیم.
+        مرورگر چند شیوه نوشتن را می‌فهمد و نتیجه نهایی همه آن‌ها یک رنگ است. فرق شیوه‌ها در این است که چطور آن رنگ را توصیف می‌کنیم:
+        با یک نام آماده، با مقدار سه نور قرمز و سبز و آبی، با کد شانزده‌شانزده، یا با جایگاه رنگ روی چرخه رنگ.
+        همان مقدار را می‌توان هم برای متن نوشت و هم برای پس‌زمینه.
+      </p>
+      <pre class="code"><code>.swatch  { color: #222; }                               /* رنگ متن همه نمونه‌ها */
+
+.sw-name { background-color: tomato; }                  /* نام رنگ */
+.sw-rgb  { background-color: rgb(60, 179, 113); }       /* قرمز، سبز، آبی: ۰ تا ۲۵۵ */
+.sw-hex  { background-color: #1e90ff; }                 /* هگز: #RRGGBB */
+.sw-hsl  { background-color: hsl(39, 100%, 50%); }      /* رنگ، اشباع، روشنی */
+.sw-rgba { background-color: rgba(255, 0, 0, 0.4); }    /* با شفافیت ۰ تا ۱ */</code></pre>
+
+      <div class="result">
+        <div class="swatches">
+          <div class="swatch sw-name">tomato</div>
+          <div class="swatch sw-rgb">rgb(60, 179, 113)</div>
+          <div class="swatch sw-hex">#1e90ff</div>
+          <div class="swatch sw-hsl">hsl(39, 100%, 50%)</div>
+          <div class="swatch sw-rgba">rgba(255, 0, 0, 0.4)</div>
+        </div>
+      </div>
+
+      <table class="ref">
+        <thead>
+          <tr>
+            <th>روش</th>
+            <th>توضیح</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>نام رنگ</td>
+            <td>حدود ۱۴۰ نام انگلیسی مثل <code>tomato</code> و <code>navy</code>؛ برای تمرین سریع خوب است، ولی انتخاب کمی دارد.</td>
+          </tr>
+          <tr>
+            <td><code>rgb()</code></td>
+            <td>مقدار قرمز، سبز و آبی، هر کدام از ۰ (هیچ) تا ۲۵۵ (حداکثر). <code>rgb(0, 0, 0)</code> سیاه و <code>rgb(255, 255, 255)</code> سفید است.</td>
+          </tr>
+          <tr>
+            <td>هگز (<code>#</code>)</td>
+            <td>همان سه عدد rgb در مبنای ۱۶ (<code>00</code> تا <code>ff</code>). <code>#000000</code> سیاه و <code>#ffffff</code> سفید است. اگر هر جفت دو رقم یکسان باشد، می‌شود کوتاه نوشت: <code>#ffcc00</code> = <code>#fc0</code>. رایج‌ترین روش در طراحی سایت است.</td>
+          </tr>
+          <tr>
+            <td><code>hsl()</code></td>
+            <td>رنگ روی چرخه رنگ (۰ تا ۳۶۰ درجه؛ ۰ قرمز، ۱۲۰ سبز، ۲۴۰ آبی)، اشباع (۰٪ خاکستری تا ۱۰۰٪ پررنگ) و روشنی (۰٪ سیاه، ۵۰٪ رنگ خالص، ۱۰۰٪ سفید). برای ساختن طیف روشن و تیره یک رنگ خیلی راحت است.</td>
+          </tr>
+          <tr>
+            <td><code>rgba()</code> / <code>hsla()</code></td>
+            <td>عدد چهارم شفافیت (alpha) است: ۰ کاملاً شفاف و ۱ کاملاً مات.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p class="tip">
+        مرورگرهای امروزی نوشتن بدون ویرگول را هم می‌پذیرند: <code>rgb(255 0 0 / 40%)</code> همان
+        <code>rgba(255, 0, 0, 0.4)</code> است. هر دو شکل را در کدهای دیگران می‌بینید.
+        رنگ دقیق را هم می‌توانید با ابزار Color Picker در DevTools مرورگر (کلید <code>F12</code>) انتخاب کنید.
+      </p>
+
+      <h3>کاربرد واقعی: پیام‌های موفقیت، خطا و اطلاع‌رسانی</h3>
+      <pre class="code"><code>.alert {
+  padding: 10px 14px;
+  border-radius: 6px;
+}
+
+.alert-success { background-color: #d3f9d8; color: #1b5e20; }
+.alert-error   { background-color: #ffe3e3; color: #c92a2a; }
+.alert-info    { background-color: #e7f5ff; color: #1864ab; }</code></pre>
+      <div class="result">
+        <p class="alert alert-success">سفارش شما با موفقیت ثبت شد.</p>
+        <p class="alert alert-error">رمز عبور اشتباه است. دوباره تلاش کنید.</p>
+        <p class="alert alert-info">ارسال رایگان برای خریدهای بالای ۵۰۰ هزار تومان.</p>
+      </div>
+      <p>
+        در این سه پیام، پس‌زمینه خیلی روشن است و متن تیره از همان خانواده رنگی انتخاب شده است.
+        سبز روشن معمولاً موفقیت را به ذهن می‌آورد، قرمز روشن خطا را، و آبی روشن یک اطلاع معمولی را.
+        چون متن تیره روی زمینه روشن نشسته، جمله خوانا می‌ماند.
+        معنی را فقط به رنگ واگذار نکنید؛ خود جمله باید بگوید چه اتفاقی افتاده است، چون بعضی کاربران رنگ‌ها را از هم تشخیص نمی‌دهند.
+      </p>
+
+      <h3>شفافیت: <code>rgba</code> یا <code>opacity</code>؟</h3>
+      <pre class="code"><code>/* فقط پس‌زمینه نیمه‌شفاف؛ متن کاملاً سفید و خوانا می‌ماند */
+.caption-rgba {
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+}
+
+/* کل عنصر (پس‌زمینه + متن) نیمه‌شفاف می‌شود */
+.caption-opacity {
+  background-color: black;
+  color: white;
+  opacity: 0.5;
+}</code></pre>
+      <div class="result">
+        <div class="photo-stage">
+          <p class="caption caption-rgba">با rgba: متن کاملاً خوانا است</p>
+          <p class="caption caption-opacity">با opacity: متن هم کم‌رنگ شده است</p>
+        </div>
+      </div>
+
+      <p class="mistake">
+        <strong>اشتباه رایج:</strong>
+        رنگ متن روشن روی پس‌زمینه روشن (مثلاً زرد روی سفید، یا سفید روی آبی روشن). متن باید با پس‌زمینه تضاد
+        (کنتراست) کافی داشته باشد؛ ابزار DevTools مرورگر عدد کنتراست را نشان می‌دهد و برای متن معمولی حداقل ۴.۵ پیشنهاد می‌شود.
+        <br>
+        استفاده از <code>opacity</code> برای کم‌رنگ کردن پس‌زمینه؛ <code>opacity</code> متن داخل را هم کم‌رنگ می‌کند. برای
+        پس‌زمینه نیمه‌شفاف از <code>rgba</code> استفاده کنید.
+      </p>
+
+      <p class="exercise">
+        <strong>تمرین:</strong> یک تیتر با رنگ متن سفید و پس‌زمینه <code>#1a3a5c</code> بسازید. بعد یک پیام
+        «هشدار» زردرنگ مثل نمونه‌های بالا بسازید (پس‌زمینه زرد روشن، متن قهوه‌ای تیره).
+      </p>
+    </section>
+
+
+    <nav class="page-nav" aria-label="ناوبری درس پایین">
+      <a href="05-comments.html">→ قبلی: Comments</a>
+      <a href="../index.html">فهرست درس‌ها</a>
+      <a href="07-backgrounds.html">بعدی: Backgrounds ←</a>
+    </nav>
+
+  </div>
+
+  <footer class="page-footer">
+    آموزش CSS از صفر
+  </footer>
+
+</body>
+
+</html>

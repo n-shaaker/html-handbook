@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>۸) توابع (Functions) | آموزش JavaScript سطح پایه</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <script src="../js/log.js" defer></script>
+  <script src="../js/demos/functions.js" defer></script>
+</head>
+
+<body>
+
+  <header class="page-header" id="top">
+    <h1>آموزش JavaScript — سطح پایه</h1>
+    <p>۸) توابع (Functions)</p>
+  </header>
+
+  <div class="container">
+
+    <nav class="page-nav" aria-label="ناوبری درس">
+      <a href="07-data-types.html">→ قبلی: Data Types</a>
+      <a href="../index.html">فهرست درس‌ها</a>
+      <a href="09-objects.html">بعدی: Objects ←</a>
+    </nav>
+
+    <section class="lesson" id="functions">
+      <h2>۸) توابع (Functions)</h2>
+<p>تابع یک <strong>بلوک کد با اسم</strong> است که یک بار نوشته می‌شود و هر چند بار لازم باشد صدا زده می‌شود. وقتی یک محاسبه یا یک جمله را در چند جای برنامه لازم دارید، به‌جای کپی کردن همان خط‌ها، آن‌ها را داخل تابع می‌گذارید و فقط نام تابع را صدا می‌زنید. ورودی تابع داده‌ای است که هر بار ممکن است فرق کند و خروجی مقداری است که تابع بعد از انجام کار برمی‌گرداند.</p>
+
+<pre class="code"><code>// تعریف تابع
+function sayHello() {
+  console.log("سلام!");
+}
+
+// صدا زدن (فراخوانی) تابع
+sayHello();
+sayHello();</code></pre>
+
+<div class="result">
+<pre class="console" id="out-1"></pre>
+</div>
+
+<p>کلمهٔ <code>function</code> به‌همراه نام <code>sayHello</code> تابع را می‌سازد، ولی همان لحظه اجرا نمی‌کند. دستورهای داخل آکولاد تا وقتی تابع صدا زده نشود اجرا نمی‌شوند. نوشتن <code>sayHello()</code> یعنی «الان این تابع را اجرا کن». پرانتز خالی نشان می‌دهد این تابع ورودی نمی‌گیرد. چون دو بار صدا زده شده، پیام سلام دو بار چاپ می‌شود.</p>
+
+<h3>ورودی (پارامتر) و خروجی (return)</h3>
+
+<pre class="code"><code>function add(a, b) {      // a و b پارامتر هستند
+  return a + b;           // نتیجه را برمی‌گرداند
+}
+
+let result = add(3, 4);   // 3 و 4 آرگومان هستند
+console.log(result);
+console.log(add(10, 20));</code></pre>
+
+<div class="result">
+<pre class="console" id="out-2"></pre>
+</div>
+
+<p>نام‌های <code>a</code> و <code>b</code> در تعریف تابع پارامتر هستند؛ یعنی جاهایی که موقع صدا زدن با مقدار واقعی پر می‌شوند. <code>return</code> حاصل جمع را به جایی برمی‌گرداند که تابع صدا زده شده و اجرای تابع همان‌جا تمام می‌شود. عددهای ۳ و ۴ آرگومان هستند، یعنی مقدارهای واقعی همان صدا زدن. می‌توان نتیجه را در متغیر ریخت یا مستقیم به <code>console.log</code> داد.</p>
+
+<table class="ref">
+<tr><th>اصطلاح</th><th>یعنی</th></tr>
+<tr><td>پارامتر (Parameter)</td><td>اسم ورودی در تعریف تابع: <code>a</code>، <code>b</code></td></tr>
+<tr><td>آرگومان (Argument)</td><td>مقدار واقعی موقع صدا زدن: <code>3</code>، <code>4</code></td></tr>
+<tr><td><code>return</code></td><td>مقدار خروجی را برمی‌گرداند و تابع همان‌جا تمام می‌شود</td></tr>
+</table>
+
+<h3>مثال کاربردی: تبدیل دما</h3>
+
+<pre class="code"><code>function toCelsius(fahrenheit) {
+  return (5 / 9) * (fahrenheit - 32);
+}
+
+const input = document.getElementById("f-input");
+const button = document.getElementById("f-btn");
+const output = document.getElementById("f-output");
+
+button.addEventListener("click", function () {
+  const f = Number(input.value);
+  output.textContent = toCelsius(f).toFixed(1) + " درجه سانتی‌گراد";
+});</code></pre>
+
+<div class="result">
+<label>فارنهایت: <input type="number" id="f-input" value="100"></label>
+<button class="btn" id="f-btn">تبدیل کن</button>
+<p class="demo-box" id="f-output" aria-live="polite">نتیجه اینجا نمایش داده می‌شود</p>
+</div>
+
+<p><code>toCelsius</code> یک عدد فارنهایت می‌گیرد، آن را با فرمول تبدیل به سانتی‌گراد برمی‌گرداند و خودش چیزی چاپ نمی‌کند. با کلیک، متن داخل کادر با <code>Number</code> به عدد تبدیل می‌شود، چون مقدار کادر همیشه متن است. <code>toFixed(1)</code> نتیجه را تا یک رقم اعشار گرد می‌کند و بعد به واحد اندازه‌گیری چسبانده می‌شود تا در صفحه دیده شود.</p>
+
+<p class="tip"><code>toFixed(1)</code> عدد را تا یک رقم اعشار گرد می‌کند (مثلاً ۱۰۰ فارنهایت می‌شود <code>37.8</code>). در درس «اعداد» بیشتر با آن آشنا می‌شویم.</p>
+
+<h3>پارامتر پیش‌فرض و آرگومان جاافتاده</h3>
+
+<p>اگر موقع صدا زدن، آرگومانی را نفرستیم، پارامتر آن <code>undefined</code> می‌شود و معمولاً جواب خراب (مثل <code>NaN</code>) می‌دهد. با <strong>مقدار پیش‌فرض</strong> می‌توانیم برای این حالت یک مقدار تعیین کنیم.</p>
+
+<pre class="code"><code>// قیمت نهایی: اول تخفیف کم می‌شود، بعد ۱۰٪ مالیات اضافه می‌شود
+function finalPrice(price, discountPercent = 0) {
+  const discounted = price - price * discountPercent / 100;
+  return discounted + discounted * 10 / 100;
+}
+
+console.log(finalPrice(200000, 25));   // 165000 ← با ۲۵٪ تخفیف
+console.log(finalPrice(200000));       // 220000 ← تخفیف پیش‌فرض: 0
+
+console.log(add(5));                   // NaN ← b برابر undefined است و 5 + undefined عدد نیست</code></pre>
+
+<div class="result">
+<pre class="console" id="out-3"></pre>
+</div>
+
+<p>پارامتر <code>discountPercent = 0</code> یعنی اگر موقع صدا زدن آرگومان دوم نفرستید، به‌جای <code>undefined</code> عدد صفر استفاده شود. تابع اول تخفیف را از قیمت کم می‌کند و بعد ده درصد همان مبلغ تخفیف‌خورده را به‌عنوان مالیات اضافه می‌کند. تابع <code>add</code> مقدار پیش‌فرض ندارد؛ پس <code>add(5)</code> یعنی <code>5 + undefined</code> و نتیجه <code>NaN</code> است.</p>
+
+<h3>محدوده متغیر در تابع (Local Scope)</h3>
+
+<p>متغیری که <strong>داخل</strong> تابع ساخته شود، فقط داخل همان تابع وجود دارد و بعد از تمام شدن تابع از بین می‌رود. پارامترها هم همین‌طورند.</p>
+
+<pre class="code"><code>function calculateAverage(a, b, c) {
+  const sum = a + b + c;      // sum فقط داخل تابع وجود دارد
+  return sum / 3;
+}
+
+console.log(calculateAverage(18, 15, 12));   // 15
+console.log(typeof sum);                     // undefined ← بیرون تابع، sum تعریف نشده</code></pre>
+
+<div class="result">
+<pre class="console" id="out-4"></pre>
+</div>
+
+<p><code>sum</code> داخل تابع ساخته شده، پس فقط تا پایان همان اجرا وجود دارد. بیرون از تابع، <code>typeof sum</code> برابر <code>"undefined"</code> است، چون چنین متغیری در آن محدوده تعریف نشده. پارامترهای <code>a</code> و <code>b</code> و <code>c</code> هم همین محدودیت را دارند. آنچه از تابع بیرون می‌آید فقط مقداری است که <code>return</code> برمی‌گرداند.</p>
+
+<h3>تابع پیکانی (Arrow Function)</h3>
+
+<p>یک شکل کوتاه‌تر برای نوشتن تابع است که در کدهای امروزی زیاد می‌بینید. تابع را در یک متغیر (معمولاً <code>const</code>) نگه می‌داریم:</p>
+
+<pre class="code"><code>// شکل معمولی
+function square(n) {
+  return n * n;
+}
+
+// همان تابع به شکل پیکانی
+const squareArrow = (n) =&gt; n * n;     // اگر بدنه فقط یک عبارت باشد، return لازم نیست
+
+const kmToMile = (km) =&gt; {
+  const miles = km * 0.621;
+  return miles;                        // با آکولاد { } باید return بنویسید
+};
+
+console.log(square(4), squareArrow(4));   // 16 16
+console.log(kmToMile(10));                // 6.21</code></pre>
+
+<div class="result">
+<pre class="console" id="out-5"></pre>
+</div>
+
+<p>فلش <code>=&gt;</code> تابع را به متغیر وصل می‌کند. اگر سمت راست فلش فقط یک عبارت باشد و آکولاد نداشته باشد، همان عبارت به‌طور خودکار برگردانده می‌شود و نوشتن <code>return</code> لازم نیست. اگر بدنه چند دستوری باشد و داخل آکولاد بیاید، باید خودتان <code>return</code> را بنویسید؛ وگرنه تابع <code>undefined</code> برمی‌گرداند. هر دو شکل <code>square</code> و <code>squareArrow</code> همان کار را می‌کنند.</p>
+
+<p class="mistake"><strong>اشتباه رایج:</strong> گذاشتن آکولاد در تابع پیکانی و فراموش کردن <code>return</code>: <code>const f = (n) =&gt; { n * n };</code> همیشه <code>undefined</code> برمی‌گرداند.</p>
+
+<h3>بدون پرانتز = خود تابع، با پرانتز = اجرای تابع</h3>
+
+<pre class="code"><code>console.log(add(2, 3));  // 5  ← اجرا شد
+console.log(add);        // خود تابع چاپ می‌شود، اجرا نشد</code></pre>
+
+<p>پرانتز بعد از نام تابع یعنی «اجرا کن». بدون پرانتز، نام تابع به خود تابع اشاره می‌کند و آن را اجرا نمی‌کند. به همین دلیل <code>console.log(add)</code> حاصل جمع چاپ نمی‌کند و تعریف تابع را نشان می‌دهد. این تفاوت وقتی مهم می‌شود که بخواهید تابع را به جای دیگری بدهید تا بعداً اجرا شود، نه همین حالا.</p>
+
+<p class="tip">وقتی خود تابع را چاپ کنید، Console مرورگر متن تعریف تابع را نشان می‌دهد (شکل دقیقش در مرورگرهای مختلف کمی فرق دارد). جعبه Console این صفحه آن را خلاصه به شکل <code>ƒ add()</code> نشان می‌دهد.</p>
+
+<div class="result">
+<pre class="console" id="out-6"></pre>
+</div>
+
+<p class="tip">اسم تابع را با فعل شروع کنید تا معلوم باشد چه کاری انجام می‌دهد: <code>calculateTotal</code>، <code>showMessage</code>، <code>getUserName</code>.</p>
+
+<p class="mistake"><strong>اشتباه رایج:</strong> نوشتن <code>console.log</code> به جای <code>return</code>. تابعی که فقط چاپ می‌کند خروجی ندارد و <code>let r = f()</code> برابر <code>undefined</code> می‌شود.</p>
+
+<p class="exercise"><strong>تمرین:</strong> (۱) تابع <code>calculateArea(width, height)</code> بنویسید که مساحت مستطیل را برگرداند. (۲) تابع <code>greet(name)</code> بنویسید که متن <code>"سلام " + name</code> را برگرداند و اگر اسمی فرستاده نشد، از مقدار پیش‌فرض <code>"دوست من"</code> استفاده کند. (۳) تابع پیکانی <code>toFahrenheit(celsius)</code> بنویسید (فرمول: <code>celsius * 9 / 5 + 32</code>) و نتیجه را برای ۳۷ درجه چاپ کنید (جواب: 98.6).</p>
+    </section>
+
+    <nav class="page-nav" aria-label="ناوبری درس پایین">
+      <a href="07-data-types.html">→ قبلی: Data Types</a>
+      <a href="../index.html">فهرست درس‌ها</a>
+      <a href="09-objects.html">بعدی: Objects ←</a>
+    </nav>
+
+  </div>
+
+  <footer class="page-footer">
+    آموزش JavaScript سطح پایه
+  </footer>
+
+</body>
+
+</html>

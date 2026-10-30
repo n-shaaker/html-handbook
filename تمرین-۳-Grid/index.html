@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>تمرین ۳ | مثال‌های Grid</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+  <header>
+    <h1 class="page-title">آموزش CSS Grid با مثال</h1>
+  </header>
+
+  <main class="container">
+
+    <!-- ===================== Example 1 ===================== -->
+    <section class="section">
+      <h2>۱. اولین گرید: سه ستون مساوی</h2>
+      <p class="note">
+        <code>display: grid</code> گرید را فعال می‌کند و
+        <code>grid-template-columns: 1fr 1fr 1fr</code> سه ستون هم‌اندازه می‌سازد.
+        <code>fr</code> یعنی «یک سهم از فضای خالی». وقتی ستون‌ها پر شدند، خانه‌های بعدی خودکار به سطر بعد می‌روند.
+      </p>
+      <div class="grid-1">
+        <div class="item">۱</div>
+        <div class="item">۲</div>
+        <div class="item">۳</div>
+        <div class="item">۴</div>
+        <div class="item">۵</div>
+        <div class="item">۶</div>
+      </div>
+    </section>
+
+    <!-- ===================== Example 2 ===================== -->
+    <section class="section">
+      <h2>۲. فاصله بین خانه‌ها با gap</h2>
+      <p class="note">
+        <code>gap: 20px</code> بین سطرها و ستون‌ها فاصله می‌اندازد.
+        <code>repeat(4, 1fr)</code> همان <code>1fr 1fr 1fr 1fr</code> است، فقط کوتاه‌تر.
+      </p>
+      <div class="grid-2">
+        <div class="item">۱</div>
+        <div class="item">۲</div>
+        <div class="item">۳</div>
+        <div class="item">۴</div>
+        <div class="item">۵</div>
+        <div class="item">۶</div>
+        <div class="item">۷</div>
+        <div class="item">۸</div>
+      </div>
+    </section>
+
+    <!-- ===================== Example 3 ===================== -->
+    <section class="section">
+      <h2>۳. ستون‌های با عرض متفاوت</h2>
+      <p class="note">
+        <code>grid-template-columns: 1fr 2fr</code>: ستون دوم دو برابر ستون اول است.
+      </p>
+      <div class="grid-3a">
+        <div class="item">1fr</div>
+        <div class="item">2fr</div>
+      </div>
+
+      <p class="note">
+        <code>grid-template-columns: 200px 1fr</code>: ستون اول همیشه ۲۰۰ پیکسل است و ستون دوم بقیه‌ی فضا را می‌گیرد.
+      </p>
+      <div class="grid-3b">
+        <div class="item">200px</div>
+        <div class="item">1fr</div>
+      </div>
+    </section>
+
+    <!-- ===================== Example 4 ===================== -->
+    <section class="section">
+      <h2>۴. خانه‌ای که چند ستون را می‌گیرد</h2>
+      <p class="note">
+        <code>grid-column: span 2</code> یعنی این خانه به اندازه‌ی دو ستون پهن شود.
+        مثل خبر ویژه در سایت‌های خبری.
+      </p>
+      <div class="grid-4">
+        <div class="item item-wide">خبر ویژه (span 2)</div>
+        <div class="item">خبر ۲</div>
+        <div class="item">خبر ۳</div>
+        <div class="item">خبر ۴</div>
+        <div class="item">خبر ۵</div>
+        <div class="item item-full">تبلیغ تمام‌عرض (span 3)</div>
+      </div>
+    </section>
+
+    <!-- ===================== Example 5 ===================== -->
+    <section class="section">
+      <h2>۵. خانه‌ای که چند سطر را می‌گیرد</h2>
+      <p class="note">
+        <code>grid-row: span 2</code> یعنی این خانه به اندازه‌ی دو سطر بلند شود.
+        مثل گالری عکس اینستاگرام یا پینترست.
+      </p>
+      <div class="grid-5">
+        <div class="item item-tall">عکس بلند</div>
+        <div class="item">عکس ۲</div>
+        <div class="item">عکس ۳</div>
+        <div class="item">عکس ۴</div>
+        <div class="item">عکس ۵</div>
+      </div>
+    </section>
+
+    <!-- ===================== Example 6 ===================== -->
+    <section class="section">
+      <h2>۶. وسط‌چین کردن با place-items</h2>
+      <p class="note">
+        <code>place-items: center</code> محتوای هر خانه را هم افقی و هم عمودی وسط می‌برد.
+      </p>
+      <div class="grid-6">
+        <div class="circle">۱</div>
+        <div class="circle">۲</div>
+        <div class="circle">۳</div>
+      </div>
+    </section>
+
+    <!-- ===================== Example 7 ===================== -->
+    <section class="section">
+      <h2>۷. چیدمان کامل صفحه با grid-template-areas</h2>
+      <p class="note">
+        به هر بخش یک اسم می‌دهیم (<code>grid-area</code>) و بعد با
+        <code>grid-template-areas</code> مثل یک نقشه، جای هر بخش را مشخص می‌کنیم.
+      </p>
+      <!-- Only a drawing of a page layout, so plain divs (a real page would use header/aside/main/footer) -->
+      <div class="layout">
+        <div class="l-header">هدر</div>
+        <div class="l-sidebar">سایدبار</div>
+        <div class="l-main">محتوای اصلی</div>
+        <div class="l-footer">فوتر</div>
+      </div>
+    </section>
+
+    <!-- ===================== Example 8 ===================== -->
+    <section class="section">
+      <h2>۸. کارت‌های محصول فروشگاه</h2>
+      <p class="note">
+        یک مثال واقعی: کارت‌ها در ۴ ستون. اگر صفحه را کوچک کنید، با <code>@media</code>
+        تعداد ستون‌ها کم می‌شود (تبلت ۲ ستون، موبایل ۱ ستون).
+      </p>
+      <!-- Each product is a self-contained item, so <article>. The grey box is only a placeholder for a photo. -->
+      <!-- Persian prices use the Persian thousands separator «٬», like toLocaleString("fa-IR"). -->
+      <div class="products">
+        <article class="product">
+          <div class="product-img" aria-hidden="true">تصویر</div>
+          <h3>گوشی موبایل</h3>
+          <p>۱۲٬۰۰۰٬۰۰۰ تومان</p>
+        </article>
+        <article class="product">
+          <div class="product-img" aria-hidden="true">تصویر</div>
+          <h3>لپ‌تاپ</h3>
+          <p>۴۵٬۰۰۰٬۰۰۰ تومان</p>
+        </article>
+        <article class="product">
+          <div class="product-img" aria-hidden="true">تصویر</div>
+          <h3>هدفون</h3>
+          <p>۳٬۰۰۰٬۰۰۰ تومان</p>
+        </article>
+        <article class="product">
+          <div class="product-img" aria-hidden="true">تصویر</div>
+          <h3>ساعت هوشمند</h3>
+          <p>۸٬۰۰۰٬۰۰۰ تومان</p>
+        </article>
+      </div>
+    </section>
+
+  </main>
+
+</body>
+
+</html>

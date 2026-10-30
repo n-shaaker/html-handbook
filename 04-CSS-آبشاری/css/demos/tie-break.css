@@ -1,0 +1,16 @@
+/* مثال ۶: چند کلاس با قدرت برابر — ترتیب در CSS مهم است، نه ترتیب کلاس در HTML */
+
+.demo-tie .red {
+  color: #c92a2a;
+  font-size: 20px;
+}
+
+.demo-tie .green {
+  color: #0b6e4f;
+  font-size: 20px;
+}
+
+.demo-tie .blue {
+  color: #1a5fb4;
+  font-size: 20px;
+}

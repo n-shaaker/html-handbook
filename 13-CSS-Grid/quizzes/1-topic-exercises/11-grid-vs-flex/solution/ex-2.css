@@ -1,0 +1,37 @@
+/* تمرین ۲ — ابزار اشتباه برای هر بخش (پاسخ) */
+
+body {
+  font-family: Tahoma, sans-serif;
+  margin: 20px;
+  background-color: #f8f9fa;
+  color: #212529;
+}
+
+/* درست شد: برچسب‌ها یک‌بعدی‌اند و باید اندازه متنشان باشند ← Flexbox */
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.tag {
+  background-color: #fff0f6;
+  border: 1px solid #f783ac;
+  padding: 4px 10px;
+  border-radius: 12px;
+}
+
+/* درست شد: کارت‌ها باید در ستون‌های یکسان بنشینند ← Grid */
+.products {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.product {
+  background-color: white;
+  border: 1px solid #dee2e6;
+  padding: 30px 10px;
+  text-align: center;
+}

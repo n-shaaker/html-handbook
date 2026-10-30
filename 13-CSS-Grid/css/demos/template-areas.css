@@ -1,0 +1,81 @@
+/* ۶) نام‌گذاری ناحیه‌ها */
+
+/* جعبه‌های رنگی شماره‌دار */
+.demo-areas .box {
+  color: white;
+  font-weight: bold;
+  text-align: center;
+  padding: 16px 8px;
+  border-radius: 6px;
+}
+
+.demo-areas .b1 { background-color: #1c7ed6; }
+.demo-areas .b2 { background-color: #2f9e44; }
+.demo-areas .b3 { background-color: #e8590c; }
+.demo-areas .b4 { background-color: #ae3ec9; }
+.demo-areas .b5 { background-color: #e03131; }
+.demo-areas .b6 { background-color: #0c8599; }
+
+/* مثال ۱: اسکلت کلاسیک */
+.demo-areas .page {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  grid-template-areas:
+    "header  header"
+    "sidebar main"
+    "footer  footer";
+  gap: 8px;
+}
+
+.demo-areas .page-top    { grid-area: header; }
+.demo-areas .page-side   { grid-area: sidebar; }
+.demo-areas .page-main   { grid-area: main; }
+.demo-areas .page-bottom { grid-area: footer; }
+
+/* مثال ۲: ستون کناری سمت چپ */
+.demo-areas .page-left {
+  grid-template-columns: 1fr 200px;
+  grid-template-areas:
+    "header header"
+    "main   sidebar"
+    "footer footer";
+}
+
+/* مثال ۳: سه ستون */
+.demo-areas .shop-page {
+  display: grid;
+  grid-template-columns: 150px 1fr 150px;
+  grid-template-areas:
+    "header header header"
+    "menu   main   ads"
+    "footer footer footer";
+  gap: 8px;
+}
+
+.demo-areas .shop-header { grid-area: header; }
+.demo-areas .shop-menu   { grid-area: menu; }
+.demo-areas .shop-main   { grid-area: main; }
+.demo-areas .shop-ads    { grid-area: ads; }
+.demo-areas .shop-footer { grid-area: footer; }
+
+/* مثال ۴: خانه خالی */
+.demo-areas .with-empty {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-areas:
+    "logo  .     login"
+    "main  main  main";
+  gap: 8px;
+  background-color: #f1f3f5;
+  border: 1px dashed #adb5bd;
+}
+
+.demo-areas .e-logo  { grid-area: logo; }
+.demo-areas .e-login { grid-area: login; }
+.demo-areas .e-main  { grid-area: main; }
+
+/* مثال ۵: ارتفاع ردیف‌ها */
+.demo-areas .tall-page {
+  height: 300px;
+  grid-template-rows: auto 1fr auto;
+}

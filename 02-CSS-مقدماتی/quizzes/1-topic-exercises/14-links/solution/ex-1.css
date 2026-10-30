@@ -1,0 +1,17 @@
+/* ترتیب مهم است: LoVe HAte */
+a:link {
+  color: #1a5fb4;
+}
+
+a:visited {
+  color: #7b2cbf;
+}
+
+a:hover {
+  color: #c92a2a;
+  text-decoration: none;
+}
+
+a:active {
+  color: #2b8a3e;
+}

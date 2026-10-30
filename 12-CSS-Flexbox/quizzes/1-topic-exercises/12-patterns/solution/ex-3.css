@@ -1,0 +1,40 @@
+/* تمرین ۳ — کارت‌های هم‌قدِ خراب (پاسخ) */
+
+body {
+  font-family: Tahoma, sans-serif;
+  margin: 20px;
+  background-color: #f8f9fa;
+  color: #212529;
+}
+
+.cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+/* درست شد: بدون height ثابت، با پایه ۲۲۰ و امکان رشد */
+.card {
+  flex: 1 1 220px;
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  border: 1px solid #dee2e6;
+  border-radius: 8px;
+  padding: 15px;
+}
+
+.card h2 {
+  margin-top: 0;
+}
+
+/* درست شد: دکمه ته کارت */
+.btn {
+  margin-top: auto;
+  background-color: #e8590c;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  padding: 8px;
+  border-radius: 4px;
+}

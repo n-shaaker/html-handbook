@@ -1,0 +1,23 @@
+.msg {
+  color: #c92a2a !important;
+}
+
+#special {
+  color: #1a5fb4;
+}
+
+.alert {
+  color: #e67700 !important;
+}
+
+p.alert {
+  color: #7b2cbf !important;
+}
+
+.later {
+  color: #c92a2a;
+}
+
+.later {
+  color: #1a5fb4;
+}

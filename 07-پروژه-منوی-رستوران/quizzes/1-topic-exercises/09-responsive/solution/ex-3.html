@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>تمرین ۳ — صفحه کوچک واکنش‌گرا</title>
+  <link rel="stylesheet" href="ex-3.css">
+</head>
+
+<body>
+  <main class="container">
+    <section id="drinks">
+      <h2>نوشیدنی</h2>
+      <figure class="drinks-photos">
+        <img src="../../../../images/tea.jpg" alt="استکان چای ایرانی">
+        <img src="../../../../images/doogh.jpg" alt="دوغ محلی با برگ نعنا در کاسه‌های مسی">
+        <figcaption>چای تازه‌دم و دوغ محلی</figcaption>
+      </figure>
+
+      <div class="table-wrap">
+        <table>
+          <caption>فهرست قیمت نوشیدنی‌ها</caption>
+          <thead>
+            <tr>
+              <th scope="col">نوشیدنی</th>
+              <th scope="col">توضیح</th>
+              <th scope="col">لیوانی (تومان)</th>
+              <th scope="col">پارچی (تومان)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">دوغ محلی</th>
+              <td>با پونه و نعنا</td>
+              <td>۴۵٬۰۰۰</td>
+              <td>۱۵۰٬۰۰۰</td>
+            </tr>
+            <tr>
+              <th scope="row">شربت بهارنارنج</th>
+              <td>خنک، بدون گاز</td>
+              <td>۵۵٬۰۰۰</td>
+              <td>۱۸۰٬۰۰۰</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section id="reserve">
+      <h2>رزرو سریع</h2>
+      <form action="#" method="post" class="quick-form">
+        <div>
+          <label for="name">نام</label>
+          <input type="text" id="name" name="name" required>
+        </div>
+        <div>
+          <label for="phone">موبایل</label>
+          <input type="tel" id="phone" name="phone" dir="ltr" pattern="09[0-9]{9}" required>
+        </div>
+        <div>
+          <label for="date">تاریخ</label>
+          <input type="date" id="date" name="date" required>
+        </div>
+        <div>
+          <label for="guests">تعداد نفرات</label>
+          <input type="number" id="guests" name="guests" min="1" max="20" value="2">
+        </div>
+        <button type="submit" class="btn">ثبت رزرو</button>
+      </form>
+    </section>
+  </main>
+</body>
+
+</html>

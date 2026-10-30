@@ -1,0 +1,24 @@
+/* ۴) سه روش افزودن CSS — نمونه‌ها فقط با فایل خارجی */
+
+.demo-external {
+  color: #c2185b;
+  font-weight: bold;
+}
+
+/* ظاهر نمونه Internal — در این پروژه از فایل خارجی آمده */
+.demo-internal {
+  color: purple;
+  font-weight: bold;
+}
+
+/* ظاهر نمونه Inline — در این پروژه از کلاس خارجی آمده */
+.demo-inline {
+  color: green;
+  font-size: 18px;
+}
+
+/* نتیجه تداخل: نشان می‌دهد ظاهر نهایی مثل Inline سبز است */
+.demo-cascade {
+  color: green;
+  font-weight: bold;
+}

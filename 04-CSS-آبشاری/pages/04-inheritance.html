@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>وراثت | آبشاری بودن CSS</title>
+  <link rel="stylesheet" href="../css/layout.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="../css/demos/inheritance.css">
+</head>
+
+<body>
+
+  <header class="page-header">
+    <h1>آبشاری بودن CSS</h1>
+    <p>۴) وراثت از والد به فرزند</p>
+  </header>
+
+  <div class="container">
+
+    <nav class="page-nav" aria-label="ناوبری">
+      <a href="03-stylesheets.html">→ قبلی: چند فایل CSS</a>
+      <a href="../index.html">فهرست</a>
+      <a href="05-important.html">بعدی: !important ←</a>
+    </nav>
+
+    <section class="lesson">
+      <h2>۴) وراثت از والد به فرزند</h2>
+      <p>
+        بعضی ویژگی‌ها مثل <code>color</code> و <code>font-family</code> از والد به فرزند می‌رسند (ارثی هستند).
+        بعضی‌ها مثل <code>border</code> و <code>padding</code> به ارث نمی‌رسند.
+        اینکه هر ویژگی ارثی هست یا نه، در استاندارد CSS برای همان ویژگی مشخص شده است.
+        قاعده سرانگشتی این است که ویژگی‌های مربوط به <strong>متن</strong> معمولاً ارثی‌اند و ویژگی‌های مربوط به <strong>جعبه</strong> نه؛ اما تصمیم نهایی را نام ویژگی در استاندارد مشخص می‌کند، نه این دسته‌بندی.
+      </p>
+      <p>
+        وراثت وقتی وارد عمل می‌شود که روی خود عنصر برای آن ویژگی هیچ مقداری ننوشته باشید. در این حالت مرورگر مقدار محاسبه‌شدهٔ والد را برای فرزند هم به کار می‌برد.
+        برای همین اگر روی <code>body</code> رنگ متن را تعیین کنید، پاراگراف‌ها و عنوان‌ها همان رنگ را نشان می‌دهند، مگر اینکه خودشان رنگ دیگری داشته باشند.
+        واحدهای نسبی مثل <code>em</code> در <code>font-size</code> پیش از رسیدن به فرزند محاسبه می‌شوند؛ فرزند اندازهٔ پیکسلی والد را به ارث می‌برد، نه خود عبارت <code>1.2em</code> را.
+      </p>
+
+      <pre class="code"><code>/* inheritance.css */
+.demo-inherit .parent {
+  color: #1a3a5c;
+  font-family: Georgia, "Times New Roman", serif;
+  line-height: 2;
+  border: 2px solid #1a3a5c;
+  padding: 12px;
+}
+
+.demo-inherit .child-keep {
+  /* color و font-family ننوشته‌ایم → از والد به ارث می‌رسند */
+  background-color: #e8f4fd;
+  padding: 8px;
+  margin: 8px 0;
+}
+
+.demo-inherit .child-override {
+  color: #c92a2a; /* مقدار خود فرزند → جای مقدار ارثی را می‌گیرد */
+  background-color: #fff5f5;
+  padding: 8px;
+  margin: 8px 0;
+}
+
+.demo-inherit .no-inherit {
+  /* border به ارث نمی‌رسد؛ این جعبه border را خودش جداگانه تعریف کرده */
+  border: 2px dashed #e67700;
+  padding: 8px;
+  margin-top: 8px;
+}</code></pre>
+
+      <div class="result demo-inherit">
+        <div class="parent">
+          والد: رنگ سرمه‌ای، فونت serif و کادر سرمه‌ای
+          <div class="child-keep">فرزند ۱: رنگ و فونت را به ارث برده، ولی کادر سرمه‌ای والد را ندارد.</div>
+          <div class="child-override">فرزند ۲: رنگ خودش را نوشته (قرمز)، پس مقدار ارثی جایگزین شده است.</div>
+          <div class="no-inherit">فرزند ۳: کادر نارنجی را خودش تعریف کرده؛ border هرگز خودبه‌خود از والد نمی‌آید.</div>
+        </div>
+      </div>
+
+      <table class="ref">
+        <thead>
+          <tr>
+            <th>به ارث می‌رسد (نمونه‌ها)</th>
+            <th>به ارث نمی‌رسد (نمونه‌ها)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <code>color</code> ، <code>font-*</code> (مثل <code>font-family</code> و <code>font-size</code>) ،
+              <code>line-height</code> ، <code>text-align</code> ، <code>text-indent</code> ، <code>text-transform</code> ،
+              <code>letter-spacing</code> ، <code>word-spacing</code> ، <code>white-space</code> ، <code>direction</code> ،
+              <code>list-style</code> ، <code>visibility</code> ، <code>cursor</code>
+            </td>
+            <td>
+              <code>margin</code> ، <code>padding</code> ، <code>border</code> ، <code>background</code> ،
+              <code>width</code> / <code>height</code> ، <code>display</code> ، <code>position</code> ،
+              <code>box-shadow</code> ، <code>opacity</code> ، <code>text-decoration</code>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p class="tip">
+        وراثت ضعیف‌ترین منبع مقدار است: فقط وقتی به کار می‌رود که <strong>هیچ قانونی</strong> مستقیماً روی خود فرزند
+        آن ویژگی را تعیین نکرده باشد. هر قانونی که فرزند را انتخاب کند، حتی انتخابگر همگانی <code>*</code> با قدرت
+        <code>(0, 0, 0)</code>، از مقدار ارثی قوی‌تر است.
+      </p>
+
+      <h3>کنترل وراثت با کلمه‌های کلیدی</h3>
+      <p>
+        سه کلمهٔ کلیدی مقدار را به‌جای یک رنگ یا اندازهٔ مشخص، از یک منبع دیگر می‌گیرند. این‌ها را روی همان ویژگی می‌نویسید که می‌خواهید کنترلش کنید.
+      </p>
+      <ul>
+        <li><code>inherit</code> مقدار محاسبه‌شدهٔ والد را می‌گیرد، حتی اگر آن ویژگی به‌طور عادی ارثی نباشد. مثلاً <code>border: inherit</code> کادر والد را روی فرزند هم می‌کشد، در حالی که <code>border</code> خودش به ارث نمی‌رسد.</li>
+        <li><code>initial</code> مقداری را می‌گذارد که استاندارد CSS برای همان ویژگی به‌عنوان نقطهٔ شروع تعریف کرده است، نه مقدار مرورگر در stylesheet پیش‌فرض و نه مقدار والد. برای <code>color</code> این مقدار معمولاً سیاه است.</li>
+        <li><code>unset</code> بین آن دو تصمیم می‌گیرد: اگر ویژگی ارثی باشد مثل <code>inherit</code> عمل می‌کند و اگر ارثی نباشد مثل <code>initial</code>.</li>
+      </ul>
+      <pre class="code"><code>/* دکمه‌ها و فیلدهای فرم فونت صفحه را به ارث نمی‌برند؛ این‌طور درستش می‌کنیم: */
+button, input, select, textarea {
+  font: inherit;
+}</code></pre>
+
+      <p class="mistake">
+        <strong>اشتباه رایج:</strong>
+        تعجب از اینکه لینک‌ها رنگ والد را نمی‌گیرند. مرورگر در استایل پیش‌فرض خودش برای <code>a</code>
+        رنگ آبی گذاشته و این قانون مستقیم، از مقدار ارثی قوی‌تر است. برای ارث بردن بنویسید
+        <code>a { color: inherit; }</code>.
+      </p>
+
+      <p class="exercise">
+        <strong>تمرین:</strong> قانون <code>color</code> را از <code>.child-override</code> حذف کنید.
+        متن فرزند ۲ چه رنگی می‌شود؟
+      </p>
+    </section>
+
+    <nav class="page-nav" aria-label="ناوبری پایین">
+      <a href="03-stylesheets.html">→ قبلی: چند فایل CSS</a>
+      <a href="../index.html">فهرست</a>
+      <a href="05-important.html">بعدی: !important ←</a>
+    </nav>
+
+  </div>
+
+  <footer class="page-footer">آبشاری بودن CSS</footer>
+
+</body>
+
+</html>

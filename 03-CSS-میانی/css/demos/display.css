@@ -1,0 +1,56 @@
+/* ۱) Display */
+
+.demo-display .box-block {
+  background-color: #ffe8cc;
+  border: 1px solid #f08c00;
+  padding: 6px 10px;
+  margin: 4px 0;
+}
+
+.demo-display .box-inline {
+  background-color: #d3f9d8;
+  border: 1px solid #2b8a3e;
+  padding: 2px 8px;
+}
+
+.demo-display .menu-inline {
+  margin: 0;
+  padding: 0;
+}
+
+.demo-display .menu-inline li {
+  display: inline;
+  margin-left: 16px;
+}
+
+.demo-display .span-block span {
+  display: block;
+  background-color: #e7f5ff;
+  border-right: 4px solid #1a5fb4;
+  padding: 4px 10px;
+  margin-bottom: 4px;
+}
+
+.demo-display .row-boxes {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.demo-display .mini {
+  width: 60px;
+  height: 60px;
+  line-height: 60px;
+  text-align: center;
+  background-color: #845ef7;
+  color: white;
+  border-radius: 6px;
+}
+
+.demo-display .hide-none {
+  display: none;
+}
+
+.demo-display .hide-hidden {
+  visibility: hidden;
+}

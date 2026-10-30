@@ -1,0 +1,26 @@
+/* تمرین ۱ — منوی کناری عمودی (پاسخ) */
+
+body {
+  font-family: Tahoma, sans-serif;
+  margin: 20px;
+  background-color: #f8f9fa;
+  color: #212529;
+}
+
+/* لینک‌ها زیر هم */
+.side {
+  display: flex;
+  flex-direction: column;
+  width: 200px;
+  background-color: #343a40;
+  padding: 10px;
+}
+
+.side a {
+  color: white;
+  text-decoration: none;
+  background-color: #495057;
+  padding: 10px;
+  margin: 3px 0;
+  border-radius: 4px;
+}

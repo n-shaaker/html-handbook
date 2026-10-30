@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>۷) تراز آیتم‌ها داخل خانه | آموزش CSS Grid</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/demos/align-items.css">
+</head>
+
+<body>
+
+  <header class="page-header">
+    <h1>آموزش CSS Grid — چیدمان شبکه‌ای</h1>
+    <p>۷) تراز آیتم‌ها داخل خانه</p>
+  </header>
+
+  <div class="container">
+
+    <nav class="page-nav" aria-label="ناوبری درس">
+      <a href="06-template-areas.html">→ قبلی: نام‌گذاری ناحیه‌ها</a>
+      <a href="../index.html">فهرست درس‌ها</a>
+      <a href="08-align-content.html">بعدی: تراز کل شبکه ←</a>
+    </nav>
+
+    <section class="lesson" id="align-items">
+      <h2>۷) تراز آیتم‌ها داخل خانه</h2>
+      <p>
+        هر آیتم داخل خانه‌ای می‌نشیند که از برخورد یک ستون و یک ردیف ساخته شده است. اگر خود آیتم از آن خانه کوچک‌تر باشد، می‌توان گفت در کدام لبه یا در وسط خانه قرار بگیرد.
+        دو خانواده ویژگی این کار را می‌کنند و اسمشان جهت را مشخص می‌کند.
+      </p>
+      <ul>
+        <li>ویژگی‌هایی که با <code>justify</code> شروع می‌شوند آیتم را در جهت افقی، یعنی در امتداد ردیف، جابه‌جا می‌کنند.</li>
+        <li>ویژگی‌هایی که با <code>align</code> شروع می‌شوند آیتم را در جهت عمودی، یعنی در امتداد ستون، جابه‌جا می‌کنند.</li>
+      </ul>
+      <p>
+        مقدار پیش‌فرض <code>stretch</code> است: آیتم در جهتی که اندازه‌اش <code>auto</code> باشد کش می‌آید تا خانه را پر کند.
+        <code>start</code> آیتم را به لبهٔ شروع می‌چسباند، <code>center</code> آن را وسط خانه می‌گذارد و <code>end</code> آن را به لبهٔ پایان می‌برد.
+        در صفحهٔ راست‌چین، شروع افقی سمت راست است و پایان سمت چپ. این جهت برای محور عمودی عوض نمی‌شود: شروع بالا است و پایان پایین.
+      </p>
+      <p>
+        در همه مثال‌ها هر ردیف ۹۰ پیکسل ارتفاع دارد و هر ستون یک‌سوم عرض است؛ پس آیتم‌ها از خانه‌شان کوچک‌ترند و جابه‌جایی‌شان دیده می‌شود.
+      </p>
+
+      <h3>مثال ۱: حالت پیش‌فرض — <code>stretch</code></h3>
+      <p>بدون هیچ‌کدام از ویژگی‌های تراز، مقدار پیش‌فرض <code>stretch</code> اعمال می‌شود. آیتم‌هایی که ارتفاع جداگانه ندارند تمام ارتفاع ردیف را می‌گیرند، برای همین کارت‌های یک ردیف هم‌قد دیده می‌شوند:</p>
+      <pre class="code"><code>.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-auto-rows: 90px;
+  gap: 8px;
+}</code></pre>
+      <div class="result demo-items">
+        <div class="grid">
+          <div class="box b1">۱</div>
+          <div class="box b2">۲</div>
+          <div class="box b3">۳</div>
+        </div>
+      </div>
+      <p class="tip">
+        <code>grid-auto-rows</code> را هم در <a href="10-implicit-grid.html">درس ۱۰</a> می‌خوانیم؛ فعلاً یعنی «ارتفاع هر ردیف ۹۰ پیکسل».
+      </p>
+
+      <h3>مثال ۲: تراز افقی همه آیتم‌ها — <code>justify-items</code></h3>
+      <pre class="code"><code>.justify-start  { justify-items: start; }   /* راست */
+.justify-center { justify-items: center; }
+.justify-end    { justify-items: end; }     /* چپ */</code></pre>
+      <div class="result demo-items">
+        <div class="grid justify-start">
+          <div class="box b1">۱ start</div>
+          <div class="box b2">۲ start</div>
+          <div class="box b3">۳ start</div>
+        </div>
+        <div class="grid justify-center">
+          <div class="box b1">۱ center</div>
+          <div class="box b2">۲ center</div>
+          <div class="box b3">۳ center</div>
+        </div>
+        <div class="grid justify-end">
+          <div class="box b1">۱ end</div>
+          <div class="box b2">۲ end</div>
+          <div class="box b3">۳ end</div>
+        </div>
+      </div>
+
+      <h3>مثال ۳: تراز عمودی همه آیتم‌ها — <code>align-items</code></h3>
+      <pre class="code"><code>.align-start  { align-items: start; }    /* بالا */
+.align-center { align-items: center; }
+.align-end    { align-items: end; }      /* پایین */</code></pre>
+      <div class="result demo-items">
+        <div class="grid align-start">
+          <div class="box b4">۱ بالا</div>
+          <div class="box b5">۲ بالا</div>
+          <div class="box b6">۳ بالا</div>
+        </div>
+        <div class="grid align-center">
+          <div class="box b4">۱ وسط</div>
+          <div class="box b5">۲ وسط</div>
+          <div class="box b6">۳ وسط</div>
+        </div>
+        <div class="grid align-end">
+          <div class="box b4">۱ پایین</div>
+          <div class="box b5">۲ پایین</div>
+          <div class="box b6">۳ پایین</div>
+        </div>
+      </div>
+
+      <h3>مثال ۴: هر دو با هم — <code>place-items</code></h3>
+      <p>
+        <code>place-items</code> میانبر دو ویژگی پدر است. مقدار اول به <code>align-items</code> می‌رود (عمودی) و مقدار دوم به <code>justify-items</code> (افقی).
+        اگر فقط یک مقدار بنویسید، همان مقدار برای هر دو جهت به کار می‌رود. پس <code>place-items: center</code> آیتم را هم افقی و هم عمودی وسط خانه‌اش می‌گذارد، به شرطی که خانه از خود آیتم بزرگ‌تر باشد.
+      </p>
+      <pre class="code"><code>.place-center {
+  place-items: center;   /* افقی و عمودی وسط */
+}</code></pre>
+      <div class="result demo-items">
+        <div class="grid place-center">
+          <div class="box b1">☕ قهوه</div>
+          <div class="box b2">🍵 چای</div>
+          <div class="box b3">🥤 شربت</div>
+        </div>
+      </div>
+      <p>
+        اگر دو مقدار بنویسید، اولی برای <strong>align</strong> (عمودی) و دومی برای <strong>justify</strong> (افقی) است:
+        <code>place-items: end start;</code> یعنی پایین و راست.
+      </p>
+
+      <h3>مثال ۵: فقط یک آیتم — <code>justify-self</code> و <code>align-self</code></h3>
+      <p>این دو روی <strong>خود آیتم</strong> نوشته می‌شوند و فقط همان آیتم را جابه‌جا می‌کنند، حتی اگر پدر چیز دیگری گفته باشد:</p>
+      <pre class="code"><code>.mixed { place-items: start; }   /* همه بالا-راست */
+
+.self-center {
+  justify-self: center;
+  align-self: center;
+}
+
+.self-end {
+  justify-self: end;
+  align-self: end;
+}</code></pre>
+      <div class="result demo-items">
+        <div class="grid mixed">
+          <div class="box b1">۱ (از پدر)</div>
+          <div class="box b2 self-center">۲ وسط</div>
+          <div class="box b3 self-end">۳ پایین-چپ</div>
+        </div>
+      </div>
+
+      <table class="ref">
+        <tr>
+          <th>ویژگی</th>
+          <th>چه می‌کند؟</th>
+        </tr>
+        <tr>
+          <td><code>justify-items</code></td>
+          <td>روی پدر نوشته می‌شود و همهٔ آیتم‌ها را با هم در جهت افقی، داخل خانهٔ خودشان، جابه‌جا می‌کند.</td>
+        </tr>
+        <tr>
+          <td><code>align-items</code></td>
+          <td>روی پدر نوشته می‌شود و همهٔ آیتم‌ها را با هم در جهت عمودی، داخل خانهٔ خودشان، جابه‌جا می‌کند.</td>
+        </tr>
+        <tr>
+          <td><code>place-items</code></td>
+          <td>روی پدر نوشته می‌شود. مقدار اول تراز عمودی و مقدار دوم تراز افقی همهٔ آیتم‌هاست.</td>
+        </tr>
+        <tr>
+          <td><code>justify-self</code></td>
+          <td>روی یک آیتم نوشته می‌شود و فقط همان آیتم را در جهت افقی داخل خانه‌اش جابه‌جا می‌کند.</td>
+        </tr>
+        <tr>
+          <td><code>align-self</code></td>
+          <td>روی یک آیتم نوشته می‌شود و فقط همان آیتم را در جهت عمودی داخل خانه‌اش جابه‌جا می‌کند.</td>
+        </tr>
+        <tr>
+          <td><code>place-self</code></td>
+          <td>روی یک آیتم نوشته می‌شود و هر دو جهت همان آیتم را یکجا تنظیم می‌کند.</td>
+        </tr>
+      </table>
+
+      <p class="mistake">
+        <strong>اشتباه رایج:</strong>
+        <code>justify</code> و <code>align</code> را جابه‌جا به کار می‌بریم و بعد تعجب می‌کنیم که آیتم به چپ و راست رفته، در حالی که می‌خواستیم بالا و پایین برود.
+        در Grid، <code>justify</code> حرکت افقی داخل خانه است و <code>align</code> حرکت عمودی. این تقسیم با Flexbox یکی نیست؛ آنجا justify همیشه محور اصلی است، نه لزوماً افق.
+      </p>
+
+      <p class="mistake">
+        <strong>اشتباه رایج:</strong>
+        <code>align-items: center</code> را می‌نویسیم ولی هیچ اتفاقی نمی‌افتد. معمولاً به این دلیل است که ردیف ارتفاع اضافه ندارد
+        (ردیف دقیقاً به اندازه آیتم است) و جایی برای جابه‌جایی نیست. وقتی ارتفاع خانه از آیتم بیشتر باشد، تراز دیده می‌شود.
+      </p>
+
+      <p class="exercise">
+        <strong>تمرین:</strong> یک شبکه سه‌ستونه از «آیکون خدمات» یک کافه بسازید (وای‌فای، پارکینگ، فضای باز) که هر خانه ۱۲۰ پیکسل ارتفاع دارد.
+        آیکون‌ها افقی و عمودی وسط خانه باشند، به‌جز آیتم آخر که پایین-چپ خانه بنشیند.
+      </p>
+    </section>
+
+    <nav class="page-nav" aria-label="ناوبری درس پایین">
+      <a href="06-template-areas.html">→ قبلی: نام‌گذاری ناحیه‌ها</a>
+      <a href="../index.html">فهرست درس‌ها</a>
+      <a href="08-align-content.html">بعدی: تراز کل شبکه ←</a>
+    </nav>
+
+  </div>
+
+  <footer class="page-footer">
+    آموزش CSS Grid
+  </footer>
+
+</body>
+
+</html>

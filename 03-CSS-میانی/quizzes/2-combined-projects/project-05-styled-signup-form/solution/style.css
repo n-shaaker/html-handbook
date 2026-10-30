@@ -1,0 +1,167 @@
+/* ===== تنظیمات کلی ===== */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Tahoma, Arial, sans-serif;
+  font-size: 1rem;
+  line-height: 1.8;
+  color: #2b2b2b;
+  background-color: #f6f3ee;
+}
+
+.page {
+  max-width: 35rem; /* حدود ۵۶۰ پیکسل */
+  margin: 0 auto;
+  padding: 1.5rem 1rem 3rem;
+}
+
+h1 {
+  font-size: clamp(1.5rem, 5vw, 2.5rem);
+  color: #6a2c70;
+  margin-bottom: 0.25rem;
+}
+
+.intro {
+  margin-top: 0;
+  color: #6c6c6c;
+}
+
+/* ===== مراحل فرم با شمارنده ===== */
+.signup {
+  counter-reset: step;
+}
+
+.signup fieldset {
+  counter-increment: step;
+  margin: 0 0 1.5rem;
+  padding: 1rem 1.25rem;
+  border: 1px solid #e0d6e3;
+  border-radius: 0.75rem;
+  background-color: white;
+}
+
+.signup legend {
+  padding: 0 0.5rem;
+  font-weight: bold;
+  color: #6a2c70;
+}
+
+.signup legend::before {
+  content: "مرحله " counter(step, persian) ": ";
+}
+
+/* ===== برچسب و کادرها ===== */
+.signup label {
+  display: block;
+  margin-top: 0.75rem;
+  font-size: 0.9rem;
+}
+
+.signup input[type="email"],
+.signup input[type="password"],
+.signup input[type="text"],
+.signup input[type="tel"],
+.signup select {
+  width: 100%;
+  padding: 0.6rem 0.8rem;
+  border: 2px solid #ced4da;
+  border-radius: 0.4rem;
+  font-family: inherit;
+  font-size: 1rem;
+}
+
+/* کادرهای اجباری: نوار رنگی سمت راست */
+.signup input[required] {
+  border-right: 5px solid #e8590c;
+}
+
+/* ایمیل، رمز و شماره با فونت لاتین راحت‌تر خوانده می‌شوند */
+.signup input[dir="ltr"] {
+  font-family: Arial, sans-serif;
+  letter-spacing: 0.05em;
+}
+
+.signup input:focus,
+.signup select:focus {
+  outline: none; /* سایه بنفش پایین جایگزینش است */
+  border-color: #6a2c70;
+  box-shadow: 0 0 0 3px rgba(106, 44, 112, 0.3);
+}
+
+/* ===== درست یا غلط (فقط بعد از تایپ کاربر) ===== */
+.signup input:user-invalid {
+  border-color: #c92a2a;
+}
+
+.signup input:user-valid {
+  border-color: #2b8a3e;
+}
+
+/* ===== چک‌باکس‌ها ===== */
+.group-title {
+  margin: 0.5rem 0;
+  font-size: 0.9rem;
+}
+
+.signup input[type="checkbox"] {
+  width: 1.1em;
+  height: 1.1em;
+  accent-color: #6a2c70;
+}
+
+.signup .check label {
+  display: inline;
+}
+
+.check input:checked + label {
+  font-weight: bold;
+  color: #6a2c70;
+}
+
+.check-terms {
+  margin-top: 1rem;
+  padding-top: 0.75rem;
+  border-top: 1px dashed #e0d6e3;
+}
+
+/* ===== دکمه‌ها ===== */
+.btn {
+  display: block;
+  width: 100%;
+  margin-bottom: 0.75rem;
+  padding: 0.75rem 1rem;
+  border: 2px solid #6a2c70;
+  border-radius: 0.5rem;
+  font-family: inherit;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.btn-primary {
+  background-color: #6a2c70;
+  color: white;
+}
+
+.btn-primary:hover {
+  background-color: #4e1f53;
+}
+
+.btn-secondary {
+  background-color: white;
+  color: #6a2c70;
+}
+
+.btn:focus-visible {
+  outline: 3px solid #f4a261;
+  outline-offset: 2px;
+}
+
+.btn:disabled {
+  border-color: #c9c9c9;
+  background-color: #eeeeee;
+  color: #8a8a8a;
+  cursor: not-allowed;
+}

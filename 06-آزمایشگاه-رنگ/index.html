@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="آزمایشگاه تعاملی رنگ — ساختن رنگ با HSL و RGB">
+  <title>آزمایشگاه تعاملی رنگ | HSL و RGB</title>
+  <link rel="stylesheet" href="css/lab.css">
+</head>
+
+<body>
+  <main class="lab">
+    <header class="lab-header">
+      <h1>آزمایشگاه تعاملی رنگ</h1>
+      <p>
+        یک طرف رنگ را با <strong>HSL</strong> بساز و طرف دیگر با <strong>RGB</strong>.
+        هر پنل پیش‌نمایش و کد CSS خودش را دارد.
+      </p>
+    </header>
+
+    <div class="labs-grid">
+
+      <!-- ========== HSL ========== -->
+      <section class="panel">
+        <h2 class="panel-title">HSL</h2>
+        <p class="panel-desc"><code>hsl(فام, اشباع%, روشنایی%)</code></p>
+
+        <div class="swatch" id="hsl-swatch">
+          <span class="swatch-label">پیش‌نمایش HSL</span>
+        </div>
+
+        <div class="control">
+          <label for="hue">فام (Hue): <span id="hue-value">32°</span></label>
+          <input type="range" id="hue" min="0" max="360" value="32">
+          <p class="control-hint">از ۰ تا ۳۶۰ درجه دور چرخ رنگ می‌چرخد و دوباره به قرمز می‌رسد.</p>
+        </div>
+
+        <div class="control">
+          <label for="sat">اشباع (Saturation): <span id="sat-value">100%</span></label>
+          <input type="range" id="sat" min="0" max="100" value="100">
+          <p class="control-hint">در صفر درصد، رنگ خاکستری می‌شود.</p>
+        </div>
+
+        <div class="control">
+          <label for="light">روشنایی (Lightness): <span id="light-value">50%</span></label>
+          <input type="range" id="light" min="0" max="100" value="50">
+          <p class="control-hint">۰٪ سیاه، ۵۰٪ معمولی، ۱۰۰٪ سفید.</p>
+        </div>
+
+        <h3>کد HSL</h3>
+        <pre class="code" id="hsl-code">.sw-hsl {
+  background-color: hsl(32, 100%, 50%);
+}</pre>
+      </section>
+
+      <!-- ========== RGB ========== -->
+      <section class="panel">
+        <h2 class="panel-title">RGB</h2>
+        <p class="panel-desc"><code>rgb(قرمز, سبز, آبی)</code> — هر کدام ۰ تا ۲۵۵</p>
+
+        <div class="swatch" id="rgb-swatch">
+          <span class="swatch-label">پیش‌نمایش RGB</span>
+        </div>
+
+        <div class="control">
+          <label for="r">قرمز (Red): <span id="r-value">255</span></label>
+          <input type="range" id="r" min="0" max="255" value="255">
+        </div>
+
+        <div class="control">
+          <label for="g">سبز (Green): <span id="g-value">136</span></label>
+          <input type="range" id="g" min="0" max="255" value="136">
+        </div>
+
+        <div class="control">
+          <label for="b">آبی (Blue): <span id="b-value">0</span></label>
+          <input type="range" id="b" min="0" max="255" value="0">
+        </div>
+
+        <h3>کد RGB</h3>
+        <pre class="code" id="rgb-code">.sw-rgb {
+  background-color: rgb(255, 136, 0);
+}</pre>
+
+        <p class="hex-line">
+          معادل هگزادسیمال:
+          <code id="hex-out">#ff8800</code>
+        </p>
+      </section>
+
+    </div>
+
+    <section class="explain">
+      <h2>یادآوری کوتاه</h2>
+      <ul>
+        <li><strong>فام:</strong> مثل چرخ رنگ؛ ۰ تا ۳۶۰ درجه دور می‌زند و به قرمز برمی‌گردد.</li>
+        <li><strong>اشباع / روشنایی:</strong> میزان زنده بودن رنگ، و تیرگی یا روشنی آن در HSL.</li>
+        <li><strong>RGB:</strong> مخلوط نور قرمز + سبز + آبی؛ <code>rgb(0, 0, 0)</code> سیاه و <code>rgb(255, 255, 255)</code> سفید است.</li>
+        <li>
+          <strong>هگز:</strong> همان RGB در مبنای ۱۶ است؛ در <code>#ff8800</code> دو رقم اول قرمز (<code>ff</code> = ۲۵۵)،
+          دو رقم وسط سبز (<code>88</code> = ۱۳۶) و دو رقم آخر آبی (<code>00</code> = ۰) است.
+        </li>
+        <li>
+          <strong>کاربرد HSL:</strong> برای ساختن رنگ‌های هم‌خانواده (مثلاً حالت hover یک دکمه) کافی است فقط روشنایی را
+          کم و زیاد کنید؛ با RGB باید هر سه عدد را عوض کنید.
+        </li>
+        <li>
+          امتحان کن: <code>hsl(32, 100%, 50%)</code> و <code>rgb(255, 136, 0)</code> تقریباً یک رنگ‌اند؛
+          هر دو روش رنگ را توصیف می‌کنند، فقط زبان نوشتن فرق دارد.
+        </li>
+      </ul>
+    </section>
+  </main>
+
+  <script src="js/lab.js"></script>
+</body>
+
+</html>

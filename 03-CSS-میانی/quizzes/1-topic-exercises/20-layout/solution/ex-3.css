@@ -1,0 +1,94 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Tahoma, Arial, sans-serif;
+  line-height: 1.9;
+  margin: 0;
+}
+
+/* ===== سربرگ ===== */
+.site-header {
+  padding: 8px 16px;
+  background-color: #2d6a4f;
+}
+
+.logo {
+  display: inline-block;
+  margin-left: 24px;
+  font-size: 1.3rem;
+  font-weight: bold;
+  color: white;
+  text-decoration: none;
+}
+
+.site-header nav {
+  display: inline-block;
+}
+
+.site-header nav a {
+  display: inline-block;
+  padding: 8px 12px;
+  color: white;
+  text-decoration: none;
+}
+
+.site-header nav a:hover {
+  background-color: #1b4332;
+}
+
+/* ===== بنر ===== */
+.banner {
+  min-height: 260px;
+  padding: 60px 16px;
+  text-align: center;
+  color: white;
+  background-color: #40916c;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45)), url("../../../../images/bg.jpg");
+  background-size: cover;
+  background-position: center;
+}
+
+/* ===== خدمات ===== */
+.services {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 24px 16px;
+}
+
+.service-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+.service {
+  padding: 16px;
+  background-color: #f1f8f4;
+  border-radius: 8px;
+}
+
+.service h3 {
+  margin-top: 0;
+  color: #2d6a4f;
+}
+
+/* ===== پانویس ===== */
+.site-footer {
+  text-align: center;
+  color: white;
+  background-color: #1b4332;
+}
+
+.site-footer p {
+  margin: 0;
+  padding: 12px;
+}
+
+/* ===== موبایل: خدمات یک‌ستونه ===== */
+@media (max-width: 700px) {
+  .service-grid {
+    grid-template-columns: 1fr;
+  }
+}

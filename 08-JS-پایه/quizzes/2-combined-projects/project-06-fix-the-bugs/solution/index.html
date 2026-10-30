@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ورود به پنل کتابخانه</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="app.js" defer></script>
+</head>
+
+<body>
+
+  <main class="panel">
+    <h1>ورود به پنل کتابخانه 📚</h1>
+
+    <div class="field">
+      <label for="username">نام کاربری</label>
+      <input type="text" id="username" autocomplete="username">
+    </div>
+
+    <div class="field">
+      <label for="password">رمز عبور</label>
+      <input type="password" id="password" autocomplete="current-password">
+      <small id="password-info">طول رمز: 0 حرف</small>
+    </div>
+
+    <div class="field">
+      <label for="captcha-answer">
+        سؤال امنیتی: حاصل <span id="captcha-a">7</span> + <span id="captcha-b">5</span> چند می‌شود؟
+      </label>
+      <input type="number" id="captcha-answer">
+    </div>
+
+    <button type="button" class="btn" id="check-btn">ورود</button>
+
+    <p id="result" aria-live="polite"></p>
+  </main>
+
+</body>
+
+</html>

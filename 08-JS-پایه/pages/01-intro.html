@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>۱) JavaScript چیست؟ | آموزش JavaScript سطح پایه</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <script src="../js/log.js" defer></script>
+  <script src="../js/demos/intro.js" defer></script>
+</head>
+
+<body>
+
+  <header class="page-header" id="top">
+    <h1>آموزش JavaScript — سطح پایه</h1>
+    <p>۱) JavaScript چیست؟</p>
+  </header>
+
+  <div class="container">
+
+    <nav class="page-nav" aria-label="ناوبری درس">
+      <span></span>
+      <a href="../index.html">فهرست درس‌ها</a>
+      <a href="02-where-to.html">بعدی: Where To ←</a>
+    </nav>
+
+    <section class="lesson" id="intro">
+      <h2>۱) JavaScript چیست؟</h2>
+<p>صفحهٔ وب فقط نوشته و رنگ نیست. وقتی روی دکمه‌ای کلیک می‌کنید، متنی عوض می‌شود یا فرمی پیش از ارسال بررسی می‌شود، این رفتار را زبان JavaScript انجام می‌دهد. هر صفحه معمولاً از سه بخش ساخته می‌شود و هر بخش کار جداگانه‌ای دارد:</p>
+
+<table class="ref">
+<tr><th>زبان</th><th>وظیفه</th><th>مثال</th></tr>
+<tr><td>HTML</td><td>ساختار و محتوا (اسکلت)</td><td>تیتر، پاراگراف، دکمه</td></tr>
+<tr><td>CSS</td><td>ظاهر (لباس)</td><td>رنگ، فاصله، فونت</td></tr>
+<tr><td>JavaScript</td><td>رفتار (مغز)</td><td>وقتی روی دکمه کلیک شد، متن عوض شود</td></tr>
+</table>
+
+<p>JavaScript زبان برنامه‌نویسی وب است. با آن می‌توان محتوای صفحه را بعد از بارگذاری عوض کرد، به کلیک و تایپ کاربر واکنش نشان داد، درستی فرم را پیش از ارسال بررسی کرد و از سرور اطلاعات گرفت. امروزه این زبان فقط داخل مرورگر اجرا نمی‌شود؛ با ابزاری مثل Node.js روی سرور و در بعضی برنامه‌های دسکتاپ هم به کار می‌رود. تمرکز این دوره روی همان رفتاری است که کاربر در مرورگر می‌بیند.</p>
+
+<h3>مثال ۱: تغییر متن با کلیک</h3>
+
+<pre class="code"><code>&lt;!-- HTML --&gt;
+&lt;h3 id="demo-title"&gt;متن اولیه&lt;/h3&gt;
+&lt;button id="demo-btn"&gt;کلیک کن&lt;/button&gt;</code></pre>
+
+<pre class="code"><code>// JavaScript
+const title = document.getElementById("demo-title");
+const button = document.getElementById("demo-btn");
+
+button.addEventListener("click", function () {
+  title.textContent = "سلام! این متن را JavaScript عوض کرد.";
+});</code></pre>
+
+<div class="result">
+<h3 id="demo-title">متن اولیه</h3>
+<button class="btn" id="demo-btn">کلیک کن</button>
+</div>
+
+<p>در کد بالا، <code>document.getElementById</code> عنصری را پیدا می‌کند که در HTML همان شناسه را دارد و آن را در یک متغیر نگه می‌دارد. <code>addEventListener("click", ...)</code> به دکمه می‌گوید هر بار که کاربر کلیک کرد، تابع داخل پرانتز اجرا شود. داخل آن تابع، <code>textContent</code> متن تیتر را با جملهٔ جدید عوض می‌کند. HTML فقط اسکلت را ساخته و JavaScript محتوای همان عنصر را تغییر داده است.</p>
+
+<h3>مثال ۲: روشن و خاموش کردن یک جعبه</h3>
+
+<p>JavaScript می‌تواند به عنصر کلاس CSS اضافه یا از آن حذف کند. ظاهر را CSS تعیین می‌کند و JavaScript فقط کلاس را عوض می‌کند.</p>
+
+<pre class="code"><code>const box = document.getElementById("light-box");
+const toggle = document.getElementById("light-btn");
+
+toggle.addEventListener("click", function () {
+  box.classList.toggle("active");   // اگر کلاس بود حذف کن، نبود اضافه کن
+});</code></pre>
+
+<div class="result">
+<div class="demo-box" id="light-box">من یک جعبه هستم. رنگ من با کلیک عوض می‌شود.</div>
+<button class="btn" id="light-btn">روشن / خاموش</button>
+</div>
+
+<p><code>classList</code> فهرست کلاس‌های CSS همان عنصر است. متد <code>toggle</code> اگر کلاس <code>active</code> روی جعبه نباشد آن را اضافه می‌کند و اگر باشد حذف می‌کند؛ به همین دلیل هر کلیک ظاهر جعبه را بین دو حالت جابه‌جا می‌کند. قانون رنگ در CSS نوشته شده و JavaScript فقط حضور یا نبودن آن کلاس را عوض می‌کند.</p>
+
+<p class="tip"><strong>JavaScript با Java فرق دارد!</strong> این دو زبان کاملاً جدا هستند و فقط اسمشان شبیه است. JavaScript را کوتاه «JS» هم می‌نویسند.</p>
+
+<p class="tip">فعلاً لازم نیست همه کلمه‌های کد بالا را بفهمید. در درس‌های بعد تک‌تک آن‌ها را یاد می‌گیرید. هدف این درس فقط دیدن «قدرت» JavaScript است.</p>
+
+<p class="tip"><strong>نام رسمی:</strong> نسخه استاندارد این زبان <strong>ECMAScript</strong> نام دارد (مثلاً ES6 یا ES2015). همه مرورگرهای امروزی نسخه‌های جدید را پشتیبانی می‌کنند و در این دوره از همان نحو جدید (مثل <code>let</code>، <code>const</code> و Template Literal) استفاده می‌کنیم.</p>
+
+<p class="mistake"><strong>اشتباه رایج:</strong> فکر کردن اینکه JavaScript جای HTML و CSS را می‌گیرد. هر سه کنار هم کار می‌کنند: ساختار با HTML، ظاهر با CSS، رفتار با JavaScript.</p>
+
+<p class="exercise"><strong>تمرین:</strong> در Console مرورگر (کلید <code>F12</code> و سپس زبانه Console) بنویسید <code>2 + 3</code> و Enter بزنید؛ باید عدد <code>5</code> را ببینید. بعد بنویسید <code>alert("سلام")</code> و Enter بزنید. اولین کد JavaScript شما اجرا شد!</p>
+    </section>
+
+    <nav class="page-nav" aria-label="ناوبری درس پایین">
+      <span></span>
+      <a href="../index.html">فهرست درس‌ها</a>
+      <a href="02-where-to.html">بعدی: Where To ←</a>
+    </nav>
+
+  </div>
+
+  <footer class="page-footer">
+    آموزش JavaScript سطح پایه
+  </footer>
+
+</body>
+
+</html>

@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>۵) جای‌گذاری آیتم‌ها با شماره خط | آموزش CSS Grid</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/demos/placement.css">
+</head>
+
+<body>
+
+  <header class="page-header">
+    <h1>آموزش CSS Grid — چیدمان شبکه‌ای</h1>
+    <p>۵) جای‌گذاری آیتم‌ها با شماره خط</p>
+  </header>
+
+  <div class="container">
+
+    <nav class="page-nav" aria-label="ناوبری درس">
+      <a href="04-gap.html">→ قبلی: فاصله (gap)</a>
+      <a href="../index.html">فهرست درس‌ها</a>
+      <a href="06-template-areas.html">بعدی: نام‌گذاری ناحیه‌ها ←</a>
+    </nav>
+
+    <section class="lesson" id="placement">
+      <h2>۵) جای‌گذاری آیتم‌ها با شماره خط</h2>
+      <p>
+        تا اینجا آیتم‌ها خودشان به ترتیب در خانه‌ها می‌نشستند. حالا می‌خواهیم به یک آیتم بگوییم
+        «از کدام خط شروع کن و تا کدام خط برو». این ویژگی‌ها روی <strong>خود آیتم</strong> (فرزند) نوشته می‌شوند، نه روی پدر.
+      </p>
+      <p>
+        یادآوری از درس ۱: یک شبکه ۴ ستونه <strong>۵ خط عمودی</strong> دارد. در صفحه راست‌چین خط ۱ لبه <strong>راست</strong> است
+        و خط ۵ لبه چپ. همه شبکه‌های این درس این‌طورند:
+      </p>
+      <pre class="code"><code>.grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+}</code></pre>
+
+      <h3>مثال ۱: <code>grid-column: شروع / پایان</code></h3>
+      <p>آیتم ۱ از خط ۱ تا خط ۳ می‌رود؛ یعنی <strong>دو ستون</strong> را می‌گیرد (ستون ۱ و ۲):</p>
+      <pre class="code"><code>.item-1 {
+  grid-column: 1 / 3;   /* از خط ۱ تا خط ۳ */
+}</code></pre>
+      <div class="result demo-place">
+        <div class="grid">
+          <div class="box b1 col-1-3">۱ (خط ۱ تا ۳)</div>
+          <div class="box b2">۲</div>
+          <div class="box b3">۳</div>
+          <div class="box b4">۴</div>
+          <div class="box b5">۵</div>
+          <div class="box b6">۶</div>
+        </div>
+      </div>
+      <p>
+        <code>grid-column</code> خلاصه دو ویژگی است: <code>grid-column-start: 1;</code> و <code>grid-column-end: 3;</code>.
+        علامت <code>/</code> فقط این دو عدد را از هم جدا می‌کند و تقسیم نیست.
+      </p>
+      <p class="mistake">
+        <strong>اشتباه رایج:</strong>
+        فکر می‌کنیم <code>grid-column: 1 / 3</code> یعنی «سه ستون». عددها شماره <strong>خط</strong> هستند، نه شماره ستون!
+        از خط ۱ تا خط ۳ فقط دو ستون است. برای سه ستون باید بنویسید <code>1 / 4</code> (یا <code>span 3</code>).
+      </p>
+
+      <h3>مثال ۲: <code>span</code> — «این‌قدر ستون بگیر»</h3>
+      <p>اگر حساب شماره خط سخت است، با <code>span</code> فقط بگویید چند ستون یا ردیف بگیرد. آیتم از همان جایی که بود شروع می‌کند:</p>
+      <pre class="code"><code>.item-2 { grid-column: span 2; }   /* دو ستون */
+.item-5 { grid-row: span 2; }      /* دو ردیف */</code></pre>
+      <div class="result demo-place">
+        <div class="grid">
+          <div class="box b1">۱</div>
+          <div class="box b2 span-col-2">۲ (span 2 ستون)</div>
+          <div class="box b3">۳</div>
+          <div class="box b4">۴</div>
+          <div class="box b5 span-row-2">۵ (span 2 ردیف)</div>
+          <div class="box b6">۶</div>
+          <div class="box b1">۷</div>
+          <div class="box b2">۸</div>
+          <div class="box b3">۹</div>
+        </div>
+      </div>
+
+      <h3>مثال ۳: <code>-1</code> یعنی «آخرین خط»</h3>
+      <p>
+        خط‌ها از آخر هم شماره دارند: <code>-1</code> همیشه آخرین خط است (در راست‌چین یعنی لبه چپ).
+        <code>1 / -1</code> یعنی «تمام عرض»، هر چند ستون که شبکه داشته باشد. برای بنر تخفیف فروشگاه عالی است:
+      </p>
+      <pre class="code"><code>.banner {
+  grid-column: 1 / -1;   /* از اولین خط تا آخرین خط */
+}</code></pre>
+      <div class="result demo-place">
+        <div class="grid">
+          <div class="box b5 full">۱. بنر: حراج پاییزه فروشگاه — ۳۰٪ تخفیف (1 / -1)</div>
+          <div class="box b1">۲</div>
+          <div class="box b2">۳</div>
+          <div class="box b3">۴</div>
+          <div class="box b4">۵</div>
+        </div>
+      </div>
+
+      <h3>مثال ۴: <code>grid-row</code> — ستون کناری بلند</h3>
+      <p>با <code>grid-row</code> همین کار را برای ردیف‌ها می‌کنیم. آیتم ۱ در ستون ۱ (راست) است و از خط ردیف ۱ تا ۴ (سه ردیف) پایین می‌رود:</p>
+      <pre class="code"><code>.side {
+  grid-column: 1;      /* فقط ستون اول */
+  grid-row: 1 / 4;     /* سه ردیف */
+}</code></pre>
+      <div class="result demo-place">
+        <div class="grid">
+          <div class="box b4 side">۱. دسته‌بندی‌ها (grid-row: 1 / 4)</div>
+          <div class="box b1">۲</div>
+          <div class="box b2">۳</div>
+          <div class="box b3">۴</div>
+          <div class="box b1">۵</div>
+          <div class="box b2">۶</div>
+          <div class="box b3">۷</div>
+          <div class="box b1">۸</div>
+          <div class="box b2">۹</div>
+          <div class="box b3">۱۰</div>
+        </div>
+      </div>
+
+      <h3>مثال ۵: فرستادن یک آیتم به خانه دلخواه</h3>
+      <p>
+        آیتم ۶ در HTML آخر است، ولی می‌خواهیم «پیشنهاد امروز» کافه در گوشه بالا-چپ (ستون ۴، ردیف ۱) دیده شود.
+        بقیه آیتم‌ها خودشان کنار می‌روند:
+      </p>
+      <pre class="code"><code>.special {
+  grid-column: 4;
+  grid-row: 1;
+}</code></pre>
+      <div class="result demo-place">
+        <div class="grid">
+          <div class="box b1">۱</div>
+          <div class="box b2">۲</div>
+          <div class="box b3">۳</div>
+          <div class="box b4">۴</div>
+          <div class="box b5">۵</div>
+          <div class="box b6 special">۶. پیشنهاد امروز ⭐</div>
+        </div>
+      </div>
+      <p class="tip">
+        جابه‌جایی با CSS فقط ظاهر را عوض می‌کند. صفحه‌خوان‌ها و کلید Tab هنوز به ترتیب HTML حرکت می‌کنند؛
+        پس ترتیب مهم محتوا را در خود HTML درست بنویسید.
+      </p>
+
+      <table class="ref">
+        <tr>
+          <th>کد</th>
+          <th>معنی</th>
+        </tr>
+        <tr>
+          <td><code>grid-column: 2 / 4</code></td>
+          <td>از خط ۲ تا خط ۴ (دو ستون)</td>
+        </tr>
+        <tr>
+          <td><code>grid-column: span 3</code></td>
+          <td>سه ستون، از جای فعلی</td>
+        </tr>
+        <tr>
+          <td><code>grid-column: 1 / -1</code></td>
+          <td>تمام عرض</td>
+        </tr>
+        <tr>
+          <td><code>grid-row: 1 / 3</code></td>
+          <td>از خط ردیف ۱ تا ۳ (دو ردیف)</td>
+        </tr>
+        <tr>
+          <td><code>grid-column: 3</code></td>
+          <td>فقط در ستون ۳ (یک ستون)</td>
+        </tr>
+      </table>
+
+      <p class="mistake">
+        <strong>اشتباه رایج:</strong>
+        در صفحه راست‌چین انتظار داریم <code>grid-column: 1</code> آیتم را سمت <strong>چپ</strong> ببرد (چون در آموزش‌های انگلیسی این‌طور دیده‌ایم).
+        در <code>dir="rtl"</code> خط ۱ سمت راست است.
+      </p>
+
+      <p class="exercise">
+        <strong>تمرین:</strong> صفحه اول یک فروشگاه را با شبکه ۴ ستونه بسازید: یک بنر تمام‌عرض در ردیف اول،
+        یک محصول «ویژه» که ۲ ستون و ۲ ردیف بگیرد و ۶ محصول معمولی. فقط با <code>grid-column</code> و <code>grid-row</code>
+        (یک‌بار با شماره خط و یک‌بار با <code>span</code>).
+      </p>
+    </section>
+
+    <nav class="page-nav" aria-label="ناوبری درس پایین">
+      <a href="04-gap.html">→ قبلی: فاصله (gap)</a>
+      <a href="../index.html">فهرست درس‌ها</a>
+      <a href="06-template-areas.html">بعدی: نام‌گذاری ناحیه‌ها ←</a>
+    </nav>
+
+  </div>
+
+  <footer class="page-footer">
+    آموزش CSS Grid
+  </footer>
+
+</body>
+
+</html>

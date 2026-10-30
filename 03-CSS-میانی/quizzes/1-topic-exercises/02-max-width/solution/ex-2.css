@@ -1,0 +1,17 @@
+body {
+  font-family: Tahoma, Arial, sans-serif;
+  line-height: 1.9;
+  margin: 0;
+}
+
+.post {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 16px;
+}
+
+/* عکس هیچ‌وقت از پدرش پهن‌تر نمی‌شود و نسبتش حفظ می‌شود */
+.post img {
+  max-width: 100%;
+  height: auto;
+}

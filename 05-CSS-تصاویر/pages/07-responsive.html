@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>تصویر واکنش‌گرا | تصاویر در CSS</title>
+  <link rel="stylesheet" href="../css/layout.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="../css/demos/responsive.css">
+</head>
+
+<body>
+  <header class="page-header">
+    <h1>تصاویر در CSS</h1>
+    <p>۷) تصویر واکنش‌گرا</p>
+  </header>
+
+  <div class="container">
+    <nav class="page-nav" aria-label="ناوبری درس‌ها">
+      <a href="06-cards.html">→ قبلی</a>
+      <a href="../index.html">فهرست</a>
+      <a href="08-size-position.html">بعدی: cover و position ←</a>
+    </nav>
+
+    <section class="lesson">
+      <h2>۷) تصویر واکنش‌گرا — موبایل نشکند</h2>
+      <p>
+        تصویری که عرض ثابتی بزرگ‌تر از صفحه داشته باشد، در گوشی از ظرف خودش بیرون می‌زند و اسکرول افقی می‌سازد.
+        واکنش‌گرا بودن عکس یعنی عرضش از عرض والد بیشتر نشود و نسبت طول به عرضش حفظ شود.
+        قاعده‌ای که تقریباً برای هر تصویر داخل متن لازم است این است: <code>max-width: 100%</code> اجازه می‌دهد عکس کوچک بماند اگر فایلش کوچک است، اما نمی‌گذارد از عرض والد بزرگ‌تر شود؛ <code>height: auto</code> هم ارتفاع را با همان نسبت حساب می‌کند تا تصویر له نشود.
+      </p>
+      <p>
+        این قانون با کارت فرق دارد. در کارت، قاب ارتفاع مشخص دارد و <code>object-fit</code> تصمیم می‌گیرد چه بخشی از عکس دیده شود.
+        برای عکسی که آزاد داخل متن نشسته، نباید ارتفاع را پیکسلی قفل کنید؛ وگرنه با کم شدن عرض، نسبت تصویر به‌هم می‌ریزد.
+      </p>
+
+      <pre class="code"><code>img {
+  max-width: 100%;
+  height: auto;
+  display: block; /* فاصله خالی زیر عکس (جای حروف پایین‌رونده خط) را حذف می‌کند */
+}</code></pre>
+
+      <h3>اشتباه: عرض ثابت خیلی بزرگ</h3>
+      <pre class="code"><code>.demo-resp .broken {
+  width: 900px;        /* عرض ثابت */
+  max-width: none;
+}</code></pre>
+      <div class="result demo-resp">
+        <div class="frame-scroll">
+          <img class="broken" src="../images/hero.jpg" alt="عکس هیرو با عرض ثابت ۹۰۰ پیکسل" width="1024" height="768">
+        </div>
+        <p class="mistake">در موبایل باید افقی اسکرول کنید — تجربه بد.</p>
+      </div>
+
+      <h3>درست: عرض سیال</h3>
+      <pre class="code"><code>.demo-resp .fluid {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}</code></pre>
+      <div class="result demo-resp">
+        <img class="fluid" src="../images/hero.jpg" alt="همان عکس هیرو که با عرض ظرف کوچک و بزرگ می‌شود" width="1024" height="768">
+      </div>
+
+      <p class="realuse">
+        <strong>در دنیای واقعی:</strong>
+        خیلی از فریم‌ورک‌ها همین قانون را پیش‌فرض دارند.
+        علاوه بر CSS، برای سرعت از <code>loading="lazy"</code> روی عکس‌های پایین صفحه استفاده می‌کنند:
+      </p>
+      <pre class="code"><code>&lt;img src="../images/food-2.jpg" alt="زرشک‌پلو با مرغ"
+     width="960" height="720" loading="lazy"&gt;</code></pre>
+
+      <p>
+        و برای اینکه گوشی عکس خیلی بزرگ دسکتاپ را دانلود نکند، چند اندازه از یک عکس می‌سازند و با
+        <code>srcset</code> و <code>sizes</code> به مرورگر می‌دهند تا خودش مناسب‌ترین را انتخاب کند:
+      </p>
+      <pre class="code"><code>&lt;img src="hero-1024.jpg"
+     srcset="hero-480.jpg 480w, hero-1024.jpg 1024w, hero-1920.jpg 1920w"
+     sizes="100vw"
+     alt="سالن رستوران" width="1024" height="768"&gt;</code></pre>
+
+      <table class="ref">
+        <thead>
+          <tr>
+            <th>ویژگی / صفت</th>
+            <th>کاربرد واقعی</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>max-width: 100%</code></td>
+            <td>عکس از عرض والد بزرگ‌تر نشود</td>
+          </tr>
+          <tr>
+            <td><code>height: auto</code></td>
+            <td>نسبت تصویر حفظ شود</td>
+          </tr>
+          <tr>
+            <td><code>loading="lazy"</code></td>
+            <td>عکس‌های پایین صفحه دیرتر لود شوند (روی عکس هیرو و بالای صفحه نگذارید؛ دیرتر دیده می‌شود)</td>
+          </tr>
+          <tr>
+            <td><code>srcset</code> و <code>sizes</code></td>
+            <td>مرورگر با توجه به عرض صفحه، فایل کوچک‌تر یا بزرگ‌تر را دانلود کند</td>
+          </tr>
+          <tr>
+            <td><code>width</code> و <code>height</code> در HTML</td>
+            <td>
+              مرورگر قبل از دانلود عکس، نسبت آن را می‌داند و جایش را رزرو می‌کند؛ پس صفحه هنگام لود نمی‌پرد (CLS).
+              با <code>height: auto</code> در CSS، عکس همچنان واکنش‌گرا می‌ماند.
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p class="tip">
+        این قانون برای عکسی است که آزاد داخل متن نشسته. داخل کارت، قاب معمولاً ارتفاع یا <code>aspect-ratio</code> مشخص دارد؛
+        آنجا <code>width: 100%</code> و <code>height: 100%</code> را با <code>object-fit: cover</code> می‌نویسند تا عکس قاب را پر کند و نسبت خودش را با بریدن لبه‌ها حفظ کند، نه با کش آمدن.
+      </p>
+
+      <p class="mistake">
+        <strong>اشتباه رایج:</strong>
+        فقط <code>width: 100%</code> بدون کنترل ارتفاع در کارت‌ها → ارتفاع‌ها ناهماهنگ می‌شوند.
+        آنجا از <code>aspect-ratio</code> یا ارتفاع ثابت + <code>object-fit</code> استفاده کنید.
+      </p>
+
+      <p class="exercise">
+        <strong>تمرین:</strong> پنجره مرورگر را خیلی باریک کنید و ببینید کدام عکس از صفحه بیرون می‌زند.
+      </p>
+    </section>
+
+    <nav class="page-nav" aria-label="ناوبری درس‌ها">
+      <a href="06-cards.html">→ قبلی</a>
+      <a href="../index.html">فهرست</a>
+      <a href="08-size-position.html">بعدی: cover و position ←</a>
+    </nav>
+  </div>
+  <footer class="page-footer">تصاویر در CSS</footer>
+</body>
+</html>

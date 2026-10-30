@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>۹) رشد، جمع شدن و اندازه پایه | آموزش Flexbox</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/demos/grow-shrink.css">
+</head>
+
+<body>
+
+  <header class="page-header">
+    <h1>آموزش Flexbox — چیدمان انعطاف‌پذیر</h1>
+    <p>۹) رشد، جمع شدن و اندازه پایه (flex-grow، flex-shrink، flex-basis)</p>
+  </header>
+
+  <div class="container">
+
+    <nav class="page-nav" aria-label="ناوبری درس">
+      <a href="08-order.html">→ قبلی: order</a>
+      <a href="../index.html">فهرست درس‌ها</a>
+      <a href="10-flex-shorthand.html">بعدی: میان‌بُر flex ←</a>
+    </nav>
+
+    <section class="lesson" id="grow-shrink">
+      <h2>۹) رشد، جمع شدن و اندازه پایه</h2>
+      <p>
+        تا اینجا ویژگی‌ها را روی ظرف می‌نوشتیم تا همهٔ آیتم‌ها با هم جابه‌جا شوند.
+        <code>flex-basis</code>، <code>flex-grow</code> و <code>flex-shrink</code> روی <strong>خود آیتم</strong> نوشته می‌شوند و تعیین می‌کنند آن آیتم، بعد از چیده شدن در محور اصلی، با فضای کم یا زیاد چه کند.
+        مرورگر اول به هر آیتم یک اندازهٔ پایه می‌دهد، بعد اگر جا اضافه ماند آن را بین آیتم‌هایی که اجازهٔ رشد دارند تقسیم می‌کند، و اگر جا کم آمد آیتم‌هایی را که اجازهٔ جمع شدن دارند کوچک می‌کند.
+      </p>
+      <ul>
+        <li><code>flex-basis</code> اندازهٔ اولیهٔ آیتم را در محور اصلی مشخص می‌کند، پیش از آنکه فضای اضافه یا کمبود فضا حساب شود. مقدار <code>auto</code> یعنی همان عرض یا ارتفاعی که خود آیتم از محتوا یا از <code>width</code> گرفته است.</li>
+        <li><code>flex-grow</code> سهم آیتم از فضای اضافه است. مقدار پیش‌فرض <code>0</code> است، یعنی آیتم بزرگ‌تر از اندازهٔ پایه‌اش نمی‌شود. اگر چند آیتم عدد بزرگ‌تر از صفر داشته باشند، فضای خالی به نسبت همان عددها بینشان تقسیم می‌شود.</li>
+        <li><code>flex-shrink</code> سهم آیتم از جمع شدن است وقتی مجموع اندازه‌های پایه از ظرف بزرگ‌تر باشد. پیش‌فرض <code>1</code> است، یعنی آیتم‌ها اجازه دارند کوچک شوند. مقدار <code>0</code> این اجازه را می‌گیرد.</li>
+      </ul>
+
+      <h3>مثال ۱: <code>flex-grow: 1</code> روی یک آیتم</h3>
+      <p>پیش‌فرض همه <code>flex-grow: 0</code> است، یعنی بزرگ نمی‌شوند. جعبه ۲ با <code>flex-grow: 1</code> کل فضای خالی را برمی‌دارد:</p>
+      <pre class="code"><code>.box-2 {
+  flex-grow: 1;
+}</code></pre>
+      <div class="result demo-grow">
+        <div class="parent">
+          <div class="box b1">۱</div>
+          <div class="box b2 grow-1">۲ (grow: 1)</div>
+          <div class="box b3">۳</div>
+        </div>
+      </div>
+      <p class="tip">این همان ترفند «جعبه جست‌وجو» در نوار بالای فروشگاه‌هاست: لوگو و دکمه اندازه خودشان را دارند و کادر جست‌وجو بقیه فضا را پر می‌کند.</p>
+
+      <h3>مثال ۲: سهم‌های متفاوت</h3>
+      <p>
+        فضای <strong>خالی</strong> به نسبت عددها تقسیم می‌شود. اینجا جعبه ۲ دو برابر جعبه ۱ و ۳ از فضای خالی سهم می‌گیرد.
+        (دقت کنید: «فضای خالی» دو برابر می‌شود، نه لزوماً کل عرض جعبه.)
+      </p>
+      <pre class="code"><code>.box-1 { flex-grow: 1; }
+.box-2 { flex-grow: 2; }
+.box-3 { flex-grow: 1; }</code></pre>
+      <div class="result demo-grow">
+        <div class="parent">
+          <div class="box b1 grow-1">۱ (۱ سهم)</div>
+          <div class="box b2 grow-2">۲ (۲ سهم)</div>
+          <div class="box b3 grow-1">۳ (۱ سهم)</div>
+        </div>
+      </div>
+
+      <h3>مثال ۳: <code>flex-basis</code> — اندازه اولیه</h3>
+      <p>
+        <code>flex-basis</code> مثل <code>width</code> است (در حالت <code>row</code>)، ولی مخصوص Flexbox.
+        مقدار پیش‌فرضش <code>auto</code> است، یعنی «از width یا محتوای خودت استفاده کن».
+      </p>
+      <pre class="code"><code>.box-1 { flex-basis: 100px; }
+.box-2 { flex-basis: 200px; }
+.box-3 { flex-basis: 30%; }</code></pre>
+      <div class="result demo-grow">
+        <div class="parent">
+          <div class="box b1 basis-100">۱ (۱۰۰px)</div>
+          <div class="box b2 basis-200">۲ (۲۰۰px)</div>
+          <div class="box b3 basis-30">۳ (۳۰٪)</div>
+        </div>
+      </div>
+
+      <h3>مثال ۴: <code>flex-shrink</code> — چه کسی کوچک شود؟</h3>
+      <p>
+        هر سه جعبه <code>flex-basis: 300px</code> دارند، یعنی جمعاً ۹۰۰ پیکسل؛ ولی ظرف فقط ۵۰۰ پیکسل است.
+        پیش‌فرض همه <code>flex-shrink: 1</code> است، پس به یک اندازه کوچک می‌شوند.
+        جعبه ۱ را با <code>flex-shrink: 0</code> از کوچک شدن معاف کرده‌ایم:
+      </p>
+      <pre class="code"><code>.parent { width: 500px; }
+
+.box { flex-basis: 300px; }
+
+.box-1 { flex-shrink: 0; }   /* کوچک نشو */</code></pre>
+      <div class="result demo-grow">
+        <div class="parent narrow">
+          <div class="box b1 basis-300 no-shrink">۱ (shrink: 0)</div>
+          <div class="box b2 basis-300">۲</div>
+          <div class="box b3 basis-300">۳</div>
+        </div>
+      </div>
+      <p>جعبه ۱ همان ۳۰۰ پیکسل ماند و کمبود جا بین جعبه ۲ و ۳ تقسیم شد. این برای عکس پروفایل یا آیکون‌هایی که نباید له شوند خیلی کاربردی است.</p>
+
+      <h3>مثال ۵: کاربرد واقعی — نوار جست‌وجوی فروشگاه</h3>
+      <pre class="code"><code>.search-bar { display: flex; gap: 8px; }
+
+.search-bar input {
+  flex-grow: 1;     /* بقیه فضا مال کادر جست‌وجو */
+}
+
+.search-bar .logo,
+.search-bar button {
+  flex-shrink: 0;   /* لوگو و دکمه له نشوند */
+}</code></pre>
+      <div class="result demo-grow">
+        <form class="search-bar" action="#grow-shrink">
+          <span class="logo">🛒 فروشگاه آبی</span>
+          <input type="text" aria-label="جست‌وجوی محصول" placeholder="نام محصول را بنویسید...">
+          <button type="submit">جست‌وجو</button>
+        </form>
+      </div>
+
+      <p class="mistake">
+        <strong>اشتباه رایج:</strong>
+        فکر می‌کنیم <code>flex-grow: 2</code> یعنی «دو برابر پهن‌تر». <code>flex-grow</code> فقط <strong>فضای اضافه</strong> را تقسیم می‌کند.
+        اگر محتوای دو جعبه از اول اندازه متفاوتی داشته باشد، نتیجه دقیقاً دو برابر نمی‌شود. برای تقسیم دقیق، <code>flex-basis: 0</code> بگذارید (درس بعد).
+      </p>
+
+      <p class="mistake">
+        <strong>اشتباه رایج:</strong>
+        به یک عکس در ردیف فلکس <code>width: 80px</code> می‌دهیم ولی در صفحه باریک له و بیضی می‌شود.
+        دلیلش <code>flex-shrink: 1</code> پیش‌فرض است؛ با <code>flex-shrink: 0</code> مشکل حل می‌شود.
+      </p>
+
+      <table class="ref">
+        <tr>
+          <th>ویژگی</th>
+          <th>پیش‌فرض</th>
+          <th>معنی</th>
+        </tr>
+        <tr>
+          <td><code>flex-grow</code></td>
+          <td><code>0</code></td>
+          <td>سهم از فضای اضافه (۰ یعنی بزرگ نشو)</td>
+        </tr>
+        <tr>
+          <td><code>flex-shrink</code></td>
+          <td><code>1</code></td>
+          <td>سهم از کمبود جا (۰ یعنی کوچک نشو)</td>
+        </tr>
+        <tr>
+          <td><code>flex-basis</code></td>
+          <td><code>auto</code></td>
+          <td>اندازه اولیه در محور اصلی</td>
+        </tr>
+      </table>
+
+      <p class="exercise">
+        <strong>تمرین:</strong> یک «ردیف پیام» شبیه پیام‌رسان‌ها بسازید: عکس کاربر (دایره ۵۰ پیکسلی)، متن پیام و ساعت ارسال.
+        متن پیام باید بقیه فضا را بگیرد (<code>flex-grow</code>) و عکس هیچ‌وقت له نشود (<code>flex-shrink</code>). پنجره را باریک کنید و امتحان کنید.
+      </p>
+    </section>
+
+    <nav class="page-nav" aria-label="ناوبری درس پایین">
+      <a href="08-order.html">→ قبلی: order</a>
+      <a href="../index.html">فهرست درس‌ها</a>
+      <a href="10-flex-shorthand.html">بعدی: میان‌بُر flex ←</a>
+    </nav>
+
+  </div>
+
+  <footer class="page-footer">
+    آموزش Flexbox
+  </footer>
+
+</body>
+
+</html>

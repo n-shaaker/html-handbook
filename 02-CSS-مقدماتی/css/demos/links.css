@@ -1,0 +1,56 @@
+/* ۱۶) Links
+   پیشوند .demo-links فقط برای این است که لینک‌های خود صفحه آموزشی تغییر نکنند. */
+
+.demo-links a:link    { color: #1a5fb4; }
+.demo-links a:visited { color: #7b2cbf; }
+.demo-links a:hover   { color: #c92a2a; text-decoration: none; }
+.demo-links a:active  { color: #2b8a3e; }
+
+/* دکمه‌ای که از لینک ساخته شده */
+.btn-link {
+  display: inline-block;
+  background-color: #0b6e4f;
+  color: white;
+  padding: 8px 18px;
+  text-decoration: none;
+  border-radius: 6px;
+}
+
+.btn-link:hover,
+.btn-link:focus-visible {
+  background-color: #1a3a5c;
+}
+
+.btn-link:focus-visible {
+  outline: 3px solid #e6a700;
+  outline-offset: 2px;
+}
+
+/* منوی بالای سایت */
+.site-nav {
+  background-color: #1a3a5c;
+  padding: 8px;
+}
+
+.site-nav a {
+  display: inline-block;
+  color: white;
+  text-decoration: none;
+  padding: 8px 14px;
+  border-radius: 4px;
+}
+
+.site-nav a:hover,
+.site-nav a:focus-visible {
+  background-color: #2f5f8f;
+}
+
+.site-nav a:focus-visible {
+  outline: 3px solid #e6a700;
+  outline-offset: 2px;
+}
+
+.site-nav a.current {
+  background-color: white;
+  color: #1a3a5c;
+}

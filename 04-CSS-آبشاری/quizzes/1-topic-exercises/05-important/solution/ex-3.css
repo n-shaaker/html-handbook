@@ -1,0 +1,45 @@
+/* ===== کلاس‌های کمکی: این دو !important عمداً مانده‌اند ===== */
+/* کلاس کمکی باید روی هر عنصری، هر قانونی که داشته باشد، کار کند */
+.text-center {
+  text-align: center !important;
+}
+
+.hidden {
+  display: none !important;
+}
+
+/* ===== صفحه ===== */
+.main p {
+  font-size: 17px;
+  color: #333333;
+}
+
+/* رقیبی نداشت؛ !important بی‌دلیل بود */
+.title {
+  color: #c2255c;
+}
+
+/* ===== کارت ===== */
+.card {
+  padding: 16px;
+  border: 1px solid #dee2e6;
+}
+
+/* هم‌قدرت با .main p (0, 1, 1) و پایین‌تر از آن */
+.card p {
+  font-size: 15px;
+}
+
+.card .btn {
+  display: inline-block;
+  padding: 8px 18px;
+  background-color: #c2255c;
+  color: white;
+  text-decoration: none;
+  border-radius: 6px;
+}
+
+/* (0, 3, 0) و بعد از قانون اصلی دکمه */
+.card .btn:hover {
+  background-color: #a61e4d;
+}

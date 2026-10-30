@@ -1,0 +1,30 @@
+.price-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.price-table caption {
+  font-weight: bold;
+  padding: 8px;
+}
+
+.price-table th,
+.price-table td {
+  padding: 10px;
+  text-align: start;
+  border-bottom: 1px solid #dee2e6;
+}
+
+.price-table th {
+  background-color: #0b6e4f;
+  color: white;
+}
+
+/* فقط ردیف‌های بدنه، نه سرستون */
+.price-table tbody tr:nth-child(even) {
+  background-color: #f1f3f5;
+}
+
+.price-table tbody tr:hover {
+  background-color: #d3f9d8;
+}

@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>۱۳) خط دور (Outline) | آموزش CSS از صفر</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/demos/outline.css">
+</head>
+
+<body>
+
+  <header class="page-header">
+    <h1>آموزش CSS از صفر</h1>
+    <p>۱۳) خط دور (Outline)</p>
+  </header>
+
+  <div class="container">
+
+    <nav class="page-nav" aria-label="ناوبری درس">
+      <a href="12-boxmodel.html">→ قبلی: Box Model</a>
+      <a href="../index.html">فهرست درس‌ها</a>
+      <a href="14-text.html">بعدی: Text ←</a>
+    </nav>
+
+    <section class="lesson" id="outline">
+      <h2>۱۳) خط دور (Outline)</h2>
+      <p>
+        <code>outline</code> خطی است که دور عنصر، بیرون از حاشیه، کشیده می‌شود.
+        برخلاف border، این خط در مدل جعبه‌ای جا نمی‌گیرد: اضافه یا حذف کردنش عرض و ارتفاع جعبه را عوض نمی‌کند و عنصرهای کناری را هل نمی‌دهد.
+        چون فضا اشغال نمی‌کند، ممکن است روی عنصرهای مجاور رسم شود. برای همین در طراحی دائمی کارت و جدول معمولاً از border استفاده می‌شود و outline را برای نشان دادن فوکوس یا موقتاً برای دیدن مرز یک جعبه هنگام اشکال‌یابی به کار می‌برند.
+      </p>
+      <pre class="code"><code>.box {
+  border: 2px solid #1a3a5c;
+  outline: 3px dashed tomato;   /* ضخامت، سبک، رنگ — مثل border */
+  outline-offset: 6px;          /* فاصله outline از border */
+  margin: 16px;
+  padding: 10px;
+}</code></pre>
+      <div class="result">
+        <div class="box">حاشیه سرمه‌ای و outline خط‌چین قرمز</div>
+      </div>
+
+      <table class="ref">
+        <thead>
+          <tr>
+            <th>border</th>
+            <th>outline</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>جزو مدل جعبه‌ای است و فضا می‌گیرد</td>
+            <td>فضا نمی‌گیرد و روی عنصرهای اطراف کشیده می‌شود</td>
+          </tr>
+          <tr>
+            <td>هر طرف را جدا می‌شود تنظیم کرد (<code>border-top</code> و ...)</td>
+            <td>همیشه هر چهار طرف با هم است</td>
+          </tr>
+          <tr>
+            <td>برای ظاهر طراحی (کارت، جدول، دکمه)</td>
+            <td>بیشتر برای نشان دادن «فوکوس» و برای اشکال‌یابی</td>
+          </tr>
+        </tbody>
+      </table>
+      <p>
+        ویژگی‌های جداگانه هم وجود دارند: <code>outline-width</code>، <code>outline-style</code>، <code>outline-color</code> و
+        <code>outline-offset</code>. مثل border، بدون سبک (style) هیچ outlineای دیده نمی‌شود.
+      </p>
+
+      <h3>کاربرد اصلی: نشان دادن فوکوس صفحه‌کلید</h3>
+      <p>
+        وقتی کاربر با کلید <kbd>Tab</kbd> بین لینک‌ها و دکمه‌ها جابه‌جا می‌شود، مرورگر دور عنصر فعلی یک outline می‌کشد.
+        با شبه‌کلاس <code>:focus-visible</code> می‌توانیم ظاهر این خط را هماهنگ با طراحی سایت کنیم. مرورگر این حالت را
+        فقط وقتی فعال می‌کند که نشان دادن فوکوس لازم باشد: برای دکمه و لینک فقط با صفحه‌کلید (نه با کلیک ماوس)، و برای
+        کادرهای تایپ متن همیشه، چون کاربر باید ببیند کجا تایپ می‌کند:
+      </p>
+      <pre class="code"><code>.search-btn:focus-visible,
+.search-input:focus-visible {
+  outline: 3px solid #e6a700;
+  outline-offset: 2px;
+}</code></pre>
+      <div class="result">
+        <label for="demo-search">جستجو در فروشگاه:</label>
+        <input class="search-input" id="demo-search" type="search" placeholder="مثلاً: کتاب">
+        <button class="search-btn" type="button">جستجو</button>
+      </div>
+      <p class="tip">
+        روی جعبه نتیجه کلیک کنید و چند بار <kbd>Tab</kbd> بزنید تا خط زرد دور کادر جستجو و دکمه را ببینید.
+      </p>
+
+      <p class="mistake">
+        <strong>اشتباه رایج:</strong>
+        برداشتن outline دکمه‌ها و لینک‌ها با <code>outline: none</code>، چون «زشت» به نظر می‌رسد.
+        کسانی که با صفحه‌کلید (Tab) کار می‌کنند، به این خط نیاز دارند تا بفهمند کجای صفحه هستند.
+        اگر ظاهر پیش‌فرض را دوست ندارید، آن را <strong>حذف نکنید؛ جایگزین کنید</strong> (مثل نمونه بالا).
+      </p>
+
+      <p class="exercise">
+        <strong>تمرین:</strong> برای لینک‌های منوی صفحه معرفی‌تان یک استایل <code>:focus-visible</code> با outline
+        ۲ پیکسلی و <code>outline-offset: 3px</code> بنویسید و فقط با کلید Tab در صفحه حرکت کنید.
+      </p>
+    </section>
+
+
+    <nav class="page-nav" aria-label="ناوبری درس پایین">
+      <a href="12-boxmodel.html">→ قبلی: Box Model</a>
+      <a href="../index.html">فهرست درس‌ها</a>
+      <a href="14-text.html">بعدی: Text ←</a>
+    </nav>
+
+  </div>
+
+  <footer class="page-footer">
+    آموزش CSS از صفر
+  </footer>
+
+</body>
+
+</html>

@@ -1,0 +1,27 @@
+/* تمرین ۲ — align-content کار نمی‌کند! (پاسخ) */
+
+body {
+  font-family: Tahoma, sans-serif;
+  margin: 20px;
+  background-color: #f8f9fa;
+  color: #212529;
+}
+
+/* درست شد: بدون wrap ظرف تک‌خطی است و align-content روی تک‌خط اثری ندارد */
+.gallery {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: center;
+  max-width: 360px;
+  height: 300px;
+  background-color: #f1f3f5;
+  padding: 5px;
+}
+
+.photo {
+  width: 100px;
+  height: 60px;
+  background-color: #0c8599;
+  color: white;
+  margin: 5px;
+}

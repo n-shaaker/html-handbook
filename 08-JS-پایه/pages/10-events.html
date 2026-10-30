@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>۱۰) رویدادها (Events) | آموزش JavaScript سطح پایه</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <script src="../js/log.js" defer></script>
+  <script src="../js/demos/events.js" defer></script>
+</head>
+
+<body>
+
+  <header class="page-header" id="top">
+    <h1>آموزش JavaScript — سطح پایه</h1>
+    <p>۱۰) رویدادها (Events)</p>
+  </header>
+
+  <div class="container">
+
+    <nav class="page-nav" aria-label="ناوبری درس">
+      <a href="09-objects.html">→ قبلی: Objects</a>
+      <a href="../index.html">فهرست درس‌ها</a>
+      <a href="11-strings.html">بعدی: Strings ←</a>
+    </nav>
+
+    <section class="lesson" id="events">
+      <h2>۱۰) رویدادها (Events)</h2>
+<p>رویداد یعنی اتفاقی که در صفحه می‌افتد: کلیک، تایپ، رفتن ماوس روی عنصر یا ارسال فرم. خودبه‌خود بعد از این اتفاق‌ها کدی اجرا نمی‌شود. با <code>addEventListener</code> به یک عنصر می‌گویید: «وقتی این اتفاق افتاد، این تابع را اجرا کن.» تابعی که این‌طور به رویداد وصل می‌شود، شنونده (listener) نام دارد و تا وقتی صفحه باز است منتظر همان اتفاق می‌ماند.</p>
+
+<pre class="code"><code>element.addEventListener("نام رویداد", function () {
+  // کاری که باید انجام شود
+});</code></pre>
+
+<p>آرگومان اول نام رویداد است و باید رشته باشد، مثل <code>"click"</code>. آرگومان دوم تابعی است که موقع رخ دادن رویداد اجرا می‌شود. این تابع را همان لحظه صدا نمی‌زنید؛ فقط آن را تحویل می‌دهید تا مرورگر در زمان مناسب اجرا کند. <code>element</code> همان عنصری است که قبلاً با شناسه‌اش پیدا کرده‌اید.</p>
+
+<table class="ref">
+<tr><th>رویداد</th><th>کی اتفاق می‌افتد</th></tr>
+<tr><td><code>click</code></td><td>کلیک روی عنصر</td></tr>
+<tr><td><code>dblclick</code></td><td>دوبار کلیک</td></tr>
+<tr><td><code>mouseover</code> / <code>mouseout</code></td><td>ماوس روی عنصر می‌رود / بیرون می‌آید</td></tr>
+<tr><td><code>input</code></td><td>هر بار که محتوای کادر ورودی تغییر می‌کند</td></tr>
+<tr><td><code>change</code></td><td>برای select و checkbox: همان لحظه انتخاب؛ برای کادر متنی: وقتی مقدار تغییر کرده و از کادر بیرون آمدیم</td></tr>
+<tr><td><code>keydown</code></td><td>کلیدی از صفحه‌کلید فشرده شد</td></tr>
+<tr><td><code>submit</code></td><td>فرم ارسال شد</td></tr>
+<tr><td><code>DOMContentLoaded</code></td><td>HTML صفحه کامل ساخته شد</td></tr>
+</table>
+
+<h3>مثال ۱: شمارنده کلیک</h3>
+
+<pre class="code"><code>let count = 0;
+const countBtn = document.getElementById("count-btn");
+const resetBtn = document.getElementById("reset-btn");
+const countText = document.getElementById("count-text");
+
+countBtn.addEventListener("click", function () {
+  count++;
+  countText.textContent = count;
+});
+
+resetBtn.addEventListener("click", function () {
+  count = 0;
+  countText.textContent = count;
+});</code></pre>
+
+<div class="result">
+<span class="big-number" id="count-text" aria-live="polite">0</span>
+<br>
+<button class="btn" id="count-btn">+۱</button>
+<button class="btn secondary" id="reset-btn">صفر کن</button>
+</div>
+
+<p><code>count</code> بیرون از تابع‌ها ساخته شده تا هر دو دکمه به همان عدد دسترسی داشته باشند. با هر کلیک روی دکمهٔ افزایش، <code>count++</code> یکی به عدد اضافه می‌کند و <code>textContent</code> عدد تازه را در صفحه می‌نویسد. دکمهٔ صفر کردن همان متغیر را به ۰ برمی‌گرداند و نمایش را هم به‌روز می‌کند. اگر عدد را فقط داخل یکی از تابع‌ها بسازید، دکمهٔ دیگر آن را نمی‌بیند.</p>
+
+<h3>مثال ۲: رویداد input — نوشتن همزمان</h3>
+
+<pre class="code"><code>const nameInput = document.getElementById("name-input");
+const preview = document.getElementById("preview");
+
+nameInput.addEventListener("input", function () {
+  preview.textContent = "سلام " + nameInput.value;   // value یعنی متنی که داخل کادر است
+});</code></pre>
+
+<div class="result">
+<label for="name-input">نام:</label>
+<input type="text" id="name-input" placeholder="اسمت را بنویس">
+<p class="demo-box" id="preview">سلام</p>
+</div>
+
+<p>رویداد <code>input</code> با هر تغییر در کادر اجرا می‌شود، حتی با یک حرف. <code>value</code> متنی است که همین حالا داخل کادر قرار دارد. تابع، کلمهٔ «سلام» را به آن متن می‌چسباند و نتیجه را در پاراگراف پیش‌نمایش می‌نویسد. تا وقتی کاربر چیزی ننوشته، <code>value</code> متن خالی است و فقط «سلام» دیده می‌شود.</p>
+
+<h3>مثال ۳: mouseover و mouseout</h3>
+
+<pre class="code"><code>const hoverBox = document.getElementById("hover-box");
+
+hoverBox.addEventListener("mouseover", function () {
+  hoverBox.classList.add("active");
+  hoverBox.textContent = "ماوس روی من است!";
+});
+
+hoverBox.addEventListener("mouseout", function () {
+  hoverBox.classList.remove("active");
+  hoverBox.textContent = "ماوس را روی من ببر";
+});</code></pre>
+
+<div class="result">
+<div class="demo-box" id="hover-box">ماوس را روی من ببر</div>
+</div>
+
+<p><code>mouseover</code> وقتی نشانگر وارد محدودهٔ جعبه می‌شود اجرا می‌شود و <code>mouseout</code> وقتی از آن بیرون می‌رود. <code>classList.add</code> کلاس را اضافه می‌کند و <code>classList.remove</code> همان کلاس را برمی‌دارد. هم‌زمان متن جعبه هم عوض می‌شود تا وضعیت برای کسی که رنگ را نمی‌بیند هم روشن باشد.</p>
+
+<h3>مثال ۴: keydown — کدام کلید؟</h3>
+
+<pre class="code"><code>const keyInput = document.getElementById("key-input");
+const keyText = document.getElementById("key-text");
+
+keyInput.addEventListener("keydown", function (event) {
+  keyText.textContent = "کلید فشرده شده: " + event.key;
+});</code></pre>
+
+<div class="result">
+<label for="key-input">کادر آزمایش:</label>
+<input type="text" id="key-input" placeholder="اینجا کلیدی بزن">
+<p id="key-text" aria-live="polite">...</p>
+</div>
+
+<p>تابع شنونده می‌تواند یک پارامتر بگیرد که معمولاً <code>event</code> نامیده می‌شود. این پارامتر شیئی است که مرورگر دربارهٔ همان اتفاق پر می‌کند. <code>event.key</code> نام کلیدی را برمی‌گرداند که فشرده شده، مثل <code>Enter</code> یا <code>a</code>. رویداد <code>keydown</code> لحظهٔ فشردن کلید را می‌گیرد، نه لحظهٔ رها کردن آن را.</p>
+
+<p class="tip">ماوس روی گوشی و تبلت وجود ندارد؛ پس کار مهم را فقط به <code>mouseover</code> وابسته نکنید و همیشه راه دیگری (مثل <code>click</code>) هم بگذارید.</p>
+
+<p class="tip">تابعی که به رویداد می‌دهیم یک ورودی به اسم <code>event</code> (یا <code>e</code>) می‌گیرد که اطلاعات رویداد داخلش است؛ مثلاً <code>event.key</code> اسم کلید و <code>event.target</code> عنصری که رویداد روی آن رخ داده.</p>
+
+<p class="mistake"><strong>اشتباه رایج:</strong> نوشتن <code>btn.addEventListener("click", myFunction())</code> با پرانتز. این‌طوری تابع همان لحظه اجرا می‌شود! درستش بدون پرانتز است: <code>btn.addEventListener("click", myFunction)</code>.</p>
+
+<p class="mistake"><strong>اشتباه رایج:</strong> نوشتن <code>"onclick"</code> به جای <code>"click"</code> در addEventListener. اسم رویداد بدون <code>on</code> است.</p>
+
+<p class="exercise"><strong>تمرین:</strong> (۱) شمارنده مثال ۱ را طوری تغییر دهید که یک دکمه «−۱» هم داشته باشد. (۲) یک دکمه «حالت شب» بسازید که با هر کلیک کلاس <code>dark</code> را روی <code>body</code> خاموش و روشن کند (<code>document.body.classList.toggle("dark")</code>) و در CSS برای <code>.dark</code> پس‌زمینه تیره بنویسید.</p>
+    </section>
+
+    <nav class="page-nav" aria-label="ناوبری درس پایین">
+      <a href="09-objects.html">→ قبلی: Objects</a>
+      <a href="../index.html">فهرست درس‌ها</a>
+      <a href="11-strings.html">بعدی: Strings ←</a>
+    </nav>
+
+  </div>
+
+  <footer class="page-footer">
+    آموزش JavaScript سطح پایه
+  </footer>
+
+</body>
+
+</html>

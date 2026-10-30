@@ -1,0 +1,44 @@
+/* ۷) Backgrounds
+   مسیر url نسبت به همین فایل CSS است (داخل css/demos/).
+*/
+
+.offer {
+  background-color: #ffe0b2;
+  padding: 16px;
+}
+
+.hero {
+  background-color: #1a3a5c;
+  background-image: url("../../images/bg.jpg");
+  background-size: cover;
+  background-position: center;
+  min-height: 200px;
+  padding: 24px;
+  color: white;
+}
+
+.hero-dark {
+  background-color: #1a3a5c;
+  background-image:
+    linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    url("../../images/bg.jpg");
+  background-size: cover;
+  background-position: center;
+  min-height: 200px;
+  padding: 24px;
+  color: white;
+}
+
+.hero h3,
+.hero-dark h3 {
+  margin-top: 0;
+}
+
+.strip {
+  background-color: #eef2ff;
+  background-image: url("../../images/bg.jpg");
+  background-size: 90px;
+  background-repeat: repeat-x;
+  background-position: top;
+  padding: 95px 16px 10px;
+}

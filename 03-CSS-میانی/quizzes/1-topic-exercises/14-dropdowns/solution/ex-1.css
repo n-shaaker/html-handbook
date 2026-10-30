@@ -1,0 +1,49 @@
+body {
+  font-family: Tahoma, Arial, sans-serif;
+  line-height: 1.8;
+  padding: 24px;
+}
+
+.dropdown {
+  position: relative; /* مرجع فهرست */
+  display: inline-block;
+}
+
+.dropdown-btn {
+  padding: 10px 18px;
+  font-family: inherit;
+  font-size: 15px;
+  color: white;
+  background-color: #1a3a5c;
+  border: none;
+  cursor: pointer;
+}
+
+.dropdown-list {
+  display: none;
+  position: absolute;
+  top: 100%;
+  right: 0;
+  min-width: 160px;
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+  background-color: white;
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.2);
+}
+
+/* hover روی پدر، نه روی دکمه */
+.dropdown:hover .dropdown-list {
+  display: block;
+}
+
+.dropdown-list a {
+  display: block;
+  padding: 8px 14px;
+  color: #333;
+  text-decoration: none;
+}
+
+.dropdown-list a:hover {
+  background-color: #e7eef7;
+}

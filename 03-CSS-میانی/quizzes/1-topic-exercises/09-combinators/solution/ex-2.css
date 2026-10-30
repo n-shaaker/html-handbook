@@ -1,0 +1,23 @@
+body {
+  font-family: Tahoma, Arial, sans-serif;
+  line-height: 1.9;
+  padding: 24px;
+}
+
+main {
+  max-width: 650px;
+  margin: 0 auto;
+}
+
+/* فقط اولین پاراگراف بلافاصله بعد از هر h2 */
+h2 + p {
+  font-weight: bold;
+  padding: 8px 12px;
+  background-color: #fff4d6;
+  border-radius: 6px;
+}
+
+/* تیتری که بعد از یک پاراگراف آمده: فاصله بیشتر از بخش قبلی */
+p + h2 {
+  margin-top: 40px;
+}

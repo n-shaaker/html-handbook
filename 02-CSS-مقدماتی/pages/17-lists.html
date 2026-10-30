@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>۱۷) فهرست‌ها (Lists) | آموزش CSS از صفر</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/demos/lists.css">
+</head>
+
+<body>
+
+  <header class="page-header">
+    <h1>آموزش CSS از صفر</h1>
+    <p>۱۷) فهرست‌ها (Lists)</p>
+  </header>
+
+  <div class="container">
+
+    <nav class="page-nav" aria-label="ناوبری درس">
+      <a href="16-links.html">→ قبلی: Links</a>
+      <a href="../index.html">فهرست درس‌ها</a>
+      <a href="18-tables.html">بعدی: Tables ←</a>
+    </nav>
+
+    <section class="lesson" id="lists">
+      <h2>۱۷) فهرست‌ها (Lists)</h2>
+      <p>
+        فهرست در HTML دو نوع رایج دارد: <code>ul</code> برای موردهایی که ترتیبشان مهم نیست، و <code>ol</code> برای مرحله‌ها یا موردهایی که ترتیبشان معنی دارد.
+        مرورگر کنار هر آیتم یک علامت پیش‌فرض می‌گذارد: برای <code>ul</code> معمولاً دایره توپر و برای <code>ol</code> شماره.
+        ویژگی <code>list-style-type</code> فقط شکل همین علامت را عوض می‌کند و نوع فهرست را در HTML تغییر نمی‌دهد. اگر شماره فارسی می‌خواهید، فهرست باید <code>ol</code> بماند و مقدار <code>persian</code> بگیرد.
+      </p>
+      <pre class="code"><code>.l-square  { list-style-type: square; }
+.l-circle  { list-style-type: circle; }
+.l-persian { list-style-type: persian; }   /* شماره‌های فارسی: ۱، ۲، ۳ */</code></pre>
+      <div class="result">
+        <p><strong>خرید هفته (square):</strong></p>
+        <ul class="l-square">
+          <li>نان</li>
+          <li>شیر</li>
+        </ul>
+        <p><strong>ویژگی‌های محصول (circle):</strong></p>
+        <ul class="l-circle">
+          <li>ضدآب</li>
+          <li>دو سال گارانتی</li>
+        </ul>
+        <p><strong>مراحل دم کردن چای (persian):</strong></p>
+        <ol class="l-persian">
+          <li>کتری را آب کنید و بجوشانید.</li>
+          <li>قوری را با آب جوش گرم کنید.</li>
+          <li>چای را بریزید و ۵ دقیقه صبر کنید.</li>
+        </ol>
+      </div>
+
+      <table class="ref">
+        <thead>
+          <tr>
+            <th>برای</th>
+            <th>مقدارهای رایج</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>ul</code></td>
+            <td><code>disc</code> (پیش‌فرض، دایره توپر)، <code>circle</code>، <code>square</code>، <code>none</code></td>
+          </tr>
+          <tr>
+            <td><code>ol</code></td>
+            <td><code>decimal</code> (1، 2، 3)، <code>persian</code> (۱، ۲، ۳)، <code>arabic-indic</code> (١، ٢، ٣)، <code>upper-alpha</code>، <code>lower-roman</code></td>
+          </tr>
+          <tr>
+            <td><code>list-style-position</code></td>
+            <td><code>outside</code> (پیش‌فرض؛ علامت بیرون متن) یا <code>inside</code> (علامت جزو خط اول متن)</td>
+          </tr>
+        </tbody>
+      </table>
+      <p>
+        ویژگی خلاصه <code>list-style</code> نوع علامت، تصویر علامت و جایگاه آن را در یک خط جمع می‌کند. در <code>list-style: square inside;</code> شکل علامت مربع است و <code>inside</code> یعنی علامت جزو خط اول متن باشد، نه بیرون کادر متن.
+        مقدار پیش‌فرض جایگاه <code>outside</code> است: علامت بیرون متن می‌نشیند و اگر خط دوم طولانی شود، زیر متن تراز می‌ماند نه زیر علامت.
+        نوع فهرست را CSS عوض نمی‌کند. <code>ol</code> را وقتی بگذارید که ترتیب کار معنی دارد، مثل مراحل یک دستور، و <code>ul</code> را وقتی ترتیب مهم نیست.
+      </p>
+
+      <h3>رنگ دادن به علامت فهرست (<code>::marker</code>)</h3>
+      <p>
+        علامت گلوله یا شماره، جعبه جداگانه‌ای در HTML ندارد. شبه‌عنصر <code>::marker</code> همان علامت را هدف می‌گیرد تا بتوان رنگ یا ضخامتش را عوض کرد، بدون اینکه متن آیتم تغییر کند.
+        روی <code>::marker</code> فقط تعداد محدودی از ویژگی‌ها اثر دارند؛ رنگ و ضخامت قلم از جمله آن‌هاست و مثلاً <code>padding</code> روی خود علامت کار نمی‌کند.
+      </p>
+      <pre class="code"><code>.features li::marker {
+  color: #0b6e4f;
+  font-weight: bold;
+}</code></pre>
+      <div class="result">
+        <ul class="features">
+          <li>ارسال رایگان به سراسر کشور</li>
+          <li>۷ روز ضمانت بازگشت کالا</li>
+          <li>پشتیبانی تلفنی</li>
+        </ul>
+      </div>
+      <p><code>::marker</code> یک «شبه‌عنصر» است؛ یعنی بخشی از عنصر (اینجا علامت فهرست) که جداگانه در HTML نوشته نشده، ولی می‌شود به آن ظاهر داد.</p>
+
+      <h3>حذف علامت فهرست: ساخت منو</h3>
+      <p>منوهای سایت در HTML معمولاً یک فهرست از لینک‌ها هستند. برای ظاهر منو، علامت و فاصله پیش‌فرض فهرست را برمی‌داریم:</p>
+      <pre class="code"><code>.menu {
+  list-style-type: none;
+  padding: 0;
+}
+
+.menu li {
+  background-color: #e8f4fd;
+  border-right: 4px solid #1a5fb4;
+  margin-bottom: 6px;
+}
+
+.menu a {
+  display: block;            /* کل ردیف قابل کلیک شود */
+  padding: 6px 10px;
+  color: #1a3a5c;
+  text-decoration: none;
+}
+
+.menu a:hover,
+.menu a:focus-visible {
+  background-color: #d0e7fb;
+}</code></pre>
+      <div class="result">
+        <nav aria-label="منوی کناری نمونه">
+          <ul class="menu">
+            <li><a href="#lists">خانه</a></li>
+            <li><a href="#lists">درباره من</a></li>
+            <li><a href="#lists">تماس</a></li>
+          </ul>
+        </nav>
+      </div>
+
+      <p class="mistake">
+        <strong>اشتباه رایج:</strong>
+        بعد از <code>list-style-type: none</code>، فاصله سمت راست فهرست باقی می‌ماند. دلیلش این است که مرورگر به طور
+        پیش‌فرض به فهرست <code>padding-inline-start: 40px</code> می‌دهد (در صفحه فارسی سمت راست، در انگلیسی سمت چپ)
+        تا جا برای علامت باشد. باید <code>padding: 0</code> هم بنویسید. فهرست‌ها margin بالا و پایین هم دارند که در صورت
+        نیاز با <code>margin: 0</code> برداشته می‌شود.
+        <br>
+        نوشتن <code>padding-left: 0</code> در صفحه فارسی هم اشتباه رایجی است؛ فاصله پیش‌فرض سمت راست است، نه چپ.
+      </p>
+
+      <p class="exercise">
+        <strong>تمرین:</strong> فهرست مهارت‌های صفحه معرفی‌تان را با <code>list-style-type: square</code> و علامت‌های
+        رنگی (<code>::marker</code>) بنویسید، و مراحل یک کار (مثلاً «چطور ثبت‌نام کنیم») را با <code>ol</code> و
+        شماره‌های فارسی.
+      </p>
+    </section>
+
+
+    <nav class="page-nav" aria-label="ناوبری درس پایین">
+      <a href="16-links.html">→ قبلی: Links</a>
+      <a href="../index.html">فهرست درس‌ها</a>
+      <a href="18-tables.html">بعدی: Tables ←</a>
+    </nav>
+
+  </div>
+
+  <footer class="page-footer">
+    آموزش CSS از صفر
+  </footer>
+
+</body>
+
+</html>

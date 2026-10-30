@@ -1,0 +1,51 @@
+/* ۸) Borders */
+
+.bdemo {
+  border-width: 3px;
+  border-color: #1a3a5c;
+  padding: 8px;
+  margin: 8px 0;
+}
+
+.b-solid  { border-style: solid; }
+.b-dashed { border-style: dashed; }
+.b-dotted { border-style: dotted; }
+.b-double { border-style: double; border-width: 5px; }
+.b-mixed  { border-style: solid dashed; }
+
+/* کارت محصول */
+.card {
+  border: 1px solid #cfd8e3;
+  border-radius: 12px;
+  padding: 16px;
+  max-width: 280px;
+  background-color: white;
+}
+
+.card h3 {
+  margin-top: 0;
+}
+
+.card .price {
+  border-top: 1px dashed #cfd8e3;
+  padding-top: 8px;
+  color: #0b6e4f;
+  font-weight: bold;
+  margin-bottom: 0;
+}
+
+/* یادداشت با حاشیه در لبه شروع متن */
+.note {
+  border-inline-start: 6px solid #e67700;
+  background-color: #fff4e6;
+  padding: 10px;
+}
+
+/* عکس پروفایل دایره‌ای */
+.avatar {
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+  border: 4px solid #0b6e4f;
+  border-radius: 50%;
+}

@@ -1,0 +1,58 @@
+/* ۷) تراز آیتم‌ها داخل خانه */
+
+/* شبکه مشترک: سه ستون و ردیف‌های ۹۰ پیکسلی */
+.demo-items .grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-auto-rows: 90px;
+  gap: 8px;
+  background-color: #f1f3f5;
+  border: 1px dashed #868e96;
+  margin-bottom: 10px;
+}
+
+/* جعبه‌های رنگی شماره‌دار */
+.demo-items .box {
+  color: white;
+  font-weight: bold;
+  text-align: center;
+  padding: 8px 14px;
+  border-radius: 6px;
+}
+
+.demo-items .b1 { background-color: #1c7ed6; }
+.demo-items .b2 { background-color: #2f9e44; }
+.demo-items .b3 { background-color: #e8590c; }
+.demo-items .b4 { background-color: #ae3ec9; }
+.demo-items .b5 { background-color: #e03131; }
+.demo-items .b6 { background-color: #0c8599; }
+
+/* مثال ۲: تراز افقی */
+.demo-items .justify-start  { justify-items: start; }
+.demo-items .justify-center { justify-items: center; }
+.demo-items .justify-end    { justify-items: end; }
+
+/* مثال ۳: تراز عمودی */
+.demo-items .align-start  { align-items: start; }
+.demo-items .align-center { align-items: center; }
+.demo-items .align-end    { align-items: end; }
+
+/* مثال ۴ */
+.demo-items .place-center {
+  place-items: center;
+}
+
+/* مثال ۵ */
+.demo-items .mixed {
+  place-items: start;
+}
+
+.demo-items .self-center {
+  justify-self: center;
+  align-self: center;
+}
+
+.demo-items .self-end {
+  justify-self: end;
+  align-self: end;
+}

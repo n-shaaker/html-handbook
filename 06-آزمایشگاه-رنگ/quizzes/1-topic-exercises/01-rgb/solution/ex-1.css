@@ -1,0 +1,42 @@
+/* سه رنگ اصلی نور */
+.red {
+  background-color: rgb(255, 0, 0);
+  color: rgb(255, 255, 255);
+}
+
+.green {
+  background-color: rgb(0, 255, 0);
+}
+
+.blue {
+  background-color: rgb(0, 0, 255);
+  color: rgb(255, 255, 255);
+}
+
+/* ترکیب دوتایی رنگ‌های اصلی */
+.yellow {
+  background-color: rgb(255, 255, 0);
+}
+
+.cyan {
+  background-color: rgb(0, 255, 255);
+}
+
+.magenta {
+  background-color: rgb(255, 0, 255);
+}
+
+/* هر سه عدد برابر = خاکستری */
+.black {
+  background-color: rgb(0, 0, 0);
+  color: rgb(255, 255, 255);
+}
+
+.gray {
+  background-color: rgb(128, 128, 128);
+  color: rgb(255, 255, 255);
+}
+
+.white {
+  background-color: rgb(255, 255, 255);
+}

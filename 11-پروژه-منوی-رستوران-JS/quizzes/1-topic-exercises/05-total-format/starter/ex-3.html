@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>تمرین ۳ — فاکتور با تخفیف و مالیات | منوی نارنج</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="ex-3.js" defer></script>
+  </head>
+  <body>
+    <header class="site-header">
+      <p class="logo">رستوران سنتی <strong>نارنج</strong></p>
+    </header>
+
+    <main class="container">
+      <h1>تمرین ۳ — فاکتور با تخفیف و مالیات</h1>
+
+      <section class="panel">
+        <h2>فاکتور سفارش بیرون‌بر</h2>
+        <ul class="cart-list" id="items"></ul>
+
+        <form id="discount-form">
+          <label for="code">کد تخفیف:</label>
+          <input type="text" id="code" dir="ltr" />
+          <button type="submit" class="btn">اعمال</button>
+        </form>
+        <p class="form-message" id="code-message" aria-live="polite"></p>
+
+        <table class="price-table">
+          <tbody>
+            <tr><th scope="row">جمع اقلام</th><td id="subtotal"></td></tr>
+            <tr><th scope="row">تخفیف</th><td id="discount"></td></tr>
+            <tr><th scope="row">مالیات (۱۰٪)</th><td id="tax"></td></tr>
+            <tr><th scope="row">هزینه ارسال</th><td id="delivery"></td></tr>
+            <tr><th scope="row">مبلغ قابل پرداخت</th><td class="cart-total" id="total"></td></tr>
+          </tbody>
+        </table>
+      </section>
+
+    </main>
+  </body>
+</html>

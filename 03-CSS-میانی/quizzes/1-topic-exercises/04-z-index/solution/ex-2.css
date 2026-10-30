@@ -1,0 +1,38 @@
+body {
+  font-family: Tahoma, Arial, sans-serif;
+  line-height: 1.8;
+  margin: 0;
+}
+
+.banner {
+  position: relative;
+}
+
+/* لایه ۱: عکس (ارتفاع بنر را هم همین عکس می‌سازد) */
+.banner img {
+  display: block;
+  width: 100%;
+  height: auto;
+  position: relative;
+  z-index: 1;
+}
+
+/* لایه ۲: لایه تیره روی عکس */
+.shade {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 2;
+}
+
+/* لایه ۳: متن روی همه */
+.banner-text {
+  position: absolute;
+  top: 20%;
+  right: 40px;
+  color: white;
+  z-index: 3;
+}

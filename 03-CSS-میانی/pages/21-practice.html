@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>۲۱) تمرین جمع‌بندی | آموزش CSS سطح میانی</title>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+
+  <header class="page-header">
+    <h1>آموزش CSS — سطح میانی</h1>
+    <p>۲۱) تمرین جمع‌بندی</p>
+  </header>
+
+  <div class="container">
+
+    <nav class="page-nav" aria-label="ناوبری درس">
+      <a href="20-layout.html">→ قبلی: Website Layout</a>
+      <a href="../index.html">فهرست درس‌ها</a>
+      <span aria-hidden="true"></span>
+    </nav>
+
+    <section class="lesson" id="practice">
+      <h2>۲۱) تمرین جمع‌بندی: ظاهر دادن به صفحه معرفی شخصی</h2>
+      <p>
+        در این تمرین، صفحه معرفی جلسه‌های HTML را با CSS خارجی کامل می‌کنید. بخش اول ظاهر پایه را می‌سازد: فونت، رنگ، تصویر، لینک و جدول.
+        بخش دوم رفتارهای این دوره را به همان صفحه اضافه می‌کند: منوی چسبان، زیرمنو، چیدمان دو ستونه، فرم و اندازه واکنش‌گرا.
+        هر مرحله را جدا در مرورگر ببینید و در پایان، صفحه را فقط با کلید Tab طی کنید تا حلقه فوکوس هیچ لینک و دکمه‌ای پنهان نماند.
+      </p>
+
+      <h3>بخش اول: مباحث دوره مقدماتی</h3>
+      <ol>
+        <li>یک پوشه <code>css</code> بسازید و فایل‌های CSS را داخلش بگذارید (مثل همین پروژه).</li>
+        <li>با تگ <code>link</code> فایل‌ها را به صفحه HTML وصل کنید.</li>
+        <li>برای <code>body</code> فونت <code>Tahoma</code>، رنگ پس‌زمینه روشن و <code>line-height: 1.8</code> بگذارید.</li>
+        <li>به <code>h1</code> و <code>h2</code> رنگ و یک <code>border-bottom</code> بدهید.</li>
+        <li>عکس پروفایل را با <code>border-radius: 50%</code> دایره‌ای کنید.</li>
+        <li>لینک‌ها را بدون خط زیر و با رنگ متفاوت در حالت <code>:hover</code> بنویسید.</li>
+        <li>جدول پروژه‌ها را با <code>border-collapse</code> و ردیف‌های راه‌راه مرتب کنید.</li>
+      </ol>
+
+      <h3>بخش دوم: مباحث این دوره (درس‌های ۱ تا ۲۰)</h3>
+      <ol start="8">
+        <li>محتوای صفحه را با <code>max-width: 900px</code> و <code>margin: 0 auto</code> وسط صفحه بیاورید.</li>
+        <li>یک <strong>منوی افقی</strong> داخل <code>nav</code> بالای صفحه بسازید (<code>ul</code> + <code>display: flex</code>)، لینک فعال را با کلاس <code>active</code> مشخص کنید و منو را با <code>position: sticky</code> بالای صفحه نگه دارید.</li>
+        <li>یکی از آیتم‌های منو را <strong>کشویی</strong> کنید (مثلاً «نمونه‌کارها ▾») و مطمئن شوید با <code>:focus-within</code> از کیبورد هم باز می‌شود.</li>
+        <li>بخش «مهارت‌ها» را با <strong>برچسب‌های inline-block</strong> و یک <strong>نوار پیشرفت درصدی</strong> بسازید.</li>
+        <li>چیدمان دو ستونه بسازید: محتوا ۷۰٪ و ستون کناری ۳۰٪ (با <code>display: flex</code>).</li>
+        <li>روی عکس پروفایل با <code>position: absolute</code> یک نشان کوچک «آنلاین» بگذارید.</li>
+        <li>یک فرم «تماس با من» با <code>label</code> برای هر کادر، کادرهای تمام‌عرض، حالت <code>:focus</code> واضح و دکمه رنگی بسازید.</li>
+        <li>تیتر اصلی را با <code>clamp()</code> واکنش‌گرا کنید.</li>
+        <li>با <code>::after</code> یک خط تزئینی زیر تیترهای <code>h2</code> بکشید.</li>
+        <li>یک دکمه «بالای صفحه» با <code>position: fixed</code> اضافه کنید.</li>
+        <li>در پایان، کل صفحه را فقط با کلید Tab پیمایش کنید: همه لینک‌ها و دکمه‌ها باید حلقه فوکوس واضح داشته باشند.</li>
+      </ol>
+
+      <h3>یک شروع نمونه برای فایل CSS</h3>
+      <pre class="code"><code>body {
+  font-family: Tahoma, Arial, sans-serif;
+  background-color: #f7f9fc;
+  color: #222;
+  line-height: 1.8;
+  margin: 0;
+}
+
+.wrapper {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 16px;
+}
+
+/* منو */
+.menu {
+  display: flex;
+  flex-wrap: wrap;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  background-color: #1a3a5c;
+}
+
+.site-nav {
+  position: sticky;   /* منو هنگام اسکرول بالای صفحه بماند */
+  top: 0;
+  z-index: 100;
+}
+
+.menu a {
+  display: block;
+  color: white;
+  padding: 12px 16px;
+  text-decoration: none;
+}
+
+.menu a:hover,
+.menu a:focus-visible,
+.menu a.active { background-color: #0b6e4f; }
+
+/* تیتر */
+h1 { font-size: clamp(24px, 5vw, 44px); }
+
+h2::after {
+  content: "";
+  display: block;
+  width: 50px;
+  height: 3px;
+  background-color: #0b6e4f;
+  margin-top: 6px;
+}
+
+/* دو ستون */
+.row   { display: flex; gap: 20px; }
+main   { flex: 7; }   /* حدود ۷۰٪ */
+aside  { flex: 3; }   /* حدود ۳۰٪ */
+
+/* عکس پروفایل با نشان آنلاین */
+.avatar-box { position: relative; display: inline-block; }
+
+.avatar-box img {
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.online {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  width: 22px;
+  height: 22px;
+  background-color: #2b8a3e;
+  border: 3px solid white;
+  border-radius: 50%;
+}
+
+/* موبایل: ستون‌ها زیر هم */
+@media (max-width: 600px) {
+  .row { flex-direction: column; }
+}</code></pre>
+
+      <p class="tip">
+        برای مرور مباحث «اولویت قوانین (Specificity)» و «<code>!important</code>» به مجموعه
+        <a href="../../04-CSS-آبشاری/index.html">آبشاری بودن CSS</a> سر بزنید.
+      </p>
+    </section>
+
+    <nav class="page-nav" aria-label="ناوبری درس پایین">
+      <a href="20-layout.html">→ قبلی: Website Layout</a>
+      <a href="../index.html">فهرست درس‌ها</a>
+      <span aria-hidden="true"></span>
+    </nav>
+
+  </div>
+
+  <footer class="page-footer">
+    آموزش CSS سطح میانی
+  </footer>
+
+</body>
+
+</html>

@@ -1,0 +1,39 @@
+body {
+  font-family: Tahoma, Arial, sans-serif;
+  line-height: 1.9;
+  margin: 0;
+}
+
+.container {
+  max-width: 650px;
+  margin: 0 auto;
+  padding: 24px 16px;
+}
+
+/* خط کوتاه رنگی زیر هر تیتر */
+h2::after {
+  content: "";
+  display: block;
+  width: 60px;
+  height: 4px;
+  margin-top: 6px;
+  background-color: #f0a500;
+}
+
+blockquote {
+  position: relative;
+  margin: 0;
+  padding: 24px 24px 8px;
+  background-color: #f7f9fc;
+  border-radius: 8px;
+}
+
+/* گیومه درشت کم‌رنگ در گوشه */
+blockquote::before {
+  content: "”";
+  position: absolute;
+  top: -20px;
+  right: 10px;
+  font-size: 80px;
+  color: #d0d7e0;
+}

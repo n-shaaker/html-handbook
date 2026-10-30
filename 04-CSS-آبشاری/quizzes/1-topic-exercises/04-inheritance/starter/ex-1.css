@@ -1,0 +1,13 @@
+.parent {
+  color: #1a3a5c;
+  font-family: Georgia, "Times New Roman", serif;
+  line-height: 2;
+  text-align: center;
+  border: 2px solid #1a3a5c;
+  padding: 16px;
+  background-color: #e7f5ff;
+}
+
+.box {
+  background-color: white;
+}

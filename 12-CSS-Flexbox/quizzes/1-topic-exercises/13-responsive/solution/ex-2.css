@@ -1,0 +1,40 @@
+/* تمرین ۲ — ردیف در دسکتاپ، ستون در گوشی (پاسخ) */
+
+body {
+  font-family: Tahoma, sans-serif;
+  margin: 20px;
+  background-color: #f8f9fa;
+  color: #212529;
+}
+
+/* flex-start تا عکس کشیده نشود */
+.about {
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+  background-color: white;
+  padding: 15px;
+}
+
+.photo {
+  flex: 0 0 200px;
+  width: 200px;
+  border-radius: 8px;
+}
+
+.text {
+  flex: 1;
+}
+
+/* گوشی: زیر هم */
+@media (max-width: 600px) {
+  .about {
+    flex-direction: column;
+  }
+
+  /* در حالت ستونی basis روی ارتفاع اثر می‌گذارد، پس auto می‌کنیم */
+  .photo {
+    flex-basis: auto;
+    width: 100%;
+  }
+}

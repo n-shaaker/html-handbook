@@ -1,0 +1,201 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>۱۰) فهرست‌ها | جزوه HTML</title>
+    <link rel="stylesheet" href="../css/style.css" />
+  </head>
+
+  <body>
+    <header class="page-header">
+      <h1>جزوه HTML مقدماتی</h1>
+      <p>۱۰) فهرست‌ها</p>
+    </header>
+
+    <div class="container">
+      <nav class="page-nav">
+        <a href="09-images.html">→ درس قبل</a>
+        <a href="../index.html">فهرست مطالب</a>
+        <a href="11-tables.html">درس بعد ←</a>
+      </nav>
+
+      <section class="lesson">
+        <h2>۱۰) فهرست‌ها — عناصر <code>ul</code>، <code>ol</code> و <code>li</code></h2>
+        <p>
+          فهرست چند مورد هم‌موضوع را زیر هم می‌چیند. سه شکل رایج دارد: فهرست بدون ترتیب (<code>ul</code>)، فهرست شماره‌دار (<code>ol</code>) و فهرست تعریف (<code>dl</code>).
+          هر مورد فهرست <code>ul</code> و <code>ol</code> باید داخل عنصر <code>li</code> باشد. متن را مستقیم داخل <code>ul</code> یا <code>ol</code> ننویسید.
+        </p>
+
+        <div class="tag-card">
+          <h4>&lt;ul&gt; + &lt;li&gt;</h4>
+          <p>
+            <strong>تعریف:</strong>
+            فهرست بدون ترتیب (Unordered List) وقتی به‌کار می‌رود که ترتیب موردها مهم نباشد.
+            منوی سایت، ویژگی‌های یک محصول و نکته‌های هم‌سطح نمونه‌های مناسب آن هستند. مرورگر معمولاً کنار هر مورد یک نشانه می‌گذارد. شکل این نشانه با CSS و ویژگی <code>list-style-type</code> عوض می‌شود.
+          </p>
+          <pre class="code"><code>&lt;h3&gt;ویژگی‌های گوشی مدل X&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;صفحه‌نمایش ۶٫۵ اینچ&lt;/li&gt;
+  &lt;li&gt;حافظه داخلی ۱۲۸ گیگابایت&lt;/li&gt;
+  &lt;li&gt;باتری ۵۰۰۰ میلی‌آمپر ساعت&lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+          <div class="result">
+            <h3>ویژگی‌های گوشی مدل X</h3>
+            <ul>
+              <li>صفحه‌نمایش ۶٫۵ اینچ</li>
+              <li>حافظه داخلی ۱۲۸ گیگابایت</li>
+              <li>باتری ۵۰۰۰ میلی‌آمپر ساعت</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="tag-card">
+          <h4>&lt;ol&gt; + &lt;li&gt;</h4>
+          <p>
+            <strong>تعریف:</strong>
+            فهرست مرتب (Ordered List) وقتی به‌کار می‌رود که ترتیب مهم باشد، مانند مراحل انجام کار، دستور پخت یا رتبه‌بندی.
+            مرورگر به‌طور پیش‌فرض موردها را با عدد نشان می‌دهد. نوع شماره، عدد شروع و شمارش معکوس را می‌توان با ویژگی تغییر داد.
+          </p>
+          <pre class="code"><code>&lt;h3&gt;مراحل ثبت سفارش&lt;/h3&gt;
+&lt;ol&gt;
+  &lt;li&gt;افزودن کالا به سبد خرید&lt;/li&gt;
+  &lt;li&gt;وارد کردن نشانی ارسال&lt;/li&gt;
+  &lt;li&gt;پرداخت اینترنتی&lt;/li&gt;
+&lt;/ol&gt;</code></pre>
+          <div class="result">
+            <h3>مراحل ثبت سفارش</h3>
+            <ol>
+              <li>افزودن کالا به سبد خرید</li>
+              <li>وارد کردن نشانی ارسال</li>
+              <li>پرداخت اینترنتی</li>
+            </ol>
+          </div>
+        </div>
+
+        <div class="tag-card">
+          <h4>&lt;dl&gt;، &lt;dt&gt; و &lt;dd&gt;</h4>
+          <p>
+            <strong>تعریف:</strong>
+            فهرست تعریف برای جفت «اصطلاح و توضیح» است. <code>dl</code> کل فهرست را در بر می‌گیرد، <code>dt</code> اصطلاح است و <code>dd</code> توضیح آن.
+            برای واژه‌نامه، پرسش‌های متداول یا مشخصات «نام و مقدار» مناسب است. یک اصطلاح می‌تواند بیش از یک توضیح داشته باشد.
+          </p>
+          <pre class="code"><code>&lt;dl&gt;
+  &lt;dt&gt;HTML&lt;/dt&gt;
+  &lt;dd&gt;زبان ساختار صفحه وب&lt;/dd&gt;
+  &lt;dt&gt;مرورگر&lt;/dt&gt;
+  &lt;dd&gt;نرم‌افزاری که صفحه وب را نمایش می‌دهد&lt;/dd&gt;
+&lt;/dl&gt;</code></pre>
+          <div class="result">
+            <dl>
+              <dt>HTML</dt>
+              <dd>زبان ساختار صفحه وب</dd>
+              <dt>مرورگر</dt>
+              <dd>نرم‌افزاری که صفحه وب را نمایش می‌دهد</dd>
+            </dl>
+          </div>
+        </div>
+
+        <div class="tag-card">
+          <h4>ol: type / start / reversed</h4>
+          <p>
+            <strong>تعریف:</strong>
+            سه ویژگی روی <code>ol</code> نحوهٔ شماره‌گذاری را عوض می‌کنند.
+            <code>type</code> شکل شماره را تعیین می‌کند: <code>1</code> عدد، <code>A</code> و <code>a</code> حروف لاتین، <code>I</code> و <code>i</code> اعداد رومی.
+            <code>start</code> عدد شروع را عوض می‌کند، حتی اگر ظاهر حروف باشد.
+            <code>reversed</code> شمارش را معکوس می‌کند و مقدار جدا نمی‌گیرد؛ بودنش کافی است.
+          </p>
+          <pre class="code"><code>&lt;!-- گزینه‌های یک سؤال تستی --&gt;
+&lt;ol type="A"&gt;
+  &lt;li&gt;تهران&lt;/li&gt;
+  &lt;li&gt;اصفهان&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;!-- ادامه مراحل از صفحه قبل --&gt;
+&lt;ol start="5"&gt;
+  &lt;li&gt;تأیید سفارش&lt;/li&gt;
+  &lt;li&gt;دریافت کد رهگیری&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;!-- سه فیلم پرفروش هفته، از سوم تا اول --&gt;
+&lt;ol reversed&gt;
+  &lt;li&gt;فیلم سوم&lt;/li&gt;
+  &lt;li&gt;فیلم دوم&lt;/li&gt;
+  &lt;li&gt;فیلم اول&lt;/li&gt;
+&lt;/ol&gt;</code></pre>
+          <div class="result">
+            <ol type="A">
+              <li>تهران</li>
+              <li>اصفهان</li>
+            </ol>
+            <ol start="5">
+              <li>تأیید سفارش</li>
+              <li>دریافت کد رهگیری</li>
+            </ol>
+            <ol reversed>
+              <li>فیلم سوم</li>
+              <li>فیلم دوم</li>
+              <li>فیلم اول</li>
+            </ol>
+          </div>
+        </div>
+
+        <div class="tag-card">
+          <h4>فهرست تودرتو (Nested List)</h4>
+          <p>
+            <strong>تعریف:</strong>
+            فهرست تودرتو یعنی یک فهرست کامل را داخل یک <code>li</code> بگذارید تا زیرمجموعه بسازد.
+            منوهای چندسطحی سایت‌ها همین‌طور ساخته می‌شوند. فهرست داخلی باید پیش از <code>&lt;/li&gt;</code> بسته شود، یعنی هنوز داخل همان مورد باشد.
+          </p>
+          <pre class="code"><code>&lt;ul&gt;
+  &lt;li&gt;نوشیدنی‌ها
+    &lt;ul&gt;
+      &lt;li&gt;چای&lt;/li&gt;
+      &lt;li&gt;قهوه&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;شیرینی‌ها&lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+          <div class="result">
+            <ul>
+              <li>
+                نوشیدنی‌ها
+                <ul>
+                  <li>چای</li>
+                  <li>قهوه</li>
+                </ul>
+              </li>
+              <li>شیرینی‌ها</li>
+            </ul>
+          </div>
+        </div>
+
+        <p class="mistake">
+          <strong>خطای متداول:</strong>
+          گذاشتن <code>ul</code> داخلی بعد از بسته شدن <code>&lt;/li&gt;</code>.
+          فهرست فرعی باید پیش از <code>&lt;/li&gt;</code> و داخل همان مورد باشد. اگر بیرون از <code>li</code> بنشیند، ساختار فهرست نامعتبر می‌شود و مرورگر جای آن را حدس می‌زند.
+        </p>
+
+        <p class="tip">
+          <strong>نکته:</strong>
+          شکل نشانهٔ <code>ul</code>، مانند دایره، مربع یا بدون نشانه، با ویژگی CSS
+          <code>list-style-type</code> تغییر می‌کند. برای منوی افقی معمولاً
+          <code>list-style-type: none</code> می‌گذارند تا نشانه حذف شود و خود فهرست با CSS کنار هم چیده شود.
+        </p>
+
+        <p class="tip">
+          <strong>نکته:</strong>
+          هر مورد باید داخل عنصر <code>li</code> باشد. نوشتن متن مستقیم داخل <code>ul</code> یا <code>ol</code> درست نیست، چون مرورگر نمی‌داند آن متن کدام مورد فهرست است.
+        </p>
+      </section>
+
+      <nav class="page-nav">
+        <a href="09-images.html">→ درس قبل</a>
+        <a href="../index.html">فهرست مطالب</a>
+        <a href="11-tables.html">درس بعد ←</a>
+      </nav>
+    </div>
+
+    <footer class="page-footer">جزوه HTML مقدماتی</footer>
+  </body>
+</html>

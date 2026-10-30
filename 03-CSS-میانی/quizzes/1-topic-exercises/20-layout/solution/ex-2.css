@@ -1,0 +1,47 @@
+body {
+  font-family: Tahoma, Arial, sans-serif;
+  line-height: 1.9;
+  margin: 0;
+}
+
+.site-header {
+  padding: 12px 16px;
+  color: white;
+  background-color: #8b1e1e;
+}
+
+.site-header h1 {
+  margin: 0;
+}
+
+/* دو ستون کنار هم */
+.page {
+  display: flex;
+  gap: 24px;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 16px;
+}
+
+.news {
+  flex: 3;
+}
+
+.popular {
+  flex: 1;
+  padding: 12px;
+  background-color: #f3f3f3;
+  border-radius: 8px;
+}
+
+.popular h2 {
+  margin-top: 0;
+  font-size: 1.1rem;
+}
+
+/* در گوشی ستون کناری زیر خبر می‌رود */
+@media (max-width: 700px) {
+  .page {
+    flex-direction: column;
+  }
+}

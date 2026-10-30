@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>۱) آرایه‌ها (Arrays) | آموزش JavaScript سطح میانی</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <script src="../js/log.js" defer></script>
+  <script src="../js/demos/arrays.js" defer></script>
+</head>
+
+<body>
+
+  <header class="page-header" id="top">
+    <h1>آموزش JavaScript — سطح میانی</h1>
+    <p>۱) آرایه‌ها (Arrays)</p>
+  </header>
+
+  <div class="container">
+
+    <nav class="page-nav" aria-label="ناوبری درس">
+      <span></span>
+      <a href="../index.html">فهرست درس‌ها</a>
+      <a href="02-array-methods.html">بعدی: Array Methods ←</a>
+    </nav>
+
+    <section class="lesson" id="arrays">
+      <h2>۱) آرایه‌ها (Arrays)</h2>
+<p>آرایه یک <strong>فهرست مرتب</strong> از مقدارهاست که همه در یک متغیر نگه داشته می‌شوند. وقتی چند دادهٔ هم‌نوع دارید، مثل نام میوه‌ها یا نمرهٔ چند دانش‌آموز، ساختن متغیر جدا برای هر کدام هم نام‌گذاری را شلوغ می‌کند و هم پیمایش را سخت. در آرایه هر مقدار یک شماره دارد و شماره از صفر شروع می‌شود. ترتیب عضو‌ها بخشی از معنی داده است: عضو اول با عضو دوم یکی نیست.</p>
+
+<pre class="code"><code>const fruits = ["سیب", "موز", "پرتقال"];
+
+console.log(fruits);
+console.log(fruits[0]);          // اولین عضو (شماره صفر)
+console.log(fruits.length);      // تعداد عضوها
+console.log(fruits[fruits.length - 1]);   // آخرین عضو
+console.log(fruits.at(-1));               // آخرین عضو (روش جدیدتر و کوتاه‌تر)</code></pre>
+
+<p class="tip">شماره‌گذاری (index) آرایه از <strong>صفر</strong> شروع می‌شود؛ پس شماره آخرین عضو همیشه <code>length - 1</code> است.</p>
+
+<div class="result">
+<pre class="console" id="out-1"></pre>
+</div>
+
+<p>کروشه‌ها آرایه را می‌سازند و عضو‌ها با کاما جدا می‌شوند. <code>fruits[0]</code> اولین عضو است، نه عضوی که انسان معمولاً «شمارهٔ ۱» می‌نامد. <code>length</code> تعداد عضو‌ها را می‌دهد و ویژگی است، نه متد. آخرین عضو را هم می‌توان با <code>length - 1</code> خواند و هم با <code>at(-1)</code> که از انتها می‌شمارد. شمارهٔ منفی داخل کروشه، برخلاف <code>at</code>، از انتها حساب نمی‌شود و <code>undefined</code> برمی‌گرداند.</p>
+
+<h3>تغییر و اضافه کردن</h3>
+
+<pre class="code"><code>fruits[1] = "انگور";            // تغییر عضو شماره 1
+fruits[fruits.length] = "کیوی"; // اضافه به آخر (روش ساده‌ترش push است)
+console.log(fruits);</code></pre>
+
+<div class="result">
+<pre class="console" id="out-2"></pre>
+</div>
+
+<p>نوشتن مقدار تازه در یک شمارهٔ موجود، همان عضو را عوض می‌کند. اگر شماره برابر <code>length</code> باشد، عضو جدیدی به انتها اضافه می‌شود، چون آن خانه هنوز خالی است. خود متغیر همچنان با <code>const</code> به همان آرایه اشاره می‌کند؛ آنچه عوض شده محتوای داخل فهرست است.</p>
+
+<p class="tip"><code>fruits</code> با <code>const</code> تعریف شده ولی باز هم توانستیم عضوهایش را عوض کنیم. <code>const</code> فقط جلوی <strong>انتساب دوباره</strong> (مثل <code>fruits = []</code>) را می‌گیرد، نه تغییر محتوای آرایه.</p>
+
+<h3>آرایه می‌تواند هر نوعی داشته باشد</h3>
+
+<pre class="code"><code>const mixed = [10, "متن", true, null, { name: "علی" }, [1, 2]];
+console.log(mixed.length);
+console.log(mixed[4].name);
+console.log(mixed[5][1]);     // آرایه داخل آرایه</code></pre>
+
+<div class="result">
+<pre class="console" id="out-3"></pre>
+</div>
+
+<p>عضو آرایه می‌تواند عدد، متن، بولین، <code>null</code>، شیء یا حتی آرایهٔ دیگر باشد. <code>mixed[4]</code> شیء است، پس <code>.name</code> ویژگی آن شیء را می‌خواند. <code>mixed[5]</code> خودش آرایه است و <code>[1]</code> عضو دوم همان آرایهٔ داخلی را می‌دهد. آرایهٔ تو در تو وقتی به کار می‌آید که یک عضو، خودش چند مقدار مرتب داشته باشد.</p>
+
+<h3>پیمایش با for و for...of</h3>
+
+<pre class="code"><code>const colors = ["قرمز", "سبز", "آبی"];
+
+for (let i = 0; i &lt; colors.length; i++) {
+  console.log(i + ": " + colors[i]);
+}
+
+for (const color of colors) {
+  console.log(color);
+}</code></pre>
+
+<div class="result">
+<pre class="console" id="out-4"></pre>
+</div>
+
+<p>حلقهٔ <code>for</code> با شماره کار می‌کند و هم شاخص و هم مقدار را در اختیار شما می‌گذارد. شرط <code>i &lt; colors.length</code> باعث می‌شود آخرین عضو خوانده شود و یک خانه بعد از پایان آرایه خوانده نشود. <code>for...of</code> شماره نمی‌سازد و در هر دور خود مقدار را در متغیر می‌ریزد. اگر فقط مقدار لازم است، شکل دوم خواناتر است؛ اگر باید عضو را عوض کنید یا شماره را نشان دهید، به شاخص نیاز دارید.</p>
+
+<h3>تشخیص آرایه</h3>
+
+<pre class="code"><code>console.log(typeof colors);           // object
+console.log(Array.isArray(colors));   // true</code></pre>
+
+<div class="result">
+<pre class="console" id="out-5"></pre>
+</div>
+
+<p><code>typeof</code> برای آرایه رشتهٔ <code>"object"</code> برمی‌گرداند، چون آرایه در این زبان نوعی شیء است. این خروجی آرایه را از شیء معمولی جدا نمی‌کند. <code>Array.isArray</code> مخصوص همین تشخیص است و فقط وقتی true می‌شود که مقدار واقعاً آرایه باشد.</p>
+
+<h3>مثال زنده: نمایش آرایه در صفحه</h3>
+
+<pre class="code"><code>const students = ["سارا", "علی", "مریم", "رضا"];
+const showBtn = document.getElementById("show-btn");
+const list = document.getElementById("student-list");
+
+showBtn.addEventListener("click", function () {
+  let html = "";
+  for (const s of students) {
+    html += `&lt;li&gt;&lt;span&gt;${s}&lt;/span&gt;&lt;/li&gt;`;
+  }
+  list.innerHTML = html;
+});</code></pre>
+
+<div class="result">
+<button type="button" class="btn" id="show-btn">نمایش دانشجوها</button>
+<ul class="js-list" id="student-list"></ul>
+</div>
+
+<p>آرایهٔ نام‌ها از قبل آماده است. با کلیک، یک رشتهٔ خالی ساخته می‌شود و <code>for...of</code> برای هر نام یک آیتم فهرست به آن اضافه می‌کند. بعد از پایان حلقه، کل HTML یک‌باره داخل <code>ul</code> قرار می‌گیرد. چون نام‌ها را خود برنامه نوشته، نه کاربر، استفاده از <code>innerHTML</code> در این مثال خطر تزریق ندارد.</p>
+
+<p class="tip"><code>innerHTML</code> متن را به عنوان HTML اجرا می‌کند. اینجا داده‌ها را خودمان نوشته‌ایم و مشکلی نیست؛ ولی متنی را که <strong>کاربر</strong> وارد کرده هرگز مستقیم داخل <code>innerHTML</code> نگذارید (خطر حمله XSS). روش امن با <code>textContent</code> و <code>createElement</code> را در درس‌های ۱۵ و ۱۷ می‌بینیم.</p>
+
+<p class="mistake"><strong>اشتباه رایج:</strong> خواندن عضوی که وجود ندارد: <code>fruits[10]</code> یا <code>fruits[-1]</code> خطا نمی‌دهد ولی <code>undefined</code> برمی‌گرداند. برای شماره منفی از <code>at(-1)</code> استفاده کنید.</p>
+
+<p class="exercise"><strong>تمرین:</strong> آرایه‌ای از ۵ شهر بسازید. اولین و آخرین شهر و تعداد شهرها را چاپ کنید، سپس با for...of همه را داخل یک <code>ul</code> نمایش دهید.</p>
+    </section>
+
+    <nav class="page-nav" aria-label="ناوبری درس پایین">
+      <span></span>
+      <a href="../index.html">فهرست درس‌ها</a>
+      <a href="02-array-methods.html">بعدی: Array Methods ←</a>
+    </nav>
+
+  </div>
+
+  <footer class="page-footer">
+    آموزش JavaScript سطح میانی
+  </footer>
+
+</body>
+
+</html>

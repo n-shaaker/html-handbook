@@ -1,0 +1,36 @@
+body {
+  font-family: Tahoma, Arial, sans-serif;
+  line-height: 1.8;
+  margin: 0;
+}
+
+main {
+  padding: 24px;
+}
+
+.site-footer {
+  background-color: #1a3a5c;
+  padding: 16px;
+  text-align: center;
+}
+
+.footer-links {
+  list-style-type: none; /* حذف نقطه‌های فهرست */
+  margin: 0;
+  padding: 0;
+}
+
+/* li ذاتاً block است؛ inline می‌کنیم تا کنار هم بیایند */
+.footer-links li {
+  display: inline;
+  margin: 0 12px;
+}
+
+.footer-links a {
+  color: white;
+  text-decoration: none;
+}
+
+.footer-links a:hover {
+  text-decoration: underline;
+}

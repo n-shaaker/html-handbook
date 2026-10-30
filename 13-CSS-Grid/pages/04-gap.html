@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>۴) فاصله بین خانه‌ها (gap) | آموزش CSS Grid</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/demos/gap.css">
+</head>
+
+<body>
+
+  <header class="page-header">
+    <h1>آموزش CSS Grid — چیدمان شبکه‌ای</h1>
+    <p>۴) فاصله بین خانه‌ها (gap)</p>
+  </header>
+
+  <div class="container">
+
+    <nav class="page-nav" aria-label="ناوبری درس">
+      <a href="03-repeat-minmax.html">→ قبلی: repeat و minmax</a>
+      <a href="../index.html">فهرست درس‌ها</a>
+      <a href="05-placement.html">بعدی: جای‌گذاری آیتم‌ها ←</a>
+    </nav>
+
+    <section class="lesson" id="gap">
+      <h2>۴) فاصله بین خانه‌ها (gap)</h2>
+      <p>
+        ویژگی <code>gap</code> فاصله <strong>بین</strong> ستون‌ها و ردیف‌ها را تعیین می‌کند. روی <strong>پدر</strong> نوشته می‌شود،
+        فقط بین آیتم‌ها فاصله می‌اندازد و هیچ‌وقت فاصله اضافه دور لبه‌های بیرونی شبکه نمی‌گذارد.
+        (اسم قدیمی‌اش <code>grid-gap</code> بود که هنوز در کدهای قدیمی می‌بینید.)
+      </p>
+
+      <h3>مثال ۱: بدون <code>gap</code> و با <code>gap</code></h3>
+      <pre class="code"><code>.no-gap   { display: grid; grid-template-columns: repeat(3, 1fr); }
+
+.with-gap {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}</code></pre>
+      <div class="result demo-gap">
+        <div class="grid no-gap">
+          <div class="box b1">۱</div>
+          <div class="box b2">۲</div>
+          <div class="box b3">۳</div>
+          <div class="box b4">۴</div>
+          <div class="box b5">۵</div>
+          <div class="box b6">۶</div>
+        </div>
+        <div class="grid with-gap">
+          <div class="box b1">۱</div>
+          <div class="box b2">۲</div>
+          <div class="box b3">۳</div>
+          <div class="box b4">۴</div>
+          <div class="box b5">۵</div>
+          <div class="box b6">۶</div>
+        </div>
+      </div>
+
+      <h3>مثال ۲: فاصله ردیف و ستون جدا — <code>gap: ردیف ستون</code></h3>
+      <p>اگر دو مقدار بنویسید، اولی فاصله بین <strong>ردیف‌ها</strong> و دومی بین <strong>ستون‌ها</strong> است:</p>
+      <pre class="code"><code>.two-values {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px 8px;   /* ردیف‌ها ۳۰، ستون‌ها ۸ */
+}</code></pre>
+      <div class="result demo-gap">
+        <div class="grid two-values">
+          <div class="box b1">۱</div>
+          <div class="box b2">۲</div>
+          <div class="box b3">۳</div>
+          <div class="box b4">۴</div>
+          <div class="box b5">۵</div>
+          <div class="box b6">۶</div>
+        </div>
+      </div>
+
+      <h3>مثال ۳: <code>row-gap</code> و <code>column-gap</code></h3>
+      <p>همان کار مثال ۲ با دو ویژگی جدا؛ وقتی فقط یکی را لازم دارید راحت‌تر است:</p>
+      <pre class="code"><code>.only-column {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  column-gap: 24px;   /* فقط بین ستون‌ها */
+  row-gap: 0;
+}</code></pre>
+      <div class="result demo-gap">
+        <div class="grid only-column">
+          <div class="box b1">۱</div>
+          <div class="box b2">۲</div>
+          <div class="box b3">۳</div>
+          <div class="box b4">۴</div>
+          <div class="box b5">۵</div>
+          <div class="box b6">۶</div>
+        </div>
+      </div>
+
+      <h3>مثال ۴: <code>margin</code> به‌جای <code>gap</code> (روش اشتباه)</h3>
+      <pre class="code"><code>.with-margin .box {
+  margin: 8px;   /* فاصله را با margin درست کرده‌ایم */
+}</code></pre>
+      <div class="result demo-gap">
+        <div class="grid with-margin">
+          <div class="box b1">۱</div>
+          <div class="box b2">۲</div>
+          <div class="box b3">۳</div>
+          <div class="box b4">۴</div>
+          <div class="box b5">۵</div>
+          <div class="box b6">۶</div>
+        </div>
+      </div>
+      <p class="mistake">
+        <strong>اشتباه رایج:</strong>
+        فاصله آیتم‌ها را با <code>margin</code> می‌سازیم. نتیجه: دور لبه‌های شبکه هم فاصله می‌افتد،
+        فاصله بین دو آیتم دو برابر لبه‌ها می‌شود (۸ + ۸) و هم‌ترازی با بقیه صفحه به‌هم می‌خورد.
+        در Grid همیشه از <code>gap</code> استفاده کنید.
+      </p>
+
+      <h3>مثال ۵: فاصله دور لبه‌ها با <code>padding</code> ظرف</h3>
+      <p>اگر دور شبکه هم فاصله می‌خواهید، آن را با <code>padding</code> روی خود ظرف بدهید، نه <code>margin</code> روی آیتم‌ها:</p>
+      <pre class="code"><code>.gallery {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;       /* بین عکس‌ها */
+  padding: 12px;   /* دور کل گالری */
+}</code></pre>
+      <div class="result demo-gap">
+        <div class="gallery">
+          <div class="box b1">۱. اصفهان</div>
+          <div class="box b2">۲. شیراز</div>
+          <div class="box b3">۳. یزد</div>
+          <div class="box b4">۴. کاشان</div>
+          <div class="box b5">۵. تبریز</div>
+          <div class="box b6">۶. رشت</div>
+        </div>
+      </div>
+
+      <table class="ref">
+        <tr>
+          <th>ویژگی</th>
+          <th>کار</th>
+        </tr>
+        <tr>
+          <td><code>gap: 16px</code></td>
+          <td>فاصله ۱۶ پیکسل بین ردیف‌ها و بین ستون‌ها</td>
+        </tr>
+        <tr>
+          <td><code>gap: 20px 10px</code></td>
+          <td>ردیف‌ها ۲۰، ستون‌ها ۱۰</td>
+        </tr>
+        <tr>
+          <td><code>row-gap</code></td>
+          <td>فقط فاصله بین ردیف‌ها</td>
+        </tr>
+        <tr>
+          <td><code>column-gap</code></td>
+          <td>فقط فاصله بین ستون‌ها</td>
+        </tr>
+      </table>
+
+      <p class="tip">
+        <code>gap</code> در Flexbox هم کار می‌کند؛ پس یک بار یاد گرفتنش برای هر دو کافی است.
+      </p>
+
+      <p class="exercise">
+        <strong>تمرین:</strong> یک «گالری عکس سفر» با ۸ عکس (یا جعبه رنگی) در ۴ ستون بسازید.
+        بین ردیف‌ها ۲۴ پیکسل و بین ستون‌ها ۱۲ پیکسل فاصله باشد و دور کل گالری ۱۶ پیکسل فاصله داخلی.
+        هیچ آیتمی نباید <code>margin</code> داشته باشد.
+      </p>
+    </section>
+
+    <nav class="page-nav" aria-label="ناوبری درس پایین">
+      <a href="03-repeat-minmax.html">→ قبلی: repeat و minmax</a>
+      <a href="../index.html">فهرست درس‌ها</a>
+      <a href="05-placement.html">بعدی: جای‌گذاری آیتم‌ها ←</a>
+    </nav>
+
+  </div>
+
+  <footer class="page-footer">
+    آموزش CSS Grid
+  </footer>
+
+</body>
+
+</html>

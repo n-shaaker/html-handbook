@@ -1,0 +1,20 @@
+.container {
+  max-width: 500px;
+  margin: 20px auto;
+  padding: 16px;
+  background-color: #f8f9fa;
+  border: 1px solid #dee2e6;
+}
+
+.notice {
+  width: 100%;
+  padding: 20px;
+  border: 2px solid #4dabf7;
+  background-color: #e7f5ff;
+}
+
+.email {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #adb5bd;
+}

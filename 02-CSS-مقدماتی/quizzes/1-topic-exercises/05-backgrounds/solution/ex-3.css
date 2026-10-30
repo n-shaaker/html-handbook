@@ -1,0 +1,17 @@
+.banner {
+  background-color: #1a3a5c;
+  background-image: url("../../../../images/bg.jpg");
+  background-size: cover;
+  background-position: center;
+  min-height: 180px;
+  padding: 24px;
+  margin-bottom: 16px;
+  color: white;
+}
+
+/* دو لایه: اول لایه تیره (رو)، بعد تصویر (زیر) */
+.banner-dark {
+  background-image:
+    linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    url("../../../../images/bg.jpg");
+}

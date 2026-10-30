@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>نمایش ساختار HTML</title>
+  </head>
+  <body>
+    <!-- Headings create a clear content hierarchy (h1 → h6) -->
+    <h1>عنوان اصلی</h1>
+    <p>
+      عنوان سطح یک (<code>h1</code>) موضوع کل صفحه است و در هر صفحه معمولاً یک
+      بار می‌آید. عنوان سطح دو (<code>h2</code>) یک بخش را از بخش بعدی جدا
+      می‌کند. سطح عنوان را بر اساس اهمیت موضوع انتخاب کنید، نه بر اساس اندازهٔ
+      فونتی که دوست دارید روی صفحه ببینید.
+    </p>
+    <h2>عنوان بخش</h2>
+
+    <!-- Paragraphs hold normal text content -->
+    <p>
+      HTML زبان ساختار صفحه است. با آن مشخص می‌کنید هر قطعه از محتوا چیست؛ مثلاً
+      عنوان، پاراگراف، تصویر یا پیوند. CSS بعداً ظاهر همین ساختار را کنترل می‌کند
+      و JavaScript به آن رفتار اضافه می‌کند، مثل واکنش به کلیک. در این صفحه فقط
+      لایهٔ ساختار را می‌بینید: مرورگر متن را به همان ترتیبی نشان می‌دهد که در
+      سند نوشته شده است.
+    </p>
+
+    <!-- Anchor links navigate to another page or section -->
+    <p>
+      پیوند با عنصر <code>a</code> ساخته می‌شود و مقصد آن در ویژگی
+      <code>href</code> نوشته می‌شود. پیوند زیر کاربر را به مستندات HTML در MDN
+      می‌برد. چون مقصد در زبانهٔ تازه باز می‌شود،
+      <code>rel="noopener noreferrer"</code> هم آمده است تا صفحهٔ مقصد به پنجرهٔ
+      اصلی دسترسی نداشته باشد.
+      <a href="https://developer.mozilla.org/en-US/docs/Web/HTML" target="_blank" rel="noopener noreferrer">
+        مستندات HTML در MDN
+      </a>
+    </p>
+
+    <!-- Images need a meaningful alt text for accessibility -->
+    <img
+      src="https://picsum.photos/seed/html/320/200"
+      alt="عکس نمونهٔ یک منظره"
+      width="320"
+      height="200"
+    />
+    <p>
+      عنصر <code>img</code> تهی است و تگ پایان ندارد. ویژگی <code>src</code>
+      نشانی فایل تصویر است و <code>alt</code> متن جایگزینی است که اگر تصویر بار
+      نشود روی صفحه می‌ماند و صفحه‌خوان (نرم‌افزاری که صفحه را برای کاربر نابینا
+      می‌خواند) همان را می‌خواند. <code>width</code> و <code>height</code> جا را
+      از قبل رزرو می‌کنند تا هنگام بار شدن تصویر، متن زیر آن به پایین نپرد.
+    </p>
+
+    <!-- Unordered list: items without a required order -->
+    <h3>مهارت‌ها</h3>
+    <p>
+      فهرست نامرتب (<code>ul</code>) برای موردهایی است که ترتیبشان مهم نیست.
+      هر مورد باید داخل <code>li</code> باشد. مهارت‌های زیر نمونهٔ همین فهرست‌اند،
+      چون فرقی نمی‌کند اول HTML آمده باشد یا CSS.
+    </p>
+    <ul>
+      <li>HTML ساختار صفحه را توصیف می‌کند.</li>
+      <li>CSS ظاهر همان ساختار را مشخص می‌کند.</li>
+      <li>JavaScript به صفحه رفتار و تعامل اضافه می‌کند.</li>
+    </ul>
+
+    <!-- Ordered list: numbered sequence -->
+    <h3>مسیر یادگیری</h3>
+    <p>
+      فهرست مرتب (<code>ol</code>) را وقتی به کار ببرید که ترتیب قدم‌ها بخشی از
+      معنا باشد. مرورگر این موردها را شماره‌گذاری می‌کند. در مسیر زیر، هر قدم
+      به قدم قبلی وابسته است.
+    </p>
+    <ol>
+      <li>اول ساختار صفحه را با HTML می‌نویسید.</li>
+      <li>بعد ظاهر همان ساختار را با CSS تنظیم می‌کنید.</li>
+      <li>در پایان با JavaScript به صفحه تعامل اضافه می‌کنید.</li>
+    </ol>
+  </body>
+</html>

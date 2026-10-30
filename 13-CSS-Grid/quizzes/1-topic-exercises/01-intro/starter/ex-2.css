@@ -1,0 +1,22 @@
+/* تمرین ۲ — شبکه‌ای که روی عنصر اشتباه نوشته شده (نسخه خراب — درستش کنید) */
+
+body {
+  font-family: Tahoma, sans-serif;
+  margin: 20px;
+  background-color: #f8f9fa;
+  color: #212529;
+}
+
+.menu {
+  background-color: #fff4e6;
+  padding: 10px;
+}
+
+.drink {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  background-color: #e8590c;
+  color: white;
+  padding: 15px;
+  border: 2px solid #fff4e6;
+}

@@ -1,0 +1,15 @@
+body {
+  font-family: Tahoma, Arial, sans-serif;
+  line-height: 1.8;
+  padding: 24px;
+}
+
+/* ارتفاع ثابت؛ متن اضافی اسکرول می‌خورد */
+.terms {
+  height: 150px;
+  overflow: auto;
+  max-width: 500px;
+  padding: 8px 16px;
+  border: 1px solid #ccc;
+  background-color: #fafafa;
+}

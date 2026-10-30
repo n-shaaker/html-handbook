@@ -1,0 +1,28 @@
+body {
+  font-family: Tahoma, Arial, sans-serif;
+  line-height: 1.8;
+  padding: 16px;
+}
+
+h2 {
+  font-size: 16px;
+  margin-top: 60px;
+}
+
+.member {
+  max-width: 500px;
+  padding: 8px;
+  border: 2px solid #1a3a5c;
+}
+
+.member img {
+  float: right;
+  width: 160px;
+  height: auto;
+  margin-left: 12px;
+}
+
+/* عنصر شناور در ارتفاع پدر حساب نمی‌شود؛ flow-root پدر را مجبور می‌کند آن را در بر بگیرد */
+.member.fixed {
+  display: flow-root;
+}

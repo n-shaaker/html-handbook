@@ -1,0 +1,24 @@
+.hero {
+  background-color: #1a3a5c;
+  color: white;
+  padding: 24px;
+  text-align: center;
+}
+
+.hero-title {
+  text-shadow: 2px 2px 4px #000;
+}
+
+/* uppercase فقط روی حروف لاتین اثر دارد */
+.brand {
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.label {
+  color: #ffd43b;
+}
+
+.desc {
+  line-height: 2;
+}

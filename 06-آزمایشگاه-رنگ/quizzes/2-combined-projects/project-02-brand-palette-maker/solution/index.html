@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>سازنده پالت رنگ برند</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="app.js" defer></script>
+</head>
+
+<body>
+  <main class="page">
+    <h1>سازنده پالت رنگ برند 🎨</h1>
+
+    <section class="controls">
+      <label for="brand-name">نام برند</label>
+      <input type="text" id="brand-name" placeholder="مثلاً کافه فیروزه">
+
+      <label for="hue">فام (Hue): <span id="hue-value">175°</span></label>
+      <input type="range" id="hue" min="0" max="360" value="175">
+
+      <label for="sat">اشباع (Saturation): <span id="sat-value">60%</span></label>
+      <input type="range" id="sat" min="0" max="100" value="60">
+    </section>
+
+    <h2>پنج سایه برند</h2>
+    <div class="palette">
+      <div class="shade" id="shade-90"></div>
+      <div class="shade" id="shade-75"></div>
+      <div class="shade" id="shade-50"></div>
+      <div class="shade" id="shade-35"></div>
+      <div class="shade" id="shade-20"></div>
+    </div>
+
+    <h2>پیش‌نمایش</h2>
+    <div class="preview">
+      <h3 id="brand-title">نام برند</h3>
+      <p>به سایت ما خوش آمدید. منوی امروز را ببینید.</p>
+      <button type="button" class="brand-btn">مشاهده منو</button>
+    </div>
+
+    <h2>کد CSS برای برنامه‌نویس</h2>
+    <pre class="code" id="code-out" dir="ltr"></pre>
+  </main>
+</body>
+
+</html>

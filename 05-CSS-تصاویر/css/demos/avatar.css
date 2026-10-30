@@ -1,0 +1,35 @@
+/* آواتار پروفایل */
+
+.demo-avatar {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+.demo-avatar img.profile {
+  width: 96px;
+  height: 96px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 3px solid #1a3a5c;
+  display: block;
+}
+
+.demo-avatar .meta strong {
+  display: block;
+  color: #1a3a5c;
+}
+
+.demo-avatar .meta span {
+  color: #666;
+  font-size: 0.92rem;
+}
+
+/* بدون object-fit — عکس کش می‌آید */
+.demo-avatar-bad img {
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;
+  border: 3px solid #c92a2a;
+}

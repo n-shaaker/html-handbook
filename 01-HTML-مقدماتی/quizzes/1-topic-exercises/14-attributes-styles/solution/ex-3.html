@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>آزمایش سه روش CSS</title>
+    <!-- روش بیرونی -->
+    <link rel="stylesheet" href="ex-3.css" />
+    <!-- روش داخلی -->
+    <style>
+      p {
+        color: green;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>کدام CSS برنده است؟</h1>
+
+    <h2>تیتر اول (فقط CSS بیرونی)</h2>
+    <p>این پاراگراف از style داخلی سبز شده است.</p>
+
+    <!-- روش درون‌خطی -->
+    <h2 style="color: red;">تیتر دوم (درون‌خطی هم دارد)</h2>
+    <p>درون‌خطی روی خود عنصر نوشته شده و از بقیه قوی‌تر است.</p>
+
+    <h2>تیتر سوم (فقط CSS بیرونی)</h2>
+
+    <button type="button" disabled>ثبت (غیرفعال)</button>
+
+    <!--
+      نتیجه: تیتر دوم قرمز شد، چون style درون‌خطی از CSS داخلی و بیرونی اولویت بیشتری دارد.
+      تیتر اول و سوم آبی ماندند، چون فقط CSS بیرونی برایشان رنگ تعیین کرده است.
+    -->
+  </body>
+</html>

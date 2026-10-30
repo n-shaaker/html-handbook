@@ -1,0 +1,25 @@
+/* تمرین ۱ — برچسب‌های وبلاگ (پاسخ) */
+
+body {
+  font-family: Tahoma, sans-serif;
+  margin: 20px;
+  background-color: #f8f9fa;
+  color: #212529;
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 400px;
+  background-color: white;
+  border: 1px solid #dee2e6;
+  padding: 10px;
+}
+
+.tag {
+  background-color: #e7f5ff;
+  color: #1864ab;
+  padding: 5px 12px;
+  margin: 4px;
+  border-radius: 15px;
+}

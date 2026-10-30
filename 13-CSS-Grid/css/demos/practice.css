@@ -1,0 +1,109 @@
+/* ۱۴) تمرین جمع‌بندی */
+
+/* چک‌لیست با علامت تیک به‌جای نقطه */
+.checklist {
+  list-style: none;
+  padding-right: 0;
+}
+
+.checklist li {
+  margin-bottom: 4px;
+}
+
+.checklist li::before {
+  content: "☐ ";
+  color: #0b6e4f;
+  font-weight: bold;
+}
+
+/* جعبه‌های رنگی شماره‌دار */
+.demo-practice .box {
+  color: white;
+  font-weight: bold;
+  text-align: center;
+  padding: 10px 6px;
+  border-radius: 6px;
+}
+
+.demo-practice .b1 { background-color: #1c7ed6; }
+.demo-practice .b2 { background-color: #2f9e44; }
+.demo-practice .b3 { background-color: #e8590c; }
+.demo-practice .b4 { background-color: #ae3ec9; }
+.demo-practice .b5 { background-color: #e03131; }
+.demo-practice .b6 { background-color: #0c8599; }
+
+/* مثال ۱ */
+.demo-practice .quiz-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-auto-rows: 50px;
+  gap: 6px;
+}
+
+.demo-practice .guess {
+  grid-column: 2 / 4;
+  grid-row: 1 / 3;
+  font-size: 24px;
+  padding-top: 30px;
+}
+
+/* مثال ۲: فروشگاه */
+.demo-practice .store {
+  display: grid;
+  grid-template-columns: 160px 1fr;
+  grid-template-areas:
+    "header  header"
+    "filters products"
+    "footer  footer";
+  gap: 8px;
+}
+
+.demo-practice .store-header,
+.demo-practice .store-filters,
+.demo-practice .store-footer {
+  padding: 10px;
+  border-radius: 6px;
+  color: white;
+}
+
+.demo-practice .store-header {
+  grid-area: header;
+  background-color: #1a3a5c;
+  font-weight: bold;
+}
+
+.demo-practice .store-filters {
+  grid-area: filters;
+  background-color: #495057;
+}
+
+.demo-practice .store-footer {
+  grid-area: footer;
+  background-color: #868e96;
+  text-align: center;
+}
+
+.demo-practice .products {
+  grid-area: products;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  gap: 8px;
+}
+
+/* مثال ۳ */
+.demo-practice .badge-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-auto-rows: 100px;
+  gap: 8px;
+  place-items: center;
+  background-color: #f1f3f5;
+  border-radius: 6px;
+}
+
+.demo-practice .badge {
+  color: white;
+  font-weight: bold;
+  padding: 8px 16px;
+  border-radius: 20px;
+}

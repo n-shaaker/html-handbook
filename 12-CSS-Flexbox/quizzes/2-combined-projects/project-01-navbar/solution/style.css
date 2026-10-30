@@ -1,0 +1,113 @@
+/* ===== تنظیمات کلی ===== */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Tahoma, Arial, sans-serif;
+  line-height: 1.8;
+  color: #222;
+  background-color: #f7f9fc;
+}
+
+.container {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 16px;
+}
+
+/* ===== سربرگ ===== */
+.site-header {
+  background-color: #12355b;
+}
+
+/* ظرف اصلی: لوگو، منو و دکمه در یک ردیف */
+.header-inner {
+  display: flex;
+  flex-wrap: wrap;        /* در صفحه باریک به خط بعد برود */
+  align-items: center;    /* همه عمودی وسط */
+  gap: 12px 24px;
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 10px 16px;
+}
+
+/* ===== لوگو ===== */
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: white;
+  font-size: 22px;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.logo-icon {
+  flex-shrink: 0;         /* آیکون له نشود */
+  color: #ffa94d;
+}
+
+/* ===== منو ===== */
+.menu {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 16px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.menu a {
+  color: #dbe4ff;
+  text-decoration: none;
+  padding: 4px 8px;
+  border-radius: 4px;
+}
+
+.menu a:hover {
+  background-color: #1f4f82;
+  color: white;
+}
+
+.menu .active {
+  background-color: white;
+  color: #12355b;
+}
+
+/* ===== دکمه ثبت‌نام ===== */
+.signup {
+  margin-inline-start: auto;   /* به انتهای خط (چپ) می‌رود */
+  background-color: #f76707;
+  color: white;
+  text-decoration: none;
+  padding: 6px 16px;
+  border-radius: 6px;
+}
+
+.signup:hover {
+  background-color: #d9480f;
+}
+
+/* ===== فوکوس کیبورد ===== */
+a:focus-visible {
+  outline: 3px solid #ffd43b;
+  outline-offset: 2px;
+}
+
+/* ===== گوشی ===== */
+@media (max-width: 600px) {
+  .site-header nav {
+    width: 100%;          /* منو زیر لوگو، در خط خودش */
+  }
+
+  .menu {
+    flex-direction: column;
+  }
+
+  .signup {
+    width: 100%;
+    text-align: center;
+  }
+}

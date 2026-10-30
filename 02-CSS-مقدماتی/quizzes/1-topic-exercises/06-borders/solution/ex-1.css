@@ -1,0 +1,19 @@
+.box {
+  padding: 12px;
+}
+
+.b-solid {
+  border: 2px solid #1a3a5c;
+}
+
+.b-dashed {
+  border: 2px dashed #e67700;
+}
+
+.b-dotted {
+  border: 3px dotted #2b8a3e;
+}
+
+.b-double {
+  border: 4px double #c92a2a;
+}

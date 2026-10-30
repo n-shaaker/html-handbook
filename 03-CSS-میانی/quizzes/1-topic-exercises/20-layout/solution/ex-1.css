@@ -1,0 +1,54 @@
+body {
+  font-family: Tahoma, Arial, sans-serif;
+  line-height: 1.9;
+  margin: 0;
+}
+
+/* سربرگ */
+.site-header {
+  padding: 16px;
+  text-align: center;
+  color: white;
+  background-color: #1a3a5c;
+}
+
+.site-header h1 {
+  margin: 0;
+  font-size: 1.5rem;
+}
+
+/* منوی افقی */
+.site-nav {
+  text-align: center;
+  background-color: #e7eef7;
+}
+
+.site-nav a {
+  display: inline-block;
+  padding: 10px 16px;
+  color: #1a3a5c;
+  text-decoration: none;
+}
+
+.site-nav a:hover {
+  background-color: #d0dcea;
+}
+
+/* ستون محتوا */
+.content {
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 16px;
+}
+
+/* پانویس */
+.site-footer {
+  text-align: center;
+  color: white;
+  background-color: #333;
+}
+
+.site-footer p {
+  margin: 0;
+  padding: 12px;
+}

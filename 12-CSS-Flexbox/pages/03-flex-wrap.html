@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>۳) شکستن خط (flex-wrap) | آموزش Flexbox</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/demos/wrap.css">
+</head>
+
+<body>
+
+  <header class="page-header">
+    <h1>آموزش Flexbox — چیدمان انعطاف‌پذیر</h1>
+    <p>۳) شکستن خط (flex-wrap)</p>
+  </header>
+
+  <div class="container">
+
+    <nav class="page-nav" aria-label="ناوبری درس">
+      <a href="02-flex-direction.html">→ قبلی: flex-direction</a>
+      <a href="../index.html">فهرست درس‌ها</a>
+      <a href="04-justify-content.html">بعدی: justify-content ←</a>
+    </nav>
+
+    <section class="lesson" id="wrap">
+      <h2>۳) شکستن خط (flex-wrap)</h2>
+      <p>
+        به‌طور پیش‌فرض Flexbox همه آیتم‌ها را در <strong>یک خط</strong> نگه می‌دارد، حتی اگر جا نشوند.
+        با <code>flex-wrap</code> (روی پدر) اجازه می‌دهیم آیتم‌های اضافه به خط بعد بروند؛ درست مثل کلمه‌های یک پاراگراف.
+      </p>
+
+      <h3>مثال ۱: <code>nowrap</code> (پیش‌فرض)</h3>
+      <p>هشت جعبه با عرض ۱۵۰ پیکسل در ظرفی که جای همه‌شان را ندارد. Flexbox جعبه‌ها را <strong>باریک‌تر</strong> می‌کند تا در یک خط بمانند:</p>
+      <pre class="code"><code>.parent {
+  display: flex;
+  flex-wrap: nowrap;
+}
+
+.box { width: 150px; }</code></pre>
+      <div class="result demo-wrap">
+        <div class="parent nowrap">
+          <div class="box b1">۱</div>
+          <div class="box b2">۲</div>
+          <div class="box b3">۳</div>
+          <div class="box b4">۴</div>
+          <div class="box b5">۵</div>
+          <div class="box b6">۶</div>
+          <div class="box b1">۷</div>
+          <div class="box b2">۸</div>
+        </div>
+      </div>
+      <p>اگر محتوای جعبه‌ها هم جا نشود (مثلاً یک کلمه بلند یا عکس)، از ظرف بیرون می‌زنند و صفحه اسکرول افقی می‌خورد.</p>
+
+      <h3>مثال ۲: <code>wrap</code></h3>
+      <p>حالا هر جعبه عرض واقعی ۱۵۰ پیکسل خودش را دارد و هر وقت جا تمام شد، بقیه به خط بعد می‌روند. پنجره را باریک و پهن کنید:</p>
+      <pre class="code"><code>.parent {
+  display: flex;
+  flex-wrap: wrap;
+}</code></pre>
+      <div class="result demo-wrap">
+        <div class="parent wrap">
+          <div class="box b1">۱</div>
+          <div class="box b2">۲</div>
+          <div class="box b3">۳</div>
+          <div class="box b4">۴</div>
+          <div class="box b5">۵</div>
+          <div class="box b6">۶</div>
+          <div class="box b1">۷</div>
+          <div class="box b2">۸</div>
+        </div>
+      </div>
+
+      <h3>مثال ۳: <code>wrap-reverse</code></h3>
+      <p>
+        <code>wrap-reverse</code> هم مثل <code>wrap</code> اجازه می‌دهد آیتم‌های اضافه به خط بعد بروند، اما جهت محور فرعی را برمی‌گرداند.
+        در حالت ردیف، خط‌های بعدی به‌جای پایین، بالای خط اول ساخته می‌شوند. ترتیب آیتم‌ها در هر خط همان ترتیب شروع به پایان است؛ فقط جای خود خط‌ها عوض شده است.
+      </p>
+      <pre class="code"><code>.parent {
+  display: flex;
+  flex-wrap: wrap-reverse;
+}</code></pre>
+      <div class="result demo-wrap">
+        <div class="parent wrap-reverse">
+          <div class="box b1">۱</div>
+          <div class="box b2">۲</div>
+          <div class="box b3">۳</div>
+          <div class="box b4">۴</div>
+          <div class="box b5">۵</div>
+          <div class="box b6">۶</div>
+          <div class="box b1">۷</div>
+          <div class="box b2">۸</div>
+        </div>
+      </div>
+      <p class="tip">
+        <code>wrap-reverse</code> را وقتی لازم دارید که آخرین خط باید به لبهٔ شروع محور فرعی بچسبد، مثلاً یک ردیف برچسب که باید از پایین ظرف به بالا پر شود.
+        در چیدمان‌های معمولی، مثل کارت و منو، <code>wrap</code> همان رفتاری است که خواننده انتظار دارد: خط بعد پایین خط قبل بیاید.
+      </p>
+
+      <h3>مثال ۴: میان‌بُر <code>flex-flow</code></h3>
+      <p>
+        <code>flex-flow</code> میانبر دو ویژگی ظرف است: اول <code>flex-direction</code> و بعد <code>flex-wrap</code>.
+        نوشتن <code>flex-flow: row wrap</code> یعنی محور اصلی افقی بماند و اگر جا کم شد آیتم‌ها به خط بعد بروند. اگر یکی از دو مقدار را ننویسید، همان یکی به مقدار اولیه‌اش برمی‌گردد؛ پس <code>flex-flow: wrap</code> جهت را هم به <code>row</code> برمی‌گرداند.
+      </p>
+      <pre class="code"><code>/* این دو کد یکی هستند */
+.parent {
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.parent {
+  flex-flow: row wrap;
+}</code></pre>
+      <div class="result demo-wrap">
+        <div class="parent flow">
+          <div class="box b3">۱</div>
+          <div class="box b4">۲</div>
+          <div class="box b5">۳</div>
+          <div class="box b6">۴</div>
+          <div class="box b1">۵</div>
+          <div class="box b2">۶</div>
+        </div>
+      </div>
+
+      <h3>مثال ۵: برچسب‌های یک فروشگاه</h3>
+      <p>
+        تعداد برچسب‌ها از قبل معلوم نیست و ممکن است در یک خط جا نشوند. با <code>flex-wrap: wrap</code> هر برچسب به اندازهٔ متن خودش می‌ماند و هر کدام که در عرض ظرف جا نشد به خط بعد می‌رود، بدون اینکه برچسب‌ها را باریک یا از صفحه خارج کند.
+      </p>
+      <pre class="code"><code>.tags {
+  display: flex;
+  flex-wrap: wrap;
+}</code></pre>
+      <div class="result demo-wrap">
+        <div class="tags">
+          <span class="tag">کفش ورزشی</span>
+          <span class="tag">کوله‌پشتی</span>
+          <span class="tag">لباس کوهنوردی</span>
+          <span class="tag">کیسه خواب</span>
+          <span class="tag">چادر مسافرتی</span>
+          <span class="tag">قمقمه</span>
+          <span class="tag">چراغ‌قوه</span>
+          <span class="tag">عینک آفتابی</span>
+          <span class="tag">دستکش</span>
+        </div>
+      </div>
+
+      <p class="mistake">
+        <strong>اشتباه رایج:</strong>
+        به آیتم‌ها <code>width</code> می‌دهیم و انتظار داریم به خط بعد بروند، ولی همه در یک خط فشرده می‌شوند.
+        بدون <code>flex-wrap: wrap</code> روی پدر، Flexbox هیچ‌وقت خط را نمی‌شکند؛ فقط آیتم‌ها را جمع می‌کند.
+      </p>
+
+      <table class="ref">
+        <tr>
+          <th>مقدار</th>
+          <th>رفتار</th>
+        </tr>
+        <tr>
+          <td><code>nowrap</code></td>
+          <td>همه در یک خط؛ آیتم‌ها جمع می‌شوند یا بیرون می‌زنند (پیش‌فرض)</td>
+        </tr>
+        <tr>
+          <td><code>wrap</code></td>
+          <td>آیتم‌های اضافه به خط بعد (پایین‌تر) می‌روند</td>
+        </tr>
+        <tr>
+          <td><code>wrap-reverse</code></td>
+          <td>آیتم‌های اضافه به خط بالاتر می‌روند</td>
+        </tr>
+        <tr>
+          <td><code>flex-flow: row wrap</code></td>
+          <td>میان‌بُر جهت + شکستن خط</td>
+        </tr>
+      </table>
+
+      <p class="exercise">
+        <strong>تمرین:</strong> برای یک کتاب‌فروشی ۱۲ «کارت کتاب» با عرض ۱۸۰ پیکسل بسازید. یک بار بدون <code>flex-wrap</code> و یک بار با <code>flex-wrap: wrap</code> نتیجه را ببینید
+        و پنجره را باریک کنید. بعد همان را با <code>flex-flow</code> بنویسید.
+      </p>
+    </section>
+
+    <nav class="page-nav" aria-label="ناوبری درس پایین">
+      <a href="02-flex-direction.html">→ قبلی: flex-direction</a>
+      <a href="../index.html">فهرست درس‌ها</a>
+      <a href="04-justify-content.html">بعدی: justify-content ←</a>
+    </nav>
+
+  </div>
+
+  <footer class="page-footer">
+    آموزش Flexbox
+  </footer>
+
+</body>
+
+</html>

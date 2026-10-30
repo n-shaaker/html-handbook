@@ -1,0 +1,26 @@
+body {
+  font-family: Tahoma, Arial, sans-serif;
+  line-height: 1.8;
+  padding: 16px;
+}
+
+.cards {
+  text-align: center; /* کارت‌ها وسط ردیف */
+}
+
+.card {
+  display: inline-block;
+  vertical-align: top; /* بالای کارت‌ها هم‌تراز */
+  width: 30%;
+  margin: 4px;
+  padding: 12px;
+  box-sizing: border-box;
+  text-align: right; /* متن داخل کارت دوباره راست‌چین */
+  border: 1px solid #ddd;
+  border-radius: 8px;
+}
+
+.card h2 {
+  font-size: 18px;
+  margin-top: 0;
+}

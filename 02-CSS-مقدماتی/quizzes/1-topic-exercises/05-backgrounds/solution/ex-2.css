@@ -1,0 +1,10 @@
+.hero {
+  background-color: #1a3a5c; /* اگر تصویر لود نشد، متن سفید خوانا بماند */
+  background-image: url("../../../../images/bg.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  min-height: 220px;
+  padding: 24px;
+  color: white;
+}

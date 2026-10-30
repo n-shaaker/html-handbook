@@ -1,0 +1,36 @@
+body {
+  margin: 0;
+  font-family: Tahoma, "Segoe UI", system-ui, sans-serif;
+  background: #f8fafc;
+  color: #0f172a;
+  padding: 2rem 1.25rem;
+}
+
+.users {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
+  gap: 1rem;
+  max-width: 60rem;
+}
+
+.card {
+  background: #fff;
+  border: 1px solid #e2e8f0;
+  border-radius: 0.85rem;
+  padding: 1rem;
+}
+
+.card h2 {
+  margin: 0 0 0.35rem;
+  font-size: 1.1rem;
+}
+
+.card p {
+  margin: 0.2rem 0;
+  color: #475569;
+}
+
+.card__email {
+  font-size: 0.9rem;
+  overflow-wrap: anywhere;
+}

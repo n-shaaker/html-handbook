@@ -1,0 +1,19 @@
+body {
+  font-family: Tahoma, Arial, sans-serif;
+  line-height: 1.9;
+  padding: 16px;
+}
+
+.news {
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+/* عکس به راست می‌رود و متن دورش می‌پیچد */
+.news img {
+  float: right;
+  width: 220px;
+  height: auto;
+  margin-left: 16px;
+  margin-bottom: 8px;
+}

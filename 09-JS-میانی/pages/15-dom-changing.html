@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>۱۵) DOM: تغییر محتوا، ویژگی و ظاهر | آموزش JavaScript سطح میانی</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <script src="../js/log.js" defer></script>
+  <script src="../js/demos/dom-changing.js" defer></script>
+</head>
+
+<body>
+
+  <header class="page-header" id="top">
+    <h1>آموزش JavaScript — سطح میانی</h1>
+    <p>۱۵) DOM: تغییر محتوا، ویژگی و ظاهر</p>
+  </header>
+
+  <div class="container">
+
+    <nav class="page-nav" aria-label="ناوبری درس">
+      <a href="14-dom-selecting.html">→ قبلی: DOM Selecting</a>
+      <a href="../index.html">فهرست درس‌ها</a>
+      <a href="16-dom-events.html">بعدی: DOM Events ←</a>
+    </nav>
+
+    <section class="lesson" id="dom-changing">
+      <h2>۱۵) DOM: تغییر محتوا، ویژگی و ظاهر</h2>
+
+<p>بعد از پیدا کردن عنصر، معمولاً می‌خواهید متن، ویژگی HTML یا کلاس CSS آن را عوض کنید. متنی که از کاربر آمده را با <code>textContent</code> بنویسید تا به‌صورت نوشته دیده شود. کلاس‌ها ظاهر را از CSS می‌گیرند و JavaScript فقط بود و نبود آن‌ها را عوض می‌کند. ویژگی‌هایی مثل <code>href</code>، <code>value</code> و <code>disabled</code> رفتار خود عنصر را تغییر می‌دهند.</p>
+
+<table class="ref">
+<tr><th>کار</th><th>کد</th></tr>
+<tr><td>تغییر متن (امن)</td><td><code>el.textContent = "..."</code></td></tr>
+<tr><td>تغییر HTML داخل (فقط با داده مطمئن)</td><td><code>el.innerHTML = "&lt;b&gt;...&lt;/b&gt;"</code></td></tr>
+<tr><td>خواندن/تغییر ویژگی</td><td><code>el.getAttribute("href")</code> / <code>el.setAttribute("href", "...")</code></td></tr>
+<tr><td>ویژگی‌های رایج مستقیم</td><td><code>img.src</code>، <code>a.href</code>، <code>input.value</code>، <code>input.disabled</code></td></tr>
+<tr><td>کلاس‌ها</td><td><code>el.classList.add / remove / toggle / contains</code></td></tr>
+<tr><td>استایل مستقیم</td><td><code>el.style.color = "red"</code></td></tr>
+<tr><td>data-*</td><td><code>el.dataset.price</code> برای <code>data-price</code></td></tr>
+</table>
+
+<h3>مثال ۱: ویژگی‌ها</h3>
+
+<pre class="code"><code>const link = document.querySelector("#demo-link");
+console.log(link.getAttribute("href"));    // https://developer.mozilla.org/
+
+link.setAttribute("href", "https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model");
+link.textContent = "مستندات DOM در MDN";
+console.log(link.href);                    // آدرس جدید
+
+const back = document.querySelector("#back-link");
+console.log(back.getAttribute("href"));    // ../index.html ← همان چیزی که در HTML نوشته شده
+console.log(back.href);                    // آدرس کامل؛ حروف فارسی مسیر به شکل %D8%... کدگذاری می‌شوند
+
+const product = document.querySelector("#product");
+console.log(product.dataset.price, product.dataset.color);   // 120000 آبی
+console.log(typeof product.dataset.price);                   // string ← برای حساب Number(...) لازم است</code></pre>
+
+<div class="result">
+<a id="demo-link" href="https://developer.mozilla.org/" target="_blank" rel="noopener">مستندات MDN</a> —
+<a id="back-link" href="../index.html">فهرست درس‌ها</a>
+<p id="product" data-price="120000" data-color="آبی">محصول: کوله‌پشتی (data-price و data-color)</p>
+<pre class="console" id="out-1"></pre>
+</div>
+
+<p class="tip"><code>getAttribute("href")</code> دقیقاً متنی را برمی‌گرداند که در HTML نوشته شده؛ ولی ویژگی <code>link.href</code> آدرس <strong>کامل</strong> را می‌دهد (آدرس نسبی را به آدرس مطلق تبدیل می‌کند). مقدار <code>dataset</code> همیشه <strong>رشته</strong> است.</p>
+
+<h3>textContent یا innerHTML؟</h3>
+
+<pre class="code"><code>const commentInput = document.getElementById("comment-input");
+const previewBtn = document.getElementById("preview-btn");
+const preview = document.getElementById("preview");
+
+previewBtn.addEventListener("click", () =&gt; {
+  preview.textContent = commentInput.value;   // ✔ امن: تگ‌ها به شکل متن نمایش داده می‌شوند
+  // preview.innerHTML = commentInput.value;  // ✖ خطرناک: کد کاربر اجرا می‌شود (XSS)
+});</code></pre>
+
+<p>مقدار کادر، متنی است که کاربر نوشته، حتی اگر داخلش علامت تگ باشد. <code>textContent</code> آن را به‌صورت نویسه نشان می‌دهد و مرورگر تگ را اجرا نمی‌کند. اگر همان رشته را به <code>innerHTML</code> بدهید، مرورگر آن را HTML تفسیر می‌کند و این برای متن کاربر ناامن است.</p>
+
+<div class="result">
+<label for="comment-input">نظر شما درباره محصول:</label>
+<input type="text" id="comment-input" value="&lt;b&gt;عالی&lt;/b&gt; بود">
+<button type="button" class="btn" id="preview-btn">پیش‌نمایش</button>
+<p class="demo-box" id="preview" aria-live="polite">پیش‌نمایش نظر اینجا نشان داده می‌شود</p>
+</div>
+
+<p class="mistake"><strong>اشتباه رایج (و خطرناک):</strong> گذاشتن متنی که کاربر وارد کرده داخل <code>innerHTML</code>. اگر کاربر به جای نظر، چیزی مثل <code>&lt;img src=x onerror="..."&gt;</code> بنویسد، کد او در صفحه اجرا می‌شود؛ به این حمله <strong>XSS</strong> می‌گویند. برای متن کاربر همیشه از <code>textContent</code> استفاده کنید و <code>innerHTML</code> را فقط برای HTML‌ای که خودتان نوشته‌اید به کار ببرید.</p>
+
+<h3>مثال ۲: classList (روش پیشنهادی برای تغییر ظاهر)</h3>
+
+<pre class="code"><code>const box = document.getElementById("cls-box");
+const addBtn = document.getElementById("cls-add");
+const removeBtn = document.getElementById("cls-remove");
+const toggleBtn = document.getElementById("cls-toggle");
+const checkBtn = document.getElementById("cls-check");
+
+addBtn.addEventListener("click", () =&gt; box.classList.add("active"));
+removeBtn.addEventListener("click", () =&gt; box.classList.remove("active"));
+toggleBtn.addEventListener("click", () =&gt; box.classList.toggle("active"));
+checkBtn.addEventListener("click", () =&gt; {
+  box.textContent = "کلاس active دارد؟ " + box.classList.contains("active");
+});</code></pre>
+
+<p><code>add</code> کلاس را اضافه می‌کند و اگر از قبل باشد دوباره اضافه نمی‌شود. <code>remove</code> همان کلاس را برمی‌دارد. <code>toggle</code> بین بود و نبود جابه‌جا می‌کند. <code>contains</code> فقط می‌پرسد کلاس هست یا نه و خودش ظاهر را عوض نمی‌کند. رنگ و اندازه در CSS کلاس <code>active</code> تعریف شده است.</p>
+
+<div class="result">
+<div class="demo-box" id="cls-box">جعبه نمونه</div>
+<button type="button" class="btn" id="cls-add">add</button>
+<button type="button" class="btn" id="cls-remove">remove</button>
+<button type="button" class="btn" id="cls-toggle">toggle</button>
+<button type="button" class="btn secondary" id="cls-check">contains</button>
+</div>
+
+<h3>مثال ۳: style — تغییر اندازه فونت</h3>
+
+<pre class="code"><code>let size = 16;
+const text = document.getElementById("size-text");
+const biggerBtn = document.getElementById("size-up");
+const smallerBtn = document.getElementById("size-down");
+
+biggerBtn.addEventListener("click", () =&gt; {
+  size += 2;
+  text.style.fontSize = size + "px";      // font-size در JS می‌شود fontSize
+});
+
+smallerBtn.addEventListener("click", () =&gt; {
+  size = Math.max(10, size - 2);          // از ۱۰ پیکسل کوچک‌تر نشود
+  text.style.fontSize = size + "px";
+});</code></pre>
+
+<div class="result">
+<p id="size-text">این متن را بزرگ و کوچک کنید.</p>
+<button type="button" class="btn" id="size-up" aria-label="بزرگ‌تر کردن متن">A+</button>
+<button type="button" class="btn" id="size-down" aria-label="کوچک‌تر کردن متن">A-</button>
+</div>
+
+<p class="tip">ویژگی‌های CSS که خط تیره دارند در JavaScript به شکل camelCase نوشته می‌شوند: <code>background-color</code> ← <code>backgroundColor</code>.</p>
+
+<p class="tip">تا جای ممکن به جای <code>el.style</code> از <code>classList</code> استفاده کنید تا ظاهر در فایل CSS بماند و JavaScript فقط کلاس را عوض کند؛ همان قانون «جدا نگه داشتن CSS» که در این دوره رعایت می‌کنیم.</p>
+
+<h3>مثال ۴: غیرفعال کردن دکمه</h3>
+
+<pre class="code"><code>const agree = document.getElementById("agree");
+const sendBtn = document.getElementById("send-btn");
+
+agree.addEventListener("change", () =&gt; {
+  sendBtn.disabled = !agree.checked;
+});</code></pre>
+
+<p>رویداد <code>change</code> وقتی وضعیت چک‌باکس عوض شود اجرا می‌شود. <code>checked</code> بولین است. علامت <code>!</code> آن را برعکس می‌کند تا دکمه وقتی تیک نخورده است غیرفعال بماند و وقتی تیک خورد فعال شود. ویژگی <code>disabled</code> هم ظاهر دکمه را عوض می‌کند و هم جلوی کلیک را می‌گیرد.</p>
+
+<div class="result">
+<label><input type="checkbox" id="agree"> قوانین را می‌پذیرم</label><br>
+<button type="button" class="btn" id="send-btn" disabled>ارسال</button>
+</div>
+
+<p class="mistake"><strong>اشتباه رایج:</strong> نوشتن <code>el.style.font-size</code>. خط تیره در JavaScript یعنی منها! درستش <code>el.style.fontSize</code> است.</p>
+
+<p class="mistake"><strong>اشتباه رایج:</strong> نوشتن <code>el.className = "active"</code> برای اضافه کردن کلاس. این کار همه کلاس‌های قبلی (مثل <code>demo-box</code>) را پاک می‌کند؛ برای اضافه کردن از <code>classList.add</code> استفاده کنید.</p>
+
+<p class="exercise"><strong>تمرین:</strong> سه دکمه «قرمز»، «سبز» و «آبی» بسازید که هر کدام ویژگی <code>data-color</code> دارند (مثلاً <code>data-color="red"</code>). با کلیک روی هر دکمه، رنگ را با <code>dataset.color</code> بخوانید و رنگ پس‌زمینه یک جعبه را با <code>style.backgroundColor</code> عوض کنید. (امتیازی: به جای style، برای هر رنگ یک کلاس CSS بسازید و با classList عوضش کنید.)</p>
+    </section>
+
+    <nav class="page-nav" aria-label="ناوبری درس پایین">
+      <a href="14-dom-selecting.html">→ قبلی: DOM Selecting</a>
+      <a href="../index.html">فهرست درس‌ها</a>
+      <a href="16-dom-events.html">بعدی: DOM Events ←</a>
+    </nav>
+
+  </div>
+
+  <footer class="page-footer">
+    آموزش JavaScript سطح میانی
+  </footer>
+
+</body>
+
+</html>

@@ -1,0 +1,36 @@
+body {
+  font-family: Tahoma, Arial, sans-serif;
+  padding: 24px;
+}
+
+.pagination {
+  text-align: center;
+}
+
+/* مربع ۴۰ در ۴۰ با متن وسط */
+.pagination a {
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  line-height: 40px;
+  margin: 2px;
+  text-align: center;
+  color: #1a3a5c;
+  text-decoration: none;
+  border: 1px solid #b8c9dc;
+  border-radius: 6px;
+}
+
+.pagination a.wide {
+  width: auto;
+  padding: 0 14px;
+}
+
+.pagination a:hover {
+  background-color: #e7eef7;
+}
+
+.pagination a.current {
+  color: white;
+  background-color: #1a3a5c;
+}

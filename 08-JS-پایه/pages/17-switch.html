@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>۱۷) دستور Switch | آموزش JavaScript سطح پایه</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <script src="../js/log.js" defer></script>
+  <script src="../js/demos/switch.js" defer></script>
+</head>
+
+<body>
+
+  <header class="page-header" id="top">
+    <h1>آموزش JavaScript — سطح پایه</h1>
+    <p>۱۷) دستور Switch</p>
+  </header>
+
+  <div class="container">
+
+    <nav class="page-nav" aria-label="ناوبری درس">
+      <a href="16-if-else.html">→ قبلی: If Else</a>
+      <a href="../index.html">فهرست درس‌ها</a>
+      <a href="18-for-loop.html">بعدی: For Loop ←</a>
+    </nav>
+
+    <section class="lesson" id="switch">
+      <h2>۱۷) دستور Switch</h2>
+<p>وقتی یک مقدار را با چند حالت <strong>ثابت و مشخص</strong> مقایسه می‌کنید، مثل روز هفته یا گزینهٔ یک فهرست، زنجیرهٔ طولانی <code>else if</code> شلوغ می‌شود. <code>switch</code> همان مقدار را یک بار می‌گیرد و هر حالت را در یک <code>case</code> جدا می‌نویسد. این دستور برای بازه‌ها مناسب نیست؛ «بزرگ‌تر از ۱۷» همچنان کار <code>if</code> است، چون <code>case</code> فقط برابری دقیق را بررسی می‌کند.</p>
+
+<pre class="code"><code>let day = new Date().getDay();   // 0 = یکشنبه ... 6 = شنبه
+let dayName;
+
+switch (day) {
+  case 6:
+    dayName = "شنبه";
+    break;
+  case 0:
+    dayName = "یکشنبه";
+    break;
+  case 1:
+    dayName = "دوشنبه";
+    break;
+  case 2:
+    dayName = "سه‌شنبه";
+    break;
+  case 3:
+    dayName = "چهارشنبه";
+    break;
+  case 4:
+    dayName = "پنج‌شنبه";
+    break;
+  case 5:
+    dayName = "جمعه";
+    break;
+  default:
+    dayName = "نامعلوم";   // هیچ‌وقت نباید پیش بیاید، ولی نوشتن default عادت خوبی است
+}
+
+console.log("امروز " + dayName + " است.");</code></pre>
+
+<p>خروجی این مثال به روزی بستگی دارد که صفحه را باز کرده‌اید.</p>
+
+<div class="result">
+<pre class="console" id="out-1"></pre>
+</div>
+
+<p><code>new Date().getDay()</code> شمارهٔ روز هفته را برمی‌گرداند: ۰ یکشنبه است و ۶ شنبه. <code>switch</code> این عدد را با هر <code>case</code> مقایسه می‌کند. اولین مورد برابر، دستورهای خودش را اجرا می‌کند و <code>break</code> از کل switch بیرون می‌آید تا بقیهٔ روزها نوشته نشوند. اگر هیچ شماره‌ای مطابق نباشد، شاخهٔ <code>default</code> اجرا می‌شود. در عمل برای ۰ تا ۶ این شاخه پیش نمی‌آید، ولی اگر بعداً مقدار دیگری به متغیر برسد، به‌جای متن خالی یک پیام مشخص می‌ماند.</p>
+
+<table class="ref">
+<tr><th>بخش</th><th>کار</th></tr>
+<tr><td><code>case</code></td><td>یک حالت ممکن</td></tr>
+<tr><td><code>break</code></td><td>از switch خارج شو (بدون آن، caseهای بعدی هم اجرا می‌شوند)</td></tr>
+<tr><td><code>default</code></td><td>اگر هیچ case مطابق نبود (مثل else). اختیاری است، ولی بهتر است همیشه بنویسید. معمولاً آخر می‌آید و آنجا <code>break</code> لازم ندارد</td></tr>
+</table>
+
+<h3>چرا break لازم است؟ (Fall-through)</h3>
+
+<pre class="code"><code>let level = 2;
+
+switch (level) {
+  case 1:
+    console.log("دسترسی: مشاهده");
+  case 2:
+    console.log("دسترسی: ویرایش");     // از اینجا شروع می‌شود...
+  case 3:
+    console.log("دسترسی: حذف");        // ...و چون break نیست، این هم اجرا می‌شود!
+}</code></pre>
+
+<div class="result">
+<pre class="console" id="out-2"></pre>
+</div>
+
+<p>مقدار <code>level</code> برابر ۲ است، پس اجرا از <code>case 2</code> شروع می‌شود. چون بعد از چاپ «ویرایش» دستور <code>break</code> نیست، برنامه به <code>case 3</code> هم ادامه می‌دهد و «حذف» را هم چاپ می‌کند. <code>case 1</code> چاپ نمی‌شود، چون نقطهٔ شروع قبل از آن نیست. این ادامه پیدا کردن را fall-through می‌نامند.</p>
+
+<p>switch فقط نقطه <strong>شروع</strong> را با case پیدا می‌کند و از آنجا تا اولین <code>break</code> (یا پایان switch) پیش می‌رود. معمولاً این رفتار باگ است، مگر اینکه عمداً چند case را کنار هم بگذاریم، مثل مثال بعد.</p>
+
+<h3>چند case با یک نتیجه</h3>
+
+<pre class="code"><code>const fruitSelect = document.getElementById("fruit-select");
+const fruitInfo = document.getElementById("fruit-info");
+
+fruitSelect.addEventListener("change", function () {
+  const fruit = fruitSelect.value;
+  let info;
+
+  switch (fruit) {
+    case "سیب":
+    case "گلابی":
+      info = "میوه پاییزی";
+      break;
+    case "هندوانه":
+    case "گیلاس":
+      info = "میوه تابستانی";
+      break;
+    default:
+      info = "فصل این میوه در فهرست ما نیست!";
+  }
+
+  fruitInfo.textContent = fruit + ": " + info;
+});</code></pre>
+
+<div class="result">
+<label for="fruit-select">میوه:</label>
+<select id="fruit-select">
+  <option value="" disabled selected>یک میوه انتخاب کنید</option>
+  <option>سیب</option>
+  <option>گلابی</option>
+  <option>هندوانه</option>
+  <option>گیلاس</option>
+  <option>کیوی</option>
+</select>
+<p class="demo-box" id="fruit-info" aria-live="polite">یک میوه انتخاب کن</p>
+</div>
+
+<p>رویداد <code>change</code> وقتی انتخاب فهرست عوض شود اجرا می‌شود. چند <code>case</code> پشت سر هم، بدون دستور و بدون <code>break</code>، عمداً یک نتیجه دارند: سیب و گلابی هر دو به همان جملهٔ پاییزی می‌رسند و آنجا <code>break</code> جلوی ادامه را می‌گیرد. اگر مقدار انتخاب‌شده با هیچ میوه‌ای نخوانَد، <code>default</code> پیام جایگزین را می‌سازد. در پایان، نام میوه و توضیح با <code>textContent</code> در صفحه نوشته می‌شوند.</p>
+
+<p class="tip">switch برای مقایسه <code>===</code> استفاده می‌کند؛ پس <code>case "1"</code> با عدد <code>1</code> برابر نیست. مقدار <code>select</code> و <code>input</code> همیشه متن است؛ اگر caseها عدد هستند، اول مقدار را با <code>Number()</code> تبدیل کنید.</p>
+
+<p class="tip"><strong>کی switch و کی if؟</strong> switch برای مقایسه یک مقدار با چند حالت <strong>ثابت و مشخص</strong> است (روز هفته، نوع کاربر، گزینه منو). برای بازه‌ها مثل «نمره بیشتر از ۱۷» از <code>if...else</code> استفاده کنید.</p>
+
+<p class="mistake"><strong>اشتباه رایج:</strong> فراموش کردن <code>break</code>. در این حالت اجرای کد به caseهای پایینی «سُر می‌خورد» (fall-through).</p>
+
+<p class="exercise"><strong>تمرین:</strong> (۱) تابع <code>getSeason(month)</code> بنویسید که شماره ماه شمسی (۱ تا ۱۲) را بگیرد و با switch فصل را برگرداند: ۱ تا ۳ «بهار»، ۴ تا ۶ «تابستان»، ۷ تا ۹ «پاییز»، ۱۰ تا ۱۲ «زمستان» و برای هر عدد دیگر «ماه نامعتبر» (راهنما: چند case پشت سر هم). (۲) یک select با گزینه‌های «عادی»، «نقره‌ای» و «طلایی» بسازید و با switch درصد تخفیف مشتری (۰، ۵ و ۱۰ درصد) را داخل صفحه نشان دهید.</p>
+    </section>
+
+    <nav class="page-nav" aria-label="ناوبری درس پایین">
+      <a href="16-if-else.html">→ قبلی: If Else</a>
+      <a href="../index.html">فهرست درس‌ها</a>
+      <a href="18-for-loop.html">بعدی: For Loop ←</a>
+    </nav>
+
+  </div>
+
+  <footer class="page-footer">
+    آموزش JavaScript سطح پایه
+  </footer>
+
+</body>
+
+</html>

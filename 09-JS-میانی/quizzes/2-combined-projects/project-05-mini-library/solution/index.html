@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>کتابخانه کوچک مدرسه</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="data.js" defer></script>
+  <script src="app.js" defer></script>
+</head>
+
+<body>
+  <main class="container">
+    <h1>کتابخانه کوچک مدرسه</h1>
+
+    <section class="controls">
+      <div>
+        <label for="search">جستجو (عنوان یا نویسنده):</label>
+        <input type="search" id="search">
+      </div>
+      <div>
+        <label for="sort">مرتب‌سازی:</label>
+        <select id="sort">
+          <option value="original">ترتیب اصلی</option>
+          <option value="title">عنوان (الفبایی)</option>
+          <option value="newest">جدیدترین</option>
+          <option value="oldest">قدیمی‌ترین</option>
+        </select>
+      </div>
+      <div>
+        <input type="checkbox" id="only-available">
+        <label for="only-available">فقط کتاب‌های موجود</label>
+      </div>
+    </section>
+
+    <p id="stats" class="stats" aria-live="polite"></p>
+
+    <table>
+      <thead>
+        <tr>
+          <th scope="col">عنوان</th>
+          <th scope="col">نویسنده</th>
+          <th scope="col">سال</th>
+          <th scope="col">وضعیت</th>
+          <th scope="col">عملیات</th>
+        </tr>
+      </thead>
+      <tbody id="book-body"></tbody>
+    </table>
+    <p id="empty-message" class="empty" hidden>کتابی با این مشخصات پیدا نشد.</p>
+
+    <section class="add-box">
+      <h2>افزودن کتاب تازه</h2>
+      <form id="add-form" novalidate>
+        <label for="title">عنوان:</label>
+        <input type="text" id="title" name="title">
+
+        <label for="author">نویسنده:</label>
+        <input type="text" id="author" name="author">
+
+        <label for="year">سال انتشار (میلادی):</label>
+        <input type="number" id="year" name="year">
+
+        <button type="submit">افزودن</button>
+        <p id="form-error" class="error" role="alert"></p>
+      </form>
+    </section>
+  </main>
+</body>
+
+</html>

@@ -1,0 +1,24 @@
+/* تمرین ۱ — آیکون‌ها وسط خانه‌ها (پاسخ) */
+
+body {
+  font-family: Tahoma, sans-serif;
+  margin: 20px;
+  background-color: #f8f9fa;
+  color: #212529;
+}
+
+.services {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(2, 120px);
+  gap: 8px;
+  place-items: center;
+  background-color: #f3d9fa;
+}
+
+.icon {
+  background-color: #ae3ec9;
+  color: white;
+  padding: 10px 14px;
+  border-radius: 20px;
+}

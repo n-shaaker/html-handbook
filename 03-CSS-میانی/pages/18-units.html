@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>۱۸) واحدها (Units) | آموزش CSS سطح میانی</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/demos/units.css">
+</head>
+
+<body>
+
+  <header class="page-header">
+    <h1>آموزش CSS — سطح میانی</h1>
+    <p>۱۸) واحدها (Units)</p>
+  </header>
+
+  <div class="container">
+
+    <nav class="page-nav" aria-label="ناوبری درس">
+      <a href="17-counters.html">→ قبلی: Counters</a>
+      <a href="../index.html">فهرست درس‌ها</a>
+      <a href="19-math-functions.html">بعدی: Math Functions ←</a>
+    </nav>
+
+    <section class="lesson" id="units">
+      <h2>۱۸) واحدها (Units)</h2>
+      <p>
+        هر جا در CSS طول می‌نویسیم، بعد از عدد باید واحد بیاید؛ مثل <code>20px</code>. بدون واحد، آن تعریف نامعتبر است و مرورگر نادیده‌اش می‌گیرد.
+        دو استثنا مهم وجود دارد: عدد <code>0</code>، که صفر در هر واحدی همان صفر است، و ویژگی‌هایی که از اول عدد بدون واحد می‌خواهند؛ مثل <code>opacity</code>، <code>z-index</code> و <code>line-height</code> وقتی به‌صورت ضریب نوشته شود.
+        واحدها دو دسته‌اند. واحد مطلق، مثل <code>px</code>، به اندازه عنصرهای اطراف وابسته نیست. واحد نسبی نسبت به مرجع دیگری حساب می‌شود: درصد نسبت به پدر، <code>em</code> نسبت به قلم، <code>rem</code> نسبت به قلم ریشه، و <code>vw</code> و <code>vh</code> نسبت به اندازه پنجره.
+        یک <code>px</code> در CSS همیشه یک پیکسل فیزیکی صفحه نیست. در نمایشگرهای پرتراکم، مرورگر یک پیکسل CSS را با چند پیکسل دستگاه رسم می‌کند تا اندازه دیده‌شده منطقی بماند.
+      </p>
+      <table class="ref">
+        <tr>
+          <th>واحد</th>
+          <th>نوع</th>
+          <th>نسبت به ...</th>
+        </tr>
+        <tr>
+          <td><code>px</code></td>
+          <td>مطلق</td>
+          <td>پیکسل CSS؛ پرکاربردترین واحد (در گوشی‌های با صفحه پرتراکم، هر px چند پیکسل واقعی صفحه است)</td>
+        </tr>
+        <tr>
+          <td><code>cm</code>، <code>mm</code>، <code>in</code>، <code>pt</code></td>
+          <td>مطلق</td>
+          <td>بیشتر برای چاپ؛ در صفحه نمایش کم استفاده می‌شوند</td>
+        </tr>
+        <tr>
+          <td><code>%</code></td>
+          <td>نسبی</td>
+          <td>اندازه پدر (برای <code>width</code>، عرض پدر؛ برای <code>font-size</code>، فونت پدر)</td>
+        </tr>
+        <tr>
+          <td><code>em</code></td>
+          <td>نسبی</td>
+          <td>در <code>font-size</code>: اندازه فونت <strong>پدر</strong>؛ در بقیه ویژگی‌ها (padding، margin، ...): اندازه فونت <strong>خود عنصر</strong></td>
+        </tr>
+        <tr>
+          <td><code>rem</code></td>
+          <td>نسبی</td>
+          <td>اندازه فونت <strong>ریشه</strong> (تگ html؛ معمولاً 16px)</td>
+        </tr>
+        <tr>
+          <td><code>vw</code> / <code>vh</code></td>
+          <td>نسبی</td>
+          <td>۱٪ عرض / ارتفاع پنجره مرورگر</td>
+        </tr>
+        <tr>
+          <td><code>dvh</code></td>
+          <td>نسبی</td>
+          <td>۱٪ ارتفاع «واقعی» پنجره در موبایل (با در نظر گرفتن نوار آدرس که باز و بسته می‌شود)</td>
+        </tr>
+      </table>
+
+      <h3>مثال ۱: px — اندازه ثابت</h3>
+      <pre class="code"><code>.px12 { font-size: 12px; }
+.px20 { font-size: 20px; }
+.px32 { font-size: 32px; }</code></pre>
+      <div class="result demo-units">
+        <span class="px12">12px</span>
+        <span class="px20">20px</span>
+        <span class="px32">32px</span>
+      </div>
+
+      <h3>مثال ۲: % — نسبت به پدر (نوار مهارت‌ها در رزومه)</h3>
+      <pre class="code"><code>.bar  { width: 100%; }
+.fill { width: 70%; }   /* ۷۰٪ عرض پدر */</code></pre>
+      <div class="result demo-units">
+        <p>HTML</p>
+        <div class="bar"><div class="fill w90">۹۰٪</div></div>
+        <p>CSS</p>
+        <div class="bar"><div class="fill w70">۷۰٪</div></div>
+        <p>JavaScript</p>
+        <div class="bar"><div class="fill w40">۴۰٪</div></div>
+      </div>
+
+      <h3>مثال ۳: em در برابر rem</h3>
+      <p>
+        <code>em</code> «زنجیره‌ای» است: هر سطح، نسبت به پدرش بزرگ می‌شود.
+        <code>rem</code> همیشه نسبت به ریشه است و قابل پیش‌بینی‌تر است.
+      </p>
+      <pre class="code"><code>.parent { font-size: 20px; }
+
+.em  { font-size: 1.5em; }   /* 1.5 × 20 = 30px */
+.rem { font-size: 1.5rem; }  /* 1.5 × 16 = 24px (بدون توجه به پدر) */</code></pre>
+      <div class="result demo-units">
+        <div class="parent">
+          متن پدر (20px)
+          <p class="em">با 1.5em</p>
+          <p class="rem">با 1.5rem</p>
+        </div>
+      </div>
+
+      <h3>مثال ۴: em برای padding دکمه</h3>
+      <p>اگر padding با <code>em</code> باشد، با بزرگ شدن فونت، دکمه هم متناسب بزرگ می‌شود:</p>
+      <pre class="code"><code>.btn { padding: 0.5em 1em; }</code></pre>
+      <div class="result demo-units">
+        <button type="button" class="btn small">کوچک</button>
+        <button type="button" class="btn medium">متوسط</button>
+        <button type="button" class="btn large">بزرگ</button>
+      </div>
+
+      <h3>مثال ۵: vw و vh — نسبت به پنجره</h3>
+      <p>
+        <code>vh</code> یک‌صدم ارتفاع پنجره مرورگر است و <code>vw</code> یک‌صدم عرض همان پنجره. <code>height: 30vh</code> یعنی جعبه همیشه حدود ۳۰ درصد ارتفاع پنجره‌ای باشد که الان باز است، نه ۳۰ درصد پدرش.
+        <code>font-size: 5vw</code> هم اندازه قلم را به عرض پنجره وصل می‌کند. این اندازه با تنظیم درشت‌نمایی قلم مرورگر بزرگ نمی‌شود و در صفحه‌های خیلی پهن بیش از حد درشت می‌شود؛ برای همین در عمل آن را با <code>clamp()</code> محدود می‌کنند.
+      </p>
+      <pre class="code"><code>.hero {
+  height: 30vh;               /* ۳۰٪ ارتفاع پنجره */
+  display: flex;              /* متن وسط بنر (درس ۸) */
+  justify-content: center;
+  align-items: center;
+}
+
+.vw-title { font-size: 5vw; } /* با عرض پنجره بزرگ و کوچک می‌شود */</code></pre>
+      <div class="result demo-units">
+        <div class="hero">
+          <span class="vw-title">پنجره را تغییر اندازه دهید</span>
+        </div>
+      </div>
+
+      <p class="tip">
+        فونت فقط با <code>vw</code> با زوم مرورگر بزرگ نمی‌شود و در موبایل خیلی ریز و در مانیتور بزرگ خیلی درشت می‌شود.
+        راه درست، محدود کردن آن با <code>clamp()</code> است که در درس بعد می‌بینیم.
+      </p>
+
+      <p class="tip">
+        قاعده ساده برای شروع: فونت‌ها با <code>rem</code>، فاصله‌های کوچک و حاشیه‌ها با <code>px</code>، عرض‌ها با <code>%</code> یا <code>max-width</code>.
+        دلیل <code>rem</code> برای فونت: اگر کاربر کم‌بینا اندازه فونت پیش‌فرض مرورگرش را بزرگ کند، متن‌های <code>rem</code> همراهش بزرگ می‌شوند،
+        ولی متن‌های <code>px</code> ثابت می‌مانند.
+      </p>
+
+      <p class="mistake">
+        <strong>اشتباه رایج:</strong>
+        فاصله بین عدد و واحد: <code>20 px</code> اشتباه است؛ درستش <code>20px</code> است.
+        همچنین جا انداختن واحد: <code>width: 20</code> نامعتبر است و مرورگر کل آن خط را نادیده می‌گیرد (فقط <code>0</code> بدون واحد مجاز است).
+      </p>
+
+      <p class="mistake">
+        <strong>اشتباه رایج:</strong>
+        استفاده از <code>em</code> برای فونت در عنصرهای تودرتو؛ مثلاً اگر <code>li { font-size: 1.2em; }</code> باشد،
+        هر فهرست داخل فهرست دیگر ۱٫۲ برابر بزرگ‌تر از قبلی می‌شود. برای فونت، <code>rem</code> امن‌تر است.
+      </p>
+
+      <p class="exercise">
+        <strong>تمرین:</strong> یک نوار «مهارت‌های من» با سه مهارت و درصد عرض متفاوت بسازید.
+      </p>
+    </section>
+
+    <nav class="page-nav" aria-label="ناوبری درس پایین">
+      <a href="17-counters.html">→ قبلی: Counters</a>
+      <a href="../index.html">فهرست درس‌ها</a>
+      <a href="19-math-functions.html">بعدی: Math Functions ←</a>
+    </nav>
+
+  </div>
+
+  <footer class="page-footer">
+    آموزش CSS سطح میانی
+  </footer>
+
+</body>
+
+</html>

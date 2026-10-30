@@ -1,0 +1,41 @@
+/* تمرین ۱ — نظر کاربر (شیء رسانه‌ای) (پاسخ) */
+
+body {
+  font-family: Tahoma, sans-serif;
+  margin: 20px;
+  background-color: #f8f9fa;
+  color: #212529;
+}
+
+.comment {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  max-width: 500px;
+  background-color: white;
+  border: 1px solid #dee2e6;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+/* عکس: ثابت و گرد، هیچ‌وقت له نمی‌شود */
+.avatar {
+  flex: none;
+  width: 60px;
+  height: 60px;
+  line-height: 60px;
+  text-align: center;
+  font-size: 24px;
+  background-color: #ae3ec9;
+  color: white;
+  border-radius: 50%;
+}
+
+/* متن: بقیه جا */
+.body {
+  flex: 1;
+}
+
+.body p {
+  margin: 5px 0 0;
+}

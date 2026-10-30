@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>۱۹) تمرین جمع‌بندی | آموزش CSS از صفر</title>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+
+  <header class="page-header">
+    <h1>آموزش CSS از صفر</h1>
+    <p>۱۹) تمرین جمع‌بندی</p>
+  </header>
+
+  <div class="container">
+
+    <nav class="page-nav" aria-label="ناوبری درس">
+      <a href="18-tables.html">→ قبلی: Tables</a>
+      <a href="../index.html">فهرست درس‌ها</a>
+      <a href="../../03-CSS-میانی/index.html">دوره بعدی: CSS سطح میانی ←</a>
+    </nav>
+
+    <section class="lesson" id="practice">
+      <h2>۱۹) تمرین جمع‌بندی: ظاهر دادن به صفحه معرفی شخصی</h2>
+      <p>
+        در این تمرین، صفحه معرفی‌ای را که در جلسه‌های HTML ساخته‌اید با یک فایل CSS خارجی ظاهر می‌دهید.
+        هدف این است که ساختار HTML دست‌نخورده بماند و رنگ، فاصله، فونت، جدول و حالت فوکوس همگی از همان فایل بیایند.
+        هر مرحله را در مرورگر امتحان کنید تا ببینید همان قانون دقیقاً کدام بخش را عوض کرده است.
+      </p>
+      <ol>
+        <li>یک پوشه <code>css</code> بسازید و فایل‌های CSS را داخلش بگذارید (مثل همین پروژه).</li>
+        <li>با تگ <code>link</code> فایل‌ها را به صفحه HTML وصل کنید.</li>
+        <li>اولین قانون فایل را <code>* { box-sizing: border-box; }</code> بگذارید (درس ۱۲).</li>
+        <li>برای <code>body</code> یک فونت فارسی (مثلاً Vazirmatn به صورت لوکال، یا <code>Tahoma</code>) با فونت جایگزین،
+          رنگ پس‌زمینه روشن و <code>line-height: 1.8</code> بگذارید.</li>
+        <li>به <code>h1</code> و <code>h2</code> رنگ و یک <code>border-bottom</code> بدهید.</li>
+        <li>عکس پروفایل را با عرض و ارتفاع برابر، <code>object-fit: cover</code> و <code>border-radius: 50%</code> دایره‌ای کنید.</li>
+        <li>لینک‌های منو را بدون خط زیر و با رنگ متفاوت در حالت‌های <code>:hover</code> و <code>:focus-visible</code> بنویسید
+          (لینک‌های داخل متن خط زیر داشته باشند).</li>
+        <li>جدول پروژه‌ها را با <code>caption</code>، <code>border-collapse</code> و ردیف‌های راه‌راه مرتب کنید.</li>
+        <li>محتوای صفحه را با <code>max-width: 800px</code> و <code>margin: 0 auto</code> وسط صفحه بیاورید.</li>
+        <li>به جای <code>left</code> و <code>right</code> تا جای ممکن از مقدارها و ویژگی‌های منطقی (<code>start</code>،
+          <code>end</code>، <code>margin-inline</code>، <code>border-inline-start</code>) استفاده کنید.</li>
+        <li>صفحه را در عرض موبایل (DevTools، کلید <code>F12</code>) و فقط با صفحه‌کلید (کلید Tab) امتحان کنید.</li>
+      </ol>
+
+      <h3>یک شروع نمونه برای فایل CSS</h3>
+      <pre class="code"><code>/* ===== عمومی ===== */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Tahoma, Arial, sans-serif;
+  background-color: #f7f9fc;
+  color: #222;
+  line-height: 1.8;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 16px;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* ===== تیترها ===== */
+h1 {
+  color: #1a3a5c;
+}
+
+h2 {
+  color: #0b6e4f;
+  border-bottom: 2px solid #d9e2ec;
+  padding-bottom: 6px;
+}
+
+/* ===== عکس پروفایل ===== */
+img.profile {
+  width: 160px;
+  height: 160px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 4px solid #1a3a5c;
+}
+
+/* ===== منو ===== */
+.site-nav a {
+  color: #1a3a5c;
+  text-decoration: none;
+  padding: 6px 10px;
+}
+
+.site-nav a:hover,
+.site-nav a:focus-visible {
+  color: #0b6e4f;
+  background-color: #e8f4fd;
+}
+
+/* ===== جدول ===== */
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th, td {
+  border: 1px solid #d9e2ec;
+  padding: 8px;
+  text-align: start;
+}
+
+tbody tr:nth-child(even) {
+  background-color: #f2f5f9;
+}</code></pre>
+
+      <p class="tip">
+        این فقط یک شروع است؛ رنگ‌ها، فونت و فاصله‌ها را به سلیقه خودتان تغییر دهید. بعد از هر تغییر صفحه را در مرورگر
+        بارگذاری کنید (<code>F5</code>) و اگر چیزی اعمال نشد، با DevTools (کلید <code>F12</code>) ببینید قانون شما خوانده
+        شده یا قانون دیگری روی آن نوشته شده است.
+      </p>
+
+      <p class="exercise">
+        <strong>چک‌لیست تحویل:</strong> بدون CSS داخلی و Inline؛ همه رنگ‌های متن با پس‌زمینه کنتراست کافی دارند؛ همه
+        تصویرها <code>alt</code> دارند؛ صفحه در عرض موبایل اسکرول افقی ندارد؛ با کلید Tab جای فوکوس همیشه دیده می‌شود.
+      </p>
+
+    </section>
+
+
+    <nav class="page-nav" aria-label="ناوبری درس پایین">
+      <a href="18-tables.html">→ قبلی: Tables</a>
+      <a href="../index.html">فهرست درس‌ها</a>
+      <a href="../../03-CSS-میانی/index.html">دوره بعدی: CSS سطح میانی ←</a>
+    </nav>
+
+  </div>
+
+  <footer class="page-footer">
+    آموزش CSS از صفر
+  </footer>
+
+</body>
+
+</html>

@@ -1,0 +1,425 @@
+/* =========================================================
+   فایل ظاهر صفحه آموزشی
+   هر قانون زیر می‌گوید ظاهر کدام بخش صفحه چگونه باشد.
+   ========================================================= */
+
+
+/* همه عنصرها:
+   box-sizing یعنی عرض و ارتفاع شامل padding و border هم بشود
+   تا محاسبه اندازه ساده‌تر باشد. */
+* {
+  box-sizing: border-box;
+}
+
+/* کل صفحه (بدنه):
+   فونت پیش‌فرض، فاصله بین خط‌ها، حذف حاشیه پیش‌فرض مرورگر،
+   رنگ پس‌زمینه روشن و رنگ متن تیره. */
+body {
+  font-family: Tahoma, Arial, sans-serif; /* نوع فونت */
+  line-height: 1.9;                       /* فاصله بین خط‌های متن */
+  margin: 0;                              /* فاصله بیرون صفحه صفر */
+  background-color: #f4f7fb;              /* رنگ پس‌زمینه صفحه */
+  color: #222;                            /* رنگ متن */
+}
+
+/* هدر بالای صفحه:
+   نوار سرمه‌ای با عنوان درس، متن سفید و وسط‌چین. */
+.page-header {
+  background-color: #1a3a5c; /* پس‌زمینه سرمه‌ای */
+  color: white;              /* رنگ متن سفید */
+  padding: 30px 20px;        /* فاصله داخلی: بالا/پایین ۳۰، چپ/راست ۲۰ */
+  text-align: center;        /* متن وسط‌چین */
+}
+
+/* تیتر داخل هدر:
+   فاصله پایین کمی بماند، بقیه marginها صفر. */
+.page-header h1 {
+  margin: 0 0 8px;
+}
+
+/* پاراگراف توضیح زیر تیتر هدر:
+   فاصله اضافی نداشته باشد. */
+.page-header p {
+  margin: 0;
+}
+
+/* جعبه اصلی محتوا:
+   عرض حداکثر ۹۵۰ پیکسل، وسط صفحه، با فاصله داخلی. */
+.container {
+  max-width: 950px;   /* بیشتر از این پهن نشود */
+  margin: 0 auto;     /* راست و چپ خودکار = وسط‌چین افقی */
+  padding: 20px;      /* فاصله داخلی از لبه‌ها */
+}
+
+/* فهرست درس‌ها (Table of Contents):
+   جعبه سفید با حاشیه و گوشه گرد. */
+.toc {
+  background-color: white;
+  border: 1px solid #cfd8e3; /* حاشیه خاکستری روشن */
+  border-radius: 8px;        /* گوشه‌های گرد */
+  padding: 16px 24px;        /* فاصله داخلی */
+}
+
+/* لیست شماره‌دار داخل فهرست:
+   در دو ستون نشان داده شود تا جا کمتر بگیرد. */
+.toc ol {
+  columns: 2; /* دو ستونه */
+  margin: 0;
+}
+
+/* لینک‌های داخل فهرست:
+   آبی و بدون خط زیر. */
+.toc a {
+  color: #1a5fb4;
+  text-decoration: none; /* حذف خط زیر لینک */
+}
+
+/* وقتی ماوس روی لینک فهرست می‌رود:
+   خط زیر ظاهر شود تا حس کلیک‌پذیر بودن بدهد. */
+.toc a:hover {
+  text-decoration: underline;
+}
+
+/* هر بخش درس:
+   کارت سفید جدا با حاشیه و فاصله از درس قبلی/بعدی. */
+.lesson {
+  background-color: white;
+  border: 1px solid #cfd8e3;
+  border-radius: 8px;
+  padding: 20px 24px;
+  margin: 24px 0; /* فاصله بیرون بالا و پایین */
+}
+
+/* تیتر اصلی درس (h2 مستقیم داخل .lesson):
+   سبز، با خط زیر ضخیم. */
+.lesson > h2 {
+  color: #0b6e4f;
+  border-bottom: 3px solid #0b6e4f; /* خط زیر تیتر */
+  padding-bottom: 6px;             /* فاصله متن تا خط زیر */
+  margin-top: 0;
+}
+
+/* زیرتیترهای درس (h3 مستقیم داخل .lesson):
+   رنگ سرمه‌ای. */
+.lesson > h3 {
+  color: #1a3a5c;
+  margin-bottom: 6px;
+}
+
+/* نوار قبلی / فهرست / بعدی:
+   لینک‌ها را در یک ردیف بچیند و دو سر را از هم دور کند. */
+.page-nav {
+  display: flex;                 /* چیدمان ردیفی انعطاف‌پذیر */
+  justify-content: space-between; /* فاصله مساوی بین آیتم‌ها در عرض */
+  gap: 12px;                     /* فاصله بین لینک‌ها */
+  flex-wrap: wrap;               /* در عرض کم به خط بعد برود */
+  margin: 20px 0;
+}
+
+/* خود لینک‌های ناوبری:
+   شبیه دکمه کوچک سفید با حاشیه. */
+.page-nav a {
+  color: #1a5fb4;
+  text-decoration: none;
+  background-color: white;
+  border: 1px solid #cfd8e3;
+  border-radius: 6px;
+  padding: 8px 14px;
+}
+
+/* هاور لینک ناوبری:
+   پس‌زمینه آبی خیلی روشن. */
+.page-nav a:hover {
+  background-color: #e8f4fd;
+}
+
+/* فوتر پایین صفحه:
+   متن خاکستری و وسط‌چین. */
+.page-footer {
+  text-align: center;
+  color: #666;
+  padding: 20px;
+}
+
+/* بلوک کد نمونه (جعبه سیاه):
+   همیشه چپ‌چین و LTR تا کد خوانا بماند. */
+.code {
+  direction: ltr;        /* جهت نوشتار چپ به راست */
+  text-align: left;      /* تراز چپ */
+  background-color: #1e1e2e;
+  color: #e6e6e6;
+  font-family: Consolas, "Courier New", monospace; /* فونت کدنویسی */
+  font-size: 14px;
+  line-height: 1.6;
+  padding: 14px 16px;
+  border-radius: 6px;
+  overflow-x: auto; /* اگر کد طولانی بود، اسکرول افقی */
+}
+
+/* کدهای کوتاه داخل متن (مثل نام ویژگی):
+   پس‌زمینه خاکستری روشن و فونت monospace. */
+code {
+  font-family: Consolas, "Courier New", monospace;
+  background-color: #eef1f5;
+  padding: 1px 5px;
+  border-radius: 3px;
+  direction: ltr;
+  unicode-bidi: embed; /* کد انگلیسی وسط متن فارسی درست دیده شود */
+}
+
+/* اگر code داخل بلوک .code باشد:
+   پس‌زمینه جداگانه نگیرد (چون خود جعبه سیاه است). */
+.code code {
+  background: none;
+  padding: 0;
+}
+
+/* جعبه «نتیجه در مرورگر»:
+   محل نمایش مثال زنده با حاشیه خط‌چین. */
+.result {
+  position: relative; /* برای برچسب گوشه با ::before لازم است */
+  border: 2px dashed #9fb3c8;
+  background-color: #fbfcfd;
+  padding: 30px 16px 16px; /* بالای بیشتر تا جا برای برچسب باشد */
+  margin: 10px 0 16px;
+  border-radius: 6px;
+}
+
+/* برچسب گوشه جعبه نتیجه:
+   با content متن می‌سازد؛ بدون اینکه در HTML چیزی بنویسیم. */
+.result::before {
+  content: "نتیجه در مرورگر";
+  position: absolute; /* روی گوشه جعبه بنشیند */
+  top: 0;
+  right: 0;
+  background-color: #9fb3c8;
+  color: white;
+  font-size: 12px;
+  padding: 2px 10px;
+  border-bottom-left-radius: 6px;
+}
+
+/* ظاهر مشترک سه نوع پیام آموزشی:
+   نکته، اشتباه رایج، تمرین — فاصله و گوشه گرد یکسان. */
+.tip,
+.mistake,
+.exercise {
+  padding: 10px 14px;
+  margin: 12px 0;
+  border-radius: 4px;
+}
+
+/* نکته (آبی):
+   برای راهنمایی مفید. */
+.tip {
+  background-color: #e8f4fd;
+  border-right: 5px solid #1a5fb4; /* نوار رنگی سمت راست */
+}
+
+/* اشتباه رایج (قرمز روشن):
+   برای هشدار درباره خطاهای متداول. */
+.mistake {
+  background-color: #fff0f0;
+  border-right: 5px solid #c92a2a;
+}
+
+/* تمرین (زرد روشن):
+   برای کار عملی دانشجو. */
+.exercise {
+  background-color: #fff8e7;
+  border-right: 5px solid #e6a700;
+}
+
+/* جدول مرجع آموزشی:
+   عرض کامل و حذف فاصله دوتایی بین سلول‌ها. */
+table.ref {
+  width: 100%;
+  border-collapse: collapse; /* حاشیه‌های سلول یکی شوند */
+  margin: 10px 0;
+}
+
+/* سلول‌های جدول مرجع:
+   حاشیه، فاصله داخلی، تراز راست برای متن فارسی. */
+table.ref th,
+table.ref td {
+  border: 1px solid #c7d2de;
+  padding: 8px;
+  text-align: right;
+}
+
+/* سرستون جدول (th):
+   پس‌زمینه سرمه‌ای و متن سفید. */
+table.ref th {
+  background-color: #1a3a5c;
+  color: white;
+}
+
+
+/* =========================================================
+   بخش‌های مخصوص دوره JavaScript
+   ========================================================= */
+
+/* جعبه خروجی Console:
+   خروجی console.log مثال‌ها اینجا نشان داده می‌شود. */
+.console {
+  position: relative;
+  direction: ltr;
+  text-align: left;
+  unicode-bidi: plaintext;     /* هر خط فارسی یا انگلیسی درست دیده شود */
+  white-space: pre-wrap;       /* خط‌های طولانی به خط بعد بروند */
+  background-color: #10151f;
+  color: #b8f7c4;
+  font-family: Consolas, "Courier New", monospace;
+  font-size: 14px;
+  line-height: 1.7;
+  min-height: 56px;
+  padding: 30px 14px 12px;
+  margin: 8px 0 0;
+  border-radius: 6px;
+}
+
+/* برچسب «Console» گوشه جعبه خروجی */
+.console::before {
+  content: "Console";
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: #2d3748;
+  color: #cbd5e0;
+  font-size: 12px;
+  padding: 2px 10px;
+  border-bottom-right-radius: 6px;
+}
+
+/* دکمه‌های داخل مثال‌ها */
+.btn {
+  font-family: inherit;
+  font-size: 15px;
+  background-color: #1a5fb4;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 7px 16px;
+  margin: 4px 0 4px 6px;
+  cursor: pointer;   /* نشانگر ماوس دست شود */
+}
+
+.btn:hover {
+  background-color: #1a3a5c;
+}
+
+/* دکمه دوم (خاکستری) */
+.btn.secondary {
+  background-color: #6c757d;
+}
+
+/* دکمه خطر (قرمز) */
+.btn.danger {
+  background-color: #c92a2a;
+}
+
+/* کادرهای ورودی داخل مثال‌ها */
+.result input,
+.result select,
+.result textarea {
+  font-family: inherit;
+  font-size: 15px;
+  padding: 6px 10px;
+  margin: 4px 0 4px 6px;
+  border: 1px solid #adb5bd;
+  border-radius: 6px;
+}
+
+.result input:focus,
+.result select:focus,
+.result textarea:focus {
+  outline: 2px solid #1a5fb4;
+}
+
+/* جعبه‌ای که با JavaScript تغییرش می‌دهیم */
+.demo-box {
+  background-color: #e7f5ff;
+  border: 2px solid #1a5fb4;
+  border-radius: 8px;
+  padding: 14px;
+  margin: 8px 0;
+  transition: all 0.3s;   /* تغییرها نرم انجام شود */
+}
+
+/* کلاسی که JavaScript اضافه/حذف می‌کند */
+.demo-box.active {
+  background-color: #d3f9d8;
+  border-color: #2b8a3e;
+}
+
+/* پیش‌نمایش حالت شب (درس ذخیره‌سازی) */
+.demo-box.dark {
+  background-color: #1e2230;
+  border-color: #4c566a;
+  color: #eceff4;
+}
+
+/* پنهان کردن عنصر */
+.hidden {
+  display: none;
+}
+
+/* پیام خطا و موفقیت */
+.msg-error {
+  color: #c92a2a;
+}
+
+.msg-ok {
+  color: #2b8a3e;
+}
+
+/* فهرست‌هایی که با JavaScript ساخته می‌شوند */
+.js-list {
+  list-style-type: none;
+  padding: 0;
+  margin: 8px 0;
+}
+
+.js-list li {
+  background-color: white;
+  border: 1px solid #cfd8e3;
+  border-radius: 6px;
+  padding: 6px 12px;
+  margin-bottom: 6px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+}
+
+.js-list li.done span {
+  text-decoration: line-through;   /* خط روی کار انجام‌شده */
+  color: #868e96;
+}
+
+/* کارت‌های ساخته‌شده با JavaScript */
+.js-card {
+  display: inline-block;
+  vertical-align: top;
+  width: 200px;
+  background-color: white;
+  border: 1px solid #cfd8e3;
+  border-radius: 8px;
+  padding: 12px;
+  margin: 6px 0 6px 8px;
+}
+
+.js-card h4 {
+  margin: 0 0 6px;
+  color: #1a3a5c;
+}
+
+/* عدد بزرگ (شمارنده، ساعت و ...) */
+.big-number {
+  font-size: 36px;
+  font-weight: bold;
+  color: #1a3a5c;
+  direction: ltr;
+  display: inline-block;
+  margin: 6px 0;
+}

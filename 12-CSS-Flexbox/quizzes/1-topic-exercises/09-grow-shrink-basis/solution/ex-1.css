@@ -1,0 +1,29 @@
+/* تمرین ۱ — نوار جست‌وجو (پاسخ) */
+
+body {
+  font-family: Tahoma, sans-serif;
+  margin: 20px;
+  background-color: #f8f9fa;
+  color: #212529;
+}
+
+.search {
+  display: flex;
+  gap: 8px;
+  background-color: white;
+  padding: 10px;
+  border: 1px solid #dee2e6;
+}
+
+/* کادر متن هر چه جا ماند را می‌گیرد */
+.search input {
+  flex-grow: 1;
+  padding: 8px;
+}
+
+.search button {
+  padding: 8px 16px;
+  background-color: #1c7ed6;
+  color: white;
+  border: none;
+}

@@ -1,0 +1,38 @@
+/* تمرین ۳ — سه شبکه خودکارِ خراب (پاسخ) */
+
+body {
+  font-family: Tahoma, sans-serif;
+  margin: 20px;
+  background-color: #f8f9fa;
+  color: #212529;
+}
+
+.gallery,
+.team,
+.tags {
+  display: grid;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+/* درست شد: با 1fr ستون‌ها فضای باقی‌مانده را پر می‌کنند */
+.gallery {
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+}
+
+/* درست شد: حداقل ۴۰۰ پیکسل از عرض گوشی بیشتر بود */
+.team {
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+}
+
+/* درست شد: auto-fit با fr تنها نامعتبر است؛ حداقل مشخص لازم است */
+.tags {
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+}
+
+.gallery div,
+.team div,
+.tags span {
+  background-color: #ffe3e3;
+  padding: 15px;
+}

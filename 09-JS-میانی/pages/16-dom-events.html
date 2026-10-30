@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>۱۶) DOM: رویدادها به صورت عمیق‌تر | آموزش JavaScript سطح میانی</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <script src="../js/log.js" defer></script>
+  <script src="../js/demos/dom-events.js" defer></script>
+</head>
+
+<body>
+
+  <header class="page-header" id="top">
+    <h1>آموزش JavaScript — سطح میانی</h1>
+    <p>۱۶) DOM: رویدادها به صورت عمیق‌تر</p>
+  </header>
+
+  <div class="container">
+
+    <nav class="page-nav" aria-label="ناوبری درس">
+      <a href="15-dom-changing.html">→ قبلی: DOM Changing</a>
+      <a href="../index.html">فهرست درس‌ها</a>
+      <a href="17-dom-elements.html">بعدی: DOM Elements ←</a>
+    </nav>
+
+    <section class="lesson" id="dom-events">
+      <h2>۱۶) DOM: رویدادها به صورت عمیق‌تر</h2>
+<p>در دوره پایه با <code>addEventListener</code> آشنا شدیم. حالا شیء <code>event</code> و چند تکنیک مهم را می‌بینیم.</p>
+
+<table class="ref">
+<tr><th>ویژگی / متد</th><th>کار</th></tr>
+<tr><td><code>event.target</code></td><td>عنصری که رویداد واقعاً روی آن رخ داد</td></tr>
+<tr><td><code>event.currentTarget</code></td><td>عنصری که listener روی آن نصب شده</td></tr>
+<tr><td><code>event.type</code></td><td>نوع رویداد (click، input، ...)</td></tr>
+<tr><td><code>event.key</code></td><td>حرف یا نام کلید فشرده‌شده، مثل <code>"Enter"</code> یا <code>"a"</code> (به زبان صفحه‌کلید بستگی دارد)</td></tr>
+<tr><td><code>event.code</code></td><td>جای فیزیکی کلید، مثل <code>"KeyA"</code> (مستقل از زبان صفحه‌کلید)</td></tr>
+<tr><td><code>event.clientX / clientY</code></td><td>مختصات ماوس</td></tr>
+<tr><td><code>event.preventDefault()</code></td><td>جلوگیری از رفتار پیش‌فرض مرورگر</td></tr>
+<tr><td><code>event.stopPropagation()</code></td><td>جلوگیری از رسیدن رویداد به پدرها</td></tr>
+</table>
+
+<h3>مثال ۱: مختصات ماوس</h3>
+
+<pre class="code"><code>const area = document.getElementById("mouse-area");
+const coords = document.getElementById("coords");
+
+area.addEventListener("mousemove", (event) =&gt; {
+  const rect = area.getBoundingClientRect();
+  const x = Math.round(event.clientX - rect.left);
+  const y = Math.round(event.clientY - rect.top);
+  coords.textContent = `x: ${x} , y: ${y}`;
+});</code></pre>
+
+<p>رویداد <code>mousemove</code> با هر حرکت ماوس روی ناحیه اجرا می‌شود. <code>clientX</code> و <code>clientY</code> مکان اشاره‌گر را نسبت به پنجره می‌دهند. <code>getBoundingClientRect</code> جای خود ناحیه را نسبت به همان پنجره می‌دهد. کم کردن این دو، مختصات را نسبت به گوشهٔ ناحیه حساب می‌کند و <code>Math.round</code> اعشار پیکسل را به عدد صحیح نزدیک می‌کند.</p>
+
+<div class="result">
+<div class="demo-box" id="mouse-area">ماوس را اینجا حرکت دهید<br><strong id="coords" dir="ltr">x: 0 , y: 0</strong></div>
+</div>
+
+<p class="tip"><code>clientX</code>/<code>clientY</code> نسبت به گوشه پنجره مرورگر است؛ با کم کردن <code>rect.left</code> و <code>rect.top</code> (موقعیت جعبه) مختصات را نسبت به خود جعبه به دست می‌آوریم.</p>
+
+<h3>مثال ۲: preventDefault — جلوی رفتن لینک را بگیر</h3>
+
+<pre class="code"><code>const link = document.getElementById("stop-link");
+const linkMsg = document.getElementById("link-msg");
+
+link.addEventListener("click", (event) =&gt; {
+  event.preventDefault();
+  linkMsg.textContent = "لینک باز نشد؛ preventDefault جلویش را گرفت.";
+});</code></pre>
+
+<div class="result">
+<a href="https://developer.mozilla.org/" id="stop-link">این لینک به مستندات MDN می‌رود (ولی...)</a>
+<p id="link-msg" aria-live="polite"></p>
+</div>
+
+<p class="tip">کاربرد واقعی preventDefault: جلوگیری از ارسال فرم و بارگذاری دوباره صفحه تا اول داده‌ها را با JavaScript بررسی کنیم (درس ۱۸)، یا باز کردن یک پنجره تأیید قبل از رفتن به لینک.</p>
+
+<h3>مثال ۳: میان‌بر صفحه‌کلید</h3>
+
+<pre class="code"><code>const searchBox = document.getElementById("search-box");
+const shortcutMsg = document.getElementById("shortcut-msg");
+
+document.addEventListener("keydown", (event) =&gt; {
+  if (event.ctrlKey &amp;&amp; event.code === "KeyK") {
+    event.preventDefault();        // جلوی رفتار پیش‌فرض مرورگر
+    searchBox.focus();
+    shortcutMsg.textContent = "میان‌بر Ctrl + K اجرا شد!";
+  }
+});</code></pre>
+
+<div class="result">
+<label for="search-box">جستجو در محصولات:</label>
+<input type="search" id="search-box" placeholder="Ctrl + K را بزنید">
+<p id="shortcut-msg" aria-live="polite"></p>
+</div>
+
+<p class="tip"><code>event.key</code> «حرفی» است که تایپ می‌شود و به زبان صفحه‌کلید بستگی دارد: اگر صفحه‌کلید فارسی باشد، با زدن کلید K مقدار <code>event.key</code> برابر <code>"ن"</code> است! <code>event.code</code> «جای فیزیکی کلید» است (<code>"KeyK"</code>) و به زبان بستگی ندارد؛ برای میان‌برها از <code>code</code> استفاده کنید.</p>
+
+<h3>مثال ۴: یک بار اجرا و حذف listener</h3>
+
+<pre class="code"><code>const onceBtn = document.getElementById("once-btn");
+const onceMsg = document.getElementById("once-msg");
+const hiBtn = document.getElementById("hi-btn");
+const offBtn = document.getElementById("off-btn");
+const hiMsg = document.getElementById("hi-msg");
+
+onceBtn.addEventListener("click", () =&gt; {
+  onceMsg.textContent = "فقط یک بار اجرا می‌شوم!";
+}, { once: true });
+
+function sayHi() { hiMsg.textContent += "سلام! "; }
+hiBtn.addEventListener("click", sayHi);
+offBtn.addEventListener("click", () =&gt; {
+  hiBtn.removeEventListener("click", sayHi);   // برای حذف باید همان تابع با اسم باشد
+  hiMsg.textContent += "(listener حذف شد) ";
+});</code></pre>
+
+<div class="result">
+<button type="button" class="btn" id="once-btn">کلیک (once)</button>
+<span id="once-msg"></span><br>
+<button type="button" class="btn" id="hi-btn">سلام کن</button>
+<button type="button" class="btn danger" id="off-btn">حذف listener</button>
+<p id="hi-msg"></p>
+</div>
+
+<h3>مثال ۵: بالا رفتن رویداد (Bubbling) و واگذاری رویداد (Event Delegation)</h3>
+
+<p>وقتی روی یک عنصر کلیک می‌شود، رویداد اول روی خود آن عنصر اجرا می‌شود و بعد به ترتیب به پدر، پدربزرگ و ... تا <code>document</code> «بالا می‌رود» (Bubbling). به کمک همین رفتار، به جای اینکه روی تک‌تک دکمه‌ها listener بگذاریم، <strong>یک</strong> listener روی پدرشان می‌گذاریم و با <code>event.target</code> می‌فهمیم روی کدام کلیک شده. این روش برای عنصرهایی که بعداً با JavaScript اضافه می‌شوند هم کار می‌کند.</p>
+
+<pre class="code"><code>const productList = document.getElementById("product-list");
+const cartInfo = document.getElementById("cart-info");
+let cartCount = 0;
+
+productList.addEventListener("click", (event) =&gt; {
+  const button = event.target.closest("button");   // روی دکمه (یا داخل آن) کلیک شده؟
+  if (!button || button.disabled) return;           // کلیک روی جای دیگر یا دکمه قبلاً زده‌شده
+
+  cartCount++;
+  button.disabled = true;
+  button.textContent = "در سبد ✔";
+  cartInfo.textContent = `${cartCount} کالا در سبد (آخرین: ${button.dataset.name})`;
+});</code></pre>
+
+<div class="result">
+<ul class="js-list" id="product-list">
+<li><span>کتاب آموزش JavaScript — ۲۵۰٬۰۰۰ تومان</span><button type="button" class="btn" data-name="کتاب">افزودن به سبد</button></li>
+<li><span>ماوس بی‌سیم — ۶۰۰٬۰۰۰ تومان</span><button type="button" class="btn" data-name="ماوس">افزودن به سبد</button></li>
+<li><span>فلش ۶۴ گیگ — ۳۲۰٬۰۰۰ تومان</span><button type="button" class="btn" data-name="فلش">افزودن به سبد</button></li>
+</ul>
+<p id="cart-info" aria-live="polite">سبد خرید خالی است.</p>
+</div>
+
+<p class="tip"><code>event.target</code> عنصری است که واقعاً کلیک شده (ممکن است یک <code>span</code> داخل دکمه باشد)؛ برای همین با <code>closest("button")</code> نزدیک‌ترین دکمه را پیدا می‌کنیم. <code>event.currentTarget</code> اینجا همیشه خود <code>ul</code> است. اگر جایی نخواستید رویداد به پدرها برسد، <code>event.stopPropagation()</code> را صدا بزنید (ولی بی‌دلیل از آن استفاده نکنید).</p>
+
+<h3>رویدادهای پرکاربرد دیگر</h3>
+
+<table class="ref">
+<tr><th>رویداد</th><th>توضیح</th></tr>
+<tr><td><code>focus</code> / <code>blur</code></td><td>ورود به کادر / خروج از کادر</td></tr>
+<tr><td><code>submit</code></td><td>ارسال فرم (درس فرم‌ها)</td></tr>
+<tr><td><code>scroll</code></td><td>اسکرول صفحه یا عنصر</td></tr>
+<tr><td><code>resize</code></td><td>تغییر اندازه پنجره (روی window)</td></tr>
+<tr><td><code>contextmenu</code></td><td>کلیک راست</td></tr>
+</table>
+
+<p class="mistake"><strong>اشتباه رایج:</strong> استفاده از <code>removeEventListener</code> برای تابع بی‌نام. چون هر تابع بی‌نام یک تابع جدید است، حذف نمی‌شود؛ تابع را در یک متغیر یا با اسم تعریف کنید.</p>
+
+<p class="mistake"><strong>اشتباه رایج:</strong> صدا زدن تابع به جای دادن آن: <code>btn.addEventListener("click", sayHi())</code>. با پرانتز، sayHi همان لحظه اجرا می‌شود و <strong>خروجی</strong> آن (undefined) به عنوان listener داده می‌شود. درستش <code>btn.addEventListener("click", sayHi)</code> است.</p>
+
+<p class="exercise"><strong>تمرین ۱:</strong> با رویداد <code>keydown</code> روی document یک «جعبه متحرک» بسازید که با کلیدهای جهت‌دار (<code>ArrowLeft</code>، <code>ArrowRight</code>، <code>ArrowUp</code>، <code>ArrowDown</code>) هر بار ۱۰ پیکسل جابه‌جا شود. راهنما: دو متغیر <code>x</code> و <code>y</code> نگه دارید و با <code>box.style.transform = `translate(${x}px, ${y}px)`</code> جابه‌جا کنید؛ برای جلوگیری از اسکرول صفحه <code>preventDefault()</code> را صدا بزنید.</p>
+
+<p class="exercise"><strong>تمرین ۲:</strong> یک فهرست کارها با سه <code>li</code> بسازید که هر کدام دکمه «حذف» دارند. فقط با <strong>یک</strong> listener روی <code>ul</code> (Event Delegation) کاری کنید که کلیک روی هر دکمه، همان <code>li</code> را حذف کند (راهنما: <code>event.target.closest("li").remove()</code>).</p>
+    </section>
+
+    <nav class="page-nav" aria-label="ناوبری درس پایین">
+      <a href="15-dom-changing.html">→ قبلی: DOM Changing</a>
+      <a href="../index.html">فهرست درس‌ها</a>
+      <a href="17-dom-elements.html">بعدی: DOM Elements ←</a>
+    </nav>
+
+  </div>
+
+  <footer class="page-footer">
+    آموزش JavaScript سطح میانی
+  </footer>
+
+</body>
+
+</html>

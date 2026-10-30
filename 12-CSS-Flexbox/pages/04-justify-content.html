@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>۴) تراز در محور اصلی (justify-content) | آموزش Flexbox</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/demos/justify.css">
+</head>
+
+<body>
+
+  <header class="page-header">
+    <h1>آموزش Flexbox — چیدمان انعطاف‌پذیر</h1>
+    <p>۴) تراز در محور اصلی (justify-content)</p>
+  </header>
+
+  <div class="container">
+
+    <nav class="page-nav" aria-label="ناوبری درس">
+      <a href="03-flex-wrap.html">→ قبلی: flex-wrap</a>
+      <a href="../index.html">فهرست درس‌ها</a>
+      <a href="05-align-items.html">بعدی: align-items ←</a>
+    </nav>
+
+    <section class="lesson" id="justify">
+      <h2>۴) تراز در محور اصلی (justify-content)</h2>
+      <p>
+        وقتی آیتم‌ها کل خط را پر نمی‌کنند، یک مقدار <strong>فضای خالی</strong> می‌ماند.
+        <code>justify-content</code> (روی پدر) می‌گوید این فضای خالی در <strong>محور اصلی</strong> کجا برود:
+        همه آیتم‌ها اول خط باشند، آخر خط، وسط، یا فضا بینشان پخش شود.
+        در همه مثال‌های زیر جهت <code>row</code> است، پس محور اصلی افقی است.
+      </p>
+
+      <h3>مثال ۱: <code>flex-start</code> (پیش‌فرض)</h3>
+      <p>آیتم‌ها به <strong>شروع</strong> خط می‌چسبند؛ در صفحه فارسی یعنی سمت راست:</p>
+      <pre class="code"><code>.parent {
+  display: flex;
+  justify-content: flex-start;
+}</code></pre>
+      <div class="result demo-justify">
+        <div class="parent start">
+          <div class="box b1">۱</div>
+          <div class="box b2">۲</div>
+          <div class="box b3">۳</div>
+        </div>
+      </div>
+
+      <h3>مثال ۲: <code>flex-end</code></h3>
+      <p>آیتم‌ها به <strong>پایان</strong> خط (سمت چپ در صفحه فارسی) می‌چسبند، ولی ترتیبشان عوض نمی‌شود:</p>
+      <pre class="code"><code>.parent {
+  display: flex;
+  justify-content: flex-end;
+}</code></pre>
+      <div class="result demo-justify">
+        <div class="parent end">
+          <div class="box b1">۱</div>
+          <div class="box b2">۲</div>
+          <div class="box b3">۳</div>
+        </div>
+      </div>
+
+      <h3>مثال ۳: <code>center</code></h3>
+      <pre class="code"><code>.parent {
+  display: flex;
+  justify-content: center;
+}</code></pre>
+      <div class="result demo-justify">
+        <div class="parent center">
+          <div class="box b1">۱</div>
+          <div class="box b2">۲</div>
+          <div class="box b3">۳</div>
+        </div>
+      </div>
+
+      <h3>مثال ۴: <code>space-between</code></h3>
+      <p>اولی به شروع، آخری به پایان می‌چسبد و فضای خالی <strong>بین</strong> بقیه به‌طور مساوی پخش می‌شود. پرکاربردترین مقدار برای منو و سربرگ:</p>
+      <pre class="code"><code>.parent {
+  display: flex;
+  justify-content: space-between;
+}</code></pre>
+      <div class="result demo-justify">
+        <div class="parent between">
+          <div class="box b1">۱</div>
+          <div class="box b2">۲</div>
+          <div class="box b3">۳</div>
+        </div>
+      </div>
+
+      <h3>مثال ۵: <code>space-around</code> و <code>space-evenly</code></h3>
+      <p>
+        در <code>space-around</code> هر آیتم دو طرفش فاصله برابر دارد؛ پس فاصله لبه‌ها <strong>نصف</strong> فاصله بین آیتم‌هاست.
+        در <code>space-evenly</code> همه فاصله‌ها (لبه‌ها و بین آیتم‌ها) دقیقاً <strong>برابرند</strong>:
+      </p>
+      <pre class="code"><code>.around { justify-content: space-around; }
+.evenly { justify-content: space-evenly; }</code></pre>
+      <div class="result demo-justify">
+        <p class="label">space-around:</p>
+        <div class="parent around">
+          <div class="box b1">۱</div>
+          <div class="box b2">۲</div>
+          <div class="box b3">۳</div>
+        </div>
+        <p class="label">space-evenly:</p>
+        <div class="parent evenly">
+          <div class="box b1">۱</div>
+          <div class="box b2">۲</div>
+          <div class="box b3">۳</div>
+        </div>
+      </div>
+
+      <h3>مثال ۶: سربرگ کافه با <code>space-between</code></h3>
+      <pre class="code"><code>.header {
+  display: flex;
+  justify-content: space-between;
+}</code></pre>
+      <div class="result demo-justify">
+        <div class="cafe-header">
+          <strong class="logo">☕ کافه نارنج</strong>
+          <span>منو</span>
+          <span>رزرو میز</span>
+          <span>تماس</span>
+        </div>
+      </div>
+
+      <p class="mistake">
+        <strong>اشتباه رایج:</strong>
+        بعد از <code>flex-direction: column</code> با <code>justify-content: center</code> می‌خواهیم آیتم‌ها را <strong>افقی</strong> وسط کنیم و کار نمی‌کند.
+        <code>justify-content</code> همیشه روی <strong>محور اصلی</strong> کار می‌کند؛ در حالت <code>column</code> محور اصلی عمودی است.
+        پس آیتم‌ها عمودی جابه‌جا می‌شوند (البته فقط اگر ظرف ارتفاع اضافه داشته باشد).
+      </p>
+
+      <p class="mistake">
+        <strong>اشتباه رایج:</strong>
+        <code>justify-content</code> را روی آیتم‌ها می‌نویسیم و می‌بینیم هیچ جابه‌جایی‌ای رخ نمی‌دهد.
+        این ویژگی فقط روی ظرف فلکس اثر دارد، چون فضای خالیِ محور اصلی مال پدر است. روی فرزند باید از <code>margin</code> یا، در درس‌های بعد، از <code>align-self</code> استفاده کنید.
+      </p>
+
+      <table class="ref">
+        <tr>
+          <th>مقدار</th>
+          <th>فضای خالی کجا می‌رود؟</th>
+        </tr>
+        <tr>
+          <td><code>flex-start</code></td>
+          <td>همه در پایان خط (آیتم‌ها در شروع)</td>
+        </tr>
+        <tr>
+          <td><code>flex-end</code></td>
+          <td>همه در شروع خط (آیتم‌ها در پایان)</td>
+        </tr>
+        <tr>
+          <td><code>center</code></td>
+          <td>فضای خالی دو طرف گروه جمع می‌شود و خود آیتم‌ها به‌صورت یک دسته در وسط خط قرار می‌گیرند.</td>
+        </tr>
+        <tr>
+          <td><code>space-between</code></td>
+          <td>آیتم اول به شروع خط و آیتم آخر به پایان خط می‌چسبد و فضای خالی فقط بین آیتم‌ها، به اندازهٔ برابر، تقسیم می‌شود.</td>
+        </tr>
+        <tr>
+          <td><code>space-around</code></td>
+          <td>دور هر آیتم فاصلهٔ برابر گذاشته می‌شود؛ چون فاصلهٔ لبه با نصف فاصلهٔ بین دو آیتم ساخته می‌شود، حاشیهٔ ظرف نصف فاصلهٔ میانی است.</td>
+        </tr>
+        <tr>
+          <td><code>space-evenly</code></td>
+          <td>فاصلهٔ لبهٔ ظرف با آیتم کناری، و فاصلهٔ بین خود آیتم‌ها، همه یک اندازه می‌شوند.</td>
+        </tr>
+      </table>
+
+      <p class="exercise">
+        <strong>تمرین:</strong> پایین فرم ثبت‌نام یک آموزشگاه دو دکمه «انصراف» و «ثبت‌نام» بگذارید.
+        یک بار هر دو را به پایان خط بچسبانید (<code>flex-end</code>)، یک بار با <code>space-between</code> دو سر خط بفرستید.
+        بعد پدر را <code>column</code> کنید و توضیح دهید چرا دیگر <code>flex-end</code> آن‌ها را به چپ نمی‌برد.
+      </p>
+    </section>
+
+    <nav class="page-nav" aria-label="ناوبری درس پایین">
+      <a href="03-flex-wrap.html">→ قبلی: flex-wrap</a>
+      <a href="../index.html">فهرست درس‌ها</a>
+      <a href="05-align-items.html">بعدی: align-items ←</a>
+    </nav>
+
+  </div>
+
+  <footer class="page-footer">
+    آموزش Flexbox
+  </footer>
+
+</body>
+
+</html>

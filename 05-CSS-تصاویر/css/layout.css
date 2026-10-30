@@ -1,0 +1,105 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Tahoma, Arial, sans-serif;
+  line-height: 1.9;
+  margin: 0;
+  background-color: #f4f7fb;
+  color: #222;
+}
+
+.page-header {
+  background-color: #1a3a5c;
+  color: white;
+  padding: 30px 20px;
+  text-align: center;
+}
+
+.page-header h1 {
+  margin: 0 0 8px;
+}
+
+.page-header p {
+  margin: 0;
+}
+
+.container {
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.toc {
+  background-color: white;
+  border: 1px solid #cfd8e3;
+  border-radius: 8px;
+  padding: 16px 24px;
+}
+
+.toc ol {
+  margin: 8px 0 0;
+}
+
+.toc a {
+  color: #1a5fb4;
+  text-decoration: none;
+}
+
+.toc a:hover {
+  text-decoration: underline;
+}
+
+.lesson {
+  background-color: white;
+  border: 1px solid #cfd8e3;
+  border-radius: 8px;
+  padding: 20px 24px;
+  margin: 24px 0;
+}
+
+.lesson > h2 {
+  color: #0b6e4f;
+  border-bottom: 3px solid #0b6e4f;
+  padding-bottom: 6px;
+  margin-top: 0;
+}
+
+.lesson > h3 {
+  color: #1a3a5c;
+  margin-bottom: 6px;
+}
+
+.page-nav {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin: 20px 0;
+}
+
+.page-nav a {
+  color: #1a5fb4;
+  text-decoration: none;
+  background-color: white;
+  border: 1px solid #cfd8e3;
+  border-radius: 6px;
+  padding: 8px 14px;
+}
+
+.page-nav a:hover {
+  background-color: #e8f4fd;
+}
+
+a:focus-visible,
+button:focus-visible {
+  outline: 3px solid #e6a700;
+  outline-offset: 2px;
+}
+
+.page-footer {
+  text-align: center;
+  color: #666;
+  padding: 20px;
+}

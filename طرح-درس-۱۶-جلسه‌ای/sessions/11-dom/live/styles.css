@@ -1,0 +1,42 @@
+body {
+  margin: 0;
+  font-family: Tahoma, "Segoe UI", system-ui, sans-serif;
+  background: #f1f5f9;
+  color: #0f172a;
+  padding: 2rem 1.25rem;
+}
+
+.products {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+  gap: 1rem;
+  max-width: 64rem;
+  margin: 0 auto;
+}
+
+header {
+  max-width: 64rem;
+  margin: 0 auto 1rem;
+}
+
+.card {
+  background: #fff;
+  border-radius: 0.85rem;
+  overflow: hidden;
+  border: 1px solid #e2e8f0;
+}
+
+.card img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.card__body {
+  padding: 1rem;
+}
+
+.card__price {
+  font-weight: 700;
+  color: #2563eb;
+}

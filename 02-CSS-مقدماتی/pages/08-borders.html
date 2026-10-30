@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>۸) حاشیه (Borders) | آموزش CSS از صفر</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/demos/borders.css">
+</head>
+
+<body>
+
+  <header class="page-header">
+    <h1>آموزش CSS از صفر</h1>
+    <p>۸) حاشیه (Borders)</p>
+  </header>
+
+  <div class="container">
+
+    <nav class="page-nav" aria-label="ناوبری درس">
+      <a href="07-backgrounds.html">→ قبلی: Backgrounds</a>
+      <a href="../index.html">فهرست درس‌ها</a>
+      <a href="09-margins.html">بعدی: Margins ←</a>
+    </nav>
+
+    <section class="lesson" id="borders">
+      <h2>۸) حاشیه (Borders)</h2>
+      <p>
+        حاشیه خطی است که دور لبه جعبه، بین فاصله داخلی و فاصله بیرونی، کشیده می‌شود.
+        برای دیده شدن آن سه چیز لازم است: <strong>سبک</strong> (شکل خط)، <strong>ضخامت</strong> و <strong>رنگ</strong>.
+        مقدار پیش‌فرض سبک <code>none</code> است؛ پس اگر فقط ضخامت و رنگ را بنویسید و سبک را مشخص نکنید، مرورگر هیچ خطی نشان نمی‌دهد.
+      </p>
+      <pre class="code"><code>/* ضخامت و رنگ مشترک همه نمونه‌ها */
+.bdemo {
+  border-width: 3px;
+  border-color: #1a3a5c;
+  padding: 8px;
+}
+
+.b-solid  { border-style: solid; }
+.b-dashed { border-style: dashed; }
+.b-dotted { border-style: dotted; }
+.b-double { border-style: double; border-width: 5px; }  /* double حداقل ۳ پیکسل لازم دارد */
+.b-mixed  { border-style: solid dashed; }  /* بالا و پایین / راست و چپ */</code></pre>
+      <div class="result">
+        <p class="bdemo b-solid">solid — خط پیوسته</p>
+        <p class="bdemo b-dashed">dashed — خط‌چین</p>
+        <p class="bdemo b-dotted">dotted — نقطه‌چین</p>
+        <p class="bdemo b-double">double — دوخطی</p>
+        <p class="bdemo b-mixed">solid dashed — ترکیبی</p>
+      </div>
+      <p>
+        علاوه بر خط پیوسته، خط‌چین، نقطه‌چین و دوخطی، سبک‌های <code>groove</code>، <code>ridge</code>، <code>inset</code> و <code>outset</code> هم وجود دارند.
+        این چهار سبک با سایه‌روشن سعی می‌کنند لبه فرورفته یا برجسته نشان دهند و ظاهرشان به رنگ حاشیه وابسته است.
+        اگر به <code>border-style</code> چند مقدار بدهید، ترتیب مثل <code>margin</code> است که در درس ۹ می‌آید: یک مقدار برای هر چهار طرف، دو مقدار برای بالا/پایین و راست/چپ، و به همین ترتیب.
+        سبک <code>double</code> برای اینکه دو خط جدا دیده شود به ضخامت کافی نیاز دارد؛ با یک یا دو پیکسل معمولاً شبیه یک خط معمولی می‌شود.
+      </p>
+
+      <h3>نوشتن خلاصه و گوشه گرد: کارت محصول</h3>
+      <p>
+        در عمل معمولاً هر سه جزء را با ویژگی خلاصه <code>border</code> در یک خط می‌نویسیم: ضخامت، سبک و رنگ.
+        مرورگر این سه را از روی نوع مقدار تشخیص می‌دهد، پس جابه‌جایی‌شان معمولاً خطا نمی‌سازد؛ ترتیب «ضخامت، سبک، رنگ» فقط رایج‌ترین شکل نوشتن است.
+        <code>border-radius</code> گوشه‌های همان حاشیه را گرد می‌کند و روی پس‌زمینه هم اثر می‌گذارد، چون پس‌زمینه داخل گوشه گرد بریده می‌شود.
+      </p>
+      <pre class="code"><code>.card {
+  border: 1px solid #cfd8e3;   /* ضخامت، سبک، رنگ */
+  border-radius: 12px;         /* گوشه‌های گرد */
+  padding: 16px;
+  max-width: 280px;
+}
+
+/* فاصله بین دو انتخابگر یعنی «داخل»: عنصر price که داخل card است */
+.card .price {
+  border-top: 1px dashed #cfd8e3;   /* فقط خط بالا */
+  padding-top: 8px;
+  color: #0b6e4f;
+  font-weight: bold;
+}</code></pre>
+      <div class="result">
+        <div class="card">
+          <h3>هدفون بی‌سیم</h3>
+          <p>صدای شفاف، ۲۰ ساعت شارژدهی و اتصال بلوتوث.</p>
+          <p class="price">۱٬۸۵۰٬۰۰۰ تومان</p>
+        </div>
+      </div>
+      <p>
+        <code>border-radius</code> هم مثل margin تا چهار مقدار می‌گیرد؛ ترتیب از گوشه <strong>بالا-چپ</strong> شروع می‌شود و
+        در جهت عقربه‌های ساعت می‌چرخد. مثلاً <code>border-radius: 12px 12px 0 0;</code> فقط دو گوشه بالا را گرد می‌کند.
+      </p>
+
+      <h3>حاشیه فقط در یک طرف (و نکته راست‌چین)</h3>
+      <p>
+        لازم نیست هر چهار طرف حاشیه یک شکل باشند. <code>border-top</code> یا <code>border-inline-start</code> فقط یک لبه را می‌کشد و بقیه لبه‌ها بدون خط می‌مانند.
+        در یادداشت زیر، یک نوار رنگی در لبه‌ای که متن از آنجا شروع می‌شود دیده می‌شود تا آن جعبه از پاراگراف معمولی جدا شود.
+      </p>
+      <pre class="code"><code>.note {
+  border-inline-start: 6px solid #e67700;  /* لبه «شروع» متن؛ در صفحه فارسی = راست */
+  background-color: #fff4e6;
+  padding: 10px;
+}</code></pre>
+      <div class="result">
+        <p class="note">یادداشت: کلاس فردا ساعت ۱۰ برگزار می‌شود.</p>
+      </div>
+      <p class="tip">
+        <code>border-right</code> همیشه سمت راست است. ولی <code>border-inline-start</code> لبه‌ای است که متن از آنجا
+        <strong>شروع</strong> می‌شود: در صفحه فارسی (<code>dir="rtl"</code>) سمت راست و در صفحه انگلیسی سمت چپ. به این‌ها
+        «ویژگی‌های منطقی» (Logical Properties) می‌گویند و برای سایت‌های دوزبانه بهترند. معادل‌ها:
+        <code>border-inline-end</code> (لبه پایان متن)، <code>border-block-start</code> (بالا) و <code>border-block-end</code> (پایین).
+      </p>
+
+      <h3>عکس پروفایل دایره‌ای</h3>
+      <p>
+        برای دایره، عرض و ارتفاع تصویر باید برابر باشند و <code>border-radius: 50%</code> هر گوشه را به اندازه نصف ضلع گرد کند.
+        <code>object-fit: cover</code> عکس را داخل همان مربع می‌پوشاند و قسمت اضافه را می‌برد تا تصویر برای جا شدن کش نیاید. اگر عرض و ارتفاع برابر نباشند، همان ۵۰ درصد بیضی می‌سازد نه دایره.
+      </p>
+      <pre class="code"><code>.avatar {
+  width: 120px;
+  height: 120px;          /* عرض و ارتفاع برابر */
+  object-fit: cover;      /* عکس کشیده نشود؛ اضافه‌اش بریده شود */
+  border: 4px solid #0b6e4f;
+  border-radius: 50%;     /* دایره کامل */
+}</code></pre>
+      <div class="result">
+        <img class="avatar" src="../images/bg.jpg" alt="عکس پروفایل نمونه">
+      </div>
+
+      <p class="mistake">
+        <strong>اشتباه رایج:</strong>
+        نوشتن <code>border-width</code> و <code>border-color</code> (یا <code>border: 2px red</code>) بدون سبک.
+        مقدار پیش‌فرض <code>border-style</code> برابر <code>none</code> است، پس بدون سبک هیچ حاشیه‌ای دیده نمی‌شود.
+        <br>
+        یادتان باشد حاشیه هم به اندازه جعبه اضافه می‌شود (درس ۱۲، مدل جعبه‌ای).
+      </p>
+
+      <p class="exercise">
+        <strong>تمرین:</strong> یک کارت «نظر مشتری» بسازید: حاشیه ۱ پیکسلی خاکستری، گوشه‌های گرد ۱۰ پیکسلی، یک نوار رنگی
+        ۴ پیکسلی در لبه شروع متن (<code>border-inline-start</code>) و عکس دایره‌ای مشتری بالای متن.
+      </p>
+    </section>
+
+
+    <nav class="page-nav" aria-label="ناوبری درس پایین">
+      <a href="07-backgrounds.html">→ قبلی: Backgrounds</a>
+      <a href="../index.html">فهرست درس‌ها</a>
+      <a href="09-margins.html">بعدی: Margins ←</a>
+    </nav>
+
+  </div>
+
+  <footer class="page-footer">
+    آموزش CSS از صفر
+  </footer>
+
+</body>
+
+</html>

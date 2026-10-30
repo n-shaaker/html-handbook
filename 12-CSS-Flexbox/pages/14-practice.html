@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>۱۴) جمع‌بندی و تمرین | آموزش Flexbox</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/demos/practice.css">
+</head>
+
+<body>
+
+  <header class="page-header">
+    <h1>آموزش Flexbox — چیدمان انعطاف‌پذیر</h1>
+    <p>۱۴) جمع‌بندی و تمرین</p>
+  </header>
+
+  <div class="container">
+
+    <nav class="page-nav" aria-label="ناوبری درس">
+      <a href="13-responsive.html">→ قبلی: Flexbox واکنش‌گرا</a>
+      <a href="../index.html">فهرست درس‌ها</a>
+      <span aria-hidden="true"></span>
+    </nav>
+
+    <section class="lesson" id="practice">
+      <h2>۱۴) جمع‌بندی و تمرین</h2>
+      <p>
+        تبریک! همه ابزارهای Flexbox را یاد گرفتید. این صفحه سه بخش دارد: یک چک‌لیست برای وقتی که Flexbox «کار نمی‌کند»،
+        یک جدول مرجع از همه ویژگی‌ها، و چند تمرین که کم‌کم سخت‌تر می‌شوند.
+      </p>
+
+      <h3>چک‌لیست: وقتی Flexbox کار نمی‌کند</h3>
+      <ul class="checklist">
+        <li><code>display: flex</code> را روی <strong>پدر</strong> نوشته‌ام، نه روی فرزندها؟</li>
+        <li>آیتم‌هایی که می‌خواهم بچینم، فرزند <strong>مستقیم</strong> ظرف هستند (نه نوه)؟</li>
+        <li>جهت محور اصلی را می‌دانم؟ (<code>row</code> = افقی، <code>column</code> = عمودی؛ و در صفحه فارسی شروع سمت راست است)</li>
+        <li>برای محور اصلی <code>justify-content</code> و برای محور فرعی <code>align-items</code> نوشته‌ام؟</li>
+        <li>برای وسط‌چینی عمودی، ظرف ارتفاع اضافه (<code>height</code> یا <code>min-height</code>) دارد؟</li>
+        <li>اگر می‌خواهم آیتم‌ها به خط بعد بروند، <code>flex-wrap: wrap</code> نوشته‌ام؟</li>
+        <li><code>align-content</code> را فقط با <code>wrap</code> و چند خط استفاده کرده‌ام؟</li>
+        <li>به‌جای margin روی همه آیتم‌ها، از <code>gap</code> روی پدر استفاده کرده‌ام؟</li>
+        <li>عکس‌ها و آیکون‌ها <code>flex-shrink: 0</code> یا <code>flex: none</code> دارند تا له نشوند؟</li>
+        <li>برای عرض ثابت <code>flex: 0 0 ...</code> نوشته‌ام، نه <code>width</code> کنار <code>flex: 1</code>؟</li>
+        <li>با DevTools (کلیک راست ← Inspect) برچسب <strong>flex</strong> کنار ظرف را زده‌ام تا محورها و فاصله‌ها را ببینم؟</li>
+      </ul>
+
+      <h3>مرور با یک مثال: همه چیز در یک کارت</h3>
+      <p>این کارت سفارش، نیمی از ویژگی‌های دوره را با هم دارد. سعی کنید قبل از خواندن کد، حدس بزنید هر بخش با چه ویژگی‌ای ساخته شده:</p>
+      <pre class="code"><code>.order       { display: flex; flex-direction: column; gap: 10px; }
+.order-head  { display: flex; justify-content: space-between; align-items: center; }
+.order-item  { display: flex; align-items: center; gap: 10px; }
+.order-item .thumb { flex: none; }
+.order-item .name  { flex: 1; }
+.order-foot  { display: flex; gap: 8px; }
+.order-foot .pay   { margin-inline-start: auto; }</code></pre>
+      <div class="result demo-practice">
+        <div class="order">
+          <div class="order-head">
+            <strong>سفارش شما — کافه نارنج</strong>
+            <span class="status">در حال آماده‌سازی</span>
+          </div>
+          <div class="order-item">
+            <span class="thumb">☕</span>
+            <span class="name">لاته (بزرگ)</span>
+            <span class="qty">× ۲</span>
+          </div>
+          <div class="order-item">
+            <span class="thumb">🍰</span>
+            <span class="name">کیک شکلاتی</span>
+            <span class="qty">× ۱</span>
+          </div>
+          <div class="order-foot">
+            <a href="#practice" class="link">ویرایش</a>
+            <a href="#practice" class="link">لغو</a>
+            <a href="#practice" class="pay">پرداخت ۳۴۰ هزار تومان</a>
+          </div>
+        </div>
+      </div>
+
+      <h3>جدول مرجع: ویژگی‌های ظرف (پدر)</h3>
+      <table class="ref">
+        <tr>
+          <th>ویژگی</th>
+          <th>مقدارهای پرکاربرد</th>
+          <th>کار</th>
+          <th>درس</th>
+        </tr>
+        <tr>
+          <td><code>display</code></td>
+          <td><code>flex</code>، <code>inline-flex</code></td>
+          <td>ساختن ظرف فلکس</td>
+          <td><a href="01-intro.html">۱</a></td>
+        </tr>
+        <tr>
+          <td><code>flex-direction</code></td>
+          <td><code>row</code>، <code>row-reverse</code>، <code>column</code>، <code>column-reverse</code></td>
+          <td>جهت محور اصلی</td>
+          <td><a href="02-flex-direction.html">۲</a></td>
+        </tr>
+        <tr>
+          <td><code>flex-wrap</code></td>
+          <td><code>nowrap</code>، <code>wrap</code>، <code>wrap-reverse</code></td>
+          <td>اجازه شکستن خط</td>
+          <td><a href="03-flex-wrap.html">۳</a></td>
+        </tr>
+        <tr>
+          <td><code>flex-flow</code></td>
+          <td><code>row wrap</code></td>
+          <td>میان‌بُر جهت + شکستن خط</td>
+          <td><a href="03-flex-wrap.html">۳</a></td>
+        </tr>
+        <tr>
+          <td><code>justify-content</code></td>
+          <td><code>flex-start</code>، <code>flex-end</code>، <code>center</code>، <code>space-between</code>، <code>space-around</code>، <code>space-evenly</code></td>
+          <td>تراز در محور اصلی</td>
+          <td><a href="04-justify-content.html">۴</a></td>
+        </tr>
+        <tr>
+          <td><code>align-items</code></td>
+          <td><code>stretch</code>، <code>flex-start</code>، <code>flex-end</code>، <code>center</code>، <code>baseline</code></td>
+          <td>تراز آیتم‌ها در محور فرعی</td>
+          <td><a href="05-align-items.html">۵</a></td>
+        </tr>
+        <tr>
+          <td><code>align-content</code></td>
+          <td><code>stretch</code>، <code>flex-start</code>، <code>center</code>، <code>space-between</code></td>
+          <td>تراز خط‌ها (فقط با wrap)</td>
+          <td><a href="06-align-content.html">۶</a></td>
+        </tr>
+        <tr>
+          <td><code>gap</code>، <code>row-gap</code>، <code>column-gap</code></td>
+          <td><code>10px</code>، <code>20px 10px</code></td>
+          <td>فاصله بین آیتم‌ها و خط‌ها</td>
+          <td><a href="07-gap.html">۷</a></td>
+        </tr>
+      </table>
+
+      <h3>جدول مرجع: ویژگی‌های آیتم (فرزند)</h3>
+      <table class="ref">
+        <tr>
+          <th>ویژگی</th>
+          <th>مقدارهای پرکاربرد</th>
+          <th>کار</th>
+          <th>درس</th>
+        </tr>
+        <tr>
+          <td><code>order</code></td>
+          <td><code>-1</code>، <code>0</code>، <code>1</code></td>
+          <td>ترتیب نمایش</td>
+          <td><a href="08-order.html">۸</a></td>
+        </tr>
+        <tr>
+          <td><code>flex-grow</code></td>
+          <td><code>0</code>، <code>1</code>، <code>2</code></td>
+          <td>سهم از فضای اضافه</td>
+          <td><a href="09-grow-shrink-basis.html">۹</a></td>
+        </tr>
+        <tr>
+          <td><code>flex-shrink</code></td>
+          <td><code>1</code>، <code>0</code></td>
+          <td>سهم از کمبود جا</td>
+          <td><a href="09-grow-shrink-basis.html">۹</a></td>
+        </tr>
+        <tr>
+          <td><code>flex-basis</code></td>
+          <td><code>auto</code>، <code>200px</code>، <code>30%</code></td>
+          <td>اندازه اولیه</td>
+          <td><a href="09-grow-shrink-basis.html">۹</a></td>
+        </tr>
+        <tr>
+          <td><code>flex</code></td>
+          <td><code>1</code>، <code>auto</code>، <code>none</code>، <code>0 0 200px</code></td>
+          <td>میان‌بُر grow + shrink + basis</td>
+          <td><a href="10-flex-shorthand.html">۱۰</a></td>
+        </tr>
+        <tr>
+          <td><code>align-self</code></td>
+          <td>مثل <code>align-items</code></td>
+          <td>تراز یک آیتم در محور فرعی</td>
+          <td><a href="11-align-self-margin-auto.html">۱۱</a></td>
+        </tr>
+        <tr>
+          <td><code>margin</code></td>
+          <td><code>auto</code>، <code>margin-inline-start: auto</code></td>
+          <td>هل دادن یک آیتم در محور اصلی</td>
+          <td><a href="11-align-self-margin-auto.html">۱۱</a></td>
+        </tr>
+      </table>
+
+      <h3>تمرین‌ها (از آسان به سخت)</h3>
+
+      <p class="exercise">
+        <strong>تمرین ۱ (آسان):</strong> یک نوار «ساعت کاری» برای یک کافه بسازید با سه جعبه «شنبه تا چهارشنبه»، «پنج‌شنبه» و «جمعه» که کنار هم و با <code>gap</code> ۱۰ پیکسل باشند
+        و کل گروه وسط صفحه قرار بگیرد.
+      </p>
+
+      <p class="exercise">
+        <strong>تمرین ۲ (آسان):</strong> یک دکمه «افزودن به سبد» بسازید که داخلش آیکون 🛒 و متن کنار هم و عمودی وسط باشند (<code>inline-flex</code> و <code>align-items</code>).
+        دکمه نباید تمام عرض صفحه را بگیرد.
+      </p>
+
+      <p class="exercise">
+        <strong>تمرین ۳ (متوسط):</strong> سربرگ یک آموزشگاه: لوگو در شروع خط، چهار لینک کنار آن، و دکمه «ثبت‌نام» در انتهای خط (با margin خودکار).
+        در صفحه باریک لینک‌ها به خط بعد بروند و صفحه اسکرول افقی نخورد.
+      </p>
+
+      <p class="exercise">
+        <strong>تمرین ۴ (متوسط):</strong> بخش «نظر هنرجوها» با سه نظر به الگوی «عکس + متن». عکس‌ها دایره‌ای ۶۰ پیکسلی باشند و در هیچ عرضی له نشوند.
+        نام هنرجو و تاریخ نظر در یک ردیف، دو سر خط (<code>space-between</code>) باشند.
+      </p>
+
+      <p class="exercise">
+        <strong>تمرین ۵ (سخت):</strong> صفحه محصولات یک فروشگاه: ۸ کارت محصول که بدون media query در دسکتاپ چهارتایی و در گوشی تکی باشند.
+        هر کارت عکس، نام، قیمت و دکمه «خرید» داشته باشد؛ همه کارت‌های یک ردیف هم‌قد باشند و دکمه‌ها در ته کارت‌ها هم‌خط بمانند،
+        حتی اگر نام محصول‌ها کوتاه و بلند باشد.
+      </p>
+
+      <p class="exercise">
+        <strong>تمرین ۶ (سخت):</strong> اسکلت کامل یک صفحه «پنل هنرجو»: سربرگ بالا، زیر آن ستون کناری با عرض ثابت ۲۲۰ پیکسل و محتوای اصلی که بقیه عرض را بگیرد،
+        و فوتری که حتی با محتوای کم پایین صفحه بماند. با یک media query در عرض کمتر از ۶۰۰ پیکسل ستون کناری بالای محتوا بیاید.
+        فقط از Flexbox استفاده کنید (نه float، نه position، نه Grid).
+      </p>
+
+      <p class="mistake">
+        <strong>اشتباه رایج:</strong>
+        همه چیز را با Flexbox می‌سازیم، حتی جدول‌مانندهایی که هم ردیف دارند هم ستون (مثل گالری که باید خانه‌هایش دقیقاً زیر هم باشند).
+        Flexbox برای یک جهت است؛ برای چیدمان دوبعدی از Grid استفاده کنید. این دو با هم دشمن نیستند و در یک صفحه کنار هم کار می‌کنند.
+      </p>
+
+      <p class="tip">
+        بعد از این تمرین‌ها، سراغ <a href="../quizzes/README.md">کوییزهای عملی Flexbox</a> بروید و بعد
+        <a href="../../13-CSS-Grid/index.html">دوره آموزش Grid</a> را شروع کنید.
+      </p>
+    </section>
+
+    <nav class="page-nav" aria-label="ناوبری درس پایین">
+      <a href="13-responsive.html">→ قبلی: Flexbox واکنش‌گرا</a>
+      <a href="../index.html">فهرست درس‌ها</a>
+      <span aria-hidden="true"></span>
+    </nav>
+
+  </div>
+
+  <footer class="page-footer">
+    آموزش Flexbox
+  </footer>
+
+</body>
+
+</html>

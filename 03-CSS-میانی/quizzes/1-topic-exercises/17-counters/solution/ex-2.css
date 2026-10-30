@@ -1,0 +1,35 @@
+body {
+  font-family: Tahoma, Arial, sans-serif;
+  line-height: 1.9;
+  padding: 24px;
+}
+
+.recipe {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.steps {
+  list-style-type: none;
+  padding: 0;
+  counter-reset: step;
+}
+
+.steps li {
+  counter-increment: step;
+  margin-bottom: 12px;
+}
+
+/* دایره شماره‌دار */
+.steps li::before {
+  content: counter(step, persian);
+  display: inline-block;
+  width: 32px;
+  height: 32px;
+  line-height: 32px;
+  margin-left: 10px;
+  text-align: center;
+  color: white;
+  background-color: #b5452a;
+  border-radius: 50%;
+}

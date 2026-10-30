@@ -1,0 +1,61 @@
+/* هیرو واقعی سایت */
+
+.demo-hero {
+  min-height: 280px;
+  border-radius: 10px;
+  /* لایه اول (گرادیان تیره) روی لایه دوم (عکس) می‌نشیند */
+  background-image:
+    linear-gradient(rgba(10, 20, 30, 0.35), rgba(10, 20, 30, 0.85)),
+    url("../../images/hero.jpg");
+  background-size: cover;
+  background-position: center;
+  color: white;
+}
+
+.demo-hero-inner {
+  padding: 40px 24px;
+  max-width: 480px;
+}
+
+.demo-hero-inner h3 {
+  margin: 0 0 8px;
+  font-size: 1.6rem;
+  color: white;
+}
+
+.demo-hero-inner p {
+  margin: 0 0 16px;
+  color: #eef2f7;
+}
+
+.demo-hero-btn {
+  display: inline-block;
+  background-color: #0b6e4f;
+  color: white;
+  text-decoration: none;
+  padding: 10px 18px;
+  border-radius: 6px;
+}
+
+.demo-hero-btn:hover,
+.demo-hero-btn:focus-visible {
+  background-color: #095c42;
+}
+
+.demo-hero-btn:focus-visible {
+  outline: 3px solid white;
+  outline-offset: 2px;
+}
+
+/* بدون لایه تیره — متن خوانا نیست */
+.demo-hero-bad {
+  min-height: 160px;
+  border-radius: 10px;
+  background-image: url("../../images/hero.jpg");
+  background-size: cover;
+  background-position: center;
+  color: white;
+  padding: 24px;
+  font-size: 1.3rem;
+  font-weight: bold;
+}

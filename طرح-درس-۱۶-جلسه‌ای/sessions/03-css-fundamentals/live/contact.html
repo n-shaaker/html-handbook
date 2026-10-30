@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>تماس با ما</title>
+    <!-- External stylesheet: preferred approach for maintainable projects -->
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <h1>تماس با ما</h1>
+      <p class="lead">معمولاً تا یک روز کاری پاسخ می‌دهیم.</p>
+    </header>
+
+    <main class="contact">
+      <form class="contact-form" action="#" method="post">
+        <div class="field">
+          <label for="name">نام</label>
+          <input id="name" name="name" type="text" autocomplete="name" required />
+        </div>
+
+        <div class="field">
+          <label for="email">ایمیل</label>
+          <input id="email" name="email" type="email" autocomplete="email" required />
+        </div>
+
+        <div class="field">
+          <label for="subject">موضوع</label>
+          <input id="subject" name="subject" type="text" required />
+        </div>
+
+        <div class="field">
+          <label for="message">پیام</label>
+          <textarea id="message" name="message" rows="5" required></textarea>
+        </div>
+
+        <button class="btn" type="submit">ارسال پیام</button>
+      </form>
+    </main>
+  </body>
+</html>

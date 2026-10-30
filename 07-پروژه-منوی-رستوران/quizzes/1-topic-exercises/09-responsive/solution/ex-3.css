@@ -1,0 +1,101 @@
+body {
+  margin: 0;
+  font-family: Tahoma, Arial, sans-serif;
+  line-height: 1.9;
+  color: #3b2314;
+  background-color: #fdf8f3;
+}
+
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 16px;
+}
+
+h2 {
+  color: #7c2d12;
+}
+
+img {
+  max-width: 100%;
+}
+
+.drinks-photos {
+  margin: 0 0 20px;
+  text-align: center;
+}
+
+.drinks-photos img {
+  width: 48%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+/* فقط جدول اسکرول افقی می‌خورد، نه کل صفحه */
+.table-wrap {
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  min-width: 480px;
+  border-collapse: collapse;
+  background-color: white;
+}
+
+th,
+td {
+  border: 1px solid #fed7aa;
+  padding: 10px;
+  text-align: right;
+}
+
+thead th {
+  background-color: #7c2d12;
+  color: white;
+}
+
+.quick-form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px 20px;
+  background-color: white;
+  border: 1px solid #fed7aa;
+  border-radius: 12px;
+  padding: 16px 24px;
+}
+
+.quick-form label {
+  display: block;
+  font-weight: bold;
+}
+
+.quick-form input {
+  width: 100%;
+  padding: 8px 10px;
+  border: 1px solid #d6b89a;
+  border-radius: 6px;
+  font-family: inherit;
+}
+
+.btn {
+  background-color: #c2410c;
+  color: white;
+  padding: 10px 22px;
+  border: none;
+  border-radius: 8px;
+  font-family: inherit;
+  font-size: 15px;
+}
+
+@media (max-width: 600px) {
+  .drinks-photos img {
+    width: 100%;
+    margin-bottom: 8px;
+  }
+
+  .quick-form {
+    grid-template-columns: 1fr;
+  }
+}

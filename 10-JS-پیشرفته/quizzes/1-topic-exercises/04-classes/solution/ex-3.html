@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>تمرین ۳ — فهرست کارها</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="ex-3.js" defer></script>
+  </head>
+  <body>
+    <main class="box">
+      <h1>تمرین ۳ — کارهای امروز</h1>
+      <form id="task-form">
+        <label for="task-title">کار جدید:</label>
+        <input type="text" id="task-title" />
+        <button type="submit">افزودن</button>
+      </form>
+      <p class="error" id="error" role="alert"></p>
+      <ul id="task-list"></ul>
+      <p id="remaining" aria-live="polite"></p>
+    </main>
+  </body>
+</html>

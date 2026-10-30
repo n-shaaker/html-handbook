@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>۲) بستارها (Closures) | آموزش JavaScript سطح پیشرفته</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <script src="../js/log.js" defer></script>
+  <script src="../js/demos/closures.js" defer></script>
+</head>
+
+<body>
+
+  <header class="page-header" id="top">
+    <h1>آموزش JavaScript — سطح پیشرفته</h1>
+    <p>۲) بستارها (Closures)</p>
+  </header>
+
+  <div class="container">
+
+    <nav class="page-nav" aria-label="ناوبری درس">
+      <a href="01-function-params.html">→ قبلی: Function Params</a>
+      <a href="../index.html">فهرست درس‌ها</a>
+      <a href="03-call-apply-bind.html">بعدی: Call / Apply / Bind ←</a>
+    </nav>
+
+    <section class="lesson" id="closures">
+      <h2>۲) بستارها (Closures)</h2>
+<p><strong>Closure</strong> یعنی تابع، متغیرهای محیطی را که در آن ساخته شده «به خاطر می‌سپارد»؛ حتی بعد از اینکه تابع بیرونی تمام شده باشد. تابع داخلی به خود متغیر (نه یک کپی از مقدارش) دسترسی دارد؛ پس اگر متغیر تغییر کند، تابع مقدار جدید را می‌بیند.</p>
+
+<pre class="code"><code>function makeCounter() {
+  let count = 0;               // این متغیر از بیرون قابل دسترسی نیست
+
+  return function () {
+    count++;                   // ولی تابع داخلی آن را به خاطر دارد
+    return count;
+  };
+}
+
+const counterA = makeCounter();
+const counterB = makeCounter();
+
+console.log(counterA());   // 1
+console.log(counterA());   // 2
+console.log(counterA());   // 3
+console.log(counterB());   // 1  ← شمارنده جدا</code></pre>
+
+<p>متغیر <code>count</code> داخل <code>makeCounter</code> ساخته می‌شود و بعد از پایان آن تابع هم، تا وقتی تابع برگشتی زنده است، از بین نمی‌رود. هر بار صدا زدن تابع برگشتی یکی به همان <code>count</code> اضافه می‌کند. <code>counterA</code> و <code>counterB</code> دو بار جدا <code>makeCounter</code> را صدا زده‌اند، پس هر کدام شمارندهٔ خودش را دارد.</p>
+
+<div class="result">
+<pre class="console" id="out-1"></pre>
+</div>
+
+<h3>داده خصوصی (Private) با closure</h3>
+
+<p>مثال کاربردی: کیف پول که موجودی‌اش فقط از راه متدها قابل تغییر است و کسی نمی‌تواند از بیرون بنویسد <code>balance = 1000000</code>.</p>
+
+<pre class="code"><code>function createWallet(initial) {
+  let balance = initial;            // خصوصی؛ فقط متدهای زیر به آن دسترسی دارند
+
+  return {
+    deposit(amount) { balance += amount; return balance; },
+    withdraw(amount) {
+      if (amount &gt; balance) return "موجودی کافی نیست";
+      balance -= amount;
+      return balance;
+    },
+    getBalance() { return balance; }
+  };
+}
+
+const wallet = createWallet(1000);
+console.log(wallet.deposit(500));     // 1500
+console.log(wallet.withdraw(2000));   // موجودی کافی نیست
+console.log(wallet.getBalance());     // 1500
+console.log(wallet.balance);          // undefined ← مستقیم قابل دسترسی نیست</code></pre>
+
+<p>موجودی در متغیر <code>balance</code> است و جزو ویژگی‌های شیء برگشتی نیست. فقط متدهایی که داخل همین تابع ساخته شده‌اند به آن دسترسی دارند. <code>deposit</code> مبلغ را اضافه می‌کند و <code>withdraw</code> اگر موجودی کافی نباشد برداشت را انجام نمی‌دهد. خواندن <code>wallet.balance</code> مقدار <code>undefined</code> می‌دهد، چون چنین ویژگی‌ای روی شیء تعریف نشده است.</p>
+
+<div class="result">
+<pre class="console" id="out-2"></pre>
+</div>
+
+<h3>مثال زنده: دو شمارنده مستقل</h3>
+
+<pre class="code"><code>function setupCounter(button, display) {
+  let clicks = 0;                     // هر شمارنده متغیر خودش را دارد
+  button.addEventListener("click", () =&gt; {
+    clicks++;
+    display.textContent = clicks;
+  });
+}
+
+setupCounter(btnA, displayA);
+setupCounter(btnB, displayB);</code></pre>
+
+<p>هر بار صدا زدن <code>setupCounter</code> یک متغیر <code>clicks</code> تازه می‌سازد. تابع کلیک همان متغیر را به یاد می‌آورد، چون داخل همان محدوده ساخته شده است. دو دکمه دو شمارندهٔ جدا دارند و کلیک یکی، عدد دیگری را زیاد نمی‌کند.</p>
+
+<div class="result">
+<div class="js-card"><h4>شمارنده A</h4><span class="big-number" id="display-a" aria-live="polite">0</span><br><button class="btn" id="btn-a" aria-label="افزایش شمارنده A">+۱</button></div>
+<div class="js-card"><h4>شمارنده B</h4><span class="big-number" id="display-b" aria-live="polite">0</span><br><button class="btn" id="btn-b" aria-label="افزایش شمارنده B">+۱</button></div>
+</div>
+
+<h3>closure در حلقه: let در مقابل var</h3>
+
+<pre class="code"><code>const fns = [];
+for (let i = 1; i &lt;= 3; i++) {
+  fns.push(() =&gt; i);       // هر دور حلقه i جدای خودش را دارد
+}
+console.log(fns.map(f =&gt; f()));    // [1, 2, 3]
+
+const fns2 = [];
+for (var j = 1; j &lt;= 3; j++) {
+  fns2.push(() =&gt; j);      // همه یک j مشترک دارند
+}
+console.log(fns2.map(f =&gt; f()));   // [4, 4, 4]</code></pre>
+
+<div class="result">
+<pre class="console" id="out-3"></pre>
+</div>
+
+<p><strong>چرا [4, 4, 4]؟</strong> <code>var</code> محدوده بلوکی ندارد؛ پس در کل حلقه فقط <strong>یک</strong> متغیر j وجود دارد و هر سه تابع به همان یک متغیر دسترسی دارند. توابع بعد از تمام شدن حلقه صدا زده می‌شوند و آن موقع j به 4 رسیده است (شرط <code>j &lt;= 3</code> با j = 4 غلط شد و حلقه تمام شد). اما <code>let</code> در حلقه for، برای <strong>هر دور</strong> یک متغیر i تازه می‌سازد و هر تابع i دور خودش را به خاطر می‌سپارد.</p>
+
+<p class="mistake"><strong>اشتباه رایج (سؤال معروف مصاحبه):</strong> استفاده از var در حلقه همراه با کد ناهمگام:
+<code>for (var i = 1; i &lt;= 3; i++) { setTimeout(() =&gt; console.log(i), 100); }</code>
+سه بار 4 چاپ می‌کند، نه 1، 2، 3. راه‌حل ساده: به جای var از <code>let</code> استفاده کنید.</p>
+
+<p class="tip">هر بار که تابعی داخل تابع دیگر بنویسید و از متغیرهای بیرونی استفاده کند، یک closure ساخته‌اید. تابع رویدادی که به متغیر بیرونی دسترسی دارد هم closure است.</p>
+
+<p class="mistake"><strong>اشتباه رایج:</strong> انتظار داشتن اینکه دو بار صدا زدن <code>makeCounter()</code> یک شمارنده مشترک بسازد. هر بار صدا زدن، یک محیط جدید و مستقل می‌سازد.</p>
+
+<p class="exercise"><strong>تمرین:</strong><br>
+۱) تابع <code>createTodoStore()</code> بنویسید که یک آرایه خصوصی داشته باشد و شیئی با متدهای <code>add(text)</code>، <code>remove(index)</code> و <code>getAll()</code> برگرداند. getAll باید یک <strong>کپی</strong> از آرایه برگرداند (مثلاً با <code>[...todos]</code>) تا کسی نتواند از بیرون آرایه اصلی را تغییر دهد.<br>
+۲) تابع <code>createIdGenerator(prefix)</code> بنویسید که با هر بار صدا زدن تابع برگشتی، شناسه بعدی را بدهد: <code>"ORD-1"</code>، <code>"ORD-2"</code>، ... .</p>
+    </section>
+
+    <nav class="page-nav" aria-label="ناوبری درس پایین">
+      <a href="01-function-params.html">→ قبلی: Function Params</a>
+      <a href="../index.html">فهرست درس‌ها</a>
+      <a href="03-call-apply-bind.html">بعدی: Call / Apply / Bind ←</a>
+    </nav>
+
+  </div>
+
+  <footer class="page-footer">
+    آموزش JavaScript سطح پیشرفته
+  </footer>
+
+</body>
+
+</html>

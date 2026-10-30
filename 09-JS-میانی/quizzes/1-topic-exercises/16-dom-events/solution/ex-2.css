@@ -1,0 +1,16 @@
+body {
+  font-family: Tahoma, sans-serif;
+  max-width: 500px;
+  margin: 20px auto;
+}
+
+label,
+textarea {
+  display: block;
+  width: 100%;
+}
+
+.warn {
+  color: #b91c1c;
+  font-weight: bold;
+}

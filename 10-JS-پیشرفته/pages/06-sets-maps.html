@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>۶) مجموعه و نگاشت (Set و Map) | آموزش JavaScript سطح پیشرفته</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <script src="../js/log.js" defer></script>
+  <script src="../js/demos/sets-maps.js" defer></script>
+</head>
+
+<body>
+
+  <header class="page-header" id="top">
+    <h1>آموزش JavaScript — سطح پیشرفته</h1>
+    <p>۶) مجموعه و نگاشت (Set و Map)</p>
+  </header>
+
+  <div class="container">
+
+    <nav class="page-nav" aria-label="ناوبری درس">
+      <a href="05-inheritance.html">→ قبلی: Inheritance</a>
+      <a href="../index.html">فهرست درس‌ها</a>
+      <a href="07-timing.html">بعدی: Timing ←</a>
+    </nav>
+
+    <section class="lesson" id="sets-maps">
+      <h2>۶) مجموعه و نگاشت (Set و Map)</h2>
+
+<p>آرایه برای فهرست مرتب خوب است، ولی برای «هر مقدار فقط یک بار» یا «جست‌وجوی سریع با کلید» ابزار دقیق‌تری هست. Set مجموعهٔ مقدارهای یکتاست و Map زوج‌های کلید و مقدار را نگه می‌دارد. کلید Map برخلاف شیء معمولی لازم نیست رشته باشد.</p>
+
+<h3>Set — مجموعه‌ای از مقدارهای یکتا</h3>
+
+<p>Set مثل آرایه است، ولی هر مقدار فقط <strong>یک بار</strong> در آن می‌آید.</p>
+
+<pre class="code"><code>const tags = new Set(["js", "css", "js", "html", "css"]);
+console.log(tags);              // Set(3) {"js", "css", "html"}
+console.log(tags.size);         // 3  ← Set به جای length، size دارد
+
+tags.add("react");
+tags.add("js");                 // تکراری؛ اضافه نمی‌شود
+console.log(tags.has("css"));   // true
+tags.delete("html");
+console.log(tags);              // Set(3) {"js", "css", "react"}
+
+for (const t of tags) console.log("-", t);</code></pre>
+
+<p>Set مقدار تکراری را نگه نمی‌دارد، حتی اگر در آرایهٔ اولیه چند بار آمده باشد. به‌جای <code>length</code> ویژگی <code>size</code> دارد. <code>add</code> اگر مقدار از قبل باشد کاری نمی‌کند. <code>has</code> وجود را با true یا false می‌گوید و <code>delete</code> همان مقدار را برمی‌دارد. پیمایش با <code>for...of</code> مقدارها را به ترتیبی که اولین بار اضافه شده‌اند می‌دهد.</p>
+
+<div class="result">
+<pre class="console" id="out-1"></pre>
+</div>
+
+<h3>کاربرد معروف: حذف تکراری‌ها از آرایه</h3>
+
+<pre class="code"><code>const numbers = [1, 2, 2, 3, 3, 3, 4];
+const unique = [...new Set(numbers)];   // Set ← حذف تکراری، [...] ← دوباره آرایه
+console.log(unique);                    // [1, 2, 3, 4]</code></pre>
+
+<p>ساختن Set از آرایه، تکرارها را حذف می‌کند. سه نقطه آن مجموعه را دوباره به آرایه تبدیل می‌کند تا متدهای آرایه در دسترس باشند. ترتیب اولین دیده‌شدن هر عدد حفظ می‌شود. اگر به آرایه نیاز ندارید، می‌توانید همان Set را نگه دارید.</p>
+
+<div class="result">
+<pre class="console" id="out-2"></pre>
+</div>
+
+<p class="tip">Set برای مقایسه از <code>===</code> استفاده می‌کند؛ پس دو شیء با محتوای یکسان (<code>{id: 1}</code> و <code>{id: 1}</code>) دو عضو جدا حساب می‌شوند. همچنین <code>has</code> در Set بسیار سریع‌تر از <code>includes</code> در آرایه‌های بزرگ است.</p>
+
+<h3>Map — کلید و مقدار با هر نوع کلید</h3>
+
+<p>Map شبیه شیء است، ولی کلید می‌تواند هر چیزی باشد (عدد، شیء، ...)، ترتیب اضافه شدن حفظ می‌شود و <code>size</code> دارد.</p>
+
+<pre class="code"><code>const prices = new Map();
+prices.set("سیب", 45000);
+prices.set("موز", 80000);
+prices.set("انار", 60000);
+
+console.log(prices.get("موز"));      // 80000
+console.log(prices.has("کیوی"));     // false
+console.log(prices.size);            // 3
+
+prices.forEach((value, key) =&gt; {     // ترتیب پارامترها: اول مقدار، بعد کلید
+  console.log(`${key}: ${value.toLocaleString("en-US")} تومان`);
+});
+
+const fromObject = new Map(Object.entries({ a: 1, b: 2 }));   // شیء ← Map
+console.log(fromObject);             // Map(2) {"a" =&gt; 1, "b" =&gt; 2}
+console.log(Object.fromEntries(fromObject));                  // Map ← شیء: {a: 1, b: 2}</code></pre>
+
+<p>Map زوج کلید و مقدار را نگه می‌دارد و کلید می‌تواند هر مقداری باشد، نه فقط رشته. <code>set</code> مقدار را می‌گذارد، <code>get</code> آن را می‌خواند و اگر کلید نباشد <code>undefined</code> می‌دهد. در <code>forEach</code> ترتیب پارامترها اول مقدار و بعد کلید است. در دو خط آخر، <code>Object.entries</code> یک شیء را به زوج‌های کلید و مقدار تبدیل می‌کند تا از آن Map ساخته شود و <code>Object.fromEntries</code> Map را دوباره به شیء برمی‌گرداند. این رفت‌وبرگشت وقتی کلیدها رشته باشند نتیجهٔ قابل‌استفاده می‌دهد.</p>
+
+<div class="result">
+<pre class="console" id="out-3"></pre>
+</div>
+
+<table class="ref">
+<tr><th></th><th>Object</th><th>Map</th><th>Array</th><th>Set</th></tr>
+<tr><td>ساختار</td><td>کلید: مقدار</td><td>کلید: مقدار</td><td>فهرست مرتب</td><td>فهرست یکتا</td></tr>
+<tr><td>نوع کلید</td><td>رشته / Symbol</td><td>هر نوعی</td><td>شماره</td><td>—</td></tr>
+<tr><td>تعداد</td><td><code>Object.keys(o).length</code></td><td><code>map.size</code></td><td><code>arr.length</code></td><td><code>set.size</code></td></tr>
+<tr><td>تکراری</td><td>کلید یکتا</td><td>کلید یکتا</td><td>مجاز</td><td>ممنوع</td></tr>
+</table>
+
+<h3>مثال زنده: شمارش کلمات با Map</h3>
+
+<pre class="code"><code>countBtn.addEventListener("click", () =&gt; {
+  const text = textInput.value.trim();
+  if (text === "") {                       // "".split(...) آرایه [""] می‌دهد، نه آرایه خالی
+    output.textContent = "اول چند کلمه بنویسید.";
+    return;
+  }
+  const words = text.split(/\s+/);
+  const counts = new Map();
+  for (const w of words) {
+    counts.set(w, (counts.get(w) || 0) + 1);
+  }
+  const sorted = [...counts].sort((a, b) =&gt; b[1] - a[1]);
+  output.textContent = sorted.map(([w, c]) =&gt; `${w}: ${c}`).join("\n");
+});</code></pre>
+
+<p>متن خالی را جدا بررسی کرده‌ایم، چون <code>split</code> روی رشتهٔ خالی یک آرایه با یک رشتهٔ خالی می‌سازد و آن را یک کلمه حساب می‌کند. هر کلمه کلید Map است. اگر کلمه تازه باشد <code>get</code> مقدار <code>undefined</code> می‌دهد و <code>|| 0</code> شمارش را از صفر شروع می‌کند. مرتب‌سازی روی آرایهٔ زوج‌ها، پرتکرارترین کلمه را اول می‌آورد.</p>
+
+<div class="result">
+<textarea id="word-text" rows="3" cols="50" aria-label="متن برای شمارش کلمات">سیب موز سیب انار موز سیب</textarea><br>
+<button class="btn" id="word-btn">شمارش</button>
+<pre class="console" id="word-out" aria-live="polite"></pre>
+</div>
+
+<p class="mistake"><strong>اشتباه رایج:</strong> استفاده از براکت برای Map: <code>map["key"] = 1</code>. این یک ویژگی معمولی می‌سازد نه عضو Map؛ <code>size</code> تغییر نمی‌کند و <code>get</code> آن را پیدا نمی‌کند. از <code>set</code> و <code>get</code> استفاده کنید.</p>
+
+<p class="mistake"><strong>اشتباه رایج:</strong> ذخیره مستقیم Map یا Set با <code>JSON.stringify</code>. نتیجه <code>"{}"</code> است و داده از بین می‌رود! اول به آرایه تبدیل کنید: <code>JSON.stringify([...map])</code> و موقع خواندن: <code>new Map(JSON.parse(text))</code> (این روش در پروژه نهایی درس ۱۸ استفاده شده است).</p>
+
+<p class="exercise"><strong>تمرین:</strong><br>
+۱) علاقه‌مندی‌های دو نفر در دو آرایه است: <code>["فوتبال", "کتاب", "فیلم"]</code> و <code>["کتاب", "شنا", "فیلم"]</code>. با Set علاقه‌مندی‌های مشترک را پیدا کنید (راهنما: آرایه دوم را به Set تبدیل کنید و روی آرایه اول <code>filter</code> و <code>has</code> بزنید). خروجی مورد انتظار: <code>["کتاب", "فیلم"]</code>.<br>
+۲) با یک Map، تعداد دانشجویان هر شهر را از آرایه <code>[{ name: "سارا", city: "شیراز" }, { name: "علی", city: "تبریز" }, { name: "مریم", city: "شیراز" }]</code> بشمارید.</p>
+    </section>
+
+    <nav class="page-nav" aria-label="ناوبری درس پایین">
+      <a href="05-inheritance.html">→ قبلی: Inheritance</a>
+      <a href="../index.html">فهرست درس‌ها</a>
+      <a href="07-timing.html">بعدی: Timing ←</a>
+    </nav>
+
+  </div>
+
+  <footer class="page-footer">
+    آموزش JavaScript سطح پیشرفته
+  </footer>
+
+</body>
+
+</html>

@@ -1,0 +1,16 @@
+/* id: فقط تیتر اصلی خبر */
+#news-title {
+  color: #1a3a5c;
+  text-align: center;
+}
+
+/* عنصر + کلاس: فقط pهایی که کلاس note دارند (نه div) */
+p.note {
+  color: #868e96;
+  font-size: 14px;
+}
+
+/* گروهی: یک قانون برای دو تیتر */
+h2, h3 {
+  color: #0b6e4f;
+}

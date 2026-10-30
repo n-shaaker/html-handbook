@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>!important | آبشاری بودن CSS</title>
+  <link rel="stylesheet" href="../css/layout.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="../css/demos/important.css">
+</head>
+
+<body>
+
+  <header class="page-header">
+    <h1>آبشاری بودن CSS</h1>
+    <p>۵) استفاده از !important</p>
+  </header>
+
+  <div class="container">
+
+    <nav class="page-nav" aria-label="ناوبری">
+      <a href="04-inheritance.html">→ قبلی: وراثت</a>
+      <a href="../index.html">فهرست</a>
+      <a href="06-tie-break.html">بعدی: چند کلاس هم‌قدرت ←</a>
+    </nav>
+
+    <section class="lesson">
+      <h2>۵) استفاده از !important</h2>
+      <p>
+        <code>!important</code> به آخر <strong>یک اعلان</strong> می‌چسبد؛ یعنی به یک ویژگی، نه به کل قانون.
+        اگر در یک بلوک سه ویژگی نوشته باشید و فقط کنار <code>color</code> علامت <code>!important</code> بگذارید، فقط همان رنگ به گروه «مهم» می‌رود و بقیه ویژگی‌ها عادی می‌مانند.
+        مرورگر اول اعلان‌های مهم را جدا بررسی می‌کند. برای همین یک اعلان <code>!important</code> از هر اعلان عادی برنده است، حتی اگر اعلان عادی دیرتر آمده باشد یا انتخابگرش قوی‌تر باشد.
+      </p>
+      <p>
+        این برتری مطلق نیست. اگر هر دو طرف <code>!important</code> داشته باشند، دوباره قدرت انتخابگر و بعد ترتیب نوشتن تصمیم می‌گیرند.
+        استفادهٔ زیاد از آن هم کد را شکننده می‌کند، چون برای عوض کردن ظاهر باید <code>!important</code> دیگری بنویسید.
+      </p>
+
+      <h3>بدون !important — قانون دیرتر برنده است</h3>
+      <pre class="code"><code>.demo-imp .normal { color: #c92a2a; font-size: 20px; }
+.demo-imp .normal { color: #1a5fb4; }   /* آبی برنده */</code></pre>
+      <div class="result demo-imp">
+        <p class="normal">متن آبی است.</p>
+      </div>
+
+      <h3>با !important — حتی قانون بعدی هم نمی‌تواند عوضش کند</h3>
+      <pre class="code"><code>.demo-imp .force { color: #c92a2a !important; font-size: 20px; }
+.demo-imp .force { color: #1a5fb4; }   /* نادیده گرفته می‌شود */</code></pre>
+      <div class="result demo-imp">
+        <p class="force">متن قرمز ماند، با اینکه قانون آبی پایین‌تر است.</p>
+      </div>
+
+      <h3>!important در برابر id</h3>
+      <pre class="code"><code>.demo-imp #force-id    { color: #0b6e4f; }              /* (1, 1, 0) */
+.demo-imp .force-vs-id { color: #c92a2a !important; }   /* (0, 2, 0) */</code></pre>
+      <div class="result demo-imp">
+        <p class="force-vs-id" id="force-id">کلاس با !important از id هم قوی‌تر شد.</p>
+      </div>
+
+      <h3>دو !important در برابر هم</h3>
+      <p>
+        اگر هر دو اعلان <code>!important</code> باشند، <code>!important</code> دیگر برتری ایجاد نمی‌کند و
+        دوباره همان قوانین همیشگی اجرا می‌شوند: اول قدرت انتخابگر، بعد ترتیب.
+      </p>
+      <pre class="code"><code>.demo-imp p.both { color: #0b6e4f !important; }   /* (0, 2, 1) → برنده */
+.demo-imp .both  { color: #c92a2a !important; }   /* (0, 2, 0) — دیرتر ولی ضعیف‌تر */</code></pre>
+      <div class="result demo-imp">
+        <p class="both">متن سبز است: هر دو !important دارند، پس انتخابگر قوی‌تر برنده شد.</p>
+      </div>
+
+      <h3>چند نکته دقیق‌تر</h3>
+      <ul>
+        <li>
+          <strong>استایل درون‌خطی:</strong> <code>style="color: blue"</code> از هر قانون عادی در فایل CSS قوی‌تر است،
+          اما یک اعلان <code>!important</code> در فایل CSS از آن برنده می‌شود (مگر اینکه خود استایل درون‌خطی هم
+          <code>!important</code> داشته باشد).
+        </li>
+        <li>
+          <strong>منبع (origin):</strong> در اعلان‌های عادی، CSS سایت از تنظیمات کاربر و پیش‌فرض مرورگر قوی‌تر است؛
+          ولی در اعلان‌های <code>!important</code> ترتیب برعکس می‌شود و <code>!important</code> کاربر (مثلاً تنظیم
+          دسترس‌پذیری برای فونت بزرگ‌تر) از <code>!important</code> سایت قوی‌تر است.
+        </li>
+        <li>
+          <strong>لایه‌ها (<code>@layer</code>):</strong> در اعلان‌های عادی، لایه‌ای که دیرتر تعریف شده برنده است و
+          CSS بیرون از لایه‌ها از همه لایه‌ها قوی‌تر است. در اعلان‌های <code>!important</code> این ترتیب هم برعکس می‌شود.
+        </li>
+      </ul>
+
+      <p class="mistake">
+        <strong>اشتباه رایج:</strong>
+        زیاد استفاده کردن از <code>!important</code>. بعداً برای تغییر ظاهر باید <code>!important</code>های بیشتری بنویسید
+        و کد به‌هم می‌ریزد. اول قدرت انتخابگر و ترتیب را درست کنید؛ <code>!important</code> را فقط برای موارد خاص بگذارید؛
+        مثلاً کلاس‌های کمکی کوچک که باید همیشه اعمال شوند (مثل <code>.hidden { display: none !important; }</code>)
+        یا بازنویسی CSS کتابخانه‌ای که به آن دسترسی ندارید.
+      </p>
+
+      <p class="exercise">
+        <strong>تمرین:</strong> <code>!important</code> را از <code>.force</code> بردارید. رنگ متن چه می‌شود؟
+      </p>
+    </section>
+
+    <nav class="page-nav" aria-label="ناوبری پایین">
+      <a href="04-inheritance.html">→ قبلی: وراثت</a>
+      <a href="../index.html">فهرست</a>
+      <a href="06-tie-break.html">بعدی: چند کلاس هم‌قدرت ←</a>
+    </nav>
+
+  </div>
+
+  <footer class="page-footer">آبشاری بودن CSS</footer>
+
+</body>
+
+</html>

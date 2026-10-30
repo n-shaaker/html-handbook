@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>۱۸) پروژه نهایی: فروشگاه کوچک | آموزش JavaScript سطح پیشرفته</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <script src="../js/log.js" defer></script>
+  <script src="../js/demos/practice.js" defer></script>
+</head>
+
+<body>
+
+  <header class="page-header" id="top">
+    <h1>آموزش JavaScript — سطح پیشرفته</h1>
+    <p>۱۸) پروژه نهایی: فروشگاه کوچک</p>
+  </header>
+
+  <div class="container">
+
+    <nav class="page-nav" aria-label="ناوبری درس">
+      <a href="17-debugging.html">→ قبلی: Debugging</a>
+      <a href="../index.html">فهرست درس‌ها</a>
+      <span></span>
+    </nav>
+
+    <section class="lesson" id="practice">
+      <h2>۱۸) پروژه نهایی: فروشگاه کوچک</h2>
+<p>این پروژه مباحث هر سه دوره را کنار هم می‌گذارد: کلاس، آرایه و متدهایش، Promise و async/await (بارگذاری شبیه‌سازی‌شده محصولات)، Event Delegation، localStorage (سبد خرید ماندگار) و ... . اول نسخه زنده را امتحان کنید؛ سبد خرید با بارگذاری دوباره صفحه پاک نمی‌شود.</p>
+
+<div class="result">
+<input type="search" id="shop-search" placeholder="جستجوی محصول..." aria-label="جستجوی محصول">
+<select id="shop-sort" aria-label="مرتب‌سازی محصولات"><option value="">مرتب‌سازی</option><option value="price-asc">ارزان‌ترین</option><option value="price-desc">گران‌ترین</option><option value="name">نام</option></select>
+<p id="shop-status" role="status"></p>
+<div id="shop-products"></div>
+<h4>🛒 سبد خرید</h4>
+<ul class="js-list" id="shop-cart" aria-live="polite"></ul>
+<p><strong id="shop-total"></strong></p>
+<button class="btn danger" id="shop-clear">خالی کردن سبد</button>
+</div>
+
+<h3>۱) مدل داده با کلاس</h3>
+
+<pre class="code"><code>class Product {
+  constructor(id, name, price, category) {
+    this.id = id;
+    this.name = name;
+    this.price = price;
+    this.category = category;
+  }
+
+  priceText() {
+    return this.price.toLocaleString("fa-IR") + " تومان";
+  }
+}</code></pre>
+
+<p>کلاس محصول دادهٔ ثابت هر کالا را نگه می‌دارد: شناسه، نام، قیمت و دسته. متد <code>priceText</code> قیمت را با رقم فارسی و واحد پول به متن نمایش تبدیل می‌کند تا همین شکل در فهرست و سبد تکرار نشود. ساختن عنصر صفحه داخل این کلاس نیست.</p>
+
+<h3>۲) سبد خرید با آرایه و localStorage</h3>
+
+<pre class="code"><code>// سبد خرید: آرایه‌ای از { id, qty } که در localStorage ذخیره می‌شود
+class Cart {
+  constructor(storageKey) {
+    this.key = storageKey;
+    this.items = this.load();
+  }
+
+  load() {
+    try {
+      const text = localStorage.getItem(this.key);
+      return text ? JSON.parse(text) : [];
+    } catch (err) {
+      return [];        // داده خراب بود ← سبد خالی، بدون از کار افتادن برنامه
+    }
+  }
+
+  save() {
+    localStorage.setItem(this.key, JSON.stringify(this.items));
+  }
+
+  add(id) {
+    const item = this.items.find(item =&gt; item.id === id);
+    if (item) {
+      item.qty++;
+    } else {
+      this.items.push({ id: id, qty: 1 });
+    }
+    this.save();
+  }
+
+  remove(id) {
+    const item = this.items.find(item =&gt; item.id === id);
+    if (!item) return;
+    item.qty--;
+    if (item.qty === 0) {
+      this.items = this.items.filter(item =&gt; item.id !== id);
+    }
+    this.save();
+  }
+
+  clear() {
+    this.items = [];
+    this.save();
+  }
+}</code></pre>
+
+<p>سبد فقط شناسه و تعداد را نگه می‌دارد، نه کل اطلاعات محصول. <code>load</code> متن ذخیره‌شده را می‌خواند و اگر خالی یا خراب باشد آرایهٔ خالی برمی‌گرداند تا برنامه شروع شود. هر تغییری که تعداد را عوض کند باید دوباره در <code>localStorage</code> ذخیره شود تا با تازه‌کردن صفحه از بین نرود.</p>
+
+<p class="tip">سبد فقط <code>id</code> و تعداد هر کالا را نگه می‌دارد، نه خود محصول را؛ اسم و قیمت را موقع نمایش از آرایه <code>products</code> پیدا می‌کنیم. بعد از هر تغییر، <code>save()</code> کل آرایه را با <code>JSON.stringify</code> در localStorage می‌نویسد و موقع ساختن سبد، <code>load()</code> آن را برمی‌گرداند.</p>
+
+<h3>۳) بارگذاری ناهمگام محصولات</h3>
+
+<pre class="code"><code>function wait(ms) {
+  return new Promise(resolve =&gt; setTimeout(resolve, ms));
+}
+
+async function fetchProducts() {
+  await wait(800);   // شبیه‌سازی تأخیر شبکه؛ در پروژه واقعی: await fetch(url)
+  return PRODUCTS_DATA.map(p =&gt; new Product(p.id, p.name, p.price, p.category));
+}</code></pre>
+
+<p><code>wait</code> یک Promise است که بعد از مدت مشخص resolve می‌شود و اینجا جای تأخیر شبکه را گرفته است. <code>fetchProducts</code> بعد از آن انتظار، هر شیء خام را با <code>new Product</code> به نمونهٔ کلاس تبدیل می‌کند. در برنامهٔ واقعی، به‌جای <code>wait</code> از <code>fetch</code> و <code>response.json</code> استفاده می‌کنید.</p>
+
+<h3>۴) نمایش، جستجو، مرتب‌سازی و Event Delegation</h3>
+
+<pre class="code"><code>function getVisibleProducts() {
+  const q = searchInput.value.trim();
+  const result = products.filter(p =&gt; p.name.includes(q));
+
+  if (sortSelect.value === "price-asc") result.sort((a, b) =&gt; a.price - b.price);
+  if (sortSelect.value === "price-desc") result.sort((a, b) =&gt; b.price - a.price);
+  if (sortSelect.value === "name") result.sort((a, b) =&gt; a.name.localeCompare(b.name, "fa"));
+
+  return result;
+}
+
+function renderProducts() {
+  productsBox.innerHTML = "";
+  const visible = getVisibleProducts();
+  if (visible.length === 0) {
+    productsBox.textContent = "محصولی پیدا نشد.";
+    return;
+  }
+
+  visible.forEach(p =&gt; {
+    const card = document.createElement("div");
+    card.className = "js-card";
+
+    const title = document.createElement("h4");
+    title.textContent = p.name;
+
+    const info = document.createElement("p");
+    info.textContent = p.category + " — " + p.priceText();
+
+    const btn = document.createElement("button");
+    btn.className = "btn";
+    btn.textContent = "افزودن به سبد";
+    btn.dataset.add = p.id;          // در HTML: data-add="1"
+
+    card.append(title, info, btn);
+    productsBox.append(card);
+  });
+}
+
+function renderCart() {
+  cartList.innerHTML = "";
+  let total = 0;
+
+  cart.items.forEach(item =&gt; {
+    const p = products.find(p =&gt; p.id === item.id);
+    if (!p) return;                  // محصولی که دیگر وجود ندارد
+
+    const sum = p.price * item.qty;
+    total += sum;
+
+    const li = document.createElement("li");
+    const text = document.createElement("span");
+    text.textContent = `${p.name} × ${item.qty} = ${sum.toLocaleString("fa-IR")}`;
+
+    const btn = document.createElement("button");
+    btn.className = "btn danger";
+    btn.textContent = "−";
+    btn.dataset.remove = p.id;
+    btn.setAttribute("aria-label", "کم کردن یکی از " + p.name);
+
+    li.append(text, btn);
+    cartList.append(li);
+  });
+
+  if (cartList.children.length === 0) {
+    cartList.innerHTML = "&lt;li&gt;سبد خالی است&lt;/li&gt;";
+  }
+  totalText.textContent = `جمع کل: ${total.toLocaleString("fa-IR")} تومان`;
+}
+
+// یک listener برای همه دکمه‌های «افزودن»
+productsBox.addEventListener("click", e =&gt; {
+  const id = e.target.dataset.add;
+  if (!id) return;                   // روی دکمه «افزودن» کلیک نشده
+  cart.add(Number(id));
+  renderCart();
+});
+
+// یک listener برای همه دکمه‌های «−»
+cartList.addEventListener("click", e =&gt; {
+  const id = e.target.dataset.remove;
+  if (!id) return;
+  cart.remove(Number(id));
+  renderCart();
+});
+
+searchInput.addEventListener("input", renderProducts);
+sortSelect.addEventListener("change", renderProducts);
+clearBtn.addEventListener("click", () =&gt; {
+  cart.clear();
+  renderCart();
+});</code></pre>
+
+<p><code>getVisibleProducts</code> نام را با متن جست‌وجو فیلتر می‌کند و در صورت نیاز همان نتیجه را با قیمت یا نام مرتب می‌کند. <code>renderProducts</code> فهرست دیده‌شده را به عنصرهای صفحه تبدیل می‌کند. رویدادهای جست‌وجو و مرتب‌سازی دادهٔ اصلی <code>products</code> را خراب نمی‌کنند؛ هر بار از همان آرایه نمای تازه می‌سازند.</p>
+
+<p class="tip">نام و قیمت محصولات با <code>textContent</code> در صفحه گذاشته می‌شود، نه با <code>innerHTML</code>. این‌طوری اگر روزی داده از کاربر یا یک API ناشناس بیاید و داخلش کد HTML باشد، اجرا نمی‌شود (جلوی حمله XSS گرفته می‌شود).</p>
+
+<h3>۵) شروع برنامه</h3>
+
+<pre class="code"><code>const cart = new Cart("shop-cart");
+let products = [];
+
+async function init() {
+  statusEl.textContent = "در حال بارگذاری محصولات...";
+  try {
+    products = await fetchProducts();
+    statusEl.textContent = `${products.length} محصول بارگذاری شد.`;
+    renderProducts();
+    renderCart();
+  } catch (err) {
+    statusEl.textContent = "خطا در بارگذاری: " + err.message;
+  }
+}
+
+init();</code></pre>
+
+<p><code>init</code> اول پیام بارگذاری را نشان می‌دهد، بعد محصولات را await می‌کند و هم فهرست کالا و هم سبد را رسم می‌کند. اگر دریافت داده خطا بدهد، <code>catch</code> پیام را در همان عنصر وضعیت می‌نویسد و صفحه سفید نمی‌ماند. صدا زدن <code>init</code> در پایان فایل، شروع واقعی برنامه است.</p>
+
+
+<h3>تمرین‌های تکمیلی</h3>
+
+<ol>
+<li>فیلتر بر اساس دسته‌بندی با یک <code>select</code> اضافه کنید (فهرست دسته‌ها را با <code>[...new Set(products.map(p =&gt; p.category))]</code> بسازید و گزینه «همه» هم داشته باشد).</li>
+<li>جستجو را با <code>debounce</code> (درس ۷) انجام دهید تا با هر حرف، فهرست دوباره ساخته نشود.</li>
+<li>به جای داده ثابت، محصولات را با تابع <code>fetchJSON</code> (درس ۱۱) از <code>https://dummyjson.com/products?limit=10</code> بگیرید. دقت کنید پاسخ این API شیئی است که آرایه محصولات در ویژگی <code>products</code> آن قرار دارد و نام محصول در <code>title</code> است؛ پس باید داده را به شکل <code>{ id, name, price, category }</code> تبدیل کنید. پیام بارگذاری و خطای فارسی را هم فراموش نکنید.</li>
+<li>کد تخفیف اضافه کنید: اگر کاربر <code>OFF20</code> وارد کرد (بدون توجه به حروف بزرگ و کوچک)، ۲۰٪ از جمع کم شود و جمع قبل و بعد از تخفیف هر دو نمایش داده شوند.</li>
+<li>کد را به ماژول‌ها تقسیم کنید: <code>product.js</code>، <code>cart.js</code>، <code>ui.js</code> و <code>app.js</code> (و صفحه را با Live Server اجرا کنید).</li>
+<li>یک «حالت شب» با ذخیره انتخاب کاربر در localStorage اضافه کنید (درس ۱۳).</li>
+<li>دکمه «+» کنار هر کالای سبد بگذارید و همه دکمه‌ها را همچنان با همان یک listener روی <code>cartList</code> مدیریت کنید.</li>
+</ol>
+
+<p class="tip"><strong>قدم بعدی:</strong> حالا که JavaScript را تا سطح پیشرفته یاد گرفته‌اید، آماده یادگیری یک فریم‌ورک مثل React یا Vue هستید. مفاهیمی مثل state، render، کلاس، ماژول و async در همه آن‌ها تکرار می‌شوند.</p>
+    </section>
+
+    <nav class="page-nav" aria-label="ناوبری درس پایین">
+      <a href="17-debugging.html">→ قبلی: Debugging</a>
+      <a href="../index.html">فهرست درس‌ها</a>
+      <span></span>
+    </nav>
+
+  </div>
+
+  <footer class="page-footer">
+    آموزش JavaScript سطح پیشرفته
+  </footer>
+
+</body>
+
+</html>

@@ -1,0 +1,17 @@
+/* (0, 1, 1) به جای (1, 0, 1) */
+.menu p {
+  margin: 4px 0;
+  color: #333333;
+}
+
+/* (0, 2, 0) از (0, 1, 1) قوی‌تر است */
+.menu .price {
+  color: #c92a2a;
+  font-weight: bold;
+}
+
+/* هم‌قدرت با .menu .price، ولی پایین‌تر؛ برای قیمت تمام‌شده برنده است */
+.menu .sold-out {
+  color: #868e96;
+  text-decoration: line-through;
+}

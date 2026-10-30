@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ماشین‌حساب اقساط وام</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="app.js" defer></script>
+</head>
+
+<body>
+
+  <main class="card">
+    <h1>ماشین‌حساب اقساط وام 🏦</h1>
+    <p class="intro">مبلغ وام، نرخ سود سالانه و تعداد اقساط را وارد کنید تا مبلغ هر قسط را ببینید.</p>
+
+    <div class="field">
+      <label for="amount">مبلغ وام (تومان)</label>
+      <input type="number" id="amount" min="1" placeholder="مثلاً 30000000">
+    </div>
+
+    <div class="field">
+      <label for="rate">نرخ سود سالانه (درصد)</label>
+      <input type="number" id="rate" min="0" max="100" step="0.5" value="18">
+    </div>
+
+    <div class="field">
+      <label for="months">تعداد اقساط (ماه)</label>
+      <input type="number" id="months" min="1" max="60" step="1" value="12">
+    </div>
+
+    <button type="button" class="btn" id="calc-btn">محاسبه اقساط</button>
+
+    <section class="output" aria-live="polite">
+      <p id="message"></p>
+
+      <dl class="result hidden" id="result">
+        <dt>نوع وام</dt>
+        <dd id="type-out"></dd>
+        <dt>سود کل</dt>
+        <dd id="interest-out"></dd>
+        <dt>جمع بازپرداخت</dt>
+        <dd id="total-out"></dd>
+        <dt>مبلغ هر قسط</dt>
+        <dd id="installment-out" class="highlight"></dd>
+        <dt>خلاصه</dt>
+        <dd id="summary-out"></dd>
+      </dl>
+    </section>
+  </main>
+
+</body>
+
+</html>

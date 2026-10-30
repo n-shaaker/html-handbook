@@ -1,0 +1,29 @@
+/* تمرین ۲ — خبر ویژه ۲×۲ (پاسخ) */
+
+body {
+  font-family: Tahoma, sans-serif;
+  margin: 20px;
+  background-color: #f8f9fa;
+  color: #212529;
+}
+
+.news {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(3, 100px);
+  gap: 10px;
+}
+
+.item {
+  background-color: #e7f5ff;
+  padding: 10px;
+}
+
+/* دو ستون پهنا، دو ردیف ارتفاع */
+.featured {
+  grid-column: span 2;
+  grid-row: span 2;
+  background-color: #1c7ed6;
+  color: white;
+  font-size: 20px;
+}

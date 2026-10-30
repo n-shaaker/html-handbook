@@ -1,0 +1,16 @@
+body {
+  font-family: Tahoma, Arial, sans-serif;
+  padding: 24px;
+}
+
+.gallery img {
+  width: 200px;
+  height: auto;
+  margin: 4px;
+  opacity: 0.6;
+  transition: opacity 0.3s; /* روی حالت عادی، تا برگشت هم نرم باشد */
+}
+
+.gallery img:hover {
+  opacity: 1;
+}

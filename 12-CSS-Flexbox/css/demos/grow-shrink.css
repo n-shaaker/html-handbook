@@ -1,0 +1,93 @@
+/* ۹) flex-grow، flex-shrink، flex-basis */
+
+/* جعبه‌های رنگی شماره‌دار */
+.demo-grow .box {
+  padding: 10px 12px;
+  color: white;
+  font-weight: bold;
+  text-align: center;
+  border-radius: 6px;
+}
+
+.demo-grow .b1 { background-color: #1c7ed6; }
+.demo-grow .b2 { background-color: #2b8a3e; }
+.demo-grow .b3 { background-color: #e8590c; }
+
+/* ظرف مشترک */
+.demo-grow .parent {
+  display: flex;
+  gap: 8px;
+  background-color: #f1f3f5;
+  border: 2px solid #868e96;
+  padding: 6px;
+}
+
+/* ظرف باریک برای مثال flex-shrink */
+.demo-grow .narrow {
+  width: 500px;
+  max-width: 100%;
+}
+
+.demo-grow .grow-1 {
+  flex-grow: 1;
+}
+
+.demo-grow .grow-2 {
+  flex-grow: 2;
+}
+
+.demo-grow .basis-100 {
+  flex-basis: 100px;
+}
+
+.demo-grow .basis-200 {
+  flex-basis: 200px;
+}
+
+.demo-grow .basis-30 {
+  flex-basis: 30%;
+}
+
+.demo-grow .basis-300 {
+  flex-basis: 300px;
+}
+
+.demo-grow .no-shrink {
+  flex-shrink: 0;
+}
+
+/* نوار جست‌وجوی فروشگاه */
+.demo-grow .search-bar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background-color: #e7f5ff;
+  padding: 8px;
+  border-radius: 8px;
+}
+
+.demo-grow .search-bar .logo {
+  flex-shrink: 0;
+  font-weight: bold;
+  color: #1864ab;
+}
+
+.demo-grow .search-bar input {
+  flex-grow: 1;
+  min-width: 0;          /* تا در صفحه باریک بتواند کوچک شود */
+  padding: 6px 10px;
+  border: 1px solid #74c0fc;
+  border-radius: 6px;
+  font-family: inherit;
+}
+
+.demo-grow .search-bar button {
+  flex-shrink: 0;
+  background-color: #1c7ed6;
+  color: white;
+  border: none;
+  padding: 7px 14px;
+  border-radius: 6px;
+  font-family: inherit;
+  cursor: pointer;
+}

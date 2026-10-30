@@ -1,0 +1,16 @@
+.post-title {
+  text-align: left;
+}
+
+.post-meta {
+  color: #868e96;
+  font-size: 14px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+}
+
+.post-body {
+  color: #c8c8c8;
+  line-height: 1;
+  text-align: justify;
+}

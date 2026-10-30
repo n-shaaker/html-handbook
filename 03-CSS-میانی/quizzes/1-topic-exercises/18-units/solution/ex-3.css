@@ -1,0 +1,30 @@
+body {
+  font-family: Tahoma, Arial, sans-serif;
+  line-height: 1.8;
+  margin: 0;
+}
+
+/* دقیقاً یک صفحه پنجره (و اگر محتوا زیاد شد، بلندتر) */
+.welcome {
+  min-height: 100vh;
+  box-sizing: border-box;
+  padding: 30vh 16px 0;
+  text-align: center;
+  color: white;
+  background-color: #2b5d6b;
+}
+
+.welcome h1 {
+  margin: 0;
+  font-size: 6vw; /* با عرض پنجره بزرگ و کوچک می‌شود */
+}
+
+.welcome p {
+  font-size: 1.2rem;
+}
+
+.features {
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 2rem 16px;
+}

@@ -1,0 +1,311 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>۲۰) چندرسانه‌ای: ویدیو، صدا و تصاویر پیشرفته | جزوه HTML</title>
+    <link rel="stylesheet" href="../css/style.css" />
+  </head>
+
+  <body>
+    <header class="page-header">
+      <h1>جزوه HTML مقدماتی</h1>
+      <p>۲۰) چندرسانه‌ای: ویدیو، صدا، یوتیوب و تصاویر پیشرفته</p>
+    </header>
+
+    <div class="container">
+      <nav class="page-nav">
+        <a href="19-forms-advanced.html">→ درس قبل</a>
+        <a href="../index.html">فهرست مطالب</a>
+        <a href="21-graphics.html">درس بعد ←</a>
+      </nav>
+
+      <section class="lesson">
+        <h2>۲۰) ویدیو — عنصر <code>&lt;video&gt;</code></h2>
+        <p>
+          با HTML5 می‌توان ویدیو را بدون افزونه پخش کرد. داخل <code>video</code> یک یا چند عنصر <code>source</code> می‌گذارند.
+          مرورگر فهرست را از بالا می‌خواند و اولین قالبی را پخش می‌کند که هم نوعش را بشناسد و هم بتواند کدک آن را اجرا کند.
+          متنی که بین تگ آغاز و پایان <code>video</code> نوشته شود فقط وقتی دیده می‌شود که مرورگر عنصر ویدیو را نشناسد.
+        </p>
+        <pre class="code"><code>&lt;video width="400" controls poster="../images/demo.jpg"&gt;
+  &lt;source src="videos/flower.webm" type="video/webm"&gt;
+  &lt;source src="videos/flower.mp4" type="video/mp4"&gt;
+  مرورگر شما از ویدیو پشتیبانی نمی‌کند.
+  &lt;a href="videos/flower.mp4"&gt;دانلود ویدیو&lt;/a&gt;
+&lt;/video&gt;</code></pre>
+        <div class="result">
+          <video class="demo-media" width="400" controls poster="../images/demo.jpg">
+            <source src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.webm" type="video/webm" />
+            <source src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4" type="video/mp4" />
+            مرورگر شما از ویدیو پشتیبانی نمی‌کند.
+            <a href="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4">دانلود ویدیو</a>
+          </video>
+        </div>
+        <p><small>(ویدیوی نمونه از اینترنت بارگذاری می‌شود و برای پخش آن به اتصال اینترنت نیاز است.)</small></p>
+
+        <table class="ref">
+          <thead>
+            <tr>
+              <th>ویژگی</th>
+              <th>کاربرد</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>controls</code></td>
+              <td>دکمه‌های پخش، توقف، صدا و تمام‌صفحه را نشان می‌دهد. بدون آن، کاربر راه استانداردی برای کنترل ویدیو ندارد.</td>
+            </tr>
+            <tr>
+              <td><code>autoplay</code></td>
+              <td>پخش را بدون کلیک کاربر شروع می‌کند. بسیاری از مرورگرها پخش خودکار همراه صدا را مسدود می‌کنند و معمولاً فقط همراه <code>muted</code> اجازه می‌دهند.</td>
+            </tr>
+            <tr>
+              <td><code>muted</code></td>
+              <td>صدا را از ابتدا خاموش می‌کند. کاربر بعداً می‌تواند صدا را از کنترل‌ها روشن کند.</td>
+            </tr>
+            <tr>
+              <td><code>loop</code></td>
+              <td>بعد از پایان، پخش را از نو شروع می‌کند.</td>
+            </tr>
+            <tr>
+              <td><code>poster</code></td>
+              <td>تصویری است که پیش از شروع پخش نشان داده می‌شود تا کادر خالی نماند.</td>
+            </tr>
+            <tr>
+              <td><code>width</code> / <code>height</code></td>
+              <td>اندازهٔ پخش‌کننده را به پیکسل مشخص می‌کند. اندازهٔ واکنش‌گرا را معمولاً با CSS تنظیم می‌کنند.</td>
+            </tr>
+            <tr>
+              <td><code>preload</code></td>
+              <td>
+                مقدار <code>none</code> (هیچ پیش‌بارگذاری)، <code>metadata</code> (فقط مدت و ابعاد) یا <code>auto</code>؛
+                برای صرفه‌جویی در اینترنت کاربر، <code>metadata</code> انتخاب خوبی است
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h3>زیرنویس با <code>&lt;track&gt;</code></h3>
+        <p>
+          برای کاربر ناشنوا، یا کسی که بدون صدا تماشا می‌کند، فایل زیرنویس با قالب WebVTT و پسوند <code>.vtt</code> را با عنصر <code>track</code> داخل <code>video</code> می‌گذارند.
+          <code>kind="subtitles"</code> نوع مسیر را زیرنویس می‌کند، <code>srclang</code> زبان آن است و <code>default</code> همان مسیر را از ابتدا فعال می‌کند.
+        </p>
+        <pre class="code"><code>&lt;video controls&gt;
+  &lt;source src="videos/lesson-01.mp4" type="video/mp4"&gt;
+  &lt;track src="videos/lesson-01-fa.vtt" kind="subtitles" srclang="fa" label="فارسی" default&gt;
+&lt;/video&gt;</code></pre>
+
+        <pre class="code"><code>&lt;!-- ویدیوی پس‌زمینه: خودکار، بی‌صدا، تکرارشونده --&gt;
+&lt;video autoplay muted loop&gt;
+  &lt;source src="bg.mp4" type="video/mp4"&gt;
+&lt;/video&gt;</code></pre>
+
+        <p class="tip">
+          <strong>نکته:</strong>
+          متنی که بین <code>&lt;video&gt;</code> و <code>&lt;/video&gt;</code> می‌نویسید فقط وقتی دیده می‌شود که مرورگر عنصر ویدیو را پشتیبانی نکند. مرورگرهای امروزی این متن را نشان نمی‌دهند.
+          قالب <code>mp4</code> با کدک H.264 در مرورگرهای امروزی پشتیبانی گسترده‌ای دارد.
+          <code>webm</code> معمولاً حجم کمتری دارد و اگر اول نوشته شود، مرورگری که آن را بشناسد همان را انتخاب می‌کند.
+        </p>
+
+        <p class="mistake">
+          <strong>خطای متداول:</strong>
+          قرار دادن ویدیوی چندصد مگابایتی مستقیم روی میزبان سایت. ویدیوی طولانی را بهتر است در سرویسی مثل آپارات یا یوتیوب بگذارید و با <code>iframe</code> جاسازی کنید.
+          ویدیوی کوتاه را هم پیش از انتشار فشرده کنید تا صفحه برای کاربر کند نشود.
+        </p>
+      </section>
+
+      <section class="lesson">
+        <h2>صدا — عنصر <code>&lt;audio&gt;</code></h2>
+        <p>
+          عنصر <code>audio</code> مانند <code>video</code> کار می‌کند، با این تفاوت که تصویر ندارد. برای پادکست، کتاب صوتی یا تلفظ واژه مناسب است.
+          بدون ویژگی <code>controls</code> پخش‌کننده دیده نمی‌شود، چون کنترل پیش‌فرضی روی صفحه نیست.
+        </p>
+        <pre class="code"><code>&lt;audio controls preload="metadata"&gt;
+  &lt;source src="audio/t-rex-roar.mp3" type="audio/mpeg"&gt;
+  مرورگر شما از صدا پشتیبانی نمی‌کند.
+&lt;/audio&gt;</code></pre>
+        <div class="result">
+          <audio controls preload="metadata">
+            <source src="https://interactive-examples.mdn.mozilla.net/media/cc0-audio/t-rex-roar.mp3" type="audio/mpeg" />
+            مرورگر شما از صدا پشتیبانی نمی‌کند.
+          </audio>
+        </div>
+        <p><small>(صدای نمونه از اینترنت بارگذاری می‌شود و برای پخش آن به اتصال اینترنت نیاز است.)</small></p>
+        <p>
+          ویژگی‌های <code>controls</code>، <code>autoplay</code>، <code>muted</code>، <code>loop</code> و <code>preload</code> اینجا هم کار می‌کنند.
+          مانند ویدیو، می‌توان چند <code>source</code> با قالب‌های مختلف (مثلاً <code>mp3</code> و <code>ogg</code>) نوشت.
+        </p>
+      </section>
+
+      <section class="lesson">
+        <h2>جاسازی ویدیوی یوتیوب</h2>
+        <p>
+          ویدیوی یوتیوب را مستقیم با عنصر <code>video</code> نمی‌گذارند، چون پرونده روی سرور شما نیست. آن را با <code>iframe</code> جاسازی می‌کنند که در درس ۱۵ معرفی شد.
+          در یوتیوب Share و سپس Embed را بزنید و کد را کپی کنید. شکل نشانی معمولاً <code>https://www.youtube.com/embed/شناسه-ویدیو</code> است.
+        </p>
+        <pre class="code"><code>&lt;iframe width="560" height="315"
+  src="https://www.youtube.com/embed/VIDEO_ID"
+  title="آموزش ساخت فرم ثبت‌نام با HTML"
+  loading="lazy"
+  allowfullscreen&gt;
+&lt;/iframe&gt;</code></pre>
+        <p>
+          به‌جای <code>VIDEO_ID</code> شناسه ویدیو را بگذارید؛ شناسه همان بخشی از نشانی ویدیو است که بعد از
+          <code>watch?v=</code> می‌آید.
+        </p>
+
+        <table class="ref">
+          <thead>
+            <tr>
+              <th>تنظیم در انتهای آدرس</th>
+              <th>معنی</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>?autoplay=1&amp;mute=1</code></td>
+              <td>پخش را خودکار و بی‌صدا شروع می‌کند. بسیاری از مرورگرها پخش خودکار با صدا را مسدود می‌کنند.</td>
+            </tr>
+            <tr>
+              <td><code>?loop=1&amp;playlist=شناسه</code></td>
+              <td>ویدیو را تکرار می‌کند. برای یک ویدیوی تکی، یوتیوب علاوه بر <code>loop=1</code> همان شناسه را در <code>playlist</code> هم می‌خواهد.</td>
+            </tr>
+            <tr>
+              <td><code>?controls=0</code></td>
+              <td>دکمه‌های کنترل یوتیوب را پنهان می‌کند. این کار دسترسی کاربر به توقف و صدا را کمتر می‌کند و همیشه مناسب نیست.</td>
+            </tr>
+          </tbody>
+        </table>
+        <p>
+          تنظیم اول با <code>?</code> و تنظیم‌های بعدی با <code>&amp;</code> به نشانی اضافه می‌شوند.
+          چون <code>&amp;</code> در HTML نویسه ویژه است، داخل ویژگی <code>src</code> بهتر است آن را <code>&amp;amp;</code> بنویسید (درس ۱۸).
+        </p>
+        <p class="tip">
+          <strong>نکته:</strong>
+          اگر یوتیوب در شبکه شما در دسترس نیست، همین روش برای آپارات هم کار می‌کند؛ در آپارات هم
+          گزینه «کد جاسازی» وجود دارد.
+        </p>
+      </section>
+
+      <section class="lesson">
+        <h2>تصاویر پیشرفته</h2>
+
+        <div class="tag-card">
+          <h4>&lt;figure&gt; و &lt;figcaption&gt;</h4>
+          <p>
+            عنصر <code>figure</code> یک تصویر، نمودار، قطعهٔ کد یا جدول را همراه با توضیحش گروه‌بندی می‌کند.
+            <code>figcaption</code> همان توضیح است و می‌تواند قبل یا بعد از محتوای شکل بیاید. این گروه‌بندی معنایی است و به‌تنهایی ظاهر خاصی نمی‌سازد.
+          </p>
+          <pre class="code"><code>&lt;figure&gt;
+  &lt;img src="../images/demo.jpg" alt="لپ‌تاپ و دفترچه‌ای با طرح اولیه صفحه وب روی میز چوبی" width="220"&gt;
+  &lt;figcaption&gt;شکل ۱ — پیش از کدنویسی، طرح صفحه را روی کاغذ بکشید.&lt;/figcaption&gt;
+&lt;/figure&gt;</code></pre>
+          <div class="result">
+            <figure>
+              <img class="demo-img" src="../images/demo.jpg" alt="لپ‌تاپ و دفترچه‌ای با طرح اولیه صفحه وب روی میز چوبی" width="220" />
+              <figcaption>شکل ۱ — پیش از کدنویسی، طرح صفحه را روی کاغذ بکشید.</figcaption>
+            </figure>
+          </div>
+        </div>
+
+        <div class="tag-card">
+          <h4>&lt;picture&gt; — تصویر متفاوت برای صفحه‌های مختلف</h4>
+          <p>
+            عنصر <code>picture</code> اجازه می‌دهد برای شرایط مختلف، پروندهٔ متفاوتی پیشنهاد کنید.
+            مرورگر از بالا اولین <code>source</code> را انتخاب می‌کند که شرط <code>media</code> آن درست باشد و در صورت وجود، <code>type</code> آن را هم پشتیبانی کند.
+            اگر هیچ‌کدام مناسب نبود، <code>img</code> پایانی نمایش داده می‌شود. پنجره را باریک و پهن کنید تا تفاوت را ببینید:
+          </p>
+          <pre class="code"><code>&lt;picture&gt;
+  &lt;source media="(min-width: 800px)" srcset="../images/demo.jpg"&gt;
+  &lt;img src="../images/profile.jpg" alt="تصویر نمونه برای آزمایش picture" width="220"&gt;
+&lt;/picture&gt;</code></pre>
+          <div class="result">
+            <picture>
+              <source media="(min-width: 800px)" srcset="../images/demo.jpg" />
+              <img class="demo-img" src="../images/profile.jpg" alt="تصویر نمونه برای آزمایش picture" width="220" />
+            </picture>
+            <p><small>صفحه پهن‌تر از ۸۰۰ پیکسل: عکس میز کار — صفحه باریک (موبایل): عکس نمایه</small></p>
+          </div>
+          <p>
+            کاربرد واقعی: نمایش بنر عریض فروشگاه در رایانه و نسخه مربعی و برش‌خورده همان بنر در موبایل،
+            یا ارائه قالب <code>webp</code> با <code>type="image/webp"</code> و <code>jpg</code> به‌عنوان پشتیبان.
+            <code>alt</code> فقط روی <code>img</code> نوشته می‌شود و برای همه حالت‌ها به‌کار می‌رود.
+          </p>
+        </div>
+
+        <div class="tag-card">
+          <h4>نقشه تصویر (Image Map)</h4>
+          <p>
+            نقشهٔ تصویر بخش‌های یک تصویر را به پیوندهای جدا تبدیل می‌کند. <code>usemap</code> روی تصویر به <code>name</code> عنصر <code>map</code> اشاره می‌کند و هر <code>area</code> یک ناحیهٔ قابل کلیک است.
+            مختصات از گوشهٔ بالا-چپ خود تصویر حساب می‌شود، نه از صفحه.
+          </p>
+          <pre class="code"><code>&lt;img src="../images/demo.jpg" alt="میز کار طراح وب" usemap="#desk-map" width="220" height="220"&gt;
+
+&lt;map name="desk-map"&gt;
+  &lt;area shape="rect" coords="0,0,120,220" href="04-html-intro.html" alt="لپ‌تاپ: درس HTML چیست؟"&gt;
+  &lt;area shape="rect" coords="120,0,220,220" href="13-semantic.html" alt="دفترچه طراحی: درس بخش‌بندی معنایی"&gt;
+&lt;/map&gt;</code></pre>
+          <div class="result">
+            <img src="../images/demo.jpg" alt="میز کار طراح وب" usemap="#desk-map" width="220" height="220" style="border-radius: 8px" />
+            <map name="desk-map">
+              <area shape="rect" coords="0,0,120,220" href="04-html-intro.html" alt="لپ‌تاپ: درس HTML چیست؟" />
+              <area shape="rect" coords="120,0,220,220" href="13-semantic.html" alt="دفترچه طراحی: درس بخش‌بندی معنایی" />
+            </map>
+            <p><small>مختصات از گوشه بالا-چپ تصویر حساب می‌شود: روی لپ‌تاپ (چپ) یا دفترچه (راست) کلیک کنید.</small></p>
+          </div>
+          <p>
+            مقادیر <code>shape</code>: <code>rect</code> (مستطیل: <code>x1,y1,x2,y2</code>)، <code>circle</code> (دایره: <code>x,y,شعاع</code>)،
+            <code>poly</code> (چندضلعی: جفت‌مختصات همه رأس‌ها). مختصات به پیکسل و ثابت‌اند؛ اگر اندازه تصویر با CSS عوض شود،
+            ناحیه‌ها جابه‌جا می‌شوند، به همین دلیل Image Map امروزه کمتر استفاده می‌شود.
+          </p>
+        </div>
+
+        <div class="tag-card">
+          <h4>تصویر پس‌زمینه</h4>
+          <p>تصویر تزئینی را به‌جای <code>img</code> می‌توان با CSS و ویژگی <code>background-image</code> گذاشت. این تصویر در محتوای صفحه نیست و صفحه‌خوان آن را به‌عنوان محتوا نمی‌خواند، پس متن مهم را فقط روی آن نگذارید مگر اینکه همان متن در HTML هم باشد.</p>
+          <pre class="code"><code>&lt;div style="background-image: url('../images/demo.jpg');
+            background-size: cover; background-position: center;
+            height: 120px; color: white; padding: 10px;
+            font-weight: bold; text-shadow: 0 1px 4px #000;"&gt;
+  دوره جامع طراحی وب — ثبت‌نام آغاز شد
+&lt;/div&gt;</code></pre>
+          <div class="result">
+            <div style="background-image: url('../images/demo.jpg'); background-size: cover; background-position: center; height: 120px; color: white; padding: 10px; font-weight: bold; text-shadow: 0 1px 4px #000">
+              دوره جامع طراحی وب — ثبت‌نام آغاز شد
+            </div>
+          </div>
+        </div>
+
+        <p class="tip">
+          <strong>یادآوری:</strong>
+          تصویر محتوایی، مثل عکس محصول یا نمودار، را با <code>img</code> و <code>alt</code> بگذارید.
+          تصویر تزئینی را با CSS و <code>background-image</code> بگذارید. متن روی تصویر پس‌زمینه باید با رنگ تصویر تضاد کافی داشته باشد. قالب‌های رایج تصویر در <a href="09-images.html">درس ۹</a> آمده‌اند.
+        </p>
+
+        <p class="exercise">
+          <strong>تمرین:</strong>
+          یک صفحه «گالری سفر» بسازید که سه تصویر با <code>figure</code> و <code>figcaption</code>، یک
+          ویدیو با <code>poster</code> و یک فایل صوتی داشته باشد.
+        </p>
+
+        <p>
+          مطالعه بیشتر:
+          <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/video" target="_blank" rel="noopener">video (MDN)</a>،
+          <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/audio" target="_blank" rel="noopener">audio (MDN)</a>،
+          <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/track" target="_blank" rel="noopener">track (MDN)</a>،
+          <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/picture" target="_blank" rel="noopener">picture (MDN)</a>،
+          <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/map" target="_blank" rel="noopener">map (MDN)</a>،
+          <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/figure" target="_blank" rel="noopener">figure (MDN)</a>
+        </p>
+      </section>
+
+      <nav class="page-nav">
+        <a href="19-forms-advanced.html">→ درس قبل</a>
+        <a href="../index.html">فهرست مطالب</a>
+        <a href="21-graphics.html">درس بعد ←</a>
+      </nav>
+    </div>
+
+    <footer class="page-footer">جزوه HTML مقدماتی</footer>
+  </body>
+</html>

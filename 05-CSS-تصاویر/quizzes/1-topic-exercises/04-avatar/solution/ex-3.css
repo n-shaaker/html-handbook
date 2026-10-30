@@ -1,0 +1,53 @@
+body {
+  font-family: Tahoma, Arial, sans-serif;
+  line-height: 1.8;
+  margin: 0;
+  padding: 24px 16px;
+}
+
+.top-cooks {
+  text-align: center;
+}
+
+.cook {
+  display: inline-block;
+  vertical-align: top;
+  width: 110px;
+  margin: 8px;
+}
+
+.cook p {
+  margin: 4px 0 0;
+  font-size: 14px;
+}
+
+/* مرجع موقعیت نقطه آنلاین */
+.avatar-wrap {
+  position: relative;
+  display: inline-block;
+}
+
+.avatar {
+  display: block;
+  width: 80px;
+  height: 80px;
+  object-fit: cover; /* عکس پهن یا عمودی کش نمی‌آید */
+  border-radius: 50%;
+  border: 2px solid #ddd;
+}
+
+/* عکس عمودی: بالای عکس دیده شود */
+.avatar.focus-top {
+  object-position: center top;
+}
+
+.online {
+  position: absolute;
+  bottom: 4px;
+  right: 4px;
+  width: 14px;
+  height: 14px;
+  background-color: #2fb344;
+  border: 2px solid white;
+  border-radius: 50%;
+}

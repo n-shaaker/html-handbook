@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>۱۱) شبه‌عنصرها (Pseudo-elements) | آموزش CSS سطح میانی</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/demos/pseudo-elements.css">
+</head>
+
+<body>
+
+  <header class="page-header">
+    <h1>آموزش CSS — سطح میانی</h1>
+    <p>۱۱) شبه‌عنصرها (Pseudo-elements)</p>
+  </header>
+
+  <div class="container">
+
+    <nav class="page-nav" aria-label="ناوبری درس">
+      <a href="10-pseudo-classes.html">→ قبلی: Pseudo-classes</a>
+      <a href="../index.html">فهرست درس‌ها</a>
+      <a href="12-opacity.html">بعدی: Opacity ←</a>
+    </nav>
+
+    <section class="lesson" id="pseudo-elements">
+      <h2>۱۱) شبه‌عنصرها (Pseudo-elements)</h2>
+      <p>
+        شبه‌عنصر بخشی از عنصر را جداگانه سبک می‌دهد، یا یک جعبه تازه قبل یا بعد از محتوا می‌سازد، بدون اینکه در HTML تگ تازه‌ای اضافه شود.
+        شبه‌عنصر با دو دونقطه نوشته می‌شود: <code>::before</code>، <code>::after</code>، <code>::first-letter</code>، <code>::first-line</code>، <code>::marker</code> و <code>::selection</code>.
+        <code>::before</code> و <code>::after</code> فقط وقتی چیزی نشان می‌دهند که ویژگی <code>content</code> داشته باشند. حتی جعبه تزئینی خالی هم به <code>content: ""</code> نیاز دارد.
+        متنی که با <code>content</code> ساخته می‌شود جزو HTML نیست: انتخاب و کپی کردنش مثل متن واقعی صفحه نیست و بعضی صفحه‌خوان‌ها آن را نمی‌خوانند. پس برای اطلاعات ضروری، همان متن را در HTML بنویسید و از شبه‌عنصر برای تزئین استفاده کنید.
+      </p>
+      <p class="tip">
+        فرق ساده: شبه‌کلاس (<code>:hover</code>) = یک <strong>حالت</strong>.
+        شبه‌عنصر (<code>::before</code>) = یک <strong>بخش</strong>.
+        در کدهای قدیمی نسخه تک‌دونقطه (<code>:before</code>، <code>:after</code>) را هم می‌بینید که هنوز کار می‌کند،
+        ولی شکل استاندارد امروزی همان <code>::</code> است.
+      </p>
+
+      <h3>مثال ۱: <code>::first-letter</code> — حرف اول بزرگ</h3>
+      <pre class="code"><code>p::first-letter {
+  font-size: 40px;
+  color: #c92a2a;
+  font-weight: bold;
+}</code></pre>
+      <div class="result demo-pe">
+        <p class="fl" dir="ltr">Once upon a time, there was a little web page that wanted to look beautiful...</p>
+      </div>
+      <p class="tip">
+        در متن فارسی، چون حروف به هم می‌چسبند، <code>::first-letter</code> ممکن است اتصال حرف اول را بشکند؛
+        برای همین مثال انگلیسی است.
+      </p>
+
+      <h3>مثال ۲: <code>::first-line</code> — خط اول متفاوت</h3>
+      <pre class="code"><code>p::first-line {
+  color: #1a5fb4;
+  font-weight: bold;
+}</code></pre>
+      <div class="result demo-pe">
+        <p class="fline">
+          فقط خط اول این پاراگراف آبی و پررنگ است. اگر پنجره را کوچک یا بزرگ کنید، می‌بینید که همیشه همان خط اول (هر چقدر که جا شود)
+          تغییر می‌کند و بقیه متن عادی می‌ماند. این حالت برای شروع مقاله‌ها زیباست.
+        </p>
+      </div>
+
+      <h3>مثال ۳: <code>::before</code> و <code>::after</code> — ساختن محتوای تازه</h3>
+      <p>این دو حتماً به <code>content</code> نیاز دارند (حتی اگر خالی باشد: <code>content: ""</code>).</p>
+      <pre class="code"><code>.done::before   { content: "✔ "; color: green; }
+.price::after   { content: " تومان"; color: #888; }
+.required::after { content: " *"; color: red; }</code></pre>
+      <div class="result demo-pe">
+        <p class="done">تمرین جلسه اول</p>
+        <p class="done">تمرین جلسه دوم</p>
+        <p>قیمت: <span class="price">۱۲۰٬۰۰۰</span></p>
+        <p class="required">نام و نام خانوادگی</p>
+      </div>
+      <p class="tip">
+        محتوایی که با <code>content</code> ساخته می‌شود جزو HTML نیست: کاربر نمی‌تواند آن را انتخاب و کپی کند
+        و بعضی صفحه‌خوان‌ها (نرم‌افزار نابینایان) آن را نمی‌خوانند. پس فقط برای تزئین و علامت‌های کمکی از آن استفاده کنید؛
+        مثلاً برای فیلد اجباری، علاوه بر ستاره، ویژگی <code>required</code> را هم در HTML بگذارید.
+      </p>
+
+      <h3>مثال ۴: نقل قول تزئینی با <code>::before</code></h3>
+      <pre class="code"><code>.quote::before {
+  content: "«";
+  font-size: 50px;
+  color: #ced4da;
+}</code></pre>
+      <div class="result demo-pe">
+        <blockquote class="quote">دانستن کافی نیست، باید به کار ببریم.</blockquote>
+      </div>
+
+      <h3>مثال ۵: خط تزئینی زیر تیتر بخش‌های سایت با <code>::after</code></h3>
+      <pre class="code"><code>.fancy::after {
+  content: "";          /* خالی، فقط یک جعبه */
+  display: block;
+  width: 60px;
+  height: 4px;
+  background: orange;
+  margin-top: 6px;
+}</code></pre>
+      <div class="result demo-pe">
+        <h4 class="fancy">خدمات ما</h4>
+      </div>
+
+      <h3>مثال ۶: <code>::selection</code> و <code>::marker</code></h3>
+      <pre class="code"><code>p::selection { background: #ffd43b; color: black; }  /* متن انتخاب‌شده */
+li::marker   { color: #e8590c; font-size: 20px; }    /* علامت فهرست */</code></pre>
+      <p>روی <code>::selection</code> و <code>::marker</code> فقط چند ویژگی محدود (مثل رنگ، پس‌زمینه و فونت) کار می‌کند؛ مثلاً نمی‌شود به آن‌ها padding داد.</p>
+      <div class="result demo-pe">
+        <p class="sel">این متن را با ماوس انتخاب (select) کنید تا رنگ زرد را ببینید.</p>
+        <ul class="mark">
+          <li>علامت این فهرست نارنجی است</li>
+          <li>با ::marker تغییر کرده</li>
+        </ul>
+      </div>
+
+      <p class="mistake">
+        <strong>اشتباه رایج:</strong>
+        نوشتن <code>::before</code> بدون <code>content</code>. در این حالت هیچ چیزی نمایش داده نمی‌شود.
+      </p>
+
+      <p class="mistake">
+        <strong>اشتباه رایج:</strong>
+        استفاده از <code>::before</code> و <code>::after</code> روی <code>img</code> و <code>input</code>.
+        این عنصرها محتوای داخلی ندارند و شبه‌عنصر رویشان ساخته نمی‌شود؛ شبه‌عنصر را روی پدرشان (مثلاً <code>label</code> یا یک div) بگذارید.
+      </p>
+
+      <p class="exercise">
+        <strong>تمرین:</strong> برای لینک‌هایی که کلاس <code>external</code> دارند، با <code>::after</code> یک علامت <code>↗</code> اضافه کنید.
+      </p>
+    </section>
+
+    <nav class="page-nav" aria-label="ناوبری درس پایین">
+      <a href="10-pseudo-classes.html">→ قبلی: Pseudo-classes</a>
+      <a href="../index.html">فهرست درس‌ها</a>
+      <a href="12-opacity.html">بعدی: Opacity ←</a>
+    </nav>
+
+  </div>
+
+  <footer class="page-footer">
+    آموزش CSS سطح میانی
+  </footer>
+
+</body>
+
+</html>

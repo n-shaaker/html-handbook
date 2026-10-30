@@ -1,0 +1,27 @@
+body {
+  font-family: Tahoma, Arial, sans-serif;
+  line-height: 1.8;
+  padding: 16px;
+}
+
+h2 {
+  font-size: 16px;
+}
+
+.box-width,
+.box-max {
+  box-sizing: border-box;
+  padding: 16px;
+  border: 2px dashed #0b6e4f;
+  background-color: #eaf7f1;
+}
+
+/* در صفحه باریک‌تر از ۵۰۰ پیکسل بیرون می‌زند */
+.box-width {
+  width: 500px;
+}
+
+/* حداکثر ۵۰۰ پیکسل؛ در صفحه باریک کوچک می‌شود */
+.box-max {
+  max-width: 500px;
+}

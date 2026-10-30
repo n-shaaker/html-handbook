@@ -1,0 +1,12 @@
+.shopping {
+  list-style-type: square;
+}
+
+.features {
+  list-style-type: circle;
+}
+
+/* شماره‌های فارسی: ۱، ۲، ۳ */
+.steps {
+  list-style-type: persian;
+}

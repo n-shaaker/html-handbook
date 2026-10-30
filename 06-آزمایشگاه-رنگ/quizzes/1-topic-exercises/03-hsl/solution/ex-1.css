@@ -1,0 +1,30 @@
+/* اشباع ۱۰۰٪ و روشنایی ۵۰٪ ثابت است؛ فقط فام هر ۶۰ درجه جلو می‌رود */
+.hue-0 {
+  background-color: hsl(0, 100%, 50%);
+}
+
+.hue-60 {
+  background-color: hsl(60, 100%, 50%);
+}
+
+.hue-120 {
+  background-color: hsl(120, 100%, 50%);
+}
+
+.hue-180 {
+  background-color: hsl(180, 100%, 50%);
+}
+
+.hue-240 {
+  background-color: hsl(240, 100%, 50%);
+  color: hsl(0, 0%, 100%);
+}
+
+.hue-300 {
+  background-color: hsl(300, 100%, 50%);
+}
+
+/* ۳۶۰ درجه یعنی یک دور کامل: دوباره قرمز */
+.hue-360 {
+  background-color: hsl(360, 100%, 50%);
+}

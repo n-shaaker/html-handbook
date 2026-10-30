@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>۹) فاصله بیرونی (Margins) | آموزش CSS از صفر</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/demos/margins.css">
+</head>
+
+<body>
+
+  <header class="page-header">
+    <h1>آموزش CSS از صفر</h1>
+    <p>۹) فاصله بیرونی (Margins)</p>
+  </header>
+
+  <div class="container">
+
+    <nav class="page-nav" aria-label="ناوبری درس">
+      <a href="08-borders.html">→ قبلی: Borders</a>
+      <a href="../index.html">فهرست درس‌ها</a>
+      <a href="10-padding.html">بعدی: Padding ←</a>
+    </nav>
+
+    <section class="lesson" id="margins">
+      <h2>۹) فاصله بیرونی (Margins)</h2>
+      <p>
+        <code>margin</code> فاصله <strong>بیرون</strong> حاشیه است؛ یعنی فضای خالی بین لبه یک عنصر و عنصرهای اطرافش.
+        این فضا همیشه شفاف است و رنگ پس‌زمینه خود عنصر را نمی‌گیرد. برای همین اگر بخواهید فاصله رنگی دور متن ببینید، باید از <code>padding</code> استفاده کنید که داخل حاشیه قرار دارد.
+      </p>
+      <pre class="code"><code>.box {
+  margin: 20px 40px;   /* بالا و پایین ۲۰ ، راست و چپ ۴۰ */
+  background-color: #1a3a5c;
+  color: white;
+  padding: 10px;
+}</code></pre>
+      <div class="result">
+        <div class="m-outer">
+          <div class="box">جعبه سرمه‌ای؛ فضای نارنجی اطرافش همان margin است.</div>
+        </div>
+      </div>
+      <p class="tip">
+        margin همیشه شفاف است و رنگ پس‌زمینه عنصر را نمی‌گیرد؛ رنگ نارنجی مال جعبه والد (<code>m-outer</code>) است که
+        فقط برای دیده شدن margin گذاشته شده.
+      </p>
+
+      <h3>ترتیب مقدارها</h3>
+      <table class="ref">
+        <thead>
+          <tr>
+            <th>نوشتن</th>
+            <th>معنی</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>margin: 10px;</code></td>
+            <td>هر چهار طرف ۱۰</td>
+          </tr>
+          <tr>
+            <td><code>margin: 10px 20px;</code></td>
+            <td>بالا/پایین ۱۰ ، راست/چپ ۲۰</td>
+          </tr>
+          <tr>
+            <td><code>margin: 10px 20px 30px;</code></td>
+            <td>بالا ۱۰ ، راست/چپ ۲۰ ، پایین ۳۰</td>
+          </tr>
+          <tr>
+            <td><code>margin: 10px 20px 30px 40px;</code></td>
+            <td>بالا، راست، پایین، چپ (جهت عقربه‌های ساعت)</td>
+          </tr>
+        </tbody>
+      </table>
+      <p>
+        می‌توان هر چهار طرف را جدا نوشت: <code>margin-top</code>، <code>margin-right</code>، <code>margin-bottom</code> و <code>margin-left</code>.
+        وقتی چند عدد در <code>margin</code> می‌آید، مرورگر آن‌ها را از بالا شروع می‌کند و در جهت عقربه‌های ساعت ادامه می‌دهد.
+        اگر عددی حذف شود، سمت مقابل همان مقدار را می‌گیرد: با دو عدد، اولی بالا و پایین است و دومی راست و چپ.
+      </p>
+      <p class="tip">
+        <strong>نکته راست‌چین:</strong> <code>margin-right</code> و <code>margin-left</code> سمت فیزیکی هستند. ویژگی‌های منطقی
+        <code>margin-inline-start</code> (لبه شروع متن؛ در فارسی راست) و <code>margin-inline-end</code> (لبه پایان متن؛ در فارسی چپ)
+        در صفحه انگلیسی خودبه‌خود برعکس می‌شوند. خلاصه‌اش هم هست: <code>margin-inline: 0 20px;</code> یعنی شروع ۰ و پایان ۲۰.
+      </p>
+
+      <h3>وسط‌چین کردن یک جعبه با auto</h3>
+      <p>
+        یکی از کاربردهای همیشگی <code>margin</code>، نشاندن یک جعبه در وسط عرض صفحه است؛ مثل کارت فرم ورود یا ستون متن یک مقاله.
+        مقدار <code>auto</code> برای چپ و راست به مرورگر می‌گوید فضای خالی دو طرف را مساوی تقسیم کند. بالا و پایین در این مثال عدد ثابت دارند و وسط‌چین عمودی ایجاد نمی‌کنند.
+      </p>
+      <pre class="code"><code>.login-card {
+  width: 60%;
+  margin: 10px auto;   /* بالا و پایین ۱۰ ، راست و چپ خودکار = وسط */
+  background-color: #0b6e4f;
+  color: white;
+  padding: 10px;
+  text-align: center;
+}</code></pre>
+      <div class="result">
+        <div class="login-card">فرم ورود — این جعبه وسط قرار گرفته است.</div>
+      </div>
+      <p>
+        <code>auto</code> یعنی «فضای خالی باقی‌مانده را مساوی بین راست و چپ تقسیم کن». این روش فقط
+        <strong>افقی</strong> و فقط برای عنصرهای بلوکی (مثل <code>div</code>، <code>p</code>، <code>section</code>) کار می‌کند؛
+        <code>margin-top: auto</code> جعبه را عمودی وسط نمی‌برد.
+      </p>
+
+      <h3>فروریختن margin (Margin Collapse)</h3>
+      <p>
+        وقتی حاشیه پایین یک عنصر بلوکی به حاشیه بالای عنصر بلوکی بعدی می‌رسد، این دو با هم جمع نمی‌شوند و فقط مقدار بزرگ‌تر اعمال می‌شود.
+        به این رفتار فروریختن margin می‌گویند و در جریان عادی بلوک‌ها، فقط برای حاشیه عمودی (بالا و پایین) رخ می‌دهد.
+        حاشیه چپ و راست جمع می‌شوند. در چیدمان Flexbox و Grid هم حاشیه‌های آیتم‌ها فرو نمی‌ریزند، چون آن عنصرها در جریان عادی بلوک قرار ندارند.
+      </p>
+      <pre class="code"><code>.news-1 { margin-bottom: 30px; }
+.news-2 { margin-top: 20px; }
+/* فاصله بین دو خبر: ۳۰ پیکسل، نه ۵۰ */</code></pre>
+      <div class="result">
+        <div class="m-collapse">
+          <p class="news-1">خبر اول (margin-bottom: 30px)</p>
+          <p class="news-2">خبر دوم (margin-top: 20px) — فاصله بین این دو، ۳۰ پیکسل است.</p>
+        </div>
+      </div>
+      <p class="tip">
+        برای همین هم معمولاً بهتر است فاصله بین عنصرهای پشت سر هم را فقط از <strong>یک طرف</strong> بدهید (مثلاً فقط
+        <code>margin-bottom</code>) تا محاسبه ساده بماند.
+      </p>
+
+      <p class="mistake">
+        <strong>اشتباه رایج:</strong>
+        <code>margin: auto</code> بدون تعیین <code>width</code> (یا <code>max-width</code>) کار نمی‌کند، چون جعبه بلوکی از قبل کل عرض را گرفته و فضای خالی‌ای برای تقسیم نمانده است.
+        <br>
+        انتظار جمع شدن margin عمودی دو عنصر پشت سر هم (فروریختن margin را ببینید).
+        <br>
+        فکر کردن به اینکه margin رنگ پس‌زمینه می‌گیرد؛ اگر فاصله رنگی می‌خواهید، از <code>padding</code> استفاده کنید.
+      </p>
+
+      <p class="exercise">
+        <strong>تمرین:</strong> محتوای صفحه معرفی‌تان را در یک <code>div</code> با <code>max-width: 800px</code> بگذارید و با
+        <code>margin: 0 auto</code> وسط صفحه بیاورید. بعد به همه پاراگراف‌ها فقط <code>margin-bottom: 16px</code> بدهید.
+      </p>
+    </section>
+
+
+    <nav class="page-nav" aria-label="ناوبری درس پایین">
+      <a href="08-borders.html">→ قبلی: Borders</a>
+      <a href="../index.html">فهرست درس‌ها</a>
+      <a href="10-padding.html">بعدی: Padding ←</a>
+    </nav>
+
+  </div>
+
+  <footer class="page-footer">
+    آموزش CSS از صفر
+  </footer>
+
+</body>
+
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>تمرین ۳ — ساختن رنگ با سه عدد</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="ex-3.js" defer></script>
+</head>
+
+<body>
+  <main>
+    <h1>رنگ دیوار اتاق را بساز 🎨</h1>
+
+    <label for="r">قرمز (۰ تا ۲۵۵)</label>
+    <input type="number" id="r" min="0" max="255" value="240">
+
+    <label for="g">سبز (۰ تا ۲۵۵)</label>
+    <input type="number" id="g" min="0" max="255" value="220">
+
+    <label for="b">آبی (۰ تا ۲۵۵)</label>
+    <input type="number" id="b" min="0" max="255" value="190">
+
+    <button type="button" id="show-btn">نمایش رنگ</button>
+
+    <div class="big-swatch" id="swatch"></div>
+    <p id="code-out" class="result" dir="ltr"></p>
+    <p id="message" class="error" aria-live="polite"></p>
+  </main>
+</body>
+
+</html>

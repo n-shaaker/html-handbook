@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>۹) auto-fill و auto-fit | آموزش CSS Grid</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/demos/auto-fit-fill.css">
+</head>
+
+<body>
+
+  <header class="page-header">
+    <h1>آموزش CSS Grid — چیدمان شبکه‌ای</h1>
+    <p>۹) auto-fill و auto-fit</p>
+  </header>
+
+  <div class="container">
+
+    <nav class="page-nav" aria-label="ناوبری درس">
+      <a href="08-align-content.html">→ قبلی: تراز کل شبکه</a>
+      <a href="../index.html">فهرست درس‌ها</a>
+      <a href="10-implicit-grid.html">بعدی: شبکه ضمنی ←</a>
+    </nav>
+
+    <section class="lesson" id="auto-fit-fill">
+      <h2>۹) auto-fill و auto-fit</h2>
+      <p>
+        تا حالا تعداد ستون‌ها را خودمان می‌گفتیم: <code>repeat(4, 1fr)</code>. ولی در گوشی ۴ ستون خیلی باریک می‌شود!
+        اگر به‌جای عدد بنویسیم <code>auto-fill</code> یا <code>auto-fit</code>، مرورگر خودش حساب می‌کند <strong>چند ستون جا می‌شود</strong>.
+        نتیجه: شبکه واکنش‌گرا <strong>بدون حتی یک media query</strong>.
+      </p>
+      <p class="tip">در این درس حتماً پنجره مرورگر را باریک و پهن کنید تا تغییر تعداد ستون‌ها را ببینید.</p>
+
+      <h3>مثال ۱: <code>repeat(auto-fill, 150px)</code></h3>
+      <p>هر ستون دقیقاً ۱۵۰ پیکسل؛ مرورگر هر چندتا که جا شود می‌سازد. ولی سمت چپ کمی جای خالی می‌ماند:</p>
+      <pre class="code"><code>.fixed-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 150px);
+  gap: 8px;
+}</code></pre>
+      <div class="result demo-auto">
+        <div class="grid fixed-cards">
+          <div class="box b1">۱</div>
+          <div class="box b2">۲</div>
+          <div class="box b3">۳</div>
+          <div class="box b4">۴</div>
+          <div class="box b5">۵</div>
+          <div class="box b6">۶</div>
+          <div class="box b1">۷</div>
+        </div>
+      </div>
+
+      <h3>مثال ۲: فرمول طلایی — <code>repeat(auto-fill, minmax(200px, 1fr))</code></h3>
+      <p>
+        با <code>minmax</code> می‌گوییم «هر ستون حداقل ۲۰۰ پیکسل، ولی اگر جا ماند همه با هم پهن شوید».
+        حالا جای خالی هم نمی‌ماند. این یک خط را برای کارت‌های محصول تقریباً همه سایت‌ها می‌بینید:
+      </p>
+      <pre class="code"><code>.products {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 12px;
+}</code></pre>
+      <div class="result demo-auto">
+        <div class="grid products">
+          <div class="box b1">۱. قهوه ترک</div>
+          <div class="box b2">۲. دمنوش گل‌گاوزبان</div>
+          <div class="box b3">۳. کیک هویج</div>
+          <div class="box b4">۴. موکا</div>
+          <div class="box b5">۵. اسموتی توت‌فرنگی</div>
+          <div class="box b6">۶. ساندویچ مرغ</div>
+        </div>
+      </div>
+
+      <h3>مثال ۳: فرق <code>auto-fill</code> و <code>auto-fit</code> (وقتی آیتم کم است)</h3>
+      <p>
+        تا وقتی آیتم‌ها زیادند، این دو هیچ فرقی ندارند. فرق وقتی پیدا می‌شود که آیتم‌ها <strong>کمتر</strong> از ستون‌های جاشده باشند. هر دو شبکه زیر فقط ۲ آیتم دارند:
+      </p>
+      <pre class="code"><code>.fill { grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); }
+.fit  { grid-template-columns: repeat(auto-fit,  minmax(120px, 1fr)); }</code></pre>
+      <div class="result demo-auto">
+        <p class="label">auto-fill: ستون‌های خالی سر جایشان می‌مانند</p>
+        <div class="grid fill">
+          <div class="box b1">۱</div>
+          <div class="box b2">۲</div>
+        </div>
+        <p class="label">auto-fit: ستون‌های خالی جمع می‌شوند و آیتم‌ها کل عرض را می‌گیرند</p>
+        <div class="grid fit">
+          <div class="box b1">۱</div>
+          <div class="box b2">۲</div>
+        </div>
+      </div>
+      <table class="ref">
+        <tr>
+          <th>کلمه</th>
+          <th>یادآوری ساده</th>
+          <th>کی؟</th>
+        </tr>
+        <tr>
+          <td><code>auto-fill</code></td>
+          <td>«خانه‌ها را <strong>پر</strong> کن؛ اگر آیتم کم بود خانه خالی بماند»</td>
+          <td>وقتی می‌خواهید کارت‌ها همیشه هم‌اندازه بمانند (مثلاً ۲ محصول بیش از حد پهن نشوند)</td>
+        </tr>
+        <tr>
+          <td><code>auto-fit</code></td>
+          <td>«آیتم‌ها را <strong>جا</strong> بده؛ خانه خالی را حذف کن»</td>
+          <td>وقتی می‌خواهید آیتم‌های کم، کل عرض را بگیرند</td>
+        </tr>
+      </table>
+
+      <h3>مثال ۴: گالری عکس سفر</h3>
+      <p>
+        گالری زیر همان الگو را روی کارت واقعی می‌گذارد: عکس بالا و متن پایین.
+        چون ستون‌ها با <code>repeat(auto-fill, minmax(180px, 1fr))</code> ساخته شده‌اند، هر ستون دست‌کم ۱۸۰ پیکسل است و اگر جا بماند پهن‌تر می‌شود.
+        در صفحهٔ پهن چند ستون کنار هم می‌آیند و وقتی عرض ظرف برای ستون دوم کافی نباشد، کارت‌ها در یک ستون زیر هم قرار می‌گیرند. برای این تغییر به media query نیازی نیست.
+      </p>
+      <pre class="code"><code>.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 12px;
+}
+
+.photo-card .photo {
+  height: 100px;           /* جای عکس */
+  border-radius: 6px 6px 0 0;
+}</code></pre>
+      <div class="result demo-auto">
+        <div class="gallery">
+          <div class="photo-card">
+            <div class="photo p1">۱</div>
+            <p>میدان نقش جهان، اصفهان</p>
+          </div>
+          <div class="photo-card">
+            <div class="photo p2">۲</div>
+            <p>جنگل ابر، شاهرود</p>
+          </div>
+          <div class="photo-card">
+            <div class="photo p3">۳</div>
+            <p>کویر مصر، خور و بیابانک</p>
+          </div>
+          <div class="photo-card">
+            <div class="photo p4">۴</div>
+            <p>روستای ماسوله</p>
+          </div>
+          <div class="photo-card">
+            <div class="photo p5">۵</div>
+            <p>جزیره هرمز</p>
+          </div>
+        </div>
+      </div>
+      <p class="tip">
+        در پروژه واقعی به‌جای <code>div.photo</code> یک <code>img</code> با <code>width: 100%</code> و <code>object-fit: cover</code> بگذارید
+        (درس‌های <a href="../../05-CSS-تصاویر/index.html">تصاویر در CSS</a>).
+      </p>
+
+      <p class="mistake">
+        <strong>اشتباه رایج:</strong>
+        نوشتن <code>repeat(auto-fill, 1fr)</code>. مرورگر باید بداند هر ستون <strong>حداقل</strong> چقدر است تا بشمارد چندتا جا می‌شود؛
+        با <code>1fr</code> تنها نمی‌تواند حساب کند و کل خط نامعتبر می‌شود. همیشه یک اندازه ثابت بدهید: <code>150px</code> یا <code>minmax(150px, 1fr)</code>.
+      </p>
+
+      <p class="mistake">
+        <strong>اشتباه رایج:</strong>
+        حداقل خیلی بزرگ: <code>minmax(400px, 1fr)</code>. در گوشی‌ای که ۳۶۰ پیکسل عرض دارد، حتی یک ستون هم جا نمی‌شود و کارت از صفحه بیرون می‌زند.
+        برای کارت‌ها حداقلی بین ۱۵۰ تا ۲۵۰ پیکسل معمولاً مناسب است.
+      </p>
+
+      <p class="exercise">
+        <strong>تمرین:</strong> صفحه «اساتید آموزشگاه» را با ۷ کارت (عکس، اسم، تخصص) بسازید که با
+        <code>repeat(auto-fill, minmax(...))</code> واکنش‌گرا باشد. بعد ۵ کارت را پاک کنید و <code>auto-fill</code> را با <code>auto-fit</code> عوض کنید
+        و فرق را در یک کامنت CSS بنویسید.
+      </p>
+    </section>
+
+    <nav class="page-nav" aria-label="ناوبری درس پایین">
+      <a href="08-align-content.html">→ قبلی: تراز کل شبکه</a>
+      <a href="../index.html">فهرست درس‌ها</a>
+      <a href="10-implicit-grid.html">بعدی: شبکه ضمنی ←</a>
+    </nav>
+
+  </div>
+
+  <footer class="page-footer">
+    آموزش CSS Grid
+  </footer>
+
+</body>
+
+</html>

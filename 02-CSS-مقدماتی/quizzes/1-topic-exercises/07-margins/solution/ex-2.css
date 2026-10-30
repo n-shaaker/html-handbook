@@ -1,0 +1,12 @@
+body {
+  background-color: #f1f3f5;
+}
+
+.login-card {
+  width: 320px;
+  margin: 60px auto 0; /* بالا ۶۰، راست و چپ auto یعنی وسط */
+  padding: 20px;
+  background-color: white;
+  border: 1px solid #dee2e6;
+  border-radius: 8px;
+}

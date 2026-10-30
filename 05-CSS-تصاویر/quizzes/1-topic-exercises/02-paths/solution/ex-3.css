@@ -1,0 +1,29 @@
+body {
+  font-family: Tahoma, Arial, sans-serif;
+  line-height: 1.8;
+  margin: 0;
+}
+
+/* خطا ۵: یک ../ کم بود؛ از solution تا پوشه دوره چهار پله است */
+.site-header {
+  padding: 40px 16px;
+  text-align: center;
+  color: white;
+  background-image: url("../../../../images/pattern.jpg");
+  background-size: cover;
+  background-position: center;
+}
+
+.gallery {
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 16px;
+}
+
+.gallery img {
+  width: 47%;
+  height: auto;
+  margin: 1%;
+  vertical-align: top;
+  border-radius: 8px;
+}

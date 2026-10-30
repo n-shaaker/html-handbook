@@ -1,0 +1,70 @@
+/* ۷) gap */
+
+/* جعبه‌های رنگی شماره‌دار (بدون margin) */
+.demo-gap .box {
+  padding: 10px 18px;
+  color: white;
+  font-weight: bold;
+  text-align: center;
+  border-radius: 6px;
+}
+
+.demo-gap .b1 { background-color: #1c7ed6; }
+.demo-gap .b2 { background-color: #2b8a3e; }
+.demo-gap .b3 { background-color: #e8590c; }
+.demo-gap .b4 { background-color: #ae3ec9; }
+.demo-gap .b5 { background-color: #c92a2a; }
+.demo-gap .b6 { background-color: #0ca678; }
+
+/* جعبه پهن‌تر برای مثال‌های چندخطی */
+.demo-gap .wide {
+  width: 160px;
+}
+
+/* ظرف مشترک */
+.demo-gap .parent {
+  display: flex;
+  background-color: #f1f3f5;
+  border: 2px solid #868e96;
+}
+
+.demo-gap .with-margin .box {
+  margin: 0 10px;
+}
+
+.demo-gap .gap-20 {
+  gap: 20px;
+}
+
+.demo-gap .wrap {
+  flex-wrap: wrap;
+}
+
+.demo-gap .gap-12 {
+  gap: 12px;
+}
+
+.demo-gap .row-col {
+  row-gap: 30px;
+  column-gap: 6px;
+}
+
+/* دکمه‌های فروشگاه */
+.demo-gap .actions {
+  display: flex;
+  gap: 8px;
+}
+
+.demo-gap .btn {
+  background-color: #2b8a3e;
+  color: white;
+  text-decoration: none;
+  padding: 8px 14px;
+  border-radius: 6px;
+}
+
+.demo-gap .btn-light {
+  background-color: white;
+  color: #2b8a3e;
+  border: 1px solid #2b8a3e;
+}

@@ -1,0 +1,25 @@
+body {
+  font-family: Tahoma, Arial, sans-serif;
+  margin: 0;
+}
+
+/* line-height برابر height → یک خط متن وسط عمودی */
+.announcement {
+  height: 50px;
+  line-height: 50px;
+  text-align: center;
+  color: white;
+  background-color: #6b3e26;
+}
+
+/* عکس block می‌شود تا margin: auto کار کند */
+.cafe-photo {
+  display: block;
+  width: 300px;
+  height: auto;
+  margin: 20px auto;
+}
+
+.welcome {
+  text-align: center;
+}

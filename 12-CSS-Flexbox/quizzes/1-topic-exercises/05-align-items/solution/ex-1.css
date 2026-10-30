@@ -1,0 +1,30 @@
+/* تمرین ۱ — سربرگ با وسط‌چین عمودی (پاسخ) */
+
+body {
+  font-family: Tahoma, sans-serif;
+  margin: 20px;
+  background-color: #f8f9fa;
+  color: #212529;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 80px;
+  padding: 0 20px;
+  background-color: #fff4e6;
+}
+
+.logo {
+  font-size: 28px;
+  font-weight: bold;
+  color: #e8590c;
+}
+
+.menu a {
+  font-size: 14px;
+  color: #212529;
+  text-decoration: none;
+  margin: 0 8px;
+}

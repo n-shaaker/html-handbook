@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>۵) تاریخ و زمان (Dates) | آموزش JavaScript سطح میانی</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <script src="../js/log.js" defer></script>
+  <script src="../js/demos/dates.js" defer></script>
+</head>
+
+<body>
+
+  <header class="page-header" id="top">
+    <h1>آموزش JavaScript — سطح میانی</h1>
+    <p>۵) تاریخ و زمان (Dates)</p>
+  </header>
+
+  <div class="container">
+
+    <nav class="page-nav" aria-label="ناوبری درس">
+      <a href="04-array-iteration.html">→ قبلی: Array Iteration</a>
+      <a href="../index.html">فهرست درس‌ها</a>
+      <a href="06-math-random.html">بعدی: Math & Random ←</a>
+    </nav>
+
+    <section class="lesson" id="dates">
+      <h2>۵) تاریخ و زمان (Dates)</h2>
+<p>با <code>new Date()</code> یک شیء تاریخ ساخته می‌شود. این شیء در اصل فقط یک <strong>لحظه از زمان</strong> را نگه می‌دارد: تعداد میلی‌ثانیه‌ها از ۱ ژانویه ۱۹۷۰ به وقت جهانی UTC. وقتی آن را چاپ می‌کنیم، مرورگر همان لحظه را با تقویم میلادی و <strong>منطقهٔ زمانی کامپیوتر کاربر</strong> نشان می‌دهد. چند شکل برای ساختن تاریخ وجود دارد و در شکل عددی، شمارهٔ ماه از صفر شروع می‌شود. اگر این دو را قاطی کنید، تاریخ یک ماه یا چند ساعت جابه‌جا می‌شود.</p>
+
+<pre class="code"><code>const now = new Date();
+console.log(now);          // تاریخ و ساعت همین الان
+
+const exam = new Date(2026, 0, 15, 10, 30);   // سال، ماه، روز، ساعت، دقیقه
+console.log(exam);         // Thu Jan 15 2026 10:30:00 ... ← ماه 0 یعنی ژانویه!
+
+const d2 = new Date("2026-03-21");         // فقط تاریخ ← نیمه‌شب UTC
+console.log(d2);           // در ایران: Sat Mar 21 2026 03:30:00 GMT+0330
+
+const d3 = new Date("2026-03-21T00:00");   // تاریخ + ساعت (بدون Z) ← وقت محلی
+console.log(d3);           // Sat Mar 21 2026 00:00:00 GMT+0330
+
+const overflow = new Date(2026, 12, 1);    // ماه 12 وجود ندارد ← می‌رود سال بعد
+console.log(overflow);     // Fri Jan 01 2027 ...</code></pre>
+
+<p><code>new Date()</code> بدون آرگومان، لحظهٔ فعلی را می‌سازد. در شکل عددی، آرگومان‌ها به ترتیب سال، ماه، روز، ساعت و دقیقه‌اند و ماه از صفر است؛ پس <code>0</code> ژانویه است نه ماه اول تقویم انسانی اگر از یک بشمارید. رشتهٔ <code>"2026-03-21"</code> به‌عنوان نیمه‌شب UTC خوانده می‌شود و در منطقهٔ ایران چند ساعت جلوتر دیده می‌شود. اگر ساعت را هم در رشته بنویسید و <code>Z</code> نگذارید، همان ساعت به‌وقت محلی تفسیر می‌شود. ماه <code>12</code> وجود ندارد و JavaScript به‌جای خطا، تاریخ را به سال بعد سرریز می‌کند.</p>
+
+<div class="result">
+<pre class="console" id="out-1"></pre>
+</div>
+
+<p class="tip">خروجی‌های بالا برای کامپیوتری با منطقه زمانی ایران (UTC+3:30) نوشته شده‌اند؛ اگر ساعت سیستم شما روی منطقه دیگری باشد، ساعت چاپ‌شده فرق می‌کند. نکته مهم: رشته‌ای مثل <code>"2026-03-21"</code> (فقط تاریخ) به وقت <strong>UTC</strong> خوانده می‌شود، ولی <code>new Date(2026, 2, 21)</code> و <code>"2026-03-21T00:00"</code> به وقت <strong>محلی</strong>.</p>
+
+<h3>گرفتن بخش‌های تاریخ</h3>
+
+<table class="ref">
+<tr><th>متد</th><th>خروجی</th></tr>
+<tr><td><code>getFullYear()</code></td><td>سال میلادی (۴ رقمی)</td></tr>
+<tr><td><code>getMonth()</code></td><td>ماه میلادی: <strong>۰ تا ۱۱</strong> (۰ = ژانویه، ۱۱ = دسامبر)</td></tr>
+<tr><td><code>getDate()</code></td><td>روز ماه: ۱ تا ۳۱</td></tr>
+<tr><td><code>getDay()</code></td><td>روز هفته: ۰ (یکشنبه) تا ۶ (شنبه)</td></tr>
+<tr><td><code>getHours()</code> / <code>getMinutes()</code> / <code>getSeconds()</code></td><td>ساعت / دقیقه / ثانیه</td></tr>
+<tr><td><code>getTime()</code></td><td>میلی‌ثانیه از ۱ ژانویه ۱۹۷۰ (UTC)</td></tr>
+</table>
+
+<pre class="code"><code>const today = new Date();
+const weekDays = ["یکشنبه", "دوشنبه", "سه‌شنبه", "چهارشنبه", "پنجشنبه", "جمعه", "شنبه"];
+
+console.log("سال:", today.getFullYear());
+console.log("ماه:", today.getMonth() + 1);          // +1 برای نمایش به انسان
+console.log("روز:", today.getDate());
+console.log("روز هفته:", weekDays[today.getDay()]);
+
+const hh = String(today.getHours()).padStart(2, "0");
+const mm = String(today.getMinutes()).padStart(2, "0");
+console.log("ساعت:", hh + ":" + mm);               // مثلاً 09:05 نه 9:5</code></pre>
+
+<p><code>getFullYear</code> سال چهاررقمی میلادی را می‌دهد. <code>getMonth</code> ماه را از صفر می‌شمارد، پس برای نمایش به انسان یک واحد به آن اضافه می‌شود. <code>getDate</code> روز ماه است و <code>getDay</code> شمارهٔ روز هفته از یکشنبه. ساعت و دقیقه عددند؛ <code>padStart</code> آن‌ها را به متن دو رقمی تبدیل می‌کند تا ۹ و ۵ به‌شکل ۰۹:۰۵ دیده شوند.</p>
+
+<div class="result">
+<pre class="console" id="out-2"></pre>
+</div>
+
+<p class="tip">همه این متدها بخش‌های تاریخ <strong>میلادی</strong> را برمی‌گردانند. <code>getDay()</code> هفته را از یکشنبه شروع می‌کند (عدد ۰)، نه از شنبه؛ برای همین آرایه <code>weekDays</code> را از یکشنبه نوشتیم.</p>
+
+<h3>تاریخ شمسی با toLocaleDateString</h3>
+
+<p>JavaScript تقویم شمسی جداگانه ندارد؛ ولی متدهای <code>toLocaleDateString</code> و <code>toLocaleTimeString</code> با زبان <code>"fa-IR"</code> همان لحظه را در <strong>تقویم هجری شمسی</strong> و با رقم‌های فارسی <strong>نمایش</strong> می‌دهند. خروجی این متدها یک <strong>رشته</strong> است، نه عدد.</p>
+
+<pre class="code"><code>const nowruz = new Date(2026, 2, 21);   // 21 مارس 2026 (ماه 2 = مارس)
+
+console.log(nowruz.toLocaleDateString("fa-IR"));          // ۱۴۰۵/۱/۱
+console.log(nowruz.getMonth());                            // 2 ← هنوز ماه میلادی!
+
+const date = new Date();
+console.log(date.toLocaleDateString("fa-IR"));             // تاریخ شمسی امروز
+console.log(date.toLocaleTimeString("fa-IR"));             // ساعت با رقم فارسی</code></pre>
+
+<p><code>toLocaleDateString("fa-IR")</code> همان لحظه را با تقویم و رقم فارسی نشان می‌دهد؛ برای ۲۱ مارس ۲۰۲۶ خروجی شمسی می‌شود. <code>getMonth</code> همچنان ماه میلادی ذخیره‌شده را برمی‌گرداند و با این نمایش فارسی عوض نمی‌شود. <code>toLocaleTimeString</code> فقط بخش ساعت را با همان زبان قالب‌بندی می‌کند.</p>
+
+<div class="result">
+<pre class="console" id="out-3"></pre>
+</div>
+
+<p class="tip">اگر به عدد ماه یا سال شمسی برای محاسبه نیاز دارید، از <code>getMonth()</code> استفاده نکنید؛ چون همیشه ماه میلادی را می‌دهد.</p>
+
+<h3>فاصله بین دو تاریخ</h3>
+
+<p>اگر دو شیء Date را از هم کم کنیم، تفاضل به <strong>میلی‌ثانیه</strong> به دست می‌آید. برای تبدیل به روز، بر تعداد میلی‌ثانیه‌های یک روز تقسیم می‌کنیم.</p>
+
+<pre class="code"><code>const termStart = new Date(2026, 0, 1);    // 1 ژانویه 2026، وقت محلی
+const nowruzDay = new Date(2026, 2, 21);   // 21 مارس 2026، وقت محلی
+const diffMs = nowruzDay - termStart;              // تفاضل به میلی‌ثانیه
+const DAY_MS = 1000 * 60 * 60 * 24;                // میلی‌ثانیه‌های یک روز
+const days = Math.round(diffMs / DAY_MS);          // گرد کردن برای اطمینان
+console.log(`${days} روز فاصله`);                  // 79 روز فاصله</code></pre>
+
+<p>اگر دو شیء تاریخ را از هم کم کنید، نتیجه اختلاف آن‌ها به میلی‌ثانیه است، نه به روز. تقسیم بر تعداد میلی‌ثانیهٔ یک شبانه‌روز این اختلاف را به روز تبدیل می‌کند. <code>Math.round</code> خطای کوچک اعشاری ناشی از تغییر ساعت محلی را به نزدیک‌ترین روز می‌برد. هر دو تاریخ با شکل عددی و وقت محلی ساخته شده‌اند تا مقایسه از یک مبدأ باشد.</p>
+
+<div class="result">
+<pre class="console" id="out-4"></pre>
+</div>
+
+<p class="tip">در کشورهایی که ساعت تابستانی دارند، بعضی روزها ۲۳ یا ۲۵ ساعت‌اند و نتیجه تقسیم ممکن است مثلاً <code>78.958</code> شود؛ برای همین با <code>Math.round</code> گرد می‌کنیم.</p>
+
+<h3>مثال زنده ۱: ساعت دیجیتال</h3>
+
+<pre class="code"><code>const clock = document.getElementById("clock");
+const dateText = document.getElementById("date-text");
+
+function updateClock() {
+  const now = new Date();
+  clock.textContent = now.toLocaleTimeString("fa-IR");
+  dateText.textContent = now.toLocaleDateString("fa-IR");
+}
+
+updateClock();
+setInterval(updateClock, 1000);   // هر ۱۰۰۰ میلی‌ثانیه (۱ ثانیه) دوباره اجرا کن</code></pre>
+
+<p><code>updateClock</code> هر بار یک <code>Date</code> تازه می‌سازد و ساعت و تاریخ را با قالب فارسی در صفحه می‌نویسد. صدا زدن مستقیم تابع، صفحه را همان اول پر می‌کند تا یک ثانیه منتظر نمانید. <code>setInterval</code> همان تابع را هر ۱۰۰۰ میلی‌ثانیه دوباره اجرا می‌کند. این تابع در درس زمان‌بندی کامل‌تر می‌آید؛ اینجا فقط برای تازه نگه داشتن ساعت لازم است.</p>
+
+<div class="result">
+<span class="big-number" id="clock"></span>
+<p id="date-text"></p>
+</div>
+
+<h3>مثال زنده ۲: شمارش معکوس تا یک رویداد</h3>
+
+<p>تاریخ رویداد (مثلاً امتحان پایان‌ترم یا نوروز) را انتخاب کنید. مقدار <code>&lt;input type="date"&gt;</code> یک رشته مثل <code>"2027-03-21"</code> است؛ به آخرش <code>"T00:00"</code> اضافه می‌کنیم تا مثل <code>d3</code> در بالا به وقت <strong>محلی</strong> خوانده شود.</p>
+
+<pre class="code"><code>const eventInput = document.getElementById("event-date");
+const countdown = document.getElementById("countdown");
+
+function updateCountdown() {
+  if (eventInput.value === "") {
+    countdown.textContent = "یک تاریخ انتخاب کنید.";
+    return;
+  }
+  const target = new Date(eventInput.value + "T00:00");
+  const diff = target - new Date();
+
+  if (diff &lt;= 0) {
+    countdown.textContent = "این تاریخ گذشته است.";
+    return;
+  }
+  const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+  const hours = Math.floor(diff / (1000 * 60 * 60)) % 24;
+  const minutes = Math.floor(diff / (1000 * 60)) % 60;
+  const seconds = Math.floor(diff / 1000) % 60;
+  countdown.textContent = `${days} روز و ${hours} ساعت و ${minutes} دقیقه و ${seconds} ثانیه مانده`;
+}
+
+// مقدار اولیه کادر: نوروز سال بعد
+eventInput.value = (new Date().getFullYear() + 1) + "-03-21";
+
+eventInput.addEventListener("input", updateCountdown);
+updateCountdown();
+setInterval(updateCountdown, 1000);</code></pre>
+
+<p>اگر کادر تاریخ خالی باشد، تابع پیام راهنما می‌نویسد و با <code>return</code> بیرون می‌آید. مقدار کادر تاریخ فقط بخش روز است؛ چسباندن <code>T00:00</code> آن را نیمه‌شب محلی می‌کند. اختلاف این لحظه با الان اگر صفر یا منفی باشد، تاریخ گذشته است. در غیر این صورت همان میلی‌ثانیه‌ها به روز، ساعت و دقیقه شکسته می‌شوند. باقیماندهٔ تقسیم با <code>%</code> جلوی این را می‌گیرد که مثلاً ساعت، کل روزها را هم داخل خودش نشان دهد.</p>
+
+<div class="result">
+<label for="event-date">تاریخ رویداد:</label>
+<input type="date" id="event-date">
+<p id="countdown" class="msg-ok"></p>
+</div>
+
+<p class="mistake"><strong>اشتباه رایج:</strong> فراموش کردن اینکه <code>getMonth()</code> و پارامتر ماه در <code>new Date(y, m, d)</code> از <strong>صفر</strong> شروع می‌شوند؛ برای نمایش <code>+ 1</code> و برای ساختن تاریخ <code>- 1</code> لازم است. <code>new Date(2026, 3, 21)</code> یعنی ۲۱ <strong>آوریل</strong>، نه مارس.</p>
+
+<p class="mistake"><strong>اشتباه رایج:</strong> ساختن رشته تاریخ با <code>toISOString()</code> برای کادر تاریخ. این متد ساعت را به UTC می‌برد؛ در ایران <code>new Date(2026, 2, 21).toISOString()</code> می‌شود <code>"2026-03-20T20:30:00.000Z"</code>، یعنی یک روز قبل! تاریخ محلی را با <code>getFullYear</code>، <code>getMonth</code> و <code>getDate</code> بسازید.</p>
+
+<p class="exercise"><strong>تمرین:</strong> برنامه‌ای بنویسید که تاریخ تولد کاربر را با <code>&lt;input type="date"&gt;</code> بگیرد و (الف) سن او را به سال کامل، (ب) تعداد روزهای مانده تا تولد بعدی‌اش و (ج) تاریخ تولدش را به شمسی (با <code>toLocaleDateString("fa-IR")</code>) در صفحه نشان دهد. راهنما: اگر تولد امسال گذشته است، تولد سال بعد را حساب کنید.</p>
+    </section>
+
+    <nav class="page-nav" aria-label="ناوبری درس پایین">
+      <a href="04-array-iteration.html">→ قبلی: Array Iteration</a>
+      <a href="../index.html">فهرست درس‌ها</a>
+      <a href="06-math-random.html">بعدی: Math & Random ←</a>
+    </nav>
+
+  </div>
+
+  <footer class="page-footer">
+    آموزش JavaScript سطح میانی
+  </footer>
+
+</body>
+
+</html>

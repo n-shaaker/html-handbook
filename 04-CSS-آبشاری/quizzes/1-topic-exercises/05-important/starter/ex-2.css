@@ -1,0 +1,14 @@
+#menu p {
+  margin: 4px 0;
+  color: #333333;
+}
+
+.price {
+  color: #c92a2a !important;
+  font-weight: bold;
+}
+
+.sold-out {
+  color: #868e96 !important;
+  text-decoration: line-through;
+}

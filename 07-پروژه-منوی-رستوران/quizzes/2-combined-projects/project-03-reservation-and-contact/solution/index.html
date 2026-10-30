@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>رزرو میز و تماس | رستوران سنتی نارنج</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <main class="container">
+    <h1>رزرو میز و تماس با نارنج</h1>
+
+    <div class="reserve-layout">
+
+      <!-- ========== فرم رزرو ========== -->
+      <section>
+        <h2>رزرو میز</h2>
+        <p>فرم زیر را پر کنید؛ برای تأیید رزرو با شما تماس می‌گیریم.</p>
+        <p class="hint">پر کردن کادرهایی که <span class="req">*</span> دارند الزامی است.</p>
+
+        <form class="reserve-form" action="#" method="post">
+          <div class="field">
+            <label for="name">نام و نام خانوادگی <span class="req">*</span></label>
+            <input type="text" id="name" name="name" required>
+          </div>
+
+          <div class="field">
+            <label for="phone">شماره موبایل <span class="req">*</span></label>
+            <input type="tel" id="phone" name="phone" pattern="09[0-9]{9}" dir="ltr"
+              title="شماره موبایل ۱۱ رقمی که با ۰۹ شروع می‌شود" required>
+            <p class="hint">مثلاً 09123456789 (۱۱ رقم، بدون فاصله)</p>
+          </div>
+
+          <!-- تاریخ و ساعت کنار هم -->
+          <div class="field-row">
+            <div class="field">
+              <label for="date">تاریخ <span class="req">*</span></label>
+              <input type="date" id="date" name="date" required>
+            </div>
+            <div class="field">
+              <label for="time">ساعت <span class="req">*</span></label>
+              <input type="time" id="time" name="time" min="12:00" max="23:30" required>
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="guests">تعداد نفرات</label>
+            <input type="number" id="guests" name="guests" min="1" max="20" value="2">
+          </div>
+
+          <div class="field">
+            <label for="area">محل نشستن</label>
+            <select id="area" name="area">
+              <option value="hall">سالن اصلی</option>
+              <option value="bed">تخت سنتی</option>
+              <option value="yard">حیاط</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label for="note">توضیحات (اختیاری)</label>
+            <textarea id="note" name="note" rows="3"></textarea>
+          </div>
+
+          <button type="submit" class="btn">ثبت رزرو</button>
+        </form>
+      </section>
+
+      <!-- ========== تماس و ساعت کاری ========== -->
+      <section>
+        <h2>تماس و ساعت کاری</h2>
+
+        <address class="contact-card">
+          تهران، خیابان ولیعصر، کوچه نارنج، پلاک ۱۲
+          <br>
+          تلفن: <a href="tel:+982112345678">۰۲۱-۱۲۳۴۵۶۷۸</a>
+          <br>
+          ایمیل: <a href="mailto:info@example.com">info@example.com</a>
+        </address>
+
+        <table class="hours-table">
+          <caption>ساعت سرو ناهار و شام</caption>
+          <thead>
+            <tr>
+              <th scope="col">روز</th>
+              <th scope="col">ناهار</th>
+              <th scope="col">شام</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">شنبه تا چهارشنبه</th>
+              <td><time datetime="12:00">۱۲</time> تا <time datetime="16:00">۱۶</time></td>
+              <td><time datetime="19:00">۱۹</time> تا <time datetime="23:00">۲۳</time></td>
+            </tr>
+            <tr>
+              <th scope="row">پنجشنبه و جمعه</th>
+              <td><time datetime="12:00">۱۲</time> تا <time datetime="17:00">۱۷</time></td>
+              <td><time datetime="19:00">۱۹</time> تا <time datetime="00:00">۲۴</time></td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+    </div>
+  </main>
+</body>
+
+</html>

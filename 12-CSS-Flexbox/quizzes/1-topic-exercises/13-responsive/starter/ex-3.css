@@ -1,0 +1,45 @@
+/* تمرین ۳ — منویی که از گوشی بیرون می‌زند (نسخه خراب — درستش کنید) */
+
+body {
+  font-family: Tahoma, sans-serif;
+  margin: 20px;
+  background-color: #f8f9fa;
+  color: #212529;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  width: 900px;
+  background-color: #2b8a3e;
+  padding: 10px;
+}
+
+.logo {
+  color: white;
+  font-weight: bold;
+}
+
+.menu {
+  display: flex;
+  gap: 10px;
+}
+
+.menu a {
+  color: white;
+  background-color: #37b24d;
+  padding: 6px 12px;
+  border-radius: 4px;
+  text-decoration: none;
+}
+
+@media (min-width: 600px) {
+  .header {
+    flex-direction: column;
+  }
+
+  .menu {
+    flex-direction: column;
+  }
+}

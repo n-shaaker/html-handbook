@@ -1,0 +1,28 @@
+/* تمرین ۱ — خط‌های برچسب، بالای کادر (پاسخ) */
+
+body {
+  font-family: Tahoma, sans-serif;
+  margin: 20px;
+  background-color: #f8f9fa;
+  color: #212529;
+}
+
+/* پیش‌فرض align-content مقدار normal است که در فلکس مثل stretch رفتار می‌کند */
+.box {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  max-width: 350px;
+  height: 250px;
+  background-color: white;
+  border: 1px solid #dee2e6;
+  padding: 8px;
+}
+
+.tag {
+  background-color: #f3f0ff;
+  color: #5f3dc4;
+  padding: 5px 10px;
+  margin: 4px;
+  border-radius: 12px;
+}

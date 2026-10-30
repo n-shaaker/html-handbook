@@ -1,0 +1,21 @@
+/* تمرین ۱ — لینک‌های پانویس وسط صفحه (پاسخ) */
+
+body {
+  font-family: Tahoma, sans-serif;
+  margin: 20px;
+  background-color: #f8f9fa;
+  color: #212529;
+}
+
+.social {
+  display: flex;
+  justify-content: center;
+  background-color: #212529;
+  padding: 15px;
+}
+
+.social a {
+  color: white;
+  text-decoration: none;
+  margin: 0 10px;
+}

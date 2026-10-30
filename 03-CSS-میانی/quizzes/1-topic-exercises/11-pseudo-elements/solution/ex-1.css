@@ -1,0 +1,19 @@
+body {
+  font-family: Tahoma, Arial, sans-serif;
+  line-height: 1.9;
+  padding: 24px;
+}
+
+.post {
+  max-width: 650px;
+  margin: 0 auto;
+}
+
+.intro::first-letter {
+  font-size: 40px;
+  color: #b5452a;
+}
+
+.intro::first-line {
+  font-weight: bold;
+}

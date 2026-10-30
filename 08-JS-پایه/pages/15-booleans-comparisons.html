@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>۱۵) بولین و مقایسه (Booleans &amp; Comparisons) | آموزش JavaScript سطح پایه</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <script src="../js/log.js" defer></script>
+  <script src="../js/demos/booleans-comparisons.js" defer></script>
+</head>
+
+<body>
+
+  <header class="page-header" id="top">
+    <h1>آموزش JavaScript — سطح پایه</h1>
+    <p>۱۵) بولین و مقایسه (Booleans &amp; Comparisons)</p>
+  </header>
+
+  <div class="container">
+
+    <nav class="page-nav" aria-label="ناوبری درس">
+      <a href="14-numbers.html">→ قبلی: Numbers</a>
+      <a href="../index.html">فهرست درس‌ها</a>
+      <a href="16-if-else.html">بعدی: If Else ←</a>
+    </nav>
+
+    <section class="lesson" id="booleans-comparisons">
+      <h2>۱۵) بولین و مقایسه (Booleans &amp; Comparisons)</h2>
+<p>نوع <code>boolean</code> فقط دو مقدار دارد: <code>true</code> یعنی درست و <code>false</code> یعنی غلط. این نوع خودش به‌تنهایی کم دیده می‌شود؛ بیشتر وقت‌ها نتیجهٔ یک مقایسه یا ترکیب چند شرط است. برنامه با همین دو مقدار تصمیم می‌گیرد کدام مسیر را اجرا کند. در این درس اول مقایسه را یاد می‌گیرید، بعد ترکیب شرط‌ها را، و در پایان مقدارهایی را که بدون مقایسه هم در شرط «غلط» حساب می‌شوند.</p>
+
+<h3>عملگرهای مقایسه</h3>
+
+<table class="ref">
+<tr><th>عملگر</th><th>معنی</th><th>مثال (x = 5)</th><th>نتیجه</th></tr>
+<tr><td><code>==</code></td><td>برابر (مقدار)</td><td><code>x == "5"</code></td><td>true</td></tr>
+<tr><td><code>===</code></td><td>برابر (مقدار و نوع)</td><td><code>x === "5"</code></td><td>false</td></tr>
+<tr><td><code>!=</code></td><td>نابرابر</td><td><code>x != 8</code></td><td>true</td></tr>
+<tr><td><code>!==</code></td><td>نابرابر (مقدار یا نوع)</td><td><code>x !== "5"</code></td><td>true</td></tr>
+<tr><td><code>&gt;</code> / <code>&lt;</code></td><td>بزرگ‌تر / کوچک‌تر</td><td><code>x &gt; 3</code></td><td>true</td></tr>
+<tr><td><code>&gt;=</code> / <code>&lt;=</code></td><td>بزرگ‌تر یا مساوی / کوچک‌تر یا مساوی</td><td><code>x &lt;= 5</code></td><td>true</td></tr>
+</table>
+
+<pre class="code"><code>let x = 5;
+console.log(x == "5");     // true  ← فقط مقدار را مقایسه می‌کند
+console.log(x === "5");    // false ← نوع هم فرق دارد
+console.log(x &gt; 3);       // true
+console.log(x !== 5);      // false</code></pre>
+
+<div class="result">
+<pre class="console" id="out-1"></pre>
+</div>
+
+<p>عدد ۵ و متن <code>"5"</code> از نظر مقدار شبیه هم‌اند، ولی نوعشان فرق دارد. <code>==</code> قبل از مقایسه نوع را یکسان می‌کند، پس نتیجه true می‌شود. <code>===</code> هم مقدار و هم نوع را می‌بیند و false برمی‌گرداند. <code>&gt;</code> بزرگ‌تر بودن را بررسی می‌کند. <code>!==</code> یعنی «برابر نباشند» و چون هر دو طرف عدد ۵ هستند، نتیجه false است.</p>
+
+<h3>چرا <code>==</code> خطرناک است؟</h3>
+
+<p><code>==</code> اگر دو طرف هم‌نوع نباشند، اول یکی را به نوع دیگر تبدیل می‌کند و بعد مقایسه می‌کند (Type Coercion). این تبدیل خودکار گاهی نتیجه‌هایی می‌دهد که انتظارش را ندارید:</p>
+
+<pre class="code"><code>console.log(0 == "");             // true  ← متن خالی به 0 تبدیل شد!
+console.log(0 == "0");            // true
+console.log("" == "0");           // false ← ولی این دو با هم برابر نیستند!
+console.log(null == undefined);   // true
+console.log(null === undefined);  // false
+console.log(0 === "");            // false ← === هیچ تبدیلی انجام نمی‌دهد</code></pre>
+
+<div class="result">
+<pre class="console" id="out-2"></pre>
+</div>
+
+<p>متن خالی با <code>==</code> به عدد صفر تبدیل می‌شود، پس با ۰ برابر دیده می‌شود. متن <code>"0"</code> هم همین‌طور. اما متن خالی و متن <code>"0"</code> هر دو رشته‌اند و بدون تبدیل با هم برابر نیستند؛ به همین دلیل نتیجهٔ آن خط false است. <code>null == undefined</code> طبق قاعدهٔ همین عملگر true است، ولی <code>===</code> آن دو را یکی نمی‌داند چون نوعشان فرق دارد.</p>
+
+<p class="tip">در مقایسهٔ معمولی از <code>===</code> و <code>!==</code> استفاده کنید تا تبدیل پنهان نتیجه را عوض نکند. اگر لازم است متن را با عدد مقایسه کنید، خودتان اول با <code>Number()</code> تبدیلش کنید: <code>Number(input.value) === 5</code>. یک استثنای آگاهانه این است که بعضی برنامه‌نویس‌ها برای «مقدار خالی» از <code>value == null</code> استفاده می‌کنند، چون هم <code>null</code> و هم <code>undefined</code> را true می‌کند؛ اگر این شکل را می‌نویسید، باید عمدی باشد.</p>
+
+<h3>مقایسه رشته‌ها</h3>
+
+<p>رشته‌ها حرف‌به‌حرف (بر اساس کد هر حرف) مقایسه می‌شوند، نه بر اساس مقدار عددی:</p>
+
+<pre class="code"><code>console.log("10" &lt; "9");          // true ← چون حرف "1" قبل از "9" است!
+console.log(10 &lt; 9);              // false
+console.log("apple" === "Apple"); // false ← بزرگی و کوچکی حروف مهم است</code></pre>
+
+<div class="result">
+<pre class="console" id="out-3"></pre>
+</div>
+
+<p>مقایسهٔ دو رشته مثل مقایسهٔ دو عدد نیست. حرف‌ها از چپ با کد عددی خودشان سنجیده می‌شوند. کد حرف <code>"1"</code> از کد حرف <code>"9"</code> کوچک‌تر است، پس <code>"10" &lt; "9"</code> true می‌شود، در حالی که همان مقایسه با عدد واقعی false است. بزرگی و کوچکی حروف انگلیسی هم فرق دارد و <code>"apple"</code> با <code>"Apple"</code> برابر نیست.</p>
+
+<p class="mistake"><strong>اشتباه رایج:</strong> مقایسه دو مقدار <code>input</code> بدون تبدیل به عدد. <code>"10" &gt; "9"</code> نتیجه <code>false</code> می‌دهد، چون هر دو متن هستند.</p>
+
+<h3>عملگرهای منطقی</h3>
+
+<table class="ref">
+<tr><th>عملگر</th><th>معنی</th><th>مثال</th><th>نتیجه</th></tr>
+<tr><td><code>&amp;&amp;</code></td><td>و (هر دو درست باشند)</td><td><code>true &amp;&amp; false</code></td><td>false</td></tr>
+<tr><td><code>||</code></td><td>یا (حداقل یکی درست باشد)</td><td><code>true || false</code></td><td>true</td></tr>
+<tr><td><code>!</code></td><td>نقیض (برعکس)</td><td><code>!true</code></td><td>false</td></tr>
+</table>
+
+<pre class="code"><code>let age = 22;
+let hasTicket = true;
+
+console.log(age &gt;= 18 &amp;&amp; hasTicket);   // true  ← هر دو شرط درست است
+console.log(age &lt; 12 || age &gt; 60);     // false ← هیچ‌کدام درست نیست (تخفیف کودک/سالمند ندارد)
+console.log(!hasTicket);                // false</code></pre>
+
+<div class="result">
+<pre class="console" id="out-4"></pre>
+</div>
+
+<p><code>&amp;&amp;</code> فقط وقتی true است که هر دو طرف درست باشند؛ اینجا هم سن کافی است و هم بلیت وجود دارد. <code>||</code> اگر حداقل یکی درست باشد true می‌شود. چون ۲۲ نه کمتر از ۱۲ است و نه بیشتر از ۶۰، هر دو طرف غلط‌اند و نتیجه false است. علامت <code>!</code> مقدار بولین را برعکس می‌کند.</p>
+
+<h3>مثال کاربردی: بررسی فرم ورود</h3>
+
+<pre class="code"><code>let username = "  sara_ahmadi ";
+let password = "Sara1405";
+
+const cleanUser = username.trim();
+const isUserValid = cleanUser.length &gt;= 3;
+const isPassValid = password.length &gt;= 8 &amp;&amp; password !== cleanUser;
+
+console.log("نام کاربری معتبر:", isUserValid);           // true
+console.log("رمز معتبر:", isPassValid);                   // true
+console.log("اجازه ورود:", isUserValid &amp;&amp; isPassValid);  // true</code></pre>
+
+<div class="result">
+<pre class="console" id="out-5"></pre>
+</div>
+
+<p><code>trim</code> فاصله‌های اطراف نام کاربری را برمی‌دارد تا فاصلهٔ اضافه باعث رد شدن فرم نشود. طول نام بعد از این پاک‌سازی باید حداقل ۳ باشد. رمز باید حداقل ۸ نویسه داشته باشد و عین نام کاربری نباشد. اجازهٔ ورود فقط وقتی true است که هر دو بررسی با <code>&amp;&amp;</code> درست باشند.</p>
+
+<p class="tip"><code>&amp;&amp;</code> و <code>||</code> «اتصال کوتاه» (Short-circuit) دارند: در <code>a &amp;&amp; b</code> اگر <code>a</code> غلط باشد، <code>b</code> اصلاً بررسی نمی‌شود؛ در <code>a || b</code> اگر <code>a</code> درست باشد، <code>b</code> بررسی نمی‌شود. اولویت هم مهم است: <code>!</code> قبل از <code>&amp;&amp;</code> و <code>&amp;&amp;</code> قبل از <code>||</code> اجرا می‌شود؛ هر جا شک داشتید پرانتز بگذارید.</p>
+
+<h3>Truthy و Falsy</h3>
+
+<p>هر مقداری وقتی در شرط قرار بگیرد به true یا false تبدیل می‌شود. مقدارهای زیر <strong>falsy</strong> هستند (به false تبدیل می‌شوند) و <strong>همه</strong> مقدارهای دیگر truthy‌اند:</p>
+
+<table class="ref">
+<tr><th>مقدار falsy</th><th>توضیح</th></tr>
+<tr><td><code>false</code></td><td>خود false</td></tr>
+<tr><td><code>0</code> و <code>-0</code></td><td>صفر (و همچنین <code>0n</code> از نوع bigint)</td></tr>
+<tr><td><code>""</code></td><td>رشته خالی (بدون حتی یک فاصله)</td></tr>
+<tr><td><code>null</code> و <code>undefined</code></td><td>«خالی» و «تعریف‌نشده»</td></tr>
+<tr><td><code>NaN</code></td><td>عدد نامعتبر</td></tr>
+</table>
+
+<pre class="code"><code>console.log(Boolean(false), Boolean(0), Boolean(""));            // false false false
+console.log(Boolean(null), Boolean(undefined), Boolean(NaN));    // false false false
+
+console.log(Boolean("0"), Boolean(" "), Boolean([]), Boolean("false"));   // true true true true ← همه truthy!</code></pre>
+
+<div class="result">
+<pre class="console" id="out-6"></pre>
+</div>
+
+<p><code>Boolean</code> نشان می‌دهد هر مقدار در شرط چه تعبیری دارد. صفر، متن خالی، <code>null</code>، <code>undefined</code> و <code>NaN</code> غلط حساب می‌شوند. متن <code>"0"</code>، متنی که فقط فاصله دارد، آرایهٔ خالی و حتی متن <code>"false"</code> غلط نیستند، چون رشتهٔ غیرخالی و آرایه مقدار دارند. اگر بخواهید «عدد صفر» را از «مقدار نبودن» جدا کنید، به تبدیل بولین تکیه نکنید و خود عدد را مقایسه کنید.</p>
+
+<p class="tip">کاربرد: <code>if (username)</code> یعنی «اگر نام کاربری خالی نیست». ولی مراقب باشید: عدد <code>0</code> هم falsy است؛ پس برای ورودی عددی که ممکن است صفر باشد از این روش استفاده نکنید.</p>
+
+<p class="mistake"><strong>اشتباه رایج:</strong> نوشتن <code>=</code> به جای <code>===</code> در شرط. <code>if (x = 5)</code> مقدار x را عوض می‌کند و همیشه درست است!</p>
+
+<p class="exercise"><strong>تمرین:</strong> (۱) متغیر <code>score</code> بسازید و با یک عبارت بررسی و چاپ کنید که نمره قبولی است یا نه، یعنی بین ۱۰ تا ۲۰ (<code>score &gt;= 10 &amp;&amp; score &lt;= 20</code>). (۲) قبل از اجرا حدس بزنید خروجی هر خط چیست، بعد امتحان کنید: <code>"5" === 5</code>، <code>"5" == 5</code>، <code>Boolean("0")</code>، <code>!""</code>، <code>"b" &gt; "a"</code>. (۳) متغیرهای <code>age</code> و <code>hasCard</code> بسازید و عبارتی بنویسید که بگوید کاربر تخفیف دانشجویی می‌گیرد یا نه: سن بین ۱۸ تا ۳۰ <strong>و</strong> داشتن کارت دانشجویی.</p>
+    </section>
+
+    <nav class="page-nav" aria-label="ناوبری درس پایین">
+      <a href="14-numbers.html">→ قبلی: Numbers</a>
+      <a href="../index.html">فهرست درس‌ها</a>
+      <a href="16-if-else.html">بعدی: If Else ←</a>
+    </nav>
+
+  </div>
+
+  <footer class="page-footer">
+    آموزش JavaScript سطح پایه
+  </footer>
+
+</body>
+
+</html>

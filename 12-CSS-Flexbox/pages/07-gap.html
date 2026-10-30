@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>۷) فاصله بین آیتم‌ها (gap) | آموزش Flexbox</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/demos/gap.css">
+</head>
+
+<body>
+
+  <header class="page-header">
+    <h1>آموزش Flexbox — چیدمان انعطاف‌پذیر</h1>
+    <p>۷) فاصله بین آیتم‌ها (gap)</p>
+  </header>
+
+  <div class="container">
+
+    <nav class="page-nav" aria-label="ناوبری درس">
+      <a href="06-align-content.html">→ قبلی: align-content</a>
+      <a href="../index.html">فهرست درس‌ها</a>
+      <a href="08-order.html">بعدی: order ←</a>
+    </nav>
+
+    <section class="lesson" id="gap">
+      <h2>۷) فاصله بین آیتم‌ها (gap)</h2>
+      <p>
+        تا حالا برای فاصله انداختن بین جعبه‌ها به هر کدام <code>margin</code> می‌دادیم.
+        مشکل این است که margin دور <strong>همه</strong> جعبه‌ها می‌افتد، حتی کنار لبه ظرف.
+        <code>gap</code> (روی پدر) فقط <strong>بین</strong> آیتم‌ها فاصله می‌گذارد؛ نه کنار لبه‌ها.
+      </p>
+
+      <h3>مثال ۱: فاصله با <code>margin</code> (روش قدیمی)</h3>
+      <p>دقت کنید جعبه ۱ از لبه راست و جعبه ۴ از لبه چپ هم فاصله گرفته‌اند:</p>
+      <pre class="code"><code>.box {
+  margin: 0 10px;
+}</code></pre>
+      <div class="result demo-gap">
+        <div class="parent with-margin">
+          <div class="box b1">۱</div>
+          <div class="box b2">۲</div>
+          <div class="box b3">۳</div>
+          <div class="box b4">۴</div>
+        </div>
+      </div>
+
+      <h3>مثال ۲: فاصله با <code>gap</code></h3>
+      <p>جعبه‌ها به لبه‌ها چسبیده‌اند و فقط بینشان ۲۰ پیکسل فاصله است:</p>
+      <pre class="code"><code>.parent {
+  display: flex;
+  gap: 20px;
+}</code></pre>
+      <div class="result demo-gap">
+        <div class="parent gap-20">
+          <div class="box b1">۱</div>
+          <div class="box b2">۲</div>
+          <div class="box b3">۳</div>
+          <div class="box b4">۴</div>
+        </div>
+      </div>
+
+      <h3>مثال ۳: <code>gap</code> با چند خط</h3>
+      <p>وقتی <code>flex-wrap: wrap</code> داریم، <code>gap</code> هم بین ستون‌ها فاصله می‌اندازد و هم بین خط‌ها:</p>
+      <pre class="code"><code>.parent {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}</code></pre>
+      <div class="result demo-gap">
+        <div class="parent wrap gap-12">
+          <div class="box wide b1">۱</div>
+          <div class="box wide b2">۲</div>
+          <div class="box wide b3">۳</div>
+          <div class="box wide b4">۴</div>
+          <div class="box wide b5">۵</div>
+          <div class="box wide b6">۶</div>
+          <div class="box wide b1">۷</div>
+          <div class="box wide b2">۸</div>
+        </div>
+      </div>
+
+      <h3>مثال ۴: <code>row-gap</code> و <code>column-gap</code></h3>
+      <p>
+        اگر فاصله بین خط‌ها و فاصله بین ستون‌ها را جدا بخواهید:
+        <code>row-gap</code> فاصله بین <strong>ردیف‌ها</strong> (عمودی) و <code>column-gap</code> فاصله بین <strong>ستون‌ها</strong> (افقی) است.
+        میان‌بُرش هم <code>gap: ردیف ستون</code> است:
+      </p>
+      <pre class="code"><code>.parent {
+  display: flex;
+  flex-wrap: wrap;
+  row-gap: 30px;      /* بین خط‌ها */
+  column-gap: 6px;    /* بین ستون‌ها */
+  /* یا خلاصه: gap: 30px 6px; */
+}</code></pre>
+      <div class="result demo-gap">
+        <div class="parent wrap row-col">
+          <div class="box wide b1">۱</div>
+          <div class="box wide b2">۲</div>
+          <div class="box wide b3">۳</div>
+          <div class="box wide b4">۴</div>
+          <div class="box wide b5">۵</div>
+          <div class="box wide b6">۶</div>
+          <div class="box wide b1">۷</div>
+          <div class="box wide b2">۸</div>
+        </div>
+      </div>
+
+      <h3>مثال ۵: دکمه‌های یک فروشگاه با <code>gap</code></h3>
+      <pre class="code"><code>.actions {
+  display: flex;
+  gap: 8px;
+}</code></pre>
+      <div class="result demo-gap">
+        <div class="actions">
+          <a href="#gap" class="btn">افزودن به سبد</a>
+          <a href="#gap" class="btn btn-light">مقایسه</a>
+          <a href="#gap" class="btn btn-light">علاقه‌مندی‌ها</a>
+        </div>
+      </div>
+
+      <p class="mistake">
+        <strong>اشتباه رایج:</strong>
+        هم <code>gap</code> روی پدر می‌گذاریم و هم <code>margin</code> روی آیتم‌ها؛ فاصله‌ها دو برابر و نامرتب می‌شوند.
+        در Flexbox برای فاصله بین آیتم‌ها <code>gap</code> را انتخاب کنید و margin را فقط برای موارد خاص (مثل ترفند <code>margin: auto</code> در درس ۱۱) نگه دارید.
+      </p>
+
+      <p class="mistake">
+        <strong>اشتباه رایج:</strong>
+        <code>gap</code> را روی خود آیتم‌ها می‌نویسیم و انتظار فاصله داریم، اما هیچ فاصله‌ای ساخته نمی‌شود.
+        <code>gap</code> مثل <code>justify-content</code> ویژگی ظرف است و فقط بین آیتم‌های همان ظرف فاصله می‌گذارد.
+      </p>
+
+      <table class="ref">
+        <tr>
+          <th>ویژگی</th>
+          <th>کار</th>
+        </tr>
+        <tr>
+          <td><code>gap: 20px</code></td>
+          <td>فاصله ۲۰ پیکسل بین همه آیتم‌ها و همه خط‌ها</td>
+        </tr>
+        <tr>
+          <td><code>row-gap</code></td>
+          <td>فقط فاصله بین خط‌ها (ردیف‌ها)</td>
+        </tr>
+        <tr>
+          <td><code>column-gap</code></td>
+          <td>فقط فاصله بین آیتم‌های کنار هم</td>
+        </tr>
+        <tr>
+          <td><code>gap: 30px 6px</code></td>
+          <td>اولی ردیف، دومی ستون</td>
+        </tr>
+      </table>
+
+      <p class="exercise">
+        <strong>تمرین:</strong> نوار «شبکه‌های اجتماعی» پایین سایت یک آموزشگاه را با پنج لینک بسازید.
+        یک بار با <code>margin</code> و یک بار با <code>gap</code> فاصله بدهید و تفاوت لبه‌ها را با DevTools (کلیک راست ← Inspect) ببینید.
+      </p>
+    </section>
+
+    <nav class="page-nav" aria-label="ناوبری درس پایین">
+      <a href="06-align-content.html">→ قبلی: align-content</a>
+      <a href="../index.html">فهرست درس‌ها</a>
+      <a href="08-order.html">بعدی: order ←</a>
+    </nav>
+
+  </div>
+
+  <footer class="page-footer">
+    آموزش Flexbox
+  </footer>
+
+</body>
+
+</html>

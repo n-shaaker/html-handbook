@@ -1,0 +1,114 @@
+/* ===== پایه: رنگ متن فقط اینجا؛ بقیه ارث می‌برند ===== */
+body {
+  margin: 0;
+  font-family: Tahoma, sans-serif;
+  line-height: 1.8;
+  color: #212529;
+  background-color: #ffffff;
+}
+
+a {
+  color: #1a5fb4;
+}
+
+/* ===== سربرگ ===== */
+.site-header {
+  padding: 16px;
+  background-color: #f8f9fa;
+  border-bottom: 1px solid #dee2e6;
+}
+
+.site-header h1 {
+  margin: 0;
+}
+
+.nav a {
+  margin-left: 12px;
+}
+
+/* ===== محتوا ===== */
+.page {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 16px;
+}
+
+.card {
+  margin-bottom: 16px;
+  padding: 16px;
+  background-color: #ffffff;
+  border: 1px solid #dee2e6;
+  border-radius: 8px;
+}
+
+.card h3 {
+  margin-top: 0;
+}
+
+/* هم‌قدرت با .card (0, 1, 0) و پایین‌تر از آن */
+.card-highlight {
+  background-color: #fff9db;
+  border-color: #fab005;
+}
+
+/* ===== خبرنامه ===== */
+/* مرورگر برای input و button فونت و رنگ مستقیم دارد؛ inherit آن را به والد برمی‌گرداند */
+.newsletter input,
+.newsletter button {
+  font: inherit;
+}
+
+.newsletter input {
+  padding: 8px;
+  color: inherit;
+  background-color: transparent;
+  border: 1px solid currentColor;
+}
+
+.newsletter button {
+  padding: 8px 16px;
+  color: #ffffff;
+  background-color: #1a5fb4;
+  border: none;
+  border-radius: 6px;
+}
+
+/* ===== پانویس ===== */
+.site-footer {
+  padding: 16px;
+  text-align: center;
+  color: #868e96;
+  border-top: 1px solid #dee2e6;
+}
+
+/* ===== تم تیره (آخر فایل) ===== */
+/* .theme-dark (0, 1, 0) از body (0, 0, 1) قوی‌تر است؛ متن همه فرزندان با وراثت روشن می‌شود */
+.theme-dark {
+  color: #e9ecef;
+  background-color: #1a1d21;
+}
+
+.theme-dark a {
+  color: #74c0fc;
+}
+
+.theme-dark .site-header {
+  background-color: #212529;
+  border-color: #343a40;
+}
+
+.theme-dark .card {
+  background-color: #25292e;
+  border-color: #343a40;
+}
+
+/* هم‌قدرت با .theme-dark .card (0, 2, 0)؛ باید بعد از آن بیاید، وگرنه کارت ویژه هم خاکستری می‌شود */
+.theme-dark .card-highlight {
+  background-color: #3b3415;
+  border-color: #fab005;
+}
+
+.theme-dark .site-footer {
+  color: #adb5bd;
+  border-color: #343a40;
+}

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>پومودورو</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="app.js" defer></script>
+</head>
+
+<body>
+  <main id="app" class="card" data-mode="work">
+    <h1>🍅 تایمر پومودورو</h1>
+
+    <p id="mode-label" class="mode-label">زمان کار</p>
+    <p id="time-display" class="time-display" role="timer" aria-atomic="true">۲۵:۰۰</p>
+    <progress id="progress" max="1" value="0" aria-label="پیشرفت جلسه"></progress>
+
+    <div class="controls">
+      <button type="button" id="toggle-btn" class="btn">شروع</button>
+      <button type="button" id="reset-btn" class="btn btn-light">از نو</button>
+    </div>
+    <p class="hint">میان‌بر: کلید <kbd>Space</kbd> برای شروع/توقف</p>
+
+    <p id="status" class="status" aria-live="polite"></p>
+    <p id="completed" class="completed"></p>
+
+    <details class="settings">
+      <summary>تنظیمات</summary>
+      <form id="settings-form" novalidate>
+        <div class="field">
+          <label for="work-minutes">مدت کار (دقیقه)</label>
+          <input type="number" id="work-minutes" min="1" max="90" required>
+        </div>
+        <div class="field">
+          <label for="break-minutes">مدت استراحت (دقیقه)</label>
+          <input type="number" id="break-minutes" min="1" max="30" required>
+        </div>
+        <button type="submit" class="btn">ذخیره</button>
+        <p id="settings-error" class="error" role="alert"></p>
+      </form>
+    </details>
+  </main>
+</body>
+
+</html>

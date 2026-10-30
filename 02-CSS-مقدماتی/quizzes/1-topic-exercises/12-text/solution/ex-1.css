@@ -1,0 +1,18 @@
+.title {
+  color: #343a40;
+  text-align: center;
+}
+
+.desc {
+  text-align: justify;
+}
+
+.old-price {
+  color: #868e96;
+  text-decoration: line-through;
+}
+
+.new-price {
+  color: #2b8a3e;
+  font-weight: bold;
+}

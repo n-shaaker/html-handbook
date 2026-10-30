@@ -1,0 +1,24 @@
+/* img در برابر background */
+
+.demo-compare .content-img {
+  width: 100%;
+  max-width: 280px;
+  height: auto;
+  display: block;
+  border-radius: 8px;
+}
+
+.demo-compare .decor-bg {
+  width: 100%;
+  min-height: 160px;
+  border-radius: 8px;
+  background-image: url("../../images/hero.jpg");
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: flex-end;
+  padding: 12px;
+  color: white;
+  font-weight: bold;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.7);
+}

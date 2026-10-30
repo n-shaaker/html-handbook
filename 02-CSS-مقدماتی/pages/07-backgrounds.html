@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>۷) پس‌زمینه (Backgrounds) | آموزش CSS از صفر</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/demos/backgrounds.css">
+</head>
+
+<body>
+
+  <header class="page-header">
+    <h1>آموزش CSS از صفر</h1>
+    <p>۷) پس‌زمینه (Backgrounds)</p>
+  </header>
+
+  <div class="container">
+
+    <nav class="page-nav" aria-label="ناوبری درس">
+      <a href="06-colors.html">→ قبلی: Colors</a>
+      <a href="../index.html">فهرست درس‌ها</a>
+      <a href="08-borders.html">بعدی: Borders ←</a>
+    </nav>
+
+    <section class="lesson" id="backgrounds">
+      <h2>۷) پس‌زمینه (Backgrounds)</h2>
+
+      <p>
+        پس‌زمینه لایه‌ای است که پشت محتوای عنصر کشیده می‌شود. ساده‌ترین حالت آن یک رنگ یکدست است.
+        اگر محتوا، فاصله داخلی یا ارتفاعی در کار نباشد، جعبه دیده نمی‌شود؛ چون پس‌زمینه به اندازه خود جعبه رسم می‌شود.
+      </p>
+
+      <h3>رنگ پس‌زمینه</h3>
+      <pre class="code"><code>.offer {
+  background-color: #ffe0b2;
+  padding: 16px;
+}</code></pre>
+      <div class="result">
+        <p class="offer">پیشنهاد ویژه: تا پایان هفته، ۲۰٪ تخفیف روی همه کتاب‌ها.</p>
+      </div>
+
+      <h3>تصویر پس‌زمینه: بنر بالای سایت (Hero)</h3>
+      <p>
+        به‌جای رنگ، می‌توان یک تصویر را پشت محتوا گذاشت. مرورگر تصویر را از مسیر <code>url()</code> می‌خواند.
+        ویژگی <code>background-size: cover</code> تصویر را آن‌قدر بزرگ می‌کند که تمام جعبه پوشیده شود؛ اگر نسبت تصویر با جعبه یکی نباشد، لبه‌های اضافه بریده می‌شوند.
+        <code>background-position: center</code> مشخص می‌کند کدام نقطه تصویر در وسط جعبه بماند.
+        <code>min-height</code> هم حداقل ارتفاع جعبه را تعیین می‌کند تا حتی با متن کوتاه، بنر دیده شود.
+      </p>
+      <pre class="code"><code>.hero {
+  background-color: #1a3a5c;                    /* اگر تصویر لود نشد */
+  background-image: url("../../images/bg.jpg");
+  background-size: cover;                       /* تصویر کل جعبه را بپوشاند */
+  background-position: center;                  /* وسط تصویر دیده شود */
+  min-height: 200px;
+  padding: 24px;
+  color: white;
+}</code></pre>
+      <div class="result">
+        <div class="hero">
+          <h3>سفر به سرزمین آبدره‌ها</h3>
+          <p>تور ۷ روزه طبیعت‌گردی — ثبت‌نام آغاز شد</p>
+        </div>
+      </div>
+
+      <p class="tip">
+        <strong>نکته مهم مسیر:</strong>
+        مسیر داخل <code>url()</code> نسبت به <strong>فایل CSS</strong> حساب می‌شود، نه فایل HTML.
+        چون <code>backgrounds.css</code> داخل پوشه <code>css/demos</code> است، با <code>../../</code> دو پوشه بیرون
+        می‌رویم و بعد وارد <code>images</code> می‌شویم.
+        <br>
+        همیشه کنار تصویر یک <code>background-color</code> هم بنویسید تا اگر تصویر لود نشد، متن سفید روی زمینه سفید گم نشود.
+      </p>
+
+      <h3>متن خواناتر روی تصویر: لایه تیره</h3>
+      <p>
+        متن سفید روی بخش‌های روشن تصویر (مثل آسمان) سخت خوانده می‌شود. راه‌حل رایج این است که یک لایه نیمه‌شفاف تیره
+        روی تصویر بیندازیم. <code>background-image</code> می‌تواند چند لایه بگیرد که با ویرگول جدا می‌شوند؛
+        <strong>لایه اول روی بقیه</strong> قرار می‌گیرد. اینجا لایه اول یک «گرادیان» (طیف رنگ) است که هر دو رنگش یکی و نیمه‌شفاف است:
+      </p>
+      <pre class="code"><code>.hero-dark {
+  background-color: #1a3a5c;
+  background-image:
+    linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),  /* لایه تیره (رو) */
+    url("../../images/bg.jpg");                               /* تصویر (زیر) */
+  background-size: cover;
+  background-position: center;
+  min-height: 200px;
+  padding: 24px;
+  color: white;
+}</code></pre>
+      <div class="result">
+        <div class="hero-dark">
+          <h3>سفر به سرزمین آبدره‌ها</h3>
+          <p>تور ۷ روزه طبیعت‌گردی — ثبت‌نام آغاز شد</p>
+        </div>
+      </div>
+
+      <p class="tip">
+        <strong>تصویر پس‌زمینه یا تگ <code>img</code>؟</strong>
+        اگر تصویر فقط تزئینی است (بنر، طرح پس‌زمینه)، از <code>background-image</code> استفاده کنید.
+        اگر تصویر بخشی از محتواست (عکس محصول، عکس مقاله)، از <code>&lt;img&gt;</code> با <code>alt</code> مناسب استفاده کنید؛
+        چون صفحه‌خوان‌ها و موتورهای جستجو تصویر پس‌زمینه را نمی‌بینند.
+      </p>
+
+      <h3>تکرار تصویر</h3>
+      <p>
+        اگر تصویر از جعبه کوچک‌تر باشد، مرورگر به‌طور پیش‌فرض آن را هم در جهت افقی و هم در جهت عمودی تکرار می‌کند؛ به این رفتار کاشی‌کاری می‌گویند.
+        مقدار پیش‌فرض <code>background-repeat</code> همان <code>repeat</code> است.
+        با <code>repeat-x</code> تکرار فقط افقی می‌ماند، با <code>repeat-y</code> فقط عمودی، و با <code>no-repeat</code> تصویر یک بار نشان داده می‌شود.
+        در مثال زیر عرض هر تکه با <code>background-size</code> کوچک شده و ردیف تصویر با <code>background-position: top</code> به بالای جعبه چسبیده است. فاصله داخلی بالا هم متن را زیر همان ردیف می‌آورد.
+      </p>
+      <pre class="code"><code>.strip {
+  background-color: #eef2ff;
+  background-image: url("../../images/bg.jpg");
+  background-size: 90px;           /* عرض هر تکه تصویر */
+  background-repeat: repeat-x;     /* فقط افقی تکرار شود */
+  background-position: top;        /* ردیف تصویر بالای جعبه باشد */
+  padding: 95px 16px 10px;         /* متن زیر ردیف تصویر بیاید */
+}</code></pre>
+      <div class="result">
+        <div class="strip">تصویر کوچک فقط در یک ردیف افقی تکرار شده است.</div>
+      </div>
+
+      <table class="ref">
+        <thead>
+          <tr>
+            <th>ویژگی</th>
+            <th>مقدارهای رایج</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>background-repeat</code></td>
+            <td><code>repeat</code> ، <code>repeat-x</code> ، <code>repeat-y</code> ، <code>no-repeat</code></td>
+          </tr>
+          <tr>
+            <td><code>background-size</code></td>
+            <td><code>cover</code> (کل جعبه پر شود؛ ممکن است لبه‌های تصویر بریده شود)، <code>contain</code> (کل تصویر دیده شود؛ ممکن است جای خالی بماند)، <code>100px</code></td>
+          </tr>
+          <tr>
+            <td><code>background-position</code></td>
+            <td><code>center</code> ، <code>top</code> ، <code>right bottom</code> ، <code>20% 50%</code></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p class="tip">
+        <strong>نکته راست‌چین:</strong> مقدارهای <code>left</code> و <code>right</code> در <code>background-position</code>
+        همیشه سمت فیزیکی را می‌گویند و با <code>dir="rtl"</code> برعکس نمی‌شوند. اگر سایت شما دوزبانه است، جای تصویر را
+        برای هر جهت جداگانه بررسی کنید.
+      </p>
+
+      <h3>نوشتن خلاصه (Shorthand)</h3>
+      <p>
+        ویژگی خلاصه <code>background</code> رنگ، تصویر، تکرار و موقعیت را در یک اعلامیه جمع می‌کند.
+        اگر اندازه را هم در همان خط بخواهید، باید بعد از موقعیت و با علامت <code>/</code> بیاید؛ مثل <code>center / cover</code>.
+        این خلاصه بقیه ویژگی‌های پس‌زمینه را هم به مقدار پیش‌فرض برمی‌گرداند. برای همین اگر قبلاً مثلاً فقط <code>background-color</code> را جدا نوشته باشید و بعد <code>background</code> را بنویسید، مقدار قبلی ممکن است پاک شود.
+      </p>
+      <pre class="code"><code>.hero {
+  /* رنگ، تصویر، تکرار، موقعیت / اندازه */
+  background: #1a3a5c url("../../images/bg.jpg") no-repeat center / cover;
+}</code></pre>
+
+      <p class="mistake">
+        <strong>اشتباه رایج:</strong>
+        نوشتن <code>background</code> (خلاصه) <strong>بعد از</strong> <code>background-color</code> یا
+        <code>background-image</code>. خلاصه همه ویژگی‌های پس‌زمینه را از نو تنظیم می‌کند و مقدارهای قبلی پاک می‌شوند.
+        <br>
+        انتظار اینکه جعبه هم‌اندازه تصویر پس‌زمینه شود: تصویر پس‌زمینه برخلاف <code>img</code> به جعبه اندازه نمی‌دهد.
+        جعبه خالی ارتفاع صفر دارد و تصویر اصلاً دیده نمی‌شود؛ با محتوا، <code>padding</code> یا <code>min-height</code> به آن ارتفاع بدهید.
+      </p>
+
+      <p class="exercise">
+        <strong>تمرین:</strong> یک جعبه با تصویر پس‌زمینه بسازید که تصویر تکرار نشود و در گوشه پایین سمت چپ قرار بگیرد.
+      </p>
+    </section>
+
+
+    <nav class="page-nav" aria-label="ناوبری درس پایین">
+      <a href="06-colors.html">→ قبلی: Colors</a>
+      <a href="../index.html">فهرست درس‌ها</a>
+      <a href="08-borders.html">بعدی: Borders ←</a>
+    </nav>
+
+  </div>
+
+  <footer class="page-footer">
+    آموزش CSS از صفر
+  </footer>
+
+</body>
+
+</html>

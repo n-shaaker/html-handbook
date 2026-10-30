@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>۱۵) انتشار رویداد و Event Delegation | آموزش JavaScript سطح پیشرفته</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <script src="../js/log.js" defer></script>
+  <script src="../js/demos/event-delegation.js" defer></script>
+</head>
+
+<body>
+
+  <header class="page-header" id="top">
+    <h1>آموزش JavaScript — سطح پیشرفته</h1>
+    <p>۱۵) انتشار رویداد و Event Delegation</p>
+  </header>
+
+  <div class="container">
+
+    <nav class="page-nav" aria-label="ناوبری درس">
+      <a href="14-regexp.html">→ قبلی: RegExp</a>
+      <a href="../index.html">فهرست درس‌ها</a>
+      <a href="16-modern-syntax.html">بعدی: Modern Syntax ←</a>
+    </nav>
+
+    <section class="lesson" id="event-delegation">
+      <h2>۱۵) انتشار رویداد و Event Delegation</h2>
+
+<p>رویداد فقط روی همان عنصری که کلیک شده تمام نمی‌شود؛ در درخت DOM بالا می‌رود. اگر این مسیر را بشناسید، می‌توانید یک شنونده روی پدر بگذارید تا کلیک فرزندان، حتی فرزندان تازه‌ساخته‌شده، را همان‌جا مدیریت کنید. به این روش واگذاری رویداد می‌گویند.</p>
+
+<h3>انتشار رویداد (Bubbling)</h3>
+
+<p>وقتی روی یک عنصر کلیک می‌کنید، رویداد اول روی خود آن عنصر اجرا می‌شود و بعد مثل حباب به سمت پدرها <strong>بالا می‌رود</strong>: پدر، پدربزرگ، ... تا <code>document</code>.</p>
+
+<pre class="code"><code>outer.addEventListener("click", () =&gt; log("outer (پدربزرگ)"));
+middle.addEventListener("click", () =&gt; log("middle (پدر)"));
+inner.addEventListener("click", (event) =&gt; {
+  log("inner (خود دکمه)");
+  if (stopCheck.checked) {
+    event.stopPropagation();          // رویداد از این‌جا بالاتر نمی‌رود
+    log("— stopPropagation: رویداد بالاتر نرفت —");
+  }
+});
+
+// پاک کردن خروجی قبلی؛ با true در مرحله capture و قبل از همه اجرا می‌شود
+outer.addEventListener("click", () =&gt; (outBox.textContent = ""), true);
+
+// خروجی کلیک روی دکمه: inner، سپس middle، سپس outer (از داخل به بیرون)</code></pre>
+
+<p>کلیک روی دکمهٔ درونی اول شنوندهٔ همان عنصر را اجرا می‌کند، بعد به پدر و بعد به پدربزرگ می‌رسد. این مسیر را bubbling می‌نامند. <code>stopPropagation</code> ادامهٔ همین مسیر را قطع می‌کند. آرگومان <code>true</code> در شنوندهٔ دیگر یعنی آن تابع در مسیر رفت، از بیرون به داخل، اجرا شود و اینجا برای پاک کردن خروجی قبل از بقیه به کار رفته است.</p>
+
+<div class="result">
+<div class="demo-box" id="outer">outer<div class="demo-box" id="middle">middle<button class="btn" id="inner">inner — کلیک کن</button></div></div>
+<label><input type="checkbox" id="stop-check"> stopPropagation روی inner</label>
+<pre class="console" id="out-1" aria-live="polite"></pre>
+</div>
+
+<p class="tip">با <code>event.stopPropagation()</code> جلوی بالا رفتن رویداد را می‌گیریم. تیک گزینه بالا را بزنید و دوباره کلیک کنید. روی خود کادرهای middle و outer هم کلیک کنید تا ببینید رویداد فقط از عنصر کلیک‌شده به بالا می‌رود. از stopPropagation کم استفاده کنید؛ چون listenerهای دیگر (مثلاً بستن منو با کلیک روی صفحه) را هم از کار می‌اندازد.</p>
+
+<table class="ref">
+<tr><th>ویژگی</th><th>یعنی</th></tr>
+<tr><td><code>event.target</code></td><td>عنصری که واقعاً روی آن کلیک شد (عمیق‌ترین عنصر)</td></tr>
+<tr><td><code>event.currentTarget</code></td><td>عنصری که listener روی آن نصب شده (در Delegation: همان پدر)</td></tr>
+</table>
+
+<h3>Event Delegation — یک listener برای همه</h3>
+
+<p>به جای اینکه روی تک‌تک فرزندها listener بگذاریم، یکی روی <strong>پدر</strong> می‌گذاریم و با <code>event.target</code> می‌فهمیم روی کدام فرزند کلیک شده. مزیت‌ها:</p>
+
+<ul>
+<li>کد کمتر و حافظه کمتر (یک listener به جای صدها).</li>
+<li>برای عنصرهایی که <strong>بعداً</strong> اضافه می‌شوند هم خودبه‌خود کار می‌کند.</li>
+</ul>
+
+<pre class="code"><code>let counter = 3;
+
+list.addEventListener("click", (event) =&gt; {
+  const deleteBtn = event.target.closest(".delete");
+  if (deleteBtn) {
+    deleteBtn.closest("li").remove();
+    return;
+  }
+
+  const li = event.target.closest("li");
+  if (li &amp;&amp; list.contains(li)) li.classList.toggle("done");
+});
+
+addBtn.addEventListener("click", () =&gt; {
+  counter++;
+  list.insertAdjacentHTML("beforeend",
+    `&lt;li&gt;&lt;span&gt;آیتم جدید ${counter}&lt;/span&gt;&lt;button class="btn danger delete"&gt;حذف&lt;/button&gt;&lt;/li&gt;`);
+});</code></pre>
+
+<p>یک شنونده روی خود فهرست کافی است، حتی برای دکمه‌هایی که بعداً ساخته می‌شوند. <code>event.target</code> عنصری است که کلیک دقیقاً روی آن بوده. <code>closest</code> از آنجا بالا می‌رود تا دکمهٔ حذف یا خود <code>li</code> را پیدا کند. اگر دکمهٔ حذف باشد ردیف حذف می‌شود و تابع برمی‌گردد تا تغییر کلاس انجام نشود.</p>
+
+<div class="result">
+<button class="btn" id="add-item">افزودن آیتم</button>
+<ul class="js-list" id="deleg-list"><li><span>آیتم ۱ (برای خط زدن کلیک کنید)</span><button class="btn danger delete">حذف</button></li><li><span>آیتم ۲</span><button class="btn danger delete">حذف</button></li><li><span>آیتم ۳</span><button class="btn danger delete">حذف</button></li></ul>
+</div>
+
+<p class="tip"><code>event.target.closest("selector")</code> بهترین دوست Event Delegation است: از خود target شروع می‌کند و به سمت پدرها بالا می‌رود تا اولین عنصری را که با selector جور است پیدا کند؛ پس حتی اگر روی یک تگ داخلی (مثل span داخل li) کلیک شود، li را پیدا می‌کند. اگر چیزی پیدا نکند <code>null</code> برمی‌گرداند. شرط <code>list.contains(li)</code> مطمئن می‌شود li پیداشده داخل همین فهرست است (برای وقتی که خود فهرست داخل یک li دیگر باشد).</p>
+
+<h3>Capturing — مسیر برعکس</h3>
+
+<p>هر رویداد سه مرحله دارد: <strong>capture</strong> (از <code>document</code> به سمت پایین تا عنصر هدف)، <strong>target</strong> (روی خود عنصر) و <strong>bubble</strong> (برگشت به سمت بالا). listenerها به‌طور پیش‌فرض در مرحله bubble اجرا می‌شوند؛ با پارامتر سوم <code>true</code> (یا <code>{ capture: true }</code>) در مرحله capture اجرا می‌شوند. در مثال اول همین صفحه، listener پاک‌کننده خروجی به همین دلیل قبل از همه اجرا می‌شود.</p>
+
+<pre class="code"><code>// پارامتر سوم true یعنی در مرحله رفت (از بالا به پایین) اجرا شو
+outer.addEventListener("click", handler, true);</code></pre>
+
+<p>پارامتر سوم <code>true</code> شنونده را در مرحلهٔ capture ثبت می‌کند، یعنی هنگام رفتن رویداد از پدرها به سمت عنصر هدف. حالت پیش‌فرض <code>false</code> است و شنونده در راه برگشت اجرا می‌شود. از capture وقتی استفاده می‌کنید که باید قبل از شنونده‌های درونی کاری انجام شود.</p>
+
+<p class="mistake"><strong>اشتباه رایج:</strong> استفاده از <code>event.target</code> به جای <code>closest</code>. اگر داخل دکمه یک آیکون یا span باشد، target همان span است نه دکمه و شرطی مثل <code>event.target.classList.contains("delete")</code> کار نمی‌کند.</p>
+
+<p class="mistake"><strong>اشتباه رایج:</strong> گذاشتن متن واردشده توسط کاربر داخل <code>innerHTML</code> یا <code>insertAdjacentHTML</code>. اگر کاربر بنویسد <code>&lt;img src=x onerror="alert(1)"&gt;</code>، کد او اجرا می‌شود (حمله XSS). در مثال بالا فقط یک عدد داخل HTML گذاشته‌ایم؛ برای متن کاربر عنصر را با <code>createElement</code> بسازید و متن را با <code>textContent</code> بگذارید.</p>
+
+<p class="exercise"><strong>تمرین:</strong> یک جدول با ۲۰ ردیف (مثلاً نام و نمره ۲۰ دانشجو، ساخته‌شده با حلقه) بسازید و فقط با <strong>یک</strong> listener روی <code>table</code> کار کنید: با کلیک روی هر ردیف (<code>tr</code>) کلاس انتخاب آن را toggle کنید و متن ردیف را در Console چاپ کنید. کلیک روی سرستون (<code>th</code>) نباید کاری بکند (راهنما: <code>closest("tbody tr")</code>).</p>
+    </section>
+
+    <nav class="page-nav" aria-label="ناوبری درس پایین">
+      <a href="14-regexp.html">→ قبلی: RegExp</a>
+      <a href="../index.html">فهرست درس‌ها</a>
+      <a href="16-modern-syntax.html">بعدی: Modern Syntax ←</a>
+    </nav>
+
+  </div>
+
+  <footer class="page-footer">
+    آموزش JavaScript سطح پیشرفته
+  </footer>
+
+</body>
+
+</html>

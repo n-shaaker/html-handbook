@@ -1,0 +1,40 @@
+/* تمرین ۱ — اسکلت کلاسیک سایت (پاسخ) */
+
+body {
+  font-family: Tahoma, sans-serif;
+  margin: 20px;
+  background-color: #f8f9fa;
+  color: #212529;
+}
+
+.page {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  grid-template-areas:
+    "header  header"
+    "sidebar main"
+    "footer  footer";
+  gap: 10px;
+}
+
+.header  { grid-area: header; }
+.sidebar { grid-area: sidebar; }
+.main    { grid-area: main; }
+.footer  { grid-area: footer; }
+
+.header,
+.footer {
+  background-color: #364fc7;
+  color: white;
+  padding: 15px;
+}
+
+.sidebar {
+  background-color: #dbe4ff;
+  padding: 15px;
+}
+
+.main {
+  background-color: white;
+  padding: 15px;
+}

@@ -1,0 +1,22 @@
+/* ===== پایه ===== */
+h1 {
+  color: #333333;
+  font-size: 32px;
+}
+
+.page h1 {
+  color: #1a5fb4;
+}
+
+.title {
+  color: #2b8a3e;
+  text-align: center;
+}
+
+.page .title {
+  color: #e67700;
+}
+
+h1.title {
+  font-size: 28px;
+}

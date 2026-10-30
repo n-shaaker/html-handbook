@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>۶) عملگرها (Operators) | آموزش JavaScript سطح پایه</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <script src="../js/log.js" defer></script>
+  <script src="../js/demos/operators.js" defer></script>
+</head>
+
+<body>
+
+  <header class="page-header" id="top">
+    <h1>آموزش JavaScript — سطح پایه</h1>
+    <p>۶) عملگرها (Operators)</p>
+  </header>
+
+  <div class="container">
+
+    <nav class="page-nav" aria-label="ناوبری درس">
+      <a href="05-variables.html">→ قبلی: Variables</a>
+      <a href="../index.html">فهرست درس‌ها</a>
+      <a href="07-data-types.html">بعدی: Data Types ←</a>
+    </nav>
+
+    <section class="lesson" id="operators">
+      <h2>۶) عملگرها (Operators)</h2>
+<p>عملگر علامتی است که روی یک یا چند مقدار کار انجام می‌دهد و معمولاً یک نتیجهٔ تازه می‌سازد. جمع و ضرب عملگر حسابی‌اند، <code>=</code> مقدار را داخل متغیر می‌گذارد و <code>+</code> وقتی یک طرفش متن باشد به‌جای جمع، متن‌ها را به هم می‌چسباند. در این درس هر گروه را جدا می‌بینید تا بدانید هر علامت چه می‌کند و در چه شرایطی جواب غیرمنتظره می‌دهد.</p>
+
+<h3>عملگرهای حسابی (Arithmetic)</h3>
+
+<table class="ref">
+<tr><th>عملگر</th><th>معنی</th><th>مثال</th><th>نتیجه</th></tr>
+<tr><td><code>+</code></td><td>جمع</td><td><code>5 + 2</code></td><td>7</td></tr>
+<tr><td><code>-</code></td><td>تفریق</td><td><code>5 - 2</code></td><td>3</td></tr>
+<tr><td><code>*</code></td><td>ضرب</td><td><code>5 * 2</code></td><td>10</td></tr>
+<tr><td><code>/</code></td><td>تقسیم</td><td><code>5 / 2</code></td><td>2.5</td></tr>
+<tr><td><code>%</code></td><td>باقیمانده</td><td><code>5 % 2</code></td><td>1</td></tr>
+<tr><td><code>**</code></td><td>توان</td><td><code>5 ** 2</code></td><td>25</td></tr>
+<tr><td><code>++</code></td><td>یکی اضافه</td><td><code>x++</code></td><td>x یکی بیشتر می‌شود</td></tr>
+<tr><td><code>--</code></td><td>یکی کم</td><td><code>x--</code></td><td>x یکی کمتر می‌شود</td></tr>
+</table>
+
+<pre class="code"><code>let x = 10;
+let y = 3;
+console.log(x + y, x - y, x * y);   // 13 7 30
+console.log(x / y);                 // 3.3333333333333335 (تقسیم اعشاری است، نه صحیح)
+console.log(x % y);                 // 1 ← باقیمانده 10 تقسیم بر 3
+console.log(2 ** 10);               // 1024
+
+let counter = 0;
+counter++;
+counter++;
+console.log(counter);               // 2</code></pre>
+
+<div class="result">
+<pre class="console" id="out-1"></pre>
+</div>
+
+<p>دو متغیر <code>x</code> و <code>y</code> عددهای این محاسبه هستند. تقسیم در JavaScript اعشاری است؛ <code>10 / 3</code> به عدد صحیح گرد نمی‌شود. <code>%</code> خارج‌قسمت را دور می‌ریزد و فقط باقیمانده را برمی‌گرداند، پس <code>10 % 3</code> برابر ۱ است. <code>**</code> توان است و <code>2 ** 10</code> یعنی ۲ را ده بار در خودش ضرب کن. <code>counter++</code> همان <code>counter = counter + 1</code> است و چون دو بار اجرا شده، شمارنده از صفر به ۲ می‌رسد.</p>
+
+<p class="tip"><strong>کاربرد <code>%</code>:</strong> فهمیدن زوج یا فرد بودن (<code>n % 2 === 0</code> یعنی زوج)، تبدیل دقیقه به «ساعت و دقیقه» (<code>130 % 60</code> می‌شود ۱۰ دقیقه باقیمانده) و هر جا که «باقیمانده» یا «چرخش» لازم است.</p>
+
+<p class="mistake"><strong>اشتباه رایج:</strong> فرق <code>x++</code> و <code>++x</code> را ندانستن. هر دو x را یکی زیاد می‌کنند، ولی اگر نتیجه را همان لحظه استفاده کنید فرق دارند: <code>let a = 5; let b = a++;</code> ← b برابر ۵ و a برابر ۶ (اول مقدار قدیمی را می‌دهد، بعد زیاد می‌کند). <code>let c = ++a;</code> ← اول زیاد می‌کند، بعد مقدار جدید را می‌دهد. برای خوانایی، <code>++</code> را در یک خط جدا بنویسید.</p>
+
+<h3>ترتیب انجام عملیات</h3>
+
+<p>مثل ریاضی: اول پرانتز، بعد توان، بعد ضرب و تقسیم و باقیمانده (<code>* / %</code>)، آخر جمع و تفریق. عملگرهای هم‌رده از چپ به راست حساب می‌شوند.</p>
+
+<pre class="code"><code>console.log(2 + 3 * 4);     // 14
+console.log((2 + 3) * 4);   // 20
+
+// میانگین سه نمره: بدون پرانتز اشتباه می‌شود!
+console.log(18 + 16 + 14 / 3);     // 38.666666666666664 ✖
+console.log((18 + 16 + 14) / 3);   // 16 ✔</code></pre>
+
+<div class="result">
+<pre class="console" id="out-2"></pre>
+</div>
+
+<p>در <code>2 + 3 * 4</code> اول ضرب انجام می‌شود و حاصل با ۲ جمع می‌شود. پرانتز این ترتیب را عوض می‌کند و اول داخل پرانتز حساب می‌شود. در میانگین نمره‌ها، بدون پرانتز فقط عدد آخر بر ۳ تقسیم می‌شود و جمع دو نمرهٔ دیگر دست‌نخورده می‌ماند؛ به همین دلیل نتیجه میانگین واقعی نیست.</p>
+
+<h3>عملگرهای انتساب (Assignment)</h3>
+
+<table class="ref">
+<tr><th>عملگر</th><th>مثال</th><th>یعنی</th></tr>
+<tr><td><code>=</code></td><td><code>x = 5</code></td><td>x را ۵ کن</td></tr>
+<tr><td><code>+=</code></td><td><code>x += 3</code></td><td><code>x = x + 3</code></td></tr>
+<tr><td><code>-=</code></td><td><code>x -= 3</code></td><td><code>x = x - 3</code></td></tr>
+<tr><td><code>*=</code></td><td><code>x *= 3</code></td><td><code>x = x * 3</code></td></tr>
+<tr><td><code>/=</code></td><td><code>x /= 3</code></td><td><code>x = x / 3</code></td></tr>
+</table>
+
+<p>مثال کاربردی: جمع سبد خرید با تخفیف و مالیات (قیمت‌ها به تومان):</p>
+
+<pre class="code"><code>let total = 0;
+total += 250000;          // کتاب        → 250000
+total += 2 * 45000;       // دو دفتر     → 340000
+total -= 40000;           // کد تخفیف    → 300000
+
+let tax = total * 10 / 100;   // ۱۰٪ مالیات بر ارزش افزوده → 30000
+total += tax;                 // → 330000
+console.log("مالیات:", tax);
+console.log("مبلغ قابل پرداخت:", total);</code></pre>
+
+<div class="result">
+<pre class="console" id="out-3"></pre>
+</div>
+
+<p><code>total</code> از صفر شروع می‌شود تا چیزی برای اضافه کردن داشته باشیم. <code>+=</code> مقدار سمت راست را به مقدار فعلی متغیر اضافه می‌کند و نتیجه را دوباره در همان متغیر می‌ریزد. <code>-=</code> به همین شکل کم می‌کند. مالیات جدا حساب شده تا هم مبلغ مالیات دیده شود و هم بعداً با <code>+=</code> به جمع کل اضافه شود.</p>
+
+<h3>جمع متن‌ها (چسباندن رشته‌ها)</h3>
+
+<p>اگر یک طرف <code>+</code> متن باشد، JavaScript به جای جمع، دو طرف را به هم می‌چسباند.</p>
+
+<pre class="code"><code>let first = "علی";
+let last = "رضایی";
+console.log(first + " " + last);
+
+console.log("5" + 2);     // "52"  ← چسباندن!
+console.log(5 + 2 + "3"); // "73"  ← اول 5+2، بعد چسباندن
+console.log("3" + 5 + 2); // "352" ← از همان اول متن است، پس همه چسبانده می‌شوند
+console.log("5" - 2);     // 3     ← منها فقط برای عدد است؛ متن به عدد تبدیل می‌شود</code></pre>
+
+<p>علامت <code>+</code> اگر دست‌کم یک طرفش متن باشد، طرف دیگر را هم به متن تبدیل می‌کند و دو رشته را به هم می‌چسباند. ترتیب مهم است: در <code>5 + 2 + "3"</code> دو عدد اول با هم جمع می‌شوند و بعد نتیجه به متن چسبانده می‌شود. عملگر <code>-</code> متن را نمی‌چسباند؛ اگر متن شبیه عدد باشد آن را به عدد تبدیل می‌کند و تفریق انجام می‌دهد.</p>
+
+<p class="tip">Console گیومه دور متن را نشان نمی‌دهد؛ پس در خروجی <code>52</code> می‌بینید، ولی این مقدار متن (رشته) است نه عدد. در درس «انواع داده» با <code>typeof</code> می‌توانید این را بررسی کنید.</p>
+
+<div class="result">
+<pre class="console" id="out-4"></pre>
+</div>
+
+<p class="mistake"><strong>اشتباه رایج:</strong> فکر کردن اینکه <code>"5" + 2</code> می‌شود ۷. مقداری که کاربر در کادر <code>input</code> تایپ می‌کند همیشه متن است و باید اول با <code>Number()</code> به عدد تبدیل شود: <code>Number("5") + 2</code> برابر ۷ است.</p>
+
+<p class="exercise"><strong>تمرین:</strong> (۱) باقیمانده تقسیم ۱۷ بر ۲ را با <code>%</code> چاپ کنید؛ اگر ۰ بود عدد زوج است و اگر ۱ بود فرد. (۲) فیلمی ۱۳۵ دقیقه است؛ با <code>/</code> و <code>%</code> ساعت و دقیقه آن را حساب کنید (راهنما: <code>(135 - 135 % 60) / 60</code> ساعت و <code>135 % 60</code> دقیقه). (۳) با <code>+=</code> یک سبد خرید بسازید که سه قیمت را به جمع کل اضافه کند و در پایان ۵٪ تخفیف از آن کم کند.</p>
+    </section>
+
+    <nav class="page-nav" aria-label="ناوبری درس پایین">
+      <a href="05-variables.html">→ قبلی: Variables</a>
+      <a href="../index.html">فهرست درس‌ها</a>
+      <a href="07-data-types.html">بعدی: Data Types ←</a>
+    </nav>
+
+  </div>
+
+  <footer class="page-footer">
+    آموزش JavaScript سطح پایه
+  </footer>
+
+</body>
+
+</html>

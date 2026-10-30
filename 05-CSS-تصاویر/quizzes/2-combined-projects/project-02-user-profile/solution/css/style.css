@@ -1,0 +1,139 @@
+/*
+  این فایل در solution/css است.
+  مسیر عکس‌ها از اینجا: css ← solution ← project-02 ← 2-combined-projects ← quizzes ← پوشه دوره
+  یعنی پنج پله بالا: ../../../../../images/
+  (مسیر داخل index.html یک پله کمتر است: ../../../../images/)
+*/
+
+/* ===== تنظیمات کلی ===== */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Tahoma, Arial, sans-serif;
+  line-height: 1.8;
+  margin: 0;
+  color: #222;
+  background-color: #f7f9fc;
+}
+
+/* ===== کاور پترنی (تزئینی، پس در CSS) ===== */
+.cover {
+  height: 200px;
+  background-color: #6b8e9e;
+  background-image: url("../../../../../images/pattern.jpg");
+  background-size: 300px auto;
+  background-repeat: repeat;
+}
+
+/* ===== بخش پروفایل ===== */
+.profile {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 0 16px 32px;
+  text-align: center;
+}
+
+/* آواتار نصفه روی کاور: نصف ارتفاعش (۷۰ پیکسل) بالا می‌رود */
+.avatar-wrap {
+  position: relative;
+  display: inline-block;
+  margin-top: -70px;
+}
+
+.avatar {
+  display: block;
+  width: 140px;
+  height: 140px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 5px solid white;
+}
+
+.online {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  width: 20px;
+  height: 20px;
+  background-color: #2fb344;
+  border: 3px solid white;
+  border-radius: 50%;
+}
+
+.profile h1 {
+  margin: 8px 0 0;
+  font-size: 1.5rem;
+}
+
+.bio {
+  margin: 0;
+  color: #555;
+}
+
+/* ===== آمار ===== */
+.stats {
+  list-style-type: none;
+  margin: 16px 0;
+  padding: 0;
+}
+
+.stats li {
+  display: inline-block;
+  margin: 0 12px;
+  color: #666;
+}
+
+.stats strong {
+  display: block;
+  font-size: 1.2rem;
+  color: #222;
+}
+
+/* ===== دستورهای اخیر ===== */
+.recent h2 {
+  font-size: 1.2rem;
+  text-align: right;
+}
+
+.recipe {
+  display: inline-block;
+  vertical-align: top;
+  width: 30%;
+  margin: 0 1%;
+}
+
+.recipe p {
+  margin: 4px 0 0;
+}
+
+/* قاب مربعی که زوم از آن بیرون نزند */
+.thumb {
+  overflow: hidden;
+  border-radius: 10px;
+}
+
+.thumb img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  transition: transform 0.3s;
+}
+
+.thumb img.tea {
+  object-position: center top;
+}
+
+.thumb img:hover {
+  transform: scale(1.05);
+}
+
+/* ===== گوشی ===== */
+@media (max-width: 500px) {
+  .recipe {
+    width: 100%;
+    margin: 0 0 16px;
+  }
+}

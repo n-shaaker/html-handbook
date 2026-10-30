@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>۱۰) میان‌بُر flex | آموزش Flexbox</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/demos/flex-shorthand.css">
+</head>
+
+<body>
+
+  <header class="page-header">
+    <h1>آموزش Flexbox — چیدمان انعطاف‌پذیر</h1>
+    <p>۱۰) میان‌بُر flex</p>
+  </header>
+
+  <div class="container">
+
+    <nav class="page-nav" aria-label="ناوبری درس">
+      <a href="09-grow-shrink-basis.html">→ قبلی: grow، shrink، basis</a>
+      <a href="../index.html">فهرست درس‌ها</a>
+      <a href="11-align-self-margin-auto.html">بعدی: align-self و margin خودکار ←</a>
+    </nav>
+
+    <section class="lesson" id="flex">
+      <h2>۱۰) میان‌بُر flex</h2>
+      <p>
+        در عمل کمتر پیش می‌آید سه ویژگی درس قبل را جدا بنویسند. ویژگی <code>flex</code> روی آیتم، هر سه را در یک اعلان جمع می‌کند.
+        ترتیب مقدارها ثابت است: اول <code>flex-grow</code>، بعد <code>flex-shrink</code>، و آخر <code>flex-basis</code>.
+        اگر عددی تنها بنویسید، مشخصات CSS آن را رشد حساب می‌کند، جمع شدن را <code>1</code> می‌گذارد و پایه را <code>0%</code> می‌گیرد. برای همین <code>flex: 1</code> برابر است با <code>1 1 0%</code>، نه با «یک واحد از عرض محتوا».
+      </p>
+      <pre class="code"><code>flex: grow shrink basis;
+
+/* مثال: */
+flex: 1 1 200px;   /* grow: 1 ، shrink: 1 ، basis: 200px */</code></pre>
+      <p>
+        چهار میانبر اسم‌دار آن‌قدر تکرار می‌شوند که بهتر است رفتارشان را، نه فقط اسمشان را، به خاطر بسپارید.
+        <code>flex: 1</code> آیتم‌ها را هم‌اندازه می‌کند، <code>flex: auto</code> اول به محتوا جا می‌دهد و بعد فضای باقی‌مانده را تقسیم می‌کند،
+        <code>flex: none</code> اندازه را قفل می‌کند، و <code>flex: 0 0 200px</code> یک عرض مشخص می‌سازد که نه رشد می‌کند و نه جمع می‌شود.
+      </p>
+
+      <h3>مثال ۱: <code>flex: 1</code> — همه هم‌اندازه</h3>
+      <p>
+        <code>flex: 1</code> در مشخصات CSS برابر است با <code>1 1 0%</code>. چون اندازهٔ پایه صفر است، عرض محتوا در تقسیم اولیه حساب نمی‌شود و کل عرض ظرف به‌عنوان فضای اضافه، به سهم برابر، بین آیتم‌ها تقسیم می‌شود.
+        برای همین همهٔ آیتم‌ها <strong>دقیقاً هم‌عرض</strong> می‌شوند، حتی اگر متن یکی کوتاه و متن دیگری بلند باشد:
+      </p>
+      <pre class="code"><code>.box {
+  flex: 1;
+}</code></pre>
+      <div class="result demo-flex">
+        <div class="parent">
+          <div class="box b1 f-1">۱</div>
+          <div class="box b2 f-1">۲ متن خیلی بلندتر</div>
+          <div class="box b3 f-1">۳</div>
+        </div>
+      </div>
+
+      <h3>مثال ۲: <code>flex: auto</code> — بزرگ شو، ولی به اندازه محتوایت</h3>
+      <p>
+        <code>flex: auto</code> یعنی <code>1 1 auto</code>. اول هر آیتم به اندازه محتوایش جا می‌گیرد، بعد فضای <strong>باقی‌مانده</strong> تقسیم می‌شود؛
+        پس آیتمی که متن بیشتری دارد، پهن‌تر می‌ماند. با مثال ۱ مقایسه کنید:
+      </p>
+      <pre class="code"><code>.box {
+  flex: auto;
+}</code></pre>
+      <div class="result demo-flex">
+        <div class="parent">
+          <div class="box b1 f-auto">۱</div>
+          <div class="box b2 f-auto">۲ متن خیلی بلندتر</div>
+          <div class="box b3 f-auto">۳</div>
+        </div>
+      </div>
+
+      <h3>مثال ۳: <code>flex: none</code> — دست به من نزن!</h3>
+      <p>
+        <code>flex: none</code> یعنی <code>0 0 auto</code>: نه بزرگ می‌شود، نه کوچک. جعبه ۱ اینجا همیشه اندازه خودش را دارد
+        و بقیه با <code>flex: 1</code> فضا را تقسیم می‌کنند:
+      </p>
+      <pre class="code"><code>.icon { flex: none; }
+.box  { flex: 1; }</code></pre>
+      <div class="result demo-flex">
+        <div class="parent">
+          <div class="box b4 f-none">۱ (none)</div>
+          <div class="box b2 f-1">۲ (flex: 1)</div>
+          <div class="box b3 f-1">۳ (flex: 1)</div>
+        </div>
+      </div>
+
+      <h3>مثال ۴: <code>flex: 0 0 200px</code> — عرض ثابت</h3>
+      <p>
+        ستونی که همیشه دقیقاً ۲۰۰ پیکسل است؛ مثل ستون کناری (سایدبار) یک پنل مدیریت.
+        ستون دیگر با <code>flex: 1</code> بقیه را پر می‌کند:
+      </p>
+      <pre class="code"><code>.sidebar { flex: 0 0 200px; }
+.content { flex: 1; }</code></pre>
+      <div class="result demo-flex">
+        <div class="panel">
+          <div class="sidebar">
+            <strong>پنل آموزشگاه</strong>
+            <span>داشبورد</span>
+            <span>دوره‌ها</span>
+            <span>هنرجویان</span>
+          </div>
+          <div class="content">
+            <strong>خوش آمدید!</strong>
+            <p>این ستون هر چقدر پنجره پهن یا باریک شود، فضای باقی‌مانده را می‌گیرد؛ ولی ستون کناری همیشه ۲۰۰ پیکسل است.</p>
+          </div>
+        </div>
+      </div>
+
+      <h3>مثال ۵: نسبت‌ها با <code>flex</code></h3>
+      <p>چون <code>flex: 2</code> برابر <code>2 1 0%</code> است، پایهٔ همه صفر می‌ماند و فقط نسبت رشد فرق می‌کند. اینجا ستون وسط دو سهم می‌گیرد و هر ستون کناری یک سهم:</p>
+      <pre class="code"><code>.side { flex: 1; }
+.main { flex: 2; }</code></pre>
+      <div class="result demo-flex">
+        <div class="parent">
+          <div class="box b1 f-1">۱ (یک سهم)</div>
+          <div class="box b2 f-2">۲ (دو سهم)</div>
+          <div class="box b3 f-1">۳ (یک سهم)</div>
+        </div>
+      </div>
+
+      <p class="mistake">
+        <strong>اشتباه رایج:</strong>
+        هم <code>width: 200px</code> و هم <code>flex: 1</code> روی یک آیتم می‌نویسیم و تعجب می‌کنیم که چرا عرضش ۲۰۰ نیست.
+        در <code>flex: 1</code> مقدار basis صفر است و <code>flex-basis</code> بر <code>width</code> برتری دارد. برای عرض ثابت از <code>flex: 0 0 200px</code> استفاده کنید.
+      </p>
+
+      <p class="mistake">
+        <strong>اشتباه رایج:</strong>
+        <code>flex</code> را روی پدر می‌نویسیم (مثلاً <code>.parent { flex: 1; }</code>) و انتظار داریم بچه‌ها هم‌اندازه شوند.
+        <code>flex</code> مال <strong>آیتم</strong> است؛ پدر <code>display: flex</code> می‌گیرد و هر فرزند <code>flex: 1</code>.
+      </p>
+
+      <table class="ref">
+        <tr>
+          <th>میان‌بُر</th>
+          <th>برابر با</th>
+          <th>کاربرد</th>
+        </tr>
+        <tr>
+          <td><code>flex: 1</code></td>
+          <td><code>1 1 0</code></td>
+          <td>ستون‌های کاملاً هم‌عرض</td>
+        </tr>
+        <tr>
+          <td><code>flex: auto</code></td>
+          <td><code>1 1 auto</code></td>
+          <td>پر کردن فضا با حفظ اندازه محتوا</td>
+        </tr>
+        <tr>
+          <td><code>flex: none</code></td>
+          <td><code>0 0 auto</code></td>
+          <td>آیکون، عکس و دکمه‌ای که نباید تغییر کند</td>
+        </tr>
+        <tr>
+          <td><code>flex: 0 0 200px</code></td>
+          <td>—</td>
+          <td>ستون با عرض ثابت</td>
+        </tr>
+        <tr>
+          <td>پیش‌فرض (ننوشتن)</td>
+          <td><code>0 1 auto</code></td>
+          <td>به اندازه محتوا، در صورت کمبود جا کوچک می‌شود</td>
+        </tr>
+      </table>
+
+      <p class="exercise">
+        <strong>تمرین:</strong> فوتر سایت یک کافه را با سه ستون «درباره ما»، «ساعت کاری» و «نشانی» بسازید که هم‌عرض باشند (<code>flex: 1</code>).
+        بعد ستون «درباره ما» را دو برابر بقیه کنید. در آخر یک ستون لوگو با عرض ثابت ۱۲۰ پیکسل به اول ردیف اضافه کنید.
+      </p>
+    </section>
+
+    <nav class="page-nav" aria-label="ناوبری درس پایین">
+      <a href="09-grow-shrink-basis.html">→ قبلی: grow، shrink، basis</a>
+      <a href="../index.html">فهرست درس‌ها</a>
+      <a href="11-align-self-margin-auto.html">بعدی: align-self و margin خودکار ←</a>
+    </nav>
+
+  </div>
+
+  <footer class="page-footer">
+    آموزش Flexbox
+  </footer>
+
+</body>
+
+</html>

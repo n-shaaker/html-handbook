@@ -1,0 +1,553 @@
+/* ===================== Base ===================== */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Vazirmatn", Tahoma, sans-serif;
+  background-color: #f4f6fb;
+  color: #333;
+  line-height: 1.8;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+ul {
+  list-style: none;
+}
+
+/* Buttons do not inherit the page font by default */
+button {
+  font: inherit;
+  cursor: pointer;
+}
+
+/* Visible focus ring for keyboard users (on every link and button) */
+:focus-visible {
+  outline: 3px solid #f59e0b;
+  outline-offset: 2px;
+}
+
+/* Hidden on screen but still read by screen readers (e.g. a label for the search box) */
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.section {
+  background: white;
+  border-radius: 12px;
+  padding: 24px;
+  margin-bottom: 24px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+.section h2 {
+  font-size: 20px;
+  margin-bottom: 16px;
+}
+
+code {
+  font-size: 13px;
+  background: #eef1ff;
+  color: #4f46e5;
+  padding: 2px 8px;
+  border-radius: 6px;
+  direction: ltr;
+  display: inline-block;
+}
+
+.btn {
+  display: inline-block;
+  background: #4f46e5;
+  color: white;
+  padding: 8px 18px;
+  border-radius: 8px;
+  border: 2px solid #4f46e5;
+}
+
+.btn-outline {
+  background: transparent;
+  color: #4f46e5;
+}
+
+.btn:hover {
+  background: #3730a3;
+  border-color: #3730a3;
+  color: white;
+}
+
+
+/* ===================== Example 1: Navbar =====================
+   Three groups (logo, links, buttons) in one row.
+   space-between pushes them to the start, middle and end. */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 40px;
+  background: white;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.logo {
+  font-size: 22px;
+  font-weight: bold;
+  color: #4f46e5;
+}
+
+.nav-links {
+  display: flex;
+  flex-wrap: wrap;           /* on narrow screens links go to a second line instead of overflowing */
+  justify-content: center;
+  gap: 8px 24px;             /* row-gap column-gap */
+}
+
+.nav-links a:hover {
+  color: #4f46e5;
+}
+
+.nav-actions {
+  display: flex;
+  gap: 10px;
+}
+
+
+/* ===================== Example 2: Hero =====================
+   The famous "center everything" trick:
+   column direction + justify-content + align-items. */
+.hero {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  min-height: 350px;
+  padding: 40px 20px;
+  text-align: center;
+  background: linear-gradient(135deg, #4f46e5, #9333ea);
+  color: white;
+}
+
+.hero h1 {
+  font-size: 32px;
+}
+
+
+/* ===================== Example 3: Search bar =====================
+   Input takes all free space (flex: 1), button keeps its own size. */
+.search-bar {
+  display: flex;
+  width: 100%;
+  max-width: 500px;
+  background: white;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.search-bar input {
+  flex: 1;
+  border: none;
+  padding: 12px 16px;
+  font-family: inherit;
+  font-size: 15px;
+  outline: none;             /* the focus ring is drawn on the whole bar below */
+}
+
+/* :focus-within = the bar is focused when anything inside it has focus */
+.search-bar:focus-within {
+  outline: 3px solid #f59e0b;
+  outline-offset: 2px;
+}
+
+.search-bar button {
+  border: none;
+  background: #f59e0b;
+  color: #1f2937;            /* dark text: white on amber is hard to read */
+  padding: 0 24px;
+  font-family: inherit;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+
+/* ===================== Example 4: Tags =====================
+   flex-wrap lets items go to the next line when there is no room.
+   gap adds space between items without margin tricks. */
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.tag {
+  padding: 6px 16px;
+  background: white;
+  color: inherit;
+  border: 1px solid #ddd;
+  border-radius: 20px;
+  font-size: 14px;
+}
+
+.tag:hover,
+.tag.active {
+  background: #4f46e5;
+  border-color: #4f46e5;
+  color: white;
+}
+
+
+/* ===================== Example 5: Stats =====================
+   flex: 1 makes all boxes the same width.
+   Each box is itself a column flex container. */
+.stats {
+  display: flex;
+  gap: 16px;
+}
+
+.stat {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  background: #f4f6fb;
+  border-radius: 10px;
+}
+
+.stat strong {
+  font-size: 28px;
+  color: #4f46e5;
+}
+
+
+/* ===================== Example 6: Product cards =====================
+   Cards wrap on small screens (flex: 1 1 250px = min ~250px each).
+   Inside each card, margin-top: auto pushes the footer to the bottom. */
+.cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.card {
+  flex: 1 1 250px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 16px;
+  border: 1px solid #eee;
+  border-radius: 12px;
+}
+
+.card-img {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 140px;
+  border-radius: 8px;
+  color: white;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+/* Dark enough for white text */
+.img-1 { background: #0369a1; }
+.img-2 { background: #047857; }
+.img-3 { background: #e11d48; }
+
+.card p {
+  color: #666;
+  font-size: 14px;
+}
+
+.card-footer {
+  margin-top: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.price {
+  font-weight: bold;
+  color: #047857;
+}
+
+
+/* ===================== Example 7: Media object (comment) =====================
+   Avatar on one side, text on the other.
+   flex-shrink: 0 stops the avatar from getting squeezed. */
+.comment {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 14px 0;
+  border-bottom: 1px solid #eee;
+}
+
+.comment:last-child {
+  border-bottom: none;
+}
+
+.avatar {
+  flex-shrink: 0;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.avatar-letter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #f59e0b;
+  color: #1f2937;
+  font-size: 22px;
+  font-weight: bold;
+}
+
+.comment-body {
+  flex: 1;
+}
+
+.comment-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.comment-header small {
+  color: #6b7280;
+}
+
+
+/* ===================== Example 8: Pricing table =====================
+   align-items: center keeps plans vertically centered,
+   so the taller featured plan sticks out. */
+.pricing {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+.plan {
+  flex: 1;
+  max-width: 280px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  padding: 24px;
+  border: 1px solid #eee;
+  border-radius: 12px;
+  text-align: center;
+}
+
+.plan ul {
+  color: #666;
+}
+
+.plan-price {
+  font-size: 22px;
+  font-weight: bold;
+  color: #4f46e5;
+}
+
+.plan-featured {
+  padding: 40px 24px;
+  border: 2px solid #4f46e5;
+  box-shadow: 0 8px 24px rgba(79, 70, 229, 0.2);
+}
+
+.badge {
+  background: #f59e0b;
+  color: #1f2937;
+  font-size: 12px;
+  padding: 2px 12px;
+  border-radius: 20px;
+}
+
+
+/* ===================== Example 9: Sidebar layout =====================
+   flex: 0 0 200px => don't grow, don't shrink, always 200px.
+   flex: 1        => take all the remaining space. */
+.dashboard {
+  display: flex;
+  min-height: 220px;
+  border: 1px solid #eee;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.sidebar {
+  flex: 0 0 200px;
+  display: flex;
+  flex-direction: column;
+  background: #1e293b;
+  padding: 10px;
+}
+
+.sidebar button {
+  background: none;
+  border: none;
+  text-align: start;          /* = right in RTL */
+  color: #cbd5e1;
+  padding: 8px 12px;
+  border-radius: 6px;
+}
+
+.sidebar button:hover,
+.sidebar button.active {
+  background: #4f46e5;
+  color: white;
+}
+
+/* Push the last item (logout) to the bottom of the sidebar */
+.sidebar button:last-child {
+  margin-top: auto;
+  color: #f87171;
+}
+
+.sidebar button:last-child:hover {
+  color: white;
+}
+
+.dashboard-content {
+  flex: 1;
+  padding: 20px;
+}
+
+
+/* ===================== Example 10: Chat =====================
+   Column container; each message picks its own side with align-self.
+   In RTL, flex-start = right and flex-end = left. */
+.chat {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 16px;
+  background: #e5ddd5;
+  border-radius: 12px;
+}
+
+.message {
+  max-width: 70%;
+  padding: 8px 14px;
+  border-radius: 12px;
+}
+
+.sent {
+  align-self: flex-start;
+  background: #dcf8c6;
+}
+
+.received {
+  align-self: flex-end;
+  background: white;
+}
+
+
+/* ===================== Example 11: Footer =====================
+   Columns that wrap on small screens + a bottom bar with space-between. */
+.footer {
+  background: #1e293b;
+  color: #cbd5e1;
+  padding: 40px 40px 0;
+}
+
+.footer-cols {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.footer-col {
+  flex: 1 1 200px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.footer-col h2 {
+  font-size: 16px;
+  color: white;
+  margin-bottom: 8px;
+}
+
+.footer-col a:hover {
+  color: white;
+}
+
+.footer-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1100px;
+  margin: 30px auto 0;
+  padding: 16px 0;
+  border-top: 1px solid #334155;
+  font-size: 14px;
+}
+
+
+/* ===================== Responsive =====================
+   On small screens, change flex-direction from row to column. */
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    gap: 12px;
+    padding: 14px 20px;
+  }
+
+  .stats,
+  .pricing,
+  .dashboard {
+    flex-direction: column;
+  }
+
+  .plan {
+    max-width: 100%;
+    width: 100%;
+  }
+
+  /* Show the featured plan first on mobile */
+  .plan-featured {
+    order: -1;
+  }
+
+  .sidebar {
+    flex-basis: auto;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  .sidebar button:last-child {
+    margin-top: 0;
+  }
+
+  .footer-bottom {
+    flex-direction: column;
+    gap: 8px;
+  }
+}

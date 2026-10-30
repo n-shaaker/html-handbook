@@ -1,0 +1,24 @@
+.swatch {
+  color: #222;
+  padding: 12px;
+}
+
+.sw-name {
+  background-color: lightsalmon;
+}
+
+.sw-hex {
+  background-color: #74c0fc;
+}
+
+.sw-rgb {
+  background-color: rgb(140, 233, 154);
+}
+
+.sw-hsl {
+  background-color: hsl(45, 100%, 70%);
+}
+
+.sw-rgba {
+  background-color: rgba(190, 75, 219, 0.4);
+}

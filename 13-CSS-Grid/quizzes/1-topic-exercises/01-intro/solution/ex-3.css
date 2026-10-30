@@ -1,0 +1,32 @@
+/* تمرین ۳ — خط‌ها، ترک‌ها و خانه‌ها (پاسخ) */
+
+body {
+  font-family: Tahoma, sans-serif;
+  margin: 20px;
+  background-color: #f8f9fa;
+  color: #212529;
+}
+
+/*
+  برگه جواب:
+  - خط ستونی: ۵ (یکی بیشتر از تعداد ستون‌ها)
+  - خط ردیفی: ۳ (دو ردیف ← سه خط)
+  - ترک ستونی: ۴ ، ترک ردیفی: ۲ ، خانه: ۸
+  - خط ستونی ۱ سمت راست است، چون صفحه dir="rtl" است
+    و شبکه از شروع خط (راست) شماره می‌خورد.
+*/
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  background-color: #f1f3f5;
+}
+
+.box {
+  background-color: #1c7ed6;
+  color: white;
+  font-weight: bold;
+  text-align: center;
+  padding: 20px 5px;
+  border: 2px solid white;
+}

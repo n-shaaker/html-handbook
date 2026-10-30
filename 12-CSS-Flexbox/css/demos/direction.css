@@ -1,0 +1,66 @@
+/* ۲) flex-direction */
+
+/* جعبه‌های رنگی شماره‌دار */
+.demo-direction .box {
+  padding: 10px 18px;
+  margin: 4px;
+  color: white;
+  font-weight: bold;
+  text-align: center;
+  border-radius: 6px;
+}
+
+.demo-direction .b1 { background-color: #1c7ed6; }
+.demo-direction .b2 { background-color: #2b8a3e; }
+.demo-direction .b3 { background-color: #e8590c; }
+.demo-direction .b4 { background-color: #ae3ec9; }
+
+/* ظرف مشترک همه مثال‌ها */
+.demo-direction .parent {
+  display: flex;
+  background-color: #f1f3f5;
+  border: 2px solid #868e96;
+  padding: 4px;
+}
+
+.demo-direction .row {
+  flex-direction: row;
+}
+
+.demo-direction .row-reverse {
+  flex-direction: row-reverse;
+}
+
+.demo-direction .column {
+  flex-direction: column;
+}
+
+.demo-direction .column-reverse {
+  flex-direction: column-reverse;
+}
+
+/* کارت‌های منوی کافه */
+.demo-direction .menu {
+  display: flex;
+  flex-direction: row;
+}
+
+.demo-direction .item {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  background-color: #fff4e6;
+  border: 1px solid #e8590c;
+  border-radius: 8px;
+  padding: 10px 16px;
+  margin: 4px;
+}
+
+.demo-direction .icon {
+  font-size: 28px;
+}
+
+.demo-direction .price {
+  color: #868e96;
+  font-size: 14px;
+}

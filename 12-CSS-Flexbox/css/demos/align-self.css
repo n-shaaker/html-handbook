@@ -1,0 +1,84 @@
+/* ۱۱) align-self و margin خودکار */
+
+/* جعبه‌های رنگی شماره‌دار */
+.demo-self .box {
+  padding: 8px 16px;
+  color: white;
+  font-weight: bold;
+  text-align: center;
+  border-radius: 6px;
+}
+
+.demo-self .b1 { background-color: #1c7ed6; }
+.demo-self .b2 { background-color: #2b8a3e; }
+.demo-self .b3 { background-color: #e8590c; }
+.demo-self .b4 { background-color: #ae3ec9; }
+.demo-self .b5 { background-color: #c92a2a; }
+
+/* ظرف مشترک */
+.demo-self .parent {
+  display: flex;
+  gap: 8px;
+  background-color: #f1f3f5;
+  border: 2px solid #868e96;
+  padding: 6px;
+}
+
+/* ظرف بلند برای دیدن محور فرعی */
+.demo-self .tall {
+  height: 140px;
+  align-items: flex-start;
+}
+
+.demo-self .self-center {
+  align-self: center;
+}
+
+.demo-self .self-end {
+  align-self: flex-end;
+}
+
+.demo-self .self-stretch {
+  align-self: stretch;
+}
+
+.demo-self .m-auto {
+  margin: auto;
+}
+
+.demo-self .push {
+  margin-inline-start: auto;
+}
+
+/* نوار منو */
+.demo-self .navbar {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  background-color: #1a3a5c;
+  padding: 10px 16px;
+  border-radius: 8px;
+}
+
+.demo-self .navbar a {
+  color: white;
+  text-decoration: none;
+}
+
+.demo-self .navbar .logo {
+  font-weight: bold;
+  font-size: 18px;
+  color: #ffd43b;
+}
+
+.demo-self .navbar .login {
+  margin-inline-start: auto;
+  background-color: #f59f00;
+  color: #1a3a5c;
+  padding: 4px 14px;
+  border-radius: 6px;
+}
+
+.demo-self .navbar .first-link {
+  margin-inline-start: auto;
+}

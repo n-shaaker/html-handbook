@@ -1,0 +1,42 @@
+body {
+  font-family: Tahoma, Arial, sans-serif;
+  line-height: 2.2;
+  padding: 24px;
+}
+
+.downloads a::before {
+  display: inline-block;
+  margin-left: 8px;
+  padding: 0 8px;
+  font-size: 12px;
+  line-height: 1.8;
+  color: white;
+  border-radius: 4px;
+}
+
+/* $= یعنی «پایان با» */
+a[href$=".pdf"]::before {
+  content: "PDF";
+  background-color: #c92a2a;
+}
+
+a[href$=".docx"]::before {
+  content: "Word";
+  background-color: #1a5fb4;
+}
+
+a[href$=".zip"]::before {
+  content: "ZIP";
+  background-color: #666;
+}
+
+/* *= یعنی «جایی از آدرس شامل» */
+a[href*="aparat"]::before {
+  content: "ویدئو";
+  background-color: #7b3fa0;
+}
+
+/* ^= یعنی «شروع با» */
+a[href^="https"] {
+  color: #0b6e4f;
+}

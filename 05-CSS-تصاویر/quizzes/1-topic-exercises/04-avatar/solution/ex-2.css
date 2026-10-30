@@ -1,0 +1,29 @@
+body {
+  font-family: Tahoma, Arial, sans-serif;
+  line-height: 1.8;
+  margin: 0;
+  padding: 24px 16px;
+}
+
+.comments {
+  max-width: 560px;
+  margin: 0 auto;
+}
+
+.comment {
+  display: flex;
+  gap: 12px;
+  padding: 12px 0;
+  border-bottom: 1px solid #eee;
+}
+
+.comment p {
+  margin: 4px 0 0;
+}
+
+.avatar-sm {
+  width: 48px;
+  height: 48px;
+  flex-shrink: 0; /* با متن طولانی کوچک نشود */
+  border-radius: 50%;
+}

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>۷) انواع داده (Data Types) | آموزش JavaScript سطح پایه</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <script src="../js/log.js" defer></script>
+  <script src="../js/demos/data-types.js" defer></script>
+</head>
+
+<body>
+
+  <header class="page-header" id="top">
+    <h1>آموزش JavaScript — سطح پایه</h1>
+    <p>۷) انواع داده (Data Types)</p>
+  </header>
+
+  <div class="container">
+
+    <nav class="page-nav" aria-label="ناوبری درس">
+      <a href="06-operators.html">→ قبلی: Operators</a>
+      <a href="../index.html">فهرست درس‌ها</a>
+      <a href="08-functions.html">بعدی: Functions ←</a>
+    </nav>
+
+    <section class="lesson" id="data-types">
+      <h2>۷) انواع داده (Data Types)</h2>
+<p>هر مقداری که در JavaScript می‌نویسید یک «نوع» دارد و نوع مشخص می‌کند با آن مقدار چه کارهایی مجاز است. متن را نمی‌شود مثل عدد تقسیم کرد و عدد را نمی‌شود مثل متن برش داد، مگر اینکه اول نوعش را عوض کنید. عملگر <code>typeof</code> نوع یک مقدار را به‌صورت متن برمی‌گرداند تا بتوانید قبل از محاسبه بفهمید با چه چیزی طرف هستید.</p>
+
+<table class="ref">
+<tr><th>نوع</th><th>مثال</th><th>توضیح</th></tr>
+<tr><td><code>string</code></td><td><code>"سلام"</code></td><td>متن</td></tr>
+<tr><td><code>number</code></td><td><code>42</code>، <code>3.14</code></td><td>عدد (صحیح و اعشاری)</td></tr>
+<tr><td><code>boolean</code></td><td><code>true</code>، <code>false</code></td><td>درست یا غلط</td></tr>
+<tr><td><code>undefined</code></td><td><code>let x;</code></td><td>متغیری که هنوز مقدار ندارد</td></tr>
+<tr><td><code>null</code></td><td><code>let x = null;</code></td><td>عمداً «خالی»</td></tr>
+<tr><td><code>bigint</code></td><td><code>12345678901234567890n</code></td><td>عددهای خیلی بزرگ</td></tr>
+<tr><td><code>symbol</code></td><td><code>Symbol("id")</code></td><td>شناسه یکتا (پیشرفته)</td></tr>
+<tr><td><code>object</code></td><td><code>{ name: "علی" }</code>، <code>[1, 2]</code></td><td>مجموعه‌ای از مقدارها</td></tr>
+</table>
+
+<h3>مثال: typeof</h3>
+
+<pre class="code"><code>console.log(typeof "سارا");             // string
+console.log(typeof 25);                 // number
+console.log(typeof true);               // boolean
+console.log(typeof undefined);          // undefined
+console.log(typeof { name: "علی" });    // object
+console.log(typeof [1, 2, 3]);          // object ← آرایه هم object است!
+console.log(typeof null);               // object ← یک اشتباه قدیمی در خود JavaScript
+console.log(typeof "25");               // string ← عدد داخل گیومه، متن است</code></pre>
+
+<div class="result">
+<pre class="console" id="out-1"></pre>
+</div>
+
+<p><code>typeof</code> را جلوی مقدار می‌نویسند و نتیجه یک رشته است، مثل <code>"string"</code> یا <code>"number"</code>. آرایه و شیء هر دو از نظر <code>typeof</code> برابر <code>"object"</code> هستند، پس این عملگر به‌تنهایی آرایه را تشخیص نمی‌دهد. <code>typeof null</code> هم به دلیل یک رفتار قدیمی زبان <code>"object"</code> برمی‌گرداند، نه <code>"null"</code>. عددی که داخل گیومه باشد متن است، حتی اگر فقط رقم داشته باشد.</p>
+
+<h3>نوع متغیر می‌تواند عوض شود (Dynamic Typing)</h3>
+
+<p>در JavaScript نوع به <strong>مقدار</strong> بستگی دارد، نه به متغیر. یک متغیر <code>let</code> می‌تواند اول عدد و بعد متن نگه دارد:</p>
+
+<pre class="code"><code>let value = 10;
+console.log(typeof value);   // number
+value = "ده";
+console.log(typeof value);   // string</code></pre>
+
+<div class="result">
+<pre class="console" id="out-2"></pre>
+</div>
+
+<p>متغیر <code>value</code> اول عدد ۱۰ را نگه می‌دارد، پس نوعش <code>number</code> است. بعد همان متغیر متن «ده» را می‌گیرد و نوعش به <code>string</code> عوض می‌شود. این رفتار را تایپ پویا می‌نامند: نوع به مقدار فعلی وابسته است، نه به نام متغیر. با <code>const</code> هم نوع عوض نمی‌شود، چون اصلاً نمی‌توان مقدار را جایگزین کرد.</p>
+
+<h3>تبدیل نوع</h3>
+
+<pre class="code"><code>console.log(Number("42") + 8);     // 50  ← متن به عدد
+console.log(String(100) + "%");    // 100% ← عدد به متن
+console.log(Number("سلام"));       // NaN یعنی «عدد نیست» (Not a Number)
+console.log(Number(""));           // 0   ← متن خالی صفر می‌شود؛ مراقب باشید!
+console.log(typeof NaN);           // number ← NaN با اینکه «عدد نیست»، از نوع number است
+console.log(Boolean(0), Boolean(1), Boolean(""));   // false true false</code></pre>
+
+<div class="result">
+<pre class="console" id="out-3"></pre>
+</div>
+
+<p><code>Number("42")</code> متنی را که فقط رقم است به عدد تبدیل می‌کند تا جمع واقعی انجام شود. <code>String(100)</code> عدد را به متن تبدیل می‌کند تا بتوان آن را به علامت درصد چسباند. اگر متن قابل تبدیل به عدد نباشد، نتیجه <code>NaN</code> است؛ یعنی «این یک عدد معتبر نیست». متن خالی با <code>Number</code> به صفر تبدیل می‌شود و این تبدیل گاهی بی‌سروصدا جواب محاسبه را عوض می‌کند. <code>Boolean</code> مقدار را به درست یا غلط تبدیل می‌کند: صفر و متن خالی غلط می‌شوند و عدد غیرصفر درست.</p>
+
+<p class="tip"><code>NaN</code> وقتی به وجود می‌آید که یک محاسبه عددی جواب معنادار نداشته باشد؛ مثلاً <code>Number("سلام")</code> یا <code>"سیب" * 2</code>. هر محاسبه‌ای که یک طرفش <code>NaN</code> باشد، نتیجه‌اش هم <code>NaN</code> می‌شود. جزئیات بیشتر در درس «اعداد».</p>
+
+<p class="tip"><code>Boolean()</code> هر مقداری را به true یا false تبدیل می‌کند. مقدارهایی مثل <code>0</code>، <code>""</code>، <code>null</code>، <code>undefined</code> و <code>NaN</code> به false تبدیل می‌شوند؛ به آن‌ها <strong>falsy</strong> می‌گوییم. در درس «بولین و مقایسه» کامل بررسی‌شان می‌کنیم.</p>
+
+<p class="tip"><code>undefined</code> یعنی «هنوز مقدار نگرفته» و <code>null</code> یعنی «برنامه‌نویس عمداً خالی گذاشته».</p>
+
+<p class="mistake"><strong>اشتباه رایج:</strong> انتظار داشتن اینکه <code>typeof []</code> بگوید <code>array</code>. برای تشخیص آرایه از <code>Array.isArray(x)</code> استفاده کنید.</p>
+
+<p class="mistake"><strong>اشتباه رایج:</strong> فکر کردن اینکه <code>typeof null</code> برابر <code>"null"</code> است. برای بررسی null مستقیم مقایسه کنید: <code>x === null</code>.</p>
+
+<p class="exercise"><strong>تمرین:</strong> (۱) برای هر کدام از مقدارهای <code>"12"</code>، <code>12</code>، <code>false</code>، <code>null</code> و <code>[]</code> قبل از اجرا حدس بزنید <code>typeof</code> چه می‌گوید، بعد امتحان کنید. (۲) سن کاربر به صورت متن <code>"19"</code> رسیده است؛ آن را به عدد تبدیل کنید، یک سال به آن اضافه کنید و نتیجه و نوعش را چاپ کنید.</p>
+    </section>
+
+    <nav class="page-nav" aria-label="ناوبری درس پایین">
+      <a href="06-operators.html">→ قبلی: Operators</a>
+      <a href="../index.html">فهرست درس‌ها</a>
+      <a href="08-functions.html">بعدی: Functions ←</a>
+    </nav>
+
+  </div>
+
+  <footer class="page-footer">
+    آموزش JavaScript سطح پایه
+  </footer>
+
+</body>
+
+</html>

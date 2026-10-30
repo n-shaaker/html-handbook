@@ -1,0 +1,36 @@
+body {
+  font-family: Tahoma, Arial, sans-serif;
+  line-height: 1.9;
+  margin: 0;
+}
+
+.container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 24px 16px;
+}
+
+/* فهرست بدون نقطه، با تیک سبز */
+.features {
+  list-style-type: none;
+  padding: 0;
+}
+
+.features li::before {
+  content: "✔";
+  margin-left: 8px;
+  color: #0b6e4f;
+  font-weight: bold;
+}
+
+/* شماره‌های فهرست مرتب */
+.steps li::marker {
+  color: #1a5fb4;
+  font-weight: bold;
+}
+
+/* رنگ متن انتخاب‌شده */
+::selection {
+  color: white;
+  background-color: #1a5fb4;
+}

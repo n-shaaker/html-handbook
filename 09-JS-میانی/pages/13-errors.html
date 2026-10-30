@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>۱۳) مدیریت خطا (Try...Catch) | آموزش JavaScript سطح میانی</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <script src="../js/log.js" defer></script>
+  <script src="../js/demos/errors.js" defer></script>
+</head>
+
+<body>
+
+  <header class="page-header" id="top">
+    <h1>آموزش JavaScript — سطح میانی</h1>
+    <p>۱۳) مدیریت خطا (Try...Catch)</p>
+  </header>
+
+  <div class="container">
+
+    <nav class="page-nav" aria-label="ناوبری درس">
+      <a href="12-json.html">→ قبلی: JSON</a>
+      <a href="../index.html">فهرست درس‌ها</a>
+      <a href="14-dom-selecting.html">بعدی: DOM Selecting ←</a>
+    </nav>
+
+    <section class="lesson" id="errors">
+      <h2>۱۳) مدیریت خطا (Try...Catch)</h2>
+<p>وقتی خطایی رخ می‌دهد، اجرای برنامه متوقف می‌شود. با <code>try...catch</code> می‌توانیم خطا را «بگیریم» و برنامه را ادامه دهیم.</p>
+
+<pre class="code"><code>try {
+  // کدی که ممکن است خطا بدهد
+} catch (error) {
+  // اگر خطا رخ داد اینجا اجرا می‌شود
+} finally {
+  // همیشه اجرا می‌شود (اختیاری)
+}</code></pre>
+
+<p>بلوک <code>try</code> کدی است که ممکن است هنگام اجرا خطا بدهد. اگر خطا رخ دهد، اجرا به <code>catch</code> می‌رود و شیء خطا در پارامتر <code>error</code> قرار می‌گیرد. <code>finally</code> در هر دو حالت اجرا می‌شود: چه خطا باشد و چه نباشد. این الگو برای کاری است که باید حتماً انجام شود، مثل بستن یک وضعیت موقت. خطای نحوی، یعنی کدی که از اول نادرست نوشته شده، به این بلوک نمی‌رسد چون برنامه اصلاً اجرا نمی‌شود.</p>
+
+<h3>مثال: گرفتن خطا</h3>
+
+<pre class="code"><code>try {
+  console.log("قبل از خطا");
+  undefinedFunction();            // چنین تابعی وجود ندارد
+  console.log("این خط اجرا نمی‌شود");
+} catch (error) {
+  console.log("خطا گرفته شد:", error.name);   // ReferenceError
+  console.log("پیام:", error.message);        // undefinedFunction is not defined
+} finally {
+  console.log("finally همیشه اجرا می‌شود");
+}
+console.log("برنامه ادامه دارد ✔");</code></pre>
+
+<p>شیء خطا (<code>error</code>) دو ویژگی مهم دارد: <code>name</code> (نوع خطا) و <code>message</code> (توضیح خطا). <code>finally</code> چه خطا رخ بدهد چه ندهد اجرا می‌شود و برای کارهای «جمع‌وجور کردن» مثل پنهان کردن پیام «در حال بارگذاری...» مناسب است.</p>
+
+<div class="result">
+<pre class="console" id="out-1"></pre>
+</div>
+
+<h3>انواع رایج خطا</h3>
+
+<table class="ref">
+<tr><th>نوع</th><th>کی رخ می‌دهد</th><th>مثال</th></tr>
+<tr><td><code>ReferenceError</code></td><td>استفاده از متغیر تعریف‌نشده</td><td><code>console.log(x)</code></td></tr>
+<tr><td><code>TypeError</code></td><td>کار نادرست با یک نوع داده</td><td><code>null.length</code></td></tr>
+<tr><td><code>SyntaxError</code></td><td>اشتباه در نوشتن کد / JSON</td><td><code>JSON.parse("{bad}")</code></td></tr>
+<tr><td><code>RangeError</code></td><td>عدد خارج از محدوده مجاز</td><td><code>(1.5).toFixed(200)</code></td></tr>
+</table>
+
+<h3>throw — ساختن خطای دلخواه</h3>
+
+<pre class="code"><code>function divide(a, b) {
+  if (b === 0) {
+    throw new Error("تقسیم بر صفر ممکن نیست!");
+  }
+  return a / b;
+}
+
+try {
+  console.log(divide(10, 2));   // 5
+  console.log(divide(5, 0));    // اینجا خطا پرتاب می‌شود و به catch می‌رویم
+} catch (err) {
+  console.log("✖", err.message);
+}</code></pre>
+
+<p><code>throw</code> اجرای عادی تابع را قطع می‌کند و یک شیء خطا به نزدیک‌ترین <code>catch</code> می‌فرستد. تقسیم موفق، نتیجه را برمی‌گرداند و به <code>catch</code> نمی‌رود. تقسیم بر صفر عمداً خطا می‌سازد تا به‌جای مقدار <code>Infinity</code>، پیام قابل‌فهم به کاربر برسد. <code>err.message</code> همان متنی است که داخل <code>Error</code> گذاشته‌اید.</p>
+
+<div class="result">
+<pre class="console" id="out-2"></pre>
+</div>
+
+<p class="tip">در JavaScript تقسیم بر صفر خودش خطا نمی‌دهد و <code>Infinity</code> برمی‌گرداند؛ ما با <code>throw</code> خودمان آن را به خطا تبدیل کردیم تا مقدار بی‌معنی وارد ادامه برنامه نشود. همیشه <code>new Error("...")</code> را throw کنید، نه یک رشته ساده؛ چون شیء Error ویژگی‌های <code>name</code>، <code>message</code> و محل خطا (stack) را دارد.</p>
+
+<h3>بررسی نوع خطا در catch</h3>
+
+<pre class="code"><code>function countCartItems(text) {
+  try {
+    const cart = JSON.parse(text);
+    return cart.items.length;
+  } catch (err) {
+    if (err instanceof SyntaxError) {
+      console.log("داده سبد خراب است:", err.name);
+    } else {
+      console.log("خطای دیگر:", err.name, "-", err.message);
+    }
+    return 0;
+  }
+}
+
+console.log(countCartItems('{"items": ["دفتر", "خودکار", "کیف"]}'));   // 3
+console.log(countCartItems("{items: []}"));      // JSON نامعتبر → SyntaxError → 0
+console.log(countCartItems('{"total": 5}'));     // items وجود ندارد → TypeError → 0</code></pre>
+
+<p>هر بار متن سبد با <code>JSON.parse</code> خوانده می‌شود. اگر متن JSON خراب باشد، خطا از نوع <code>SyntaxError</code> است. اگر JSON درست باشد ولی ویژگی <code>items</code> وجود نداشته باشد، خواندن <code>length</code> خطای نوع دیگری می‌دهد. در هر دو حالت تابع صفر برمی‌گرداند تا برنامه به‌جای توقف، یک نتیجهٔ قابل‌استفاده داشته باشد.</p>
+
+<div class="result">
+<pre class="console" id="out-3"></pre>
+</div>
+
+<h3>مثال زنده: اعتبارسنجی سن در فرم ثبت‌نام</h3>
+
+<pre class="code"><code>function checkAge(value) {
+  if (value.trim() === "") {
+    throw new Error("سن را وارد کنید.");
+  }
+  const age = Number(value);
+  if (Number.isNaN(age)) {
+    throw new Error("سن باید عدد باشد.");
+  }
+  if (!Number.isInteger(age)) {
+    throw new Error("سن باید عدد صحیح باشد.");
+  }
+  if (age &lt; 12 || age &gt; 120) {
+    throw new Error("سن باید بین ۱۲ تا ۱۲۰ باشد.");
+  }
+  return age;
+}
+
+const ageInput = document.getElementById("age-input");
+const ageBtn = document.getElementById("age-btn");
+const msg = document.getElementById("age-msg");
+
+ageBtn.addEventListener("click", () =&gt; {
+  try {
+    const age = checkAge(ageInput.value);
+    msg.textContent = `✔ سن ${age} ثبت شد.`;
+    msg.className = "msg-ok";
+  } catch (err) {
+    msg.textContent = "✖ " + err.message;
+    msg.className = "msg-error";
+  }
+});</code></pre>
+
+<div class="result">
+<label for="age-input">سن:</label>
+<input type="text" id="age-input" inputmode="numeric" placeholder="مثلاً 25">
+<button type="button" class="btn" id="age-btn">ثبت</button>
+<p id="age-msg" aria-live="polite"></p>
+</div>
+
+<p class="tip">مقدارهای «12.5»، «abc»، «150» و کادر خالی را امتحان کنید. توجه کنید که <code>Number("")</code> و <code>Number("   ")</code> برابر <code>0</code> می‌شوند نه NaN؛ برای همین خالی بودن را جداگانه و قبل از تبدیل بررسی کردیم. نکته مهم برای کاربران فارسی‌زبان: <code>Number("۲۵")</code> (با رقم فارسی) هم <code>NaN</code> است؛ در برنامه واقعی قبل از تبدیل، رقم‌های فارسی را به انگلیسی تبدیل کنید یا در پیام خطا به کاربر بگویید.</p>
+
+<p class="tip"><code>try...catch</code> فقط خطاهای <strong>زمان اجرا</strong> را می‌گیرد. اگر کد خطای نحوی (Syntax) داشته باشد، اصلاً اجرا نمی‌شود. همچنین خطایی که <strong>بعداً</strong> داخل یک callback رخ دهد (مثلاً داخل <code>setTimeout</code> یا تابع رویداد) با try...catch بیرونی گرفته نمی‌شود؛ try...catch را داخل همان callback بنویسید (مثل مثال بالا).</p>
+
+<p class="mistake"><strong>اشتباه رایج:</strong> خالی گذاشتن catch: <code>catch (e) {}</code>. خطا پنهان می‌شود و پیدا کردن مشکل خیلی سخت می‌شود. حداقل آن را با <code>console.error</code> چاپ کنید.</p>
+
+<p class="mistake"><strong>اشتباه رایج:</strong> گذاشتن همه برنامه داخل یک try بزرگ. try را فقط دور بخشی بگذارید که <strong>انتظار</strong> خطا در آن دارید (مثل JSON.parse یا ورودی کاربر) تا خطاهای برنامه‌نویسی خودتان پنهان نشوند.</p>
+
+<p class="exercise"><strong>تمرین:</strong> تابع <code>getItem(arr, index)</code> بنویسید که اگر <code>index</code> عدد صحیح نبود یا خارج از محدوده آرایه بود (کمتر از ۰ یا بزرگ‌تر مساوی <code>arr.length</code>)، با <code>throw new Error("شماره نامعتبر")</code> خطا بدهد و در غیر این صورت عضو را برگرداند. آن را با <code>getItem(["دفتر", "خودکار"], 1)</code> و <code>getItem(["دفتر", "خودکار"], 5)</code> داخل try...catch صدا بزنید و نتیجه یا پیام خطا را چاپ کنید.</p>
+    </section>
+
+    <nav class="page-nav" aria-label="ناوبری درس پایین">
+      <a href="12-json.html">→ قبلی: JSON</a>
+      <a href="../index.html">فهرست درس‌ها</a>
+      <a href="14-dom-selecting.html">بعدی: DOM Selecting ←</a>
+    </nav>
+
+  </div>
+
+  <footer class="page-footer">
+    آموزش JavaScript سطح میانی
+  </footer>
+
+</body>
+
+</html>

@@ -1,0 +1,21 @@
+.search-input {
+  padding: 8px;
+  border: 1px solid #adb5bd;
+  border-radius: 6px;
+}
+
+.search-btn {
+  padding: 8px 16px;
+  background-color: #0b7285;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+/* هرگز outline: none بدون جایگزین؛ کاربر صفحه‌کلید باید فوکوس را ببیند */
+.search-input:focus-visible,
+.search-btn:focus-visible {
+  outline: 3px solid #f08c00;
+  outline-offset: 2px;
+}

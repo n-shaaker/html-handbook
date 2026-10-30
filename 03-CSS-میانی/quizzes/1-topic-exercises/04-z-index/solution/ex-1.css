@@ -1,0 +1,40 @@
+body {
+  font-family: Tahoma, Arial, sans-serif;
+  line-height: 1.8;
+  padding: 24px;
+}
+
+.plans {
+  position: relative;
+  height: 220px;
+}
+
+.plan {
+  position: absolute;
+  top: 20px;
+  width: 180px;
+  height: 160px;
+  padding: 16px;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+}
+
+.bronze {
+  right: 0;
+  background-color: #f2d0a9;
+  z-index: 1;
+}
+
+/* کارت وسط بالاتر از بقیه */
+.silver {
+  right: 140px;
+  top: 0;
+  background-color: #dfe7ee;
+  z-index: 3;
+}
+
+.gold {
+  right: 280px;
+  background-color: #ffe08a;
+  z-index: 2;
+}

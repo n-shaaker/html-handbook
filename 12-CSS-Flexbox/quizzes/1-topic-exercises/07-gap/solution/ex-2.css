@@ -1,0 +1,24 @@
+/* تمرین ۲ — فاصله‌های margin به‌هم ریخته (پاسخ) */
+
+body {
+  font-family: Tahoma, sans-serif;
+  margin: 20px;
+  background-color: #f8f9fa;
+  color: #212529;
+}
+
+/* درست شد: gap فقط «بین» کارت‌ها فاصله می‌گذارد، افقی و عمودی */
+.cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  background-color: white;
+  border: 1px solid #dee2e6;
+  padding: 10px;
+}
+
+.card {
+  width: 150px;
+  background-color: #e7f5ff;
+  padding: 15px;
+}

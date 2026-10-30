@@ -1,0 +1,43 @@
+h1 {
+  font-family: Tahoma, sans-serif;
+  color: #2d3748;
+  font-size: 28px;
+}
+
+h2 {
+  font-family: Tahoma, sans-serif;
+  color: #2d3748;
+  font-size: 22px;
+}
+
+p {
+  font-family: Tahoma, sans-serif;
+  color: #2d3748;
+  line-height: 1.8;
+}
+
+li {
+  font-family: Tahoma, sans-serif;
+  color: #2d3748;
+  line-height: 1.8;
+}
+
+td {
+  font-family: Tahoma, sans-serif;
+  color: #2d3748;
+  padding: 6px 10px;
+  border: 1px solid #cbd5e0;
+}
+
+button {
+  font-family: Tahoma, sans-serif;
+  font-size: 16px;
+  color: #2d3748;
+  padding: 6px 14px;
+}
+
+.site-footer p {
+  font-family: Tahoma, sans-serif;
+  color: #718096;
+  font-size: 14px;
+}

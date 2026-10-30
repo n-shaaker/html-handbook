@@ -1,0 +1,37 @@
+/* در موبایل فقط جدول اسکرول افقی بخورد، نه کل صفحه */
+.table-wrap {
+  overflow-x: auto;
+}
+
+.order {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.order caption {
+  font-weight: bold;
+  padding: 8px;
+}
+
+.order th,
+.order td {
+  border: 1px solid #ced4da;
+  padding: 8px 10px;
+  text-align: start;
+}
+
+.order th {
+  background-color: #343a40;
+  color: white;
+}
+
+/* عدد و واحد در دو خط نشکنند و ارقام زیر هم مرتب باشند */
+.order td.num {
+  white-space: nowrap;
+  text-align: left;
+}
+
+.order tfoot td {
+  font-weight: bold;
+  background-color: #fff3bf;
+}

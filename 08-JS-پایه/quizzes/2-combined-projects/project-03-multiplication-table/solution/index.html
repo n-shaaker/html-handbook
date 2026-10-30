@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>جدول ضرب پویا</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="app.js" defer></script>
+</head>
+
+<body>
+
+  <main class="panel">
+    <h1>جدول ضرب پویا ✖️</h1>
+
+    <div class="fields">
+      <div class="field">
+        <label for="rows">تعداد ردیف‌ها (n)</label>
+        <input type="number" id="rows" min="1" max="12" value="5">
+      </div>
+      <div class="field">
+        <label for="col-start">ستون از</label>
+        <input type="number" id="col-start" min="1" max="12" value="1">
+      </div>
+      <div class="field">
+        <label for="col-end">ستون تا</label>
+        <input type="number" id="col-end" min="1" max="12" value="5">
+      </div>
+    </div>
+
+    <button type="button" class="btn" id="build-btn">ساختن جدول</button>
+
+    <section aria-live="polite">
+      <p id="summary"></p>
+      <div class="table-wrap" id="table-wrap"></div>
+    </section>
+  </main>
+
+</body>
+
+</html>

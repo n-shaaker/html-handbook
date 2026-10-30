@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>۳) موقعیت (Position) | آموزش CSS سطح میانی</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/demos/position.css">
+</head>
+
+<body>
+
+  <header class="page-header" id="top">
+    <h1>آموزش CSS — سطح میانی</h1>
+    <p>۳) موقعیت (Position)</p>
+  </header>
+
+  <div class="container">
+
+    <nav class="page-nav" aria-label="ناوبری درس">
+      <a href="02-max-width.html">→ قبلی: Max-width</a>
+      <a href="../index.html">فهرست درس‌ها</a>
+      <a href="04-z-index.html">بعدی: Z-index ←</a>
+    </nav>
+
+    <section class="lesson" id="position">
+      <h2>۳) موقعیت (Position)</h2>
+      <p>
+        ویژگی <code>position</code> مشخص می‌کند مرورگر جای عنصر را نسبت به چه مرجعی حساب کند: جای عادی خودش در صفحه، یک عنصر والد، یا پنجره مرورگر.
+        بعد از انتخاب نوع موقعیت، با <code>top</code>، <code>right</code>، <code>bottom</code> و <code>left</code> فاصله از لبه‌های همان مرجع را می‌دهیم.
+        در حالت پیش‌فرض که <code>static</code> است، این چهار ویژگی اثری ندارند؛ چون عنصر هنوز در جریان عادی صفحه نشسته و قرار نیست از جایش جدا شود.
+        مقدارهای <code>left</code> و <code>right</code> سمت فیزیکی را می‌گویند و با <code>dir="rtl"</code> جابه‌جا نمی‌شوند.
+      </p>
+      <table class="ref">
+        <tr>
+          <th>مقدار</th>
+          <th>به زبان ساده</th>
+        </tr>
+        <tr>
+          <td><code>static</code></td>
+          <td>حالت پیش‌فرض. عنصر در جریان عادی صفحه می‌ماند و <code>top</code>، <code>right</code>، <code>bottom</code>، <code>left</code> و <code>z-index</code> روی آن اثر ندارند.</td>
+        </tr>
+        <tr>
+          <td><code>relative</code></td>
+          <td>عنصر نسبت به جایی که در جریان عادی داشته جابه‌جا می‌شود. جای اولیه‌اش خالی می‌ماند، پس عنصرهای بعدی تکان نمی‌خورند.</td>
+        </tr>
+        <tr>
+          <td><code>absolute</code></td>
+          <td>عنصر از جریان صفحه خارج می‌شود و جایش برای بقیه خالی نمی‌ماند. مرجع آن نزدیک‌ترین جد است که <code>position</code> آن <code>static</code> نباشد. اگر چنین جدی نباشد، مرجع صفحه است.</td>
+        </tr>
+        <tr>
+          <td><code>fixed</code></td>
+          <td>عنصر نسبت به پنجره مرورگر ثابت می‌ماند و با اسکرول صفحه حرکت نمی‌کند. از جریان صفحه خارج می‌شود، پس روی محتوای زیر خودش قرار می‌گیرد.</td>
+        </tr>
+        <tr>
+          <td><code>sticky</code></td>
+          <td>تا پیش از رسیدن به آستانه، مثل <code>relative</code> در جریان صفحه می‌ماند. بعد از اسکرول، داخل محدوده والدش به لبه تعیین‌شده (مثلاً <code>top: 0</code>) می‌چسبد. بدون <code>top</code> یا <code>bottom</code> چسبیدن شروع نمی‌شود.</td>
+        </tr>
+      </table>
+
+      <h3>مثال ۱: relative — کمی جابه‌جا کن</h3>
+      <pre class="code"><code>.moved {
+  position: relative;
+  top: 15px;
+  right: 40px;   /* ۴۰ پیکسل از سمت راست فاصله بگیرد (یعنی به چپ برود) */
+}</code></pre>
+      <div class="result demo-pos">
+        <div class="box">جعبه معمولی</div>
+        <div class="box moved">جعبه relative (جابه‌جا شده)</div>
+        <div class="box">جعبه معمولی بعدی</div>
+      </div>
+
+      <p class="tip">
+        در صفحه راست‌چین هم <code>right: 40px</code> یعنی «۴۰ پیکسل از لبه راستِ جای اصلی فاصله بگیر»؛
+        پس جعبه به سمت چپ می‌رود. جهت صفحه (<code>dir="rtl"</code>) معنی <code>left</code> و <code>right</code> را عوض نمی‌کند.
+      </p>
+
+      <h3>مثال ۲: absolute — برچسب روی گوشه کارت محصول</h3>
+      <p>الگوی پرکاربرد در فروشگاه‌ها: پدر را <code>relative</code> می‌کنیم و فرزند را <code>absolute</code>.</p>
+      <pre class="code"><code>.card {
+  position: relative;   /* مرجع برای فرزند */
+}
+
+.badge {
+  position: absolute;
+  top: -10px;
+  left: -10px;
+}</code></pre>
+      <div class="result demo-pos">
+        <div class="card">
+          <span class="badge">جدید</span>
+          <strong>دوره CSS مقدماتی</strong>
+          <p>برچسب «جدید» با absolute روی گوشه کارت نشسته است.</p>
+        </div>
+        <div class="card">
+          <span class="badge sale">۳۰٪</span>
+          <strong>کتاب HTML</strong>
+          <p>همان کلاس <code>badge</code> به‌علاوه کلاس <code>sale</code> برای رنگ متفاوت.</p>
+        </div>
+      </div>
+
+      <h3>مثال ۳: sticky — سرتیتری که می‌چسبد</h3>
+      <p>همین روش برای «هدر چسبان» سایت‌ها (<code>header { position: sticky; top: 0; }</code>) هم استفاده می‌شود. داخل جعبه زیر اسکرول کنید:</p>
+      <pre class="code"><code>.sticky-title {
+  position: sticky;
+  top: 0;
+}</code></pre>
+      <div class="result demo-pos">
+        <div class="scroll-area">
+          <h4 class="sticky-title">میوه‌ها</h4>
+          <p>سیب</p>
+          <p>پرتقال</p>
+          <p>موز</p>
+          <p>انار</p>
+          <h4 class="sticky-title">سبزیجات</h4>
+          <p>هویج</p>
+          <p>کاهو</p>
+          <p>خیار</p>
+          <p>گوجه</p>
+        </div>
+      </div>
+
+      <h3>مثال ۴: fixed — دکمه «بالای صفحه»</h3>
+      <p>دکمه گرد گوشه پایین سمت چپ صفحه را ببینید؛ هر چقدر اسکرول کنید سر جایش می‌ماند.</p>
+      <pre class="code"><code>.to-top {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+}</code></pre>
+      <a href="#top" class="to-top" aria-label="بالای صفحه">↑</a>
+
+      <p class="mistake">
+        <strong>اشتباه رایج:</strong>
+        <code>absolute</code> دادن به فرزند بدون <code>relative</code> کردن پدر.
+        در این حالت مرجعِ عنصر یک جدّ دورتر یا (اگر هیچ جدّی position نداشته باشد) کل صفحه می‌شود و برچسب جای عجیبی می‌رود.
+      </p>
+
+      <p class="mistake">
+        <strong>اشتباه رایج:</strong>
+        «sticky کار نمی‌کند!» معمولاً یکی از این سه دلیل را دارد:
+        ۱) <code>top</code> (یا <code>bottom</code>) تعیین نشده؛
+        ۲) یکی از اجداد عنصر <code>overflow: hidden</code> یا <code>auto</code> دارد و چسبیدن داخل همان جعبه اتفاق می‌افتد؛
+        ۳) پدر عنصر هم‌قد خود عنصر است و جایی برای چسبیدن نمی‌ماند.
+      </p>
+
+      <p class="tip">
+        عنصری که <code>fixed</code> است روی محتوا می‌افتد؛ اگر یک هدر را <code>fixed</code> کنید،
+        باید به <code>body</code> به اندازه ارتفاع هدر <code>padding-top</code> بدهید تا اول صفحه زیرش پنهان نشود.
+        <code>sticky</code> این مشکل را ندارد، چون جای خودش را در صفحه نگه می‌دارد.
+      </p>
+
+      <p class="exercise">
+        <strong>تمرین:</strong> یک عکس پروفایل بسازید و با absolute یک دایره سبز کوچک (نشانه «آنلاین») روی گوشه پایین آن بگذارید.
+      </p>
+    </section>
+
+    <nav class="page-nav" aria-label="ناوبری درس پایین">
+      <a href="02-max-width.html">→ قبلی: Max-width</a>
+      <a href="../index.html">فهرست درس‌ها</a>
+      <a href="04-z-index.html">بعدی: Z-index ←</a>
+    </nav>
+
+  </div>
+
+  <footer class="page-footer">
+    آموزش CSS سطح میانی
+  </footer>
+
+</body>
+
+</html>

@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>۹) وعده‌ها (Promises) | آموزش JavaScript سطح پیشرفته</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <script src="../js/log.js" defer></script>
+  <script src="../js/demos/promises.js" defer></script>
+</head>
+
+<body>
+
+  <header class="page-header" id="top">
+    <h1>آموزش JavaScript — سطح پیشرفته</h1>
+    <p>۹) وعده‌ها (Promises)</p>
+  </header>
+
+  <div class="container">
+
+    <nav class="page-nav" aria-label="ناوبری درس">
+      <a href="08-callbacks.html">→ قبلی: Callbacks</a>
+      <a href="../index.html">فهرست درس‌ها</a>
+      <a href="10-async-await.html">بعدی: Async / Await ←</a>
+    </nav>
+
+    <section class="lesson" id="promises">
+      <h2>۹) وعده‌ها (Promises)</h2>
+<p><strong>Promise</strong> شیئی است که نتیجهٔ یک کار ناهمگام را نگه می‌دارد؛ کاری که همین لحظه تمام نمی‌شود، مثل انتظار یا درخواست شبکه. به‌جای دادن نتیجهٔ مستقیم، شیء وعده می‌دهد که بعداً یا مقدار موفق را تحویل می‌دهد یا دلیل شکست را. تا آن لحظه، برنامه می‌تواند به خط‌های بعدی برسد و هر وقت نتیجه آماده شد با <code>then</code> یا <code>catch</code> به آن واکنش نشان دهد. یک Promise در هر لحظه یکی از این سه حالت را دارد:</p>
+
+<table class="ref">
+<tr><th>حالت</th><th>یعنی</th></tr>
+<tr><td><code>pending</code></td><td>در انتظار؛ کار هنوز تمام نشده</td></tr>
+<tr><td><code>fulfilled</code></td><td>موفق؛ با <code>resolve(value)</code> تمام شد</td></tr>
+<tr><td><code>rejected</code></td><td>ناموفق؛ با <code>reject(error)</code> تمام شد</td></tr>
+</table>
+
+<h3>ساختن و مصرف Promise</h3>
+
+<pre class="code"><code>function orderPizza(type) {
+  return new Promise((resolve, reject) =&gt; {
+    log(`سفارش ${type} ثبت شد...`);
+    setTimeout(() =&gt; {
+      if (type === "آناناس") {
+        reject(new Error("این پیتزا را نداریم!"));
+      } else {
+        resolve(`پیتزا ${type} آماده است 🍕`);
+      }
+    }, 1200);
+  });
+}
+
+orderPizza("پپرونی")
+  .then(message =&gt; log("✔", message))
+  .catch(error =&gt; log("✖", error.message))
+  .finally(() =&gt; log("— پایان سفارش —"));</code></pre>
+
+<p>سازندهٔ Promise تابعی می‌گیرد که <code>resolve</code> و <code>reject</code> را در اختیارش می‌گذارد. اگر نوع پیتزا قابل‌قبول باشد، <code>resolve</code> نتیجهٔ موفق را می‌فرستد و <code>then</code> آن را می‌گیرد. نوع غیرمجاز <code>reject</code> می‌شود و به <code>catch</code> می‌رود. <code>finally</code> در هر دو حالت اجرا می‌شود و برای کاری است که باید آخر سر انجام شود.</p>
+
+<div class="result">
+<button class="btn" id="pizza-ok">سفارش پپرونی</button>
+<button class="btn danger" id="pizza-bad">سفارش آناناس</button>
+<pre class="console" id="out-1" aria-live="polite"></pre>
+</div>
+
+<table class="ref">
+<tr><th>متد</th><th>کی اجرا می‌شود</th></tr>
+<tr><td><code>.then(fn)</code></td><td>وقتی Promise موفق شد؛ fn مقدار resolve را می‌گیرد</td></tr>
+<tr><td><code>.catch(fn)</code></td><td>وقتی Promise (یا هر then قبلی) خطا داد</td></tr>
+<tr><td><code>.finally(fn)</code></td><td>در هر صورت، آخر کار</td></tr>
+</table>
+
+<h3>زنجیره then — خداحافظی با Callback Hell</h3>
+
+<pre class="code"><code>// بعد از ms میلی‌ثانیه، با value موفق می‌شود
+function wait(ms, value) {
+  return new Promise(resolve =&gt; {
+    setTimeout(() =&gt; resolve(value), ms);
+  });
+}
+
+wait(500, 1)
+  .then(n =&gt; { log("مرحله اول:", n); return wait(500, n + 1); })
+  .then(n =&gt; { log("مرحله دوم:", n); return wait(500, n + 1); })
+  .then(n =&gt; { log("مرحله سوم:", n); })
+  .catch(err =&gt; log("خطا:", err));</code></pre>
+
+<p><code>wait</code> بعد از مدت مشخص با یک مقدار resolve می‌شود. هر <code>then</code> می‌تواند Promise تازه‌ای برگرداند تا مرحلهٔ بعد منتظر همان بماند. اگر یکی از مرحله‌ها خطا بدهد، زنجیره به <code>catch</code> می‌رود و <code>then</code>های بعدی اجرا نمی‌شوند.</p>
+
+<div class="result">
+<button class="btn" id="chain-btn">اجرا</button>
+<pre class="console" id="out-2" aria-live="polite"></pre>
+</div>
+
+<p class="tip">هر <code>then</code> یک Promise جدید برمی‌گرداند؛ برای همین می‌شود آن‌ها را پشت سر هم نوشت. اگر داخل then یک Promise را return کنید، then بعدی منتظر تمام شدن آن می‌ماند. یک <code>catch</code> در آخر، خطای همه مرحله‌ها را می‌گیرد.</p>
+
+<h3>ترتیب اجرا: کد همگام، microtask و تایمر</h3>
+
+<p>JavaScript اول همه کدهای <strong>همگام</strong> فعلی را تا آخر اجرا می‌کند. بعد سراغ صف <strong>microtask</strong>ها می‌رود (callbackهای <code>then</code>/<code>catch</code>/<code>finally</code> و ادامه توابع async بعد از await) و همه آن‌ها را خالی می‌کند. فقط بعد از آن نوبت <strong>تایمرها</strong> (setTimeout و setInterval) و رویدادها می‌رسد. به این چرخه <strong>Event Loop</strong> می‌گویند.</p>
+
+<pre class="code"><code>log("1: همگام");
+setTimeout(() =&gt; log("4: setTimeout با تأخیر 0"), 0);
+Promise.resolve().then(() =&gt; log("3: then (microtask)"));
+log("2: همگام");</code></pre>
+
+<p>دو <code>log</code> همگام همان لحظه و به ترتیب اجرا می‌شوند. <code>then</code> یک microtask است و قبل از تایمر صف اجرا می‌شود، حتی اگر تأخیر تایمر صفر باشد. به همین دلیل ترتیب، همگام، بعد then، و در آخر timeout است. صفر در <code>setTimeout</code> یعنی «در اولین فرصت بعد از کار همگام»، نه «همین لحظه».</p>
+
+<div class="result">
+<pre class="console" id="out-4" aria-live="polite"></pre>
+</div>
+
+<p class="tip">با اینکه setTimeout زودتر نوشته شده و تأخیرش صفر است، بعد از then اجرا می‌شود؛ چون microtaskها همیشه قبل از تایمر بعدی اجرا می‌شوند.</p>
+
+<h3>چند Promise با هم</h3>
+
+<table class="ref">
+<tr><th>متد</th><th>نتیجه</th></tr>
+<tr><td><code>Promise.all([...])</code></td><td>منتظر <strong>همه</strong>؛ اگر یکی خطا داد، کل کار خطا می‌شود</td></tr>
+<tr><td><code>Promise.allSettled([...])</code></td><td>منتظر همه؛ نتیجه موفق و ناموفق هر کدام را می‌دهد</td></tr>
+<tr><td><code>Promise.race([...])</code></td><td>اولین Promise که تمام شود (موفق یا ناموفق)</td></tr>
+<tr><td><code>Promise.any([...])</code></td><td>اولین Promise <strong>موفق</strong></td></tr>
+</table>
+
+<pre class="code"><code>const p1 = wait(800, "کاربر");
+const p2 = wait(400, "سفارش‌ها");
+const p3 = wait(600, "پیام‌ها");
+
+Promise.all([p1, p2, p3]).then(results =&gt; {
+  log("همه رسیدند:", results);
+});
+
+Promise.race([p1, p2, p3]).then(first =&gt; {
+  log("اولین:", first);
+});
+
+// خروجی (ترتیب زمانی):
+// اولین: سفارش‌ها                       ← بعد از ۴۰۰ میلی‌ثانیه
+// همه رسیدند: ["کاربر","سفارش‌ها","پیام‌ها"]  ← بعد از ۸۰۰ میلی‌ثانیه، به ترتیب آرایه ورودی</code></pre>
+
+<p><code>Promise.all</code> وقتی همه موفق شوند یک آرایه به ترتیب همان ورودی‌ها می‌دهد، نه به ترتیب تمام شدن. اگر یکی رد شود، کل <code>all</code> رد می‌شود. <code>Promise.race</code> با اولین موردی که تمام شود، چه موفق و چه ناموفق، نتیجه را مشخص می‌کند. اینجا کوتاه‌ترین انتظار مال «سفارش‌ها» است.</p>
+
+<div class="result">
+<button class="btn" id="all-btn">اجرا</button>
+<pre class="console" id="out-3" aria-live="polite"></pre>
+</div>
+
+<p class="tip">نتیجه <code>Promise.all</code> به ترتیب آرایه ورودی است، نه به ترتیب زمان رسیدن. «سفارش‌ها» زودتر از همه رسید ولی در جایگاه دوم آرایه نتیجه است.</p>
+
+<h3>وقتی یکی از Promiseها خطا بدهد</h3>
+
+<p>فرض کنید از سه سرور داده می‌گیریم و سرور B خراب است. هر چهار متد را روی همین وضعیت امتحان می‌کنیم:</p>
+
+<pre class="code"><code>// بعد از ms میلی‌ثانیه، با خطا تمام می‌شود
+function fail(ms, message) {
+  return new Promise((resolve, reject) =&gt; {
+    setTimeout(() =&gt; reject(new Error(message)), ms);
+  });
+}
+
+// هر بار سه درخواست تازه می‌سازد: A بعد از 300، B (خطا) بعد از 100، C بعد از 500 میلی‌ثانیه
+function makeRequests() {
+  return [wait(300, "سرور A"), fail(100, "سرور B خراب است"), wait(500, "سرور C")];
+}
+
+Promise.all(makeRequests())
+  .then(r =&gt; log("all:", r))
+  .catch(err =&gt; log("all ✖:", err.message));
+
+Promise.allSettled(makeRequests()).then(results =&gt; {
+  results.forEach(r =&gt; {
+    if (r.status === "fulfilled") {
+      log("allSettled:", r.status, r.value);
+    } else {
+      log("allSettled:", r.status, r.reason.message);
+    }
+  });
+});
+
+Promise.race(makeRequests())
+  .then(v =&gt; log("race:", v))
+  .catch(err =&gt; log("race ✖:", err.message));
+
+Promise.any(makeRequests())
+  .then(v =&gt; log("any:", v))
+  .catch(err =&gt; log("any ✖: همه ناموفق بودند"));
+
+// خروجی:
+// all ✖: سرور B خراب است          ← اولین خطا کل کار را خراب کرد (۱۰۰ms)
+// race ✖: سرور B خراب است         ← اولین Promise تمام‌شده، خطا بود (۱۰۰ms)
+// any: سرور A                     ← اولین موفق (۳۰۰ms)
+// allSettled: fulfilled سرور A    ← گزارش کامل همه، بعد از تمام شدن همه (۵۰۰ms)
+// allSettled: rejected سرور B خراب است
+// allSettled: fulfilled سرور C</code></pre>
+
+<p><code>fail</code> بعد از مدت مشخص reject می‌شود. <code>Promise.all</code> با اولین رد شدن، شکست می‌خورد و نتیجه‌های موفق دیگر را به شما نمی‌دهد. <code>allSettled</code> منتظر همه می‌ماند و برای هر کدام وضعیت fulfilled یا rejected را جدا برمی‌گرداند تا بتوانید ببینید کدام سرور خراب بوده و کدام پاسخ داده است.</p>
+
+<div class="result">
+<button class="btn" id="settled-btn">اجرا</button>
+<pre class="console" id="out-5" aria-live="polite"></pre>
+</div>
+
+<table class="ref">
+<tr><th>کی از کدام استفاده کنیم؟</th><th>مثال</th></tr>
+<tr><td><code>Promise.all</code></td><td>همه داده‌ها لازم‌اند؛ بدون یکی صفحه کامل نمی‌شود (پروفایل + سفارش‌ها)</td></tr>
+<tr><td><code>Promise.allSettled</code></td><td>هر کدام جدا مهم است؛ می‌خواهیم گزارش موفق و ناموفق‌ها را بدهیم (آپلود چند فایل)</td></tr>
+<tr><td><code>Promise.race</code></td><td>ساختن مهلت زمانی (timeout): مسابقه بین درخواست و یک تایمر</td></tr>
+<tr><td><code>Promise.any</code></td><td>چند منبع یکسان داریم و سریع‌ترین پاسخ موفق کافی است (چند سرور آینه)</td></tr>
+</table>
+
+<p class="mistake"><strong>اشتباه رایج:</strong> فراموش کردن <code>return</code> داخل then وقتی Promise جدید می‌سازید. در این حالت then بعدی منتظر نمی‌ماند و مقدار <code>undefined</code> می‌گیرد. دقت کنید تابع پیکانی با آکولاد (<code>n =&gt; { wait(500) }</code>) چیزی برنمی‌گرداند؛ بدون آکولاد (<code>n =&gt; wait(500)</code>) خودکار return می‌کند.</p>
+
+<p class="mistake"><strong>اشتباه رایج:</strong> نگذاشتن <code>catch</code> در آخر زنجیره. Promise ردشده‌ای که کسی آن را نگیرد، در Console خطای <code>Uncaught (in promise)</code> می‌دهد و کاربر هیچ پیامی نمی‌بیند.</p>
+
+<p class="exercise"><strong>تمرین:</strong> تابع <code>checkStock(item)</code> بسازید که یک Promise برگرداند: اگر item در آرایه <code>["لپ‌تاپ", "موبایل", "هدفون"]</code> بود بعد از ۱ ثانیه با پیام «item موجود است» resolve و وگرنه با <code>new Error("item ناموجود است")</code> reject شود. نتیجه را با then/catch در صفحه نشان دهید. سپس موجودی سه کالا (یکی ناموجود) را با <code>Promise.allSettled</code> بررسی کنید و برای هر کالا ✔ یا ✖ چاپ کنید.</p>
+    </section>
+
+    <nav class="page-nav" aria-label="ناوبری درس پایین">
+      <a href="08-callbacks.html">→ قبلی: Callbacks</a>
+      <a href="../index.html">فهرست درس‌ها</a>
+      <a href="10-async-await.html">بعدی: Async / Await ←</a>
+    </nav>
+
+  </div>
+
+  <footer class="page-footer">
+    آموزش JavaScript سطح پیشرفته
+  </footer>
+
+</body>
+
+</html>

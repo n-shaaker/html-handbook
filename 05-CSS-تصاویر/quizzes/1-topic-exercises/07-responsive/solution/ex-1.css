@@ -1,0 +1,29 @@
+body {
+  font-family: Tahoma, Arial, sans-serif;
+  line-height: 1.9;
+  margin: 0;
+}
+
+.post {
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 16px;
+}
+
+figure {
+  margin: 16px 0;
+}
+
+/* قانون طلایی عکس واکنش‌گرا */
+figure img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+figcaption {
+  font-size: 14px;
+  color: #666;
+  text-align: center;
+}

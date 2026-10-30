@@ -1,0 +1,282 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>۱۷) قالب‌بندی متن، نقل‌قول و کد | جزوه HTML</title>
+    <link rel="stylesheet" href="../css/style.css" />
+  </head>
+
+  <body>
+    <header class="page-header">
+      <h1>جزوه HTML مقدماتی</h1>
+      <p>۱۷) قالب‌بندی متن، نقل‌قول‌ها و نمایش کد</p>
+    </header>
+
+    <div class="container">
+      <nav class="page-nav">
+        <a href="16-attributes-styles.html">→ درس قبل</a>
+        <a href="../index.html">فهرست مطالب</a>
+        <a href="18-entities-emoji.html">درس بعد ←</a>
+      </nav>
+
+      <section class="lesson">
+        <h2>۱۷) تگ‌های قالب‌بندی متن (Formatting)</h2>
+        <p>
+          عنصرهای این بخش درون‌خطی هستند؛ یعنی داخل جمله می‌نشینند و خودشان خط تازه نمی‌سازند.
+          بعضی از آن‌ها معنا دارند، مثل اهمیت یا تأکید، و بعضی فقط ظاهر یا نقش خاصی را نشان می‌دهند. ظاهر پیش‌فرض مرورگر را با معنای عنصر یکی نگیرید.
+        </p>
+
+        <table class="ref">
+          <thead>
+            <tr>
+              <th>تگ</th>
+              <th>معنی</th>
+              <th>نتیجه</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>&lt;b&gt;</code></td>
+              <td>متن را بدون اینکه مهم‌تر از بقیه باشد برجسته می‌کند، مثل نام محصول در یک خلاصه. مرورگر معمولاً آن را ضخیم نشان می‌دهد.</td>
+              <td><b>گوشی مدل X</b> عرضه شد</td>
+            </tr>
+            <tr>
+              <td><code>&lt;strong&gt;</code></td>
+              <td>متن را از نظر معنا مهم اعلام می‌کند. ضخیم شدن، ظاهر پیش‌فرض است نه خود معنا.</td>
+              <td><strong>متن مهم</strong></td>
+            </tr>
+            <tr>
+              <td><code>&lt;i&gt;</code></td>
+              <td>متن را از لحن عادی جدا می‌کند، مثل اصطلاح خارجی، نام علمی یا فکر درونی. معمولاً کج دیده می‌شود.</td>
+              <td><i>Homo sapiens</i></td>
+            </tr>
+            <tr>
+              <td><code>&lt;em&gt;</code></td>
+              <td>روی بخشی از جمله تأکید معنایی می‌گذارد. صفحه‌خوان می‌تواند آن را با لحن تأکیدی بخواند.</td>
+              <td><em>حتماً</em> بیا</td>
+            </tr>
+            <tr>
+              <td><code>&lt;mark&gt;</code></td>
+              <td>بخشی از متن را مثل ماژیک برجسته می‌کند تا پیدا کردنش آسان شود، مثلاً در نتیجهٔ جستجو.</td>
+              <td><mark>نکته کلیدی</mark></td>
+            </tr>
+            <tr>
+              <td><code>&lt;small&gt;</code></td>
+              <td>متن فرعی را نشان می‌دهد، مانند شرایط و ضوابط. کوچک شدن ظاهر پیش‌فرض است.</td>
+              <td><small>شرایط و ضوابط</small></td>
+            </tr>
+            <tr>
+              <td><code>&lt;s&gt;</code></td>
+              <td>مطلبی را نشان می‌دهد که دیگر درست یا معتبر نیست، مثل قیمت قبلی کالا. مرورگر معمولاً آن را خط می‌زند.</td>
+              <td><s>۲۰۰ هزار</s> ۱۵۰ هزار تومان</td>
+            </tr>
+            <tr>
+              <td><code>&lt;del&gt;</code></td>
+              <td>متنی را نشان می‌دهد که در ویرایش سند حذف شده است. با <code>s</code> فرق دارد، چون <code>del</code> دربارهٔ تاریخچهٔ ویرایش است.</td>
+              <td>جلسه <del>شنبه</del> برگزار می‌شود</td>
+            </tr>
+            <tr>
+              <td><code>&lt;ins&gt;</code></td>
+              <td>متنی را نشان می‌دهد که در ویرایش سند اضافه شده است. مرورگر معمولاً آن را زیرخط‌دار می‌کند.</td>
+              <td>جلسه <ins>یکشنبه</ins> برگزار می‌شود</td>
+            </tr>
+            <tr>
+              <td><code>&lt;sub&gt;</code></td>
+              <td>نویسه را پایین خط زمینه می‌برد، مثل عدد در فرمول شیمیایی.</td>
+              <td>H<sub>2</sub>O</td>
+            </tr>
+            <tr>
+              <td><code>&lt;sup&gt;</code></td>
+              <td>نویسه را بالای خط زمینه می‌برد، مثل توان در ریاضی.</td>
+              <td>x<sup>2</sup> + y<sup>2</sup></td>
+            </tr>
+          </tbody>
+        </table>
+
+        <pre class="code"><code>&lt;p&gt;قیمت ویژه: &lt;s&gt;۲۰۰ هزار&lt;/s&gt; &lt;strong&gt;۱۵۰ هزار&lt;/strong&gt; تومان&lt;/p&gt;
+&lt;p&gt;کلاس جبرانی روز &lt;del&gt;شنبه&lt;/del&gt; &lt;ins&gt;دوشنبه&lt;/ins&gt; برگزار می‌شود.&lt;/p&gt;
+&lt;p&gt;فرمول آب: H&lt;sub&gt;2&lt;/sub&gt;O — مساحت مربع: a&lt;sup&gt;2&lt;/sup&gt;&lt;/p&gt;
+&lt;p&gt;امروز &lt;mark&gt;آخرین مهلت&lt;/mark&gt; ثبت‌نام است.&lt;/p&gt;</code></pre>
+        <div class="result">
+          <p>قیمت ویژه: <s>۲۰۰ هزار</s> <strong>۱۵۰ هزار</strong> تومان</p>
+          <p>کلاس جبرانی روز <del>شنبه</del> <ins>دوشنبه</ins> برگزار می‌شود.</p>
+          <p>فرمول آب: H<sub>2</sub>O — مساحت مربع: a<sup>2</sup></p>
+          <p>امروز <mark>آخرین مهلت</mark> ثبت‌نام است.</p>
+        </div>
+
+        <p class="tip">
+          <strong>نکته:</strong>
+          وقتی منظورتان اهمیت یا تأکید است، <code>strong</code> و <code>em</code> را به <code>b</code> و <code>i</code> ترجیح دهید،
+          چون به مرورگر و ابزارهای کمکی معنا می‌دهند، نه فقط ظاهر. <code>b</code> و <code>i</code> منسوخ نیستند،
+          اما فقط برای موارد جدول به‌کار می‌روند. اگر فقط ضخیم یا کج می‌خواهید و معنایی در کار نیست، از CSS استفاده کنید.
+        </p>
+
+        <p class="mistake">
+          <strong>خطای متداول:</strong>
+          استفاده از <code>u</code> برای زیرخط‌دار کردن متن معمولی. کاربر متن زیرخط‌دار را اغلب با پیوند اشتباه می‌گیرد.
+          عنصرهای <code>big</code>، <code>font</code> و <code>strike</code> هم منسوخ شده‌اند و نباید برای ظاهر به‌کار بروند.
+        </p>
+      </section>
+
+      <section class="lesson">
+        <h2>نقل‌قول‌ها و ارجاع‌ها (Quotations)</h2>
+
+        <div class="tag-card">
+          <h4>&lt;blockquote cite="..."&gt;</h4>
+          <p>نقل‌قول بلند را از متن اصلی جدا می‌کند. ویژگی <code>cite</code> نشانی منبع را نگه می‌دارد، اما مرورگر آن را نمایش نمی‌دهد. چون دیده نمی‌شود، نام منبع را در متن صفحه هم بنویسید.</p>
+          <pre class="code"><code>&lt;blockquote cite="https://fa.wikipedia.org/wiki/اچ‌تی‌ام‌ال"&gt;
+  اچ‌تی‌ام‌ال زبان نشانه‌گذاری استاندارد برای ساخت صفحات وب است.
+&lt;/blockquote&gt;
+&lt;p&gt;— از &lt;cite&gt;ویکی‌پدیای فارسی&lt;/cite&gt;&lt;/p&gt;</code></pre>
+          <div class="result">
+            <blockquote cite="https://fa.wikipedia.org/wiki/اچ‌تی‌ام‌ال">
+              اچ‌تی‌ام‌ال زبان نشانه‌گذاری استاندارد برای ساخت صفحات وب است.
+            </blockquote>
+            <p>— از <cite>ویکی‌پدیای فارسی</cite></p>
+          </div>
+          <p>چون <code>cite</code> نمایش داده نمی‌شود، بهتر است نام منبع را در متن صفحه هم بنویسید.</p>
+        </div>
+
+        <div class="tag-card">
+          <h4>&lt;abbr title="..."&gt;</h4>
+          <p>عنصر <code>abbr</code> مخفف یا سرواژه را علامت می‌زند. شکل کامل را در <code>title</code> می‌نویسند و با نگه داشتن نشانگر دیده می‌شود. روی صفحهٔ لمسی این راهنما اغلب ظاهر نمی‌شود، پس اگر گسترش مخفف مهم است آن را یک بار در متن هم بیاورید.</p>
+          <pre class="code"><code>&lt;p&gt;&lt;abbr title="HyperText Markup Language"&gt;HTML&lt;/abbr&gt; را یاد می‌گیریم.&lt;/p&gt;</code></pre>
+          <div class="result">
+            <p><abbr title="HyperText Markup Language">HTML</abbr> را یاد می‌گیریم.</p>
+          </div>
+        </div>
+
+        <div class="tag-card">
+          <h4>&lt;address&gt;</h4>
+          <p>
+            عنصر <code>address</code> اطلاعات تماس نویسنده یا صاحب صفحه، یا صاحب همان مقاله، را مشخص می‌کند و مرورگر معمولاً آن را کج نشان می‌دهد.
+            برای هر نشانی پستی دلخواه، مثلاً نشانی مشتری در فاکتور، از آن استفاده نکنید. آن نشانی‌ها متن معمولی هستند.
+          </p>
+          <pre class="code"><code>&lt;address&gt;
+  نوشته شده توسط سارا احمدی&lt;br&gt;
+  تهران، خیابان آزادی&lt;br&gt;
+  &lt;a href="mailto:sara@example.com"&gt;sara@example.com&lt;/a&gt;
+&lt;/address&gt;</code></pre>
+          <div class="result">
+            <address>
+              نوشته شده توسط سارا احمدی<br />
+              تهران، خیابان آزادی<br />
+              <a href="mailto:sara@example.com">sara@example.com</a>
+            </address>
+          </div>
+        </div>
+
+        <div class="tag-card">
+          <h4>&lt;cite&gt;</h4>
+          <p>عنصر <code>cite</code> عنوان یک اثر را مشخص می‌کند، مانند کتاب، فیلم، شعر یا مقاله. نام شخص را داخل آن نگذارید؛ نام نویسنده متن معمولی است.</p>
+          <pre class="code"><code>&lt;p&gt;&lt;cite&gt;شاهنامه&lt;/cite&gt; اثر فردوسی است.&lt;/p&gt;</code></pre>
+          <div class="result">
+            <p><cite>شاهنامه</cite> اثر فردوسی است.</p>
+          </div>
+        </div>
+
+        <div class="tag-card">
+          <h4>&lt;bdo dir="..."&gt;</h4>
+          <p>
+            عنصر <code>bdo</code> جهت متن را به اجبار عوض می‌کند. در نمونهٔ زیر حروف فارسی با جهت چپ‌به‌راست چیده می‌شوند و وارونه دیده می‌شوند.
+            کاربرد روزمره‌اش کم است. برای عبارت انگلیسی داخل متن فارسی معمولاً <code>dir</code> یا عنصر <code>bdi</code> مناسب‌تر است، چون جهت را جدا می‌کنند بدون اینکه ترتیب نویسه‌ها را معکوس کنند.
+          </p>
+          <pre class="code"><code>&lt;bdo dir="ltr"&gt;سلام دنیا&lt;/bdo&gt;</code></pre>
+          <div class="result">
+            <bdo dir="ltr">سلام دنیا</bdo>
+          </div>
+        </div>
+
+        <p class="tip">
+          <strong>یادآوری:</strong>
+          <code>q</code> نقل‌قول کوتاه داخل جمله است و <code>blockquote</code> نقل‌قول بلند و جدا. تفاوت آن‌ها در درس ۷ هم آمده است.
+        </p>
+      </section>
+
+      <section class="lesson">
+        <h2>نمایش کد و متن کامپیوتری</h2>
+
+        <table class="ref">
+          <thead>
+            <tr>
+              <th>تگ</th>
+              <th>کاربرد</th>
+              <th>نتیجه</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>&lt;code&gt;</code></td>
+              <td>تکه‌ای از کد برنامه را داخل جمله نشان می‌دهد و معمولاً با قلم تک‌فاصله دیده می‌شود.</td>
+              <td><code>let x = 5;</code></td>
+            </tr>
+            <tr>
+              <td><code>&lt;kbd&gt;</code></td>
+              <td>کلیدی از صفحه‌کلید را نشان می‌دهد تا معلوم شود کاربر چه چیزی را باید فشار دهد.</td>
+              <td><kbd>Ctrl</kbd> + <kbd>S</kbd></td>
+            </tr>
+            <tr>
+              <td><code>&lt;samp&gt;</code></td>
+              <td>خروجی یک برنامه را نشان می‌دهد، نه دستوری که کاربر نوشته است.</td>
+              <td><samp>File not found.</samp></td>
+            </tr>
+            <tr>
+              <td><code>&lt;var&gt;</code></td>
+              <td>نام متغیر ریاضی یا برنامه‌نویسی را مشخص می‌کند و معمولاً کج دیده می‌شود.</td>
+              <td><var>x</var> = <var>y</var> + 2</td>
+            </tr>
+            <tr>
+              <td><code>&lt;pre&gt;</code></td>
+              <td>متن از پیش قالب‌بندی‌شده است و فاصله‌ها و خط‌ها را حفظ می‌کند. بیرون از آن، مرورگر فاصله‌های پیاپی را یکی می‌کند.</td>
+              <td>(مثال پایین)</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <pre class="code"><code>&lt;p&gt;برای ذخیره، &lt;kbd&gt;Ctrl&lt;/kbd&gt; + &lt;kbd&gt;S&lt;/kbd&gt; را بزنید.&lt;/p&gt;
+
+&lt;pre&gt;
+  شعر با فاصله‌های دقیق:
+      توانا بود
+          هر که دانا بود
+&lt;/pre&gt;</code></pre>
+        <div class="result">
+          <p>برای ذخیره، <kbd>Ctrl</kbd> + <kbd>S</kbd> را بزنید.</p>
+          <pre>
+  شعر با فاصله‌های دقیق:
+      توانا بود
+          هر که دانا بود</pre>
+        </div>
+
+        <p class="tip">
+          <strong>نکته مهم:</strong>
+          مرورگر در متن معمولی چند فاصله و چند Enter پشت سر هم را یک فاصله حساب می‌کند.
+          فقط داخل <code>pre</code> فاصله‌ها و شکست خط دست‌نخورده می‌مانند. به همین دلیل بلوک کد و متنی که جای خالی‌اش معنا دارد را داخل <code>pre</code> می‌گذارند.
+        </p>
+
+        <p class="exercise">
+          <strong>تمرین:</strong>
+          یک «راهنمای میانبرهای ویندوز» بسازید که در آن کلیدها با <code>kbd</code>، نام برنامه‌ها با
+          <code>strong</code> و یک فرمول ساده (مثل E=mc<sup>2</sup>) با <code>sup</code> نوشته شده باشد.
+        </p>
+
+        <p>
+          مطالعه بیشتر:
+          <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements#inline_text_semantics" target="_blank" rel="noopener">Inline text semantics (MDN)</a>،
+          <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/blockquote" target="_blank" rel="noopener">blockquote (MDN)</a>،
+          <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/pre" target="_blank" rel="noopener">pre (MDN)</a>،
+          <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/s" target="_blank" rel="noopener">s (MDN)</a>
+        </p>
+      </section>
+
+      <nav class="page-nav">
+        <a href="16-attributes-styles.html">→ درس قبل</a>
+        <a href="../index.html">فهرست مطالب</a>
+        <a href="18-entities-emoji.html">درس بعد ←</a>
+      </nav>
+    </div>
+
+    <footer class="page-footer">جزوه HTML مقدماتی</footer>
+  </body>
+</html>

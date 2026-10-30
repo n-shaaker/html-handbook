@@ -1,0 +1,24 @@
+body {
+  font-family: Tahoma, Arial, sans-serif;
+  line-height: 1.8;
+  margin: 0;
+  padding: 24px 16px;
+}
+
+.menu-item {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* عکس محتوایی: هیچ‌وقت از پدرش پهن‌تر نمی‌شود و کش نمی‌آید */
+.menu-item img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+.price {
+  font-weight: bold;
+  color: #0b6e4f;
+}

@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>۱۶) لینک‌ها (Links) | آموزش CSS از صفر</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/demos/links.css">
+</head>
+
+<body>
+
+  <header class="page-header">
+    <h1>آموزش CSS از صفر</h1>
+    <p>۱۶) لینک‌ها (Links)</p>
+  </header>
+
+  <div class="container">
+
+    <nav class="page-nav" aria-label="ناوبری درس">
+      <a href="15-fonts.html">→ قبلی: Fonts</a>
+      <a href="../index.html">فهرست درس‌ها</a>
+      <a href="17-lists.html">بعدی: Lists ←</a>
+    </nav>
+
+    <section class="lesson" id="links">
+      <h2>۱۶) لینک‌ها (Links)</h2>
+      <p>
+        لینک همان عنصر <code>a</code> است که کاربر را به نشانی دیگری می‌برد. مرورگر برای لینک چند حالت نگه می‌دارد و با شبه‌کلاس می‌توان برای هر حالت ظاهر جدا نوشت.
+        <code>:link</code> لینکی است که در تاریخچه این مرورگر هنوز باز نشده. <code>:visited</code> لینکی است که قبلاً باز شده است.
+        <code>:hover</code> وقتی فعال می‌شود که اشاره‌گر روی لینک باشد. <code>:active</code> همان لحظه کوتاهی است که دکمه ماوس یا انگشت هنوز روی لینک فشرده شده و رها نشده.
+        این حالت‌ها در HTML نوشته نمی‌شوند؛ مرورگر خودش تشخیص می‌دهد کدام‌یک الان برقرار است.
+      </p>
+      <pre class="code"><code>a:link    { color: #1a5fb4; }                          /* لینک دیده‌نشده */
+a:visited { color: #7b2cbf; }                          /* لینکی که قبلاً باز شده */
+a:hover   { color: #c92a2a; text-decoration: none; }   /* وقتی ماوس روی لینک است */
+a:active  { color: #2b8a3e; }                          /* لحظه کلیک */</code></pre>
+      <div class="result demo-links">
+        <p>
+          ماوس را روی این لینک ببرید و کلیک کنید:
+          <a href="#links">قوانین ارسال و مرجوعی کالا</a>
+        </p>
+      </div>
+
+      <p class="tip">
+        عبارت‌هایی مثل <code>:hover</code> «شبه‌کلاس» (pseudo-class) هستند؛ یعنی حالتی از عنصر که در HTML نوشته نمی‌شود
+        و مرورگر خودش تشخیص می‌دهد.
+        <br>
+        ترتیب نوشتن مهم است: اول <code>:link</code>، بعد <code>:visited</code>، بعد <code>:hover</code>، در آخر
+        <code>:active</code>. چون این قانون‌ها هم‌قدرت‌اند، قانون پایین‌تر برنده است؛ اگر مثلاً <code>:hover</code> را قبل از
+        <code>:visited</code> بنویسید، روی لینک‌های بازشده دیگر کار نمی‌کند. برای حفظ کردن: <strong>LoVe HAte</strong>.
+      </p>
+
+      <h3>حالت فوکوس صفحه‌کلید (<code>:focus-visible</code>)</h3>
+      <p>
+        کاربری که با کلید <kbd>Tab</kbd> در صفحه حرکت می‌کند، ماوس ندارد و <code>:hover</code> را نمی‌بیند. برای او حالت
+        <code>:focus-visible</code> را هم طراحی کنید (درس ۱۳). جایش در ترتیب، کنار <code>:hover</code> است:
+        <code>:link</code>، <code>:visited</code>، <code>:hover</code> و <code>:focus-visible</code>، <code>:active</code>.
+      </p>
+
+      <h3>ساخت دکمه از لینک</h3>
+      <p>
+        لینک به‌طور پیش‌فرض درون‌خطی است، زیرش خط دارد و پس‌زمینه نمی‌گیرد. با <code>display: inline-block</code> می‌توان به آن padding واقعی داد، با <code>text-decoration: none</code> خط زیر را برداشت و با رنگ پس‌زمینه آن را شبیه دکمه کرد.
+        عنصر همچنان <code>a</code> است و با صفحه‌کلید هم قابل دسترسی می‌ماند؛ فقط ظاهر جعبه عوض شده است.
+      </p>
+      <pre class="code"><code>.btn-link {
+  display: inline-block;
+  background-color: #0b6e4f;
+  color: white;
+  padding: 8px 18px;
+  text-decoration: none;
+  border-radius: 6px;
+}
+
+.btn-link:hover,
+.btn-link:focus-visible {
+  background-color: #1a3a5c;
+}
+
+.btn-link:focus-visible {
+  outline: 3px solid #e6a700;
+  outline-offset: 2px;
+}</code></pre>
+      <div class="result">
+        <a class="btn-link" href="#links">مشاهده نمونه‌کارها</a>
+      </div>
+
+      <h3>کاربرد واقعی: منوی بالای سایت</h3>
+      <p>
+        منوی بالای سایت چند لینک کنار هم است که باید از متن معمولی جدا دیده شوند. پس‌زمینه تیره، رنگ روشن و حذف خط زیر، ناحیه کلیک را مشخص می‌کند.
+        کلاس <code>current</code> لینک صفحه فعلی را متفاوت رنگ می‌کند تا کاربر بداند کجای سایت ایستاده است.
+      </p>
+      <pre class="code"><code>.site-nav {
+  background-color: #1a3a5c;
+  padding: 8px;
+}
+
+.site-nav a {
+  display: inline-block;
+  color: white;
+  text-decoration: none;
+  padding: 8px 14px;
+  border-radius: 4px;
+}
+
+.site-nav a:hover,
+.site-nav a:focus-visible {
+  background-color: #2f5f8f;
+}
+
+.site-nav a:focus-visible {
+  outline: 3px solid #e6a700;
+  outline-offset: 2px;
+}
+
+/* صفحه‌ای که الان در آن هستیم */
+.site-nav a.current {
+  background-color: white;
+  color: #1a3a5c;
+}</code></pre>
+      <div class="result">
+        <nav class="site-nav" aria-label="منوی نمونه">
+          <a class="current" href="#links" aria-current="page">خانه</a>
+          <a href="#links">محصولات</a>
+          <a href="#links">وبلاگ</a>
+          <a href="#links">تماس با ما</a>
+        </nav>
+      </div>
+      <p>
+        کلاس <code>current</code> به کاربر نشان می‌دهد کجای سایت است؛ <code>aria-current="page"</code> همین را به
+        صفحه‌خوان‌ها (نرم‌افزار کاربران نابینا) می‌گوید. در دوره میانی منو را با فهرست و Flexbox کامل‌تر می‌سازیم.
+      </p>
+
+      <p class="mistake">
+        <strong>اشتباه رایج:</strong>
+        حذف خط زیر لینک‌های <strong>داخل متن</strong> پاراگراف‌ها. در منو و دکمه، شکل ظاهری نشان می‌دهد که قابل کلیک‌اند؛
+        ولی وسط متن، لینک بدون خط زیر فقط با رنگ از متن جدا می‌شود و بعضی کاربران آن را تشخیص نمی‌دهند.
+        <br>
+        برای <code>:visited</code> فقط ویژگی‌های رنگی (مثل <code>color</code> و <code>background-color</code>) کار می‌کنند؛
+        مرورگرها برای حفظ حریم خصوصی، بقیه ویژگی‌ها را در این حالت نادیده می‌گیرند.
+        <br>
+        متن لینک باید معنی‌دار باشد: «قوانین ارسال کالا» بهتر از «اینجا کلیک کنید» است.
+      </p>
+
+      <p class="exercise">
+        <strong>تمرین:</strong> برای منوی صفحه معرفی‌تان (خانه، درباره من، نمونه‌کارها، تماس) یک نوار مثل نمونه بالا بسازید
+        که حالت hover، focus-visible و صفحه فعلی را داشته باشد. فقط با کلید Tab آن را امتحان کنید.
+      </p>
+    </section>
+
+
+    <nav class="page-nav" aria-label="ناوبری درس پایین">
+      <a href="15-fonts.html">→ قبلی: Fonts</a>
+      <a href="../index.html">فهرست درس‌ها</a>
+      <a href="17-lists.html">بعدی: Lists ←</a>
+    </nav>
+
+  </div>
+
+  <footer class="page-footer">
+    آموزش CSS از صفر
+  </footer>
+
+</body>
+
+</html>

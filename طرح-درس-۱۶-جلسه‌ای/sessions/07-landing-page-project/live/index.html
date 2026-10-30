@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>نووا‌دسک — کار هوشمندتر</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="logo" href="index.html">نووا‌دسک</a>
+      <nav class="nav" aria-label="اصلی">
+        <a href="#features">ویژگی‌ها</a>
+        <a href="#products">محصولات</a>
+        <a href="#cta">شروع کنید</a>
+      </nav>
+      <a class="btn btn--small" href="#cta">آزمایش رایگان</a>
+    </header>
+
+    <main>
+      <!-- Hero: one clear message + one primary action -->
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="hero__content">
+          <h1 id="hero-title">روزتان را بدون شلوغی مدیریت کنید</h1>
+          <p>
+            نووا‌دسک به فریلنسرها و تیم‌های کوچک کمک می‌کند کارها را برنامه‌ریزی
+            کنند، پیشرفت را ببینند و سریع‌تر تحویل دهند.
+          </p>
+          <div class="hero__actions">
+            <a class="btn" href="#cta">شروع دوره آزمایشی</a>
+            <a class="btn btn--ghost" href="#features">مشاهده ویژگی‌ها</a>
+          </div>
+        </div>
+      </section>
+
+      <section id="features" class="section" aria-labelledby="features-title">
+        <h2 id="features-title">ویژگی‌ها</h2>
+        <div class="feature-grid">
+          <article class="feature">
+            <h3>بردهای ساده</h3>
+            <p>کارها را بین ستون‌ها جابه‌جا کنید و اولویت‌ها را شفاف نگه دارید.</p>
+          </article>
+          <article class="feature">
+            <h3>یادداشت‌های مشترک</h3>
+            <p>تصمیم‌ها را کنار کار نگه دارید، نه در چت‌های گم‌شده.</p>
+          </article>
+          <article class="feature">
+            <h3>تمرکز هفتگی</h3>
+            <p>سه نتیجه کلیدی تعیین کنید و ببینید واقعاً چه چیزی تحویل شده.</p>
+          </article>
+        </div>
+      </section>
+
+      <section id="products" class="section section--muted" aria-labelledby="products-title">
+        <h2 id="products-title">راه‌اندازی‌های محبوب</h2>
+        <div class="product-grid">
+          <article class="product-card">
+            <img src="https://picsum.photos/seed/desk1/480/300" alt="میز کار مینیمال" width="480" height="300" loading="lazy" />
+            <h3>شروع انفرادی</h3>
+            <p>برای فریلنسرهایی که چند مشتری را مدیریت می‌کنند.</p>
+          </article>
+          <article class="product-card">
+            <img src="https://picsum.photos/seed/desk2/480/300" alt="میز کار تیمی" width="480" height="300" loading="lazy" />
+            <h3>ریتم تیمی</h3>
+            <p>برای تیم‌هایی که به دید مشترک نیاز دارند.</p>
+          </article>
+          <article class="product-card">
+            <img src="https://picsum.photos/seed/desk3/480/300" alt="میز تولید استودیو" width="480" height="300" loading="lazy" />
+            <h3>استودیو حرفه‌ای</h3>
+            <p>برای آژانس‌هایی که با ددلاین کار می‌کنند.</p>
+          </article>
+        </div>
+      </section>
+
+      <section id="cta" class="cta" aria-labelledby="cta-title">
+        <h2 id="cta-title">آماده پاکسازی بک‌لاگ هستید؟</h2>
+        <p>بدون نیاز به کارت بانکی. هر زمان خواستید لغو کنید.</p>
+        <!-- No backend yet: action is a placeholder until a real signup endpoint exists -->
+        <form class="cta-form" action="#" method="post">
+          <label class="visually-hidden" for="cta-email">ایمیل کاری</label>
+          <input
+            id="cta-email"
+            name="email"
+            type="email"
+            autocomplete="email"
+            placeholder="ایمیل کاری شما"
+            dir="ltr"
+            required
+          />
+          <button class="btn" type="submit">فضای کاری بسازید</button>
+        </form>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p>&copy; ۱۴۰۵ نووا‌دسک. ساخته‌شده در جلسه ۷ بوت‌کمپ.</p>
+    </footer>
+  </body>
+</html>

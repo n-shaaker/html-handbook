@@ -1,0 +1,67 @@
+/* ۸) order */
+
+/* جعبه‌های رنگی شماره‌دار */
+.demo-order .box {
+  padding: 10px 18px;
+  color: white;
+  font-weight: bold;
+  text-align: center;
+  border-radius: 6px;
+}
+
+.demo-order .b1 { background-color: #1c7ed6; }
+.demo-order .b2 { background-color: #2b8a3e; }
+.demo-order .b3 { background-color: #e8590c; }
+.demo-order .b4 { background-color: #ae3ec9; }
+
+/* ظرف مشترک */
+.demo-order .parent {
+  display: flex;
+  gap: 8px;
+  background-color: #f1f3f5;
+  border: 2px solid #868e96;
+  padding: 6px;
+}
+
+.demo-order .to-end {
+  order: 1;
+}
+
+.demo-order .to-start {
+  order: -1;
+}
+
+.demo-order .o1 {
+  order: 1;
+}
+
+.demo-order .o2 {
+  order: 2;
+}
+
+.demo-order .o3 {
+  order: 3;
+}
+
+/* فهرست غذاهای کافه */
+.demo-order .foods {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.demo-order .foods li {
+  background-color: #fff4e6;
+  border: 1px solid #ffc078;
+  border-radius: 6px;
+  padding: 6px 12px;
+}
+
+.demo-order .foods .special {
+  order: -1;
+  background-color: #ffe066;
+  font-weight: bold;
+}

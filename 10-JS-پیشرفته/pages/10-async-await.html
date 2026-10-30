@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>۱۰) async و await | آموزش JavaScript سطح پیشرفته</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <script src="../js/log.js" defer></script>
+  <script src="../js/demos/async-await.js" defer></script>
+</head>
+
+<body>
+
+  <header class="page-header" id="top">
+    <h1>آموزش JavaScript — سطح پیشرفته</h1>
+    <p>۱۰) async و await</p>
+  </header>
+
+  <div class="container">
+
+    <nav class="page-nav" aria-label="ناوبری درس">
+      <a href="09-promises.html">→ قبلی: Promises</a>
+      <a href="../index.html">فهرست درس‌ها</a>
+      <a href="11-fetch.html">بعدی: Fetch ←</a>
+    </nav>
+
+    <section class="lesson" id="async-await">
+      <h2>۱۰) async و await</h2>
+<p><code>async/await</code> همان Promise را با شکلی می‌نویسد که از بالا به پایین خوانده می‌شود. <code>async</code> تابع را طوری علامت می‌زند که همیشه یک Promise برگرداند. <code>await</code> داخل همان تابع می‌ایستد تا Promise تمام شود و مقدارش را به شما بدهد. بقیهٔ برنامه در این فاصله متوقف نمی‌شود؛ فقط ادامهٔ همان تابع عقب می‌افتد. خطا را هم با <code>try/catch</code> می‌گیرید، شبیه کد همگام.</p>
+
+<table class="ref">
+<tr><th>کلمه</th><th>کار</th></tr>
+<tr><td><code>async</code></td><td>قبل از تابع می‌آید؛ تابع همیشه یک Promise برمی‌گرداند</td></tr>
+<tr><td><code>await</code></td><td>فقط داخل تابع async؛ منتظر می‌ماند تا Promise تمام شود و نتیجه‌اش را برمی‌گرداند</td></tr>
+</table>
+
+<h3>مقایسه then با await</h3>
+
+<pre class="code"><code>// با then
+function showUserThen() {
+  getUser(1)
+    .then(user =&gt; log("then:", user.name))
+    .catch(err =&gt; log(err.message));
+}
+
+// با async/await
+async function showUserAwait() {
+  try {
+    const user = await getUser(1);
+    log("await:", user.name);
+  } catch (err) {
+    log(err.message);
+  }
+}</code></pre>
+
+<p>هر دو تابع همان <code>getUser(1)</code> را می‌خوانند. شکل <code>then</code> ادامهٔ کار را داخل callback می‌گذارد و خطا را با <code>catch</code> می‌گیرد. شکل <code>await</code> همان انتظار را مثل یک خط معمولی می‌نویسد و خطا را با <code>try/catch</code> می‌گیرد. <code>await</code> فقط داخل تابع <code>async</code> مجاز است و تا آماده شدن Promise، بقیهٔ همان تابع را عقب می‌اندازد.</p>
+
+<h3>مثال: چند مرحله پشت سر هم</h3>
+
+<pre class="code"><code>const wait = ms =&gt; new Promise(r =&gt; setTimeout(r, ms));
+
+async function makeTea() {
+  log("۱. آب را جوش می‌آوریم...");
+  await wait(1000);
+  log("۲. چای را دم می‌کنیم...");
+  await wait(1000);
+  log("۳. چای را می‌ریزیم ☕");
+  return "چای آماده است";
+}
+
+makeTea().then(result =&gt; log("نتیجه:", result));
+log("(این خط منتظر چای نمی‌ماند)");
+
+// ترتیب خروجی:
+// ۱. آب را جوش می‌آوریم...      ← بخش همگام makeTea تا اولین await
+// (این خط منتظر چای نمی‌ماند)
+// ۲. چای را دم می‌کنیم...        ← ۱ ثانیه بعد
+// ۳. چای را می‌ریزیم ☕          ← ۲ ثانیه بعد
+// نتیجه: چای آماده است</code></pre>
+
+<p>هر <code>await wait(1000)</code> ادامهٔ <code>makeTea</code> را حدود یک ثانیه متوقف می‌کند، ولی خط بعد از صدا زدن <code>makeTea()</code> منتظر چای نمی‌ماند. بخش قبل از اولین await همان لحظه اجرا می‌شود. <code>return</code> داخل تابع async به Promise تبدیل می‌شود و <code>then</code> متن نهایی را می‌گیرد.</p>
+
+<p class="tip">await فقط <strong>همان تابع async</strong> را متوقف می‌کند، نه کل برنامه. تابع async تا اولین await به صورت همگام اجرا می‌شود؛ بعد کنترل به کدی که آن را صدا زده برمی‌گردد. مقداری هم که با <code>return</code> برمی‌گرداند، در قالب یک Promise تحویل داده می‌شود؛ برای همین از <code>.then</code> (یا await) برای گرفتن «چای آماده است» استفاده کردیم.</p>
+
+<div class="result">
+<button class="btn" id="tea-btn">درست کردن چای</button>
+<pre class="console" id="out-1" aria-live="polite"></pre>
+</div>
+
+<h3>مدیریت خطا با try...catch</h3>
+
+<pre class="code"><code>function getUser(id) {
+  return new Promise((resolve, reject) =&gt; {
+    setTimeout(() =&gt; {
+      if (id &gt; 0) resolve({ id, name: "کاربر " + id });
+      else reject(new Error("شناسه نامعتبر است"));
+    }, 700);
+  });
+}
+
+async function loadUser(id) {
+  try {
+    log(`در حال دریافت کاربر ${id}...`);
+    const user = await getUser(id);
+    log("✔", user);
+  } catch (err) {
+    log("✖", err.message);
+  } finally {
+    log("— تمام —");
+  }
+}</code></pre>
+
+<p><code>getUser</code> اگر شناسه مثبت باشد شیء کاربر را resolve می‌کند و اگر نباشد reject. <code>await</code> در حالت موفقیت مقدار را در <code>user</code> می‌ریزد و در حالت شکست به <code>catch</code> می‌رود. <code>finally</code> چه کاربر پیدا شود و چه شناسه نامعتبر باشد اجرا می‌شود.</p>
+
+<div class="result">
+<button class="btn" id="user-ok">کاربر 5</button>
+<button class="btn danger" id="user-bad">کاربر -1</button>
+<pre class="console" id="out-2" aria-live="polite"></pre>
+</div>
+
+<h3>پشت سر هم یا هم‌زمان؟</h3>
+
+<pre class="code"><code>async function sequential() {
+  log("شروع پشت سر هم...");
+  const start = performance.now();          // زمان فعلی با دقت میلی‌ثانیه
+  await wait(1000);                         // ۱ ثانیه
+  await wait(1000);                         // ۱ ثانیه دیگر؛ تازه بعد از قبلی شروع می‌شود
+  log(`پشت سر هم: ${Math.round(performance.now() - start)} میلی‌ثانیه`);   // حدود 2000
+}
+
+async function parallel() {
+  log("شروع هم‌زمان...");
+  const start = performance.now();
+  await Promise.all([wait(1000), wait(1000)]);   // هر دو با هم شروع می‌شوند
+  log(`هم‌زمان: ${Math.round(performance.now() - start)} میلی‌ثانیه`);      // حدود 1000
+}</code></pre>
+
+<p>در حالت پشت‌سرهم، await دوم تازه بعد از تمام شدن اولی شروع می‌شود، پس زمان‌ها جمع می‌شوند. در حالت هم‌زمان، <code>Promise.all</code> هر دو انتظار را با هم شروع می‌کند و <code>await</code> تا وقتی هر دو تمام شوند صبر می‌کند. <code>performance.now</code> اختلاف زمان را به میلی‌ثانیه نشان می‌دهد.</p>
+
+<div class="result">
+<button class="btn" id="seq-btn">پشت سر هم</button>
+<button class="btn" id="par-btn">هم‌زمان</button>
+<pre class="console" id="out-3" aria-live="polite"></pre>
+</div>
+
+<p class="tip">اگر کارها به هم وابسته نیستند (مثلاً گرفتن کاربر و گرفتن اخبار)، آن‌ها را با <code>Promise.all</code> هم‌زمان شروع کنید تا سریع‌تر تمام شوند.</p>
+
+<p class="mistake"><strong>اشتباه رایج:</strong> استفاده از <code>await</code> بیرون از تابع async (در اسکریپت معمولی). خطای <code>SyntaxError: await is only valid in async functions and the top level bodies of modules</code> می‌گیرید. فقط در ماژول‌ها (<code>type="module"</code>) await در سطح بالای فایل مجاز است.</p>
+
+<p class="mistake"><strong>اشتباه رایج:</strong> فراموش کردن <code>await</code>: <code>const user = getUser(1)</code>. در این حالت user یک Promise است نه خود داده؛ <code>user.name</code> برابر undefined می‌شود.</p>
+
+<p class="mistake"><strong>اشتباه رایج:</strong> استفاده از await داخل <code>forEach</code>:
+<code>ids.forEach(async id =&gt; { await getUser(id); })</code>.
+forEach منتظر callbackهای async نمی‌ماند و کد بعد از حلقه زودتر اجرا می‌شود. برای اجرای پشت سر هم از <code>for (const id of ids) { await getUser(id); }</code> و برای اجرای هم‌زمان از <code>await Promise.all(ids.map(id =&gt; getUser(id)))</code> استفاده کنید.</p>
+
+<p class="exercise"><strong>تمرین:</strong> تمرین درس قبل (checkStock) را با async/await و try...catch بازنویسی کنید: تابع <code>async function showStock(item)</code> بنویسید که نتیجه را چاپ کند و در صورت خطا پیام خطا را نشان دهد. سپس موجودی سه کالا را با <code>Promise.all</code> هم‌زمان بررسی کنید و زمان کل را با <code>performance.now()</code> اندازه بگیرید (باید حدود ۱ ثانیه باشد نه ۳ ثانیه).</p>
+    </section>
+
+    <nav class="page-nav" aria-label="ناوبری درس پایین">
+      <a href="09-promises.html">→ قبلی: Promises</a>
+      <a href="../index.html">فهرست درس‌ها</a>
+      <a href="11-fetch.html">بعدی: Fetch ←</a>
+    </nav>
+
+  </div>
+
+  <footer class="page-footer">
+    آموزش JavaScript سطح پیشرفته
+  </footer>
+
+</body>
+
+</html>

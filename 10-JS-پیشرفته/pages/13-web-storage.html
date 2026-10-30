@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>۱۳) ذخیره‌سازی در مرورگر (localStorage) | آموزش JavaScript سطح پیشرفته</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <script src="../js/log.js" defer></script>
+  <script src="../js/demos/web-storage.js" defer></script>
+</head>
+
+<body>
+
+  <header class="page-header" id="top">
+    <h1>آموزش JavaScript — سطح پیشرفته</h1>
+    <p>۱۳) ذخیره‌سازی در مرورگر (localStorage)</p>
+  </header>
+
+  <div class="container">
+
+    <nav class="page-nav" aria-label="ناوبری درس">
+      <a href="12-modules.html">→ قبلی: Modules</a>
+      <a href="../index.html">فهرست درس‌ها</a>
+      <a href="14-regexp.html">بعدی: RegExp ←</a>
+    </nav>
+
+    <section class="lesson" id="web-storage">
+      <h2>۱۳) ذخیره‌سازی در مرورگر (localStorage)</h2>
+<p>با <code>localStorage</code> می‌توان داده را در مرورگر کاربر ذخیره کرد تا با بستن صفحه پاک نشود.</p>
+
+<table class="ref">
+<tr><th>متد</th><th>کار</th></tr>
+<tr><td><code>localStorage.setItem(key, value)</code></td><td>ذخیره</td></tr>
+<tr><td><code>localStorage.getItem(key)</code></td><td>خواندن (اگر نبود: <code>null</code>)</td></tr>
+<tr><td><code>localStorage.removeItem(key)</code></td><td>حذف یک مورد</td></tr>
+<tr><td><code>localStorage.clear()</code></td><td>حذف همه</td></tr>
+</table>
+
+<table class="ref">
+<tr><th></th><th>localStorage</th><th>sessionStorage</th></tr>
+<tr><td>ماندگاری</td><td>تا وقتی کاربر یا کد پاکش کند</td><td>تا بستن زبانه (تب)</td></tr>
+<tr><td>حجم</td><td>حدود ۵ مگابایت برای هر سایت</td><td>حدود ۵ مگابایت برای هر سایت</td></tr>
+<tr><td>نوع داده</td><td>فقط رشته</td><td>فقط رشته</td></tr>
+<tr><td>دسترسی</td><td>همه زبانه‌های همان سایت</td><td>فقط همان زبانه</td></tr>
+</table>
+
+<p class="tip">داده هر سایت جداست: سایت دیگری نمی‌تواند localStorage سایت شما را بخواند. هر دو، متدهای یکسانی دارند؛ یعنی هر جا <code>localStorage</code> نوشته شده، می‌توانید <code>sessionStorage</code> بگذارید.</p>
+
+<h3>ذخیره رشته</h3>
+
+<pre class="code"><code>localStorage.setItem("username", "سارا");
+console.log(localStorage.getItem("username"));   // سارا
+localStorage.removeItem("username");
+console.log(localStorage.getItem("username"));   // null ← کلیدی که وجود ندارد
+
+localStorage.setItem("age", 25);                  // عدد خودکار به رشته تبدیل می‌شود
+console.log(typeof localStorage.getItem("age"));  // string</code></pre>
+
+<p><code>setItem</code> یک رشته را با یک کلید در حافظهٔ محلی مرورگر ذخیره می‌کند و بعد از بستن صفحه هم می‌ماند. <code>getItem</code> همان رشته را برمی‌گرداند و اگر کلید نباشد <code>null</code> می‌دهد. <code>removeItem</code> فقط همان کلید را پاک می‌کند. عدد را هم به رشته تبدیل می‌کند؛ اگر بعداً جمع لازم دارید باید آن را با <code>Number</code> برگردانید.</p>
+
+<div class="result">
+<pre class="console" id="out-1"></pre>
+</div>
+
+<h3>ذخیره شیء و آرایه با JSON</h3>
+
+<pre class="code"><code>const settings = { theme: "dark", fontSize: 18, langs: ["fa", "en"] };
+
+localStorage.setItem("settings", JSON.stringify(settings));    // شیء ← متن
+
+const saved = JSON.parse(localStorage.getItem("settings"));    // متن ← شیء
+console.log(saved.theme, saved.langs);                         // dark ["fa","en"]</code></pre>
+
+<p>حافظهٔ محلی فقط رشته نگه می‌دارد. شیء و آرایه را اول با <code>JSON.stringify</code> به متن تبدیل می‌کنیم و هنگام خواندن با <code>JSON.parse</code> برمی‌گردانیم. بعد از parse، <code>saved.langs</code> دوباره آرایه است و می‌شود عضوهایش را جدا خواند.</p>
+
+<div class="result">
+<pre class="console" id="out-2"></pre>
+</div>
+
+<h3>خواندن و نوشتن امن با try...catch</h3>
+
+<p>داده localStorage دست کاربر است: ممکن است خودش آن را در DevTools ویرایش کند، نسخه قدیمی برنامه چیز دیگری ذخیره کرده باشد یا داده نیمه‌کاره بماند. اگر متن JSON معتبر نباشد، <code>JSON.parse</code> خطای <code>SyntaxError</code> می‌دهد و کل برنامه از کار می‌افتد. نوشتن هم ممکن است به خاطر پر شدن فضا خطای <code>QuotaExceededError</code> بدهد. پس دو تابع کمکی امن می‌سازیم:</p>
+
+<pre class="code"><code>function loadJSON(key, fallback) {
+  const text = localStorage.getItem(key);
+  if (text === null) return fallback;            // هنوز چیزی ذخیره نشده
+  try {
+    return JSON.parse(text);
+  } catch (err) {
+    console.warn(`داده «${key}» خراب است؛ مقدار پیش‌فرض استفاده شد.`);
+    return fallback;
+  }
+}
+
+function saveJSON(key, value) {
+  try {
+    localStorage.setItem(key, JSON.stringify(value));
+    return true;
+  } catch (err) {                                // مثلاً پر شدن فضا
+    console.error("ذخیره ناموفق بود:", err.name);
+    return false;
+  }
+}
+
+localStorage.setItem("demo-cart", "{خراب");      // شبیه‌سازی داده خراب
+console.log(loadJSON("demo-cart", []));          // ⚠ هشدار و سپس []
+
+saveJSON("demo-cart", [{ id: 1, qty: 2 }]);
+console.log(loadJSON("demo-cart", []));          // [{"id":1,"qty":2}]
+console.log(loadJSON("not-saved-yet", { theme: "light" }));   // {"theme":"light"}</code></pre>
+
+<p>اگر کلید هنوز ذخیره نشده باشد، <code>getItem</code> مقدار <code>null</code> می‌دهد و تابع همان مقدار پیش‌فرض را برمی‌گرداند. اگر متن ذخیره شده JSON معتبر نباشد، <code>parse</code> خطا می‌دهد و <code>catch</code> به‌جای خراب کردن صفحه، پیش‌فرض را برمی‌گرداند. <code>saveJSON</code> مقدار را قبل از ذخیره به متن تبدیل می‌کند.</p>
+
+<div class="result">
+<pre class="console" id="out-3"></pre>
+</div>
+
+<h3>مثال زنده: حالت شب ماندگار</h3>
+
+<p>حالت را عوض کنید و صفحه را دوباره بارگذاری کنید (F5)؛ انتخاب شما حفظ می‌شود.</p>
+
+<pre class="code"><code>function applyTheme(theme) {
+  themeBox.classList.toggle("dark", theme === "dark");
+  themeBtn.textContent = theme === "dark" ? "☀ حالت روز" : "🌙 حالت شب";
+  themeBtn.setAttribute("aria-pressed", theme === "dark");
+}
+
+let theme = localStorage.getItem("theme") || "light";   // اگر ذخیره نشده بود: روز
+applyTheme(theme);
+
+themeBtn.addEventListener("click", () =&gt; {
+  theme = theme === "dark" ? "light" : "dark";
+  localStorage.setItem("theme", theme);
+  applyTheme(theme);
+});</code></pre>
+
+<div class="result">
+<div class="demo-box" id="theme-box">
+<p>این کادر پیش‌نمایش ظاهر سایت است.</p>
+<button class="btn" id="theme-btn" aria-pressed="false">🌙 حالت شب</button>
+</div>
+</div>
+
+<h3>مثال زنده: یادداشت ماندگار</h3>
+
+<p>چیزی بنویسید و صفحه را دوباره بارگذاری کنید (F5)؛ متن سر جایش می‌ماند.</p>
+
+<pre class="code"><code>note.value = localStorage.getItem("note") || "";
+
+note.addEventListener("input", () =&gt; {
+  localStorage.setItem("note", note.value);
+  savedMsg.textContent = "ذخیره شد ✔ " + new Date().toLocaleTimeString("fa-IR");
+});
+
+clearBtn.addEventListener("click", () =&gt; {
+  localStorage.removeItem("note");
+  note.value = "";
+});</code></pre>
+
+<p>هنگام بارگذاری، اگر یادداشتی ذخیره شده باشد در کادر قرار می‌گیرد و اگر نه، رشتهٔ خالی می‌ماند. هر تغییر کادر همان متن را ذخیره می‌کند و ساعت ذخیره را نشان می‌دهد. دکمهٔ پاک کردن کلید را از حافظه برمی‌دارد و کادر را خالی می‌کند. این داده مخصوص همین مبدأ (دامنه و پورت) است.</p>
+
+<div class="result">
+<textarea id="note" rows="4" cols="50" placeholder="یادداشت شما..." aria-label="یادداشت"></textarea><br>
+<button class="btn danger" id="clear-note">پاک کردن</button>
+<span id="saved-msg" role="status"></span>
+</div>
+
+<p class="tip">در این مثال با هر حرف تایپ‌شده یک بار ذخیره می‌کنیم که برای متن کوتاه مشکلی ندارد. برای داده‌های بزرگ‌تر، ذخیره را با debounce (درس ۷) انجام دهید.</p>
+
+<h3>مثال زنده: شمارنده بازدید</h3>
+
+<pre class="code"><code>let visits = Number(localStorage.getItem("visits")) || 0;
+visits++;
+localStorage.setItem("visits", visits);
+visitText.textContent = `شما ${visits} بار این صفحه را باز کرده‌اید.`;</code></pre>
+
+<p>بازدید به‌صورت رشته ذخیره شده، پس قبل از جمع باید به عدد تبدیل شود. اگر کلید نباشد، <code>Number(null)</code> صفر است و <code>|| 0</code> همان صفر را نگه می‌دارد. بعد یکی اضافه می‌شود و دوباره ذخیره می‌شود. هر بار باز کردن این صفحه، همان کلید را بیشتر می‌کند.</p>
+
+<div class="result">
+<p class="demo-box" id="visit-text"></p>
+</div>
+
+<p class="tip">در DevTools (F12) زبانه <strong>Application</strong> ← <strong>Local Storage</strong> می‌توانید داده‌های ذخیره‌شده را ببینید و ویرایش کنید.</p>
+
+<p class="tip">اگر سایت در دو زبانه باز باشد و یکی localStorage را تغییر دهد، در زبانه دیگر رویداد <code>storage</code> روی <code>window</code> اجرا می‌شود؛ با آن می‌توانید مثلاً سبد خرید را در همه زبانه‌ها هماهنگ کنید.</p>
+
+<p class="mistake"><strong>اشتباه رایج:</strong> ذخیره شیء بدون JSON.stringify: <code>setItem("user", user)</code> متن <code>"[object Object]"</code> را ذخیره می‌کند!</p>
+
+<p class="mistake"><strong>اشتباه رایج:</strong> فراموش کردن تبدیل نوع موقع خواندن: <code>localStorage.getItem("age") + 1</code> نتیجه <code>"251"</code> می‌دهد نه 26، چون مقدار خوانده‌شده رشته است. از <code>Number(...)</code> یا <code>JSON.parse</code> استفاده کنید.</p>
+
+<p class="mistake"><strong>اشتباه رایج:</strong> <code>JSON.parse</code> بدون try...catch روی داده localStorage. یک داده خراب کافی است تا صفحه هر بار با خطا باز شود و کاربر نتواند کاری بکند.</p>
+
+<p class="mistake"><strong>اشتباه رایج:</strong> ذخیره اطلاعات حساس (رمز عبور، توکن ورود، اطلاعات بانکی) در localStorage. هر اسکریپتی که در صفحه اجرا شود (از جمله کد مخرب تزریق‌شده) می‌تواند آن را بخواند.</p>
+
+<p class="exercise"><strong>تمرین:</strong> پروژه Todo List دوره میانی را بردارید و بعد از هر تغییر (افزودن، حذف، تیک زدن)، آرایه todos را با تابع <code>saveJSON</code> در localStorage ذخیره کنید و موقع باز شدن صفحه با <code>loadJSON("todos", [])</code> بخوانید. سپس در DevTools مقدار ذخیره‌شده را عمداً خراب کنید و مطمئن شوید صفحه بدون خطا با فهرست خالی باز می‌شود.</p>
+    </section>
+
+    <nav class="page-nav" aria-label="ناوبری درس پایین">
+      <a href="12-modules.html">→ قبلی: Modules</a>
+      <a href="../index.html">فهرست درس‌ها</a>
+      <a href="14-regexp.html">بعدی: RegExp ←</a>
+    </nav>
+
+  </div>
+
+  <footer class="page-footer">
+    آموزش JavaScript سطح پیشرفته
+  </footer>
+
+</body>
+
+</html>

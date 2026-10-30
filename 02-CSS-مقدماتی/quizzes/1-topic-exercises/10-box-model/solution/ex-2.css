@@ -1,0 +1,21 @@
+/* عرض هر جعبه شامل padding و border هم باشد */
+* {
+  box-sizing: border-box;
+}
+
+.plan {
+  width: 300px;
+  margin-bottom: 16px;
+  background-color: white;
+}
+
+.plan-basic {
+  padding: 16px;
+  border: 1px solid #adb5bd;
+}
+
+/* padding و border بیشتر، ولی عرض دیده‌شده همان ۳۰۰ */
+.plan-pro {
+  padding: 28px;
+  border: 4px solid #e67700;
+}

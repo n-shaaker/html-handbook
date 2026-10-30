@@ -1,0 +1,98 @@
+/* ===== کلی ===== */
+body {
+  margin: 0;
+  background-color: #f1f3f5;
+  color: #222222;
+  font-family: Tahoma, sans-serif;
+  line-height: 1.8;
+}
+
+#app {
+  max-width: 720px;
+  margin: 32px auto;
+  padding: 0 16px;
+}
+
+#app .app-header h1 {
+  margin-bottom: 0;
+  color: #1a3a5c;
+}
+
+/* ===== کارت ===== */
+#app .card {
+  margin-bottom: 20px;
+  padding: 20px;
+  background-color: white;
+  border: 1px solid #dee2e6;
+  border-radius: 8px;
+}
+
+#app .card h2 {
+  margin-top: 0;
+  color: #1a3a5c;
+  font-size: 20px;
+}
+
+#app .card a {
+  color: #1a5fb4;
+  text-decoration: underline;
+}
+
+/* ===== دکمه‌ها ===== */
+.btn {
+  display: inline-block;
+  padding: 6px 16px;
+  border-radius: 6px;
+  background-color: #e9ecef;
+  color: #222222;
+  text-decoration: none;
+}
+
+.btn:hover {
+  background-color: #dee2e6;
+}
+
+.btn-primary {
+  background-color: #0b6e4f;
+  color: white;
+}
+
+.btn-primary:hover {
+  background-color: #08583f;
+}
+
+.btn-danger {
+  background-color: #c92a2a;
+  color: white;
+}
+
+.btn-danger:hover {
+  background-color: #a51d1d;
+}
+
+/* ===== وصله‌های همکار (بعداً درستش می‌کنم!) ===== */
+
+/* دکمه‌ها داخل کارت زیرخط داشتند */
+#app .card a.btn {
+  text-decoration: none !important;
+}
+
+/* متن دکمه انتشار آبی بود */
+.btn-primary {
+  color: white !important;
+}
+
+/* رنگ دکمه حذف کار نمی‌کرد */
+.btn-danger {
+  background-color: #c92a2a !important;
+}
+
+/* کادر طلایی کارت ویژه دیده نمی‌شد */
+.featured {
+  border: 2px solid #e6a700 !important;
+}
+
+/* دکمه ویرایش داخل کارت هم متنش آبی بود */
+#app .card a.btn:first-child {
+  color: #222222;
+}

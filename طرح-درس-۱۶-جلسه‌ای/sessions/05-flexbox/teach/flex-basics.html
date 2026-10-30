@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>مقدمات Flexbox</title>
+    <style>
+      body {
+        font-family: Tahoma, system-ui, sans-serif;
+        padding: 1.5rem;
+      }
+
+      .row {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        gap: 0.75rem;
+        flex-wrap: wrap;
+        padding: 1rem;
+        background: #f1f5f9;
+        border-radius: 0.75rem;
+        margin-bottom: 1.5rem;
+      }
+
+      .item {
+        background: #2563eb;
+        color: #fff;
+        padding: 0.75rem 1rem;
+        border-radius: 0.5rem;
+      }
+
+      /* flex: grow shrink basis — the middle item takes all remaining space */
+      .grow {
+        flex: 1;
+        background: #0f766e;
+      }
+
+      /* Perfect centering: both axes */
+      .center {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 120px;
+        background: #f1f5f9;
+        border-radius: 0.75rem;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>کنترل‌های Flexbox</h1>
+    <p>
+      Flexbox چیدمان یک‌بعدی است: یا یک ردیف، یا یک ستون. ویژگی
+      <code>display: flex</code> را روی والد می‌نویسید. فقط فرزندان مستقیم آن والد
+      به آیتم فلکس تبدیل می‌شوند و نوه‌ها تحت تأثیر این والد قرار نمی‌گیرند.
+    </p>
+    <p>این ویژگی‌ها روی همان والد، که به آن ظرف فلکس می‌گویند، نوشته می‌شوند:</p>
+    <ul>
+      <li>
+        <code>display: flex</code> فرزندان مستقیم را در یک محور کنار هم می‌چیند.
+        مثلاً سه دکمهٔ منو که باید در یک ردیف بمانند.
+      </li>
+      <li>
+        <code>flex-direction</code> جهت محور اصلی را مشخص می‌کند.
+        <code>row</code> ردیف افقی می‌سازد و <code>column</code> ستون عمودی.
+        با عوض شدن این جهت، محور متقاطع هم عوض می‌شود.
+      </li>
+      <li>
+        <code>justify-content</code> آیتم‌ها را روی محور اصلی پخش می‌کند. مثلاً
+        <code>space-between</code> اولین آیتم را به یک سر و آخرین را به سر دیگر
+        می‌چسباند و فضای خالی را میان آن‌ها تقسیم می‌کند.
+      </li>
+      <li>
+        <code>align-items</code> آیتم‌ها را روی محور متقاطع هم‌تراز می‌کند. در یک
+        ردیف، این محور عمودی است، پس <code>center</code> آیتم‌ها را از نظر ارتفاع
+        در وسط ردیف می‌گذارد.
+      </li>
+      <li>
+        <code>gap</code> فاصلهٔ یکسان بین آیتم‌ها می‌سازد. برخلاف مارجین، این
+        فاصله به بیرونِ اولین و آخرین آیتم اضافه نمی‌شود.
+      </li>
+      <li>
+        <code>flex-wrap</code> با مقدار <code>wrap</code> اجازه می‌دهد آیتم‌هایی
+        که در یک خط جا نمی‌شوند به خط بعد بروند، به‌جای آنکه در موبایل له شوند.
+      </li>
+    </ul>
+    <p>
+      در صفحه‌ای با <code>dir="rtl"</code> ردیف از راست شروع می‌شود. پس
+      <code>flex-start</code> یعنی سمت راست، نه چپ. اگر لوگو را اول بنویسید، در
+      صفحهٔ فارسی سمت راست دیده می‌شود.
+    </p>
+
+    <h2>space-between + wrap</h2>
+    <p>
+      ردیف زیر <code>justify-content: space-between</code> و
+      <code>flex-wrap: wrap</code> دارد. سه آیتم دو سر ردیف و وسط را پر می‌کنند.
+      اگر پنجره را باریک کنید و جا کم شود، آیتم بعدی به خط بعد می‌رود و له نمی‌شود.
+    </p>
+    <div class="row">
+      <div class="item">یک</div>
+      <div class="item">دو</div>
+      <div class="item">سه</div>
+    </div>
+
+    <h2>ویژگی فرزند: <code>flex: 1</code></h2>
+    <p>
+      ویژگی <code>flex</code> روی خود آیتم نوشته می‌شود، نه روی والد.
+      مقدار کوتاه <code>flex: 1</code> یعنی آیتم می‌تواند فضای اضافه را بگیرد و
+      در تنگنا هم جمع شود. در ردیف زیر، جعبهٔ جست‌وجو همین کار را می‌کند و لوگو
+      و سبد فقط به اندازهٔ متنشان جا می‌گیرند.
+    </p>
+    <div class="row">
+      <div class="item">لوگو</div>
+      <div class="item grow">جست‌وجو (فضای باقی‌مانده را می‌گیرد)</div>
+      <div class="item">سبد</div>
+    </div>
+
+    <h2>وسط‌چین کامل</h2>
+    <p>
+      برای گذاشتن یک عنصر دقیقاً وسط یک ناحیه، والد را فلکس کنید و هر دو محور را
+      وسط بچینید: <code>justify-content: center</code> و
+      <code>align-items: center</code>. والد باید ارتفاع مشخص داشته باشد، وگرنه
+      محور عمودی فضایی برای وسط‌چین کردن ندارد. جعبهٔ زیر ۱۲۰ پیکسل ارتفاع دارد.
+    </p>
+    <div class="center">
+      <div class="item">دقیقاً وسط</div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,73 @@
+/* cover / contain / position */
+
+.demo-size {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.demo-size .box {
+  height: 160px;
+  border-radius: 8px;
+  border: 1px solid #cfd8e3;
+  background-image: url("../../images/food-1.jpg");
+  background-repeat: no-repeat;
+  color: white;
+  font-weight: bold;
+  text-shadow: 0 1px 3px #000;
+  padding: 10px;
+}
+
+.demo-size .cover {
+  background-size: cover;
+  background-position: center;
+}
+
+.demo-size .contain {
+  background-size: contain;
+  background-position: center;
+  background-color: #1a3a5c;
+}
+
+.demo-pos .faces {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+/* در صفحه باریک، هر دو ردیف یک‌ستونه شوند */
+@media (max-width: 700px) {
+  .demo-size,
+  .demo-pos .faces {
+    grid-template-columns: 1fr;
+  }
+}
+
+.demo-pos .face {
+  height: 140px;
+  border-radius: 8px;
+  background-image: url("../../images/profile.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  color: white;
+  font-weight: bold;
+  text-shadow: 0 1px 3px #000;
+  padding: 10px;
+}
+
+.demo-pos .top {
+  background-position: top center;
+}
+
+.demo-pos .center {
+  background-position: center;
+}
+
+.demo-pattern {
+  height: 120px;
+  border-radius: 8px;
+  background-image: url("../../images/pattern.jpg");
+  background-size: 80px;
+  background-repeat: repeat;
+  border: 1px solid #cfd8e3;
+}

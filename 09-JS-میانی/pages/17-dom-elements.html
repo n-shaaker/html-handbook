@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>۱۷) DOM: ساختن و حذف عنصرها | آموزش JavaScript سطح میانی</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <script src="../js/log.js" defer></script>
+  <script src="../js/demos/dom-elements.js" defer></script>
+</head>
+
+<body>
+
+  <header class="page-header" id="top">
+    <h1>آموزش JavaScript — سطح میانی</h1>
+    <p>۱۷) DOM: ساختن و حذف عنصرها</p>
+  </header>
+
+  <div class="container">
+
+    <nav class="page-nav" aria-label="ناوبری درس">
+      <a href="16-dom-events.html">→ قبلی: DOM Events</a>
+      <a href="../index.html">فهرست درس‌ها</a>
+      <a href="18-forms.html">بعدی: Forms ←</a>
+    </nav>
+
+    <section class="lesson" id="dom-elements">
+      <h2>۱۷) DOM: ساختن و حذف عنصرها</h2>
+
+<p>صفحه فقط از عنصرهایی که از اول در HTML نوشته شده‌اند ساخته نمی‌شود. با <code>createElement</code> عنصر تازه می‌سازید، با <code>textContent</code> متن امن داخلش می‌گذارید و با <code>append</code> آن را به عنصری که از قبل وجود دارد وصل می‌کنید. حذف و پیدا کردن پدر یا همسایه هم روی همین درخت انجام می‌شود.</p>
+
+<table class="ref">
+<tr><th>کار</th><th>کد</th></tr>
+<tr><td>ساختن عنصر</td><td><code>document.createElement("li")</code></td></tr>
+<tr><td>اضافه به آخر / اول</td><td><code>parent.append(el)</code> / <code>parent.prepend(el)</code></td></tr>
+<tr><td>اضافه قبل / بعد از یک عنصر</td><td><code>el.before(newEl)</code> / <code>el.after(newEl)</code></td></tr>
+<tr><td>اضافه با HTML (فقط با داده مطمئن، نه ورودی کاربر)</td><td><code>parent.insertAdjacentHTML("beforeend", "&lt;li&gt;...&lt;/li&gt;")</code></td></tr>
+<tr><td>حذف</td><td><code>el.remove()</code></td></tr>
+<tr><td>کپی</td><td><code>el.cloneNode(true)</code></td></tr>
+</table>
+
+<h3>مثال ۱: ساختن یک عنصر کامل</h3>
+
+<pre class="code"><code>const container = document.getElementById("card-container");
+
+const card = document.createElement("div");
+card.className = "js-card";
+
+const title = document.createElement("h4");
+title.textContent = "کارت جدید";
+
+const text = document.createElement("p");
+text.textContent = "این کارت کاملاً با JavaScript ساخته شد.";
+
+card.append(title, text);
+container.append(card);</code></pre>
+
+<p><code>createElement</code> عنصر را در حافظه می‌سازد و هنوز آن را روی صفحه نشان نمی‌دهد. <code>className</code> کلاس CSS را می‌گذارد و <code>textContent</code> متن را. <code>card.append</code> عنوان و پاراگراف را داخل کارت می‌گذارد. <code>container.append</code> آخرین مرحله است: کارت را به عنصری که در HTML وجود دارد وصل می‌کند و همان لحظه دیده می‌شود.</p>
+
+<div class="result">
+<div id="card-container"></div>
+</div>
+
+<h3>مثال ۲: فهرست خرید (اضافه و حذف)</h3>
+
+<pre class="code"><code>const itemInput = document.getElementById("item-input");
+const addBtn = document.getElementById("item-add");
+const list = document.getElementById("shop-list");
+
+addBtn.addEventListener("click", () =&gt; {
+  const value = itemInput.value.trim();
+  if (value === "") return;
+
+  const li = document.createElement("li");
+  const span = document.createElement("span");
+  span.textContent = value;                 // متن کاربر ← textContent (امن)
+
+  const del = document.createElement("button");
+  del.type = "button";
+  del.textContent = "حذف";
+  del.className = "btn danger";
+  del.addEventListener("click", () =&gt; li.remove());
+
+  li.append(span, del);
+  list.append(li);
+  itemInput.value = "";
+  itemInput.focus();
+});
+
+itemInput.addEventListener("keydown", (e) =&gt; {
+  if (e.key === "Enter") addBtn.click();    // با Enter هم اضافه شود
+});</code></pre>
+
+<p>اگر متن بعد از <code>trim</code> خالی باشد، <code>return</code> جلوی ساختن آیتم خالی را می‌گیرد. برای هر کالا یک <code>li</code>، یک <code>span</code> و یک دکمه ساخته می‌شود. متن کاربر با <code>textContent</code> وارد می‌شود تا تگ اجرا نشود. دکمه با <code>li.remove()</code> همان ردیف را از درخت حذف می‌کند. خالی کردن کادر و <code>focus</code> کاربر را برای کالای بعدی آماده می‌کند. کلید Enter هم همان کلیک دکمه را صدا می‌زند.</p>
+
+<div class="result">
+<label for="item-input">کالای جدید:</label>
+<input type="text" id="item-input" placeholder="مثلاً نان">
+<button type="button" class="btn" id="item-add">اضافه کن</button>
+<ul class="js-list" id="shop-list"></ul>
+</div>
+
+<p class="tip">برای متنی که کاربر وارد کرده از <code>createElement</code> و <code>textContent</code> استفاده کنید نه <code>innerHTML</code>؛ این‌طوری اگر کاربر تگ HTML بنویسد، اجرا نمی‌شود (برای امتحان، <code>&lt;b&gt;نان&lt;/b&gt;</code> را اضافه کنید). در اینجا روی هر دکمه «حذف» جداگانه listener گذاشتیم؛ روش دیگر Event Delegation است که در درس ۱۶ دیدید.</p>
+
+<h3>پیمایش درخت DOM</h3>
+
+<table class="ref">
+<tr><th>ویژگی</th><th>یعنی</th></tr>
+<tr><td><code>el.parentElement</code></td><td>پدر</td></tr>
+<tr><td><code>el.children</code></td><td>فرزندان (عنصرها)</td></tr>
+<tr><td><code>el.firstElementChild</code> / <code>lastElementChild</code></td><td>اولین / آخرین فرزند</td></tr>
+<tr><td><code>el.nextElementSibling</code> / <code>previousElementSibling</code></td><td>خواهر/برادر بعدی / قبلی</td></tr>
+<tr><td><code>el.closest("selector")</code></td><td>نزدیک‌ترین جد (یا خودش) که با انتخابگر منطبق است</td></tr>
+</table>
+
+<pre class="code"><code>const middle = document.querySelector("#nav-demo .mid");
+console.log(middle.parentElement.id);                      // nav-demo
+console.log(middle.previousElementSibling.textContent);    // اول
+console.log(middle.nextElementSibling.textContent);        // آخر
+console.log(middle.parentElement.children.length);         // 3
+console.log(middle.closest("section").className);          // lesson-demo</code></pre>
+
+<p><code>parentElement</code> عنصر بالایی مستقیم است. <code>previousElementSibling</code> و <code>nextElementSibling</code> عنصرهای هم‌سطح قبلی و بعدی‌اند، نه گره‌های متنی خالی. <code>children</code> فقط عنصرهای فرزند را می‌شمارد. <code>closest</code> از خود عنصر شروع می‌کند و به سمت بالا می‌رود تا اولین جد مطابق انتخابگر را پیدا کند.</p>
+
+<div class="result">
+<section class="lesson-demo"><ul id="nav-demo"><li>اول</li><li class="mid">وسط</li><li>آخر</li></ul></section>
+<pre class="console" id="out-1"></pre>
+</div>
+
+<p class="mistake"><strong>اشتباه رایج:</strong> ساختن عنصر با createElement و فراموش کردن <code>append</code>. عنصر ساخته می‌شود ولی تا به صفحه اضافه نشود دیده نمی‌شود.</p>
+
+<p class="exercise"><strong>تمرین:</strong> با آرایه <code>[{ name: "کتاب", price: 250000 }, { name: "دفتر", price: 45000 }, { name: "ماژیک", price: 30000 }]</code> و forEach، برای هر محصول یک کارت (<code>div.js-card</code>) با createElement بسازید که نام (<code>h4</code>)، قیمت با <code>toLocaleString("fa-IR")</code> و یک دکمه «حذف» داشته باشد. با کلیک روی «حذف» کارت از صفحه پاک شود و زیر کارت‌ها «تعداد محصولات: ...» به‌روز شود (راهنما: <code>container.children.length</code>).</p>
+    </section>
+
+    <nav class="page-nav" aria-label="ناوبری درس پایین">
+      <a href="16-dom-events.html">→ قبلی: DOM Events</a>
+      <a href="../index.html">فهرست درس‌ها</a>
+      <a href="18-forms.html">بعدی: Forms ←</a>
+    </nav>
+
+  </div>
+
+  <footer class="page-footer">
+    آموزش JavaScript سطح میانی
+  </footer>
+
+</body>
+
+</html>

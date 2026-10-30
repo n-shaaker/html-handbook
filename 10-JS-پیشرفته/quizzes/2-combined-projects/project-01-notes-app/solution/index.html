@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>دفترچه یادداشت</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="app.js" defer></script>
+</head>
+
+<body>
+  <main class="card">
+    <h1>📝 دفترچه یادداشت</h1>
+
+    <form id="note-form" novalidate>
+      <label for="note-title">عنوان</label>
+      <input type="text" id="note-title" maxlength="60" autocomplete="off" placeholder="مثلاً خرید هفته">
+
+      <label for="note-body">متن (اختیاری)</label>
+      <textarea id="note-body" rows="3" maxlength="500" placeholder="جزئیات یادداشت..."></textarea>
+
+      <p id="form-error" class="error" role="alert"></p>
+      <button type="submit" class="btn">افزودن یادداشت</button>
+    </form>
+
+    <div class="search">
+      <label for="search">جستجو:</label>
+      <input type="search" id="search" autocomplete="off" placeholder="در عنوان و متن...">
+    </div>
+
+    <p id="status" class="status" aria-live="polite"></p>
+    <ul id="notes-list" class="notes-list"></ul>
+  </main>
+</body>
+
+</html>

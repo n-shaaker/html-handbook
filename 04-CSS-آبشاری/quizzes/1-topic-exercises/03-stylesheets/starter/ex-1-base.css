@@ -1,0 +1,13 @@
+.title {
+  color: navy;
+  font-size: 28px;
+}
+
+.box {
+  background-color: #e7f5ff;
+  padding: 12px;
+}
+
+.box p {
+  color: #1a5fb4;
+}

@@ -1,0 +1,44 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Tahoma, Arial, sans-serif;
+  line-height: 1.8;
+  margin: 0;
+}
+
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 16px;
+}
+
+/* سه ستون: ۳۱٪ + ۳۱٪ + ۳۱٪ + دو فاصله ۳٪ = ۹۹٪ */
+.service {
+  float: right;
+  width: 31%;
+  margin-left: 3%;
+  padding: 12px;
+  background-color: #eaf7f1;
+  border-radius: 6px;
+}
+
+.service.last {
+  margin-left: 0;
+}
+
+.service h2 {
+  font-size: 18px;
+  margin-top: 0;
+}
+
+/* پانویس زیر ستون‌های شناور */
+.site-footer {
+  clear: both;
+  margin-top: 16px;
+  padding: 12px;
+  text-align: center;
+  color: white;
+  background-color: #1a3a5c;
+}

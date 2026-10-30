@@ -1,0 +1,24 @@
+/* تمرین ۳ — ستون‌هایی که جا نمی‌شوند (پاسخ) */
+
+body {
+  font-family: Tahoma, sans-serif;
+  margin: 20px;
+  background-color: #f8f9fa;
+  color: #212529;
+}
+
+.news {
+  display: grid;
+  /* درست شد: columns با s؛ و fr به‌جای پیکسل تا در هر عرضی جا شود */
+  grid-template-columns: 1fr 2fr 1fr;
+  /* درست شد: یک مقدار فقط ردیف اول را می‌سازد؛ برای هر ردیف یک اندازه */
+  grid-template-rows: 120px 120px;
+  background-color: #f1f3f5;
+}
+
+.item {
+  background-color: #0c8599;
+  color: white;
+  padding: 10px;
+  border: 2px solid white;
+}

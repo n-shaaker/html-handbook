@@ -1,0 +1,17 @@
+body {
+  font-family: Tahoma, sans-serif;
+  max-width: 500px;
+  margin: 20px auto;
+}
+
+#posts li {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 8px 12px;
+  margin-bottom: 10px;
+  list-style: none;
+}
+
+.liked {
+  background-color: #fecaca;
+}

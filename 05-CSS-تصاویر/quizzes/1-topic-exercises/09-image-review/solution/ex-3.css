@@ -1,0 +1,66 @@
+/*
+  اشکال‌هایی که پیدا و درست شد:
+  ۱) مسیر عکس هیرو یک پله کم داشت (../images) → 404 بود؛ حالا ../../../../images.
+  ۲) متن سفید روی عکس هیرو خوانا نبود → لایه گرادیان تیره اضافه شد.
+  ۳) نوار تزئینی با img و alt="الگو" آمده بود → به background-image منتقل شد.
+  ۴) عکس غذای ویژه بالای صفحه loading="lazy" داشت → حذف شد تا زود دیده شود.
+  ۵) عکس غذای ویژه width: 700px ثابت داشت → در گوشی بیرون می‌زد؛ حالا max-width: 100%.
+  ۶) عکس سرآشپز alt خالی داشت در حالی که محتواست → alt با نام او.
+  ۷) عکس کباب width/height نداشت و چای ابعاد غلط (720 به جای 1280) → درست شد.
+  ۸) عکس‌های منو با height ثابت کش می‌آمدند → object-fit: cover.
+*/
+
+body {
+  font-family: Tahoma, Arial, sans-serif;
+  line-height: 1.8;
+  margin: 0;
+}
+
+.hero {
+  min-height: 360px;
+  padding: 120px 24px 0;
+  color: white;
+  background-image:
+    linear-gradient(rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.75)),
+    url("../../../../images/hero.jpg");
+  background-size: cover;
+  background-position: center;
+}
+
+.strip {
+  height: 40px;
+  background-image: url("../../../../images/pattern.jpg");
+  background-size: cover;
+  background-position: center;
+}
+
+.content {
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 16px;
+}
+
+.special {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+.chef {
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.menu-photo {
+  width: 48%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.menu-photo.tea {
+  object-position: center top;
+}

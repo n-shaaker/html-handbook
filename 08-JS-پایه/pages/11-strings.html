@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>۱۱) رشته‌ها (Strings) | آموزش JavaScript سطح پایه</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <script src="../js/log.js" defer></script>
+  <script src="../js/demos/strings.js" defer></script>
+</head>
+
+<body>
+
+  <header class="page-header" id="top">
+    <h1>آموزش JavaScript — سطح پایه</h1>
+    <p>۱۱) رشته‌ها (Strings)</p>
+  </header>
+
+  <div class="container">
+
+    <nav class="page-nav" aria-label="ناوبری درس">
+      <a href="10-events.html">→ قبلی: Events</a>
+      <a href="../index.html">فهرست درس‌ها</a>
+      <a href="12-string-methods.html">بعدی: String Methods ←</a>
+    </nav>
+
+    <section class="lesson" id="strings">
+      <h2>۱۱) رشته‌ها (Strings)</h2>
+<p>رشته (String) یعنی متن. هر نام، پیام، نشانی یا عددی که داخل گیومه باشد از این نوع است. متن را داخل گیومهٔ تکی <code>'...'</code>، دوتایی <code>"..."</code> یا بک‌تیک <code>`...`</code> می‌نویسیم. هر سه شکل برای متن ساده یک نتیجه دارند؛ تفاوت وقتی ظاهر می‌شود که بخواهید گیومه را داخل متن بیاورید یا مقدار متغیر را وسط جمله بگذارید.</p>
+
+<pre class="code"><code>let a = "سلام";
+let b = 'سلام';
+let c = `سلام`;
+console.log(a, b, c);</code></pre>
+
+<div class="result">
+<pre class="console" id="out-1"></pre>
+</div>
+
+<p>هر سه متغیر متن «سلام» را نگه می‌دارند. گیومهٔ باز و بسته باید از یک نوع باشند. بک‌تیک برای متن ساده هم درست است، ولی قابلیت اضافه‌اش این است که بعداً بتوان متغیر را با <code>${ }</code> داخل همان متن گذاشت. آن شکل را در درس رشته‌های قالبی می‌بینید.</p>
+
+<h3>طول رشته و دسترسی به حرف‌ها</h3>
+
+<pre class="code"><code>let word = "JavaScript";
+console.log(word.length);    // 10 ← تعداد حرف‌ها
+console.log(word[0]);        // J  ← اولین حرف (شماره‌گذاری از صفر)
+console.log(word[4]);        // S
+console.log(word.at(-1));    // t  ← آخرین حرف (عدد منفی از آخر می‌شمارد)
+console.log(word[20]);       // undefined ← چنین شماره‌ای وجود ندارد</code></pre>
+
+<div class="result">
+<pre class="console" id="out-2"></pre>
+</div>
+
+<p><code>length</code> تعداد واحدهای رشته را می‌دهد و یک ویژگی است، نه تابع؛ پس پرانتز نمی‌گیرد. شمارهٔ خانه‌ها از صفر شروع می‌شود: خانهٔ ۰ حرف اول است. <code>word[4]</code> حرف پنجم را می‌دهد. <code>at(-1)</code> از انتها می‌شمارد و آخرین حرف را برمی‌گرداند. اگر شماره‌ای بیرون از طول رشته باشد، نتیجه <code>undefined</code> است و خطا نمی‌گیرید.</p>
+
+<p class="tip">شماره‌گذاری (index) در JavaScript همیشه از <strong>صفر</strong> شروع می‌شود. پس آخرین حرف در شماره <code>length - 1</code> است: <code>word[word.length - 1]</code> همان <code>word.at(-1)</code> است. فاصله و نیم‌فاصله هم یک حرف حساب می‌شوند.</p>
+
+<h3>گیومه داخل گیومه و کاراکترهای خاص</h3>
+
+<pre class="code"><code>let s1 = "او گفت: 'سلام'";        // گیومه متفاوت
+let s2 = "او گفت: \"سلام\"";     // با بک‌اسلش (Escape)
+let s3 = "خط اول\nخط دوم";        // \n یعنی خط جدید
+console.log(s1);
+console.log(s2);
+console.log(s3);</code></pre>
+
+<div class="result">
+<pre class="console" id="out-3"></pre>
+</div>
+
+<p>اگر گیومهٔ داخلی با گیومهٔ بیرونی فرق داشته باشد، نیازی به علامت اضافه نیست. اگر هر دو یکی باشند، قبل از گیومهٔ داخلی یک بک‌اسلش می‌گذارند تا مرورگر آن را پایان رشته حساب نکند. <code>\n</code> یک حرف واقعی روی صفحه نیست؛ دستور رفتن به خط بعد است و فقط وقتی دیده می‌شود که خروجی بتواند خط جدید را نشان دهد، مثل Console.</p>
+
+<table class="ref">
+<tr><th>کد</th><th>نتیجه</th></tr>
+<tr><td><code>\"</code></td><td>گیومه دوتایی</td></tr>
+<tr><td><code>\'</code></td><td>گیومه تکی</td></tr>
+<tr><td><code>\\</code></td><td>خود بک‌اسلش</td></tr>
+<tr><td><code>\n</code></td><td>خط جدید</td></tr>
+</table>
+
+<h3>رشته‌ها تغییرناپذیرند</h3>
+
+<p>نمی‌شود یک حرف از رشته را «سر جایش» عوض کرد. رشته بعد از ساخته شدن ثابت است (Immutable). برای تغییر، باید یک رشته <strong>جدید</strong> بسازیم و دوباره در متغیر بریزیم.</p>
+
+<pre class="code"><code>let name = "sara";
+name[0] = "S";          // اثری ندارد!
+console.log(name);      // sara
+name = "Sara";          // باید کل رشته را دوباره بسازیم
+console.log(name);      // Sara</code></pre>
+
+<div class="result">
+<pre class="console" id="out-4"></pre>
+</div>
+
+<p>جملهٔ <code>name[0] = "S"</code> خانهٔ اول را عوض نمی‌کند، چون رشته بعد از ساخته شدن ثابت است. برای داشتن متن جدید باید رشتهٔ تازه‌ای بسازید و آن را دوباره به متغیر نسبت دهید. متغیر <code>name</code> با <code>let</code> ساخته شده، پس خود متغیر می‌تواند به رشتهٔ دیگری اشاره کند؛ این با عوض کردن یک حرف از رشتهٔ قبلی فرق دارد.</p>
+
+<p class="tip">در حالت عادی خط <code>name[0] = "S"</code> بی‌صدا نادیده گرفته می‌شود، ولی در «حالت سخت‌گیرانه» (<code>"use strict"</code>) که در بسیاری از پروژه‌ها فعال است، خطای <code>TypeError</code> می‌دهد. در درس بعد با متدهایی مثل <code>toUpperCase()</code> و <code>slice()</code> رشته جدید می‌سازیم.</p>
+
+<p class="mistake"><strong>اشتباه رایج:</strong> شروع کردن با یک نوع گیومه و تمام کردن با نوع دیگر: <code>"سلام'</code>. این خطای نحوی (Syntax Error) است.</p>
+
+<p class="mistake"><strong>اشتباه رایج:</strong> نوشتن <code>word.length()</code> با پرانتز. <code>length</code> یک ویژگی است نه متد؛ با پرانتز خطای <code>word.length is not a function</code> می‌گیرید.</p>
+
+<p class="exercise"><strong>تمرین:</strong> (۱) اسم کامل خودتان را در یک متغیر بگذارید و تعداد حرف‌ها، اولین حرف و آخرین حرف آن را چاپ کنید. (۲) یک کد ملی ۱۰ رقمی را به صورت متن (مثلاً <code>"0012345678"</code>) در متغیر بگذارید و با <code>length</code> بررسی و چاپ کنید که طولش درست است یا نه (<code>code.length === 10</code>).</p>
+    </section>
+
+    <nav class="page-nav" aria-label="ناوبری درس پایین">
+      <a href="10-events.html">→ قبلی: Events</a>
+      <a href="../index.html">فهرست درس‌ها</a>
+      <a href="12-string-methods.html">بعدی: String Methods ←</a>
+    </nav>
+
+  </div>
+
+  <footer class="page-footer">
+    آموزش JavaScript سطح پایه
+  </footer>
+
+</body>
+
+</html>

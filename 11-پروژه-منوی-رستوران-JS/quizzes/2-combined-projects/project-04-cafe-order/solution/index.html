@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>کافه نارنج | سفارش آنلاین</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="app.js" defer></script>
+  </head>
+
+  <body>
+    <header class="site-header">
+      <p class="logo">کافه <strong>نارنج</strong></p>
+    </header>
+
+    <div class="container layout">
+      <!-- ========== منو ========== -->
+      <main>
+        <h1>سفارش آنلاین کافه</h1>
+
+        <div class="filters" aria-label="فیلتر دسته‌ها">
+          <button type="button" class="filter-btn active" data-filter="all" aria-pressed="true">همه</button>
+          <button type="button" class="filter-btn" data-filter="hot" aria-pressed="false">نوشیدنی گرم</button>
+          <button type="button" class="filter-btn" data-filter="cold" aria-pressed="false">نوشیدنی سرد</button>
+          <button type="button" class="filter-btn" data-filter="dessert" aria-pressed="false">دسر</button>
+        </div>
+
+        <div class="dishes-grid">
+          <article class="dish" data-name="چای سنتی" data-price="60000" data-category="hot">
+            <img src="../../../../images/tea.jpg" alt="استکان چای ایرانی" />
+            <div class="dish-body">
+              <h3>چای سنتی</h3>
+              <p class="price">۶۰٬۰۰۰ تومان</p>
+              <button type="button" class="btn add-btn">+ افزودن</button>
+            </div>
+          </article>
+
+          <article class="dish" data-name="چای زعفرانی" data-price="75000" data-category="hot">
+            <img src="../../../../images/tea.jpg" alt="چای با زعفران و نبات" />
+            <div class="dish-body">
+              <h3>چای زعفرانی</h3>
+              <p class="price">۷۵٬۰۰۰ تومان</p>
+              <button type="button" class="btn add-btn">+ افزودن</button>
+            </div>
+          </article>
+
+          <article class="dish" data-name="دوغ محلی" data-price="45000" data-category="cold">
+            <img src="../../../../images/doogh.jpg" alt="دوغ محلی با برگ نعنا در کاسه‌های مسی" />
+            <div class="dish-body">
+              <h3>دوغ محلی</h3>
+              <p class="price">۴۵٬۰۰۰ تومان</p>
+              <button type="button" class="btn add-btn">+ افزودن</button>
+            </div>
+          </article>
+
+          <article class="dish" data-name="فالوده شیرازی" data-price="90000" data-category="dessert">
+            <img src="../../../../images/faloodeh.jpg" alt="فالوده شیرازی در جام شیشه‌ای" />
+            <div class="dish-body">
+              <h3>فالوده شیرازی</h3>
+              <p class="price">۹۰٬۰۰۰ تومان</p>
+              <button type="button" class="btn add-btn">+ افزودن</button>
+            </div>
+          </article>
+
+          <article class="dish" data-name="شله‌زرد" data-price="70000" data-category="dessert">
+            <img src="../../../../images/sholehzard.jpg" alt="شله‌زرد با دارچین و خلال بادام" />
+            <div class="dish-body">
+              <h3>شله‌زرد</h3>
+              <p class="price">۷۰٬۰۰۰ تومان</p>
+              <button type="button" class="btn add-btn">+ افزودن</button>
+            </div>
+          </article>
+        </div>
+      </main>
+
+      <!-- ========== سبد سفارش ========== -->
+      <aside class="cart" aria-labelledby="cart-title">
+        <h2 id="cart-title">سفارش من <span class="cart-count" id="cart-count">۰</span></h2>
+        <ul class="cart-list" id="cart-list"></ul>
+
+        <fieldset class="order-type">
+          <legend>نوع تحویل</legend>
+          <label><input type="radio" name="order-type" value="dine-in" checked /> حضوری</label>
+          <label><input type="radio" name="order-type" value="delivery" /> با پیک</label>
+        </fieldset>
+
+        <p id="delivery-row" hidden></p>
+        <p class="cart-total" id="cart-total" aria-live="polite"></p>
+        <button type="button" class="btn" id="submit-order">ثبت سفارش</button>
+        <p class="form-message" id="order-message" aria-live="polite"></p>
+      </aside>
+    </div>
+
+    <div class="toast" id="toast" role="status"></div>
+  </body>
+</html>

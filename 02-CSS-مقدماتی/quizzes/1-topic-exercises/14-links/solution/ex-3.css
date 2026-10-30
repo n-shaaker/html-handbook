@@ -1,0 +1,41 @@
+/* ===== لینک متنی (ترتیب درست: link, visited, hover, focus-visible, active) ===== */
+.text-link:link {
+  color: #1a5fb4;
+}
+
+.text-link:visited {
+  color: #7b2cbf;
+}
+
+.text-link:hover {
+  color: #c92a2a;
+}
+
+.text-link:focus-visible {
+  outline: 2px solid #c92a2a;
+  outline-offset: 2px;
+}
+
+.text-link:active {
+  color: #2b8a3e;
+}
+
+/* ===== لینک دکمه‌ای ===== */
+.btn-link {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #0b7285;
+  color: white;
+  text-decoration: none;
+  border-radius: 6px;
+}
+
+.btn-link:hover {
+  background-color: #095c6b;
+}
+
+/* به جای outline: none، یک outline واضح */
+.btn-link:focus-visible {
+  outline: 3px solid #f08c00;
+  outline-offset: 2px;
+}

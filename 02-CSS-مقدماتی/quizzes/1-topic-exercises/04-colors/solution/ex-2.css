@@ -1,0 +1,19 @@
+.alert {
+  padding: 12px;
+}
+
+/* در هر پیام فقط روشنی (عدد سوم hsl) عوض شده است */
+.alert-success {
+  background-color: hsl(130, 55%, 90%);
+  color: hsl(130, 55%, 22%);
+}
+
+.alert-error {
+  background-color: hsl(0, 75%, 92%);
+  color: hsl(0, 75%, 30%);
+}
+
+.alert-info {
+  background-color: hsl(210, 80%, 92%);
+  color: hsl(210, 80%, 28%);
+}

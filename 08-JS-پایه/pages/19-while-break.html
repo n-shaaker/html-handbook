@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>۱۹) حلقه While، Break و Continue | آموزش JavaScript سطح پایه</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <script src="../js/log.js" defer></script>
+  <script src="../js/demos/while-break.js" defer></script>
+</head>
+
+<body>
+
+  <header class="page-header" id="top">
+    <h1>آموزش JavaScript — سطح پایه</h1>
+    <p>۱۹) حلقه While، Break و Continue</p>
+  </header>
+
+  <div class="container">
+
+    <nav class="page-nav" aria-label="ناوبری درس">
+      <a href="18-for-loop.html">→ قبلی: For Loop</a>
+      <a href="../index.html">فهرست درس‌ها</a>
+      <a href="20-practice.html">بعدی: تمرین جمع‌بندی ←</a>
+    </nav>
+
+    <section class="lesson" id="while-break">
+      <h2>۱۹) حلقه While، Break و Continue</h2>
+<p>حلقهٔ <code>while</code> تا وقتی شرط درست است بدنه را تکرار می‌کند. برخلاف <code>for</code>، شمارنده و تغییر آن را خودتان بیرون و داخل بدنه می‌نویسید. این شکل وقتی مناسب است که از اول نمی‌دانید تکرار چند بار لازم است و فقط می‌دانید «تا وقتی این شرط برقرار است ادامه بده». اگر فراموش کنید متغیری که شرط به آن وابسته است را داخل بدنه عوض کنید، شرط همیشه درست می‌ماند و حلقه تمام نمی‌شود.</p>
+
+<pre class="code"><code>let i = 1;
+while (i &lt;= 5) {
+  console.log(i);
+  i++;          // بدون این خط حلقه بی‌پایان می‌شود!
+}</code></pre>
+
+<div class="result">
+<pre class="console" id="out-1"></pre>
+</div>
+
+<p><code>i</code> قبل از حلقه برابر ۱ است. هر بار اول شرط <code>i &lt;= 5</code> دیده می‌شود، بعد عدد چاپ می‌شود و سپس یکی به <code>i</code> اضافه می‌شود. وقتی <code>i</code> به ۶ برسد، شرط غلط است و بدنه دیگر اجرا نمی‌شود. خط افزایش اگر حذف شود، <code>i</code> روی ۱ می‌ماند و شرط همیشه درست است.</p>
+
+<h3>do...while — حداقل یک بار اجرا</h3>
+
+<pre class="code"><code>let n = 10;
+do {
+  console.log("این حداقل یک بار اجرا می‌شود. n =", n);
+  n++;
+} while (n &lt; 5);   // شرط از همان اول غلط است، ولی بدنه یک بار اجرا شد</code></pre>
+
+<p>فرق اصلی: <code>while</code> اول شرط را بررسی می‌کند و بعد اجرا می‌کند؛ <code>do...while</code> اول اجرا می‌کند و بعد شرط را بررسی می‌کند. کاربرد معمول: «حداقل یک بار از کاربر بپرس، اگر جواب نامعتبر بود دوباره بپرس».</p>
+
+<div class="result">
+<pre class="console" id="out-2"></pre>
+</div>
+
+<p>بدنه یک بار اجرا می‌شود و <code>n</code> را چاپ می‌کند، حتی اگر شرط پایین از همان اول غلط باشد. بعد از این اجرا، <code>n</code> یکی زیاد می‌شود و شرط <code>n &lt; 5</code> بررسی می‌شود. چون نتیجه غلط است، تکرار دوم رخ نمی‌دهد. اگر همین منطق را با <code>while</code> می‌نوشتید، بدنه اصلاً اجرا نمی‌شد.</p>
+
+<h3>break — خروج از حلقه</h3>
+
+<pre class="code"><code>for (let i = 1; i &lt;= 10; i++) {
+  if (i === 5) {
+    break;          // حلقه همین‌جا تمام می‌شود
+  }
+  console.log(i);
+}
+// خروجی (هر عدد در یک خط): 1 2 3 4 ← عدد 5 و بعد از آن چاپ نمی‌شوند</code></pre>
+
+<div class="result">
+<pre class="console" id="out-3"></pre>
+</div>
+
+<p>حلقه از ۱ تا ۱۰ آماده است، ولی داخل بدنه یک شرط اضافه وجود دارد. وقتی <code>i</code> به ۵ برسد، <code>break</code> فوراً از کل حلقه خارج می‌شود و <code>console.log</code> همان دور و دورهای بعدی اجرا نمی‌شوند. پس خروجی فقط ۱ تا ۴ است. <code>break</code> شرط اصلی حلقه را عوض نمی‌کند؛ فقط ادامهٔ تکرار را قطع می‌کند.</p>
+
+<p>مثال کاربردی‌تر: پیدا کردن اولین رقم در رمز عبور. وقتی پیدا شد، دیگر لازم نیست بقیه حرف‌ها را بگردیم:</p>
+
+<pre class="code"><code>let password = "sara2024";
+let firstDigitIndex = -1;          // -1 یعنی «پیدا نشد»
+
+for (let i = 0; i &lt; password.length; i++) {
+  if ("0123456789".includes(password[i])) {
+    firstDigitIndex = i;
+    break;                         // پیدا شد؛ از حلقه بیرون برو
+  }
+}
+console.log("اولین رقم در شماره:", firstDigitIndex);   // 4</code></pre>
+
+<div class="result">
+<pre class="console" id="out-4"></pre>
+</div>
+
+<p>مقدار اولیهٔ <code>-1</code> یعنی «هنوز رقمی پیدا نشده». حلقه حرف‌های رمز را از چپ بررسی می‌کند. <code>includes</code> می‌گوید این حرف جزو رقم‌های ۰ تا ۹ هست یا نه. اولین رقمی که پیدا شود، شماره‌اش ذخیره می‌شود و <code>break</code> بقیهٔ حرف‌ها را نادیده می‌گیرد. اگر هیچ رقمی نباشد، متغیر روی <code>-1</code> می‌ماند و می‌توانید بعداً همین مقدار را به‌عنوان «پیدا نشد» بررسی کنید.</p>
+
+<h3>continue — رد شدن از این دور</h3>
+
+<pre class="code"><code>for (let i = 1; i &lt;= 10; i++) {
+  if (i % 3 === 0) {
+    continue;       // مضرب‌های ۳ چاپ نمی‌شوند
+  }
+  console.log(i);
+}
+// خروجی (هر عدد در یک خط): 1 2 4 5 7 8 10</code></pre>
+
+<div class="result">
+<pre class="console" id="out-5"></pre>
+</div>
+
+<p><code>continue</code> فقط بقیهٔ دستورهای همان دور را رد می‌کند و حلقه را تمام نمی‌کند. اگر <code>i</code> بر ۳ بخش‌پذیر باشد، برنامه به چاپ نمی‌رسد و مستقیم به دور بعد می‌رود. عددهای دیگر چاپ می‌شوند. در <code>for</code>، گام <code>i++</code> حتی بعد از <code>continue</code> هم انجام می‌شود.</p>
+
+<p class="mistake"><strong>اشتباه رایج:</strong> استفاده از <code>continue</code> در <code>while</code> قبل از تغییر شمارنده:</p>
+
+<pre class="code"><code>let i = 1;
+while (i &lt;= 10) {
+  if (i % 3 === 0) {
+    continue;     // ✖ i++ هیچ‌وقت اجرا نمی‌شود؛ i روی 3 می‌ماند و حلقه بی‌پایان می‌شود!
+  }
+  console.log(i);
+  i++;
+}</code></pre>
+
+<p>در حلقه <code>for</code> این مشکل پیش نمی‌آید، چون گام (<code>i++</code>) بعد از <code>continue</code> هم اجرا می‌شود. در <code>while</code> باید شمارنده را <strong>قبل</strong> از <code>continue</code> تغییر دهید. (این کد را اجرا نکنید!)</p>
+
+<h3>مثال کاربردی: پس‌انداز برای خرید لپ‌تاپ</h3>
+
+<p>اینجا نمی‌دانیم حلقه چند بار تکرار می‌شود؛ پس <code>while</code> انتخاب درستی است:</p>
+
+<pre class="code"><code>const laptopPrice = 25000000;    // تومان
+const monthlySaving = 3000000;
+let balance = 0;
+let months = 0;
+
+while (balance &lt; laptopPrice) {
+  balance += monthlySaving;
+  months++;
+}
+console.log(`بعد از ${months} ماه، ${balance.toLocaleString("fa-IR")} تومان پس‌انداز داریم.`);</code></pre>
+
+<div class="result">
+<pre class="console" id="out-6"></pre>
+</div>
+
+<p>قیمت لپ‌تاپ و مبلغ پس‌انداز ماهانه ثابت‌اند. <code>balance</code> و <code>months</code> از صفر شروع می‌شوند. تا وقتی موجودی کمتر از قیمت است، یک ماه پس‌انداز به موجودی اضافه می‌شود و شمارندهٔ ماه یکی زیاد می‌شود. تعداد دورها از قبل نوشته نشده؛ شرط خودش تعیین می‌کند کی حلقه تمام شود. بعد از خروج، ماه و مبلغ با رقم فارسی در یک جمله چاپ می‌شوند.</p>
+
+<table class="ref">
+<tr><th>حلقه</th><th>کی استفاده کنیم</th></tr>
+<tr><td><code>for</code></td><td>تعداد تکرار معلوم است</td></tr>
+<tr><td><code>for...of</code></td><td>پیمایش روی حرف‌های رشته یا عضوهای آرایه</td></tr>
+<tr><td><code>while</code></td><td>تا وقتی یک شرط برقرار است (تعداد نامعلوم)</td></tr>
+<tr><td><code>do...while</code></td><td>مثل while، ولی حداقل یک بار اجرا شود</td></tr>
+</table>
+
+<p class="mistake"><strong>اشتباه رایج:</strong> فراموش کردن تغییر متغیر شرط داخل <code>while</code>. نتیجه حلقه بی‌پایان و هنگ کردن صفحه است.</p>
+
+<p class="exercise"><strong>تمرین:</strong> (۱) با while عدد ۱۰۰ را مدام بر ۲ تقسیم کنید تا کمتر از ۱ شود و تعداد تقسیم‌ها را بشمارید (جواب: ۷). (۲) با for و continue اعداد ۱ تا ۲۰ را بدون اعداد فرد چاپ کنید. (۳) سپرده بانکی: ۱۰٬۰۰۰٬۰۰۰ تومان با سود ۲۰٪ در سال؛ با while حساب کنید بعد از چند سال مبلغ به بیش از ۲۰٬۰۰۰٬۰۰۰ تومان می‌رسد (هر سال: <code>money += money * 20 / 100</code>؛ جواب: ۴ سال).</p>
+    </section>
+
+    <nav class="page-nav" aria-label="ناوبری درس پایین">
+      <a href="18-for-loop.html">→ قبلی: For Loop</a>
+      <a href="../index.html">فهرست درس‌ها</a>
+      <a href="20-practice.html">بعدی: تمرین جمع‌بندی ←</a>
+    </nav>
+
+  </div>
+
+  <footer class="page-footer">
+    آموزش JavaScript سطح پایه
+  </footer>
+
+</body>
+
+</html>

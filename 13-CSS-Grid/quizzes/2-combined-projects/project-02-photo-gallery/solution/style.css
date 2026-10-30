@@ -1,0 +1,129 @@
+/* ===== تنظیمات کلی ===== */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Tahoma, Arial, sans-serif;
+  line-height: 1.8;
+  color: #1f2937;
+  background-color: #f1f5f9;
+}
+
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 20px 16px 40px;
+}
+
+h1 {
+  color: #0f766e;
+  margin-bottom: 0;
+}
+
+.intro {
+  color: #64748b;
+  margin-top: 4px;
+}
+
+/* ===== ردیف برچسب‌ها با Flexbox ===== */
+.tags {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 20px;
+  display: flex;
+  flex-wrap: wrap;   /* در عرض کم به خط بعد برود */
+  gap: 8px;
+}
+
+.tags a {
+  display: block;
+  background-color: white;
+  color: #0f766e;
+  border: 1px solid #99f6e4;
+  border-radius: 20px;
+  padding: 4px 14px;
+  text-decoration: none;
+}
+
+.tags a:hover {
+  background-color: #ccfbf1;
+}
+
+/* ===== گالری با Grid ===== */
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* تعداد ستون خودکار */
+  grid-auto-rows: 180px;   /* ارتفاع همه ردیف‌ها */
+  grid-auto-flow: dense;   /* خانه‌های خالی کنار عکس منتخب پر شوند */
+  gap: 12px;
+}
+
+/* ===== کارت عکس ===== */
+/* داخل کارت با Flexbox: عکس بالا و بقیه ارتفاع، زیرنویس پایین */
+.photo-card {
+  position: relative;   /* مرجع نشان «منتخب» */
+  margin: 0;            /* figure به‌طور پیش‌فرض margin دارد */
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  border-radius: 10px;
+  overflow: hidden;     /* گوشه گرد روی عکس هم اعمال شود */
+}
+
+.photo-card img {
+  display: block;
+  width: 100%;
+  flex: 1;              /* بقیه ارتفاع کارت را بگیرد */
+  min-height: 0;
+  object-fit: cover;    /* عکس کش نیاید، اضافه‌اش بریده شود */
+}
+
+.photo-card figcaption {
+  display: flex;
+  justify-content: space-between;
+  padding: 6px 10px;
+  font-size: 14px;
+  color: #475569;
+}
+
+.photo-card:hover figcaption {
+  color: #0f172a;
+  font-weight: bold;
+}
+
+/* ===== عکس منتخب ۲×۲ ===== */
+.featured {
+  grid-column: span 2;
+  grid-row: span 2;
+}
+
+.badge {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: #f59e0b;
+  color: white;
+  font-size: 13px;
+  font-weight: bold;
+  padding: 2px 10px;
+  border-radius: 12px;
+}
+
+/* ===== پانویس ===== */
+.site-footer {
+  text-align: center;
+  color: #64748b;
+  padding: 10px;
+}
+
+/* ===== گوشی: تنها media query =====
+   در عرض کم فقط یک ستون جا می‌شود. کارت span 2 مرورگر را مجبور می‌کند
+   یک ستون ضمنی دوم بسازد که از صفحه بیرون می‌زند و اسکرول افقی می‌آورد.
+   پس در گوشی کارت منتخب هم یک ستون می‌شود. */
+@media (max-width: 450px) {
+  .featured {
+    grid-column: auto;
+  }
+}

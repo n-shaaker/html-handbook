@@ -1,0 +1,60 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Tahoma, "Segoe UI", system-ui, sans-serif;
+  background: #f8fafc;
+  color: #0f172a;
+}
+
+.panel {
+  width: min(100% - 2rem, 36rem);
+  margin: 2rem auto;
+  padding: 1.5rem;
+  background: #fff;
+  border-radius: 1rem;
+  border: 1px solid #e2e8f0;
+}
+
+button {
+  border: none;
+  border-radius: 0.55rem;
+  padding: 0.7rem 1rem;
+  background: #2563eb;
+  color: #fff;
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #1d4ed8;
+}
+
+button:focus-visible {
+  outline: 3px solid #93c5fd;
+  outline-offset: 2px;
+}
+
+button:disabled {
+  opacity: 0.6;
+  cursor: wait;
+}
+
+#status {
+  color: #64748b;
+}
+
+#status.is-error {
+  color: #b91c1c;
+}
+
+#user-list {
+  /* Logical property: indent on the right in RTL */
+  padding-inline-start: 1.1rem;
+  overflow-wrap: anywhere;
+}

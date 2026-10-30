@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Grid و Media Query</title>
+    <style>
+      body {
+        font-family: Tahoma, system-ui, sans-serif;
+        padding: 1.5rem;
+      }
+
+      .grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 0.75rem;
+      }
+
+      .cell {
+        background: #0ea5e9;
+        color: #fff;
+        padding: 1rem;
+        border-radius: 0.5rem;
+        text-align: center;
+      }
+
+      /* Mobile-first: enhance layout as viewport grows */
+      @media (min-width: 640px) {
+        .grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+
+      @media (min-width: 960px) {
+        .grid {
+          grid-template-columns: repeat(3, 1fr);
+        }
+      }
+
+      /* No media query: as many 12rem+ columns as fit, stretched with 1fr */
+      .auto-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr));
+        gap: 0.75rem;
+      }
+
+      /* Named areas: readable page layout; mobile = single column */
+      .page {
+        display: grid;
+        gap: 0.75rem;
+        grid-template-areas:
+          "header"
+          "main"
+          "sidebar"
+          "footer";
+      }
+
+      .page > * {
+        background: #e0f2fe;
+        padding: 1rem;
+        border-radius: 0.5rem;
+      }
+
+      .page header { grid-area: header; }
+      .page main { grid-area: main; }
+      .page aside { grid-area: sidebar; }
+      .page footer { grid-area: footer; }
+
+      @media (min-width: 768px) {
+        .page {
+          grid-template-columns: 3fr 1fr;
+          grid-template-areas:
+            "header header"
+            "main sidebar"
+            "footer footer";
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <h1>CSS Grid و نقاط شکست</h1>
+    <p>
+      Grid چیدمان دوبعدی است؛ هم سطر می‌سازد و هم ستون. ویژگی
+      <code>display: grid</code> را روی والد می‌نویسید و با
+      <code>grid-template-columns</code> پهنای ستون‌ها را تعیین می‌کنید. واحد
+      <code>fr</code> یعنی یک سهم از فضای باقی‌مانده. مثلاً <code>1fr 2fr</code>
+      ستون دوم را دو برابر ستون اول می‌کند.
+    </p>
+    <p>
+      شبکهٔ زیر به شیوهٔ موبایل‌اول نوشته شده است. استایل پایه یک ستون است، چون
+      <code>grid-template-columns: 1fr</code> فقط یک سهم تعریف می‌کند. پرس‌وجوی
+      رسانه (<code>@media</code>) قانونی است که فقط وقتی شرط اندازهٔ پنجره برقرار
+      باشد اعمال می‌شود. از عرض ۶۴۰ پیکسل به بعد دو ستون مساوی داریم و از ۹۶۰
+      پیکسل به بعد سه ستون. اندازهٔ پنجره را تغییر دهید تا این عوض شدن را ببینید.
+    </p>
+    <div class="grid">
+      <div class="cell">۱</div>
+      <div class="cell">۲</div>
+      <div class="cell">۳</div>
+      <div class="cell">۴</div>
+      <div class="cell">۵</div>
+      <div class="cell">۶</div>
+    </div>
+
+    <h2>بدون Media Query: <code>repeat(auto-fit, minmax(12rem, 1fr))</code></h2>
+    <p>
+      <code>repeat</code> یک الگو را چند بار تکرار می‌کند.
+      <code>auto-fit</code> به مرورگر می‌گوید هر تعداد ستون که در عرض موجود جا
+      می‌شود بسازد. <code>minmax(12rem, 1fr)</code> می‌گوید هر ستون دست‌کم دوازده برابر
+      اندازهٔ قلم عنصر ریشه پهنا داشته باشد (واحد <code>rem</code>) و اگر جا ماند،
+      فضای اضافه را مساوی تقسیم کند. نتیجه یک
+      شبکهٔ واکنش‌گراست که بدون نوشتن <code>@media</code> در موبایل کم‌ستون و در
+      دسکتاپ پرستون می‌شود.
+    </p>
+    <div class="auto-grid">
+      <div class="cell">الف</div>
+      <div class="cell">ب</div>
+      <div class="cell">ج</div>
+      <div class="cell">د</div>
+    </div>
+
+    <h2>چیدمان صفحه با <code>grid-template-areas</code></h2>
+    <p>
+      <code>grid-template-areas</code> به هر ناحیه یک نام می‌دهد و نقشهٔ صفحه را
+      مثل یک متن کوچک می‌نویسد. در موبایل نقشه چهار ردیف تک‌ستونه است: هدر،
+      محتوای اصلی، ستون کناری و پاورقی. از ۷۶۸ پیکسل به بعد، محتوا و ستون کناری
+      کنار هم قرار می‌گیرند و هدر و پاورقی تمام عرض را می‌گیرند. هر فرزند با
+      <code>grid-area</code> می‌گوید کدام نام مال اوست.
+    </p>
+    <div class="page">
+      <header>هدر</header>
+      <main>محتوای اصلی</main>
+      <aside>سایدبار</aside>
+      <footer>فوتر</footer>
+    </div>
+  </body>
+</html>

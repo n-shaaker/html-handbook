@@ -1,0 +1,95 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  background: #eef2ff;
+  font-family: Tahoma, "Segoe UI", system-ui, sans-serif;
+  color: #0f172a;
+}
+
+.card {
+  width: min(100% - 2rem, 22rem);
+  background: #fff;
+  border-radius: 1rem;
+  overflow: hidden;
+  box-shadow: 0 18px 40px rgb(15 23 42 / 12%);
+}
+
+/* position: relative makes this the containing block for the absolute badge */
+.card__media {
+  position: relative;
+}
+
+.card__media img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* Badge sits on top of the image via absolute positioning */
+.card__badge {
+  position: absolute;
+  top: 0.85rem;
+  inset-inline-start: 0.85rem;
+  padding: 0.3rem 0.65rem;
+  border-radius: 999px;
+  background: #dc2626;
+  color: #fff;
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
+.card__body {
+  padding: 1.1rem 1.2rem 1.35rem;
+}
+
+.card__title {
+  margin: 0 0 0.65rem;
+  font-size: 1.15rem;
+}
+
+.card__price {
+  margin: 0 0 1rem;
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+}
+
+.card__price-current {
+  font-size: 1.35rem;
+  font-weight: 700;
+}
+
+.card__price-old {
+  /* #64748b keeps at least 4.5:1 contrast on white */
+  color: #64748b;
+  text-decoration: line-through;
+}
+
+.card__btn {
+  width: 100%;
+  border: none;
+  border-radius: 0.65rem;
+  padding: 0.75rem 1rem;
+  background: #4f46e5;
+  color: #fff;
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.card__btn:hover {
+  background: #4338ca;
+}
+
+.card__btn:focus-visible {
+  outline: 3px solid #a5b4fc;
+  outline-offset: 2px;
+}

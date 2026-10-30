@@ -1,0 +1,152 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: Tahoma, "Segoe UI", system-ui, sans-serif;
+  background: linear-gradient(160deg, #ecfeff, #f8fafc 45%);
+  color: #0f172a;
+}
+
+.app {
+  width: min(100% - 2rem, 34rem);
+  margin: 2.5rem auto;
+  background: #fff;
+  border-radius: 1rem;
+  padding: 1.5rem;
+  box-shadow: 0 18px 40px rgb(15 23 42 / 10%);
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.todo-form {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.todo-form input {
+  flex: 1;
+  /* Allow the input to shrink below its default width on small screens */
+  min-width: 0;
+  padding: 0.7rem 0.85rem;
+  border: 1px solid #cbd5e1;
+  border-radius: 0.55rem;
+  font: inherit;
+}
+
+.todo-form button,
+.filters button {
+  border: none;
+  border-radius: 0.55rem;
+  padding: 0.7rem 0.9rem;
+  background: #0891b2;
+  color: #fff;
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.filters {
+  display: flex;
+  gap: 0.5rem;
+  margin: 1rem 0;
+  flex-wrap: wrap;
+}
+
+.filters button {
+  background: #e2e8f0;
+  color: #0f172a;
+}
+
+.filters button.is-active {
+  background: #0e7490;
+  color: #fff;
+}
+
+.todo-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.todo-item {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  padding: 0.75rem 0;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.todo-text {
+  /* Takes the free space, pushing the delete button to the far end in both RTL and LTR */
+  flex: 1;
+  overflow-wrap: anywhere;
+  cursor: pointer;
+}
+
+.todo-item.is-completed .todo-text {
+  text-decoration: line-through;
+  color: #64748b;
+}
+
+.todo-remove {
+  border: none;
+  background: transparent;
+  color: #dc2626;
+  cursor: pointer;
+  font: inherit;
+}
+
+.todo-empty {
+  margin: 1rem 0;
+  color: #64748b;
+  text-align: center;
+}
+
+.todo-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  margin-top: 1rem;
+  color: #475569;
+  font-size: 0.9rem;
+}
+
+.todo-footer p {
+  margin: 0;
+}
+
+.todo-footer button {
+  border: none;
+  background: transparent;
+  color: #0e7490;
+  cursor: pointer;
+  font: inherit;
+}
+
+.todo-footer button:disabled {
+  color: #94a3b8;
+  cursor: not-allowed;
+}
+
+button:focus-visible,
+input:focus-visible {
+  outline: 3px solid #67e8f9;
+  outline-offset: 2px;
+}

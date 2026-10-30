@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>جستجوی سریال و فیلم</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="header">
+      <h1>جستجوی نمایش</h1>
+      <form id="search-form" class="search-form">
+        <label class="sr-only" for="query">جستجوی نمایش</label>
+        <input
+          id="query"
+          name="query"
+          type="search"
+          placeholder="مثلاً: breaking bad"
+          dir="auto"
+          autocomplete="off"
+          required
+        />
+        <button type="submit">جستجو</button>
+      </form>
+      <p id="status" class="status" aria-live="polite"></p>
+    </header>
+
+    <main id="results" class="results"></main>
+    <script src="app.js"></script>
+  </body>
+</html>

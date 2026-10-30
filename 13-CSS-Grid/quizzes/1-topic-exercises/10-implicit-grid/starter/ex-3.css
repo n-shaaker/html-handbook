@@ -1,0 +1,26 @@
+/* تمرین ۳ — گالری سوراخ‌سوراخ (نسخه خراب — درستش کنید) */
+
+body {
+  font-family: Tahoma, sans-serif;
+  margin: 20px;
+  background-color: #f8f9fa;
+  color: #212529;
+}
+
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: 100px;
+  gap: 8px;
+}
+
+.plant {
+  background-color: #8ce99a;
+  padding: 8px;
+}
+
+.wide {
+  grid-column: span 2;
+  background-color: #2f9e44;
+  color: white;
+}

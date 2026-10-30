@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>تمرین ۱ — باز هستیم یا بسته؟ | منوی نارنج</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="ex-1.js" defer></script>
+  </head>
+  <body>
+    <header class="site-header">
+      <p class="logo">رستوران سنتی <strong>نارنج</strong></p>
+      <p class="open-status" id="open-status"></p>
+    </header>
+
+    <main class="container">
+      <h1>تمرین ۱ — باز هستیم یا بسته؟</h1>
+
+      <section class="panel">
+        <h2>آزمایش با ساعت دلخواه</h2>
+        <label for="test-hour">ساعت (۰ تا ۲۳):</label>
+        <input type="number" id="test-hour" min="0" max="23" />
+        <button type="button" class="btn" id="check-hour">بررسی</button>
+        <p id="hour-result" aria-live="polite"></p>
+      </section>
+
+    </main>
+  </body>
+</html>

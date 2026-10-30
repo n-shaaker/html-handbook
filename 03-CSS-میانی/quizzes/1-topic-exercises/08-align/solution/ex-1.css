@@ -1,0 +1,20 @@
+body {
+  font-family: Tahoma, Arial, sans-serif;
+  line-height: 1.8;
+  padding: 40px 16px;
+}
+
+.success {
+  max-width: 400px;
+  margin: 0 auto;      /* خود جعبه وسط */
+  text-align: center;  /* متن داخل جعبه وسط */
+  padding: 16px;
+  color: #0b6e4f;
+  background-color: #eaf7f1;
+  border: 2px solid #0b6e4f;
+  border-radius: 8px;
+}
+
+.success h1 {
+  font-size: 20px;
+}

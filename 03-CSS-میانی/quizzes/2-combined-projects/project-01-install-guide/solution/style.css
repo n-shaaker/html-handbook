@@ -1,0 +1,128 @@
+/* ===== تنظیمات کلی ===== */
+body {
+  font-family: Tahoma, Arial, sans-serif;
+  font-size: 1rem;
+  line-height: 1.9;
+  margin: 0;
+  color: #222;
+  background-color: #f7f9fc;
+}
+
+.guide {
+  max-width: 45rem;
+  margin: 0 auto;
+  padding: 1.5rem 1rem;
+}
+
+.guide h1 {
+  font-size: 1.7rem;
+}
+
+/* ===== قدم‌های اصلی ===== */
+.steps {
+  list-style-type: none;
+  padding: 0;
+  counter-reset: step;
+}
+
+/* فقط li هایی که فرزند مستقیم .steps هستند */
+.steps > li {
+  counter-increment: step;
+  margin-bottom: 1.5rem;
+  padding: 0.5rem 1rem;
+  background-color: white;
+  border-right: 4px solid #1a5fb4;
+}
+
+.steps > li:last-child {
+  border-right-color: #0b6e4f;
+}
+
+.steps > li > h2 {
+  font-size: 1.25rem;
+  margin: 0.5rem 0;
+}
+
+/* برچسب «قدم ۱» قبل از تیتر */
+.steps > li > h2::before {
+  content: "قدم " counter(step, persian);
+  display: inline-block;
+  margin-left: 0.6em;
+  padding: 0 0.7em;
+  font-size: 0.85rem;
+  color: white;
+  background-color: #1a5fb4;
+  border-radius: 1em;
+}
+
+/* خلاصه هر قدم: اولین پاراگراف بعد از تیتر */
+h2 + p {
+  font-size: 1.05rem;
+  font-weight: bold;
+  color: #1a3a5c;
+}
+
+/* ===== زیرقدم‌ها: ۲.۱، ۲.۲ ===== */
+.steps li ol {
+  list-style-type: none;
+  padding-right: 1rem;
+  counter-reset: sub;
+}
+
+.steps li li {
+  counter-increment: sub;
+  font-size: 0.95rem;
+}
+
+.steps li li::before {
+  content: counter(step, persian) "." counter(sub, persian) ". ";
+  font-weight: bold;
+  color: #1a5fb4;
+}
+
+/* ===== نکته و هشدار ===== */
+.tip,
+.warning {
+  padding: 0.6em 0.9em;
+  border-radius: 0.4em;
+}
+
+.tip {
+  background-color: #fff4d6;
+}
+
+.tip::before {
+  content: "نکته: ";
+  font-weight: bold;
+}
+
+.warning {
+  background-color: #fde2e4;
+}
+
+.warning::before {
+  content: "هشدار: ";
+  font-weight: bold;
+  color: #c92a2a;
+}
+
+/* ===== کلیدهای کیبورد ===== */
+kbd {
+  padding: 0.1em 0.5em;
+  font-family: inherit;
+  font-size: 0.85rem;
+  background-color: #f1f3f5;
+  border: 1px solid #aaa;
+  border-bottom-width: 3px;
+  border-radius: 0.3em;
+}
+
+/* ===== امتیازی ===== */
+a[target="_blank"]::after {
+  content: " ↗";
+}
+
+::selection {
+  color: white;
+  background-color: #1a5fb4;
+}

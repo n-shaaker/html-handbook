@@ -1,0 +1,58 @@
+body {
+  margin: 0;
+  font-family: Tahoma, Arial, sans-serif;
+  line-height: 1.9;
+}
+
+.hero {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 70vh;
+  padding: 40px 16px;
+  background-color: #3b2314;
+  /* لایه اول گرادیان تیره است و روی عکس می‌نشیند */
+  background-image: linear-gradient(rgba(30, 15, 5, 0.55), rgba(30, 15, 5, 0.75)), url("../../../../images/hero.jpg");
+  background-size: cover;
+  background-position: center;
+  color: white;
+  text-align: center;
+}
+
+.hero h1 {
+  color: #fed7aa;
+}
+
+.badge {
+  background-color: #fb923c;
+  color: #3b2314;
+  font-size: 13px;
+  padding: 4px 14px;
+  border-radius: 999px;
+}
+
+.btn {
+  display: inline-block;
+  background-color: #c2410c;
+  color: white;
+  padding: 10px 22px;
+  margin: 4px;
+  border: 2px solid #c2410c;
+  border-radius: 8px;
+  text-decoration: none;
+}
+
+.btn:hover {
+  background-color: #7c2d12;
+  border-color: #7c2d12;
+}
+
+.btn:focus {
+  outline: 3px solid #fdba74;
+}
+
+.btn-outline {
+  background-color: transparent;
+  border-color: #fed7aa;
+  color: #fed7aa;
+}

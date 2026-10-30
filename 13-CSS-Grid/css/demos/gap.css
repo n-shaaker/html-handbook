@@ -1,0 +1,61 @@
+/* ۴) gap */
+
+/* ظاهر مشترک شبکه‌های این صفحه */
+.demo-gap .grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  background-color: #f1f3f5;
+  border: 1px solid #ced4da;
+  margin-bottom: 12px;
+}
+
+/* جعبه‌های رنگی شماره‌دار */
+.demo-gap .box {
+  color: white;
+  font-weight: bold;
+  text-align: center;
+  padding: 12px 8px;
+  border-radius: 6px;
+}
+
+.demo-gap .b1 { background-color: #1c7ed6; }
+.demo-gap .b2 { background-color: #2f9e44; }
+.demo-gap .b3 { background-color: #e8590c; }
+.demo-gap .b4 { background-color: #ae3ec9; }
+.demo-gap .b5 { background-color: #e03131; }
+.demo-gap .b6 { background-color: #0c8599; }
+
+/* مثال ۱ */
+.demo-gap .no-gap {
+  gap: 0;
+}
+
+.demo-gap .with-gap {
+  gap: 16px;
+}
+
+/* مثال ۲ */
+.demo-gap .two-values {
+  gap: 30px 8px;
+}
+
+/* مثال ۳ */
+.demo-gap .only-column {
+  column-gap: 24px;
+  row-gap: 0;
+}
+
+/* مثال ۴: روش اشتباه با margin */
+.demo-gap .with-margin .box {
+  margin: 8px;
+}
+
+/* مثال ۵ */
+.demo-gap .gallery {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  padding: 12px;
+  background-color: #fff4e6;
+  border: 1px solid #ffc078;
+}

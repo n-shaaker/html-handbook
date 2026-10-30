@@ -1,0 +1,19 @@
+/* تمرین ۱ — گروه دکمه‌ها با gap (پاسخ) */
+
+body {
+  font-family: Tahoma, sans-serif;
+  margin: 20px;
+  background-color: #f8f9fa;
+  color: #212529;
+}
+
+.toolbar {
+  display: flex;
+  gap: 10px;
+  background-color: #e9ecef;
+  padding: 10px;
+}
+
+.toolbar button {
+  padding: 6px 14px;
+}

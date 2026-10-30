@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ثبت‌نام کلاس شنا</title>
+  </head>
+  <body>
+    <!--
+      مشکل‌های رفع‌شده:
+      ۱. DOCTYPE نبود.
+      ۲. lang و dir روی html نبود.
+      ۳. viewport نبود.
+      ۴. تگ BODY با حروف بزرگ بود.
+      ۵. div به‌جای header و main؛ و h3 قبل از h1 (ترتیب تیترها غلط).
+      ۶. تصویر alt نداشت.
+      ۷. متن لینک «اینجا» گویا نبود.
+      ۸. فیلدها label و name نداشتند و داخل form نبودند.
+      ۹. div کلیک‌پذیر به‌جای button؛ با کیبورد قابل استفاده نبود.
+    -->
+    <header>
+      <h1>کلاس شنا</h1>
+    </header>
+
+    <main>
+      <img src="../../../../images/demo.jpg" alt="استخر سرپوشیده باشگاه با آب آبی و خطوط شنا" width="400" />
+
+      <p><a href="#signup">رفتن به فرم ثبت‌نام کلاس شنا</a></p>
+
+      <h2 id="signup">فرم ثبت‌نام</h2>
+      <form action="#" method="post">
+        <p>
+          <label for="name">نام:</label>
+          <input type="text" id="name" name="name" />
+        </p>
+        <p>
+          <label for="mobile">موبایل:</label>
+          <input type="tel" id="mobile" name="mobile" placeholder="09121234567" />
+        </p>
+        <p>
+          <button type="submit">ثبت</button>
+        </p>
+      </form>
+    </main>
+  </body>
+</html>

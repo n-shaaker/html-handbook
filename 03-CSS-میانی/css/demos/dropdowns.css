@@ -1,0 +1,97 @@
+/* ۱۴) Dropdowns */
+
+.demo-dd {
+  min-height: 170px;
+}
+
+.demo-dd .dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.demo-dd .dd-btn {
+  background-color: #0b6e4f;
+  color: white;
+  border: none;
+  padding: 10px 18px;
+  font-family: inherit;
+  font-size: 15px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.demo-dd .dropdown-content {
+  display: none;
+  position: absolute;
+  right: 0;
+  min-width: 160px;
+  background-color: white;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+  z-index: 10;
+}
+
+.demo-dd .dropdown-content a {
+  display: block;
+  padding: 10px 14px;
+  color: #222;
+  text-decoration: none;
+}
+
+.demo-dd .dropdown-content a:hover,
+.demo-dd .dropdown-content a:focus-visible {
+  background-color: #f1f3f5;
+}
+
+.demo-dd .dropdown:hover .dropdown-content,
+.demo-dd .dropdown:focus-within .dropdown-content {
+  display: block;
+}
+
+.demo-dd .dropdown:hover .dd-btn,
+.demo-dd .dropdown:focus-within .dd-btn {
+  background-color: #08533b;
+}
+
+/* داخل نوار منو */
+.demo-dd .bar {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  background-color: #1a3a5c;
+}
+
+.demo-dd .bar > li {
+  display: inline-block;
+}
+
+.demo-dd .bar > li > a {
+  display: block;
+  color: white;
+  text-decoration: none;
+  padding: 12px 16px;
+}
+
+.demo-dd .bar > li:hover > a,
+.demo-dd .bar > li:focus-within > a {
+  background-color: #0f2740;
+}
+
+/* کارت پروفایل */
+.demo-dd .avatar {
+  width: 70px;
+  height: 70px;
+  object-fit: cover;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.demo-dd .info {
+  padding: 10px 14px;
+  min-width: 180px;
+}
+
+.demo-dd .info p {
+  margin: 4px 0 0;
+  color: #666;
+}

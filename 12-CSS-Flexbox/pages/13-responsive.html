@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>۱۳) Flexbox واکنش‌گرا | آموزش Flexbox</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/demos/responsive.css">
+</head>
+
+<body>
+
+  <header class="page-header">
+    <h1>آموزش Flexbox — چیدمان انعطاف‌پذیر</h1>
+    <p>۱۳) Flexbox واکنش‌گرا (Responsive)</p>
+  </header>
+
+  <div class="container">
+
+    <nav class="page-nav" aria-label="ناوبری درس">
+      <a href="12-patterns.html">→ قبلی: الگوهای پرکاربرد</a>
+      <a href="../index.html">فهرست درس‌ها</a>
+      <a href="14-practice.html">بعدی: جمع‌بندی و تمرین ←</a>
+    </nav>
+
+    <section class="lesson" id="responsive">
+      <h2>۱۳) Flexbox واکنش‌گرا (Responsive)</h2>
+      <p>
+        صفحه‌ای که در لپ‌تاپ قشنگ است، در گوشی هم باید خوانا باشد. خبر خوب اینکه Flexbox خودش تا حد زیادی «انعطاف‌پذیر» است:
+        با ترکیب <code>flex-wrap</code> و <code>flex-basis</code> کارت‌ها <strong>بدون هیچ media query</strong> خودشان را با عرض صفحه تطبیق می‌دهند.
+        هر جا هم لازم شد، یک media query ساده کار را تمام می‌کند.
+        در این درس پنجره مرورگر را باریک و پهن کنید تا تغییرها را ببینید.
+      </p>
+
+      <h3>مثال ۱: مشکل — کارت‌ها در گوشی له می‌شوند</h3>
+      <p>چهار کارت با <code>flex: 1</code> و بدون <code>wrap</code>؛ در صفحه باریک هر کارت خیلی باریک و متنش ناخوانا می‌شود:</p>
+      <pre class="code"><code>.cards {
+  display: flex;
+  gap: 10px;
+}
+
+.card {
+  flex: 1;
+}</code></pre>
+      <div class="result demo-responsive">
+        <div class="cards no-wrap">
+          <div class="card c1">۱ لپ‌تاپ</div>
+          <div class="card c2">۲ گوشی</div>
+          <div class="card c3">۳ هدفون</div>
+          <div class="card c4">۴ ساعت هوشمند</div>
+        </div>
+      </div>
+
+      <h3>مثال ۲: راه‌حل — <code>flex-wrap</code> + <code>flex-basis</code></h3>
+      <p>
+        به هر کارت می‌گوییم «حداقل حدود ۱۸۰ پیکسل جا بگیر و اگر جا ماند بزرگ شو» (<code>flex: 1 1 180px</code>).
+        هر وقت چهار کارت ۱۸۰ پیکسلی جا نشوند، آخری به خط بعد می‌رود و در گوشی همه زیر هم می‌آیند. بدون media query!
+      </p>
+      <pre class="code"><code>.cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.card {
+  flex: 1 1 180px;   /* بزرگ شو، کوچک شو، از ۱۸۰ پیکسل شروع کن */
+}</code></pre>
+      <div class="result demo-responsive">
+        <div class="cards auto-wrap">
+          <div class="card c1">۱ لپ‌تاپ</div>
+          <div class="card c2">۲ گوشی</div>
+          <div class="card c3">۳ هدفون</div>
+          <div class="card c4">۴ ساعت هوشمند</div>
+        </div>
+      </div>
+
+      <h3>مثال ۳: کارت‌های محصول فروشگاه</h3>
+      <p>همان ترفند با کارت‌های واقعی‌تر. چون پنج کارت داریم، در بعضی عرض‌ها کارت آخر تنها در یک خط می‌ماند و پهن می‌شود؛ این رفتار طبیعی <code>flex-grow</code> است:</p>
+      <pre class="code"><code>.products {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.product {
+  flex: 1 1 200px;
+}</code></pre>
+      <div class="result demo-responsive">
+        <div class="products">
+          <article class="product">
+            <span class="emoji">🎒</span>
+            <h4>کوله‌پشتی کوهنوردی</h4>
+            <p class="price">۱٬۸۵۰٬۰۰۰ تومان</p>
+          </article>
+          <article class="product">
+            <span class="emoji">👟</span>
+            <h4>کفش پیاده‌روی</h4>
+            <p class="price">۲٬۳۰۰٬۰۰۰ تومان</p>
+          </article>
+          <article class="product">
+            <span class="emoji">⛺</span>
+            <h4>چادر دو نفره</h4>
+            <p class="price">۴٬۱۰۰٬۰۰۰ تومان</p>
+          </article>
+          <article class="product">
+            <span class="emoji">🔦</span>
+            <h4>چراغ‌قوه شارژی</h4>
+            <p class="price">۴۹۰٬۰۰۰ تومان</p>
+          </article>
+          <article class="product">
+            <span class="emoji">🧭</span>
+            <h4>قطب‌نما</h4>
+            <p class="price">۲۸۰٬۰۰۰ تومان</p>
+          </article>
+        </div>
+      </div>
+      <p class="tip">
+        اگر می‌خواهید کارت آخر پهن نشود و همه کارت‌ها دقیقاً هم‌اندازه بمانند، Grid انتخاب بهتری است؛
+        در <a href="../../13-CSS-Grid/index.html">دوره آموزش Grid</a> این را می‌بینید.
+      </p>
+
+      <h3>مثال ۴: یک media query — ردیف در دسکتاپ، ستون در گوشی</h3>
+      <p>
+        چیدمان «محتوا + ستون کناری» در دسکتاپ کنار هم است. وقتی عرض صفحه از ۶۰۰ پیکسل کمتر شد، با <strong>یک</strong> media query
+        جهت را <code>column</code> می‌کنیم تا زیر هم بیایند:
+      </p>
+      <pre class="code"><code>.layout {
+  display: flex;
+  gap: 12px;
+}
+
+.main  { flex: 3; }
+.aside { flex: 1; }
+
+/* گوشی: زیر هم */
+@media (max-width: 600px) {
+  .layout {
+    flex-direction: column;
+  }
+}</code></pre>
+      <div class="result demo-responsive">
+        <div class="layout">
+          <div class="main">
+            <h4>محتوای اصلی</h4>
+            <p>معرفی دوره‌های تابستانی آموزشگاه: برنامه‌نویسی وب، طراحی گرافیک و زبان انگلیسی. ثبت‌نام از اول تیر شروع می‌شود.</p>
+          </div>
+          <aside class="aside">
+            <h4>اطلاعیه</h4>
+            <p>کلاس‌ها حضوری و آنلاین برگزار می‌شوند.</p>
+          </aside>
+        </div>
+      </div>
+
+      <h3>مثال ۵: منویی که در گوشی زیر هم می‌آید</h3>
+      <p>
+        لازم نیست برای هر بخش یک <code>@media</code> جدا بنویسید. همان شرط <code>max-width: 600px</code> که ستون کناری را زیر محتوا برد، می‌تواند منو را هم عوض کند.
+        در عرض زیاد، <code>justify-content: center</code> لینک‌ها را در یک ردیف وسط می‌چیند. زیر ۶۰۰ پیکسل، <code>flex-direction: column</code> محور اصلی را عمودی می‌کند تا هر لینک تمام‌عرض و زیر لینک قبلی بیاید.
+      </p>
+      <pre class="code"><code>.menu {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+}
+
+@media (max-width: 600px) {
+  .menu {
+    flex-direction: column;
+  }
+}</code></pre>
+      <div class="result demo-responsive">
+        <nav class="menu" aria-label="منوی نمونه واکنش‌گرا">
+          <a href="#responsive">خانه</a>
+          <a href="#responsive">دوره‌ها</a>
+          <a href="#responsive">استادها</a>
+          <a href="#responsive">ثبت‌نام</a>
+        </nav>
+      </div>
+
+      <p class="mistake">
+        <strong>اشتباه رایج:</strong>
+        به کارت‌ها <code>width: 25%</code> می‌دهیم و برای هر اندازه صفحه یک media query جدا می‌نویسیم (۵۰٪ برای تبلت، ۱۰۰٪ برای گوشی).
+        با <code>flex-wrap: wrap</code> و <code>flex: 1 1 200px</code> بیشتر این media queryها اصلاً لازم نیست.
+      </p>
+
+      <p class="mistake">
+        <strong>اشتباه رایج:</strong>
+        <code>&lt;meta name="viewport" ...&gt;</code> را در <code>head</code> فراموش می‌کنیم؛ گوشی صفحه را مثل دسکتاپ کوچک‌شده نشان می‌دهد و هیچ media queryای اجرا نمی‌شود.
+      </p>
+
+      <table class="ref">
+        <tr>
+          <th>هدف</th>
+          <th>روش</th>
+        </tr>
+        <tr>
+          <td>کارت‌ها خودکار به خط بعد بروند</td>
+          <td><code>flex-wrap: wrap</code> روی پدر + <code>flex: 1 1 200px</code> روی کارت</td>
+        </tr>
+        <tr>
+          <td>ردیف در دسکتاپ، ستون در گوشی</td>
+          <td><code>flex-direction: column</code> داخل <code>@media (max-width: 600px)</code></td>
+        </tr>
+        <tr>
+          <td>کارت‌ها در گوشی از کادر بیرون نزنند</td>
+          <td>عرض ثابت (<code>width</code>) ندهید؛ از <code>flex-basis</code> و <code>max-width: 100%</code> استفاده کنید</td>
+        </tr>
+      </table>
+
+      <p class="exercise">
+        <strong>تمرین:</strong> صفحه «تیم ما» یک آموزشگاه را با ۶ کارت استاد بسازید که در دسکتاپ سه‌تایی، در تبلت دوتایی و در گوشی تکی باشند،
+        فقط با <code>flex-wrap</code> و <code>flex-basis</code> (بدون media query). بعد یک سربرگ اضافه کنید که با یک media query در گوشی ستونی شود.
+      </p>
+    </section>
+
+    <nav class="page-nav" aria-label="ناوبری درس پایین">
+      <a href="12-patterns.html">→ قبلی: الگوهای پرکاربرد</a>
+      <a href="../index.html">فهرست درس‌ها</a>
+      <a href="14-practice.html">بعدی: جمع‌بندی و تمرین ←</a>
+    </nav>
+
+  </div>
+
+  <footer class="page-footer">
+    آموزش Flexbox
+  </footer>
+
+</body>
+
+</html>

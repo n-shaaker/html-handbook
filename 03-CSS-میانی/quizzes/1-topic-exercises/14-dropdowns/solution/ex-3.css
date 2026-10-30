@@ -1,0 +1,57 @@
+body {
+  font-family: Tahoma, Arial, sans-serif;
+  line-height: 1.8;
+  padding: 24px;
+}
+
+.comments {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.comment {
+  padding: 12px 0;
+  border-bottom: 1px solid #eee;
+}
+
+.author {
+  position: relative; /* مرجع کارت اطلاعات */
+  display: inline-block;
+}
+
+/* آواتار حرفی دایره‌ای */
+.avatar {
+  display: inline-block;
+  width: 32px;
+  height: 32px;
+  line-height: 32px;
+  text-align: center;
+  color: white;
+  background-color: #7b3fa0;
+  border-radius: 50%;
+}
+
+.author a {
+  color: #1a3a5c;
+  font-weight: bold;
+}
+
+.info-card {
+  display: none;
+  position: absolute;
+  top: 100%;
+  right: 0;
+  z-index: 10;
+  width: 200px;
+  padding: 8px 12px;
+  font-size: 13px;
+  background-color: white;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.15);
+}
+
+.author:hover .info-card,
+.author:focus-within .info-card {
+  display: block;
+}

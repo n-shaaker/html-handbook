@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>۱۳) رشته‌های قالبی (Template Literals) | آموزش JavaScript سطح پایه</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <script src="../js/log.js" defer></script>
+  <script src="../js/demos/template-literals.js" defer></script>
+</head>
+
+<body>
+
+  <header class="page-header" id="top">
+    <h1>آموزش JavaScript — سطح پایه</h1>
+    <p>۱۳) رشته‌های قالبی (Template Literals)</p>
+  </header>
+
+  <div class="container">
+
+    <nav class="page-nav" aria-label="ناوبری درس">
+      <a href="12-string-methods.html">→ قبلی: String Methods</a>
+      <a href="../index.html">فهرست درس‌ها</a>
+      <a href="14-numbers.html">بعدی: Numbers ←</a>
+    </nav>
+
+    <section class="lesson" id="template-literals">
+      <h2>۱۳) رشته‌های قالبی (Template Literals)</h2>
+<p>وقتی چند متغیر را با علامت <code>+</code> به یک جمله می‌چسبانید، گیومه‌ها و فاصله‌ها زود شلوغ می‌شوند. رشتهٔ قالبی این کار را خواناتر می‌کند. متن را داخل بک‌تیک می‌نویسید؛ بک‌تیک کلیدی است بالای Tab و کنار عدد ۱ در صفحه‌کلید انگلیسی. هر جا مقدار یک متغیر یا نتیجهٔ یک محاسبه لازم باشد، آن را داخل <code>${...}</code> می‌گذارید و JavaScript قبل از ساختن متن نهایی، آن بخش را حساب می‌کند.</p>
+
+<pre class="code"><code>let name = "سارا";
+let age = 20;
+
+// روش قدیمی
+console.log("سلام " + name + "، تو " + age + " سال داری.");
+
+// با Template Literal
+console.log(`سلام ${name}، تو ${age} سال داری.`);</code></pre>
+
+<div class="result">
+<pre class="console" id="out-1"></pre>
+</div>
+
+<p>هر دو خط همان جمله را می‌سازند. در روش قدیمی باید متن‌های ثابت و متغیرها را با <code>+</code> به هم وصل کنید و فاصله‌ها را خودتان داخل گیومه بگذارید. در روش قالبی، جمله به همان شکلی که خوانده می‌شود نوشته می‌شود و فقط جاهای متغیر داخل <code>${ }</code> هستند. اگر بک‌تیک را با گیومه عوض کنید، <code>${name}</code> دیگر محاسبه نمی‌شود و عین همان نویسه‌ها چاپ می‌شود.</p>
+
+<h3>عبارت داخل ${ }</h3>
+
+<pre class="code"><code>let price = 120000;
+let count = 3;
+console.log(`جمع کل: ${price * count} تومان`);        // جمع کل: 360000 تومان
+console.log(`سال آینده ${age + 1} ساله می‌شوی.`);      // سال آینده 21 ساله می‌شوی.
+console.log(`نام بزرگ: ${"sara".toUpperCase()}`);     // نام بزرگ: SARA
+console.log(`وضعیت: ${age &gt;= 18 ? "بزرگسال" : "نوجوان"}`);   // وضعیت: بزرگسال</code></pre>
+
+<p class="tip">داخل <code>${ }</code> هر <strong>عبارتی</strong> که یک مقدار بسازد مجاز است: متغیر، محاسبه، صدا زدن تابع یا متد. خط آخر از عملگر سه‌تایی (<code>? :</code>) استفاده کرده که در درس ۱۶ کامل توضیح داده می‌شود: «اگر شرط درست بود اولی، وگرنه دومی».</p>
+
+<div class="result">
+<pre class="console" id="out-2"></pre>
+</div>
+
+<p>داخل <code>${ }</code> فقط نام متغیر نمی‌آید؛ هر عبارتی که یک مقدار بسازد مجاز است. در خط اول قیمت در تعداد ضرب می‌شود و حاصل وسط جمله قرار می‌گیرد. <code>age + 1</code> از متغیر درس قبلی استفاده می‌کند و سال بعد را حساب می‌کند. <code>toUpperCase</code> هم می‌تواند همان‌جا صدا زده شود. خط آخر بین دو متن یکی را انتخاب می‌کند: اگر سن حداقل ۱۸ باشد «بزرگسال» و در غیر این صورت «نوجوان».</p>
+
+<h3>متن چندخطی</h3>
+
+<pre class="code"><code>let poem = `بنی آدم اعضای یکدیگرند
+که در آفرینش ز یک گوهرند`;
+console.log(poem);</code></pre>
+
+<div class="result">
+<pre class="console" id="out-3"></pre>
+</div>
+
+<p>داخل بک‌تیک، رفتن به خط بعد واقعاً بخشی از رشته است. با گیومهٔ معمولی، شکستن خط در وسط متن خطای نحوی می‌دهد، مگر اینکه هر خط را جدا بنویسید و به هم بچسبانید. فاصله‌ها و تورفتگی داخل بک‌تیک هم در متن نهایی حفظ می‌شوند.</p>
+
+<h3>مثال کاربردی: ساختن کارت</h3>
+
+<pre class="code"><code>const makeBtn = document.getElementById("card-btn");
+const nameInput = document.getElementById("card-name");
+const jobInput = document.getElementById("card-job");
+const cardTitle = document.getElementById("card-title");
+const cardText = document.getElementById("card-text");
+
+makeBtn.addEventListener("click", function () {
+  cardTitle.textContent = nameInput.value;
+  cardText.textContent = `شغل: ${jobInput.value}`;
+});</code></pre>
+
+<div class="result">
+<label for="card-name">نام:</label>
+<input type="text" id="card-name" value="مریم کریمی" placeholder="نام">
+<label for="card-job">شغل:</label>
+<input type="text" id="card-job" value="طراح وب" placeholder="شغل">
+<button class="btn" id="card-btn">ساخت کارت</button>
+<div class="js-card">
+  <h4 id="card-title">نام</h4>
+  <p id="card-text">شغل: ...</p>
+</div>
+
+<p>با کلیک، متن کادر نام مستقیم در عنوان کارت نوشته می‌شود. خط شغل از رشتهٔ قالبی استفاده می‌کند تا برچسب «شغل:» و مقدار کادر در یک متن جمع شوند. هر دو مقدار با <code>textContent</code> وارد صفحه می‌شوند، پس اگر کاربر به‌جای نام یک تگ HTML بنویسد، آن تگ اجرا نمی‌شود و فقط به‌صورت متن دیده می‌شود.</p>
+</div>
+
+<p class="tip"><strong>نکته امنیتی:</strong> متنی که کاربر تایپ کرده را با <code>textContent</code> نشان دادیم، نه <code>innerHTML</code>. همان‌طور که در درس ۳ گفتیم، اگر کاربر به جای اسم تگ HTML یا کد مخرب بنویسد، <code>innerHTML</code> آن را اجرا می‌کند (XSS).</p>
+
+<p class="mistake"><strong>اشتباه رایج:</strong> استفاده از گیومه معمولی به جای بک‌تیک: <code>"سلام ${name}"</code> عیناً همان <code>${name}</code> را چاپ می‌کند.</p>
+
+<p class="exercise"><strong>تمرین:</strong> با Template Literal یک رسید خرید بسازید: نام کالا، تعداد، قیمت واحد، قیمت کل (حاصل‌ضرب)، ۱۰٪ مالیات و مبلغ نهایی را در یک متن چندخطی چاپ کنید. همه محاسبه‌ها را داخل <code>${ }</code> انجام دهید.</p>
+    </section>
+
+    <nav class="page-nav" aria-label="ناوبری درس پایین">
+      <a href="12-string-methods.html">→ قبلی: String Methods</a>
+      <a href="../index.html">فهرست درس‌ها</a>
+      <a href="14-numbers.html">بعدی: Numbers ←</a>
+    </nav>
+
+  </div>
+
+  <footer class="page-footer">
+    آموزش JavaScript سطح پایه
+  </footer>
+
+</body>
+
+</html>

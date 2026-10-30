@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>کارت محصول</title>
+    <link rel="stylesheet" href="product-card.css" />
+  </head>
+  <body>
+    <article class="card">
+      <!-- Image wrapper is the positioning context for the badge -->
+      <div class="card__media">
+        <img
+          src="https://picsum.photos/seed/headphones/480/320"
+          alt="هدفون بی‌سیم روی میز"
+          width="480"
+          height="320"
+        />
+        <span class="card__badge">۲۰٪ تخفیف</span>
+      </div>
+
+      <div class="card__body">
+        <h2 class="card__title">هدفون حذف نویز</h2>
+        <p class="card__price">
+          <span class="card__price-current">۷۹۰٬۰۰۰ تومان</span>
+          <!-- del = semantically "no longer valid" (the old price) -->
+          <del class="card__price-old">۹۹۰٬۰۰۰ تومان</del>
+        </p>
+        <button class="card__btn" type="button">افزودن به سبد</button>
+      </div>
+    </article>
+  </body>
+</html>

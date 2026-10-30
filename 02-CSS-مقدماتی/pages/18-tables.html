@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>۱۸) جدول‌ها (Tables) | آموزش CSS از صفر</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/demos/tables.css">
+</head>
+
+<body>
+
+  <header class="page-header">
+    <h1>آموزش CSS از صفر</h1>
+    <p>۱۸) جدول‌ها (Tables)</p>
+  </header>
+
+  <div class="container">
+
+    <nav class="page-nav" aria-label="ناوبری درس">
+      <a href="17-lists.html">→ قبلی: Lists</a>
+      <a href="../index.html">فهرست درس‌ها</a>
+      <a href="19-practice.html">بعدی: تمرین جمع‌بندی ←</a>
+    </nav>
+
+    <section class="lesson" id="tables">
+      <h2>۱۸) جدول‌ها (Tables)</h2>
+      <p>
+        جدول برای داده‌هایی است که در سطر و ستون معنا دارند؛ مثل قیمت، برنامه کلاسی یا مقایسه محصول. چیدمان کلی صفحه را با جدول نمی‌سازیم، چون صفحه‌خوان و تغییر اندازه صفحه با داده جدولی رفتار می‌کنند.
+        در HTML، <code>caption</code> عنوان جدول است، <code>thead</code> ردیف عنوان ستون‌ها را جدا می‌کند و <code>tbody</code> ردیف‌های داده را. <code>th</code> سلول عنوان است و <code>td</code> سلول داده.
+        CSS روی همین ساختار، حاشیه، رنگ ردیف‌ها و رفتار جدول در صفحه باریک را تنظیم می‌کند.
+      </p>
+      <pre class="code"><code>&lt;div class="table-wrap"&gt;
+  &lt;table&gt;
+    &lt;caption&gt;قیمت پلن‌های میزبانی وب&lt;/caption&gt;
+    &lt;thead&gt;
+      &lt;tr&gt;
+        &lt;th scope="col"&gt;پلن&lt;/th&gt;
+        &lt;th scope="col"&gt;فضا&lt;/th&gt;
+        &lt;th scope="col"&gt;ایمیل&lt;/th&gt;
+        &lt;th scope="col"&gt;قیمت ماهانه&lt;/th&gt;
+      &lt;/tr&gt;
+    &lt;/thead&gt;
+    &lt;tbody&gt;
+      &lt;tr&gt;
+        &lt;td&gt;پایه&lt;/td&gt;
+        &lt;td&gt;۵ گیگابایت&lt;/td&gt;
+        &lt;td&gt;۲ حساب&lt;/td&gt;
+        &lt;td class="num"&gt;۹۰٬۰۰۰ تومان&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;!-- ردیف‌های دیگر --&gt;
+    &lt;/tbody&gt;
+  &lt;/table&gt;
+&lt;/div&gt;</code></pre>
+      <pre class="code"><code>.table-wrap {
+  overflow-x: auto;              /* در موبایل جدول اسکرول افقی بخورد، نه کل صفحه */
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;     /* حاشیه‌های دوتایی یکی شوند */
+}
+
+caption {
+  font-weight: bold;
+  padding: 8px;
+}
+
+th, td {
+  border: 1px solid #ccc;
+  padding: 8px;
+  text-align: start;             /* در صفحه فارسی: راست */
+}
+
+th {
+  background-color: #0b6e4f;
+  color: white;
+}
+
+td.num {
+  white-space: nowrap;           /* عدد و واحد در دو خط نشکنند */
+}
+
+tbody tr:nth-child(even) {       /* ردیف‌های زوج بدنه جدول */
+  background-color: #f2f2f2;
+}
+
+tbody tr:hover {                 /* ردیف زیر ماوس */
+  background-color: #e3f2fd;
+}</code></pre>
+      <div class="result demo-table">
+        <div class="table-wrap">
+          <table>
+            <caption>قیمت پلن‌های میزبانی وب</caption>
+            <thead>
+              <tr>
+                <th scope="col">پلن</th>
+                <th scope="col">فضا</th>
+                <th scope="col">ایمیل</th>
+                <th scope="col">قیمت ماهانه</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>پایه</td>
+                <td>۵ گیگابایت</td>
+                <td>۲ حساب</td>
+                <td class="num">۹۰٬۰۰۰ تومان</td>
+              </tr>
+              <tr>
+                <td>استاندارد</td>
+                <td>۲۰ گیگابایت</td>
+                <td>۱۰ حساب</td>
+                <td class="num">۱۹۰٬۰۰۰ تومان</td>
+              </tr>
+              <tr>
+                <td>حرفه‌ای</td>
+                <td>۵۰ گیگابایت</td>
+                <td>نامحدود</td>
+                <td class="num">۳۵۰٬۰۰۰ تومان</td>
+              </tr>
+              <tr>
+                <td>سازمانی</td>
+                <td>۲۰۰ گیگابایت</td>
+                <td>نامحدود</td>
+                <td class="num">۸۹۰٬۰۰۰ تومان</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <p>
+        <code>border-collapse: collapse</code> حاشیه‌های سلول‌های همسایه را در هم ادغام می‌کند تا به‌جای دو خط چسبیده، یک خط دیده شود. مقدار پیش‌فرض <code>separate</code> است: هر سلول حاشیه خودش را جدا نگه می‌دارد و دو حاشیه کنار هم یک خط دوتایی می‌سازند. فاصله اضافه بین آن‌ها را ویژگی <code>border-spacing</code> تعیین می‌کند و مقدار اولیه‌اش صفر است.
+        <code>tr:nth-child(even)</code> ردیف‌های زوج را بر اساس جایگاهشان بین فرزندان والد انتخاب می‌کند تا جدول راه‌راه شود و چشم ردیف را گم نکند.
+        <code>white-space: nowrap</code> هم جلوی شکستن عدد و واحد پول در دو سطر را می‌گیرد. اگر جدول از عرض صفحه پهن‌تر شود، <code>overflow-x: auto</code> روی ظرف جدول فقط همان ظرف را افقی اسکرول می‌کند.
+      </p>
+
+      <table class="ref">
+        <thead>
+          <tr>
+            <th>ویژگی یا انتخابگر</th>
+            <th>کاربرد</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>border-collapse: collapse</code></td>
+            <td>حاشیه سلول‌های کنار هم یکی شود</td>
+          </tr>
+          <tr>
+            <td><code>tr:nth-child(even)</code> / <code>(odd)</code></td>
+            <td>انتخاب ردیف‌های زوج یا فرد برای جدول راه‌راه (خواندن ردیف‌های طولانی ساده‌تر می‌شود)</td>
+          </tr>
+          <tr>
+            <td><code>vertical-align</code></td>
+            <td>تراز عمودی محتوای سلول: <code>top</code>، <code>middle</code> (پیش‌فرض)، <code>bottom</code></td>
+          </tr>
+          <tr>
+            <td><code>caption-side</code></td>
+            <td>جای عنوان جدول: <code>top</code> (پیش‌فرض) یا <code>bottom</code></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p class="tip">
+        <strong>چرا <code>text-align: start</code>؟</strong> مرورگر محتوای <code>th</code> را به طور پیش‌فرض وسط‌چین می‌کند
+        و <code>td</code> را از لبه شروع متن. با <code>start</code> هر دو در صفحه فارسی راست‌چین و در صفحه انگلیسی چپ‌چین
+        می‌شوند، بدون نیاز به تغییر کد.
+        <br>
+        <code>caption</code> عنوان جدول است و <code>scope="col"</code> به صفحه‌خوان‌ها می‌گوید هر <code>th</code> عنوان کدام
+        ستون است؛ هر دو برای دسترس‌پذیری مهم‌اند.
+        <br>
+        با <code>tbody tr</code> به جای <code>tr</code>، راه‌راه و hover فقط روی ردیف‌های داده اعمال می‌شود، نه ردیف عنوان.
+      </p>
+
+      <p class="mistake">
+        <strong>اشتباه رایج:</strong>
+        بدون <code>border-collapse: collapse</code> بین سلول‌ها حاشیه دوتایی دیده می‌شود.
+        <br>
+        استفاده از جدول برای چیدمان صفحه (مثلاً ستون کناری و محتوا)؛ جدول فقط برای داده جدولی است و چیدمان را با Flexbox و
+        Grid می‌سازیم (دوره میانی).
+        <br>
+        جدول عریض بدون <code>overflow-x: auto</code> در موبایل کل صفحه را اسکرول افقی می‌کند.
+      </p>
+
+      <p class="exercise">
+        <strong>تمرین:</strong> برنامه هفتگی کلاس‌هایتان را به شکل جدول بنویسید (روز، ساعت، درس، استاد) با
+        <code>caption</code>، سرستون رنگی، ردیف‌های راه‌راه و hover. پنجره را باریک کنید و اسکرول افقی جدول را امتحان کنید.
+      </p>
+    </section>
+
+
+    <nav class="page-nav" aria-label="ناوبری درس پایین">
+      <a href="17-lists.html">→ قبلی: Lists</a>
+      <a href="../index.html">فهرست درس‌ها</a>
+      <a href="19-practice.html">بعدی: تمرین جمع‌بندی ←</a>
+    </nav>
+
+  </div>
+
+  <footer class="page-footer">
+    آموزش CSS از صفر
+  </footer>
+
+</body>
+
+</html>

@@ -1,0 +1,29 @@
+body {
+  font-family: Tahoma, Arial, sans-serif;
+  line-height: 1.9;
+  margin: 0;
+  padding: 24px 0;
+}
+
+/* min: کوچک‌ترِ دو مقدار → عملاً «حداکثر ۸۰۰ پیکسل» */
+.container {
+  width: min(90%, 800px);
+  margin: 0 auto;
+}
+
+/* max: بزرگ‌ترِ دو مقدار → عملاً «حداقل ۲۲۰ پیکسل» */
+.author-box {
+  float: left;
+  width: max(220px, 30%);
+  box-sizing: border-box;
+  margin-right: 16px;
+  margin-bottom: 8px;
+  padding: 12px;
+  background-color: #f3f6f9;
+  border-radius: 8px;
+}
+
+.author-box h2 {
+  margin-top: 0;
+  font-size: 16px;
+}

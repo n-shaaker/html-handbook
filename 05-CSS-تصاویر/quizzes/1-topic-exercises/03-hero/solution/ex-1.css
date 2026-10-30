@@ -1,0 +1,23 @@
+body {
+  font-family: Tahoma, Arial, sans-serif;
+  line-height: 1.8;
+  margin: 0;
+}
+
+.hero {
+  min-height: 350px;
+  padding: 120px 24px 0;
+  background-image: url("../../../../images/hero.jpg");
+  background-size: cover;      /* کل بنر را بپوشاند */
+  background-position: center;
+}
+
+.hero h1 {
+  margin: 0;
+  color: white;
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.7);
+}
+
+.content {
+  padding: 16px 24px;
+}

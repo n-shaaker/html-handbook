@@ -1,0 +1,30 @@
+/* تمرین ۲ — برنامه کلاس‌های هفته (پاسخ) */
+
+body {
+  font-family: Tahoma, sans-serif;
+  margin: 20px;
+  background-color: #f8f9fa;
+  color: #212529;
+}
+
+.schedule {
+  display: grid;
+  grid-template-columns: 100px 1fr 1fr 1fr;
+  grid-template-rows: 40px 60px 60px 60px;
+  background-color: white;
+}
+
+.schedule div {
+  border: 1px solid #dee2e6;
+  padding: 8px;
+}
+
+.head {
+  background-color: #7048e8;
+  color: white;
+}
+
+.day {
+  background-color: #f3f0ff;
+  font-weight: bold;
+}

@@ -1,0 +1,85 @@
+/* ۱) آشنایی با Flexbox */
+
+/* جعبه‌های رنگی شماره‌دار */
+.demo-intro .box {
+  padding: 10px 16px;
+  color: white;
+  font-weight: bold;
+  text-align: center;
+  border-radius: 6px;
+  margin: 4px;
+}
+
+.demo-intro .b1 { background-color: #1c7ed6; }
+.demo-intro .b2 { background-color: #2b8a3e; }
+.demo-intro .b3 { background-color: #e8590c; }
+.demo-intro .b4 { background-color: #ae3ec9; }
+
+/* ظرف معمولی بدون چیدمان */
+.demo-intro .normal {
+  background-color: #f1f3f5;
+  padding: 4px;
+}
+
+/* ظرف فلکس */
+.demo-intro .flex {
+  display: flex;
+  background-color: #f1f3f5;
+  border: 2px solid #868e96;
+  padding: 4px;
+}
+
+/* دور ظرف خط‌چین تا ظرف بهتر دیده شود */
+.demo-intro .container-outline {
+  border: 2px dashed #1a3a5c;
+}
+
+.demo-intro .grandchild {
+  background-color: white;
+  color: #2b8a3e;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-weight: normal;
+}
+
+/* نمایش محورها */
+.demo-intro .axes {
+  height: 140px;
+  position: relative;
+  padding-top: 30px;
+}
+
+.demo-intro .axis-main {
+  position: absolute;
+  top: 4px;
+  right: 8px;
+  color: #c92a2a;
+  font-size: 13px;
+}
+
+.demo-intro .axis-cross {
+  position: absolute;
+  bottom: 4px;
+  left: 8px;
+  color: #1a3a5c;
+  font-size: 13px;
+}
+
+.demo-intro .label {
+  margin: 4px 0;
+  font-size: 14px;
+  color: #495057;
+}
+
+/* inline-flex: ظرف فقط به اندازه محتوایش */
+.demo-intro .badge {
+  display: inline-flex;
+  border: 2px solid #2b8a3e;
+  border-radius: 8px;
+}
+
+.demo-intro .badge .box {
+  margin: 0;
+  padding: 2px 10px;
+  border-radius: 0;
+}

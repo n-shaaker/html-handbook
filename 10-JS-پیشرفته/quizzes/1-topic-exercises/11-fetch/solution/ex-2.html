@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>تمرین ۲ — کارهای کاربر</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="ex-2.js" defer></script>
+  </head>
+  <body>
+    <main class="box">
+      <h1>تمرین ۲ — کارهای هر کارمند</h1>
+      <label for="user">کارمند:</label>
+      <select id="user">
+        <option value="1">کاربر ۱</option>
+        <option value="2">کاربر ۲</option>
+        <option value="3">کاربر ۳</option>
+      </select>
+      <button type="button" id="load">نمایش کارها</button>
+      <p id="status" aria-live="polite"></p>
+      <ul class="output" id="todo-list"></ul>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>۱۴) متن (Text) | آموزش CSS از صفر</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/demos/text.css">
+</head>
+
+<body>
+
+  <header class="page-header">
+    <h1>آموزش CSS از صفر</h1>
+    <p>۱۴) متن (Text)</p>
+  </header>
+
+  <div class="container">
+
+    <nav class="page-nav" aria-label="ناوبری درس">
+      <a href="13-outline.html">→ قبلی: Outline</a>
+      <a href="../index.html">فهرست درس‌ها</a>
+      <a href="15-fonts.html">بعدی: Fonts ←</a>
+    </nav>
+
+    <section class="lesson" id="text">
+      <h2>۱۴) متن (Text)</h2>
+      <p>
+        این ویژگی‌ها ظاهر خود نوشته را تنظیم می‌کنند: رنگ، تراز، خط روی متن و فاصله سطرها.
+        <code>color</code> رنگ خود نویسه‌ها را عوض می‌کند. <code>text-align</code> مشخص می‌کند خط‌ها در عرض جعبه از کدام سمت تراز شوند، وسط بنشینند، یا از هر دو طرف صاف شوند.
+        <code>text-decoration</code> خطی روی متن می‌کشد یا خط موجود را برمی‌دارد؛ مثل زیرخط یا خط روی قیمت قبلی.
+        <code>text-transform</code> شکل حروف لاتین را عوض می‌کند، مثلاً همه را بزرگ می‌نویسد، و روی حروف فارسی اثری ندارد.
+        <code>letter-spacing</code> فاصله بین نویسه‌ها را زیاد یا کم می‌کند. <code>line-height</code> ارتفاع هر خط را نسبت به اندازه قلم تعیین می‌کند و هرچه بزرگ‌تر باشد، سطرها از هم بازتر می‌شوند.
+        <code>text-shadow</code> سایه‌ای پشت متن می‌اندازد. در مقدار <code>2px 2px 4px #999</code> به ترتیب جابه‌جایی افقی، جابه‌جایی عمودی، میزان محو شدن و رنگ سایه آمده است.
+      </p>
+      <pre class="code"><code>.t-color   { color: #0b6e4f; }
+.t-center  { text-align: center; }
+.t-justify { text-align: justify; }
+.t-under   { text-decoration: underline; }
+.t-strike  { text-decoration: line-through; }
+.t-upper   { text-transform: uppercase; }
+.t-space   { letter-spacing: 4px; }
+.t-line    { line-height: 2.4; background-color: #f1f3f5; }
+.t-shadow  { text-shadow: 2px 2px 4px #999; font-size: 22px; }</code></pre>
+
+      <div class="result">
+        <p class="t-color">رنگ متن سبز تیره</p>
+        <p class="t-center">متن وسط‌چین</p>
+        <p class="t-justify">
+          متن تراز دوطرفه: در این حالت خط‌ها از هر دو طرف صاف می‌شوند و فاصله کلمه‌ها کمی تغییر می‌کند تا ظاهر پاراگراف
+          مرتب شود. این حالت برای متن‌های بلند مثل مقاله مناسب است.
+        </p>
+        <p class="t-under">متن زیرخط‌دار</p>
+        <p>قیمت: <span class="t-strike">۲۵۰٬۰۰۰ تومان</span> ۱۹۰٬۰۰۰ تومان (قیمت قبلی خط خورده)</p>
+        <p class="t-upper" dir="ltr" lang="en">hello css (uppercase)</p>
+        <p class="t-space" dir="ltr" lang="en">LETTER SPACING</p>
+        <p class="t-line">فاصله بین خط‌ها زیاد است.<br>این خط دوم است.</p>
+        <p class="t-shadow">متن با سایه</p>
+      </div>
+      <p>
+        دو نمونه انگلیسی با <code>dir="ltr"</code> در HTML چپ‌چین شده‌اند. جهت متن جزو محتواست و در HTML با <code>dir</code> تعیین می‌شود. CSS می‌تواند تراز را عوض کند، ولی زبان و جهت پایه متن را نباید فقط با <code>text-align</code> عوض کرد.
+      </p>
+
+      <table class="ref">
+        <thead>
+          <tr>
+            <th>ویژگی</th>
+            <th>مقدارهای رایج</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>text-align</code></td>
+            <td><code>start</code> (پیش‌فرض)، <code>end</code>، <code>center</code>، <code>justify</code>، <code>right</code>، <code>left</code></td>
+          </tr>
+          <tr>
+            <td><code>text-decoration</code></td>
+            <td><code>none</code>، <code>underline</code>، <code>line-through</code>، <code>overline</code></td>
+          </tr>
+          <tr>
+            <td><code>text-transform</code></td>
+            <td><code>uppercase</code>، <code>lowercase</code>، <code>capitalize</code> (فقط حروف لاتین)</td>
+          </tr>
+          <tr>
+            <td><code>line-height</code></td>
+            <td>عدد بدون واحد مثل <code>1.8</code> (یعنی ۱.۸ برابر اندازه فونت)</td>
+          </tr>
+          <tr>
+            <td><code>text-indent</code></td>
+            <td>تورفتگی خط اول پاراگراف، مثل <code>2em</code></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p class="tip">
+        <strong>نکته راست‌چین:</strong> مقدار پیش‌فرض <code>text-align</code> برابر <code>start</code> است؛ یعنی «از جایی که
+        متن شروع می‌شود». در صفحه فارسی (<code>dir="rtl"</code>) این یعنی راست و در صفحه انگلیسی یعنی چپ.
+        پس به جای <code>text-align: right</code> بهتر است <code>start</code> بنویسید (و به جای <code>left</code>، مقدار
+        <code>end</code>) تا اگر صفحه یا بخشی از آن انگلیسی شد، تراز خودبه‌خود درست شود.
+        <br>
+        برای حذف خط زیر لینک‌ها از <code>text-decoration: none;</code> استفاده می‌شود (درس ۱۶).
+      </p>
+
+      <h3>کاربرد واقعی: پاراگراف‌های یک مقاله</h3>
+      <p>
+        در متن بلند، <code>line-height</code> حدود ۲ برابر اندازه قلم، سطرها را از هم باز می‌کند و خواندن فارسی را راحت‌تر می‌کند.
+        <code>text-align: justify</code> دو لبه پاراگراف را صاف می‌کند. تاریخ یا توضیح کوتاه را با <code>text-align: end</code> به انتهای جهت متن می‌بریم تا از خود مقاله جدا بماند.
+      </p>
+      <pre class="code"><code>.article p {
+  line-height: 2;            /* متن فارسی با فاصله خط بیشتر خواناتر است */
+  text-align: justify;
+  color: #333;               /* کمی روشن‌تر از سیاه، چشم را کمتر خسته می‌کند */
+}
+
+.article .meta {
+  color: #666;
+  font-size: 14px;
+  text-align: end;           /* در صفحه فارسی: چپ */
+}</code></pre>
+      <div class="result">
+        <div class="article">
+          <p>
+            کتاب‌خوانی فقط سرگرمی نیست؛ پژوهش‌ها نشان می‌دهد مطالعه منظم، تمرکز و دایره واژگان را تقویت می‌کند و حتی به
+            خواب بهتر کمک می‌کند. اگر وقت کمی دارید، روزی بیست دقیقه مطالعه پیش از خواب شروع خوبی است.
+          </p>
+          <p class="meta">نوشته شده در ۱۲ مهر — زمان مطالعه: ۳ دقیقه</p>
+        </div>
+      </div>
+
+      <p class="mistake">
+        <strong>اشتباه رایج:</strong>
+        استفاده از <code>letter-spacing</code> برای متن فارسی؛ اتصال حروف فارسی به هم می‌خورد و خواندن سخت می‌شود.
+        <code>text-transform</code> هم فقط روی حروف لاتین اثر دارد.
+        <br>
+        دادن <code>line-height</code> با واحد پیکسل (مثل <code>24px</code>)؛ اگر بعداً اندازه فونت بزرگ شود، خط‌ها روی هم
+        می‌افتند. عدد بدون واحد با اندازه فونت هماهنگ می‌ماند.
+        <br>
+        <code>text-align: justify</code> در ستون‌های خیلی باریک (مثل موبایل) فاصله‌های بزرگ و زشت بین کلمه‌ها می‌سازد.
+      </p>
+
+      <p class="exercise">
+        <strong>تمرین:</strong> پاراگراف‌های صفحه معرفی‌تان را <code>line-height: 2</code> و
+        <code>text-align: justify</code> کنید و تاریخ زیر هر بخش را با <code>text-align: end</code>، رنگ خاکستری و فونت کوچک‌تر بنویسید.
+      </p>
+    </section>
+
+
+    <nav class="page-nav" aria-label="ناوبری درس پایین">
+      <a href="13-outline.html">→ قبلی: Outline</a>
+      <a href="../index.html">فهرست درس‌ها</a>
+      <a href="15-fonts.html">بعدی: Fonts ←</a>
+    </nav>
+
+  </div>
+
+  <footer class="page-footer">
+    آموزش CSS از صفر
+  </footer>
+
+</body>
+
+</html>

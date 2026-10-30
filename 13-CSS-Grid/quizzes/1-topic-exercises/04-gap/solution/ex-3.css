@@ -1,0 +1,27 @@
+/* تمرین ۳ — فاصله‌های دوبرابر و شبکه سرریز (پاسخ) */
+
+body {
+  font-family: Tahoma, sans-serif;
+  margin: 20px;
+  background-color: #f8f9fa;
+  color: #212529;
+}
+
+/*
+  درست شد: سه تا ۳۳٫۳۳٪ یعنی کل عرض؛ gap هم اضافه می‌شود و بیرون می‌زند.
+  fr فقط فضای باقی‌مانده بعد از gap را تقسیم می‌کند.
+*/
+.cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  padding: 20px;
+  background-color: #e9ecef;
+}
+
+/* درست شد: margin حذف شد */
+.card {
+  background-color: white;
+  padding: 20px;
+  border-radius: 6px;
+}

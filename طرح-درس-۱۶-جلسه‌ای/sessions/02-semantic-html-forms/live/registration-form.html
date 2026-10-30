@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>فرم ثبت‌نام</title>
+  </head>
+  <body>
+    <header>
+      <h1>ساخت حساب کاربری</h1>
+      <p>برای ثبت‌نام در پورتال بوت‌کمپ، فرم را کامل کنید.</p>
+    </header>
+
+    <main>
+      <!--
+        action/method are placeholders for now (no server yet).
+        Built-in browser validation (required, minlength, type="email") is active;
+        in session 12 we add novalidate and handle validation with JavaScript.
+      -->
+      <form action="#" method="post">
+        <section aria-labelledby="account-heading">
+          <h2 id="account-heading">اطلاعات حساب</h2>
+
+          <p>
+            <label for="username">نام کاربری</label>
+            <input
+              id="username"
+              name="username"
+              type="text"
+              autocomplete="username"
+              minlength="3"
+              required
+            />
+          </p>
+
+          <p>
+            <label for="email">ایمیل</label>
+            <input
+              id="email"
+              name="email"
+              type="email"
+              autocomplete="email"
+              required
+            />
+          </p>
+
+          <p>
+            <label for="password">رمز عبور</label>
+            <input
+              id="password"
+              name="password"
+              type="password"
+              autocomplete="new-password"
+              minlength="8"
+              required
+            />
+          </p>
+
+          <p>
+            <label for="confirm-password">تأیید رمز عبور</label>
+            <input
+              id="confirm-password"
+              name="confirmPassword"
+              type="password"
+              autocomplete="new-password"
+              minlength="8"
+              required
+            />
+          </p>
+        </section>
+
+        <section aria-labelledby="profile-heading">
+          <h2 id="profile-heading">پروفایل</h2>
+
+          <p>
+            <label for="full-name">نام کامل</label>
+            <input
+              id="full-name"
+              name="fullName"
+              type="text"
+              autocomplete="name"
+              required
+            />
+          </p>
+
+          <p>
+            <label for="country">کشور</label>
+            <select id="country" name="country" required>
+              <option value="">یک کشور انتخاب کنید</option>
+              <option value="ir">ایران</option>
+              <option value="tr">ترکیه</option>
+              <option value="de">آلمان</option>
+              <option value="other">سایر</option>
+            </select>
+          </p>
+
+          <fieldset>
+            <legend>سطح تجربه</legend>
+            <label>
+              <input type="radio" name="level" value="beginner" checked />
+              مبتدی
+            </label>
+            <label>
+              <input type="radio" name="level" value="intermediate" />
+              متوسط
+            </label>
+            <label>
+              <input type="radio" name="level" value="advanced" />
+              پیشرفته
+            </label>
+          </fieldset>
+
+          <p>
+            <label for="bio">معرفی کوتاه</label>
+            <textarea id="bio" name="bio" rows="4" placeholder="کمی درباره خودتان بنویسید"></textarea>
+          </p>
+
+          <p>
+            <label>
+              <input type="checkbox" name="terms" value="accepted" required />
+              قوانین و شرایط را می‌پذیرم
+            </label>
+          </p>
+        </section>
+
+        <button type="submit">ثبت‌نام</button>
+      </form>
+    </main>
+
+    <footer>
+      <p>قبلاً حساب دارید؟ <a href="../../12-events-forms/live/index.html">ورود</a></p>
+    </footer>
+  </body>
+</html>

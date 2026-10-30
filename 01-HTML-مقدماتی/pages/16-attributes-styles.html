@@ -1,0 +1,310 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>۱۶) ویژگی‌ها، style، رنگ‌ها و افزودن CSS | جزوه HTML</title>
+    <link rel="stylesheet" href="../css/style.css" />
+  </head>
+
+  <body>
+    <header class="page-header">
+      <h1>جزوه HTML مقدماتی</h1>
+      <p>۱۶) ویژگی‌ها (Attributes)، style، رنگ‌ها و روش‌های افزودن CSS</p>
+    </header>
+
+    <div class="container">
+      <nav class="page-nav">
+        <a href="15-iframe-js.html">→ درس قبل</a>
+        <a href="../index.html">فهرست مطالب</a>
+        <a href="17-formatting-code.html">درس بعد ←</a>
+      </nav>
+
+      <section class="lesson">
+        <h2>۱۶) ویژگی‌ها (Attributes)</h2>
+        <p>
+          ویژگی اطلاعات اضافه دربارهٔ یک عنصر است. همیشه در تگ آغازین نوشته می‌شود و معمولاً به شکل
+          <code>name="value"</code>
+          است. نام ویژگی می‌گوید چه چیزی تنظیم می‌شود و مقدار، تنظیم دقیق آن است. چند ویژگی با فاصله از هم جدا می‌شوند.
+        </p>
+        <pre class="code"><code>&lt;a href="https://developer.mozilla.org/" title="مستندات رسمی فناوری‌های وب"&gt;MDN&lt;/a&gt;</code></pre>
+        <p>در نمونهٔ زیر دو ویژگی روی یک پیوند نوشته شده است:</p>
+        <ul>
+          <li><code>a</code> نام عنصر است و می‌گوید این قطعه یک پیوند است.</li>
+          <li><code>href</code> نام ویژگی است و <code>"https://developer.mozilla.org/"</code> مقدار آن، یعنی نشانی مقصد.</li>
+          <li><code>title</code> ویژگی دوم است. ویژگی‌ها با فاصله از هم جدا می‌شوند و ترتیب‌شان معمولاً مهم نیست.</li>
+        </ul>
+
+        <h3>ویژگی‌های مهم و پرکاربرد</h3>
+        <table class="ref">
+          <thead>
+            <tr>
+              <th>ویژگی</th>
+              <th>روی چه عنصری</th>
+              <th>کاربرد</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>href</code></td>
+              <td><code>a</code>، <code>link</code></td>
+              <td><code>href</code> نشانی مقصد پیوند یا پروندهٔ مرتبط را مشخص می‌کند.</td>
+            </tr>
+            <tr>
+              <td><code>src</code></td>
+              <td><code>img</code>، <code>video</code>، <code>audio</code>، <code>iframe</code>، <code>script</code></td>
+              <td><code>src</code> مسیر پرونده‌ای را می‌گوید که عنصر باید بارگذاری کند، مانند تصویر یا اسکریپت.</td>
+            </tr>
+            <tr>
+              <td><code>alt</code></td>
+              <td><code>img</code></td>
+              <td><code>alt</code> متن جایگزین تصویر است و وقتی تصویر دیده نشود یا خوانده شود به‌کار می‌آید.</td>
+            </tr>
+            <tr>
+              <td><code>width</code> / <code>height</code></td>
+              <td><code>img</code>، <code>video</code>، <code>iframe</code>، <code>canvas</code></td>
+              <td>این دو ویژگی ابعاد را به پیکسل مشخص می‌کنند تا مرورگر پیش از بارگذاری جا را بشناسد.</td>
+            </tr>
+            <tr>
+              <td><code>id</code></td>
+              <td>همه عناصر</td>
+              <td><code>id</code> نام یکتای یک عنصر در صفحه است و نباید تکرار شود.</td>
+            </tr>
+            <tr>
+              <td><code>class</code></td>
+              <td>همه عناصر</td>
+              <td><code>class</code> نام گروه است. چند عنصر می‌توانند یک کلاس مشترک داشته باشند.</td>
+            </tr>
+            <tr>
+              <td><code>style</code></td>
+              <td>همه عناصر</td>
+              <td>ویژگی <code>style</code> CSS درون‌خطی همان عنصر را می‌نویسد و فقط روی خودش اثر دارد.</td>
+            </tr>
+            <tr>
+              <td><code>title</code></td>
+              <td>همه عناصر</td>
+              <td>ویژگی <code>title</code> متن راهنماست و معمولاً با نگه داشتن نشانگر ظاهر می‌شود. روی صفحهٔ لمسی اغلب دیده نمی‌شود.</td>
+            </tr>
+            <tr>
+              <td><code>lang</code></td>
+              <td><code>html</code> و همه عناصر</td>
+              <td>ویژگی <code>lang</code> زبان محتوا را مشخص می‌کند، مثلاً <code>fa</code> برای فارسی و <code>en</code> برای انگلیسی، تا صفحه‌خوان تلفظ درست را انتخاب کند.</td>
+            </tr>
+            <tr>
+              <td><code>dir</code></td>
+              <td>همه عناصر</td>
+              <td>ویژگی <code>dir</code> جهت متن را تعیین می‌کند: <code>rtl</code> راست‌به‌چپ و <code>ltr</code> چپ‌به‌راست.</td>
+            </tr>
+            <tr>
+              <td><code>hidden</code></td>
+              <td>همه عناصر</td>
+              <td>وجود ویژگی <code>hidden</code> عنصر را از دید و از دسترس پنهان می‌کند. این ویژگی بولی است و بودنش کافی است.</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="tag-card">
+          <h4>title</h4>
+          <p>ماوس را روی متن زیر نگه دارید:</p>
+          <pre class="code"><code>&lt;p title="من یک راهنما هستم!"&gt;ماوس را روی من ببرید&lt;/p&gt;</code></pre>
+          <div class="result">
+            <p title="من یک راهنما هستم!">ماوس را روی من ببرید</p>
+          </div>
+        </div>
+
+        <div class="tag-card">
+          <h4>lang و dir</h4>
+          <p>در یک صفحه فارسی، می‌توان بخش انگلیسی را با زبان و جهت درست نوشت:</p>
+          <pre class="code"><code>&lt;p lang="en" dir="ltr"&gt;Hello! This paragraph is English.&lt;/p&gt;</code></pre>
+          <div class="result">
+            <p lang="en" dir="ltr">Hello! This paragraph is English.</p>
+          </div>
+        </div>
+
+        <h3>ویژگی‌های بولی (Boolean)</h3>
+        <p>
+          بعضی ویژگی‌ها مقدار جدا لازم ندارند. همین که نوشته شوند فعال‌اند. به این‌ها ویژگی بولی می‌گویند.
+          نمونه‌های رایج <code>disabled</code>، <code>checked</code>، <code>required</code>، <code>hidden</code> و <code>controls</code> هستند.
+        </p>
+        <pre class="code"><code>&lt;label&gt;&lt;input type="checkbox" checked&gt; عضویت در خبرنامه&lt;/label&gt;
+&lt;button type="button" disabled&gt;پرداخت (ابتدا قوانین را بپذیرید)&lt;/button&gt;</code></pre>
+        <div class="result">
+          <label><input type="checkbox" checked /> عضویت در خبرنامه</label>
+          <button type="button" disabled>پرداخت (ابتدا قوانین را بپذیرید)</button>
+        </div>
+        <p class="mistake">
+          <strong>خطای متداول:</strong>
+          نوشتن <code>disabled="false"</code> برای فعال کردن دکمه. در ویژگی بولی، حضور ویژگی یعنی فعال، حتی اگر مقدارش <code>"false"</code> باشد.
+          برای اینکه دکمه غیرفعال نباشد، باید خود ویژگی را حذف کنید.
+        </p>
+
+        <p class="tip">
+          <strong>نکته (قرارداد نگارشی):</strong>
+          نام ویژگی‌ها را با حروف کوچک بنویسید و مقدار را داخل نقل‌قول دوتایی بگذارید. HTML در بسیاری از موارد بدون نقل‌قول هم کار می‌کند، اما اگر مقدار فاصله یا علامت خاص داشته باشد نقل‌قول لازم است.
+          اگر خود مقدار علامت <code>"</code> داشت، از نقل‌قول تکی استفاده کنید: <code>title='او گفت "سلام"'</code>
+        </p>
+      </section>
+
+      <section class="lesson">
+        <h2>ویژگی style و رنگ‌ها</h2>
+        <p>
+          ویژگی <code>style</code> ظاهر یک عنصر را با CSS تغییر می‌دهد. نوشتار آن
+          <code>style="property: value;"</code>
+          است. این روش فقط همان عنصر را هدف می‌گیرد و برای طراحی کل سایت مناسب نیست، اما برای دیدن سریع اثر یک ویژگی مفید است.
+        </p>
+
+        <pre class="code"><code>&lt;h3 style="color: crimson;"&gt;تیتر قرمز&lt;/h3&gt;
+&lt;p style="background-color: lightyellow;"&gt;پس‌زمینه زرد روشن&lt;/p&gt;
+&lt;p style="font-size: 22px;"&gt;متن بزرگ‌تر&lt;/p&gt;
+&lt;p style="text-align: center;"&gt;متن وسط‌چین&lt;/p&gt;
+&lt;p style="font-family: 'Courier New';"&gt;فونت دیگر (Courier)&lt;/p&gt;</code></pre>
+        <div class="result">
+          <h3 style="color: crimson">تیتر قرمز</h3>
+          <p style="background-color: lightyellow">پس‌زمینه زرد روشن</p>
+          <p style="font-size: 22px">متن بزرگ‌تر</p>
+          <p style="text-align: center">متن وسط‌چین</p>
+          <p style="font-family: 'Courier New'">فونت دیگر (Courier)</p>
+        </div>
+
+        <h3>روش‌های نوشتن رنگ</h3>
+        <table class="ref">
+          <thead>
+            <tr>
+              <th>روش</th>
+              <th>مثال</th>
+              <th>نمونه</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>نام رنگ (حدود ۱۴۰ نام استاندارد انگلیسی)</td>
+              <td><code>tomato</code></td>
+              <td><span style="background-color: tomato; padding: 0 20px"></span></td>
+            </tr>
+            <tr>
+              <td>HEX (شانزده‌شانزدهی)</td>
+              <td><code>#ff6347</code></td>
+              <td><span style="background-color: #ff6347; padding: 0 20px"></span></td>
+            </tr>
+            <tr>
+              <td>RGB (قرمز، سبز، آبی ۰ تا ۲۵۵)</td>
+              <td><code>rgb(255, 99, 71)</code></td>
+              <td><span style="background-color: rgb(255, 99, 71); padding: 0 20px"></span></td>
+            </tr>
+            <tr>
+              <td>RGBA (با شفافیت ۰ تا ۱)</td>
+              <td><code>rgba(255, 99, 71, 0.4)</code></td>
+              <td><span style="background-color: rgba(255, 99, 71, 0.4); padding: 0 20px"></span></td>
+            </tr>
+            <tr>
+              <td>HSL (رنگ، اشباع، روشنی)</td>
+              <td><code>hsl(9, 100%, 64%)</code></td>
+              <td><span style="background-color: hsl(9, 100%, 64%); padding: 0 20px"></span></td>
+            </tr>
+          </tbody>
+        </table>
+        <p>
+          همهٔ ردیف‌های بالا، جز RGBA، یک رنگ هستند و فقط شیوهٔ نوشتن‌شان فرق دارد.
+          نام رنگ خواناتر است، HEX فشرده است، RGB مقدار هر کانال را جدا نشان می‌دهد و HSL تنظیم رنگ و روشنی را شهودی‌تر می‌کند.
+          RGBA همان RGB است به‌اضافهٔ شفافیت از ۰ تا ۱.
+        </p>
+
+        <pre class="code"><code>&lt;p style="border: 3px solid DodgerBlue; color: white; background-color: #0b6e4f;"&gt;
+  حاشیه آبی، متن سفید، پس‌زمینه سبز
+&lt;/p&gt;</code></pre>
+        <div class="result">
+          <p style="border: 3px solid DodgerBlue; color: white; background-color: #0b6e4f; padding: 6px">
+            حاشیه آبی، متن سفید، پس‌زمینه سبز
+          </p>
+        </div>
+      </section>
+
+      <section class="lesson">
+        <h2>سه روش افزودن CSS به HTML</h2>
+
+        <table class="ref">
+          <thead>
+            <tr>
+              <th>روش</th>
+              <th>کجا نوشته می‌شود</th>
+              <th>چه زمانی</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>درون‌خطی (Inline)</td>
+              <td>ویژگی <code>style</code> روی خود عنصر</td>
+              <td>فقط برای آزمایش سریع یا یک مورد استثنایی. اگر زیاد تکرار شود، نگهداری کد سخت می‌شود.</td>
+            </tr>
+            <tr>
+              <td>داخلی (Internal)</td>
+              <td>تگ <code>&lt;style&gt;</code> داخل <code>head</code></td>
+              <td>وقتی استایل فقط به همین صفحه مربوط است و نمی‌خواهید پروندهٔ جدا بسازید.</td>
+            </tr>
+            <tr>
+              <td>خارجی (External)</td>
+              <td>فایل جدا <code>.css</code> + تگ <code>&lt;link&gt;</code></td>
+              <td>روش مناسب پروژه‌های واقعی است، چون یک پروندهٔ CSS می‌تواند ظاهر چند صفحه را با هم تنظیم کند.</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h3>۱) Inline</h3>
+        <pre class="code"><code>&lt;h1 style="color: blue;"&gt;تیتر آبی&lt;/h1&gt;</code></pre>
+
+        <h3>۲) Internal</h3>
+        <pre class="code"><code>&lt;head&gt;
+  &lt;style&gt;
+    body { background-color: linen; }
+    h1   { color: maroon; }
+  &lt;/style&gt;
+&lt;/head&gt;</code></pre>
+
+        <h3>۳) External</h3>
+        <pre class="code"><code>&lt;!-- در فایل HTML --&gt;
+&lt;head&gt;
+  &lt;link rel="stylesheet" href="css/style.css"&gt;
+&lt;/head&gt;
+
+/* در فایل css/style.css */
+h1 { color: maroon; }</code></pre>
+
+        <p class="tip">
+          <strong>نکته:</strong>
+          اگر چند قانون CSS به یک عنصر برسند، مرورگر با سازوکار آبشار (Cascade) تصمیم می‌گیرد کدام اعمال شود.
+          برای شروع این ترتیب را به خاطر بسپارید: استایل inline معمولاً از انتخابگر <code>id</code> قوی‌تر است، <code>id</code> از <code>class</code>، و <code>class</code> از نام عنصر.
+          اگر دو قانون وزن یکسانی داشته باشند، قانونی که دیرتر آمده اعمال می‌شود.
+          این مدل ساده است. ویژگی <code>!important</code> و منبع استایل، یعنی مرورگر، کاربر یا نویسندهٔ صفحه، هم می‌توانند نتیجه را عوض کنند.
+        </p>
+
+        <p class="mistake">
+          <strong>خطای متداول:</strong>
+          استفاده از عنصرهای قدیمی مثل <code>font</code> و <code>center</code> یا ویژگی <code>bgcolor</code>.
+          این‌ها در HTML5 منسوخ شده‌اند و ممکن است در آینده نادیده گرفته شوند. ظاهر را با CSS بنویسید.
+        </p>
+
+        <p class="exercise">
+          <strong>تمرین:</strong>
+          یک بند با پس‌زمینهٔ <code>#fff3bf</code>، متن <code>rgb(26, 58, 92)</code> و اندازهٔ قلم <code>18px</code> بسازید.
+          سپس همین ظاهر را به عنصر <code>style</code> در <code>head</code> منتقل کنید و با <code>class</code> روی بند اعمال کنید تا استایل از خود عنصر جدا شود.
+        </p>
+
+        <p>
+          مطالعه بیشتر:
+          <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Attributes" target="_blank" rel="noopener">HTML Attributes (MDN)</a>،
+          <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Global_attributes" target="_blank" rel="noopener">Global attributes (MDN)</a>،
+          <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/color_value" target="_blank" rel="noopener">CSS color values (MDN)</a>،
+          <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Cascade/Introduction" target="_blank" rel="noopener">Cascade (MDN)</a>
+        </p>
+      </section>
+
+      <nav class="page-nav">
+        <a href="15-iframe-js.html">→ درس قبل</a>
+        <a href="../index.html">فهرست مطالب</a>
+        <a href="17-formatting-code.html">درس بعد ←</a>
+      </nav>
+    </div>
+
+    <footer class="page-footer">جزوه HTML مقدماتی</footer>
+  </body>
+</html>

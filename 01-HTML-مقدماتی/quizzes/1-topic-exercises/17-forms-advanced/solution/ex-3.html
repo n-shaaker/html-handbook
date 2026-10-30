@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>درخواست همکاری | رایان‌پویا</title>
+  </head>
+  <body>
+    <h1>درخواست همکاری با رایان‌پویا</h1>
+
+    <form action="#" method="post">
+      <fieldset>
+        <legend>اطلاعات فردی</legend>
+        <p>
+          <label for="fullname">نام و نام خانوادگی:</label>
+          <input type="text" id="fullname" name="fullname" required />
+        </p>
+        <p>
+          <label for="email">ایمیل:</label>
+          <input type="email" id="email" name="email" required />
+        </p>
+      </fieldset>
+
+      <fieldset>
+        <legend>اطلاعات شغلی</legend>
+        <p>
+          <label for="job">موقعیت شغلی:</label>
+          <select id="job" name="job">
+            <optgroup label="برنامه‌نویسی">
+              <option value="frontend">فرانت‌اند</option>
+              <option value="backend">بک‌اند</option>
+            </optgroup>
+            <optgroup label="طراحی">
+              <option value="ui">رابط کاربری</option>
+              <option value="graphic">گرافیک</option>
+            </optgroup>
+          </select>
+        </p>
+        <p>
+          <!-- list همان id داخل datalist است -->
+          <label for="city">شهر:</label>
+          <input type="text" id="city" name="city" list="cities" />
+          <datalist id="cities">
+            <option value="تهران"></option>
+            <option value="تبریز"></option>
+            <option value="اصفهان"></option>
+            <option value="مشهد"></option>
+            <option value="شیراز"></option>
+          </datalist>
+        </p>
+        <p>
+          <label for="about">توضیحات (حداکثر ۳۰۰ نویسه):</label><br />
+          <textarea id="about" name="about" rows="4" maxlength="300"></textarea>
+        </p>
+      </fieldset>
+
+      <p>
+        <button type="submit">ارسال درخواست</button>
+        <button type="reset">پاک کردن فرم</button>
+      </p>
+    </form>
+  </body>
+</html>

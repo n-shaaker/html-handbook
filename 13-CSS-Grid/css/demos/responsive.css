@@ -1,0 +1,95 @@
+/* ۱۳) Grid واکنش‌گرا */
+
+/* جعبه‌های رنگی شماره‌دار */
+.demo-resp .box {
+  color: white;
+  font-weight: bold;
+  text-align: center;
+  padding: 14px 8px;
+  border-radius: 6px;
+}
+
+.demo-resp .b1 { background-color: #1c7ed6; }
+.demo-resp .b2 { background-color: #2f9e44; }
+.demo-resp .b3 { background-color: #e8590c; }
+.demo-resp .b4 { background-color: #ae3ec9; }
+.demo-resp .b5 { background-color: #e03131; }
+.demo-resp .b6 { background-color: #0c8599; }
+
+/* مثال ۱: اسکلت سایت */
+.demo-resp .site {
+  display: grid;
+  grid-template-columns: 180px 1fr 180px;
+  grid-template-areas:
+    "header header header"
+    "menu   main   ads"
+    "footer footer footer";
+  gap: 8px;
+}
+
+.demo-resp .site-header { grid-area: header; }
+.demo-resp .site-menu   { grid-area: menu; }
+.demo-resp .site-main   { grid-area: main; min-height: 120px; }
+.demo-resp .site-ads    { grid-area: ads; }
+.demo-resp .site-footer { grid-area: footer; }
+
+/* مثال ۲ */
+.demo-resp .features {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+}
+
+/* مثال ۳ */
+.demo-resp .trips {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 8px;
+}
+
+/* مثال ۴ */
+.demo-resp .product {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 12px;
+}
+
+.demo-resp .product-photo {
+  min-height: 140px;
+  padding-top: 50px;
+}
+
+.demo-resp .product-info h4 {
+  margin: 0 0 6px;
+  color: #1a3a5c;
+}
+
+.demo-resp .product-info p {
+  margin: 0 0 6px;
+}
+
+.demo-resp .price {
+  color: #2f9e44;
+  font-weight: bold;
+}
+
+/* تنها media query این فایل: موبایل */
+@media (max-width: 700px) {
+  .demo-resp .site {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "header"
+      "main"
+      "menu"
+      "ads"
+      "footer";
+  }
+
+  .demo-resp .features {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .demo-resp .product {
+    grid-template-columns: 1fr;
+  }
+}

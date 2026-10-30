@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>۱۷) اشکال‌زدایی و نکات حرفه‌ای (Debugging & Best Practices) | آموزش JavaScript سطح پیشرفته</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <script src="../js/log.js" defer></script>
+  <script src="../js/demos/debugging.js" defer></script>
+</head>
+
+<body>
+
+  <header class="page-header" id="top">
+    <h1>آموزش JavaScript — سطح پیشرفته</h1>
+    <p>۱۷) اشکال‌زدایی و نکات حرفه‌ای (Debugging & Best Practices)</p>
+  </header>
+
+  <div class="container">
+
+    <nav class="page-nav" aria-label="ناوبری درس">
+      <a href="16-modern-syntax.html">→ قبلی: Modern Syntax</a>
+      <a href="../index.html">فهرست درس‌ها</a>
+      <a href="18-practice.html">بعدی: پروژه نهایی ←</a>
+    </nav>
+
+    <section class="lesson" id="debugging">
+      <h2>۱۷) اشکال‌زدایی و نکات حرفه‌ای (Debugging & Best Practices)</h2>
+
+<p>خطا فقط یک جملهٔ قرمز نیست. کنسول نوع مشکل، محل آن در فایل و مقدار متغیرها را نشان می‌دهد، اگر بدانید هر دستور کنسول چه چیزی را برجسته می‌کند. این درس ابزارهای دیدن خروجی و خواندن پیام خطا را جدا می‌کند تا وقتی برنامه می‌ایستد، از روی پیام به همان خط برسید.</p>
+
+<h3>ابزارهای Console</h3>
+
+<table class="ref">
+<tr><th>دستور</th><th>کار</th></tr>
+<tr><td><code>console.log()</code></td><td>چاپ معمولی</td></tr>
+<tr><td><code>console.warn()</code> / <code>console.error()</code></td><td>هشدار (زرد) / خطا (قرمز)</td></tr>
+<tr><td><code>console.table(arr)</code></td><td>نمایش آرایه اشیا به شکل جدول</td></tr>
+<tr><td><code>console.group()</code> / <code>groupEnd()</code></td><td>گروه‌بندی پیام‌ها</td></tr>
+<tr><td><code>console.time("x")</code> / <code>timeEnd("x")</code></td><td>اندازه‌گیری زمان اجرا</td></tr>
+<tr><td><code>console.count("x")</code></td><td>شمردن تعداد دفعات اجرا</td></tr>
+<tr><td><code>console.assert(cond, msg)</code></td><td>اگر شرط غلط بود، خطا چاپ کن</td></tr>
+</table>
+
+<pre class="code"><code>const users = [
+  { name: "سارا", age: 25, city: "شیراز" },
+  { name: "علی", age: 32, city: "تبریز" }
+];
+
+console.table(users);
+
+console.group("اطلاعات سفارش");
+console.log("شماره: 1024");
+console.warn("موجودی کم است");
+console.groupEnd();
+
+console.time("حلقه");
+for (let i = 0; i &lt; 1_000_000; i++) {}
+console.timeEnd("حلقه");</code></pre>
+
+<p>همین کد هنگام باز شدن صفحه اجرا شده است؛ Console مرورگر (F12) را باز کنید تا جدول و گروه‌بندی واقعی را ببینید. جعبه زیر فقط نسخه ساده‌شده خروجی را نشان می‌دهد (عدد زمان حلقه در هر اجرا و هر سیستم فرق می‌کند):</p>
+
+<div class="result">
+<pre class="console" id="out-1"></pre>
+</div>
+
+<h3>نقطه توقف (Breakpoint) و دستور debugger</h3>
+
+<ol>
+<li>F12 را بزنید و به زبانه <strong>Sources</strong> بروید.</li>
+<li>فایل JS را باز کنید و روی شماره یک خط کلیک کنید تا نقطه آبی (Breakpoint) ظاهر شود.</li>
+<li>کاری کنید که آن خط اجرا شود (مثلاً کلیک روی دکمه). اجرا همان‌جا متوقف می‌شود.</li>
+<li>مقدار متغیرها را با بردن ماوس روی آن‌ها یا در پنل <strong>Scope</strong> ببینید.</li>
+<li>با دکمه‌های Step Over (F10) و Step Into (F11) خط‌به‌خط جلو بروید.</li>
+</ol>
+
+<pre class="code"><code>function calculateTotal(items) {
+  let total = 0;
+  for (const item of items) {
+    debugger;               // اگر DevTools باز باشد، اجرا اینجا متوقف می‌شود
+    total += item.price * item.qty;
+  }
+  return total;
+}</code></pre>
+
+<div class="result">
+<button class="btn" id="debug-btn">اجرای calculateTotal (اول F12 را باز کنید)</button>
+<p id="debug-out" role="status"></p>
+</div>
+
+<h3>مدیریت خطا: throw و try...catch</h3>
+
+<p>وقتی تابع با ورودی نامعتبر روبه‌رو می‌شود، بهتر است به جای برگرداندن یک مقدار عجیب، با <code>throw</code> خطا «پرتاب» کند. کدی که تابع را صدا می‌زند با <code>try...catch</code> خطا را می‌گیرد و پیام مناسب نشان می‌دهد. نوع خطا (<code>TypeError</code>، <code>RangeError</code>، ...) هم کمک می‌کند بفهمیم مشکل از کجاست.</p>
+
+<pre class="code"><code>function parsePrice(text) {
+  const n = Number(text);
+  if (text.trim() === "" || Number.isNaN(n)) {
+    throw new TypeError(`«${text}» عدد نیست`);
+  }
+  if (n &lt; 0) throw new RangeError("قیمت نمی‌تواند منفی باشد");
+  return n;
+}
+
+for (const input of ["250000", "abc", "-5"]) {
+  try {
+    console.log("✔", parsePrice(input));
+  } catch (err) {
+    console.log("✖", err.name + ":", err.message);
+  }
+}</code></pre>
+
+<p>تابع اول متن را به عدد تبدیل می‌کند. متن خالی یا غیرعددی <code>TypeError</code> می‌سازد و عدد منفی <code>RangeError</code>. حلقه هر ورودی را جدا در <code>try</code> می‌گذارد تا خطای یکی، بررسی بقیه را متوقف نکند. جدا کردن نوع خطا کمک می‌کند پیام مناسب همان مشکل را نشان دهید، نه یک خطای کلی.</p>
+
+<div class="result">
+<pre class="console" id="out-2"></pre>
+</div>
+
+<p class="mistake"><strong>اشتباه رایج:</strong> catch خالی: <code>try { ... } catch (e) {}</code>. خطا بی‌صدا قورت داده می‌شود و پیدا کردن باگ بسیار سخت می‌شود. حداقل خطا را با <code>console.error(e)</code> چاپ کنید و به کاربر پیامی بدهید. همچنین فقط اطراف کدی که واقعاً ممکن است خطا بدهد (fetch، JSON.parse، ورودی کاربر) try بگذارید، نه کل برنامه.</p>
+
+<h3>خواندن پیام خطا</h3>
+
+<pre class="code"><code>Uncaught TypeError: Cannot read properties of undefined (reading 'name')
+    at showUser (app.js:12:25)</code></pre>
+
+<p>این متن، خروجی معمول کنسول برای خطایی است که برنامه متوقف شده. نوع خطا <code>TypeError</code> است و می‌گوید تلاش شده ویژگی <code>name</code> از مقداری خوانده شود که <code>undefined</code> است. بخش <code>at showUser</code> نام تابع، نام فایل و شمارهٔ خط را نشان می‌دهد تا همان نقطه را در ویرایشگر باز کنید.</p>
+
+<table class="ref">
+<tr><th>بخش</th><th>یعنی</th></tr>
+<tr><td><code>TypeError</code></td><td>نوع خطا</td></tr>
+<tr><td><code>Cannot read properties of undefined (reading 'name')</code></td><td>خواستید <code>.name</code> چیزی را بخوانید که undefined است</td></tr>
+<tr><td><code>app.js:12:25</code></td><td>فایل، شماره خط و ستون؛ روی آن کلیک کنید</td></tr>
+</table>
+
+<h3>خطاهای رایج و علتشان</h3>
+
+<table class="ref">
+<tr><th>پیام</th><th>علت معمول</th></tr>
+<tr><td><code>x is not defined</code></td><td>غلط تایپی در اسم متغیر یا تعریف نشدن آن</td></tr>
+<tr><td><code>Cannot read properties of null</code></td><td>querySelector چیزی پیدا نکرده (id اشتباه یا اسکریپت بدون defer)</td></tr>
+<tr><td><code>x is not a function</code></td><td>صدا زدن چیزی که تابع نیست؛ مثلاً غلط تایپی در اسم متد</td></tr>
+<tr><td><code>Unexpected token</code></td><td>پرانتز، آکولاد یا کامای جاافتاده یا اضافه</td></tr>
+<tr><td><code>Assignment to constant variable</code></td><td>مقدار دادن دوباره به const</td></tr>
+</table>
+
+<h3>نکات حرفه‌ای (Best Practices)</h3>
+
+<ul>
+<li>از <code>const</code> استفاده کنید و فقط در صورت نیاز <code>let</code>. از <code>var</code> استفاده نکنید (فقط در کدهای قدیمی می‌بینیدش؛ مشکلش را در درس closure دیدیم).</li>
+<li>همیشه <code>===</code> به جای <code>==</code>.</li>
+<li>اسم‌های معنادار: <code>userList</code> نه <code>ul2</code>.</li>
+<li>توابع کوچک که فقط یک کار انجام می‌دهند.</li>
+<li>متغیر سراسری کم؛ داده را داخل توابع، ماژول‌ها یا کلاس‌ها نگه دارید.</li>
+<li>متن کاربر را با <code>textContent</code> نمایش دهید نه <code>innerHTML</code>.</li>
+<li>JavaScript را در فایل جدا بنویسید و از رویدادهای اینلاین (<code>onclick=""</code>) پرهیز کنید.</li>
+<li>کد را مرتب (فاصله‌گذاری یکسان) بنویسید؛ افزونه <strong>Prettier</strong> در VS Code این کار را خودکار می‌کند. افزونه <strong>ESLint</strong> هم بسیاری از باگ‌ها (متغیر تعریف‌نشده، متغیر بلااستفاده و ...) را قبل از اجرا نشان می‌دهد.</li>
+<li>خطاها را مدیریت کنید (try...catch برای fetch، JSON.parse و localStorage) و پیام خطای قابل فهم به کاربر نشان دهید.</li>
+<li>ورودی کاربر را قبل از استفاده بررسی کنید (خالی نبودن، عدد بودن، قالب درست با RegExp).</li>
+</ul>
+
+<p class="mistake"><strong>اشتباه رایج:</strong> پاک نکردن <code>console.log</code>ها و <code>debugger</code>ها قبل از تحویل نهایی پروژه.</p>
+
+<p class="exercise"><strong>تمرین:</strong> کد زیر <strong>چهار</strong> باگ دارد؛ آن را در یک فایل اجرا کنید، با کمک پیام‌های خطا و DevTools پیدا و درستشان کنید تا عدد 6 چاپ شود: <code>const total = 0; const items = [1, 2, 3]; for (let i = 0; i &lt;= items.length; i++) { total += item[i]; } console.log(Total);</code><br>
+(راهنما: یکی از باگ‌ها خطا نمی‌دهد و فقط نتیجه را خراب می‌کند؛ مقدار i را در آخرین دور حلقه بررسی کنید.)</p>
+    </section>
+
+    <nav class="page-nav" aria-label="ناوبری درس پایین">
+      <a href="16-modern-syntax.html">→ قبلی: Modern Syntax</a>
+      <a href="../index.html">فهرست درس‌ها</a>
+      <a href="18-practice.html">بعدی: پروژه نهایی ←</a>
+    </nav>
+
+  </div>
+
+  <footer class="page-footer">
+    آموزش JavaScript سطح پیشرفته
+  </footer>
+
+</body>
+
+</html>

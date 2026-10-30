@@ -1,0 +1,45 @@
+/* تمرین ۳ — repeat و minmax نوشته‌شده به‌شکل غلط (پاسخ) */
+
+body {
+  font-family: Tahoma, sans-serif;
+  margin: 20px;
+  background-color: #f8f9fa;
+  color: #212529;
+}
+
+/* درست شد: اول تعداد، بعد اندازه */
+.photos {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.photo {
+  background-color: #868e96;
+  color: white;
+  padding: 30px 5px;
+  text-align: center;
+  border: 2px solid white;
+}
+
+/*
+  درست شد: fr نمی‌تواند «حداقل» باشد، پس minmax(1fr, 120px) نامعتبر است.
+  اینجا اصلاً minmax لازم نیست؛ الگوی «عنوان + مقدار» دو بار تکرار می‌شود.
+*/
+.specs {
+  display: grid;
+  grid-template-columns: repeat(2, 120px 1fr);
+  margin-top: 15px;
+  background-color: white;
+}
+
+.label {
+  background-color: #f1f3f5;
+  font-weight: bold;
+  padding: 8px;
+  border: 1px solid #dee2e6;
+}
+
+.value {
+  padding: 8px;
+  border: 1px solid #dee2e6;
+}

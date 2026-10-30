@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>۸) تراز کل شبکه داخل ظرف | آموزش CSS Grid</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/demos/align-content.css">
+</head>
+
+<body>
+
+  <header class="page-header">
+    <h1>آموزش CSS Grid — چیدمان شبکه‌ای</h1>
+    <p>۸) تراز کل شبکه داخل ظرف</p>
+  </header>
+
+  <div class="container">
+
+    <nav class="page-nav" aria-label="ناوبری درس">
+      <a href="07-align-items.html">→ قبلی: تراز آیتم‌ها</a>
+      <a href="../index.html">فهرست درس‌ها</a>
+      <a href="09-auto-fit-fill.html">بعدی: auto-fill و auto-fit ←</a>
+    </nav>
+
+    <section class="lesson" id="align-content">
+      <h2>۸) تراز کل شبکه داخل ظرف</h2>
+      <p>
+        در درس قبل هر آیتم را <strong>داخل خانه خودش</strong> جابه‌جا کردیم (<code>-items</code>).
+        حالا فرض کنید کل شبکه (همه ستون‌ها و ردیف‌ها با هم) از ظرفش کوچک‌تر است؛ مثلاً ستون‌ها پیکسلی هستند و جا اضافه مانده.
+        با <code>justify-content</code> و <code>align-content</code> <strong>کل شبکه</strong> را داخل ظرف جابه‌جا می‌کنیم.
+      </p>
+      <p>
+        در همهٔ مثال‌های این درس شبکه از ظرف کوچک‌تر است تا جای خالی دیده شود: سه ستون ۹۰ پیکسلی و دو ردیف ۵۰ پیکسلی، داخل ظرفی با ارتفاع ۲۲۰ پیکسل.
+        اگر ستون‌ها را با <code>1fr</code> تا آخر ظرف کشیده بودیم، فضای خالی افقی نمی‌ماند و <code>justify-content</code> چیزی برای جابه‌جا کردن نداشت.
+      </p>
+      <pre class="code"><code>.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 90px);
+  grid-template-rows: repeat(2, 50px);
+  gap: 8px;
+  height: 220px;
+}</code></pre>
+
+      <h3>مثال ۱: حالت پیش‌فرض — <code>start</code></h3>
+      <p>شبکه به گوشه بالا-<strong>راست</strong> ظرف می‌چسبد (چون صفحه راست‌چین است) و بقیه ظرف خالی می‌ماند:</p>
+      <div class="result demo-content">
+        <div class="grid">
+          <div class="box b1">۱</div>
+          <div class="box b2">۲</div>
+          <div class="box b3">۳</div>
+          <div class="box b4">۴</div>
+          <div class="box b5">۵</div>
+          <div class="box b6">۶</div>
+        </div>
+      </div>
+
+      <h3>مثال ۲: جابه‌جایی افقی — <code>justify-content</code></h3>
+      <pre class="code"><code>.jc-center  { justify-content: center; }
+.jc-end     { justify-content: end; }             /* چپ */
+.jc-between { justify-content: space-between; }   /* ستون‌ها تا لبه‌ها پخش شوند */</code></pre>
+      <div class="result demo-content">
+        <div class="grid short jc-center">
+          <div class="box b1">۱</div>
+          <div class="box b2">۲</div>
+          <div class="box b3">center</div>
+        </div>
+        <div class="grid short jc-end">
+          <div class="box b1">۱</div>
+          <div class="box b2">۲</div>
+          <div class="box b3">end</div>
+        </div>
+        <div class="grid short jc-between">
+          <div class="box b1">۱</div>
+          <div class="box b2">۲</div>
+          <div class="box b3">between</div>
+        </div>
+      </div>
+      <p class="tip">برای اینکه جا کم‌تر بگیرد، در این مثال ظرف‌ها کوتاه‌اند و فقط یک ردیف دارند.</p>
+
+      <h3>مثال ۳: جابه‌جایی عمودی — <code>align-content</code></h3>
+      <pre class="code"><code>.ac-center  { align-content: center; }
+.ac-end     { align-content: end; }              /* پایین */
+.ac-between { align-content: space-between; }</code></pre>
+      <div class="result demo-content">
+        <div class="row-of-grids">
+          <div class="grid ac-center">
+            <div class="box b4">۱</div>
+            <div class="box b5">۲</div>
+            <div class="box b6">۳</div>
+            <div class="box b4">۴</div>
+            <div class="box b5">۵</div>
+            <div class="box b6">center</div>
+          </div>
+          <div class="grid ac-end">
+            <div class="box b4">۱</div>
+            <div class="box b5">۲</div>
+            <div class="box b6">۳</div>
+            <div class="box b4">۴</div>
+            <div class="box b5">۵</div>
+            <div class="box b6">end</div>
+          </div>
+          <div class="grid ac-between">
+            <div class="box b4">۱</div>
+            <div class="box b5">۲</div>
+            <div class="box b6">۳</div>
+            <div class="box b4">۴</div>
+            <div class="box b5">۵</div>
+            <div class="box b6">between</div>
+          </div>
+        </div>
+      </div>
+
+      <h3>مثال ۴: کل شبکه وسط ظرف — <code>place-content</code></h3>
+      <p>
+        <code>place-content: center</code> خلاصه <code>align-content</code> و <code>justify-content</code> است.
+        مثلاً صفحه‌کلید عددی یک دستگاه کارت‌خوان فروشگاه وسط صفحه:
+      </p>
+      <pre class="code"><code>.keypad {
+  place-content: center;
+}</code></pre>
+      <div class="result demo-content">
+        <div class="grid keypad">
+          <div class="box b1">۱</div>
+          <div class="box b1">۲</div>
+          <div class="box b1">۳</div>
+          <div class="box b2">۴</div>
+          <div class="box b2">۵</div>
+          <div class="box b2">۶</div>
+        </div>
+      </div>
+
+      <h3>مثال ۵: <code>space-around</code> و <code>space-evenly</code></h3>
+      <pre class="code"><code>.jc-around { justify-content: space-around; }   /* دو طرف هر ستون فاصله برابر */
+.jc-evenly { justify-content: space-evenly; }   /* همه فاصله‌ها دقیقاً برابر */</code></pre>
+      <div class="result demo-content">
+        <div class="grid short jc-around">
+          <div class="box b3">۱</div>
+          <div class="box b3">۲</div>
+          <div class="box b3">around</div>
+        </div>
+        <div class="grid short jc-evenly">
+          <div class="box b6">۱</div>
+          <div class="box b6">۲</div>
+          <div class="box b6">evenly</div>
+        </div>
+      </div>
+
+      <table class="ref">
+        <tr>
+          <th>-items (درس ۷)</th>
+          <th>-content (این درس)</th>
+        </tr>
+        <tr>
+          <td>هر آیتم را داخل <strong>خانه خودش</strong> جابه‌جا می‌کند</td>
+          <td><strong>کل شبکه</strong> را داخل ظرف جابه‌جا می‌کند</td>
+        </tr>
+        <tr>
+          <td>وقتی آیتم از خانه کوچک‌تر است اثر دارد</td>
+          <td>وقتی شبکه از ظرف کوچک‌تر است اثر دارد</td>
+        </tr>
+        <tr>
+          <td><code>justify-items</code>، <code>align-items</code>، <code>place-items</code></td>
+          <td><code>justify-content</code>، <code>align-content</code>، <code>place-content</code></td>
+        </tr>
+      </table>
+
+      <p class="mistake">
+        <strong>اشتباه رایج:</strong>
+        روی شبکه‌ای با ستون‌های <code>1fr</code> می‌نویسیم <code>justify-content: center</code> و هیچ اتفاقی نمی‌افتد.
+        ستون‌های <code>fr</code> همه جای خالی را می‌خورند، پس جای اضافه‌ای برای جابه‌جایی نمی‌ماند.
+        <code>-content</code> فقط وقتی کار می‌کند که ستون‌ها (یا ردیف‌ها) اندازه ثابت داشته باشند و جا اضافه بیاید.
+      </p>
+
+      <p class="mistake">
+        <strong>اشتباه رایج:</strong>
+        <code>align-content</code> روی ظرفی که ارتفاع ندارد. ظرف بدون <code>height</code> دقیقاً به اندازه ردیف‌هاست و جای خالی عمودی ندارد.
+      </p>
+
+      <p class="exercise">
+        <strong>تمرین:</strong> یک «دکمه‌های انتخاب صندلی» برای سالن کوچک یک آموزشگاه بسازید: ۴ ستون ۶۰ پیکسلی و ۳ ردیف ۶۰ پیکسلی،
+        داخل ظرفی با ارتفاع ۳۰۰ پیکسل و عرض کامل. کل صندلی‌ها را وسط ظرف بیاورید و بعد <code>space-evenly</code> را امتحان کنید.
+      </p>
+    </section>
+
+    <nav class="page-nav" aria-label="ناوبری درس پایین">
+      <a href="07-align-items.html">→ قبلی: تراز آیتم‌ها</a>
+      <a href="../index.html">فهرست درس‌ها</a>
+      <a href="09-auto-fit-fill.html">بعدی: auto-fill و auto-fit ←</a>
+    </nav>
+
+  </div>
+
+  <footer class="page-footer">
+    آموزش CSS Grid
+  </footer>
+
+</body>
+
+</html>

@@ -1,0 +1,98 @@
+body {
+  margin: 0;
+  padding: 30px 16px;
+  font-family: Tahoma, "Segoe UI", Arial, sans-serif;
+  line-height: 1.8;
+  color: #e8eaed;
+  background-color: #0b0d10;
+}
+
+.tool {
+  max-width: 620px;
+  margin: 0 auto;
+  padding: 20px 22px;
+  background-color: #12161d;
+  border: 1px solid #2a3340;
+  border-radius: 14px;
+}
+
+h1 {
+  margin-top: 0;
+  font-size: 1.4rem;
+  text-align: center;
+}
+
+/* دو انتخابگر رنگ و دکمه جابه‌جایی در یک ردیف */
+.pickers {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.picker {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-weight: bold;
+}
+
+.picker input {
+  width: 72px;
+  height: 44px;
+  cursor: pointer;
+}
+
+code {
+  direction: ltr;
+  font-family: Consolas, "Courier New", monospace;
+  color: #9ecbff;
+}
+
+button {
+  padding: 8px 18px;
+  font-family: inherit;
+  background-color: #9ecbff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #c6e0ff;
+}
+
+.preview {
+  margin: 18px 0;
+  padding: 16px 20px;
+  border-radius: 12px;
+}
+
+.preview-large {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.ratio {
+  font-size: 1.15rem;
+}
+
+.levels {
+  padding: 0;
+  list-style: none;
+}
+
+.levels li {
+  margin-bottom: 6px;
+  padding: 6px 12px;
+  border-radius: 8px;
+}
+
+.pass {
+  background-color: #12321f;
+  color: #86efac;
+}
+
+.fail {
+  background-color: #3a1515;
+  color: #fca5a5;
+}

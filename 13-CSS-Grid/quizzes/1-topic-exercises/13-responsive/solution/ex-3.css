@@ -1,0 +1,41 @@
+/* تمرین ۳ — صفحه محصولی که در گوشی بیرون می‌زند (پاسخ) */
+
+body {
+  font-family: Tahoma, sans-serif;
+  margin: 20px;
+  background-color: #f8f9fa;
+  color: #212529;
+}
+
+.product {
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  gap: 20px;
+  background-color: white;
+  padding: 15px;
+}
+
+.main-photo {
+  width: 100%;
+  border-radius: 8px;
+}
+
+/* درست شد: ۴ × ۱۲۰ پیکسل در گوشی جا نمی‌شد؛ fr همیشه جا می‌شود */
+.thumbs {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 6px;
+}
+
+.thumbs img {
+  width: 100%;
+  height: 60px;
+  object-fit: cover;
+}
+
+/* درست شد: max-width یعنی «۷۰۰ و کمتر» = گوشی */
+@media (max-width: 700px) {
+  .product {
+    grid-template-columns: 1fr;
+  }
+}

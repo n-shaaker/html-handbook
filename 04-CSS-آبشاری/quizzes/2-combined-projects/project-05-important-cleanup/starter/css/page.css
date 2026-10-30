@@ -1,0 +1,52 @@
+.nav-current {
+  color: #ffd43b !important;
+}
+
+.product-title {
+  color: #1a3a5c !important;
+  font-size: 26px;
+}
+
+.badge {
+  padding: 2px 8px;
+  background-color: #c92a2a;
+  color: #ffffff !important;
+  border-radius: 4px;
+  font-size: 13px;
+}
+
+.old-price {
+  color: #868e96 !important;
+  text-decoration: line-through;
+}
+
+.price {
+  color: #2b8a3e !important;
+  font-size: 22px !important;
+  font-weight: bold;
+}
+
+.buy-btn {
+  display: inline-block;
+  padding: 10px 24px;
+  background-color: #e8590c !important;
+  color: #ffffff !important;
+  text-decoration: none !important;
+  border-radius: 6px;
+}
+
+.buy-btn:hover {
+  background-color: #d9480f !important;
+}
+
+.review-best {
+  background-color: #fff9db;
+  border-color: #fab005;
+}
+
+.review {
+  padding: 10px;
+  background-color: #ffffff;
+  border: 1px solid #dee2e6;
+  border-radius: 6px;
+}

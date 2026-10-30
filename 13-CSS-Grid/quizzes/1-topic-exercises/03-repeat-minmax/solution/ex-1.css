@@ -1,0 +1,21 @@
+/* تمرین ۱ — چهار ستون با repeat (پاسخ) */
+
+body {
+  font-family: Tahoma, sans-serif;
+  margin: 20px;
+  background-color: #f8f9fa;
+  color: #212529;
+}
+
+.products {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.item {
+  background-color: #f76707;
+  color: white;
+  text-align: center;
+  padding: 20px 5px;
+  border: 2px solid white;
+}

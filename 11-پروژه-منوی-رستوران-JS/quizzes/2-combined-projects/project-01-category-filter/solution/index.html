@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>منوی رستوران نارنج | فیلتر دسته‌بندی</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="app.js" defer></script>
+  </head>
+
+  <body>
+    <header class="site-header">
+      <p class="logo">رستوران سنتی <strong>نارنج</strong></p>
+    </header>
+
+    <main class="container">
+      <h1>منوی غذا</h1>
+
+      <!-- ========== جستجو و فیلتر ========== -->
+      <div class="menu-tools">
+        <label for="search">جستجو در منو:</label>
+        <input type="search" id="search" placeholder="جستجوی غذا... (مثلاً کباب)" />
+
+        <div class="filters">
+          <button type="button" class="filter-btn active" data-filter="all">همه</button>
+          <button type="button" class="filter-btn" data-filter="kebab">کباب</button>
+          <button type="button" class="filter-btn" data-filter="khoresh">پلو و خورش</button>
+          <button type="button" class="filter-btn" data-filter="dessert">دسر</button>
+          <button type="button" class="filter-btn" data-filter="drink">نوشیدنی</button>
+        </div>
+
+        <p class="result-count" id="result-count" aria-live="polite"></p>
+        <p class="no-result" id="no-result" hidden>موردی پیدا نشد. عبارت دیگری را جستجو کنید یا دسته «همه» را انتخاب کنید.</p>
+      </div>
+
+      <!-- ========== کارت‌های منو ========== -->
+      <div class="dishes-grid">
+        <article class="dish" data-category="kebab">
+          <img src="../../../../images/koobideh.jpg" alt="کباب کوبیده در بشقاب با گوجه کبابی" />
+          <div class="dish-body">
+            <h3>چلوکباب کوبیده</h3>
+            <p>دو سیخ کباب کوبیده از گوشت گوسفندی تازه، روی آتش ذغال.</p>
+            <p class="price">۴۲۰٬۰۰۰ تومان</p>
+          </div>
+        </article>
+
+        <article class="dish" data-category="kebab">
+          <img src="../../../../images/joojeh.jpg" alt="جوجه‌کباب زعفرانی روی سیخ" />
+          <div class="dish-body">
+            <h3>چلوجوجه‌کباب</h3>
+            <p>سینه مرغ خوابانده در زعفران، لیمو و فلفل؛ با یا بدون استخوان.</p>
+            <p class="price">۳۸۰٬۰۰۰ تومان</p>
+          </div>
+        </article>
+
+        <article class="dish" data-category="khoresh">
+          <img src="../../../../images/ghormeh.jpg" alt="خورش قورمه‌سبزی کنار برنج" />
+          <div class="dish-body">
+            <h3>چلوخورش قورمه‌سبزی</h3>
+            <p>سبزی تازه، لوبیا قرمز، لیمو عمانی و گوشت گوسفندی که چند ساعت آرام پخته شده.</p>
+            <p class="price">۳۲۰٬۰۰۰ تومان</p>
+          </div>
+        </article>
+
+        <article class="dish" data-category="khoresh">
+          <img src="../../../../images/zereshk.jpg" alt="زرشک‌پلو با مرغ" />
+          <div class="dish-body">
+            <h3>زرشک‌پلو با مرغ</h3>
+            <p>برنج زعفرانی با زرشک و خلال پسته، همراه ران مرغ در سس گوجه.</p>
+            <p class="price">۳۵۰٬۰۰۰ تومان</p>
+          </div>
+        </article>
+
+        <article class="dish" data-category="dessert">
+          <img src="../../../../images/faloodeh.jpg" alt="فالوده شیرازی در جام شیشه‌ای" />
+          <div class="dish-body">
+            <h3>فالوده شیرازی</h3>
+            <p>رشته‌های یخ‌زده نشاسته با گلاب و آبلیمو؛ اگر بخواهید با بستنی سنتی.</p>
+            <p class="price">۹۰٬۰۰۰ تومان</p>
+          </div>
+        </article>
+
+        <article class="dish" data-category="dessert">
+          <img src="../../../../images/sholehzard.jpg" alt="شله‌زرد تزیین‌شده با دارچین و خلال بادام" />
+          <div class="dish-body">
+            <h3>شله‌زرد</h3>
+            <p>برنج و زعفران و گلاب، تزیین‌شده با دارچین و خلال بادام.</p>
+            <p class="price">۷۰٬۰۰۰ تومان</p>
+          </div>
+        </article>
+
+        <article class="dish" data-category="drink">
+          <img src="../../../../images/tea.jpg" alt="استکان چای ایرانی" />
+          <div class="dish-body">
+            <h3>چای سنتی</h3>
+            <p>قوری دونفره، با نبات یا خرما.</p>
+            <p class="price">۶۰٬۰۰۰ تومان</p>
+          </div>
+        </article>
+
+        <article class="dish" data-category="drink">
+          <img src="../../../../images/doogh.jpg" alt="دوغ محلی با برگ نعنا در کاسه‌های مسی" />
+          <div class="dish-body">
+            <h3>دوغ محلی</h3>
+            <p>دوغ خانگی با پونه و نعنا.</p>
+            <p class="price">۴۵٬۰۰۰ تومان</p>
+          </div>
+        </article>
+      </div>
+    </main>
+  </body>
+</html>

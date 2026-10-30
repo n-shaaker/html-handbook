@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>۷) Inline-block | آموزش CSS سطح میانی</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/demos/inline-block.css">
+</head>
+
+<body>
+
+  <header class="page-header">
+    <h1>آموزش CSS — سطح میانی</h1>
+    <p>۷) Inline-block</p>
+  </header>
+
+  <div class="container">
+
+    <nav class="page-nav" aria-label="ناوبری درس">
+      <a href="06-float.html">→ قبلی: Float</a>
+      <a href="../index.html">فهرست درس‌ها</a>
+      <a href="08-align.html">بعدی: Align ←</a>
+    </nav>
+
+    <section class="lesson" id="inline-block">
+      <h2>۷) Inline-block</h2>
+      <p>
+        <code>inline-block</code> رفتار دو حالت قبلی را با هم ترکیب می‌کند.
+        مثل <code>inline</code>، عنصر در همان خط کنار بقیه می‌نشیند و خط را نمی‌شکند.
+        مثل <code>block</code>، <code>width</code>، <code>height</code> و padding هر چهار طرف روی آن اثر واقعی دارند و جعبه را بزرگ می‌کنند.
+        این مقدار برای برچسب، دکمه و نشان مناسب است. برای ردیف کارت‌ها، Flexbox فاصله و هم‌قد کردن را ساده‌تر کنترل می‌کند.
+      </p>
+
+      <h3>مثال ۱: مقایسه سه حالت</h3>
+      <pre class="code"><code>.s {
+  width: 100px;
+  height: 50px;
+  padding: 10px;
+}
+
+.a { display: inline; }        /* width و height اثر ندارد؛ padding بالا/پایین روی خط‌های دیگر می‌افتد */
+.b { display: inline-block; }  /* کنار هم + اندازه دارد */
+.c { display: block; }         /* اندازه دارد ولی خط جدید */</code></pre>
+      <div class="result demo-ib">
+        <p>inline: متن <span class="s a">جعبه</span> <span class="s a">جعبه</span> ادامه متن</p>
+        <p>inline-block: متن <span class="s b">جعبه</span> <span class="s b">جعبه</span> ادامه متن</p>
+        <p>block: متن <span class="s c">جعبه</span> <span class="s c">جعبه</span> ادامه متن</p>
+      </div>
+
+      <h3>مثال ۲: برچسب‌های مهارت (tag)</h3>
+      <pre class="code"><code>.tag {
+  display: inline-block;
+  padding: 4px 12px;
+  margin: 4px;
+  border-radius: 20px;
+}</code></pre>
+      <div class="result demo-ib">
+        <span class="tag">طراحی وب</span>
+        <span class="tag">فتوشاپ</span>
+        <span class="tag">تایپ سریع</span>
+        <span class="tag">زبان انگلیسی</span>
+        <span class="tag">کار تیمی</span>
+      </div>
+
+      <h3>مثال ۳: دکمه‌های منو</h3>
+      <pre class="code"><code>.menu a {
+  display: inline-block;
+  padding: 10px 20px;
+}</code></pre>
+      <div class="result demo-ib">
+        <nav class="menu">
+          <a href="#inline-block">خانه</a>
+          <a href="#inline-block">آموزش‌ها</a>
+          <a href="#inline-block">وبلاگ</a>
+          <a href="#inline-block">تماس</a>
+        </nav>
+      </div>
+
+      <h3>مثال ۴: کارت‌های محصول کنار هم بدون float</h3>
+      <pre class="code"><code>.product {
+  display: inline-block;
+  width: 150px;
+  vertical-align: top;   /* بالای کارت‌ها هم‌تراز شود */
+}</code></pre>
+      <div class="result demo-ib">
+        <div class="product"><strong>قهوه</strong><br>۸۰ هزار تومان</div>
+        <div class="product"><strong>چای سبز</strong><br>۴۵ هزار تومان<br>(پرفروش)</div>
+        <div class="product"><strong>کیک</strong><br>۶۰ هزار تومان</div>
+      </div>
+
+      <p class="mistake">
+        <strong>اشتباه رایج:</strong>
+        بین عنصرهای inline-block یک فاصله کوچک ناخواسته (حدود ۴ پیکسل) دیده می‌شود؛ این به‌خاطر فاصله (space/enter) بین تگ‌ها در HTML است، نه CSS.
+        در مثال ۳، اگر دقت کنید، بین پس‌زمینه سبز لینک‌ها هنگام hover یک شکاف باریک هست.
+        حذف فاصله‌ها از HTML کد را ناخوانا می‌کند؛ راه حل تمیز این است که پدر را <code>display: flex</code> کنید و فاصله را با <code>gap</code> بدهید.
+      </p>
+
+      <p class="mistake">
+        <strong>اشتباه رایج:</strong>
+        فراموش کردن <code>vertical-align: top</code>؛ عنصرهای inline-block به‌طور پیش‌فرض روی «خط پایه» متن تراز می‌شوند
+        و اگر محتوای یکی بیشتر باشد، بقیه پایین می‌افتند.
+      </p>
+
+      <p class="tip">
+        inline-block برای برچسب، دکمه و نشان (badge) هنوز عالی است.
+        ولی برای ردیف کارت‌ها و منوها امروزه Flexbox ساده‌تر است: فاصله ناخواسته ندارد، هم‌ترازی آسان است و کارت‌ها هم‌قد می‌شوند.
+      </p>
+
+      <p class="exercise">
+        <strong>تمرین:</strong> سه کارت «سرویس» (طراحی، برنامه‌نویسی، پشتیبانی) با inline-block و عرض ۲۰۰ پیکسل کنار هم بسازید.
+      </p>
+    </section>
+
+    <nav class="page-nav" aria-label="ناوبری درس پایین">
+      <a href="06-float.html">→ قبلی: Float</a>
+      <a href="../index.html">فهرست درس‌ها</a>
+      <a href="08-align.html">بعدی: Align ←</a>
+    </nav>
+
+  </div>
+
+  <footer class="page-footer">
+    آموزش CSS سطح میانی
+  </footer>
+
+</body>
+
+</html>

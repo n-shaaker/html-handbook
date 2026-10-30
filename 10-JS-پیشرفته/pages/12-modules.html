@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>۱۲) ماژول‌ها (Modules) | آموزش JavaScript سطح پیشرفته</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <script type="module" src="../js/demos/modules.js"></script>
+  <script src="../js/demos/modules-fallback.js" defer></script>
+</head>
+
+<body>
+
+  <header class="page-header" id="top">
+    <h1>آموزش JavaScript — سطح پیشرفته</h1>
+    <p>۱۲) ماژول‌ها (Modules)</p>
+  </header>
+
+  <div class="container">
+
+    <nav class="page-nav" aria-label="ناوبری درس">
+      <a href="11-fetch.html">→ قبلی: Fetch</a>
+      <a href="../index.html">فهرست درس‌ها</a>
+      <a href="13-web-storage.html">بعدی: Web Storage ←</a>
+    </nav>
+
+    <section class="lesson" id="modules">
+      <h2>۱۲) ماژول‌ها (Modules)</h2>
+<p>در پروژه‌های بزرگ کد را در چند فایل جدا می‌نویسیم. با <code>export</code> چیزی را از یک فایل «بیرون می‌دهیم» و با <code>import</code> در فایل دیگر استفاده می‌کنیم. هر ماژول محدوده (scope) خودش را دارد؛ پس متغیرهای دو فایل با هم تداخل پیدا نمی‌کنند و فقط چیزهایی که export شده‌اند از بیرون دیده می‌شوند.</p>
+
+<p class="mistake"><strong>مهم — قبل از شروع:</strong> ماژول‌ها با باز کردن مستقیم فایل HTML (دوبار کلیک، آدرسی که با <code>file://</code> شروع می‌شود) <strong>کار نمی‌کنند</strong>. مرورگر به دلیل سیاست امنیتی CORS بارگذاری ماژول از file:// را مسدود می‌کند و در Console خطایی شبیه <code>Access to script at 'file:///...' from origin 'null' has been blocked by CORS policy</code> می‌بینید. صفحه را حتماً با یک سرور محلی باز کنید (بخش «اجرا با سرور محلی» پایین همین صفحه).</p>
+
+<pre class="code"><code>js/
+├── modules/
+│   ├── math-utils.js     ← export
+│   └── format.js         ← export default
+└── demos/
+    └── modules.js        ← import</code></pre>
+
+<p>ماژول یعنی فایل JavaScript که خودش انتخاب می‌کند چه چیزهایی را بیرون بدهد. فایل‌های <code>math-utils.js</code> و <code>format.js</code> صادر می‌کنند و <code>modules.js</code> آن‌ها را وارد می‌کند. مرورگر فقط اگر اسکریپت با <code>type="module"</code> بارگذاری شود این <code>import</code> را می‌فهمد.</p>
+
+<h3>export نام‌دار (Named)</h3>
+
+<pre class="code"><code>// js/modules/math-utils.js
+export const PI = 3.14159;
+
+export function add(a, b) {
+  return a + b;
+}
+
+export function circleArea(r) {
+  return PI * r * r;
+}</code></pre>
+
+<p><code>export</code> قبل از <code>const</code> یا <code>function</code> آن نام را برای فایل‌های دیگر قابل وارد کردن می‌کند. تابع‌هایی که export نشده‌اند فقط داخل همین فایل دیده می‌شوند. <code>circleArea</code> از ثابت <code>PI</code> همان فایل استفاده می‌کند.</p>
+
+<h3>export پیش‌فرض (Default)</h3>
+
+<pre class="code"><code>// js/modules/format.js
+export default function formatPrice(n) {
+  return n.toLocaleString("fa-IR") + " تومان";
+}</code></pre>
+
+<p>هر فایل می‌تواند یک export پیش‌فرض داشته باشد. واردکننده نام آن را خودش انتخاب می‌کند و لازم نیست نام را داخل آکولاد بیاورد. این تابع عدد را با رقم فارسی و واحد پول به متن نمایش تبدیل می‌کند.</p>
+
+<h3>import</h3>
+
+<pre class="code"><code>// js/demos/modules.js
+import { add, circleArea, PI as piNumber } from "../modules/math-utils.js";
+import formatPrice from "../modules/format.js";
+
+const output = document.getElementById("module-out");
+
+output.textContent = `✔ ماژول با موفقیت اجرا شد:
+add(2, 3) = ${add(2, 3)}
+circleArea(2) = ${circleArea(2).toFixed(2)}
+PI = ${piNumber}
+formatPrice(1250000) = ${formatPrice(1250000)}
+typeof window.add = ${typeof window.add}`;
+
+// خروجی (با سرور محلی):
+// add(2, 3) = 5
+// circleArea(2) = 12.57
+// PI = 3.14159
+// formatPrice(1250000) = ۱٬۲۵۰٬۰۰۰ تومان
+// typeof window.add = undefined   ← چیزی که import شده سراسری نیست</code></pre>
+
+<p>آکولاد مخصوص exportهای نام‌دار است و می‌توان هنگام ورود نام را با <code>as</code> عوض کرد. تابع پیش‌فرض بدون آکولاد می‌آید. این نام‌ها فقط داخل همین ماژول هستند و به <code>window</code> اضافه نمی‌شوند، پس فایل دیگر آن‌ها را نمی‌بیند مگر اینکه خودش import کند.</p>
+
+<p class="tip"><code>PI as piNumber</code> یعنی «PI را با اسم piNumber وارد کن»؛ برای وقتی که اسم تکراری است یا اسم کوتاه‌تری می‌خواهید. همه export‌های نام‌دار یک فایل را هم می‌شود یک‌جا وارد کرد: <code>import * as MathUtils from "../modules/math-utils.js";</code> و بعد <code>MathUtils.add(2, 3)</code>.</p>
+
+<h3>وصل کردن به HTML</h3>
+
+<pre class="code"><code>&lt;script type="module" src="js/demos/modules.js"&gt;&lt;/script&gt;</code></pre>
+
+<p>فقط فایل اصلی (نقطه شروع) را با <code>type="module"</code> به HTML وصل می‌کنیم؛ فایل‌هایی که import شده‌اند را مرورگر خودش بارگذاری می‌کند.</p>
+
+<div class="result">
+<pre class="console" id="module-out" aria-live="polite">اگر این متن را می‌بینید، ماژول اجرا نشده است.
+صفحه را با یک سرور محلی (مثل Live Server در VS Code) باز کنید؛
+مرورگر اجازه نمی‌دهد ماژول‌ها از آدرس file:// بارگذاری شوند.</pre>
+</div>
+
+<h3>اجرا با سرور محلی</h3>
+
+<ol>
+<li>در VS Code از بخش Extensions افزونه <strong>Live Server</strong> (از Ritwick Dey) را نصب کنید.</li>
+<li>پوشه کل پروژه را در VS Code باز کنید (<strong>File ← Open Folder</strong>)، نه فقط یک فایل را.</li>
+<li>روی فایل HTML کلیک راست کنید و <strong>Open with Live Server</strong> را بزنید (یا دکمه <strong>Go Live</strong> پایین پنجره).</li>
+<li>آدرس مرورگر باید با <code>http://127.0.0.1:5500</code> یا <code>http://localhost</code> شروع شود، نه <code>file://</code>.</li>
+</ol>
+
+<p class="tip">اگر Node.js یا Python نصب دارید، در پوشه پروژه این دستورها هم یک سرور ساده بالا می‌آورند: <code>npx serve</code> یا <code>python -m http.server 8000</code> (سپس آدرس <code>http://localhost:8000</code> را باز کنید).</p>
+
+<table class="ref">
+<tr><th>ویژگی ماژول</th><th>توضیح</th></tr>
+<tr><td><code>type="module"</code></td><td>اسکریپت به عنوان ماژول اجرا می‌شود</td></tr>
+<tr><td>defer خودکار</td><td>ماژول‌ها همیشه بعد از ساخته شدن HTML اجرا می‌شوند</td></tr>
+<tr><td>strict خودکار</td><td>همیشه در حالت <code>"use strict"</code> هستند</td></tr>
+<tr><td>محدوده جدا</td><td>متغیرهای هر ماژول سراسری نیستند</td></tr>
+<tr><td>مسیر کامل لازم</td><td>در مرورگر، مسیر import باید با <code>./</code>، <code>../</code> یا <code>/</code> شروع شود و پسوند <code>.js</code> را داشته باشد (<code>"./utils"</code> کار نمی‌کند؛ ابزارهایی مثل Vite این محدودیت را برمی‌دارند)</td></tr>
+<tr><td>یک بار اجرا</td><td>اگر چند فایل یک ماژول را import کنند، کد آن ماژول فقط یک بار اجرا می‌شود</td></tr>
+</table>
+
+<p class="tip">هر فایل فقط <strong>یک</strong> <code>export default</code> می‌تواند داشته باشد ولی هر تعداد export نام‌دار. موقع import، نام‌دارها داخل <code>{ }</code> و با همان اسم می‌آیند؛ default بدون آکولاد و با هر اسم دلخواه.</p>
+
+<p class="mistake"><strong>اشتباه رایج:</strong> باز کردن صفحه دارای ماژول با دوبار کلیک روی فایل HTML. مرورگر به خاطر سیاست امنیتی CORS آن را بارگذاری نمی‌کند؛ از Live Server استفاده کنید.</p>
+
+<p class="mistake"><strong>اشتباه رایج:</strong> فراموش کردن <code>type="module"</code> در تگ script. خطای <code>SyntaxError: Cannot use import statement outside a module</code> می‌گیرید.</p>
+
+<p class="mistake"><strong>اشتباه رایج:</strong> قاطی کردن نوع import: export نام‌دار را بدون آکولاد وارد کردن (<code>import add from "./math-utils.js"</code>) خطای <code>does not provide an export named 'default'</code> می‌دهد؛ و export پیش‌فرض را داخل آکولاد نوشتن هم خطا می‌دهد.</p>
+
+<p class="mistake"><strong>اشتباه رایج:</strong> صدا زدن تابع یک ماژول از <code>onclick=""</code> در HTML. چون توابع ماژول سراسری نیستند، خطای <code>... is not defined</code> می‌گیرید؛ رویداد را داخل خود ماژول با <code>addEventListener</code> وصل کنید.</p>
+
+<p class="exercise"><strong>تمرین:</strong> فایل <code>js/modules/cart.js</code> بسازید که یک آرایه خصوصی <code>items</code> (export نشده) و توابع <code>addItem(name, price)</code> و <code>getTotal()</code> را export کند. فایل <code>js/app.js</code> آن‌ها را import کند، سه کالا اضافه کند و جمع کل را با <code>formatPrice</code> (از <code>format.js</code>) در صفحه نشان دهد. صفحه را با Live Server اجرا کنید و بررسی کنید که از Console نمی‌توان به <code>items</code> دسترسی داشت.</p>
+    </section>
+
+    <nav class="page-nav" aria-label="ناوبری درس پایین">
+      <a href="11-fetch.html">→ قبلی: Fetch</a>
+      <a href="../index.html">فهرست درس‌ها</a>
+      <a href="13-web-storage.html">بعدی: Web Storage ←</a>
+    </nav>
+
+  </div>
+
+  <footer class="page-footer">
+    آموزش JavaScript سطح پیشرفته
+  </footer>
+
+</body>
+
+</html>

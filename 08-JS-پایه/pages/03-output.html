@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>۳) نمایش خروجی (Output) | آموزش JavaScript سطح پایه</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <script src="../js/log.js" defer></script>
+  <script src="../js/demos/output.js" defer></script>
+</head>
+
+<body>
+
+  <header class="page-header" id="top">
+    <h1>آموزش JavaScript — سطح پایه</h1>
+    <p>۳) نمایش خروجی (Output)</p>
+  </header>
+
+  <div class="container">
+
+    <nav class="page-nav" aria-label="ناوبری درس">
+      <a href="02-where-to.html">→ قبلی: Where To</a>
+      <a href="../index.html">فهرست درس‌ها</a>
+      <a href="04-syntax.html">بعدی: Syntax ←</a>
+    </nav>
+
+    <section class="lesson" id="output">
+      <h2>۳) نمایش خروجی (Output)</h2>
+<p>تا وقتی نتیجهٔ یک محاسبه را جایی نشان ندهید، کاربر و حتی خودتان نمی‌فهمید برنامه چه کرده است. JavaScript چند راه برای نمایش نتیجه دارد. انتخاب راه به این بستگی دارد که پیام برای کاربر صفحه است یا فقط برای خود برنامه‌نویس در حال آزمایش:</p>
+
+<table class="ref">
+<tr><th>روش</th><th>کجا نمایش می‌دهد</th><th>کاربرد</th></tr>
+<tr><td><code>element.textContent</code></td><td>داخل یک عنصر HTML</td><td>نمایش به کاربر (اصلی‌ترین روش)</td></tr>
+<tr><td><code>element.innerHTML</code></td><td>داخل عنصر، همراه با تگ HTML</td><td>وقتی تگ هم لازم است</td></tr>
+<tr><td><code>console.log()</code></td><td>Console مرورگر (F12)</td><td>تست و پیدا کردن خطا توسط برنامه‌نویس</td></tr>
+<tr><td><code>alert()</code></td><td>پنجره هشدار</td><td>پیام فوری (کم استفاده کنید)</td></tr>
+<tr><td><code>document.write()</code></td><td>مستقیم در صفحه</td><td>فقط برای تست؛ استفاده نکنید</td></tr>
+</table>
+
+<h3>مثال ۱: textContent و innerHTML</h3>
+
+<pre class="code"><code>const a = document.getElementById("out-text");
+const b = document.getElementById("out-html");
+
+a.textContent = "&lt;strong&gt;سلام&lt;/strong&gt;";   // تگ به صورت متن نمایش داده می‌شود
+b.innerHTML  = "&lt;strong&gt;سلام&lt;/strong&gt;";   // تگ اجرا می‌شود و متن پررنگ می‌شود</code></pre>
+
+<div class="result">
+<p>textContent: <span id="out-text"></span></p>
+<p>innerHTML: <span id="out-html"></span></p>
+</div>
+
+<p><code>getElementById</code> هر عنصر را با شناسه‌اش پیدا می‌کند. <code>textContent</code> هر چه به آن بدهید را به‌صورت متن خام می‌نویسد؛ پس علامت‌های <code>&lt;strong&gt;</code> روی صفحه دیده می‌شوند و پررنگ نمی‌شوند. <code>innerHTML</code> همان رشته را به‌عنوان HTML تفسیر می‌کند و مرورگر تگ را اجرا می‌کند. وقتی فقط می‌خواهید یک جمله نشان دهید، <code>textContent</code> انتخاب روشن‌تری است.</p>
+
+<h3>مثال ۲: console.log</h3>
+
+<pre class="code"><code>console.log("سلام دنیا");
+console.log(5 + 6);              // 11 ← اول حساب می‌کند، بعد چاپ
+console.log("جمع:", 10 + 20);    // جمع: 30</code></pre>
+
+<div class="result">
+<pre class="console" id="out-console"></pre>
+</div>
+
+<p><code>console.log</code> مقدار را در Console مرورگر می‌نویسد، نه روی صفحه. اگر داخل پرانتز یک عبارت محاسباتی باشد، اول همان عبارت حساب می‌شود و بعد نتیجه چاپ می‌شود. اگر چند مقدار را با کاما جدا کنید، کنار هم و با یک فاصله نشان داده می‌شوند. این روش برای آزمایش کد است؛ کاربر عادی صفحه آن را نمی‌بیند.</p>
+
+<p class="tip">در این دوره خروجی <code>console.log</code> هر مثال در جعبه سیاه <strong>Console</strong> نشان داده می‌شود. همان خروجی در Console واقعی مرورگر (F12) هم چاپ می‌شود.</p>
+
+<h3>مثال ۳: alert</h3>
+
+<pre class="code"><code>const alertButton = document.getElementById("alert-btn");
+
+alertButton.addEventListener("click", function () {
+  alert("این یک پیام هشدار است!");
+});</code></pre>
+
+<div class="result">
+<button class="btn" id="alert-btn">نمایش alert</button>
+</div>
+
+<p>اینجا هم مثل مثال‌های قبل، دکمه را با شناسه‌اش پیدا می‌کنیم و با <code>addEventListener</code> به کلیک گوش می‌دهیم. <code>alert</code> یک پنجرهٔ جدا باز می‌کند و تا وقتی کاربر آن را نبندد، بقیهٔ صفحه منتظر می‌ماند. برای پیام‌های معمولی صفحه مناسب نیست، چون جریان کار کاربر را قطع می‌کند.</p>
+
+<h3>document.write — چرا نه؟</h3>
+
+<pre class="code"><code>document.write("سلام");   // اگر بعد از بارگذاری صفحه اجرا شود، کل صفحه پاک می‌شود!</code></pre>
+
+<p><code>document.write</code> متن را همان جایی که مرورگر در حال خواندن HTML است می‌نویسد. اگر بعد از کامل شدن صفحه (مثلاً با کلیک یا در فایلی با <code>defer</code>) اجرا شود، کل محتوای صفحه را پاک می‌کند و فقط متن جدید می‌ماند. مرورگرها هم استفاده از آن را توصیه نمی‌کنند؛ به جایش از <code>textContent</code> استفاده کنید.</p>
+
+<p class="tip"><code>console.log</code> می‌تواند چند مقدار را با کاما بگیرد و آن‌ها را با یک فاصله کنار هم چاپ کند؛ مثل خط سوم مثال ۲. کاربر عادی Console را نمی‌بیند؛ پس پیام‌های مهم را همیشه داخل صفحه نشان دهید.</p>
+
+<p class="mistake"><strong>اشتباه رایج:</strong> استفاده از <code>innerHTML</code> برای نوشتن متنی که کاربر تایپ کرده. اگر کاربر تگ HTML (یا کد مخرب) بنویسد، مرورگر آن را اجرا می‌کند؛ به این مشکل امنیتی <strong>XSS</strong> می‌گویند. برای متن ساده همیشه <code>textContent</code> امن‌تر است.</p>
+
+<p class="exercise"><strong>تمرین:</strong> یک پاراگراف با id برابر <code>result</code> بسازید و با JavaScript داخلش بنویسید «امروز JavaScript یاد گرفتم». هم‌زمان با <code>console.log</code> سال جاری (مثلاً <code>1405</code>) را در Console چاپ کنید.</p>
+    </section>
+
+    <nav class="page-nav" aria-label="ناوبری درس پایین">
+      <a href="02-where-to.html">→ قبلی: Where To</a>
+      <a href="../index.html">فهرست درس‌ها</a>
+      <a href="04-syntax.html">بعدی: Syntax ←</a>
+    </nav>
+
+  </div>
+
+  <footer class="page-footer">
+    آموزش JavaScript سطح پایه
+  </footer>
+
+</body>
+
+</html>

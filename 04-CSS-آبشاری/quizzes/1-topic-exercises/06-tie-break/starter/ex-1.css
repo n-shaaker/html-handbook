@@ -1,0 +1,23 @@
+.red.small {
+  color: #e67700;
+}
+
+.red {
+  color: #c92a2a;
+}
+
+.green {
+  color: #2b8a3e;
+}
+
+.blue {
+  color: #1a5fb4;
+}
+
+.big {
+  font-size: 24px;
+}
+
+.small {
+  font-size: 14px;
+}

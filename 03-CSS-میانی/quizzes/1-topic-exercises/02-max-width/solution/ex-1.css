@@ -1,0 +1,14 @@
+body {
+  font-family: Tahoma, Arial, sans-serif;
+  line-height: 1.9;
+  margin: 0;
+  background-color: #f7f9fc;
+}
+
+/* حداکثر ۷۰۰ پیکسل و وسط صفحه */
+.post {
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 24px 16px;
+  background-color: white;
+}

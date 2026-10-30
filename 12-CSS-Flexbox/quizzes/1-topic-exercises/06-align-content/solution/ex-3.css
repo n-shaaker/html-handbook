@@ -1,0 +1,43 @@
+/* تمرین ۳ — سالن سینما: دو کادر، دو رفتار (پاسخ) */
+
+body {
+  font-family: Tahoma, sans-serif;
+  margin: 20px;
+  background-color: #f8f9fa;
+  color: #212529;
+}
+
+.hall {
+  display: flex;
+  flex-wrap: wrap;
+  width: 300px;
+  height: 260px;
+  background-color: #212529;
+  padding: 5px;
+}
+
+.seat {
+  width: 50px;
+  height: 40px;
+  line-height: 40px;
+  text-align: center;
+  background-color: #e03131;
+  color: white;
+  margin: 4px;
+  border-radius: 6px 6px 0 0;
+}
+
+/*
+  align-items فقط آیتم‌ها را داخل خطِ خودشان جابه‌جا می‌کند
+  و خط‌ها همچنان در کل ارتفاع پخش می‌مانند؛
+  برای جمع کردن خودِ خط‌ها align-content لازم است.
+*/
+.hall-a {
+  align-content: center;
+  justify-content: center;
+}
+
+.hall-b {
+  align-content: space-between;
+  margin-top: 10px;
+}

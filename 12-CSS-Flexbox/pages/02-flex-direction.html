@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>۲) جهت چیدمان (flex-direction) | آموزش Flexbox</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/demos/direction.css">
+</head>
+
+<body>
+
+  <header class="page-header">
+    <h1>آموزش Flexbox — چیدمان انعطاف‌پذیر</h1>
+    <p>۲) جهت چیدمان (flex-direction)</p>
+  </header>
+
+  <div class="container">
+
+    <nav class="page-nav" aria-label="ناوبری درس">
+      <a href="01-intro.html">→ قبلی: آشنایی با Flexbox</a>
+      <a href="../index.html">فهرست درس‌ها</a>
+      <a href="03-flex-wrap.html">بعدی: flex-wrap ←</a>
+    </nav>
+
+    <section class="lesson" id="direction">
+      <h2>۲) جهت چیدمان (flex-direction)</h2>
+      <p>
+        <code>flex-direction</code> روی پدر نوشته می‌شود و می‌گوید <strong>محور اصلی</strong> به کدام سمت باشد؛
+        یعنی آیتم‌ها در یک ردیف کنار هم بیایند یا در یک ستون زیر هم، و از کدام سر شروع شوند.
+        چهار مقدار دارد.
+      </p>
+
+      <h3>مثال ۱: <code>row</code> (پیش‌فرض)</h3>
+      <p>
+        مقدار <code>row</code> پیش‌فرض است، حتی اگر آن را ننویسید. محور اصلی افقی می‌ماند و آیتم‌ها از شروع خط چیده می‌شوند.
+        در این صفحه که <code>dir="rtl"</code> است، شروع خط سمت راست است، پس جعبهٔ ۱ سمت راست می‌نشیند و بقیه به سمت چپ دنبالش می‌آیند.
+      </p>
+      <pre class="code"><code>.parent {
+  display: flex;
+  flex-direction: row;   /* اگر ننویسید هم همین است */
+}</code></pre>
+      <div class="result demo-direction">
+        <div class="parent row">
+          <div class="box b1">۱</div>
+          <div class="box b2">۲</div>
+          <div class="box b3">۳</div>
+          <div class="box b4">۴</div>
+        </div>
+      </div>
+
+      <h3>مثال ۲: <code>row-reverse</code></h3>
+      <p>
+        <code>row-reverse</code> همان ردیف افقی را نگه می‌دارد، اما شروع و پایان محور اصلی را جابه‌جا می‌کند.
+        ترتیب نمایش برعکس HTML می‌شود. در صفحهٔ فارسی جعبهٔ ۱ که در نشانه‌گذاری اول است به سمت چپ می‌رود، چون پایان خط در راست‌چین سمت چپ است.
+      </p>
+      <pre class="code"><code>.parent {
+  display: flex;
+  flex-direction: row-reverse;
+}</code></pre>
+      <div class="result demo-direction">
+        <div class="parent row-reverse">
+          <div class="box b1">۱</div>
+          <div class="box b2">۲</div>
+          <div class="box b3">۳</div>
+          <div class="box b4">۴</div>
+        </div>
+      </div>
+
+      <h3>مثال ۳: <code>column</code></h3>
+      <p>محور اصلی عمودی می‌شود و آیتم‌ها از بالا به پایین زیر هم می‌آیند. حالا محور فرعی افقی است و آیتم‌ها در عرض کش می‌آیند:</p>
+      <pre class="code"><code>.parent {
+  display: flex;
+  flex-direction: column;
+}</code></pre>
+      <div class="result demo-direction">
+        <div class="parent column">
+          <div class="box b1">۱</div>
+          <div class="box b2">۲</div>
+          <div class="box b3">۳</div>
+        </div>
+      </div>
+      <p class="tip">
+        شاید بپرسید «div‌ها خودشان هم زیر هم می‌آمدند، پس <code>column</code> به چه درد می‌خورد؟»
+        جوابش این است که حالا همه ابزارهای Flexbox (مثل <code>gap</code>، وسط‌چینی عمودی و <code>flex: 1</code>) روی ستون هم کار می‌کنند.
+        در درس ۱۲ با همین ترفند یک فوتر چسبان می‌سازیم.
+      </p>
+
+      <h3>مثال ۴: <code>column-reverse</code></h3>
+      <p>
+        <code>column-reverse</code> محور اصلی را عمودی نگه می‌دارد، اما جهت آن را برمی‌گرداند: شروع محور پایین ظرف است و پایانش بالا.
+        برای همین جعبهٔ ۱، که در HTML اول آمده، پایین می‌نشیند و بقیه بالای آن چیده می‌شوند. ترتیب خواندن صفحه‌خوان همچنان ترتیب HTML است؛ فقط نمایش برعکس شده است.
+      </p>
+      <pre class="code"><code>.parent {
+  display: flex;
+  flex-direction: column-reverse;
+}</code></pre>
+      <div class="result demo-direction">
+        <div class="parent column-reverse">
+          <div class="box b1">۱</div>
+          <div class="box b2">۲</div>
+          <div class="box b3">۳</div>
+        </div>
+      </div>
+
+      <h3>مثال ۵: یک کاربرد واقعی — کارت منوی کافه</h3>
+      <p>
+        Flexbox را می‌شود تو در تو به کار برد. هر ظرف فقط فرزندان مستقیم خودش را می‌چیند.
+        اینجا خود کارت‌ها با <code>flex-direction: row</code> کنار هم نشسته‌اند، و داخل هر کارت یک ظرف دیگر با <code>column</code> عکس، نام و قیمت را از بالا به پایین چیده است.
+      </p>
+      <pre class="code"><code>.menu  { display: flex; flex-direction: row; }
+.item  { display: flex; flex-direction: column; }</code></pre>
+      <div class="result demo-direction">
+        <div class="menu">
+          <div class="item">
+            <span class="icon">☕</span>
+            <strong>اسپرسو</strong>
+            <span class="price">۸۵ هزار تومان</span>
+          </div>
+          <div class="item">
+            <span class="icon">🍰</span>
+            <strong>چیزکیک</strong>
+            <span class="price">۱۲۰ هزار تومان</span>
+          </div>
+          <div class="item">
+            <span class="icon">🍵</span>
+            <strong>چای ماسالا</strong>
+            <span class="price">۹۰ هزار تومان</span>
+          </div>
+        </div>
+      </div>
+
+      <p class="mistake">
+        <strong>اشتباه رایج:</strong>
+        برای عوض کردن ترتیب نمایش در صفحه از <code>row-reverse</code> استفاده می‌کنیم، ولی ترتیب در HTML همان قبلی است.
+        کاربری که با کیبورد (Tab) یا صفحه‌خوان کار می‌کند، همان ترتیب HTML را می‌شنود. اگر ترتیب معنی دارد (مثل مراحل خرید)، خود HTML را مرتب کنید.
+      </p>
+
+      <p class="mistake">
+        <strong>اشتباه رایج:</strong>
+        بعد از <code>flex-direction: column</code> هنوز فکر می‌کنیم <code>justify-content</code> کار افقی انجام می‌دهد.
+        وقتی جهت عوض شود، <strong>محورها هم جابه‌جا می‌شوند</strong>؛ در درس‌های ۴ و ۵ این را دقیق می‌بینیم.
+      </p>
+
+      <table class="ref">
+        <tr>
+          <th>مقدار</th>
+          <th>محور اصلی</th>
+          <th>جعبه ۱ کجاست؟ (صفحه فارسی)</th>
+        </tr>
+        <tr>
+          <td><code>row</code></td>
+          <td>افقی</td>
+          <td>راست</td>
+        </tr>
+        <tr>
+          <td><code>row-reverse</code></td>
+          <td>افقی</td>
+          <td>چپ</td>
+        </tr>
+        <tr>
+          <td><code>column</code></td>
+          <td>عمودی</td>
+          <td>بالا</td>
+        </tr>
+        <tr>
+          <td><code>column-reverse</code></td>
+          <td>عمودی</td>
+          <td>پایین</td>
+        </tr>
+      </table>
+
+      <p class="exercise">
+        <strong>تمرین:</strong> یک «کارت پروفایل» برای استاد یک آموزشگاه بسازید که داخلش عکس (یک دایره رنگی کافی است)، نام و عنوان درس زیر هم باشند (<code>column</code>).
+        سه کارت از این نوع را با <code>row</code> کنار هم بگذارید.
+      </p>
+    </section>
+
+    <nav class="page-nav" aria-label="ناوبری درس پایین">
+      <a href="01-intro.html">→ قبلی: آشنایی با Flexbox</a>
+      <a href="../index.html">فهرست درس‌ها</a>
+      <a href="03-flex-wrap.html">بعدی: flex-wrap ←</a>
+    </nav>
+
+  </div>
+
+  <footer class="page-footer">
+    آموزش Flexbox
+  </footer>
+
+</body>
+
+</html>

@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>۱۷) شمارنده‌ها (Counters) | آموزش CSS سطح میانی</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/demos/counters.css">
+</head>
+
+<body>
+
+  <header class="page-header">
+    <h1>آموزش CSS — سطح میانی</h1>
+    <p>۱۷) شمارنده‌ها (Counters)</p>
+  </header>
+
+  <div class="container">
+
+    <nav class="page-nav" aria-label="ناوبری درس">
+      <a href="16-forms.html">→ قبلی: Forms</a>
+      <a href="../index.html">فهرست درس‌ها</a>
+      <a href="18-units.html">بعدی: Units ←</a>
+    </nav>
+
+    <section class="lesson" id="counters">
+      <h2>۱۷) شمارنده‌ها (Counters)</h2>
+      <p>
+        شمارنده CSS متغیری عددی است که مرورگر خودش آن را کم و زیاد می‌کند و ما فقط نام و محل نمایشش را تعیین می‌کنیم.
+        ساختن شماره سه مرحله دارد. <code>counter-reset</code> را روی عنصر والد می‌نویسیم تا شمارنده‌ای با یک نام ساخته شود و معمولاً از صفر شروع کند.
+        <code>counter-increment</code> را روی هر آیتمی می‌نویسیم که باید شماره بگیرد؛ هر بار که مرورگر به آن عنصر می‌رسد یکی به شمارنده اضافه می‌کند، پس اولین آیتم عدد ۱ را نشان می‌دهد.
+        برای نمایش عدد، در <code>::before</code> یا <code>::after</code> می‌نویسیم <code>content: counter(نام)</code>. تابع <code>counter()</code> مقدار فعلی را به متن تبدیل می‌کند.
+        اگر reset و increment هر دو روی یک عنصر باشند، مرورگر اول reset را انجام می‌دهد و بعد increment را؛ برای همین معمولاً reset را روی پدر می‌گذاریم تا هر فرزند فقط یکی اضافه کند.
+      </p>
+      <table class="ref">
+        <tr>
+          <th>دستور</th>
+          <th>کار</th>
+        </tr>
+        <tr>
+          <td><code>counter-reset: نام;</code></td>
+          <td>شمارنده را می‌سازد و روی صفر می‌گذارد (روی پدر)؛ با <code>counter-reset: نام 4;</code> از ۴ شروع می‌شود</td>
+        </tr>
+        <tr>
+          <td><code>counter-increment: نام;</code></td>
+          <td>هر بار یکی اضافه می‌کند (روی هر آیتم)؛ پس اولین آیتم شماره ۱ می‌گیرد</td>
+        </tr>
+        <tr>
+          <td><code>content: counter(نام);</code></td>
+          <td>عدد را نمایش می‌دهد (داخل ::before)</td>
+        </tr>
+      </table>
+
+      <h3>مثال ۱: شماره‌گذاری خودکار تیترها</h3>
+      <p>در یک صفحه واقعی شمارنده را روی <code>body</code> یا ظرف مقاله می‌سازیم (در این نمونه روی ظرف مثال):</p>
+      <pre class="code"><code>body { counter-reset: section; }
+
+h4::before {
+  counter-increment: section;
+  content: "بخش " counter(section) ": ";
+}</code></pre>
+      <div class="result demo-cnt">
+        <div class="ex1">
+          <h4>مقدمه</h4>
+          <h4>نصب ابزارها</h4>
+          <h4>اولین پروژه</h4>
+        </div>
+      </div>
+
+      <h3>مثال ۲: مراحل یک دستور پخت (دایره‌های شماره‌دار)</h3>
+      <p>چون ترتیب مراحل مهم است، در HTML از <code>ol</code> استفاده می‌کنیم و فقط شماره پیش‌فرض را با <code>list-style-type: none</code> برمی‌داریم:</p>
+      <pre class="code"><code>.steps { counter-reset: step; list-style-type: none; padding: 0; }
+
+.steps li { counter-increment: step; }
+
+.steps li::before {
+  content: counter(step);
+  display: inline-block;
+  width: 28px;
+  height: 28px;
+  line-height: 28px;    /* عدد وسط عمودی دایره */
+  border-radius: 50%;
+  background: #e8590c;
+  color: white;
+  text-align: center;
+  margin-left: 10px;    /* فاصله دایره تا متن (در صفحه راست‌چین، سمت چپ دایره) */
+}</code></pre>
+      <div class="result demo-cnt">
+        <ol class="steps">
+          <li>آب را جوش بیاورید</li>
+          <li>ماکارونی را اضافه کنید</li>
+          <li>۱۰ دقیقه صبر کنید</li>
+          <li>آبکش کنید و سس بریزید</li>
+        </ol>
+      </div>
+
+      <h3>مثال ۳: شماره‌گذاری تودرتو (۱.۱، ۱.۲، ...)</h3>
+      <p>
+        برای شماره دوتکه، دو شمارنده جدا لازم است. شمارنده <code>main</code> روی کل کتاب صفر می‌شود و هر فصل یکی به آن اضافه می‌کند.
+        شمارنده <code>sub</code> روی خود فصل صفر می‌شود تا هر فصل از ۱٫۱ شروع کند، نه اینکه شماره زیربخش در فصل بعد ادامه پیدا کند.
+        در <code>content</code> می‌توان چند مقدار را کنار هم نوشت: متن ثابت، <code>counter(main)</code>، یک نقطه، و <code>counter(sub)</code>.
+      </p>
+      <pre class="code"><code>.book          { counter-reset: main; }
+.chapter       { counter-reset: sub; }
+.chapter h4::before { counter-increment: main; content: counter(main) ". "; }
+.chapter p::before  { counter-increment: sub;  content: counter(main) "." counter(sub) " "; }</code></pre>
+      <div class="result demo-cnt">
+        <div class="book">
+          <div class="chapter">
+            <h4>HTML</h4>
+            <p>تگ‌ها</p>
+            <p>ویژگی‌ها</p>
+          </div>
+          <div class="chapter">
+            <h4>CSS</h4>
+            <p>انتخابگرها</p>
+            <p>رنگ‌ها</p>
+            <p>مدل جعبه‌ای</p>
+          </div>
+        </div>
+      </div>
+
+      <p class="tip">
+        برای فهرست‌های تودرتو با عمق نامعلوم، تابع <code>counters()</code> (با s) همه سطح‌ها را خودش کنار هم می‌گذارد:
+        <code>content: counters(item, ".") " ";</code> که خروجی‌اش مثل <code>1.2.3</code> است.
+      </p>
+
+      <h3>مثال ۴: شمارش با اعداد فارسی</h3>
+      <p>
+        شمارنده‌ها به‌طور پیش‌فرض با رقم‌های لاتین (1، 2، 3) نمایش داده می‌شوند (مثل مثال‌های بالا).
+        با نوشتن سبک <code>persian</code> به‌عنوان آرگومان دوم، رقم‌ها فارسی می‌شوند:
+      </p>
+      <pre class="code"><code>.fa-num li::before {
+  content: counter(item, persian) "- ";   /* ۱- ، ۲- ، ۳- */
+}</code></pre>
+      <div class="result demo-cnt">
+        <ul class="fa-num">
+          <li>سیب</li>
+          <li>پرتقال</li>
+          <li>انار</li>
+        </ul>
+      </div>
+
+      <p class="mistake">
+        <strong>اشتباه رایج:</strong>
+        گذاشتن <code>counter-reset</code> روی خود آیتم‌ها به‌جای پدر؛ در این حالت همه آیتم‌ها شماره ۱ می‌گیرند.
+      </p>
+
+      <p class="mistake">
+        <strong>اشتباه رایج:</strong>
+        نوشتن <code>counter-increment</code> روی عنصری که <code>display: none</code> دارد؛ عنصر پنهان شمرده نمی‌شود.
+        همچنین نام شمارنده در هر سه دستور باید دقیقاً یکی باشد (<code>step</code> با <code>steps</code> فرق دارد).
+      </p>
+
+      <p class="exercise">
+        <strong>تمرین:</strong> یک صفحه «سؤالات متداول» بسازید که سؤال‌ها خودکار با «سؤال ۱:»، «سؤال ۲:» و ... شماره بخورند.
+      </p>
+    </section>
+
+    <nav class="page-nav" aria-label="ناوبری درس پایین">
+      <a href="16-forms.html">→ قبلی: Forms</a>
+      <a href="../index.html">فهرست درس‌ها</a>
+      <a href="18-units.html">بعدی: Units ←</a>
+    </nav>
+
+  </div>
+
+  <footer class="page-footer">
+    آموزش CSS سطح میانی
+  </footer>
+
+</body>
+
+</html>

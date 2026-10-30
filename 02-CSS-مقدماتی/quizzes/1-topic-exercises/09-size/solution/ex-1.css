@@ -1,0 +1,17 @@
+.box {
+  background-color: #e5dbff;
+  padding: 10px;
+}
+
+.fixed {
+  width: 250px;
+}
+
+.half {
+  width: 50%;
+}
+
+.limited {
+  width: 100%;
+  max-width: 500px;
+}

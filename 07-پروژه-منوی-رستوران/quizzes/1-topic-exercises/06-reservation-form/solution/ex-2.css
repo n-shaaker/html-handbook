@@ -1,0 +1,10 @@
+body {
+  font-family: Tahoma, Arial, sans-serif;
+  line-height: 1.9;
+}
+
+label,
+button {
+  display: block;
+  margin-top: 8px;
+}

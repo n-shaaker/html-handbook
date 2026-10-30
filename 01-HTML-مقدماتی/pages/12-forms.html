@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>۱۲) فرم‌ها | جزوه HTML</title>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+  <header class="page-header">
+    <h1>جزوه HTML مقدماتی</h1>
+    <p>۱۲) فرم‌ها</p>
+  </header>
+
+  <div class="container">
+    <nav class="page-nav">
+      <a href="11-tables.html">→ درس قبل</a>
+      <a href="../index.html">فهرست مطالب</a>
+      <a href="13-semantic.html">درس بعد ←</a>
+    </nav>
+
+    <section class="lesson">
+      <h2>۱۲) فرم‌ها — عناصر پرکاربرد</h2>
+      <p>
+        فرم راهی است برای گرفتن اطلاعات از کاربر، مانند تماس، ورود، جستجو و ثبت‌نام.
+        HTML شکل فیلدها را می‌سازد و مشخص می‌کند داده به کدام نشانی فرستاده شود. ذخیره و پردازش آن داده کار HTML نیست و بر عهدهٔ برنامهٔ سمت سرور است.
+      </p>
+
+      <table class="ref">
+        <thead>
+          <tr>
+            <th>عنصر</th>
+            <th>تعریف</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>form</code></td>
+            <td>عنصر <code>form</code> ظرف اصلی فرم است. فیلدها داخل آن قرار می‌گیرند و با هم ارسال می‌شوند.</td>
+          </tr>
+          <tr>
+            <td><code>label</code></td>
+            <td>عنصر <code>label</code> برچسب فیلد است. اگر با <code>for</code> به <code>id</code> همان فیلد وصل شود، کلیک روی متن هم فیلد را فعال می‌کند.</td>
+          </tr>
+          <tr>
+            <td><code>input</code></td>
+            <td>عنصر <code>input</code> ورودی تک‌خطی است. با ویژگی <code>type</code> مشخص می‌شود متن، رایانامه، گذرواژه یا گزینه است.</td>
+          </tr>
+          <tr>
+            <td><code>textarea</code></td>
+            <td>عنصر <code>textarea</code> ناحیهٔ متن چندخطی است و برخلاف <code>input</code> تگ پایانی دارد.</td>
+          </tr>
+          <tr>
+            <td><code>select</code> + <code>option</code></td>
+            <td><code>select</code> فهرست کشویی است و هر <code>option</code> یکی از گزینه‌های قابل انتخاب آن است.</td>
+          </tr>
+          <tr>
+            <td><code>button</code></td>
+            <td>عنصر <code>button</code> دکمهٔ اقدام است. نوع پیش‌فرض دکمه‌ای که داخل فرم باشد ارسال فرم است.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3>نمونه واقعی: فرم «تماس با ما» یک فروشگاه اینترنتی</h3>
+      <pre class="code"><code>&lt;form action="/contact" method="post"&gt;
+  &lt;p&gt;
+    &lt;label for="name"&gt;نام و نام خانوادگی:&lt;/label&gt;&lt;br&gt;
+    &lt;input id="name" type="text" name="fullname" placeholder="مثلاً سارا رضایی"&gt;
+  &lt;/p&gt;
+  &lt;p&gt;
+    &lt;label for="email"&gt;رایانامه:&lt;/label&gt;&lt;br&gt;
+    &lt;input id="email" type="email" name="email" placeholder="name@example.com"&gt;
+  &lt;/p&gt;
+  &lt;p&gt;
+    &lt;label for="topic"&gt;موضوع:&lt;/label&gt;&lt;br&gt;
+    &lt;select id="topic" name="topic"&gt;
+      &lt;option value="order"&gt;پیگیری سفارش&lt;/option&gt;
+      &lt;option value="return"&gt;مرجوع کردن کالا&lt;/option&gt;
+      &lt;option value="other"&gt;سایر موارد&lt;/option&gt;
+    &lt;/select&gt;
+  &lt;/p&gt;
+  &lt;p&gt;
+    &lt;label for="msg"&gt;متن پیام:&lt;/label&gt;&lt;br&gt;
+    &lt;textarea id="msg" name="message" rows="3"&gt;&lt;/textarea&gt;
+  &lt;/p&gt;
+  &lt;button type="submit"&gt;ارسال پیام&lt;/button&gt;
+&lt;/form&gt;</code></pre>
+
+      <div class="result">
+        <form action="#" method="post" onsubmit="return false;">
+          <p>
+            <label for="name">نام و نام خانوادگی:</label><br>
+            <input id="name" type="text" name="fullname" placeholder="مثلاً سارا رضایی">
+          </p>
+          <p>
+            <label for="email">رایانامه:</label><br>
+            <input id="email" type="email" name="email" placeholder="name@example.com">
+          </p>
+          <p>
+            <label for="topic">موضوع:</label><br>
+            <select id="topic" name="topic">
+              <option value="order">پیگیری سفارش</option>
+              <option value="return">مرجوع کردن کالا</option>
+              <option value="other">سایر موارد</option>
+            </select>
+          </p>
+          <p>
+            <label for="msg">متن پیام:</label><br>
+            <textarea id="msg" name="message" rows="3"></textarea>
+          </p>
+          <button type="submit">ارسال پیام</button>
+        </form>
+      </div>
+
+      <h3>ویژگی‌های اصلی form و name</h3>
+      <table class="ref">
+        <thead>
+          <tr>
+            <th>ویژگی</th>
+            <th>تعریف</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>action</code></td>
+            <td><code>action</code> نشانی‌ای در سرور است که داده‌های فرم به آن فرستاده می‌شود، مثلاً <code>/contact</code>. اگر خالی باشد، داده به همین صفحه برمی‌گردد.</td>
+          </tr>
+          <tr>
+            <td><code>method="get"</code></td>
+            <td>با <code>get</code> داده‌ها به انتهای URL افزوده می‌شوند، مثل <code>?q=کتاب</code>. برای جستجو و فیلتر مناسب است، چون نشانی قابل دیدن و قابل اشتراک است. برای گذرواژه و اطلاعات شخصی مناسب نیست.</td>
+          </tr>
+          <tr>
+            <td><code>method="post"</code></td>
+            <td>با <code>post</code> داده‌ها در بدنهٔ درخواست می‌روند و در نوار نشانی دیده نمی‌شوند. برای ثبت‌نام، ورود و اطلاعات شخصی مناسب‌تر است. خود <code>post</code> داده را رمزنگاری نمی‌کند؛ رمزنگاری مسیر با <code>https</code> انجام می‌شود.</td>
+          </tr>
+          <tr>
+            <td><code>name</code> (روی هر فیلد)</td>
+            <td><code>name</code> نامی است که سرور مقدار فیلد را با آن می‌شناسد. فیلد بدون <code>name</code> ارسال نمی‌شود، حتی اگر کاربر آن را پر کرده باشد.</td>
+          </tr>
+          <tr>
+            <td><code>value</code> (روی <code>option</code>)</td>
+            <td>ویژگی <code>value</code> مقداری است که به سرور فرستاده می‌شود. متن داخل <code>option</code> فقط برای نمایش به کاربر است و اگر <code>value</code> نباشد، همان متن ارسال می‌شود.</td>
+          </tr>
+        </tbody>
+      </table>
+      <p class="tip">
+        <strong>نکته:</strong>
+        HTML داده‌های فرم را ذخیره نمی‌کند. بعد از ارسال، برنامهٔ سمت سرور (مثلاً PHP، Python یا Node.js) آن‌ها را می‌خواند.
+        فرم‌های نمونهٔ این جزوه فقط شکل کار را نشان می‌دهند و به برنامهٔ واقعی فرستاده نمی‌شوند.
+      </p>
+
+      <h3>انواع پرکاربرد ویژگی type در input</h3>
+      <table class="ref">
+        <thead>
+          <tr>
+            <th>مقدار type</th>
+            <th>کاربرد</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>text</code></td>
+            <td>متن معمولی یک‌خطی. اگر <code>type</code> نوشته نشود، همین حالت پیش‌فرض است.</td>
+          </tr>
+          <tr>
+            <td><code>email</code></td>
+            <td>رایانامه. مرورگر شکل کلی نشانی را بررسی می‌کند، اما وجود واقعی آن صندوق را تضمین نمی‌کند.</td>
+          </tr>
+          <tr>
+            <td><code>password</code></td>
+            <td>گذرواژه. نویسه‌ها معمولاً به‌صورت نقطه یا ستاره دیده می‌شوند، اما این پنهان‌سازی فقط ظاهری است و به‌تنهایی امنیت ایجاد نمی‌کند.</td>
+          </tr>
+          <tr>
+            <td><code>number</code></td>
+            <td>عدد. مرورگر معمولاً دکمهٔ کم و زیاد نشان می‌دهد و مقدار غیرعددی را هنگام ارسال نمی‌پذیرد.</td>
+          </tr>
+          <tr>
+            <td><code>checkbox</code></td>
+            <td>انتخاب چندگزینه‌ای. هر خانه مستقل است و می‌توان چند مورد را با هم انتخاب کرد.</td>
+          </tr>
+          <tr>
+            <td><code>radio</code></td>
+            <td>انتخاب فقط یکی از چند گزینه. گزینه‌هایی که <code>name</code> یکسان دارند یک گروه می‌شوند.</td>
+          </tr>
+          <tr>
+            <td><code>submit</code></td>
+            <td>دکمهٔ ارسال فرم. می‌توان به‌جای آن از عنصر <code>button</code> با <code>type="submit"</code> استفاده کرد.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p class="tip">
+        <strong>نکته:</strong>
+        همیشه <code>label</code> را با ویژگی <code>for</code> به <code>id</code> همان ورودی وصل کنید.
+        مقدار <code>for</code> باید دقیقاً برابر <code>id</code> باشد. این اتصال هم کلیک روی برچسب را به فیلد می‌رساند و هم به صفحه‌خوان می‌گوید این متن مال کدام فیلد است.
+      </p>
+
+      <p class="mistake">
+        <strong>خطای متداول:</strong>
+        ساختن دکمه با <code>div</code> به‌جای <code>button</code>.
+        <code>div</code> به‌خودی‌خود با صفحه‌کلید فعال نمی‌شود و برای صفحه‌خوان هم دکمه نیست. دکمهٔ واقعی با Tab به آن می‌رسید و با Enter فعال می‌شود.
+      </p>
+
+      <p class="mistake">
+        <strong>خطای متداول:</strong>
+        استفاده از <code>placeholder</code> به‌جای <code>label</code>. متن placeholder با شروع تایپ ناپدید می‌شود
+        و صفحه‌خوان‌ها همیشه آن را نمی‌خوانند. placeholder فقط راهنمای کمکی داخل کادر است و جای برچسب دائمی را نمی‌گیرد.
+      </p>
+
+      <p class="exercise">
+        <strong>تمرین:</strong>
+        فرم جستجوی یک کتاب‌فروشی آنلاین بسازید که با <code>method="get"</code> کار کند. یک فیلد متنی با <code>name="q"</code>، یک فهرست کشویی برای دسته‌بندی و دکمهٔ «جستجو» بگذارید.
+        بعد از ارسال به نوار نشانی نگاه کنید تا ببینید نام و مقدار فیلدها چگونه به URL اضافه شده‌اند.
+      </p>
+
+      <p class="tip">
+        <strong>ادامه:</strong>
+        همه انواع <code>input</code>، ویژگی‌هایی مثل <code>required</code> و <code>pattern</code>،
+        و عناصر <code>fieldset</code> و <code>datalist</code> در
+        <a href="19-forms-advanced.html">درس ۱۹ — فرم‌های پیشرفته</a> آمده‌اند.
+      </p>
+    </section>
+
+    <nav class="page-nav">
+      <a href="11-tables.html">→ درس قبل</a>
+      <a href="../index.html">فهرست مطالب</a>
+      <a href="13-semantic.html">درس بعد ←</a>
+    </nav>
+  </div>
+
+  <footer class="page-footer">جزوه HTML مقدماتی</footer>
+</body>
+
+</html>

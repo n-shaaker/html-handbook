@@ -1,0 +1,48 @@
+body {
+  font-family: Tahoma, Arial, sans-serif;
+  line-height: 1.8;
+  margin: 0;
+}
+
+/*
+  معادل پنج‌خطی همین یک خط:
+  background-color: #333;
+  background-image: url("../../../../images/hero.jpg");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+*/
+.site-header {
+  padding: 80px 16px;
+  text-align: center;
+  color: white;
+  background: #333 url("../../../../images/hero.jpg") center / cover no-repeat;
+}
+
+.site-header h1 {
+  margin: 0;
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.8);
+}
+
+.content {
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 16px;
+}
+
+/* پترن کوچک که تکرار می‌شود */
+.site-footer {
+  padding: 32px 16px;
+  background-image: url("../../../../images/pattern.jpg");
+  background-size: 200px auto;
+  background-repeat: repeat;
+}
+
+.footer-box {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 12px;
+  text-align: center;
+  background-color: rgba(255, 255, 255, 0.85);
+  border-radius: 8px;
+}

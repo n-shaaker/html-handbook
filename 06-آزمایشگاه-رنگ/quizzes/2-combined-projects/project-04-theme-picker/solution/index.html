@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>انتخابگر رنگ تم سایت</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="app.js" defer></script>
+</head>
+
+<body>
+  <main class="page">
+    <h1>انتخابگر رنگ تم سایت 🖌️</h1>
+
+    <section class="controls">
+      <label for="hue">رنگ اصلی (فام): <span id="hue-value">210°</span></label>
+      <input type="range" id="hue" min="0" max="360" value="210">
+
+      <label for="mode">حالت</label>
+      <select id="mode">
+        <option value="light">روشن</option>
+        <option value="dark">تیره</option>
+      </select>
+
+      <label for="alpha">پررنگی کارت: <span id="alpha-value">85%</span></label>
+      <input type="range" id="alpha" min="40" max="100" value="85">
+    </section>
+
+    <h2>پیش‌نمایش</h2>
+    <div class="preview" id="preview">
+      <article class="card">
+        <h3>دوره آموزش طراحی وب</h3>
+        <p>در ۱۲ جلسه یاد بگیرید یک سایت کامل و زیبا بسازید.</p>
+        <button type="button" class="btn-primary">ثبت‌نام</button>
+        <button type="button" class="btn-outline">جزئیات بیشتر</button>
+      </article>
+    </div>
+
+    <h2>کد CSS تم</h2>
+    <pre class="code" id="code-out" dir="ltr"></pre>
+  </main>
+</body>
+
+</html>

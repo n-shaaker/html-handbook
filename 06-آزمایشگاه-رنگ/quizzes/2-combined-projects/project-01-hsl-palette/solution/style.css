@@ -1,0 +1,98 @@
+/* رنگ برند: برای عوض کردن کل پالت فقط همین دو خط را تغییر بده */
+:root {
+  --brand-h: 175;
+  --brand-s: 60%;
+}
+
+body {
+  margin: 0;
+  padding: 30px 16px;
+  font-family: Tahoma, Arial, sans-serif;
+  line-height: 1.8;
+  background-color: hsl(var(--brand-h), var(--brand-s), 97%);
+  color: hsl(var(--brand-h), var(--brand-s), 12%);
+}
+
+.guide {
+  max-width: 860px;
+  margin: 0 auto;
+}
+
+.hint {
+  color: hsl(var(--brand-h), 0%, 35%);
+}
+
+/* ===== پالت ===== */
+.palette {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 12px;
+  padding: 0;
+  list-style: none;
+}
+
+.swatch {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  min-height: 120px;
+  padding: 12px;
+  border-radius: 10px;
+  font-weight: bold;
+}
+
+.swatch code {
+  direction: ltr;
+  text-align: left;
+}
+
+.shade-90 { background-color: hsl(var(--brand-h), var(--brand-s), 90%); }
+.shade-75 { background-color: hsl(var(--brand-h), var(--brand-s), 75%); }
+.shade-50 { background-color: hsl(var(--brand-h), var(--brand-s), 50%); }
+.shade-35 { background-color: hsl(var(--brand-h), var(--brand-s), 35%); }
+.shade-20 { background-color: hsl(var(--brand-h), var(--brand-s), 20%); }
+.neutral { background-color: hsl(var(--brand-h), 0%, 45%); }
+
+/* روی سایه‌های روشن متن تیره، روی سایه‌های تیره متن سفید */
+.shade-35,
+.shade-20,
+.neutral {
+  color: hsl(0, 0%, 100%);
+}
+
+/* ===== دکمه‌ها: در هاور و فشرده فقط روشنایی عوض می‌شود ===== */
+.btn {
+  padding: 10px 22px;
+  margin-left: 8px;
+  border: none;
+  border-radius: 8px;
+  font-family: inherit;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+.btn:focus-visible {
+  outline: 3px solid hsl(var(--brand-h), var(--brand-s), 50%);
+  outline-offset: 2px;
+}
+
+.btn-primary {
+  background-color: hsl(var(--brand-h), var(--brand-s), 28%);
+  color: hsl(0, 0%, 100%);
+}
+.btn-primary:hover { background-color: hsl(var(--brand-h), var(--brand-s), 22%); }
+.btn-primary:active { background-color: hsl(var(--brand-h), var(--brand-s), 16%); }
+
+.btn-light {
+  background-color: hsl(var(--brand-h), var(--brand-s), 90%);
+  color: hsl(var(--brand-h), var(--brand-s), 20%);
+}
+.btn-light:hover { background-color: hsl(var(--brand-h), var(--brand-s), 82%); }
+.btn-light:active { background-color: hsl(var(--brand-h), var(--brand-s), 75%); }
+
+.btn-gray {
+  background-color: hsl(var(--brand-h), 0%, 45%);
+  color: hsl(0, 0%, 100%);
+}
+.btn-gray:hover { background-color: hsl(var(--brand-h), 0%, 38%); }
+.btn-gray:active { background-color: hsl(var(--brand-h), 0%, 30%); }

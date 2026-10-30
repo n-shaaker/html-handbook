@@ -1,0 +1,15 @@
+.news {
+  margin: 0;
+  padding: 12px;
+  background-color: #e7f5ff;
+}
+
+/* بین خبر ۱ و ۲ فقط ۳۰ پیکسل فاصله است، نه ۵۰؛ margin عمودی بزرگ‌تر برنده است */
+.news-1 {
+  margin-bottom: 30px;
+}
+
+.news-2 {
+  margin-top: 20px;
+  margin-bottom: 40px; /* فاصله دقیق ۴۰ با خبر سوم */
+}

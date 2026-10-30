@@ -1,0 +1,20 @@
+/* مثال ۱: ترتیب قوانین — قدرت یکی است، قانون دیرتر برنده است */
+
+.demo-order .first {
+  color: #c92a2a;
+  font-size: 20px;
+}
+
+.demo-order .first {
+  color: #0b6e4f;
+}
+
+.demo-order .later-wins {
+  background-color: #ffe0b2;
+  padding: 10px;
+  margin: 8px 0;
+}
+
+.demo-order .later-wins {
+  background-color: #c3fae8;
+}

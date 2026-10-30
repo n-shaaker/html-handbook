@@ -1,0 +1,67 @@
+/* ۴) justify-content */
+
+/* جعبه‌های رنگی شماره‌دار (بدون margin تا فاصله‌ها فقط از justify-content بیاید) */
+.demo-justify .box {
+  width: 60px;
+  padding: 10px 0;
+  color: white;
+  font-weight: bold;
+  text-align: center;
+  border-radius: 6px;
+}
+
+.demo-justify .b1 { background-color: #1c7ed6; }
+.demo-justify .b2 { background-color: #2b8a3e; }
+.demo-justify .b3 { background-color: #e8590c; }
+
+/* ظرف مشترک */
+.demo-justify .parent {
+  display: flex;
+  background-color: #f1f3f5;
+  border: 2px solid #868e96;
+  padding: 6px;
+}
+
+.demo-justify .start {
+  justify-content: flex-start;
+}
+
+.demo-justify .end {
+  justify-content: flex-end;
+}
+
+.demo-justify .center {
+  justify-content: center;
+}
+
+.demo-justify .between {
+  justify-content: space-between;
+}
+
+.demo-justify .around {
+  justify-content: space-around;
+}
+
+.demo-justify .evenly {
+  justify-content: space-evenly;
+}
+
+.demo-justify .label {
+  margin: 4px 0;
+  font-size: 14px;
+  color: #495057;
+}
+
+/* سربرگ کافه */
+.demo-justify .cafe-header {
+  display: flex;
+  justify-content: space-between;
+  background-color: #5c3d2e;
+  color: white;
+  padding: 12px 16px;
+  border-radius: 6px;
+}
+
+.demo-justify .logo {
+  color: #ffd8a8;
+}

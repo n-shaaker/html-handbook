@@ -1,0 +1,43 @@
+body {
+  font-family: Tahoma, Arial, sans-serif;
+  line-height: 1.8;
+  margin: 0;
+}
+
+.top-menu {
+  background-color: #6b3e26;
+}
+
+.top-menu ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0 16px;
+}
+
+.top-menu li {
+  display: inline-block;
+}
+
+.top-menu a {
+  display: block;
+  padding: 12px 16px;
+  color: white;
+  text-decoration: none;
+}
+
+.top-menu a:hover,
+.top-menu a:focus-visible {
+  background-color: #4a2a19;
+}
+
+.top-menu a:focus-visible {
+  outline: 2px solid #ffd166;
+}
+
+.top-menu a.active {
+  background-color: #b5452a;
+}
+
+.content {
+  padding: 16px 32px;
+}

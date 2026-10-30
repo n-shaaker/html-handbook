@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>۱۵) انتخابگرهای ویژگی (Attribute Selectors) | آموزش CSS سطح میانی</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/demos/attr-selectors.css">
+</head>
+
+<body>
+
+  <header class="page-header">
+    <h1>آموزش CSS — سطح میانی</h1>
+    <p>۱۵) انتخابگرهای ویژگی (Attribute Selectors)</p>
+  </header>
+
+  <div class="container">
+
+    <nav class="page-nav" aria-label="ناوبری درس">
+      <a href="14-dropdowns.html">→ قبلی: Dropdowns</a>
+      <a href="../index.html">فهرست درس‌ها</a>
+      <a href="16-forms.html">بعدی: Forms ←</a>
+    </nav>
+
+    <section class="lesson" id="attr-selectors">
+      <h2>۱۵) انتخابگرهای ویژگی (Attribute Selectors)</h2>
+      <p>
+        انتخابگر ویژگی، عنصر را بر اساس ویژگی‌های نوشته‌شده در HTML انتخاب می‌کند؛ مثل <code>type</code>، <code>href</code> یا <code>target</code>.
+        این انتخابگر داخل کروشه نوشته می‌شود. <code>[target]</code> یعنی ویژگی وجود دارد، حتی اگر مقدارش هر چه باشد.
+        <code>[type="text"]</code> یعنی مقدار دقیقاً برابر <code>text</code> است. علامت <code>^=</code> یعنی مقدار با این رشته شروع می‌شود، <code>$=</code> یعنی با آن تمام می‌شود، و <code>*=</code> یعنی آن رشته هر جای مقدار آمده باشد.
+        <code>~=</code> به دنبال یک کلمه کامل، جدا شده با فاصله، می‌گردد. <code>|=</code> برای مقدارهایی مثل کد زبان است: یا دقیقاً همان مقدار، یا همان مقدار با یک خط تیره بعدش، مثل <code>fa</code> و <code>fa-IR</code>.
+        این انتخابگرها وقتی مفیدند که نخواهید برای هر حالت یک کلاس تازه در HTML اضافه کنید و اطلاعات از قبل در ویژگی‌ها وجود داشته باشد.
+      </p>
+      <table class="ref">
+        <tr>
+          <th>انتخابگر</th>
+          <th>یعنی عنصرهایی که ...</th>
+        </tr>
+        <tr>
+          <td><code>[target]</code></td>
+          <td>ویژگی target دارند (مقدارش مهم نیست)</td>
+        </tr>
+        <tr>
+          <td><code>[type="text"]</code></td>
+          <td>مقدار ویژگی‌شان دقیقاً text است</td>
+        </tr>
+        <tr>
+          <td><code>[href^="https"]</code></td>
+          <td>مقدارشان با https <strong>شروع</strong> می‌شود</td>
+        </tr>
+        <tr>
+          <td><code>[href$=".pdf"]</code></td>
+          <td>مقدارشان با ‎.pdf <strong>تمام</strong> می‌شود</td>
+        </tr>
+        <tr>
+          <td><code>[class*="btn"]</code></td>
+          <td>مقدارشان کلمه btn را <strong>جایی داخلش</strong> دارد</td>
+        </tr>
+        <tr>
+          <td><code>[title~="new"]</code></td>
+          <td>در مقدارشان کلمه <strong>جداگانه</strong> new هست (بین کلمه‌ها فاصله باشد)</td>
+        </tr>
+        <tr>
+          <td><code>[lang|="fa"]</code></td>
+          <td>مقدارشان دقیقاً fa است یا با <code>fa-</code> شروع می‌شود (مثل <code>fa-IR</code>)</td>
+        </tr>
+      </table>
+      <p class="tip">
+        انتخابگر ویژگی را می‌شود با تگ و کلاس ترکیب کرد (<code>a.btn[target="_blank"]</code>).
+        اگر بعد از مقدار حرف <code>i</code> بگذارید، بزرگی و کوچکی حروف مهم نیست:
+        <code>a[href$=".pdf" i]</code> هم <code>.pdf</code> را می‌گیرد و هم <code>.PDF</code> را.
+      </p>
+
+      <h3>مثال ۱: لینک‌هایی که در تب جدید باز می‌شوند</h3>
+      <p>
+        ویژگی <code>target="_blank"</code> یعنی لینک در تب تازه باز شود و صفحه فعلی سر جایش بماند. با انتخابگر <code>[target="_blank"]</code> فقط همین لینک‌ها را پیدا می‌کنیم و با <code>::after</code> یک علامت به انتهای متنشان اضافه می‌کنیم تا کاربر قبل از کلیک بداند به تب دیگری می‌رود.
+      </p>
+      <pre class="code"><code>a[target="_blank"]::after {
+  content: " ↗";
+}</code></pre>
+      <div class="result demo-attr">
+        <p><a href="#attr-selectors">لینک داخلی</a></p>
+        <p><a href="https://developer.mozilla.org/en-US/" target="_blank" rel="noopener">مستندات MDN (تب جدید)</a></p>
+      </div>
+
+      <h3>مثال ۲: ظاهر متفاوت برای هر نوع input</h3>
+      <pre class="code"><code>input[type="text"]     { border: 2px solid #1a5fb4; }
+input[type="password"] { border: 2px solid #c92a2a; }
+input[type="email"]    { border: 2px solid #2b8a3e; }</code></pre>
+      <div class="result demo-attr">
+        <input type="text" placeholder="نام کاربری" aria-label="نام کاربری">
+        <input type="password" placeholder="رمز عبور" aria-label="رمز عبور">
+        <input type="email" placeholder="ایمیل" aria-label="ایمیل" dir="ltr">
+      </div>
+
+      <h3>مثال ۳: آیکون بر اساس نوع فایل</h3>
+      <pre class="code"><code>a[href$=".pdf"]::before { content: "📄 "; }
+a[href$=".zip"]::before { content: "🗜️ "; }
+a[href^="mailto:"]::before { content: "✉️ "; }</code></pre>
+      <div class="result demo-attr">
+        <ul class="files">
+          <li><a href="downloads/css-notes.pdf" class="sample-link" tabindex="-1" aria-disabled="true">جزوه CSS (PDF)</a></li>
+          <li><a href="downloads/exercises.zip" class="sample-link" tabindex="-1" aria-disabled="true">فایل تمرین‌ها (ZIP)</a></li>
+          <li><a href="mailto:info@example.com">info@example.com</a></li>
+        </ul>
+        <p class="sample-note">دو لینک اول فقط نمونه‌اند و در این جزوه فایلی دانلود نمی‌کنند؛ آیکون‌ها فقط از روی پسوند انتهای <code>href</code> اضافه شده‌اند.</p>
+      </div>
+      <p class="tip">
+        نکته کاربردی: کنار نام لینک دانلود، نوع فایل را هم بنویسید (مثل «PDF») تا کاربر قبل از کلیک بداند چه چیزی دریافت می‌کند؛
+        آیکونی که CSS اضافه می‌کند برای صفحه‌خوان‌ها همیشه خوانده نمی‌شود.
+      </p>
+
+      <h3>مثال ۴: <code>*=</code> و <code>~=</code></h3>
+      <pre class="code"><code>[class*="btn"]  { padding: 6px 14px; border-radius: 4px; }  /* btn-red، btn-green، ... */
+[title~="new"]  { outline: 2px dashed orange; }</code></pre>
+      <div class="result demo-attr">
+        <span class="btn-red">btn-red</span>
+        <span class="btn-green">btn-green</span>
+        <span class="btn-blue">btn-blue</span>
+        <p><img src="../images/bg.jpg" alt="عکس جدید" title="new photo" class="thumb"> <img src="../images/bg.jpg" alt="عکس قدیمی" title="old photo" class="thumb"></p>
+      </div>
+      <p>فقط عکس اول کادر نارنجی دارد، چون در <code>title</code> آن کلمه جداگانه new آمده است.</p>
+
+      <p class="mistake">
+        <strong>اشتباه رایج:</strong>
+        <code>[class*="btn"]</code> هر کلاسی را که حروف btn جایی داخلش باشد می‌گیرد؛ مثلاً <code>submit-btn-wrapper</code> یا <code>dd-btn</code> را هم.
+        اگر منظورتان کلاس‌هایی است که با <code>btn-</code> شروع می‌شوند، دقیق‌تر بنویسید: <code>[class^="btn-"]</code>
+        (و اگر فقط یک کلاس مشخص می‌خواهید، همان <code>.btn</code> ساده‌تر و بهتر است).
+      </p>
+
+      <p class="mistake">
+        <strong>اشتباه رایج:</strong>
+        جا انداختن علامت نقل قول برای مقدارهایی که فاصله، نقطه یا علامت دارند؛ <code>[href$=.pdf]</code> نامعتبر است و کل قانون نادیده گرفته می‌شود.
+        عادت کنید همیشه مقدار را داخل <code>" "</code> بنویسید: <code>[href$=".pdf"]</code>.
+      </p>
+
+      <p class="exercise">
+        <strong>تمرین:</strong> همه inputهایی که <code>required</code> دارند را با <code>input[required]</code> انتخاب کنید و حاشیه نارنجی بدهید.
+      </p>
+    </section>
+
+    <nav class="page-nav" aria-label="ناوبری درس پایین">
+      <a href="14-dropdowns.html">→ قبلی: Dropdowns</a>
+      <a href="../index.html">فهرست درس‌ها</a>
+      <a href="16-forms.html">بعدی: Forms ←</a>
+    </nav>
+
+  </div>
+
+  <footer class="page-footer">
+    آموزش CSS سطح میانی
+  </footer>
+
+</body>
+
+</html>

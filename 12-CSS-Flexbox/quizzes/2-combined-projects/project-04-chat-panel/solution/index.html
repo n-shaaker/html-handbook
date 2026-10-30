@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>پیام‌رسان کلاس</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <div class="app">
+
+    <aside class="contacts" aria-label="فهرست گفتگوها">
+      <h2>گفتگوها</h2>
+
+      <a href="#" class="contact active">
+        <span class="avatar">م</span>
+        <span class="contact-info">
+          <strong>مریم رضایی</strong>
+          <small>باشه، فردا می‌بینمت</small>
+        </span>
+        <span class="badge">۲</span>
+      </a>
+
+      <a href="#" class="contact">
+        <span class="avatar avatar-2">ح</span>
+        <span class="contact-info">
+          <strong>حسین کریمی</strong>
+          <small>فایل را فرستادم</small>
+        </span>
+      </a>
+
+      <a href="#" class="contact">
+        <span class="avatar avatar-3">گ</span>
+        <span class="contact-info">
+          <strong>گروه کلاس CSS</strong>
+          <small>استاد: تمرین جلسه بعد Flexbox است</small>
+        </span>
+        <span class="badge">۱۵</span>
+      </a>
+    </aside>
+
+    <section class="chat">
+      <header class="chat-header">
+        <span class="avatar">م</span>
+        <div class="chat-title">
+          <strong>مریم رضایی</strong>
+          <small>آنلاین</small>
+        </div>
+        <button type="button" class="call">تماس</button>
+      </header>
+
+      <div class="messages">
+        <p class="msg system">امروز</p>
+        <p class="msg them">سلام! جزوه جلسه پیش را داری؟</p>
+        <p class="msg me">سلام، آره. الان عکسش را می‌فرستم.</p>
+        <p class="msg them">مرسی! فقط بخش align-self را نفهمیدم.</p>
+        <p class="msg me">
+          align-self مثل align-items است، ولی فقط برای یک آیتم.
+          مثلاً همین پیام‌ها: پیام‌های من یک طرف، پیام‌های تو طرف دیگر.
+        </p>
+        <p class="msg them">آهان! باشه، فردا می‌بینمت.</p>
+      </div>
+
+      <form class="composer">
+        <input type="text" placeholder="پیام خود را بنویسید…" aria-label="متن پیام">
+        <button type="submit">ارسال</button>
+      </form>
+    </section>
+
+  </div>
+
+</body>
+
+</html>

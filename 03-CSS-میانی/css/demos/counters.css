@@ -1,0 +1,83 @@
+/* ۱۷) Counters */
+
+.demo-cnt .ex1 {
+  counter-reset: section;
+}
+
+.demo-cnt .ex1 h4 {
+  margin: 6px 0;
+}
+
+.demo-cnt .ex1 h4::before {
+  counter-increment: section;
+  content: "بخش " counter(section) ": ";
+  color: #0b6e4f;
+}
+
+.demo-cnt .steps {
+  counter-reset: step;
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.demo-cnt .steps li {
+  counter-increment: step;
+  margin-bottom: 8px;
+}
+
+.demo-cnt .steps li::before {
+  content: counter(step);
+  display: inline-block;
+  width: 28px;
+  height: 28px;
+  line-height: 28px;
+  border-radius: 50%;
+  background-color: #e8590c;
+  color: white;
+  text-align: center;
+  margin-left: 10px;
+}
+
+.demo-cnt .book {
+  counter-reset: main;
+}
+
+.demo-cnt .chapter {
+  counter-reset: sub;
+}
+
+.demo-cnt .chapter h4 {
+  margin: 8px 0 2px;
+}
+
+.demo-cnt .chapter h4::before {
+  counter-increment: main;
+  content: counter(main) ". ";
+}
+
+.demo-cnt .chapter p {
+  margin: 2px 24px 2px 0;
+}
+
+.demo-cnt .chapter p::before {
+  counter-increment: sub;
+  content: counter(main) "." counter(sub) " ";
+  color: #1a5fb4;
+}
+
+.demo-cnt .fa-num {
+  counter-reset: item;
+  list-style-type: none;
+  padding: 0;
+}
+
+.demo-cnt .fa-num li {
+  counter-increment: item;
+}
+
+.demo-cnt .fa-num li::before {
+  content: counter(item, persian) "- ";
+  color: #ae3ec9;
+  font-weight: bold;
+}

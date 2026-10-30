@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>۱۲) مدل جعبه‌ای (Box Model) | آموزش CSS از صفر</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/demos/boxmodel.css">
+</head>
+
+<body>
+
+  <header class="page-header">
+    <h1>آموزش CSS از صفر</h1>
+    <p>۱۲) مدل جعبه‌ای (Box Model)</p>
+  </header>
+
+  <div class="container">
+
+    <nav class="page-nav" aria-label="ناوبری درس">
+      <a href="11-size.html">→ قبلی: واحدها (px/em/rem)</a>
+      <a href="../index.html">فهرست درس‌ها</a>
+      <a href="13-outline.html">بعدی: Outline ←</a>
+    </nav>
+
+    <section class="lesson" id="boxmodel">
+      <h2>۱۲) مدل جعبه‌ای (Box Model)</h2>
+      <p>
+        در CSS هر عنصر یک جعبه مستطیلی است. این جعبه از چهار لایه ساخته شده که از داخل به بیرون روی هم قرار می‌گیرند.
+        مرورگر برای محاسبه جا، اول محتوا را اندازه می‌گیرد، بعد فاصله داخلی، بعد حاشیه، و در آخر فاصله بیرونی را به فضای اشغال‌شده اضافه می‌کند.
+      </p>
+      <ol>
+        <li><strong>Content</strong> (محتوا): متن، تصویر یا عنصرهای داخل جعبه. <code>width</code> و <code>height</code> در حالت پیش‌فرض فقط همین لایه را اندازه می‌گیرند.</li>
+        <li><strong>Padding</strong> (فاصله داخلی): فضای بین محتوا و حاشیه. رنگ پس‌زمینه عنصر این لایه را هم می‌پوشاند.</li>
+        <li><strong>Border</strong> (حاشیه): خط دور جعبه. ضخامت آن به عرض و ارتفاع دیده‌شده اضافه می‌شود.</li>
+        <li><strong>Margin</strong> (فاصله بیرونی): فضای شفاف بین این جعبه و عنصرهای اطراف. جزو <code>width</code> حساب نمی‌شود.</li>
+      </ol>
+
+      <div class="result">
+        <div class="bm-margin">
+          <span class="bm-label">Margin</span>
+          <div class="bm-border">
+            <span class="bm-label">Border</span>
+            <div class="bm-padding">
+              <span class="bm-label">Padding</span>
+              <div class="bm-content">Content (محتوا)</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <p>
+        رنگ پس‌زمینه عنصر زیر Content و Padding (و زیر border) دیده می‌شود، ولی Margin همیشه شفاف است. در نمایش بالا برای
+        دیده شدن لایه‌ها به هر کدام رنگ جدا داده‌ایم. در مرورگر هم با <code>F12</code> و انتخاب یک عنصر، همین نمودار را در
+        بخش Computed ابزار DevTools می‌بینید.
+      </p>
+
+      <h3>محاسبه عرض واقعی (حالت پیش‌فرض مرورگر)</h3>
+      <p>به طور پیش‌فرض (<code>box-sizing: content-box</code>)، <code>width</code> فقط عرض <strong>محتوا</strong> است و padding و border به آن اضافه می‌شوند:</p>
+      <pre class="code"><code>div {
+  width: 300px;
+  padding: 20px;
+  border: 5px solid gray;
+  margin: 10px;
+}</code></pre>
+      <table class="ref">
+        <thead>
+          <tr>
+            <th>بخش</th>
+            <th>محاسبه</th>
+            <th>مقدار</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Content</td>
+            <td>width</td>
+            <td>۳۰۰</td>
+          </tr>
+          <tr>
+            <td>Padding</td>
+            <td>۲۰ + ۲۰</td>
+            <td>۴۰</td>
+          </tr>
+          <tr>
+            <td>Border</td>
+            <td>۵ + ۵</td>
+            <td>۱۰</td>
+          </tr>
+          <tr>
+            <td><strong>عرض دیده‌شده</strong></td>
+            <td>۳۰۰ + ۴۰ + ۱۰</td>
+            <td><strong>۳۵۰ پیکسل</strong></td>
+          </tr>
+          <tr>
+            <td>با margin</td>
+            <td>۳۵۰ + ۱۰ + ۱۰</td>
+            <td>۳۷۰ پیکسل فضا</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3><code>box-sizing: border-box</code>: محاسبه ساده‌تر</h3>
+      <p>
+        با <code>border-box</code>، عدد <code>width</code> شامل padding و border هم می‌شود و مرورگر فضای محتوا را خودش
+        کم می‌کند. هر دو جعبه زیر <code>width: 300px</code>، <code>padding: 20px</code> و <code>border: 5px</code> دارند:
+      </p>
+      <pre class="code"><code>.plan {
+  width: 300px;
+  max-width: 100%;
+  padding: 20px;
+  border: 5px solid #1a3a5c;
+  margin-bottom: 10px;
+  background-color: #e8f4fd;
+}
+
+.plan-content-box { box-sizing: content-box; }   /* عرض دیده‌شده: ۳۵۰ */
+.plan-border-box  { box-sizing: border-box; }    /* عرض دیده‌شده: ۳۰۰ */</code></pre>
+      <div class="result">
+        <div class="ruler">خط‌کش ۳۰۰ پیکسلی</div>
+        <div class="plan plan-content-box">content-box: ۳۵۰ پیکسل (از خط‌کش بیرون زده)</div>
+        <div class="plan plan-border-box">border-box: دقیقاً ۳۰۰ پیکسل</div>
+      </div>
+
+      <p class="tip">
+        به همین دلیل بیشتر پروژه‌ها در اولین خط CSS این قانون را می‌نویسند تا همه عنصرها <code>border-box</code> شوند.
+        این مجموعه هم با همین قانون در <code>style.css</code> شروع شده است:
+      </p>
+      <pre class="code"><code>* {
+  box-sizing: border-box;
+}</code></pre>
+
+      <p class="mistake">
+        <strong>اشتباه رایج:</strong>
+        دادن <code>width: 100%</code> و padding به یک جعبه بدون <code>border-box</code>؛ جعبه از والدش بیرون می‌زند و
+        اسکرول افقی در موبایل درست می‌کند.
+        <br>
+        حساب کردن margin جزو عرض جعبه؛ margin فاصله با بقیه است و در هیچ‌کدام از دو حالت جزو <code>width</code> نیست.
+      </p>
+
+      <p class="exercise">
+        <strong>تمرین:</strong> جعبه‌ای با <code>width: 200px</code> ، <code>padding: 15px</code> و
+        <code>border: 2px solid black</code> دارید.
+        ۱) در حالت پیش‌فرض (<code>content-box</code>) عرض دیده‌شده چند پیکسل است؟
+        ۲) با <code>border-box</code> چطور؟ فضای محتوا چقدر می‌ماند؟
+        (پاسخ: ۱) ۲۰۰ + ۳۰ + ۴ = ۲۳۴ پیکسل. ۲) عرض دیده‌شده ۲۰۰ پیکسل و فضای محتوا ۲۰۰ − ۳۴ = ۱۶۶ پیکسل.)
+      </p>
+    </section>
+
+
+    <nav class="page-nav" aria-label="ناوبری درس پایین">
+      <a href="11-size.html">→ قبلی: واحدها (px/em/rem)</a>
+      <a href="../index.html">فهرست درس‌ها</a>
+      <a href="13-outline.html">بعدی: Outline ←</a>
+    </nav>
+
+  </div>
+
+  <footer class="page-footer">
+    آموزش CSS از صفر
+  </footer>
+
+</body>
+
+</html>

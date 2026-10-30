@@ -1,0 +1,14 @@
+/* theme.css — این فایل بعد از base.css لینک شده است */
+
+.msg {
+  color: green;
+}
+
+.note {
+  color: deeppink;
+}
+
+.hint {
+  color: #777777;
+  font-size: 14px;
+}

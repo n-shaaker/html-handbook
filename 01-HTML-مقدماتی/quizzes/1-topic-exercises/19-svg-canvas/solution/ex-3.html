@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>نقاشی من</title>
+  </head>
+  <body>
+    <h1>نقاشی من</h1>
+
+    <canvas id="scene" width="300" height="200" style="border: 1px solid #999; background: lightblue;">
+      مرورگر شما از canvas پشتیبانی نمی‌کند.
+    </canvas>
+
+    <script>
+      const canvas = document.getElementById("scene");
+      const ctx = canvas.getContext("2d");
+
+      // زمین
+      ctx.fillStyle = "green";
+      ctx.fillRect(0, 150, 300, 50);
+
+      // خانه
+      ctx.fillStyle = "saddlebrown";
+      ctx.fillRect(40, 90, 100, 60);
+
+      // خورشید
+      ctx.beginPath();
+      ctx.arc(240, 50, 30, 0, 2 * Math.PI);
+      ctx.fillStyle = "gold";
+      ctx.fill();
+
+      // نوشته
+      ctx.font = "18px Tahoma";
+      ctx.fillStyle = "white";
+      ctx.fillText("خانه ما", 160, 185);
+    </script>
+  </body>
+</html>

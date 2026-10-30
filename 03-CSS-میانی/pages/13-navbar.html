@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>۱۳) نوار منو (Navigation Bar) | آموزش CSS سطح میانی</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/demos/navbar.css">
+</head>
+
+<body>
+
+  <header class="page-header">
+    <h1>آموزش CSS — سطح میانی</h1>
+    <p>۱۳) نوار منو (Navigation Bar)</p>
+  </header>
+
+  <div class="container">
+
+    <nav class="page-nav" aria-label="ناوبری درس">
+      <a href="12-opacity.html">→ قبلی: Opacity</a>
+      <a href="../index.html">فهرست درس‌ها</a>
+      <a href="14-dropdowns.html">بعدی: Dropdowns ←</a>
+    </nav>
+
+    <section class="lesson" id="navbar">
+      <h2>۱۳) نوار منو (Navigation Bar)</h2>
+      <p>
+        نوار منو در HTML یک فهرست از لینک‌هاست. آن را با <code>ul</code> و <code>li</code> می‌سازیم و داخل <code>nav</code> می‌گذاریم تا مرورگر و صفحه‌خوان بفهمند این بخش برای رفتن بین صفحه‌هاست.
+        فهرست به‌طور پیش‌فرض علامت گلوله و فاصله داخلی دارد و آیتم‌هایش زیر هم می‌آیند. برای ساختن منو، اول این ظاهر پیش‌فرض را برمی‌داریم و بعد با <code>display</code> تصمیم می‌گیریم آیتم‌ها عمودی بمانند یا در یک ردیف کنار هم بنشینند.
+        کلاس <code>active</code> صفحه فعلی را نشان می‌دهد. ویژگی <code>aria-current="page"</code> همان اطلاع را به صفحه‌خوان می‌دهد، چون کلاس CSS به‌تنهایی برای نرم‌افزار خواندن صفحه معنی خاصی ندارد.
+        ساختار HTML همه مثال‌های این درس یکی است:
+      </p>
+      <pre class="code"><code>&lt;nav aria-label="منوی اصلی"&gt;
+  &lt;ul&gt;
+    &lt;li&gt;&lt;a class="active" href="index.html" aria-current="page"&gt;خانه&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href="news.html"&gt;اخبار&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href="contact.html"&gt;تماس&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href="about.html"&gt;درباره ما&lt;/a&gt;&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/nav&gt;</code></pre>
+
+      <h3>قدم اول: حذف ظاهر پیش‌فرض فهرست</h3>
+      <pre class="code"><code>ul {
+  list-style-type: none;  /* بدون نقطه */
+  margin: 0;
+  padding: 0;             /* فاصله پیش‌فرض (در صفحه راست‌چین، سمت راست) حذف شود */
+}</code></pre>
+
+      <h3>مثال ۱: منوی عمودی (کناری)</h3>
+      <pre class="code"><code>ul { width: 200px; background-color: #f1f1f1; }
+
+li a {
+  display: block;          /* کل ردیف قابل کلیک شود */
+  padding: 8px 16px;
+  text-decoration: none;
+  color: #000;
+}
+
+li a:hover   { background-color: #555; color: white; }
+li a.active  { background-color: #0b6e4f; color: white; }</code></pre>
+      <div class="result demo-nav">
+        <nav aria-label="نمونه منوی عمودی">
+          <ul class="vertical">
+            <li><a class="active" href="#navbar" aria-current="page">خانه</a></li>
+            <li><a href="#navbar">اخبار</a></li>
+            <li><a href="#navbar">تماس</a></li>
+            <li><a href="#navbar">درباره ما</a></li>
+          </ul>
+        </nav>
+      </div>
+
+      <h3>مثال ۲: منوی افقی با inline-block</h3>
+      <pre class="code"><code>ul { background-color: #333; }
+
+li { display: inline-block; }
+
+li a {
+  display: block;
+  color: white;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+li a:hover  { background-color: #111; }
+li a.active { background-color: #0b6e4f; }</code></pre>
+      <div class="result demo-nav">
+        <nav aria-label="نمونه منوی افقی">
+          <ul class="horizontal">
+            <li><a class="active" href="#navbar" aria-current="page">خانه</a></li>
+            <li><a href="#navbar">اخبار</a></li>
+            <li><a href="#navbar">تماس</a></li>
+            <li><a href="#navbar">درباره ما</a></li>
+          </ul>
+        </nav>
+      </div>
+      <p>اگر دقت کنید، بین آیتم‌ها شکاف باریکی هست؛ این همان فاصله ناخواسته inline-block است (درس ۷). مثال ۴ راه حل امروزی را نشان می‌دهد.</p>
+
+      <h3>مثال ۳: منوی افقی با float و یک آیتم در سمت مقابل (روش قدیمی)</h3>
+      <p>این روش را در قالب‌های قدیمی زیاد می‌بینید؛ بدانید چطور کار می‌کند، ولی برای پروژه جدید از مثال ۴ استفاده کنید.</p>
+      <pre class="code"><code>ul { overflow: hidden; }       /* پدر جمع نشود */
+li { float: right; }
+li.left { float: left; }        /* «ورود» به سمت دیگر برود */</code></pre>
+      <div class="result demo-nav">
+        <nav aria-label="نمونه منوی شناور">
+          <ul class="floated">
+            <li><a class="active" href="#navbar" aria-current="page">خانه</a></li>
+            <li><a href="#navbar">محصولات</a></li>
+            <li><a href="#navbar">وبلاگ</a></li>
+            <li class="left"><a href="#navbar">ورود / ثبت‌نام</a></li>
+          </ul>
+        </nav>
+      </div>
+      <p class="mistake">
+        <strong>اشتباه رایج:</strong>
+        <code>overflow: hidden</code> روی منو، هر زیرمنوی کشویی را هم می‌بُرد (درس ۱۴)؛ این یکی از دلایلی است که روش float برای منو کنار گذاشته شده.
+      </p>
+
+      <h3>مثال ۴: نوار منوی فروشگاه با Flexbox (روش امروزی)</h3>
+      <p>
+        لوگو در سمت راست، لینک‌ها کنارش و سبد خرید با نشان تعداد در سمت چپ.
+        <code>margin-right: auto</code> روی آیتم آخر، همه فضای خالی را سمت راستش می‌گذارد و آن را به انتهای چپ نوار هل می‌دهد.
+      </p>
+      <pre class="code"><code>.shop-nav {
+  display: flex;
+  align-items: center;     /* هم‌ترازی عمودی لوگو و لینک‌ها */
+  gap: 4px;                /* فاصله بدون مشکل inline-block */
+  flex-wrap: wrap;         /* در صفحه باریک به خط بعد برود */
+}
+
+.shop-nav .cart {
+  margin-right: auto;      /* در صفحه راست‌چین، به انتهای چپ نوار برود */
+}
+
+.cart-count {
+  padding: 0 7px;
+  border-radius: 10px;     /* نشان گرد کنار متن */
+  background-color: #e8590c;
+  font-size: 12px;
+}</code></pre>
+      <div class="result demo-nav">
+        <nav aria-label="نمونه منوی فروشگاه">
+          <ul class="shop-nav">
+            <li class="logo"><a href="#navbar">کتاب‌سرا</a></li>
+            <li><a class="active" href="#navbar" aria-current="page">خانه</a></li>
+            <li><a href="#navbar">دسته‌بندی‌ها</a></li>
+            <li><a href="#navbar">تخفیف‌ها</a></li>
+            <li class="cart">
+              <a href="#navbar">سبد خرید <span class="cart-count">۳</span></a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+      <p class="tip">
+        برای اینکه منو هنگام اسکرول بالای صفحه بماند (هدر چسبان)، کافی است به نوار
+        <code>position: sticky</code>، <code>top: 0</code> و <code>z-index: 100</code> بدهید (درس‌های ۳ و ۴).
+      </p>
+
+      <h3>مثال ۵: منوی تب‌مانند با خط زیر</h3>
+      <p>
+        خط زیر تب را با <code>border-bottom</code> می‌سازیم. اگر این خط فقط هنگام hover ظاهر شود، ارتفاع لینک یک‌باره زیاد می‌شود و منو می‌پرد.
+        برای جلوگیری از آن پرش، از اول حاشیه‌ای به همان ضخامت و با رنگ <code>transparent</code> می‌گذاریم و در hover فقط رنگش را عوض می‌کنیم. جا از قبل رزرو شده و بقیه آیتم‌ها تکان نمی‌خورند.
+      </p>
+      <pre class="code"><code>li a {
+  border-bottom: 3px solid transparent;  /* از اول جای خط را نگه دارد تا هنگام hover چیزی تکان نخورد */
+}
+
+li a:hover,
+li a.active {
+  border-bottom-color: #e8590c;
+  color: #e8590c;
+}</code></pre>
+      <div class="result demo-nav">
+        <nav aria-label="نمونه منوی تب">
+          <ul class="underline">
+            <li><a class="active" href="#navbar" aria-current="page">همه</a></li>
+            <li><a href="#navbar">ورزشی</a></li>
+            <li><a href="#navbar">فرهنگی</a></li>
+            <li><a href="#navbar">علمی</a></li>
+          </ul>
+        </nav>
+      </div>
+
+      <h3>مثال ۶: منوی دکمه‌ای (گرد)</h3>
+      <p>
+        اگر به‌جای نوار یکپارچه، هر لینک باید مثل دکمه جدا دیده شود، به خود لینک حاشیه و <code>border-radius</code> بزرگ می‌دهیم.
+        وقتی شعاع گردی از نصف ارتفاع لینک بیشتر باشد، دو سر لینک نیم‌دایره می‌شوند و شکل کپسول به دست می‌آید. <code>inline-block</code> روی <code>li</code> هم آیتم‌ها را در یک ردیف کنار هم می‌نشاند.
+      </p>
+      <pre class="code"><code>li { display: inline-block; }
+
+li a {
+  display: block;
+  padding: 8px 20px;
+  border: 1px solid #1a5fb4;
+  border-radius: 20px;     /* گوشه‌های کاملاً گرد */
+  margin-left: 6px;
+}
+
+li a.active { background-color: #1a5fb4; color: white; }</code></pre>
+      <div class="result demo-nav">
+        <nav aria-label="نمونه منوی دکمه‌ای">
+          <ul class="pills">
+            <li><a class="active" href="#navbar" aria-current="page">روزانه</a></li>
+            <li><a href="#navbar">هفتگی</a></li>
+            <li><a href="#navbar">ماهانه</a></li>
+          </ul>
+        </nav>
+      </div>
+
+      <p class="tip">
+        کلاس <code>active</code> نشان می‌دهد کاربر الان در کدام صفحه است. در هر صفحه، آن کلاس را روی لینک همان صفحه بگذارید
+        و ویژگی <code>aria-current="page"</code> را هم اضافه کنید تا صفحه‌خوان‌ها هم صفحه فعلی را اعلام کنند.
+      </p>
+
+      <p class="mistake">
+        <strong>اشتباه رایج:</strong>
+        <code>padding</code> را به <code>li</code> می‌دهیم به‌جای <code>a</code>. در این صورت فقط روی خود متن می‌شود کلیک کرد، نه کل دکمه.
+      </p>
+
+      <p class="mistake">
+        <strong>اشتباه رایج:</strong>
+        فقط برای <code>:hover</code> استایل می‌نویسیم. کاربری که با کیبورد (Tab) حرکت می‌کند hover ندارد؛
+        همان استایل را برای <code>:focus-visible</code> هم بنویسید: <code>li a:hover, li a:focus-visible { ... }</code>
+      </p>
+
+      <p class="exercise">
+        <strong>تمرین:</strong> برای صفحه معرفی‌تان یک منوی افقی با Flexbox و چهار لینک بسازید که لینک فعال رنگ متفاوتی داشته باشد
+        و یک دکمه «تماس با من» در انتهای دیگر نوار قرار بگیرد.
+      </p>
+    </section>
+
+    <nav class="page-nav" aria-label="ناوبری درس پایین">
+      <a href="12-opacity.html">→ قبلی: Opacity</a>
+      <a href="../index.html">فهرست درس‌ها</a>
+      <a href="14-dropdowns.html">بعدی: Dropdowns ←</a>
+    </nav>
+
+  </div>
+
+  <footer class="page-footer">
+    آموزش CSS سطح میانی
+  </footer>
+
+</body>
+
+</html>

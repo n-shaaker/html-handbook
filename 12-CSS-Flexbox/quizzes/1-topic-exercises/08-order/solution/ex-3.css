@@ -1,0 +1,36 @@
+/* تمرین ۳ — پیام سنجاق‌شده‌ای که آخر می‌آید (پاسخ) */
+
+body {
+  font-family: Tahoma, sans-serif;
+  margin: 20px;
+  background-color: #f8f9fa;
+  color: #212529;
+}
+
+.inbox {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  max-width: 400px;
+}
+
+.msg {
+  background-color: white;
+  border: 1px solid #dee2e6;
+  padding: 10px;
+  border-radius: 6px;
+}
+
+/* order پیش‌فرض همه ۰ است؛ کوچک‌تر اول، بزرگ‌تر آخر */
+
+/* درست شد: منفی تا قبل از همه بیاید */
+.pinned {
+  order: -1;
+  background-color: #fff3bf;
+}
+
+/* درست شد: مثبت تا بعد از همه برود */
+.archived {
+  order: 1;
+  color: #868e96;
+}

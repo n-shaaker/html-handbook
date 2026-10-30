@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>۶) ریاضی و عدد تصادفی (Math & Random) | آموزش JavaScript سطح میانی</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <script src="../js/log.js" defer></script>
+  <script src="../js/demos/math-random.js" defer></script>
+</head>
+
+<body>
+
+  <header class="page-header" id="top">
+    <h1>آموزش JavaScript — سطح میانی</h1>
+    <p>۶) ریاضی و عدد تصادفی (Math & Random)</p>
+  </header>
+
+  <div class="container">
+
+    <nav class="page-nav" aria-label="ناوبری درس">
+      <a href="05-dates.html">→ قبلی: Dates</a>
+      <a href="../index.html">فهرست درس‌ها</a>
+      <a href="07-scope.html">بعدی: Scope ←</a>
+    </nav>
+
+    <section class="lesson" id="math-random">
+      <h2>۶) ریاضی و عدد تصادفی (Math & Random)</h2>
+<p>شیء <code>Math</code> مجموعه‌ای از تابع‌ها و عددهای ریاضی آماده است. لازم نیست آن را با <code>new</code> بسازید؛ متدها را مستقیم روی خود <code>Math</code> صدا می‌زنید. از گرد کردن و جذر تا ساختن عدد تصادفی برای بازی یا نمونه، این شیء همان کاری را می‌کند که اگر بخواهید خودتان با حلقه بنویسید طولانی و خطاپذیر است. عدد تصادفی این شیء برای آموزش و بازی مناسب است، نه برای رمز و توکن امنیتی.</p>
+
+<table class="ref">
+<tr><th>متد</th><th>کار</th><th>مثال</th><th>نتیجه</th></tr>
+<tr><td><code>Math.round(x)</code></td><td>گرد کردن به نزدیک‌ترین</td><td><code>Math.round(4.6)</code></td><td>5</td></tr>
+<tr><td><code>Math.floor(x)</code></td><td>گرد به پایین</td><td><code>Math.floor(4.9)</code></td><td>4</td></tr>
+<tr><td><code>Math.ceil(x)</code></td><td>گرد به بالا</td><td><code>Math.ceil(4.1)</code></td><td>5</td></tr>
+<tr><td><code>Math.trunc(x)</code></td><td>حذف اعشار</td><td><code>Math.trunc(-4.7)</code></td><td>-4</td></tr>
+<tr><td><code>Math.abs(x)</code></td><td>قدر مطلق</td><td><code>Math.abs(-7)</code></td><td>7</td></tr>
+<tr><td><code>Math.pow(x, y)</code></td><td>توان</td><td><code>Math.pow(2, 3)</code></td><td>8</td></tr>
+<tr><td><code>Math.sqrt(x)</code></td><td>جذر</td><td><code>Math.sqrt(81)</code></td><td>9</td></tr>
+<tr><td><code>Math.min()</code> / <code>Math.max()</code></td><td>کمترین / بیشترین</td><td><code>Math.max(3, 9, 1)</code></td><td>9</td></tr>
+<tr><td><code>Math.PI</code></td><td>عدد پی</td><td><code>Math.PI</code></td><td>3.14159...</td></tr>
+<tr><td><code>Math.random()</code></td><td>عدد تصادفی بین ۰ و ۱ (۱ شامل نیست)</td><td><code>Math.random()</code></td><td>مثلاً 0.4721</td></tr>
+</table>
+
+<pre class="code"><code>console.log(Math.round(4.5), Math.floor(4.9), Math.ceil(4.1));   // 5 4 5
+console.log(Math.sqrt(144), Math.abs(-3.5));                       // 12 3.5
+console.log(Math.max(12, 45, 7), Math.min(12, 45, 7));             // 45 7
+
+const r = 5;
+const area = (Math.PI * r ** 2).toFixed(2);     // ** یعنی توان
+console.log("مساحت دایره:", area, typeof area); // 78.54 string ← toFixed رشته برمی‌گرداند
+
+// کاربرد واقعی: گرد کردن قیمت به نزدیک‌ترین هزار تومان
+const price = 123456;
+console.log(Math.round(price / 1000) * 1000);   // 123000
+
+// تعداد صفحه‌های لازم برای ۴۳ محصول، ۱۰ تا در هر صفحه
+console.log(Math.ceil(43 / 10));                // 5</code></pre>
+
+<div class="result">
+<pre class="console" id="out-1"></pre>
+</div>
+
+<p><code>round</code> به نزدیک‌ترین عدد صحیح می‌رود، <code>floor</code> به سمت پایین و <code>ceil</code> به سمت بالا. <code>sqrt</code> جذر می‌گیرد و <code>abs</code> علامت منفی را برمی‌دارد. <code>max</code> و <code>min</code> بین عددهایی که جدا جدا به آن‌ها می‌دهید بزرگ‌ترین و کوچک‌ترین را برمی‌گردانند؛ اگر همان عددها داخل یک آرایه باشند، این دو متد خودبه‌خود عضوهای آرایه را یکی‌یکی نمی‌خوانند. <code>toFixed</code> مساحت را برای نمایش گرد می‌کند ولی رشته برمی‌گرداند. گرد کردن قیمت، عدد را به هزار تقسیم می‌کند، گرد می‌کند و دوباره در هزار ضرب می‌کند. <code>ceil</code> برای تعداد صفحه لازم است تا باقیماندهٔ کمتر از یک صفحه هم یک صفحهٔ کامل حساب شود.</p>
+
+<p class="tip"><code>Math.round</code> نیمه را به سمت <strong>بالا</strong> (به سمت مثبت بی‌نهایت) گرد می‌کند: <code>Math.round(4.5)</code> می‌شود <code>5</code> ولی <code>Math.round(-4.5)</code> می‌شود <code>-4</code>. <code>Math.floor</code> و <code>Math.trunc</code> هم برای عددهای منفی فرق دارند: <code>Math.floor(-4.7)</code> برابر <code>-5</code> و <code>Math.trunc(-4.7)</code> برابر <code>-4</code> است.</p>
+
+<h3>عدد صحیح تصادفی در یک بازه</h3>
+
+<pre class="code"><code>// عدد تصادفی صحیح بین min و max (هر دو شامل)
+function randomInt(min, max) {
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+console.log(randomInt(1, 6));     // تاس
+console.log(randomInt(1, 100));</code></pre>
+
+<div class="result">
+<pre class="console" id="out-2"></pre>
+</div>
+
+<p><code>Math.random</code> عددی اعشاری از صفر تا کمتر از یک می‌دهد. ضرب در <code>max - min + 1</code> این بازه را به اندازهٔ تعداد عددهای صحیح مطلوب کش می‌دهد. <code>floor</code> اعشار را حذف می‌کند تا به عدد صحیح برسید و جمع با <code>min</code> بازه را از نقطهٔ شروع جابه‌جا می‌کند. <code>+ 1</code> داخل پرانتز باعث می‌شود خود <code>max</code> هم شانس برابر داشته باشد. بدون آن، سقف بازه هرگز دیده نمی‌شود.</p>
+
+<p class="tip">فرمول را حفظ کنید: <code>Math.floor(Math.random() * تعداد) + شروع</code>. مثلاً برای ۱ تا ۱۰: <code>Math.floor(Math.random() * 10) + 1</code>. چرا؟ <code>Math.random() * 10</code> عددی از ۰ تا کمتر از ۱۰ است، <code>Math.floor</code> آن را به یکی از ۰ تا ۹ تبدیل می‌کند و <code>+ 1</code> بازه را به ۱ تا ۱۰ می‌برد.</p>
+
+<p class="tip">خروجی این بخش با هر بار بارگذاری صفحه (F5) عوض می‌شود؛ چون تصادفی است.</p>
+
+<h3>مثال زنده: تاس و انتخاب تصادفی</h3>
+
+<pre class="code"><code>const faces = ["⚀", "⚁", "⚂", "⚃", "⚄", "⚅"];
+
+diceBtn.addEventListener("click", function () {
+  const n = randomInt(1, 6);
+  dice.textContent = faces[n - 1] + " " + n;   // شماره عضو آرایه از 0 است
+});
+
+quoteBtn.addEventListener("click", function () {
+  const i = randomInt(0, quotes.length - 1);   // عضو تصادفی آرایه
+  quote.textContent = quotes[i];
+});</code></pre>
+
+<div class="result">
+<span class="big-number" id="dice" aria-live="polite">🎲</span>
+<br>
+<button type="button" class="btn" id="dice-btn">انداختن تاس</button>
+<p class="demo-box" id="quote" aria-live="polite">برای دیدن یک جمله تصادفی کلیک کنید</p>
+<button type="button" class="btn" id="quote-btn">جمله تصادفی</button>
+</div>
+
+<p>تاس عددی از ۱ تا ۶ می‌سازد. چون شمارهٔ آرایه از صفر است، برای رسیدن به شکل همان وجه باید یکی از عدد کم شود. انتخاب جمله از شمارهٔ ۰ شروع می‌شود و تا <code>length - 1</code> ادامه دارد تا هم عضو اول شانس داشته باشد و هم از انتهای آرایه بیرون نزند. هر کلیک یک عدد تازه می‌سازد؛ مقدار قبلی ذخیره نمی‌شود.</p>
+
+<p class="mistake"><strong>اشتباه رایج:</strong> استفاده از <code>Math.round</code> برای عدد تصادفی. در این حالت احتمال آمدن عدد اول و آخر نصف بقیه است؛ همیشه از <code>Math.floor</code> استفاده کنید.</p>
+
+<p class="mistake"><strong>اشتباه رایج:</strong> استفاده از <code>toFixed</code> و بعد جمع زدن نتیجه: <code>(2.5).toFixed(1) + 1</code> می‌شود <code>"2.51"</code>؛ چون toFixed <strong>رشته</strong> برمی‌گرداند. اگر عدد لازم دارید، با <code>Number(...)</code> تبدیل کنید.</p>
+
+<p class="exercise"><strong>تمرین:</strong> یک «کدساز تخفیف» بسازید: با کلیک روی دکمه، یک کد ۸ کاراکتری تصادفی از حروف رشته <code>"ABCDEFGHJKLMNPQRSTUVWXYZ23456789"</code> بسازد (راهنما: یک حلقه ۸ بار، و در هر بار <code>chars[randomInt(0, chars.length - 1)]</code>) و همراه یک درصد تخفیف تصادفی بین ۵ تا ۳۰ نشان دهد.</p>
+
+<p class="tip"><code>Math.random()</code> برای بازی و نمونه‌های آموزشی مناسب است، ولی <strong>امن نیست</strong> و قابل پیش‌بینی است. برای ساختن رمز عبور یا توکن واقعی از <code>crypto.getRandomValues()</code> یا <code>crypto.randomUUID()</code> استفاده می‌شود.</p>
+    </section>
+
+    <nav class="page-nav" aria-label="ناوبری درس پایین">
+      <a href="05-dates.html">→ قبلی: Dates</a>
+      <a href="../index.html">فهرست درس‌ها</a>
+      <a href="07-scope.html">بعدی: Scope ←</a>
+    </nav>
+
+  </div>
+
+  <footer class="page-footer">
+    آموزش JavaScript سطح میانی
+  </footer>
+
+</body>
+
+</html>

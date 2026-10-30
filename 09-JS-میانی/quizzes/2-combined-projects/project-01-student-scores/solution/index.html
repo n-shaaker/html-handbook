@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>کارنامه کلاس</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="data.js" defer></script>
+  <script src="app.js" defer></script>
+</head>
+
+<body>
+  <main class="card">
+    <h1>کارنامه کلاس</h1>
+
+    <div class="toolbar">
+      <div class="field">
+        <label for="search">جستجوی نام:</label>
+        <input type="search" id="search" placeholder="مثلاً رضا" autocomplete="off">
+      </div>
+
+      <div class="field">
+        <label for="sort">مرتب‌سازی:</label>
+        <select id="sort">
+          <option value="default">ترتیب اصلی</option>
+          <option value="name">نام (الفبایی)</option>
+          <option value="score-asc">نمره (کم به زیاد)</option>
+          <option value="score-desc">نمره (زیاد به کم)</option>
+        </select>
+      </div>
+    </div>
+
+    <table>
+      <thead>
+        <tr>
+          <th scope="col">ردیف</th>
+          <th scope="col">نام</th>
+          <th scope="col">شهر</th>
+          <th scope="col">نمره</th>
+        </tr>
+      </thead>
+      <tbody id="students-body">
+        <!-- ردیف‌ها با JavaScript ساخته می‌شوند -->
+      </tbody>
+    </table>
+
+    <p id="empty-message" class="empty" hidden>دانش‌آموزی با این نام پیدا نشد.</p>
+
+    <section class="stats" aria-labelledby="stats-title">
+      <h2 id="stats-title">آمار</h2>
+      <p id="stats" aria-live="polite"></p>
+    </section>
+  </main>
+</body>
+
+</html>

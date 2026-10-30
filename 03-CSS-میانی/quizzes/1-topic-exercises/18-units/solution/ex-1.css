@@ -1,0 +1,33 @@
+body {
+  font-family: Tahoma, Arial, sans-serif;
+  line-height: 1.8;
+  padding: 24px;
+}
+
+.skills {
+  max-width: 500px;
+}
+
+.skills p {
+  margin: 12px 0 4px;
+}
+
+.bar {
+  width: 100%;
+  background-color: #e9ecef;
+  border-radius: 6px;
+}
+
+/* درصد نسبت به عرض نوار پدر حساب می‌شود */
+.fill {
+  padding: 2px 8px;
+  font-size: 12px;
+  color: white;
+  background-color: #1a5fb4;
+  border-radius: 6px;
+}
+
+.html { width: 90%; }
+.css  { width: 80%; }
+.js   { width: 60%; }
+.ps   { width: 40%; }

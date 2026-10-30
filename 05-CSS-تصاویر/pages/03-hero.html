@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>هیرو واقعی | تصاویر در CSS</title>
+  <link rel="stylesheet" href="../css/layout.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="../css/demos/hero.css">
+</head>
+
+<body>
+  <header class="page-header">
+    <h1>تصاویر در CSS</h1>
+    <p>۳) هیرو (Hero) با متن خوانا</p>
+  </header>
+
+  <div class="container">
+    <nav class="page-nav" aria-label="ناوبری درس‌ها">
+      <a href="02-paths.html">→ قبلی</a>
+      <a href="../index.html">فهرست</a>
+      <a href="04-avatar.html">بعدی: آواتار ←</a>
+    </nav>
+
+    <section class="lesson">
+      <h2>۳) هیرو واقعی سایت</h2>
+      <p>
+        هیرو همان بخش بزرگ اول صفحه است: یک تصویر پهن، یک تیتر، معمولاً یک جملهٔ کوتاه و یک دکمه.
+        تقریباً هر صفحهٔ معرفی، رستوران یا فروشگاه چنین بلوکی دارد. عکس این بخش اغلب تزئینی است و متنِ روی آن معنی اصلی را می‌رساند، برای همین معمولاً با <code>background-image</code> ساخته می‌شود نه با <code>img</code>.
+      </p>
+      <p>
+        اگر فقط عکس را پس‌زمینه بگذارید و متن سفید را روی آن بنویسید، در قسمت‌های روشن عکس نوشته گم می‌شود.
+        فرمولی که در پروژه‌های واقعی جواب می‌دهد این چهار بخش را با هم دارد:
+      </p>
+      <ol>
+        <li><code>background-size: cover</code> جعبه را کامل با عکس پر می‌کند. اگر نسبت عکس با جعبه یکی نباشد، لبه‌های اضافه بریده می‌شوند و ناحیهٔ خالی نمی‌ماند.</li>
+        <li><code>background-position: center</code> مشخص می‌کند کدام نقطهٔ عکس در وسط قاب بماند. اگر آن را ننویسید، مقدار اولیه <code>0% 0%</code> است و گوشهٔ بالای چپ عکس با گوشهٔ بالای چپ جعبه میزان می‌شود؛ در هیرو معمولاً سوژه را از قاب بیرون می‌اندازد.</li>
+        <li>یک <strong>لایهٔ تیرهٔ نیمه‌شفاف</strong> بین عکس و متن قرار می‌گیرد تا نوشته، مستقل از روشنی عکس، خوانا بماند.</li>
+        <li>تیتر، یک جمله و دکمهٔ اقدام باید متن واقعی HTML باشند، نه بخشی از فایل عکس، تا هم خوانا باشند و هم بزرگ و کوچک شدن صفحه آن‌ها را خراب نکند.</li>
+      </ol>
+
+      <pre class="code"><code>&lt;div class="demo-hero"&gt;
+  &lt;div class="demo-hero-inner"&gt;
+    &lt;h3&gt;طعم خانه، سرویس سریع&lt;/h3&gt;
+    &lt;p&gt;منوی امروز را ببینید و آنلاین سفارش دهید.&lt;/p&gt;
+    &lt;a class="demo-hero-btn" href="06-cards.html"&gt;مشاهده منو&lt;/a&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+
+      <pre class="code"><code>/* css/demos/hero.css */
+.demo-hero {
+  min-height: 280px;
+  border-radius: 10px;
+  /* دو لایه با کاما: اولی (گرادیان تیره) روی دومی (عکس) می‌آید */
+  background-image:
+    linear-gradient(rgba(10, 20, 30, 0.35), rgba(10, 20, 30, 0.85)),
+    url("../../images/hero.jpg");
+  background-size: cover;
+  background-position: center;
+  color: white;
+}
+
+.demo-hero-inner {
+  padding: 40px 24px;
+  max-width: 480px;
+}</code></pre>
+
+      <div class="result">
+        <div class="demo-hero">
+          <div class="demo-hero-inner">
+            <h3>طعم خانه، سرویس سریع</h3>
+            <p>منوی امروز را ببینید و آنلاین سفارش دهید.</p>
+            <a class="demo-hero-btn" href="06-cards.html">مشاهده منو</a>
+          </div>
+        </div>
+      </div>
+
+      <p class="tip">
+        دکمه «مشاهده منو» به صفحه دیگری می‌رود، پس باید لینک (<code>a</code> با <code>href</code> واقعی) باشد.
+        اگر کاری داخل همین صفحه انجام می‌داد (مثلاً باز کردن پنجره سفارش)، <code>&lt;button type="button"&gt;</code> درست بود.
+      </p>
+
+      <h3>اگر لایه تیره نگذارید چه می‌شود؟</h3>
+      <div class="result">
+        <div class="demo-hero-bad">متن سفید روی عکس روشن — سخت خوانده می‌شود</div>
+      </div>
+
+      <p class="realuse">
+        <strong>در دنیای واقعی:</strong>
+        طراحان معمولاً روی هیرو گرادیان یا <code>rgba</code> می‌گذارند، نه فقط <code>color: white</code>.
+        بدون کنتراست، حتی بهترین عکس هم صفحه را خراب می‌کند.
+      </p>
+
+      <p class="tip">
+        برای ارتفاع هیرو <code>min-height</code> مناسب‌تر از <code>height</code> ثابت است.
+        <code>min-height</code> یک کف می‌گذارد تا بخش خالی به نظر نرسد، اما اگر تیتر یا دکمه در صفحهٔ باریک به خط‌های بیشتری بشکند، جعبه می‌تواند بلندتر شود و متن بریده نمی‌شود.
+      </p>
+
+      <p class="tip">
+        تصویر پس‌زمینه <code>alt</code> ندارد و صفحه‌خوان آن را نمی‌خواند. پس هر اطلاعات مهمی (نام رستوران، پیشنهاد ویژه)
+        باید به‌صورت متن واقعی داخل هیرو نوشته شود، نه داخل خود عکس.
+      </p>
+
+      <p class="mistake">
+        <strong>اشتباه رایج:</strong>
+        گذاشتن عکس هیروی خیلی سنگین (چند مگابایت). در پروژه واقعی عکس را فشرده کنید (مثلاً WebP یا JPG با کیفیت ۷۰ تا ۸۰ درصد)
+        و عرضش را بیشتر از نیاز (حدود ۱۹۲۰ پیکسل برای تمام‌عرض) نگذارید.
+      </p>
+
+      <p class="exercise">
+        <strong>تمرین:</strong> برای صفحه معرفی‌تان یک هیرو بسازید با نام شما، یک جمله کوتاه و دکمه «تماس با من».
+      </p>
+    </section>
+
+    <nav class="page-nav" aria-label="ناوبری درس‌ها">
+      <a href="02-paths.html">→ قبلی</a>
+      <a href="../index.html">فهرست</a>
+      <a href="04-avatar.html">بعدی: آواتار ←</a>
+    </nav>
+  </div>
+  <footer class="page-footer">تصاویر در CSS</footer>
+</body>
+</html>

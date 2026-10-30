@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>عکس پروفایل | تصاویر در CSS</title>
+  <link rel="stylesheet" href="../css/layout.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="../css/demos/avatar.css">
+</head>
+
+<body>
+  <header class="page-header">
+    <h1>تصاویر در CSS</h1>
+    <p>۴) عکس پروفایل دایره‌ای</p>
+  </header>
+
+  <div class="container">
+    <nav class="page-nav" aria-label="ناوبری درس‌ها">
+      <a href="03-hero.html">→ قبلی</a>
+      <a href="../index.html">فهرست</a>
+      <a href="05-object-fit.html">بعدی: object-fit ←</a>
+    </nav>
+
+    <section class="lesson">
+      <h2>۴) آواتار پروفایل — الگوی شبکه‌های اجتماعی</h2>
+      <p>
+        آواتار همان عکس کوچک شخص است که کنار نام، در کامنت، در گفتگو یا در بخش «دربارهٔ من» دیده می‌شود.
+        در رابط‌های امروزی این عکس معمولاً دایره است. دایره شدن اتفاقی نیست و به سه شرط هم‌زمان نیاز دارد: عرض و ارتفاع برابر، <code>border-radius: 50%</code>، و <code>object-fit: cover</code> تا صورت کش نیاید و از قاب بیرون نزند.
+      </p>
+      <p>
+        <code>border-radius: 50%</code> گوشه‌ها را به اندازهٔ نصف عرض و نصف ارتفاع گرد می‌کند. فقط وقتی عرض و ارتفاع یکی باشند نتیجه دایره است؛ اگر یکی بزرگ‌تر باشد بیضی می‌شود.
+        <code>object-fit: cover</code> هم وقتی لازم است که عکس اصلی مربعی نباشد: قاب را پر می‌کند و بخش اضافه را می‌بُرد، به‌جای اینکه تصویر را له کند.
+      </p>
+
+      <pre class="code"><code>img.profile {
+  width: 96px;
+  height: 96px;          /* عرض و ارتفاع برابر */
+  object-fit: cover;     /* بدون کش آمدن */
+  border-radius: 50%;    /* دایره کامل */
+  border: 3px solid #1a3a5c;
+  display: block;        /* حذف فاصله زیر تصویر inline */
+}</code></pre>
+
+      <div class="result">
+        <div class="demo-avatar">
+          <img class="profile" src="../images/profile.jpg" alt="عکس پروفایل نسترن رضایی" width="96" height="96">
+          <div class="meta">
+            <strong>نسترن رضایی</strong>
+            <span>طراح رابط کاربری</span>
+          </div>
+        </div>
+      </div>
+
+      <h3>بدون <code>object-fit: cover</code></h3>
+      <p>
+        اگر عکس مربعی نباشد، مرورگر آن را به زور در قاب ۹۶×۹۶ جا می‌دهد و تصویر فشرده یا کشیده می‌شود
+        (در عکس پروفایل یعنی صورت باریک یا پهن دیده می‌شود). عکس زیر افقی است و بدون <code>object-fit</code> فشرده شده:
+      </p>
+      <div class="result">
+        <div class="demo-avatar-bad">
+          <img src="../images/food-1.jpg" alt="چلو کباب کوبیده که بدون object-fit در قاب دایره‌ای فشرده شده است">
+        </div>
+      </div>
+
+      <p class="realuse">
+        <strong>در دنیای واقعی:</strong>
+        این سه اعلام را با هم نگه دارید: <code>width</code> و <code>height</code> برابر، <code>border-radius: 50%</code>، و <code>object-fit: cover</code>.
+        اگر یکی را حذف کنید شکل یا از دایره خارج می‌شود یا چهره تغییر نسبت می‌دهد.
+      </p>
+
+      <p class="tip">
+        اندازه را از روی نقش عکس انتخاب کنید. کنار یک کامنت معمولاً ۳۲ تا ۴۸ پیکسل کافی است تا متن اصلی دیده شود.
+        در صفحهٔ «دربارهٔ من»، که خود عکس موضوع بخش است، ۱۲۰ تا ۱۸۰ پیکسل خواناتر است. در هر دو حالت عرض و ارتفاع باید همان عدد باشند.
+      </p>
+
+      <p class="mistake">
+        <strong>اشتباه رایج:</strong>
+        فقط <code>border-radius: 50%</code> نوشتن، بدون برابر کردن عرض و ارتفاع. شعاع ۵۰ درصد روی مستطیل، بیضی می‌سازد نه دایره.
+      </p>
+
+      <p class="tip">
+        <code>alt</code> آواتار را با نام شخص بنویسید (مثلاً «عکس پروفایل نسترن رضایی»)، نه «عکس» یا «avatar».
+        اگر نام دقیقاً کنار عکس نوشته شده و عکس فقط تکرار همان است، <code>alt=""</code> هم قابل قبول است تا
+        صفحه‌خوان نام را دو بار نخواند.
+      </p>
+
+      <p class="exercise">
+        <strong>تمرین:</strong> در صفحه معرفی‌تان عکس را ۹۶×۹۶ دایره‌ای کنید و کنارش نام و شغل را بنویسید.
+      </p>
+    </section>
+
+    <nav class="page-nav" aria-label="ناوبری درس‌ها">
+      <a href="03-hero.html">→ قبلی</a>
+      <a href="../index.html">فهرست</a>
+      <a href="05-object-fit.html">بعدی: object-fit ←</a>
+    </nav>
+  </div>
+  <footer class="page-footer">تصاویر در CSS</footer>
+</body>
+</html>

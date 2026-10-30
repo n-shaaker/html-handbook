@@ -1,0 +1,23 @@
+/* تمرین ۱ — روزهای هفته در یک ردیف (پاسخ) */
+
+body {
+  font-family: Tahoma, sans-serif;
+  margin: 20px;
+  background-color: #f8f9fa;
+  color: #212529;
+}
+
+/* ظرف فلکسی: بچه‌هایش کنار هم می‌نشینند */
+.days {
+  display: flex;
+  background-color: #e7f5ff;
+  padding: 10px;
+}
+
+.day {
+  background-color: #1c7ed6;
+  color: white;
+  padding: 15px 20px;
+  margin: 5px;
+  border-radius: 6px;
+}

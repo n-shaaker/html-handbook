@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ثبت‌نام در کارگاه</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="app.js" defer></script>
+</head>
+
+<body>
+  <main class="card">
+    <h1>ثبت‌نام در کارگاه برنامه‌نویسی</h1>
+    <p class="intro">فیلدهای ستاره‌دار الزامی هستند. می‌توانید عددها را با ارقام فارسی هم وارد کنید.</p>
+
+    <form id="signup-form" novalidate>
+      <div class="field">
+        <label for="full-name">نام و نام خانوادگی *</label>
+        <input type="text" id="full-name" name="fullName" autocomplete="name" aria-describedby="fullName-error">
+        <p class="field-error" id="fullName-error"></p>
+      </div>
+
+      <div class="field">
+        <label for="mobile">شماره موبایل *</label>
+        <input type="tel" id="mobile" name="mobile" inputmode="numeric" autocomplete="tel" placeholder="09121234567" dir="ltr" aria-describedby="mobile-error">
+        <p class="field-error" id="mobile-error"></p>
+      </div>
+
+      <div class="field">
+        <label for="email">ایمیل *</label>
+        <input type="email" id="email" name="email" autocomplete="email" placeholder="name@example.com" dir="ltr" aria-describedby="email-error">
+        <p class="field-error" id="email-error"></p>
+      </div>
+
+      <div class="field">
+        <label for="national-code">کد ملی *</label>
+        <input type="text" id="national-code" name="nationalCode" inputmode="numeric" maxlength="10" dir="ltr" aria-describedby="nationalCode-error">
+        <p class="field-error" id="nationalCode-error"></p>
+      </div>
+
+      <div class="field">
+        <label for="postal-code">کد پستی (اختیاری)</label>
+        <input type="text" id="postal-code" name="postalCode" inputmode="numeric" maxlength="11" placeholder="1234567890" dir="ltr" aria-describedby="postalCode-error">
+        <p class="field-error" id="postalCode-error"></p>
+      </div>
+
+      <div class="field">
+        <label for="password">رمز عبور *</label>
+        <input type="password" id="password" name="password" autocomplete="new-password" dir="ltr" aria-describedby="password-hint password-error">
+        <p class="field-hint" id="password-hint">حداقل ۸ کاراکتر، شامل حداقل یک حرف انگلیسی و یک عدد</p>
+        <p class="field-error" id="password-error"></p>
+      </div>
+
+      <div class="field">
+        <label for="confirm-password">تکرار رمز عبور *</label>
+        <input type="password" id="confirm-password" name="confirmPassword" autocomplete="new-password" dir="ltr" aria-describedby="confirmPassword-error">
+        <p class="field-error" id="confirmPassword-error"></p>
+      </div>
+
+      <button type="submit" class="btn">ثبت‌نام</button>
+      <p id="form-status" class="form-status" aria-live="polite"></p>
+    </form>
+  </main>
+</body>
+
+</html>

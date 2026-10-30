@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>۸) وسط‌چین و تراز (Align) | آموزش CSS سطح میانی</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/demos/align.css">
+</head>
+
+<body>
+
+  <header class="page-header">
+    <h1>آموزش CSS — سطح میانی</h1>
+    <p>۸) وسط‌چین و تراز (Align)</p>
+  </header>
+
+  <div class="container">
+
+    <nav class="page-nav" aria-label="ناوبری درس">
+      <a href="07-inline-block.html">→ قبلی: Inline-block</a>
+      <a href="../index.html">فهرست درس‌ها</a>
+      <a href="09-combinators.html">بعدی: Combinators ←</a>
+    </nav>
+
+    <section class="lesson" id="align">
+      <h2>۸) وسط‌چین و تراز (Align)</h2>
+      <p>
+        وسط‌چین کردن در CSS یک دستور واحد نیست. اول باید مشخص کنید چه چیزی را وسط می‌کنید و در کدام جهت.
+        <code>text-align</code> محتوای داخل جعبه را افقی تراز می‌کند؛ متن و عنصرهای inline. خود جعبه بلوکی را جابه‌جا نمی‌کند.
+        <code>margin</code> با مقدار <code>auto</code> در چپ و راست، جعبه بلوکی را افقی وسط می‌آورد، به شرطی که عرض جعبه از عرض والد کمتر باشد و فضای خالی برای تقسیم بماند.
+        وسط کردن عمودی در جریان عادی صفحه با همین دو ویژگی به دست نمی‌آید. برای یک خط کوتاه می‌توان ارتفاع خط را برابر ارتفاع جعبه گذاشت. برای وسط کردن در هر دو جهت، Flexbox، Grid یا ترکیب <code>position</code> و <code>transform</code> به کار می‌آید.
+      </p>
+
+      <h3>مثال ۱: وسط کردن متن — <code>text-align</code></h3>
+      <pre class="code"><code>.title { text-align: center; }</code></pre>
+      <div class="result demo-align">
+        <p class="title">این متن وسط‌چین است</p>
+      </div>
+
+      <h3>مثال ۲: وسط کردن یک جعبه — <code>margin: auto</code></h3>
+      <p>
+        <code>margin: auto</code> فضای خالی افقی را بین دو طرف جعبه تقسیم می‌کند. این فضا فقط وقتی وجود دارد که عرض جعبه از عرض والد کمتر باشد.
+        عنصر بلوکی بدون <code>width</code> یا <code>max-width</code> از قبل همه عرض را گرفته است؛ در آن حالت <code>auto</code> چیزی برای تقسیم ندارد و جعبه تکان نمی‌خورد.
+      </p>
+      <pre class="code"><code>.center-box {
+  width: 50%;
+  margin: 0 auto;
+}</code></pre>
+      <div class="result demo-align">
+        <div class="center-box">من وسط هستم</div>
+      </div>
+
+      <h3>مثال ۳: وسط کردن تصویر</h3>
+      <p>تصویر inline است و <code>margin: auto</code> روی آن کار نمی‌کند؛ پس اول باید block شود (راه دیگر: <code>text-align: center</code> روی پدرش):</p>
+      <pre class="code"><code>.center-img {
+  display: block;
+  margin: 0 auto;
+  width: 200px;
+}</code></pre>
+      <div class="result demo-align">
+        <img src="../images/bg.jpg" alt="تصویر نمونه وسط‌چین" class="center-img">
+      </div>
+
+      <h3>مثال ۴: وسط عمودی با <code>padding</code></h3>
+      <pre class="code"><code>.pad-center {
+  padding: 40px 0;     /* بالا و پایین برابر */
+  text-align: center;
+}</code></pre>
+      <div class="result demo-align">
+        <div class="pad-center">با padding برابر، عمودی هم وسط هستم</div>
+      </div>
+
+      <h3>مثال ۵: وسط عمودی یک خط با <code>line-height</code></h3>
+      <pre class="code"><code>.line-center {
+  height: 80px;
+  line-height: 80px;   /* برابر با height */
+  text-align: center;
+}</code></pre>
+      <div class="result demo-align">
+        <div class="line-center">یک خط، وسطِ وسط</div>
+      </div>
+      <p class="mistake">
+        <strong>اشتباه رایج:</strong>
+        استفاده از این روش برای متن چندخطی؛ هر خط ۸۰ پیکسل ارتفاع می‌گیرد و متن از جعبه بیرون می‌زند.
+        این ترفند فقط برای یک خط کوتاه (مثل متن دکمه یا نشان) مناسب است.
+      </p>
+
+      <h3>مثال ۶: وسط کامل با <code>position</code> و <code>transform</code></h3>
+      <pre class="code"><code>.parent { position: relative; height: 150px; }
+
+.child {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);  /* نصف اندازه خودش برگردد */
+}</code></pre>
+      <div class="result demo-align">
+        <div class="pos-parent">
+          <div class="pos-child">دقیقاً وسط</div>
+        </div>
+      </div>
+
+      <h3>مثال ۷: ساده‌ترین روش امروزی — Flexbox</h3>
+      <pre class="code"><code>.flex-center {
+  display: flex;
+  justify-content: center;  /* افقی */
+  align-items: center;      /* عمودی */
+  height: 150px;
+}</code></pre>
+      <div class="result demo-align">
+        <div class="flex-center">
+          <div class="pill">وسط با Flexbox</div>
+        </div>
+      </div>
+
+      <h3>مثال ۸: کوتاه‌ترین روش — Grid</h3>
+      <p>برای وسط کردن یک فرزند در هر دو جهت (مثلاً محتوای یک پنجره مودال یا صفحه «در حال بارگذاری»):</p>
+      <pre class="code"><code>.grid-center {
+  display: grid;
+  place-items: center;   /* افقی و عمودی با هم */
+  height: 150px;
+}</code></pre>
+      <div class="result demo-align">
+        <div class="grid-center">
+          <div class="pill">وسط با Grid</div>
+        </div>
+      </div>
+
+      <table class="ref">
+        <tr>
+          <th>می‌خواهم ...</th>
+          <th>روش پیشنهادی</th>
+        </tr>
+        <tr>
+          <td>متن یا عنصرهای inline را افقی وسط کنم</td>
+          <td><code>text-align: center</code> روی پدر</td>
+        </tr>
+        <tr>
+          <td>یک جعبه block با عرض مشخص را افقی وسط کنم</td>
+          <td><code>margin: 0 auto</code></td>
+        </tr>
+        <tr>
+          <td>هر چیزی را افقی و عمودی وسط کنم</td>
+          <td>Flexbox یا Grid روی پدر</td>
+        </tr>
+        <tr>
+          <td>عنصری را روی عنصر دیگر وسط کنم (مثل آیکون پخش روی ویدیو)</td>
+          <td><code>position: absolute</code> + <code>transform</code></td>
+        </tr>
+      </table>
+
+      <p class="mistake">
+        <strong>اشتباه رایج:</strong>
+        <code>text-align: center</code> را روی یک div می‌گذاریم و انتظار داریم خود div وسط برود.
+        <code>text-align</code> فقط <strong>محتوای داخل</strong> را تراز می‌کند؛ برای خود جعبه از <code>margin: auto</code> استفاده کنید.
+      </p>
+
+      <p class="mistake">
+        <strong>اشتباه رایج:</strong>
+        انتظار وسط عمودی از <code>margin: auto</code> یا <code>vertical-align: middle</code> روی یک div معمولی.
+        <code>margin: auto</code> در جریان عادی فقط افقی کار می‌کند و <code>vertical-align</code> فقط روی عنصرهای inline، inline-block و سلول جدول اثر دارد.
+      </p>
+
+      <p class="exercise">
+        <strong>تمرین:</strong> یک «بنر» به ارتفاع ۲۰۰ پیکسل بسازید که یک تیتر و یک دکمه دقیقاً وسط آن باشند.
+      </p>
+    </section>
+
+    <nav class="page-nav" aria-label="ناوبری درس پایین">
+      <a href="07-inline-block.html">→ قبلی: Inline-block</a>
+      <a href="../index.html">فهرست درس‌ها</a>
+      <a href="09-combinators.html">بعدی: Combinators ←</a>
+    </nav>
+
+  </div>
+
+  <footer class="page-footer">
+    آموزش CSS سطح میانی
+  </footer>
+
+</body>
+
+</html>

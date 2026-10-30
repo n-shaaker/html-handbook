@@ -1,0 +1,23 @@
+/* تمرین ۱ — کارت‌های منعطف بدون media query (پاسخ) */
+
+body {
+  font-family: Tahoma, sans-serif;
+  margin: 20px;
+  background-color: #f8f9fa;
+  color: #212529;
+}
+
+.tours {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+/* پایه ۲۰۰ پیکسل؛ جا بود بزرگ شو، جا نبود برو ردیف بعد */
+.tour {
+  flex: 1 1 200px;
+  background-color: #e3fafc;
+  border: 1px solid #99e9f2;
+  padding: 25px 15px;
+  border-radius: 8px;
+}

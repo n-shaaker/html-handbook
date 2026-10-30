@@ -1,0 +1,51 @@
+/* ۲) Max-width */
+
+.demo-mw .fixed,
+.demo-mw .fluid {
+  padding: 10px;
+  margin-bottom: 10px;
+  color: white;
+}
+
+.demo-mw .fixed {
+  width: 600px;
+  background-color: #c92a2a;
+}
+
+.demo-mw .fluid {
+  max-width: 600px;
+  background-color: #2b8a3e;
+}
+
+.demo-mw .article {
+  max-width: 400px;
+  margin: 0 auto;
+  background-color: #fff9db;
+  border: 1px solid #fab005;
+  padding: 10px 16px;
+}
+
+.demo-mw .img-box {
+  width: 60%;
+  border: 2px solid #1a5fb4;
+  padding: 6px;
+}
+
+.demo-mw .img-box img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+.demo-mw .btn {
+  min-width: 120px;
+  padding: 6px 10px;
+  margin-bottom: 10px;
+}
+
+.demo-mw .short-box {
+  max-height: 70px;
+  overflow: auto;
+  border: 1px solid #adb5bd;
+  padding: 6px 10px;
+}

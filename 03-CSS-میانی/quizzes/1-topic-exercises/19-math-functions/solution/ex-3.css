@@ -1,0 +1,27 @@
+body {
+  font-family: Tahoma, Arial, sans-serif;
+  line-height: 1.9;
+  margin: 0;
+}
+
+.intro {
+  padding: clamp(16px, 5vw, 48px);
+  color: white;
+  background-color: #3d3d5c;
+}
+
+/*
+  clamp(کمینه، دلخواه، بیشینه):
+  1.5rem = هیچ‌وقت کوچک‌تر از این نمی‌شود
+  5vw    = در حالت عادی ۵٪ عرض پنجره
+  3rem   = هیچ‌وقت بزرگ‌تر از این نمی‌شود
+*/
+.intro h1 {
+  margin-top: 0;
+  font-size: clamp(1.5rem, 5vw, 3rem);
+}
+
+.intro p {
+  max-width: 700px;
+  font-size: clamp(0.95rem, 2vw, 1.15rem);
+}

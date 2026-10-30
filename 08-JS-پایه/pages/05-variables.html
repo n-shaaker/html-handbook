@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>۵) متغیرها (Variables: let، const، var) | آموزش JavaScript سطح پایه</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <script src="../js/log.js" defer></script>
+  <script src="../js/demos/variables.js" defer></script>
+</head>
+
+<body>
+
+  <header class="page-header" id="top">
+    <h1>آموزش JavaScript — سطح پایه</h1>
+    <p>۵) متغیرها (Variables: let، const، var)</p>
+  </header>
+
+  <div class="container">
+
+    <nav class="page-nav" aria-label="ناوبری درس">
+      <a href="04-syntax.html">→ قبلی: Syntax</a>
+      <a href="../index.html">فهرست درس‌ها</a>
+      <a href="06-operators.html">بعدی: Operators ←</a>
+    </nav>
+
+    <section class="lesson" id="variables">
+      <h2>۵) متغیرها (Variables: let، const، var)</h2>
+<p>متغیر مثل یک <strong>جعبهٔ برچسب‌دار</strong> است: یک اسم انتخاب می‌کنید و یک مقدار را داخل آن می‌گذارید تا بعداً همان مقدار را با آن اسم بخوانید یا، اگر اجازه داده باشید، عوض کنید. بدون متغیر باید عدد و متن را هر بار از نو در کد بنویسید و اگر مقدار عوض شود، همهٔ جاها را دستی اصلاح کنید.</p>
+
+<pre class="code"><code>let name = "سارا";
+const birthYear = 1380;
+let age = 1405 - birthYear;
+
+console.log(name);
+console.log(age);</code></pre>
+
+<div class="result">
+<pre class="console" id="out-1"></pre>
+</div>
+
+<p><code>let name</code> جعبه‌ای می‌سازد که بعداً می‌توان مقدارش را عوض کرد و الان متن «سارا» را نگه می‌دارد. <code>const birthYear</code> سال تولد را نگه می‌دارد و چون این عدد در طول برنامه عوض نمی‌شود، با <code>const</code> ساخته شده است. خط سوم سن تقریبی را از تفریق دو عدد حساب می‌کند و در <code>age</code> می‌گذارد. دو <code>console.log</code> مقدار ذخیره‌شده را در Console نشان می‌دهند.</p>
+
+<h3>سه کلمه برای ساختن متغیر</h3>
+
+<table class="ref">
+<tr><th>کلمه</th><th>مقدار بعداً عوض شود؟</th><th>کی استفاده کنیم؟</th></tr>
+<tr><td><code>const</code></td><td>خیر</td><td>پیش‌فرض شما؛ هر وقت مقدار عوض نمی‌شود</td></tr>
+<tr><td><code>let</code></td><td>بله</td><td>وقتی مقدار تغییر می‌کند (شمارنده، جمع و ...)</td></tr>
+<tr><td><code>var</code></td><td>بله</td><td>روش قدیمی؛ در کد جدید استفاده نکنید</td></tr>
+</table>
+
+<h3>مثال: let قابل تغییر است، const نه</h3>
+
+<pre class="code"><code>let score = 10;
+score = 15;           // ✔ مشکلی نیست
+console.log(score);
+
+const pi = 3.14;
+pi = 3;               // ✖ خطا: نمی‌شود به const مقدار جدید داد</code></pre>
+
+<div class="result">
+<pre class="console" id="out-2"></pre>
+</div>
+
+<p>وقتی متغیر با <code>let</code> ساخته شده باشد، می‌توانید بعداً فقط نام آن را بنویسید و با <code>=</code> مقدار تازه بدهید؛ دیگر <code>let</code> را تکرار نمی‌کنید. <code>const</code> هم در لحظهٔ ساخت مقدار می‌گیرد، ولی تلاش برای دادن مقدار جدید به همان نام خطا تولید می‌کند و اجرای بقیهٔ کد متوقف می‌شود.</p>
+
+<p>خط آخر عمداً خطا دارد. مرورگر پیام <code>TypeError: Assignment to constant variable.</code> را نشان می‌دهد و اجرای بقیه کد متوقف می‌شود. نکته دیگر: <code>const</code> باید همان لحظه تعریف مقدار بگیرد؛ <code>const pi;</code> به‌تنهایی خطای نحوی است.</p>
+
+<h3>تعریف بدون مقدار و چند متغیر در یک خط</h3>
+
+<pre class="code"><code>let city;                       // مقدار ندارد → undefined
+console.log(city);
+
+let a = 1, b = 2, c = 3;
+console.log(a + b + c);</code></pre>
+
+<div class="result">
+<pre class="console" id="out-3"></pre>
+</div>
+
+<p>اگر <code>let</code> را بدون مقدار بنویسید، متغیر ساخته می‌شود ولی هنوز چیزی داخلش نیست؛ JavaScript این حالت را <code>undefined</code> می‌نامد. در خط سوم سه متغیر در یک دستور ساخته شده‌اند و هر کدام مقدار خودش را دارد. این شکل کوتاه است، ولی اگر هر متغیر توضیح جدا لازم داشته باشد، نوشتن هر کدام در یک خط خواناتر است.</p>
+
+<h3>محدوده (Scope): چرا var را کنار گذاشتیم؟</h3>
+
+<p>متغیری که با <code>let</code> یا <code>const</code> داخل یک بلوک <code>{ }</code> ساخته شود، فقط داخل همان بلوک وجود دارد (Block Scope). اما <code>var</code> به بلوک اهمیت نمی‌دهد و بیرون از آن هم دیده می‌شود؛ همچنین می‌شود یک متغیر <code>var</code> را دوباره تعریف کرد بدون اینکه خطایی بگیرید. این دو رفتار منشأ باگ‌های زیادی هستند.</p>
+
+<pre class="code"><code>{
+  var discountA = 10;
+  let discountB = 20;
+}
+console.log(discountA);   // 10 ← var از بلوک بیرون «نشت» کرده
+console.log(discountB);   // ✖ ReferenceError: discountB is not defined</code></pre>
+
+<div class="result">
+<pre class="console" id="out-4"></pre>
+</div>
+
+<p>آکولاد یک بلوک می‌سازد. <code>discountB</code> با <code>let</code> فقط تا پایان همان بلوک زنده است و بیرون از آن، برنامه اصلاً چنین نامی را نمی‌شناسد. <code>discountA</code> با <code>var</code> از بلوک بیرون نشت می‌کند و هنوز قابل خواندن است. همین تفاوت یکی از دلیل‌هایی است که در کد تازه از <code>var</code> استفاده نمی‌کنیم.</p>
+
+<h3>قوانین نام‌گذاری</h3>
+
+<ul>
+<li>فقط حروف، عدد، <code>_</code> و <code>$</code> مجاز است (فاصله و خط تیره مجاز نیست). از حروف انگلیسی استفاده کنید؛ نام فارسی با اینکه گاهی کار می‌کند، رسم نیست.</li>
+<li>بزرگی و کوچکی حروف مهم است: <code>age</code> و <code>Age</code> دو متغیر جدا هستند.</li>
+<li>نام نباید با عدد شروع شود: <code>2name</code> غلط است.</li>
+<li>کلمه‌های رزرو شده مثل <code>let</code>، <code>if</code>، <code>function</code> را نمی‌شود اسم متغیر گذاشت.</li>
+<li>نام باید معنادار باشد: <code>totalPrice</code> بهتر از <code>tp</code> است.</li>
+</ul>
+
+<p class="tip">قانون ساده: همیشه با <code>const</code> شروع کنید. اگر دیدید لازم است مقدار عوض شود، آن را <code>let</code> کنید.</p>
+
+<p class="mistake"><strong>اشتباه رایج:</strong> استفاده از متغیر قبل از تعریف آن با <code>let</code> یا <code>const</code>. نتیجه خطای <code>Cannot access 'x' before initialization</code> است.</p>
+
+<p class="mistake"><strong>اشتباه رایج:</strong> تعریف دوباره یک متغیر با <code>let</code> در همان محدوده: <code>let score = 1; let score = 2;</code> خطای <code>Identifier 'score' has already been declared</code> می‌دهد. برای تغییر مقدار، دیگر <code>let</code> ننویسید: <code>score = 2;</code></p>
+
+<p class="exercise"><strong>تمرین:</strong> برای یک سبد خرید متغیرهای <code>productName</code> (مثلاً «کتاب»)، <code>price</code> و <code>count</code> را بسازید و قیمت کل را در متغیر <code>total</code> حساب و چاپ کنید. سپس کاربر یک عدد دیگر به سبد اضافه می‌کند: <code>count</code> را یکی بیشتر کنید و <code>total</code> را دوباره حساب و چاپ کنید. کدام متغیرها باید <code>const</code> و کدام <code>let</code> باشند؟ چرا؟</p>
+    </section>
+
+    <nav class="page-nav" aria-label="ناوبری درس پایین">
+      <a href="04-syntax.html">→ قبلی: Syntax</a>
+      <a href="../index.html">فهرست درس‌ها</a>
+      <a href="06-operators.html">بعدی: Operators ←</a>
+    </nav>
+
+  </div>
+
+  <footer class="page-footer">
+    آموزش JavaScript سطح پایه
+  </footer>
+
+</body>
+
+</html>

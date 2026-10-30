@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>۱۳) Grid واکنش‌گرا | آموزش CSS Grid</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/demos/responsive.css">
+</head>
+
+<body>
+
+  <header class="page-header">
+    <h1>آموزش CSS Grid — چیدمان شبکه‌ای</h1>
+    <p>۱۳) Grid واکنش‌گرا</p>
+  </header>
+
+  <div class="container">
+
+    <nav class="page-nav" aria-label="ناوبری درس">
+      <a href="12-patterns.html">→ قبلی: الگوهای پرکاربرد</a>
+      <a href="../index.html">فهرست درس‌ها</a>
+      <a href="14-practice.html">بعدی: تمرین جمع‌بندی ←</a>
+    </nav>
+
+    <section class="lesson" id="responsive">
+      <h2>۱۳) Grid واکنش‌گرا</h2>
+      <p>
+        بزرگ‌ترین هدیه Grid برای طراحی واکنش‌گرا این است که <strong>کل چیدمان صفحه</strong> با عوض کردن یکی دو خط تغییر می‌کند.
+        HTML دست نمی‌خورد؛ فقط در یک <strong>media query</strong> نقشه شبکه را عوض می‌کنیم.
+      </p>
+      <p class="tip">
+        همه مثال‌های این صفحه با <strong>یک</strong> media query کار می‌کنند: <code>@media (max-width: 700px)</code>.
+        پنجره مرورگر را باریک‌تر از ۷۰۰ پیکسل کنید (یا در DevTools حالت موبایل را بزنید) تا تغییرها را ببینید.
+        فراموش نکنید که تگ <code>&lt;meta name="viewport" ...&gt;</code> در <code>head</code> باشد، وگرنه گوشی صفحه را کوچک‌شده نشان می‌دهد و media query درست کار نمی‌کند.
+      </p>
+
+      <h3>مثال ۱: اسکلت سایت — در موبایل همه زیر هم</h3>
+      <p>در دسکتاپ سه ستون؛ در موبایل فقط نقشه و ستون‌ها عوض می‌شوند و همه بخش‌ها زیر هم می‌آیند:</p>
+      <pre class="code"><code>.site {
+  display: grid;
+  grid-template-columns: 180px 1fr 180px;
+  grid-template-areas:
+    "header header header"
+    "menu   main   ads"
+    "footer footer footer";
+  gap: 8px;
+}
+
+@media (max-width: 700px) {
+  .site {
+    grid-template-columns: 1fr;   /* فقط یک ستون */
+    grid-template-areas:
+      "header"
+      "main"
+      "menu"
+      "ads"
+      "footer";
+  }
+}</code></pre>
+      <div class="result demo-resp">
+        <div class="site">
+          <div class="box b1 site-header">۱. سربرگ: آموزشگاه کدنویس</div>
+          <div class="box b4 site-menu">۲. منوی دوره‌ها</div>
+          <div class="box b2 site-main">۳. محتوا: معرفی دوره CSS Grid</div>
+          <div class="box b3 site-ads">۴. ثبت‌نام ترم جدید</div>
+          <div class="box b6 site-footer">۵. پانویس</div>
+        </div>
+      </div>
+      <p>
+        دقت کنید: در موبایل «محتوا» قبل از «منو» آمده تا کاربر گوشی اول مطلب اصلی را ببیند.
+        این جابه‌جایی را فقط با ترتیب اسم‌ها در نقشه انجام دادیم.
+      </p>
+
+      <h3>مثال ۲: ردیف کارت‌ها — ۴ ستون در دسکتاپ، ۲ ستون در موبایل</h3>
+      <pre class="code"><code>.features {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+}
+
+/* داخل همان media query بالا */
+.features { grid-template-columns: repeat(2, 1fr); }</code></pre>
+      <div class="result demo-resp">
+        <div class="features">
+          <div class="box b1">۱. کلاس آنلاین</div>
+          <div class="box b2">۲. مدرک معتبر</div>
+          <div class="box b3">۳. پروژه واقعی</div>
+          <div class="box b4">۴. پشتیبانی</div>
+        </div>
+      </div>
+
+      <h3>مثال ۳: گالری بدون media query (یادآوری درس ۹)</h3>
+      <p>
+        اگر تنها چیزی که باید با عرض صفحه عوض شود تعداد ستون‌هاست، media query لازم نیست.
+        <code>repeat(auto-fill, minmax(150px, 1fr))</code> خودش می‌شمارد چند ستونِ دست‌کم ۱۵۰ پیکسلی در عرض فعلی جا می‌شود و بقیهٔ فضا را بین همان ستون‌ها تقسیم می‌کند. با باریک شدن پنجره، تعداد ستون‌ها کم می‌شود بدون اینکه HTML یا یک شرط جدا عوض شود.
+      </p>
+      <pre class="code"><code>.trips {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 8px;
+}</code></pre>
+      <div class="result demo-resp">
+        <div class="trips">
+          <div class="box b1">۱. گیلان</div>
+          <div class="box b2">۲. مازندران</div>
+          <div class="box b3">۳. فارس</div>
+          <div class="box b4">۴. هرمزگان</div>
+          <div class="box b5">۵. خراسان</div>
+        </div>
+      </div>
+
+      <h3>مثال ۴: محصول — عکس و توضیح کنار هم، در موبایل زیر هم</h3>
+      <pre class="code"><code>.product {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 12px;
+}
+
+/* داخل همان media query بالا */
+.product { grid-template-columns: 1fr; }</code></pre>
+      <div class="result demo-resp">
+        <div class="product">
+          <div class="box b5 product-photo">۱. عکس قهوه‌ساز</div>
+          <div class="product-info">
+            <h4>۲. قهوه‌ساز دستی فرانسه</h4>
+            <p>ظرفیت ۴ فنجان، بدنه شیشه‌ای و فیلتر استیل. مناسب برای خانه و کافه‌های کوچک.</p>
+            <p class="price">قیمت: ۸۹۰ هزار تومان</p>
+          </div>
+        </div>
+      </div>
+
+      <p class="mistake">
+        <strong>اشتباه رایج:</strong>
+        در media query فقط <code>grid-template-areas</code> را یک‌ستونه می‌کنیم و <code>grid-template-columns</code> را فراموش می‌کنیم.
+        شبکه هنوز سه ستون <code>180px 1fr 180px</code> دارد؛ همه ناحیه‌ها در ستون اول (۱۸۰ پیکسل) فشرده می‌شوند و بقیه عرض خالی می‌ماند.
+        هر دو را با هم عوض کنید.
+      </p>
+
+      <p class="mistake">
+        <strong>اشتباه رایج:</strong>
+        برای هر عرض یک media query جدا می‌نویسیم (۳۲۰، ۳۷۵، ۴۱۴، ۷۶۸، ...). معمولاً یک نقطه شکست کافی است،
+        و برای کارت‌ها <code>auto-fill</code> و <code>minmax</code> کار را بدون media query انجام می‌دهند.
+      </p>
+
+      <p class="exercise">
+        <strong>تمرین:</strong> صفحه «منوی کافه» با سه ناحیه بسازید: دسته‌بندی‌ها (راست)، لیست غذاها (وسط) و سبد سفارش (چپ).
+        در عرض کمتر از ۷۰۰ پیکسل ترتیب این باشد: سبد سفارش بالا، بعد لیست غذاها و دسته‌بندی‌ها پایین.
+        فقط یک media query مجاز است.
+      </p>
+    </section>
+
+    <nav class="page-nav" aria-label="ناوبری درس پایین">
+      <a href="12-patterns.html">→ قبلی: الگوهای پرکاربرد</a>
+      <a href="../index.html">فهرست درس‌ها</a>
+      <a href="14-practice.html">بعدی: تمرین جمع‌بندی ←</a>
+    </nav>
+
+  </div>
+
+  <footer class="page-footer">
+    آموزش CSS Grid
+  </footer>
+
+</body>
+
+</html>

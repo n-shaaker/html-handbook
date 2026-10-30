@@ -1,0 +1,28 @@
+body {
+  font-family: Tahoma, Arial, sans-serif;
+  padding: 24px;
+}
+
+h1 {
+  font-size: 1.6rem;
+}
+
+/*
+  padding با em است، یعنی نسبت به فونت خود دکمه.
+  پس با بزرگ شدن فونت، فاصله داخلی هم خودکار بزرگ می‌شود.
+*/
+.btn {
+  display: inline-block;
+  padding: 0.5em 1.2em;
+  margin: 4px;
+  color: white;
+  background-color: #0b6e4f;
+  border-radius: 0.4em;
+  text-decoration: none;
+  vertical-align: middle;
+}
+
+/* فقط اندازه فونت عوض می‌شود (rem = نسبت به فونت ریشه صفحه) */
+.btn-small  { font-size: 0.8rem; }
+.btn-medium { font-size: 1rem; }
+.btn-large  { font-size: 1.4rem; }

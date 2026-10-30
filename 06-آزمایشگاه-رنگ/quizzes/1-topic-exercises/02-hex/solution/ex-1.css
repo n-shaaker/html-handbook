@@ -1,0 +1,27 @@
+/* rgb(255, 0, 0) ← ff 00 00؛ هر جفت تکراری است، پس سه‌رقمی هم می‌شود */
+.brand-red {
+  background-color: #f00;
+  color: #fff;
+}
+
+/* rgb(255, 136, 0) ← ff 88 00 */
+.brand-orange {
+  background-color: #f80;
+}
+
+/* rgb(26, 95, 180) ← 1a 5f b4؛ جفت‌ها تکراری نیستند، پس فقط شش‌رقمی */
+.brand-blue {
+  background-color: #1a5fb4;
+  color: #fff;
+}
+
+/* rgb(51, 51, 51) ← 33 33 33 */
+.brand-text {
+  background-color: #333;
+  color: #fff;
+}
+
+/* rgb(255, 245, 230) ← ff f5 e6 */
+.brand-cream {
+  background-color: #fff5e6;
+}

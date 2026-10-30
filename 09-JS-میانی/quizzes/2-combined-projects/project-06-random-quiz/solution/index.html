@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>کوییز سریع JavaScript</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="questions.js" defer></script>
+  <script src="app.js" defer></script>
+</head>
+
+<body>
+  <main class="card">
+    <h1>کوییز سریع JavaScript</h1>
+
+    <section id="start-screen">
+      <p>۵ سؤال تصادفی از درس‌های این دوره. زمان از لحظه شروع اندازه گرفته می‌شود.</p>
+      <button type="button" id="start-btn" class="btn">شروع کوییز</button>
+    </section>
+
+    <section id="quiz-screen" hidden>
+      <div class="top-bar">
+        <span id="progress"></span>
+        <span>زمان: <strong id="timer">00:00</strong></span>
+      </div>
+      <h2 id="question-text"></h2>
+      <div id="options" class="options"></div>
+      <p id="feedback" role="status"></p>
+      <button type="button" id="next-btn" class="btn" hidden>سؤال بعد</button>
+    </section>
+
+    <section id="result-screen" hidden>
+      <h2>نتیجه</h2>
+      <p id="result-score"></p>
+      <p id="result-time"></p>
+      <p id="result-date"></p>
+      <p id="result-message" class="message"></p>
+      <button type="button" id="restart-btn" class="btn">دوباره</button>
+    </section>
+  </main>
+</body>
+
+</html>

@@ -1,0 +1,21 @@
+/* هر سه رنگ جعبه از یک فام ساخته می‌شوند؛ فقط فام را برای هر نوع عوض می‌کنیم */
+.alert {
+  --h: 210;
+  padding: 10px 14px;
+  border-radius: 6px;
+  background-color: hsl(var(--h), 80%, 94%);
+  color: hsl(var(--h), 60%, 25%);
+  border-inline-start: 5px solid hsl(var(--h), 65%, 45%);
+}
+
+.alert-success {
+  --h: 140;
+}
+
+.alert-warning {
+  --h: 40;
+}
+
+.alert-error {
+  --h: 0;
+}

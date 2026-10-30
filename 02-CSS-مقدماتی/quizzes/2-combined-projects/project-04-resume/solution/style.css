@@ -1,0 +1,165 @@
+/* ===== فونت ===== */
+@font-face {
+  font-family: "Vazirmatn";
+  src: url("../../../../fonts/Vazirmatn-Regular.woff2") format("woff2");
+  font-weight: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Vazirmatn";
+  src: url("../../../../fonts/Vazirmatn-Bold.woff2") format("woff2");
+  font-weight: bold;
+  font-display: swap;
+}
+
+/* ===== کل صفحه ===== */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background-color: #eef2f5;
+  color: #2d3748;
+  font-family: "Vazirmatn", Tahoma, sans-serif;
+  line-height: 1.8;
+}
+
+/* ===== سربرگ با تصویر و لایه تیره ===== */
+.cv-header {
+  background-color: #1f3b57;
+  background-image:
+    linear-gradient(rgba(15, 30, 45, 0.6), rgba(15, 30, 45, 0.6)),
+    url("../../../../images/bg.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  min-height: 200px;
+  padding: 48px 16px;
+  color: white;
+  text-align: center;
+}
+
+.cv-header h1 {
+  margin: 0;
+  font-size: 2.2rem;
+}
+
+.role {
+  margin: 4px 0 0;
+  font-size: 1.1rem;
+}
+
+/* ===== برگه رزومه ===== */
+/* با border-box عرض دیده‌شده دقیقاً ۷۶۰ است؛ عرض محتوا: ۷۶۰ − ۶۴ − ۲ = ۶۹۴ */
+.cv {
+  max-width: 760px;
+  margin: -40px auto 32px;
+  padding: 32px;
+  background-color: white;
+  border: 1px solid #d9e2ec;
+  border-radius: 12px;
+}
+
+.cv h2 {
+  margin: 24px 0 8px;
+  font-size: 1.3rem;
+  color: #1f3b57;
+  border-bottom: 2px solid #d9e2ec;
+  padding-bottom: 4px;
+}
+
+.cv section:first-child h2 {
+  margin-top: 0;
+}
+
+/* ===== راه‌های ارتباط ===== */
+.contact-list {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* ===== لینک‌ها (ترتیب: link, visited, hover, focus-visible, active) ===== */
+.cv a:link {
+  color: #1a5fb4;
+}
+
+.cv a:visited {
+  color: #5f3dc4;
+}
+
+.cv a:hover {
+  color: #c92a2a;
+}
+
+.cv a:focus-visible {
+  outline: 2px solid #f08c00;
+  outline-offset: 2px;
+}
+
+.cv a:active {
+  color: #2b8a3e;
+}
+
+/* ===== مهارت‌ها به شکل برچسب ===== */
+.skills-list {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.skills-list li {
+  display: inline-block;
+  margin: 0 0 8px 8px;
+  padding: 4px 14px;
+  background-color: #e7f5ff;
+  border: 1px solid #a5d8ff;
+  border-radius: 999px;
+  font-size: 0.9rem;
+}
+
+/* ===== سابقه کار ===== */
+.job {
+  margin-bottom: 16px;
+  padding: 12px 16px;
+  border-inline-start: 4px solid #4dabf7;
+  background-color: #f8fafc;
+}
+
+.job h3 {
+  margin: 0;
+  font-size: 1.05rem;
+}
+
+.job-meta {
+  margin: 0;
+  font-size: 0.85rem;
+  color: #718096;
+}
+
+.job p {
+  margin-bottom: 0;
+}
+
+/* ===== دکمه دانلود ===== */
+.download {
+  margin: 32px 0 0;
+  text-align: center;
+}
+
+/* قانون‌های لینک بالا (.cv a:link) قوی‌تر از یک کلاس تنها هستند؛ برای همین .cv را جلویش آورده‌ایم */
+.cv a.download-btn {
+  display: inline-block;
+  padding: 10px 28px;
+  background-color: #1f3b57;
+  color: white;
+  text-decoration: none;
+  border-radius: 8px;
+  font-weight: bold;
+}
+
+.cv a.download-btn:hover {
+  background-color: #2f5d8a;
+}

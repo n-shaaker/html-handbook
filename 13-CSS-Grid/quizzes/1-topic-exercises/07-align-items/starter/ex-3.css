@@ -1,0 +1,27 @@
+/* تمرین ۳ — کارت‌هایی که آب رفته‌اند (نسخه خراب — درستش کنید) */
+
+body {
+  font-family: Tahoma, sans-serif;
+  margin: 20px;
+  background-color: #f8f9fa;
+  color: #212529;
+}
+
+.shop {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  justify-items: center;
+  align-items: start;
+}
+
+.card {
+  background-color: white;
+  border: 1px solid #dee2e6;
+  padding: 12px;
+}
+
+.more {
+  grid-column: 1 / -1;
+  color: #1c7ed6;
+}

@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>۲) حداکثر عرض (Max-width) | آموزش CSS سطح میانی</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/demos/max-width.css">
+</head>
+
+<body>
+
+  <header class="page-header">
+    <h1>آموزش CSS — سطح میانی</h1>
+    <p>۲) حداکثر عرض (Max-width)</p>
+  </header>
+
+  <div class="container">
+
+    <nav class="page-nav" aria-label="ناوبری درس">
+      <a href="01-display.html">→ قبلی: Display</a>
+      <a href="../index.html">فهرست درس‌ها</a>
+      <a href="03-position.html">بعدی: Position ←</a>
+    </nav>
+
+    <section class="lesson" id="max-width">
+      <h2>۲) حداکثر عرض (Max-width)</h2>
+      <p>
+        <code>width</code> عرض را روی یک اندازه مشخص قفل می‌کند. اگر پنجره از آن عرض باریک‌تر شود، جعبه کوچک نمی‌شود و صفحه اسکرول افقی می‌گیرد.
+        <code>max-width</code> فقط سقف عرض را تعیین می‌کند: جعبه تا آن اندازه پهن می‌شود و اگر فضای والد کمتر باشد، هم‌عرض فضای موجود می‌ماند.
+        برای ستون متن و کارت، معمولاً <code>max-width</code> رفتار مناسب‌تری در موبایل دارد، چون عرض ثابت در صفحه باریک بیرون می‌زند.
+      </p>
+
+      <h3>مثال ۱: مقایسه width و max-width</h3>
+      <pre class="code"><code>.fixed { width: 600px; }      /* همیشه ۶۰۰ پیکسل */
+.fluid { max-width: 600px; }  /* حداکثر ۶۰۰ پیکسل */</code></pre>
+      <div class="result demo-mw">
+        <div class="fixed">width: 600px — پنجره مرورگر را باریک کنید؛ از جعبه بیرون می‌زنم!</div>
+        <div class="fluid">max-width: 600px — من خودم را با پنجره کوچک می‌کنم.</div>
+      </div>
+      <p class="tip">
+        برای دیدن تفاوت، پنجره مرورگر را کوچک کنید یا صفحه را در حالت موبایل باز کنید
+        (کلید <code>F12</code> و سپس آیکون گوشی).
+      </p>
+
+      <h3>مثال ۲: وسط‌چین کردن محتوا</h3>
+      <p>ترکیب <code>max-width</code> با <code>margin: auto</code> یک الگوی بسیار رایج برای وسط صفحه آوردن محتواست:</p>
+      <pre class="code"><code>.article {
+  max-width: 400px;
+  margin: 0 auto;   /* چپ و راست خودکار = وسط */
+}</code></pre>
+      <div class="result demo-mw">
+        <div class="article">
+          <strong>یک مقاله کوتاه</strong>
+          <p>این جعبه هیچ‌وقت از ۴۰۰ پیکسل پهن‌تر نمی‌شود و همیشه وسط می‌ماند. متن‌های بلند با عرض کم راحت‌تر خوانده می‌شوند.</p>
+        </div>
+      </div>
+
+      <h3>مثال ۳: تصویری که هیچ‌وقت بیرون نمی‌زند</h3>
+      <p>این سه خط تقریباً در همه سایت‌ها هست؛ جعبه آبی ۶۰٪ عرض را دارد و تصویر هرگز از آن بیرون نمی‌زند:</p>
+      <pre class="code"><code>img {
+  max-width: 100%;  /* بزرگ‌تر از ظرفش نشود */
+  height: auto;     /* نسبت تصویر حفظ شود */
+  display: block;   /* فاصله ریز زیر تصویر (به‌خاطر inline بودن) حذف شود */
+}</code></pre>
+      <div class="result demo-mw">
+        <div class="img-box">
+          <img src="../images/bg.jpg" alt="تصویر نمونه داخل جعبه‌ای با عرض ۶۰ درصد">
+        </div>
+      </div>
+
+      <h3>مثال ۴: <code>min-width</code> و <code>max-height</code></h3>
+      <pre class="code"><code>.btn       { min-width: 120px; }  /* دکمه حداقل ۱۲۰ پیکسل باشد */
+.short-box { max-height: 70px; overflow: auto; }</code></pre>
+      <div class="result demo-mw">
+        <button class="btn" type="button">تأیید</button>
+        <button class="btn" type="button">ثبت نهایی سفارش</button>
+        <div class="short-box">
+          این جعبه حداکثر ۷۰ پیکسل ارتفاع دارد. اگر متن بیشتر شود، اسکرول ظاهر می‌شود.
+          خط دوم متن. خط سوم متن. خط چهارم متن. خط پنجم متن. خط ششم متن.
+        </div>
+      </div>
+
+      <p class="tip">
+        اگر <code>min-width</code> و <code>max-width</code> با هم تناقض داشته باشند (مثلاً <code>min-width: 300px</code> و <code>max-width: 200px</code>)،
+        همیشه <code>min-width</code> برنده است. همین قاعده برای <code>min-height</code> و <code>max-height</code> هم برقرار است.
+      </p>
+
+      <p class="tip">
+        برای متن‌های طولانی (مقاله، وبلاگ) عرضی حدود ۶۰ تا ۷۵ حرف در هر خط خواناتر است؛
+        یعنی چیزی مثل <code>max-width: 700px</code> برای ستون متن، حتی در مانیتورهای خیلی پهن.
+      </p>
+
+      <p class="mistake">
+        <strong>اشتباه رایج:</strong>
+        دادن <code>width</code> ثابت و بزرگ به کل صفحه (مثلاً <code>width: 1200px</code>). در موبایل اسکرول افقی ایجاد می‌شود.
+        به‌جایش از <code>max-width</code> استفاده کنید.
+      </p>
+
+      <p class="exercise">
+        <strong>تمرین:</strong> یک کارت معرفی بسازید با <code>max-width: 350px</code> و <code>margin: 20px auto</code>
+        و یک تصویر داخلش با <code>max-width: 100%</code>.
+      </p>
+    </section>
+
+    <nav class="page-nav" aria-label="ناوبری درس پایین">
+      <a href="01-display.html">→ قبلی: Display</a>
+      <a href="../index.html">فهرست درس‌ها</a>
+      <a href="03-position.html">بعدی: Position ←</a>
+    </nav>
+
+  </div>
+
+  <footer class="page-footer">
+    آموزش CSS سطح میانی
+  </footer>
+
+</body>
+
+</html>

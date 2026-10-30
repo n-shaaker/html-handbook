@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>۱۱) دریافت داده از سرور (Fetch API) | آموزش JavaScript سطح پیشرفته</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <script src="../js/log.js" defer></script>
+  <script src="../js/demos/fetch.js" defer></script>
+</head>
+
+<body>
+
+  <header class="page-header" id="top">
+    <h1>آموزش JavaScript — سطح پیشرفته</h1>
+    <p>۱۱) دریافت داده از سرور (Fetch API)</p>
+  </header>
+
+  <div class="container">
+
+    <nav class="page-nav" aria-label="ناوبری درس">
+      <a href="10-async-await.html">→ قبلی: Async / Await</a>
+      <a href="../index.html">فهرست درس‌ها</a>
+      <a href="12-modules.html">بعدی: Modules ←</a>
+    </nav>
+
+    <section class="lesson" id="fetch">
+      <h2>۱۱) دریافت داده از سرور (Fetch API)</h2>
+<p><code>fetch</code> از مرورگر به یک نشانی درخواست می‌فرستد و پاسخ را به‌صورت Promise برمی‌گرداند. با آن هم داده می‌خوانید و هم، اگر سرور اجازه بدهد، داده می‌فرستید. چون نتیجه Promise است، معمولاً داخل تابع <code>async</code> با <code>await</code> نوشته می‌شود. رسیدن پاسخ به‌تنهایی یعنی همه‌چیز درست بوده است؛ وضعیت‌هایی مثل ۴۰۴ را باید جدا بررسی کنید.</p>
+
+<pre class="code"><code>async function getPosts() {
+  const response = await fetch("https://jsonplaceholder.typicode.com/posts?_limit=3");
+  const data = await response.json();     // تبدیل بدنه پاسخ از JSON به شیء
+  console.log(data);                      // آرایه‌ای از ۳ پست
+}</code></pre>
+
+<p><code>fetch</code> درخواست را می‌فرستد و یک Promise برمی‌گرداند که با رسیدن پاسخ resolve می‌شود. <code>await</code> همان پاسخ را در <code>response</code> می‌گذارد. <code>response.json</code> بدنه را از متن JSON به مقدار JavaScript تبدیل می‌کند و خودش هم Promise است، پس آن را هم await می‌کنیم. این تابع وضعیت HTTP را بررسی نکرده است؛ آن بررسی در تابع بعدی است.</p>
+
+<table class="ref">
+<tr><th>مرحله</th><th>توضیح</th></tr>
+<tr><td><code>await fetch(url)</code></td><td>درخواست می‌فرستد و شیء <code>Response</code> برمی‌گرداند (به محض رسیدن سرآیندها، قبل از دانلود کامل بدنه)</td></tr>
+<tr><td><code>response.ok</code></td><td>اگر کد وضعیت ۲۰۰ تا ۲۹۹ باشد <code>true</code></td></tr>
+<tr><td><code>response.status</code></td><td>کد وضعیت: ۲۰۰ موفق، ۲۰۱ ساخته شد، ۴۰۴ پیدا نشد، ۵۰۰ خطای سرور</td></tr>
+<tr><td><code>await response.json()</code></td><td>بدنه پاسخ را می‌خواند و به شیء/آرایه تبدیل می‌کند (اگر JSON معتبر نباشد خطای SyntaxError می‌دهد)</td></tr>
+</table>
+
+<p class="tip">کد بالا برای شروع خوب است ولی در پروژه واقعی ناقص است: اگر اینترنت قطع باشد، سرور خطای ۴۰۴/۵۰۰ بدهد یا اصلاً جواب ندهد، کاربر هیچ پیامی نمی‌بیند. در ادامه یک تابع کمکی کامل می‌نویسیم.</p>
+
+<h3>تابع کمکی fetchJSON: بررسی response.ok و پیام خطای فارسی</h3>
+
+<pre class="code"><code>async function fetchJSON(url, options = {}) {
+  let response;
+  try {
+    response = await fetch(url, options);
+  } catch (err) {
+    // fetch فقط وقتی خطا می‌دهد که اصلاً پاسخی نرسد (قطعی شبکه، مسدود شدن)
+    throw new Error("اتصال به سرور برقرار نشد؛ اتصال اینترنت خود را بررسی کنید.");
+  }
+
+  if (!response.ok) {                     // ۴۰۴ و ۵۰۰ را خودمان باید خطا حساب کنیم
+    throw new Error(`سرور خطا داد (کد ${response.status}).`);
+  }
+  return response.json();
+}</code></pre>
+
+<p>اگر شبکه قطع باشد یا درخواست اصلاً به پاسخ نرسد، <code>fetch</code> reject می‌شود و <code>catch</code> پیام اتصال را می‌سازد. پاسخ 404 یا 500 معمولاً reject نمی‌شود؛ <code>response.ok</code> برای وضعیت‌های ۲۰۰ تا ۲۹۹ true است و بقیه را خودمان باید خطا حساب کنیم. فقط بعد از این بررسی، بدنه به JSON تبدیل می‌شود.</p>
+
+<h3>مثال زنده: فهرست کاربران با حالت «در حال بارگذاری» و خطا</h3>
+
+<pre class="code"><code>const API = "https://jsonplaceholder.typicode.com";
+
+async function loadUsers(url) {
+  statusEl.textContent = "در حال بارگذاری...";
+  list.innerHTML = "";
+  // جلوی کلیک دوباره در حین بارگذاری
+  loadBtn.disabled = true;
+  badBtn.disabled = true;
+
+  try {
+    const users = await fetchJSON(url);
+    users.forEach(user =&gt; {
+      const li = document.createElement("li");
+      li.textContent = `${user.name} — ${user.email} — ${user.address.city}`;
+      list.append(li);
+    });
+    statusEl.textContent = `✔ ${users.length} کاربر دریافت شد.`;
+  } catch (err) {
+    statusEl.textContent = "✖ " + err.message;
+  } finally {
+    loadBtn.disabled = false;
+    badBtn.disabled = false;
+  }
+}
+
+loadBtn.addEventListener("click", () =&gt; loadUsers(`${API}/users`));
+badBtn.addEventListener("click", () =&gt; loadUsers(`${API}/no-such-page`));     // خطای ۴۰۴</code></pre>
+
+<div class="result">
+<div id="fetch-buttons">
+<button class="btn" id="load-btn">دریافت کاربران</button>
+<button class="btn danger" id="bad-btn">آدرس اشتباه (خطای ۴۰۴)</button>
+</div>
+<p id="fetch-status" role="status" aria-live="polite"></p>
+<ul class="js-list" id="user-list" dir="ltr"></ul>
+</div>
+
+<p class="tip">این مثال به اینترنت نیاز دارد. <code>jsonplaceholder.typicode.com</code> یک API رایگان و قدیمی برای تمرین است که داده‌های ساختگی (کاربر، پست، نظر و ...) برمی‌گرداند. برای دیدن پیام «اتصال برقرار نشد»، اینترنت را قطع کنید یا در DevTools زبانه <strong>Network</strong> گزینه <strong>Offline</strong> را انتخاب کنید و دوباره روی «دریافت کاربران» کلیک کنید.</p>
+
+<p class="mistake"><strong>اشتباه رایج:</strong> انتظار داشتن اینکه fetch برای خطای ۴۰۴ یا ۵۰۰ به catch برود. fetch فقط وقتی خطا می‌دهد که پاسخی نرسد (قطعی شبکه یا مسدود شدن توسط CORS)؛ اگر سرور با کد ۴۰۴ یا ۵۰۰ جواب بدهد، از نظر fetch «موفق» است. پس همیشه <code>response.ok</code> را خودتان بررسی کنید و throw کنید.</p>
+
+<p class="tip">مرورگر فقط وقتی اجازه خواندن پاسخ یک دامنه دیگر را می‌دهد که آن سرور با سرآیندهای <strong>CORS</strong> اجازه داده باشد. jsonplaceholder این اجازه را به همه داده است؛ اما اگر برای یک سایت دلخواه fetch بزنید و خطای CORS در Console دیدید، مشکل از کد شما نیست و باید سمت سرور حل شود.</p>
+
+<h3>ارسال داده (POST)</h3>
+
+<pre class="code"><code>async function createPost() {
+  const result = await fetchJSON(`${API}/posts`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },   // به سرور می‌گوییم بدنه JSON است
+    body: JSON.stringify({ title: "سلام", body: "اولین پست من", userId: 1 })
+  });
+  log(result);     // سرور شیء ساخته‌شده را با id برمی‌گرداند (کد وضعیت 201)
+}
+
+// خروجی: {"title":"سلام","body":"اولین پست من","userId":1,"id":101}</code></pre>
+
+<p>شیء دوم <code>fetch</code> روش و بدنه را مشخص می‌کند. <code>POST</code> یعنی ساختن منبع تازه. سرآیند <code>Content-Type</code> می‌گوید بدنه JSON است و <code>JSON.stringify</code> شیء را به متن همان قالب تبدیل می‌کند. تابع کمکی، پاسخ را بررسی می‌کند و شیئی را که سرور با شناسهٔ تازه برگردانده در خروجی می‌گذارد.</p>
+
+<div class="result">
+<button class="btn" id="post-btn">ارسال پست</button>
+<pre class="console" id="out-post" aria-live="polite"></pre>
+</div>
+
+<p class="tip">jsonplaceholder داده را واقعاً ذخیره نمی‌کند؛ فقط پاسخی شبیه یک سرور واقعی برمی‌گرداند. برای همین هر بار id برابر 101 است.</p>
+
+<table class="ref">
+<tr><th>متد HTTP</th><th>کار</th></tr>
+<tr><td><code>GET</code></td><td>گرفتن داده (پیش‌فرض fetch)</td></tr>
+<tr><td><code>POST</code></td><td>ساختن داده جدید</td></tr>
+<tr><td><code>PUT</code> / <code>PATCH</code></td><td>ویرایش کامل / بخشی از داده</td></tr>
+<tr><td><code>DELETE</code></td><td>حذف داده</td></tr>
+</table>
+
+<p class="mistake"><strong>اشتباه رایج:</strong> فراموش کردن <code>await</code> قبل از <code>response.json()</code>. این متد هم Promise برمی‌گرداند. (در fetchJSON بالا چون نتیجه را مستقیم <code>return</code> می‌کنیم، کسی که <code>await fetchJSON(...)</code> می‌نویسد منتظر آن هم می‌ماند.)</p>
+
+<p class="mistake"><strong>اشتباه رایج:</strong> فرستادن شیء بدون <code>JSON.stringify</code> در body، یا فراموش کردن سرآیند <code>"Content-Type": "application/json"</code>. در حالت اول متن <code>"[object Object]"</code> فرستاده می‌شود و در حالت دوم بسیاری از سرورها بدنه را JSON تشخیص نمی‌دهند.</p>
+
+<p class="exercise"><strong>تمرین:</strong> با آدرس <code>https://jsonplaceholder.typicode.com/posts?userId=1</code> پست‌های کاربر ۱ را با تابع <code>fetchJSON</code> بگیرید و برای هر کدام یک کارت (عنوان و متن، با <code>textContent</code>) بسازید. یک input عددی (۱ تا ۱۰) بگذارید که با تغییر شماره کاربر، پست‌های همان کاربر نمایش داده شود. در حین بارگذاری پیام «در حال بارگذاری...» و در صورت خطا پیام فارسی مناسب نشان دهید.</p>
+    </section>
+
+    <nav class="page-nav" aria-label="ناوبری درس پایین">
+      <a href="10-async-await.html">→ قبلی: Async / Await</a>
+      <a href="../index.html">فهرست درس‌ها</a>
+      <a href="12-modules.html">بعدی: Modules ←</a>
+    </nav>
+
+  </div>
+
+  <footer class="page-footer">
+    آموزش JavaScript سطح پیشرفته
+  </footer>
+
+</body>
+
+</html>

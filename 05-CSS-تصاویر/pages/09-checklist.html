@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>چک‌لیست واقعی | تصاویر در CSS</title>
+  <link rel="stylesheet" href="../css/layout.css">
+  <link rel="stylesheet" href="../css/components.css">
+</head>
+
+<body>
+  <header class="page-header">
+    <h1>تصاویر در CSS</h1>
+    <p>۹) چک‌لیست پروژه‌های واقعی</p>
+  </header>
+
+  <div class="container">
+    <nav class="page-nav" aria-label="ناوبری درس‌ها">
+      <a href="08-size-position.html">→ قبلی</a>
+      <a href="../index.html">فهرست</a>
+      <span></span>
+    </nav>
+
+    <section class="lesson">
+      <h2>۹) چک‌لیست قبل از تحویل پروژه</h2>
+      <p>
+        این صفحه درس تازه نیست؛ جمع‌بندی همان تصمیم‌هایی است که در درس‌های قبل گرفتید.
+        قبل از نشان دادن صفحه، هر تصویر را با این سؤال‌ها چک کنید: آیا محتواست یا تزئین، مسیرش از فایل درست حساب شده، قابش در موبایل بیرون می‌زند یا نه، و اگر متن روی عکس است آیا کنتراست کافی دارد.
+        جدول زیر هر مورد را به دلیلش وصل می‌کند تا فقط فهرست حفظ نکنید.
+      </p>
+
+      <table class="ref">
+        <thead>
+          <tr>
+            <th>چک</th>
+            <th>چرا مهم است؟</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>محتوا با <code>img</code>، دکوراسیون با background</td>
+            <td>عکس محتوا باید در HTML بماند تا ایندکس و خوانده شود؛ تزئین را پس‌زمینه بگذارید تا بدون <code>alt</code> الکی در محتوا نیاید.</td>
+          </tr>
+          <tr>
+            <td>همه <code>img</code>ها <code>alt</code> معنادار دارند (و عکس‌های صرفاً تزئینی <code>alt=""</code>)</td>
+            <td>صفحه‌خوان برای عکس محتوا توضیح لازم دارد و برای عکس تزئینی باید سکوت کند. <code>alt</code> خالی با ننوشتن <code>alt</code> یکی نیست.</td>
+          </tr>
+          <tr>
+            <td><code>width</code> و <code>height</code> واقعی عکس در HTML نوشته شده</td>
+            <td>مرورگر قبل از دانلود، نسبت تصویر را می‌داند و جایش را خالی نگه می‌دارد؛ صفحه هنگام لود به پایین نمی‌پرد.</td>
+          </tr>
+          <tr>
+            <td>مسیر فایل درست است (HTML نسبت به HTML، CSS نسبت به CSS)</td>
+            <td>مسیر غلط یعنی فایل پیدا نمی‌شود. در <code>img</code> آیکون شکسته می‌بینید و در پس‌زمینه فقط جای خالی می‌ماند.</td>
+          </tr>
+          <tr>
+            <td>هیرو: <code>cover</code> + لایه تیره + متن خوانا</td>
+            <td>اولین بخش صفحه است. اگر متن روی قسمت روشن عکس بنشیند، کاربر تیتر را نمی‌خواند.</td>
+          </tr>
+          <tr>
+            <td>آواتار: عرض و ارتفاع برابر + <code>border-radius: 50%</code> + <code>object-fit: cover</code></td>
+            <td>بدون برابر بودن دو بعد، شکل بیضی می‌شود و بدون <code>cover</code> چهره کش می‌آید.</td>
+          </tr>
+          <tr>
+            <td>کارت‌ها: <code>aspect-ratio</code> یا ارتفاع ثابت + <code>object-fit: cover</code></td>
+            <td>قاب‌ها هم‌اندازه می‌مانند و تفاوت نسبت عکس‌ها ردیف را نامرتب نمی‌کند.</td>
+          </tr>
+          <tr>
+            <td><code>max-width: 100%</code> و <code>height: auto</code> روی تصاویر داخل متن</td>
+            <td>عکس از عرض والد بزرگ‌تر نمی‌شود و در موبایل اسکرول افقی نمی‌سازد.</td>
+          </tr>
+          <tr>
+            <td>نام فایل انگلیسی، بدون فاصله، و با حروف کوچک</td>
+            <td>بعضی سرورها <code>Hero.jpg</code> را با <code>hero.jpg</code> یکی نمی‌دانند و فاصله در آدرس دردسر می‌سازد.</td>
+          </tr>
+          <tr>
+            <td>حجم عکس متناسب با اندازهٔ نمایش است</td>
+            <td>فایل چندمگابایتی برای یک کارت کوچک، زمان لود صفحه را بالا می‌برد بدون اینکه کیفیت دیده‌شده بهتر شود.</td>
+          </tr>
+          <tr>
+            <td>عکس‌های پایین صفحه <code>loading="lazy"</code> دارند و عکس بالای صفحه ندارد</td>
+            <td>مرورگر عکس‌های پایین را تا نزدیک شدن کاربر دانلود نمی‌کند. روی هیرو این ویژگی را نگذارید، چون همان عکس باید فوراً دیده شود.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3>الگوهای آماده برای کپی در پروژه</h3>
+
+      <h4>۱) تصویر معمولی داخل متن</h4>
+      <pre class="code"><code>img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 8px;
+}</code></pre>
+
+      <h4>۲) هیرو</h4>
+      <pre class="code"><code>/* فایل css/style.css → یک پله تا ریشه پروژه */
+.hero {
+  min-height: 60vh;
+  background-color: #222;   /* اگر عکس لود نشد */
+  background-image:
+    linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45)),
+    url("../images/hero.jpg");
+  background-size: cover;
+  background-position: center;
+  color: #fff;
+}
+
+.hero-content {
+  padding: 48px 24px;
+}</code></pre>
+
+      <h4>۳) آواتار</h4>
+      <pre class="code"><code>.avatar {
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;
+  object-fit: cover;
+}</code></pre>
+
+      <h4>۴) تامبنیل کارت</h4>
+      <pre class="code"><code>.card-thumb {
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+}
+
+.card-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}</code></pre>
+
+      <p class="realuse">
+        <strong>جمع‌بندی:</strong>
+        اگر چهار تصمیم را درست بگیرید، بیشتر کارهای تصویری پروژه‌های مبتدی تا متوسط پوشش داده می‌شود.
+        اول مشخص کنید عکس محتواست (<code>img</code>) یا تزئین (پس‌زمینه). بعد مسیر را از همان فایلی حساب کنید که آدرس در آن نوشته شده.
+        برای بنر، <code>cover</code> را با لایه‌ای بگذارید که متن را خوانا کند. برای قاب‌های هم‌اندازه، مثل آواتار و کارت، <code>object-fit: cover</code> را همراه با عرض و ارتفاع یا <code>aspect-ratio</code> مشخص به کار ببرید.
+      </p>
+
+      <p class="exercise">
+        <strong>پروژه کوچک:</strong>
+        یک صفحه «منوی سه آیتمی» بسازید با هیرو، سه کارت غذا، و یک آواتار سرآشپز در فوتر درباره ما.
+      </p>
+    </section>
+
+    <nav class="page-nav" aria-label="ناوبری درس‌ها">
+      <a href="08-size-position.html">→ قبلی</a>
+      <a href="../index.html">فهرست</a>
+      <span></span>
+    </nav>
+  </div>
+  <footer class="page-footer">تصاویر در CSS</footer>
+</body>
+</html>

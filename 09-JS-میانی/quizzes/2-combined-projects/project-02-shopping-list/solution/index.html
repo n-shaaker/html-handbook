@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>فهرست خرید</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="app.js" defer></script>
+</head>
+
+<body>
+  <main class="card">
+    <h1>🛒 فهرست خرید</h1>
+
+    <form id="item-form" novalidate>
+      <div class="field">
+        <label for="item-name">نام کالا</label>
+        <input type="text" id="item-name" name="name" maxlength="40" placeholder="مثلاً نان سنگک" autocomplete="off">
+      </div>
+
+      <div class="field field-small">
+        <label for="item-quantity">تعداد</label>
+        <input type="number" id="item-quantity" name="quantity" min="1" max="99" value="1">
+      </div>
+
+      <button type="submit" class="btn">افزودن</button>
+    </form>
+
+    <p id="form-error" class="error" role="alert"></p>
+
+    <ul id="item-list" class="item-list"></ul>
+
+    <div class="footer">
+      <p id="counter" aria-live="polite"></p>
+      <button type="button" id="clear-bought" class="btn btn-secondary">پاک کردن خریده‌شده‌ها</button>
+    </div>
+
+    <section class="export">
+      <button type="button" id="export-btn" class="btn btn-secondary">نمایش JSON</button>
+      <pre id="json-output" hidden></pre>
+    </section>
+  </main>
+</body>
+
+</html>

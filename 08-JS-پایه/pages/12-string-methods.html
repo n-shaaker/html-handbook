@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>۱۲) متدهای رشته (String Methods) | آموزش JavaScript سطح پایه</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <script src="../js/log.js" defer></script>
+  <script src="../js/demos/string-methods.js" defer></script>
+</head>
+
+<body>
+
+  <header class="page-header" id="top">
+    <h1>آموزش JavaScript — سطح پایه</h1>
+    <p>۱۲) متدهای رشته (String Methods)</p>
+  </header>
+
+  <div class="container">
+
+    <nav class="page-nav" aria-label="ناوبری درس">
+      <a href="11-strings.html">→ قبلی: Strings</a>
+      <a href="../index.html">فهرست درس‌ها</a>
+      <a href="13-template-literals.html">بعدی: Template Literals ←</a>
+    </nav>
+
+    <section class="lesson" id="string-methods">
+      <h2>۱۲) متدهای رشته (String Methods)</h2>
+<p>متد یعنی کاری که می‌شود روی یک مقدار انجام داد و با نقطه بعد از آن مقدار نوشته می‌شود. متدهای رشته، رشتهٔ اصلی را تغییر نمی‌دهند؛ یک رشتهٔ <strong>جدید</strong> برمی‌گردانند. اگر نتیجه را در متغیر نریزید یا همان لحظه استفاده نکنید، رشتهٔ قبلی همان‌طور که بود باقی می‌ماند. این رفتار با تغییرناپذیر بودن رشته، که در درس قبل دیدید، هماهنگ است.</p>
+
+<table class="ref">
+<tr><th>متد</th><th>کار</th><th>مثال</th><th>نتیجه</th></tr>
+<tr><td><code>toUpperCase()</code></td><td>همه حروف بزرگ</td><td><code>"hi".toUpperCase()</code></td><td><code>HI</code></td></tr>
+<tr><td><code>toLowerCase()</code></td><td>همه حروف کوچک</td><td><code>"HI".toLowerCase()</code></td><td><code>hi</code></td></tr>
+<tr><td><code>trim()</code></td><td>حذف فاصله اول و آخر</td><td><code>"  a  ".trim()</code></td><td><code>a</code></td></tr>
+<tr><td><code>slice(start, end)</code></td><td>بریدن بخشی از رشته</td><td><code>"Hello".slice(1, 4)</code></td><td><code>ell</code></td></tr>
+<tr><td><code>replace(a, b)</code></td><td>جایگزینی اولین مورد</td><td><code>"a-b-c".replace("-", "+")</code></td><td><code>a+b-c</code></td></tr>
+<tr><td><code>replaceAll(a, b)</code></td><td>جایگزینی همه موارد</td><td><code>"a-b-c".replaceAll("-", "+")</code></td><td><code>a+b+c</code></td></tr>
+<tr><td><code>includes(x)</code></td><td>آیا x داخلش هست؟</td><td><code>"Hello".includes("ell")</code></td><td><code>true</code></td></tr>
+<tr><td><code>startsWith(x)</code></td><td>آیا با x شروع می‌شود؟</td><td><code>"Hello".startsWith("He")</code></td><td><code>true</code></td></tr>
+<tr><td><code>endsWith(x)</code></td><td>آیا با x تمام می‌شود؟</td><td><code>"photo.jpg".endsWith(".jpg")</code></td><td><code>true</code></td></tr>
+<tr><td><code>indexOf(x)</code></td><td>شماره اولین x (نبود: -1)</td><td><code>"Hello".indexOf("l")</code></td><td><code>2</code></td></tr>
+<tr><td><code>split(sep)</code></td><td>تبدیل به آرایه</td><td><code>"a,b,c".split(",")</code></td><td><code>["a","b","c"]</code></td></tr>
+<tr><td><code>padStart(n, x)</code></td><td>پر کردن از اول تا طول n</td><td><code>"5".padStart(2, "0")</code></td><td><code>05</code></td></tr>
+<tr><td><code>repeat(n)</code></td><td>تکرار</td><td><code>"ab".repeat(3)</code></td><td><code>ababab</code></td></tr>
+</table>
+
+<h3>مثال ۱: تمیز کردن ورودی کاربر</h3>
+
+<pre class="code"><code>let email = "   Sara@Example.COM  ";
+let clean = email.trim().toLowerCase();
+console.log("[" + email + "]");
+console.log("[" + clean + "]");</code></pre>
+
+<div class="result">
+<pre class="console" id="out-1"></pre>
+</div>
+
+<p><code>trim</code> فاصله‌های ابتدا و انتهای متن را برمی‌دارد و <code>toLowerCase</code> حروف انگلیسی را کوچک می‌کند. چون این دو متد پشت سر هم نوشته شده‌اند، اول فاصله‌ها حذف می‌شوند و بعد روی همان نتیجه حروف کوچک می‌شود. کروشه دور مقدار فقط برای این است که فاصله‌های پنهان در خروجی دیده شوند. متغیر <code>email</code> خودش عوض نشده و متن اولیه هنوز فاصله و حروف بزرگ دارد.</p>
+
+<p class="tip">می‌شود متدها را پشت سر هم نوشت (Chaining): <code>email.trim().toLowerCase()</code>. اول trim اجرا می‌شود، بعد روی نتیجه‌اش toLowerCase.</p>
+
+<h3>مثال ۲: بریدن و جستجو</h3>
+
+<pre class="code"><code>let text = "I love JavaScript";
+console.log(text.slice(7));                 // JavaScript ← از شماره 7 تا آخر
+console.log(text.slice(-10));               // JavaScript ← 10 حرف آخر
+console.log(text.includes("love"));         // true
+console.log(text.includes("Love"));         // false ← به بزرگی و کوچکی حروف حساس است
+console.log(text.indexOf("Java"));          // 7
+console.log(text.replace("love", "like"));  // I like JavaScript
+console.log(text);                          // I love JavaScript ← رشته اصلی عوض نشد
+console.log(text.split(" "));               // ["I","love","JavaScript"]</code></pre>
+
+<div class="result">
+<pre class="console" id="out-2"></pre>
+</div>
+
+<p><code>slice</code> با یک عدد از همان شماره تا آخر رشته را برمی‌دارد و با عدد منفی از انتها می‌شمارد. <code>includes</code> فقط وجود یک تکه را با true یا false جواب می‌دهد و به بزرگی و کوچکی حروف حساس است. <code>indexOf</code> شمارهٔ شروع همان تکه را می‌دهد. <code>replace</code> یک رشتهٔ تازه می‌سازد و <code>text</code> را عوض نمی‌کند؛ به همین دلیل چاپ بعدی هنوز جملهٔ اصلی است. <code>split(" ")</code> رشته را از روی هر فاصله می‌بُرد و یک فهرست (آرایه) از کلمه‌ها برمی‌گرداند.</p>
+
+<p class="tip">در <code>slice(start, end)</code> حرفِ شماره <code>end</code> جزو نتیجه <strong>نیست</strong>: <code>"Hello".slice(1, 4)</code> حرف‌های شماره ۱، ۲ و ۳ را برمی‌دارد.</p>
+
+<h3>مثال ۳: پنهان کردن شماره موبایل</h3>
+
+<pre class="code"><code>function maskPhone(phone) {
+  const clean = phone.trim();
+  return clean.slice(0, 4) + "***" + clean.slice(-4);
+}
+
+console.log(maskPhone("09121234567"));     // 0912***4567
+console.log(maskPhone(" 09351112233 "));   // 0935***2233</code></pre>
+
+<div class="result">
+<pre class="console" id="out-3"></pre>
+</div>
+
+<p>تابع اول فاصله‌های اطراف شماره را حذف می‌کند. <code>slice(0, 4)</code> چهار رقم اول را برمی‌دارد، سه ستاره وسط گذاشته می‌شود و <code>slice(-4)</code> چهار رقم آخر را می‌آورد. بقیهٔ رقم‌ها در نتیجه نیستند. چون تابع رشتهٔ جدید برمی‌گرداند، شمارهٔ اصلی اگر بیرون از تابع در متغیر دیگری باشد دست‌نخورده می‌ماند.</p>
+
+<h3>مثال ۴: شمارنده حرف و کلمه زنده</h3>
+
+<pre class="code"><code>const textArea = document.getElementById("text-area");
+const info = document.getElementById("text-info");
+
+textArea.addEventListener("input", function () {
+  const value = textArea.value.trim();
+  let words = 0;
+  if (value !== "") {
+    words = value.split(/\s+/).length;   // جدا کردن با «یک یا چند فاصله یا خط جدید»
+  }
+  info.textContent = "حرف: " + textArea.value.length + " | کلمه: " + words;
+});</code></pre>
+
+<div class="result">
+<label for="text-area">متن خود را بنویسید:</label><br>
+<textarea id="text-area" rows="3" cols="40" placeholder="اینجا بنویس..."></textarea>
+<p id="text-info" aria-live="polite">حرف: 0 | کلمه: 0</p>
+</div>
+
+<p>با هر تغییر در کادر، رویداد <code>input</code> تابع را اجرا می‌کند. <code>length</code> تعداد حرف‌های متن خام را می‌دهد، از جمله فاصله. برای شمردن کلمه‌ها اول فاصله‌های دو سر متن حذف می‌شود. اگر بعد از آن چیزی مانده باشد، <code>split</code> متن را از روی فاصله‌ها جدا می‌کند و <code>length</code> تعداد تکه‌ها را می‌شمارد. اگر کادر خالی باشد، تعداد کلمه صفر می‌ماند تا یک رشتهٔ خالی به‌اشتباه یک کلمه حساب نشود.</p>
+
+<p class="tip">اگر از <code>split(" ")</code> استفاده کنیم، دو فاصله پشت سر هم یا رفتن به خط بعد، کلمه‌ها را اشتباه می‌شمارد. <code>/\s+/</code> یک «الگو» (Regular Expression) است یعنی «یک یا چند فاصله، تب یا خط جدید». فعلاً همین قدر کافی است؛ الگوها را در دوره‌های بعد کامل یاد می‌گیرید. شرط <code>if</code> را هم در درس ۱۶ کامل می‌بینیم.</p>
+
+<p class="mistake"><strong>اشتباه رایج:</strong> فکر کردن اینکه <code>name.toUpperCase();</code> خود <code>name</code> را عوض می‌کند. باید نتیجه را ذخیره کنید: <code>name = name.toUpperCase();</code></p>
+
+<p class="exercise"><strong>تمرین:</strong> (۱) تابع <code>capitalize(name)</code> بنویسید که یک اسم مثل <code>"sara"</code> یا <code>"SARA"</code> بگیرد و <code>"Sara"</code> برگرداند (راهنما: <code>name[0].toUpperCase() + name.slice(1).toLowerCase()</code>). (۲) تابع <code>isImage(fileName)</code> بنویسید که اگر اسم فایل با <code>.jpg</code> تمام شود <code>true</code> و وگرنه <code>false</code> برگرداند؛ <code>"Photo.JPG"</code> هم باید <code>true</code> شود (راهنما: اول <code>toLowerCase()</code> و بعد روی نتیجه‌اش <code>endsWith</code>).</p>
+    </section>
+
+    <nav class="page-nav" aria-label="ناوبری درس پایین">
+      <a href="11-strings.html">→ قبلی: Strings</a>
+      <a href="../index.html">فهرست درس‌ها</a>
+      <a href="13-template-literals.html">بعدی: Template Literals ←</a>
+    </nav>
+
+  </div>
+
+  <footer class="page-footer">
+    آموزش JavaScript سطح پایه
+  </footer>
+
+</body>
+
+</html>

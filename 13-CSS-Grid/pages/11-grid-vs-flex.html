@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>۱۱) Grid یا Flexbox؟ | آموزش CSS Grid</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/demos/grid-vs-flex.css">
+</head>
+
+<body>
+
+  <header class="page-header">
+    <h1>آموزش CSS Grid — چیدمان شبکه‌ای</h1>
+    <p>۱۱) Grid یا Flexbox؟</p>
+  </header>
+
+  <div class="container">
+
+    <nav class="page-nav" aria-label="ناوبری درس">
+      <a href="10-implicit-grid.html">→ قبلی: شبکه ضمنی</a>
+      <a href="../index.html">فهرست درس‌ها</a>
+      <a href="12-patterns.html">بعدی: الگوهای پرکاربرد ←</a>
+    </nav>
+
+    <section class="lesson" id="grid-vs-flex">
+      <h2>۱۱) Grid یا Flexbox؟</h2>
+      <p>
+        Flexbox و Grid هر دو چیدمان را به CSS می‌سپارند، اما مسئله‌ای که حل می‌کنند یکی نیست.
+        اگر آیتم‌ها باید در یک جهت پشت سر هم بنشینند و اندازهٔ هر کدام از محتوایش بیاید، Flexbox مستقیم‌تر است.
+        اگر صفحه را از قبل به ردیف و ستون تقسیم کرده‌اید و می‌خواهید خانه‌های ردیف‌های مختلف زیر هم بمانند، Grid همان نقشه را نگه می‌دارد.
+      </p>
+      <ul>
+        <li><strong>Flexbox</strong> از محتوا به بیرون کار می‌کند. آیتم‌ها در یک جهت کنار هم می‌نشینند و هر کدام، مگر اینکه <code>flex</code> خلافش را بگوید، به اندازهٔ محتوای خودش جا می‌گیرد.</li>
+        <li><strong>Grid</strong> از نقشه به داخل کار می‌کند. اول ستون‌ها و ردیف‌ها را می‌کشید و بعد آیتم‌ها در خانه‌ها می‌نشینند، برای همین لبهٔ ستون‌ها در ردیف‌های بعدی هم همان‌جا می‌ماند.</li>
+      </ul>
+      <p>
+        اگر Flexbox را هنوز نخوانده‌اید، مقایسهٔ این صفحه را بعد از <a href="../../12-CSS-Flexbox/index.html">آموزش Flexbox</a> راحت‌تر می‌فهمید، چون مثال‌ها به <code>flex</code> و <code>flex-wrap</code> تکیه دارند.
+      </p>
+
+      <h3>مثال ۱: یک چیدمان، دو روش — سه کارت هم‌اندازه</h3>
+      <pre class="code"><code>/* با Flexbox */
+.cards-flex { display: flex; gap: 10px; }
+.cards-flex .card { flex: 1; }
+
+/* با Grid */
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}</code></pre>
+      <div class="result demo-vs">
+        <p class="label">Flexbox:</p>
+        <div class="cards-flex">
+          <div class="card b1">۱. دوره HTML</div>
+          <div class="card b2">۲. دوره CSS</div>
+          <div class="card b3">۳. دوره JavaScript</div>
+        </div>
+        <p class="label">Grid:</p>
+        <div class="cards-grid">
+          <div class="card b1">۱. دوره HTML</div>
+          <div class="card b2">۲. دوره CSS</div>
+          <div class="card b3">۳. دوره JavaScript</div>
+        </div>
+      </div>
+      <p>
+        در این مثال هر دو روش سه کارت هم‌عرض می‌سازند، چون در Flexbox به هر کارت <code>flex: 1</code> داده‌ایم و در Grid سه ستون <code>1fr</code> داریم.
+        هم‌عرض شدن اینجا نتیجهٔ آن تنظیم‌هاست، نه شباهت ذاتی دو مدل. برای یک ردیف ساده که لازم نیست ستون‌ها در ردیف بعد هم تراز بمانند، هر کدام را که خواندن کدانش ساده‌تر است می‌توانید انتخاب کنید.
+      </p>
+
+      <h3>مثال ۲: فرق اصلی — وقتی آیتم‌ها به ردیف بعد می‌روند</h3>
+      <p>
+        ۵ محصول داریم و در هر ردیف ۳ تا جا می‌شود. در Flexbox هر ردیف <strong>جدا</strong> حساب می‌شود، پس دو آیتم آخر پهن می‌شوند تا ردیف را پر کنند.
+        در Grid ستون‌ها ثابت‌اند و ردیف آخر هم با بقیه هم‌تراز می‌ماند:
+      </p>
+      <pre class="code"><code>/* Flexbox */
+.wrap-flex { display: flex; flex-wrap: wrap; gap: 10px; }
+.wrap-flex .card { flex: 1 1 30%; }
+
+/* Grid */
+.wrap-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}</code></pre>
+      <div class="result demo-vs">
+        <p class="label">Flexbox (دو کارت آخر پهن‌تر شدند):</p>
+        <div class="wrap-flex">
+          <div class="card b1">۱</div>
+          <div class="card b2">۲</div>
+          <div class="card b3">۳</div>
+          <div class="card b4">۴</div>
+          <div class="card b5">۵</div>
+        </div>
+        <p class="label">Grid (همه کارت‌ها هم‌اندازه و زیر هم):</p>
+        <div class="wrap-grid">
+          <div class="card b1">۱</div>
+          <div class="card b2">۲</div>
+          <div class="card b3">۳</div>
+          <div class="card b4">۴</div>
+          <div class="card b5">۵</div>
+        </div>
+      </div>
+
+      <h3>مثال ۳: جایی که Flexbox بهتر است — منوی بالای سایت</h3>
+      <p>
+        لینک‌های منو طول‌های متفاوتی دارند و باید به اندازه متن خودشان باشند. با Flexbox ساده و طبیعی است؛
+        با <code>repeat(4, 1fr)</code> همه هم‌عرض و عجیب می‌شوند:
+      </p>
+      <pre class="code"><code>.nav-flex { display: flex; gap: 6px; }
+
+.nav-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 6px;
+}</code></pre>
+      <div class="result demo-vs">
+        <p class="label">Flexbox (طبیعی):</p>
+        <nav class="nav-flex" aria-label="منوی نمونه با flex">
+          <a href="#grid-vs-flex">خانه</a>
+          <a href="#grid-vs-flex">منوی نوشیدنی‌ها</a>
+          <a href="#grid-vs-flex">رزرو</a>
+          <a href="#grid-vs-flex">تماس با کافه</a>
+        </nav>
+        <p class="label">Grid (همه لینک‌ها به‌زور هم‌عرض):</p>
+        <nav class="nav-grid" aria-label="منوی نمونه با grid">
+          <a href="#grid-vs-flex">خانه</a>
+          <a href="#grid-vs-flex">منوی نوشیدنی‌ها</a>
+          <a href="#grid-vs-flex">رزرو</a>
+          <a href="#grid-vs-flex">تماس با کافه</a>
+        </nav>
+      </div>
+
+      <h3>مثال ۴: ترکیب هر دو — صفحه با Grid، داخل کارت با Flexbox</h3>
+      <p>
+        در عمل بیشتر وقت‌ها هر دو را با هم استفاده می‌کنیم: <strong>Grid برای چیدن کارت‌ها</strong> در صفحه،
+        و <strong>Flexbox برای چیدن محتوای داخل هر کارت</strong>. اینجا دکمه «سفارش» همیشه ته کارت است، حتی اگر متن کارت‌ها کوتاه و بلند باشد:
+      </p>
+      <pre class="code"><code>/* بیرون: Grid */
+.menu-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 12px;
+}
+
+/* داخل هر کارت: Flexbox ستونی */
+.menu-card {
+  display: flex;
+  flex-direction: column;
+}
+
+.menu-card .order {
+  margin-top: auto;   /* دکمه به ته کارت هل داده شود */
+}</code></pre>
+      <div class="result demo-vs">
+        <div class="menu-cards">
+          <div class="menu-card">
+            <h4>۱. لاته</h4>
+            <p>اسپرسو با شیر داغ.</p>
+            <a href="#grid-vs-flex" class="order">سفارش</a>
+          </div>
+          <div class="menu-card">
+            <h4>۲. کیک شکلاتی</h4>
+            <p>کیک خانگی با شکلات تلخ و گردو، هر روز صبح تازه پخته می‌شود. مناسب کنار یک فنجان قهوه.</p>
+            <a href="#grid-vs-flex" class="order">سفارش</a>
+          </div>
+          <div class="menu-card">
+            <h4>۳. چای ماسالا</h4>
+            <p>چای با دارچین، هل و زنجبیل.</p>
+            <a href="#grid-vs-flex" class="order">سفارش</a>
+          </div>
+        </div>
+      </div>
+
+      <table class="ref">
+        <tr>
+          <th>موقعیت</th>
+          <th>پیشنهاد</th>
+        </tr>
+        <tr>
+          <td>اسکلت کلی صفحه (سربرگ، ستون کناری، محتوا، پانویس)</td>
+          <td>Grid</td>
+        </tr>
+        <tr>
+          <td>ردیف کارت‌ها، گالری، داشبورد</td>
+          <td>Grid</td>
+        </tr>
+        <tr>
+          <td>منو، نوار ابزار، ردیف دکمه‌ها، برچسب‌ها (تگ‌ها)</td>
+          <td>Flexbox</td>
+        </tr>
+        <tr>
+          <td>چیدن محتوای داخل یک کارت یا یک ردیف کوچک</td>
+          <td>Flexbox</td>
+        </tr>
+        <tr>
+          <td>وسط کردن یک چیز</td>
+          <td>هر دو (<code>place-items: center</code> در Grid کوتاه‌تر است)</td>
+        </tr>
+      </table>
+
+      <p class="mistake">
+        <strong>اشتباه رایج:</strong>
+        فکر می‌کنیم باید یکی را «برای همیشه» انتخاب کنیم. Grid جایگزین Flexbox نیست؛ این دو مکمل هم هستند و
+        یک صفحه خوب معمولاً هر دو را دارد. سؤال درست این است: «این بخش یک‌بعدی است یا دوبعدی؟»
+      </p>
+
+      <p class="exercise">
+        <strong>تمرین:</strong> صفحه «دوره‌های آموزشگاه» بسازید: کارت دوره‌ها با Grid چیده شوند،
+        داخل هر کارت با Flexbox عنوان بالا، توضیح وسط و ردیف «قیمت + دکمه ثبت‌نام» ته کارت باشد
+        (قیمت سمت راست و دکمه سمت چپ همان ردیف).
+      </p>
+    </section>
+
+    <nav class="page-nav" aria-label="ناوبری درس پایین">
+      <a href="10-implicit-grid.html">→ قبلی: شبکه ضمنی</a>
+      <a href="../index.html">فهرست درس‌ها</a>
+      <a href="12-patterns.html">بعدی: الگوهای پرکاربرد ←</a>
+    </nav>
+
+  </div>
+
+  <footer class="page-footer">
+    آموزش CSS Grid
+  </footer>
+
+</body>
+
+</html>

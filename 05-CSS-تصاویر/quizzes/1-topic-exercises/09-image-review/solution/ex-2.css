@@ -1,0 +1,61 @@
+/*
+  اصلاح‌ها:
+  ۱) عکس بالا width: 900px و height ثابت داشت → در گوشی بیرون می‌زد و کش می‌آمد.
+     حالا max-width: 100% و height: auto.
+  ۲) عکس کارت‌ها ارتفاع‌های مختلف داشتند → همه aspect-ratio: 4/3 و object-fit: cover.
+  ۳) چای با height: 160px پهن شده بود → قانون جداگانه حذف شد و object-position: top گرفت.
+  ۴) کارت‌های inline-block از پایین تراز بودند → vertical-align: top.
+  ۵) کارت‌ها در گوشی خیلی باریک بودند → یک media query برای تمام‌عرض شدن.
+*/
+
+body {
+  font-family: Tahoma, Arial, sans-serif;
+  line-height: 1.8;
+  margin: 0;
+}
+
+.page {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 16px;
+}
+
+.top-img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+.card {
+  display: inline-block;
+  vertical-align: top;
+  width: 30%;
+  margin: 1%;
+  overflow: hidden;
+  background-color: #f7f9fc;
+  border-radius: 8px;
+}
+
+.card img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+}
+
+.card img.tea {
+  object-position: center top;
+}
+
+.card h2 {
+  margin: 8px;
+  font-size: 1rem;
+}
+
+@media (max-width: 600px) {
+  .card {
+    width: 100%;
+    margin: 8px 0;
+  }
+}

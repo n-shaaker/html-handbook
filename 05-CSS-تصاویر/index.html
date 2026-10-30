@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="آموزش کاربردی تصاویر در CSS — مثال‌های واقعی هیرو، آواتار، کارت محصول و بیشتر">
+  <title>تصاویر در CSS | نکات کاربردی واقعی</title>
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+</head>
+
+<body>
+
+  <header class="page-header">
+    <h1>تصاویر در CSS</h1>
+    <p>نکات و الگوهایی که در سایت‌های واقعی مدام استفاده می‌شوند</p>
+  </header>
+
+  <div class="container">
+
+    <p class="realuse">
+      <strong>هدف این مجموعه:</strong>
+      فقط ویژگی حفظ کردن نیست؛ یاد می‌گیرید در هیرو، پروفایل، کارت محصول، منوی رستوران و گالری
+      دقیقاً چه کدی بنویسید و از چه اشتباه‌هایی دوری کنید.
+    </p>
+
+    <nav class="toc" aria-label="فهرست درس‌ها">
+      <strong>فهرست</strong>
+      <ol>
+        <li><a href="pages/01-img-vs-bg.html"><code>img</code> یا تصویر پس‌زمینه؟</a></li>
+        <li><a href="pages/02-paths.html">مسیر فایل تصویر — توضیح کامل + دیاگرام</a></li>
+        <li><a href="pages/03-hero.html">هیرو (Hero) با متن خوانا</a></li>
+        <li><a href="pages/04-avatar.html">عکس پروفایل دایره‌ای</a></li>
+        <li><a href="pages/05-object-fit.html"><code>object-fit</code> برای کارت و گالری</a></li>
+        <li><a href="pages/06-cards.html">کارت محصول واقعی</a></li>
+        <li><a href="pages/07-responsive.html">تصویر واکنش‌گرا (موبایل نشکند)</a></li>
+        <li><a href="pages/08-size-position.html"><code>cover</code> ، <code>contain</code> و فوکوس چهره</a></li>
+        <li><a href="pages/09-checklist.html">چک‌لیست پروژه‌های واقعی</a></li>
+      </ol>
+    </nav>
+
+    <section class="lesson">
+      <h2>قبل از شروع: دو جعبه ابزار</h2>
+      <table class="ref">
+        <thead>
+          <tr>
+            <th>روش</th>
+            <th>چه زمانی؟</th>
+            <th>مثال واقعی</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>تگ <code>&lt;img&gt;</code></td>
+            <td>تصویر <strong>محتوا</strong> است و باید دیده/خوانده شود</td>
+            <td>عکس غذا، پروفایل، محصول، گالری</td>
+          </tr>
+          <tr>
+            <td><code>background-image</code></td>
+            <td>تصویر فقط برای <strong>دکوراسیون</strong> است</td>
+            <td>پس‌زمینه هیرو، پترن، بنر تزئینی</td>
+          </tr>
+        </tbody>
+      </table>
+      <p class="tip">
+        اگر کاربر باید عکس را ببیند، ذخیره کند، یا برای سئو/دسترسی‌پذیری مهم است → <code>img</code>.
+        اگر فقط فضا را زیبا می‌کند و بدون آن هم معنی صفحه کامل است → <code>background-image</code>.
+      </p>
+    </section>
+
+  </div>
+
+  <footer class="page-footer">تصاویر در CSS</footer>
+
+</body>
+
+</html>

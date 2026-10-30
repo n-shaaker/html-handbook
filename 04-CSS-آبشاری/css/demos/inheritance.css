@@ -1,0 +1,30 @@
+/* مثال ۴: وراثت (Inheritance) */
+
+.demo-inherit .parent {
+  color: #1a3a5c;
+  font-family: Georgia, "Times New Roman", serif;
+  line-height: 2;
+  border: 2px solid #1a3a5c;
+  padding: 12px;
+}
+
+.demo-inherit .child-keep {
+  /* color و font-family ننوشته‌ایم → از والد به ارث می‌رسند */
+  background-color: #e8f4fd;
+  padding: 8px;
+  margin: 8px 0;
+}
+
+.demo-inherit .child-override {
+  color: #c92a2a; /* مقدار خود فرزند → جای مقدار ارثی را می‌گیرد */
+  background-color: #fff5f5;
+  padding: 8px;
+  margin: 8px 0;
+}
+
+.demo-inherit .no-inherit {
+  /* border به ارث نمی‌رسد؛ این جعبه border را خودش جداگانه تعریف کرده */
+  border: 2px dashed #e67700;
+  padding: 8px;
+  margin-top: 8px;
+}

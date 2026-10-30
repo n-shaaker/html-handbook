@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>تمرین ۳ — فرم ورود</title>
+  <link rel="stylesheet" href="ex-3.css">
+</head>
+<body>
+  <form class="login" action="#">
+    <h1>ورود به حساب</h1>
+
+    <label for="user">ایمیل یا شماره موبایل</label>
+    <input type="text" id="user" name="user" required>
+
+    <label for="pass">رمز عبور</label>
+    <input type="password" id="pass" name="pass" minlength="8" required>
+
+    <p class="remember">
+      <input type="checkbox" id="remember" name="remember">
+      <label for="remember">مرا به خاطر بسپار</label>
+    </p>
+
+    <button type="submit">ورود</button>
+    <a class="forgot" href="#">رمز عبور را فراموش کرده‌اید؟</a>
+  </form>
+</body>
+</html>

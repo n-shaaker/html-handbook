@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>۳) متدهای call، apply و bind | آموزش JavaScript سطح پیشرفته</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <script src="../js/log.js" defer></script>
+  <script src="../js/demos/call-apply-bind.js" defer></script>
+</head>
+
+<body>
+
+  <header class="page-header" id="top">
+    <h1>آموزش JavaScript — سطح پیشرفته</h1>
+    <p>۳) متدهای call، apply و bind</p>
+  </header>
+
+  <div class="container">
+
+    <nav class="page-nav" aria-label="ناوبری درس">
+      <a href="02-closures.html">→ قبلی: Closures</a>
+      <a href="../index.html">فهرست درس‌ها</a>
+      <a href="04-classes.html">بعدی: Classes ←</a>
+    </nav>
+
+    <section class="lesson" id="call-apply-bind">
+      <h2>۳) متدهای call، apply و bind</h2>
+<p>در یک تابع معمولی، مقدار <code>this</code> موقع <strong>صدا زدن</strong> تعیین می‌شود (نه موقع نوشتن): در <code>obj.method()</code> مقدار this همان <code>obj</code> است. این سه متد به ما اجازه می‌دهند خودمان تعیین کنیم <code>this</code> داخل یک تابع چه چیزی باشد.</p>
+
+<table class="ref">
+<tr><th>متد</th><th>کار</th><th>اجرا می‌شود؟</th></tr>
+<tr><td><code>fn.call(obj, a, b)</code></td><td>this = obj، آرگومان‌ها جدا جدا</td><td>بله، همان لحظه</td></tr>
+<tr><td><code>fn.apply(obj, [a, b])</code></td><td>this = obj، آرگومان‌ها در یک آرایه</td><td>بله، همان لحظه</td></tr>
+<tr><td><code>fn.bind(obj, a)</code></td><td>یک تابع <strong>جدید</strong> با this ثابت می‌سازد</td><td>خیر؛ بعداً صدا می‌زنیم</td></tr>
+</table>
+
+<h3>call و apply</h3>
+
+<pre class="code"><code>function introduce(city, job) {
+  return `من ${this.name} هستم، از ${city}، ${job}.`;
+}
+
+const sara = { name: "سارا" };
+const ali = { name: "علی" };
+
+console.log(introduce.call(sara, "شیراز", "برنامه‌نویس"));   // من سارا هستم، از شیراز، برنامه‌نویس.
+console.log(introduce.apply(ali, ["تبریز", "طراح"]));        // من علی هستم، از تبریز، طراح.</code></pre>
+
+<p><code>call</code> تابع را صدا می‌زند و آرگومان اول را به‌عنوان <code>this</code> می‌گذارد. آرگومان‌های بعدی، آرگومان‌های خود تابع هستند. <code>apply</code> همین کار را می‌کند، با این فرق که آرگومان‌های تابع را در یک آرایه می‌گیرد. در هر دو خط، <code>this.name</code> از شیئی می‌آید که به <code>call</code> یا <code>apply</code> داده‌اید، نه از جایی که تابع نوشته شده است.</p>
+
+<div class="result">
+<pre class="console" id="out-1"></pre>
+</div>
+
+<h3>قرض گرفتن متد</h3>
+
+<pre class="code"><code>const person = {
+  fullName() { return this.first + " " + this.last; }
+};
+const user = { first: "مریم", last: "کریمی" };
+
+console.log(person.fullName.call(user));   // مریم کریمی</code></pre>
+
+<p>متد <code>fullName</code> روی <code>person</code> نوشته شده، ولی <code>call</code> آن را با <code>this</code> برابر <code>user</code> اجرا می‌کند. به همین دلیل <code>first</code> و <code>last</code> از <code>user</code> خوانده می‌شوند. این کار وقتی مفید است که یک متد را روی شیء دیگری که شکل مشابه دارد اجرا کنید.</p>
+
+<p class="tip">مثال معروف apply در گذشته: <code>Math.max.apply(null, [3, 9, 4])</code>. امروزه همین را با Spread ساده‌تر می‌نویسیم: <code>Math.max(...[3, 9, 4])</code>.</p>
+
+<div class="result">
+<pre class="console" id="out-2"></pre>
+</div>
+
+<h3>bind — مشکل گم شدن this</h3>
+
+<pre class="code"><code>const timer = {
+  seconds: 10,
+  show() { return "ثانیه: " + this.seconds; }
+};
+
+const lost = timer.show;               // متد از شیء جدا شد
+console.log(lost());                   // ثانیه: undefined ← this دیگر timer نیست
+
+const fixed = timer.show.bind(timer);  // this برای همیشه timer است
+console.log(fixed());                  // ثانیه: 10</code></pre>
+
+<p>ریختن متد در متغیر <code>lost</code> ارتباط آن را با <code>timer</code> قطع می‌کند و <code>this.seconds</code> دیگر آن شیء نیست. <code>bind</code> تابع تازه‌ای می‌سازد که <code>this</code> آن از قبل روی <code>timer</code> قفل شده است. برخلاف <code>call</code>، <code>bind</code> همان لحظه تابع را اجرا نمی‌کند.</p>
+
+<div class="result">
+<pre class="console" id="out-3"></pre>
+</div>
+
+<p class="tip">در اسکریپت معمولی، this در <code>lost()</code> شیء سراسری <code>window</code> است و چون <code>window.seconds</code> وجود ندارد، undefined چاپ می‌شود. در حالت strict (مثلاً داخل ماژول‌ها و کلاس‌ها) this برابر <code>undefined</code> است و همین خط خطای <code>TypeError: Cannot read properties of undefined</code> می‌دهد.</p>
+
+<h3>bind در رویدادها</h3>
+
+<pre class="code"><code>const player = {
+  name: "بازیکن ۱",
+  score: 0,
+  addPoint() {
+    this.score++;
+    scoreText.textContent = `${this.name}: ${this.score} امتیاز`;
+  }
+};
+
+// بدون bind، this داخل addPoint خود دکمه می‌شد
+pointBtn.addEventListener("click", player.addPoint.bind(player));</code></pre>
+
+<div class="result">
+<button class="btn" id="point-btn">امتیاز +۱</button>
+<p id="score-text" aria-live="polite">بازیکن ۱: 0 امتیاز</p>
+</div>
+
+<p class="tip">امروزه در بیشتر موارد به جای bind از تابع پیکانی استفاده می‌شود: <code>btn.addEventListener("click", () =&gt; player.addPoint())</code>.</p>
+
+<p class="mistake"><strong>اشتباه رایج:</strong> استفاده از bind، call یا apply برای تغییر this یک تابع پیکانی. تابع پیکانی this خودش را ندارد (this محیط بیرونی را استفاده می‌کند) و این سه متد this آن را عوض نمی‌کنند. به همین دلیل متدهای شیء را هم نباید پیکانی نوشت: <code>{ name: "سارا", hi: () =&gt; this.name }</code> اسم را برنمی‌گرداند.</p>
+
+<p class="mistake"><strong>اشتباه رایج:</strong> فرستادن متد به عنوان callback: <code>setTimeout(timer.show, 1000)</code>. متد از شیء جدا می‌شود و this گم می‌شود؛ بنویسید <code>setTimeout(() =&gt; timer.show(), 1000)</code> یا <code>setTimeout(timer.show.bind(timer), 1000)</code>.</p>
+
+<p class="exercise"><strong>تمرین:</strong> تابع معمولی <code>describe(prefix)</code> بنویسید که <code>prefix + this.title</code> برگرداند. دو شیء کتاب بسازید (مثلاً <code>{ title: "بوف کور" }</code> و <code>{ title: "کلیدر" }</code>). تابع را با call برای هر دو کتاب صدا بزنید، یک بار هم با apply، و سپس با bind نسخه‌ای به اسم <code>describeFirst</code> بسازید که همیشه برای کتاب اول کار کند.</p>
+    </section>
+
+    <nav class="page-nav" aria-label="ناوبری درس پایین">
+      <a href="02-closures.html">→ قبلی: Closures</a>
+      <a href="../index.html">فهرست درس‌ها</a>
+      <a href="04-classes.html">بعدی: Classes ←</a>
+    </nav>
+
+  </div>
+
+  <footer class="page-footer">
+    آموزش JavaScript سطح پیشرفته
+  </footer>
+
+</body>
+
+</html>

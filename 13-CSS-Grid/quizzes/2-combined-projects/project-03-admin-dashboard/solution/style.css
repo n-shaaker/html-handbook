@@ -1,0 +1,139 @@
+/* پروژه ۳ — داشبورد مدیریت (پاسخ) */
+
+body {
+  margin: 0;
+  font-family: Tahoma, sans-serif;
+  background-color: #f1f3f5;
+  color: #212529;
+}
+
+/* ---------- اسکلت صفحه با نقشه ناحیه‌ها ---------- */
+.dashboard {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  grid-template-rows: auto 1fr auto;
+  grid-template-areas:
+    "top    top"
+    "side   main"
+    "bottom bottom";
+  min-height: 100vh;
+}
+
+.top    { grid-area: top; }
+.side   { grid-area: side; }
+.main   { grid-area: main; }
+.bottom { grid-area: bottom; }
+
+.top {
+  background-color: #364fc7;
+  color: white;
+  padding: 15px 20px;
+}
+
+/* منوی کناری: لینک‌ها زیر هم، از بالا */
+.side {
+  display: grid;
+  gap: 6px;
+  align-content: start;
+  background-color: #dbe4ff;
+  padding: 15px;
+}
+
+.side a {
+  color: #212529;
+  text-decoration: none;
+  padding: 8px 10px;
+  border-radius: 6px;
+}
+
+.side a:hover,
+.side a:focus-visible,
+.side a.active {
+  background-color: white;
+}
+
+.main {
+  padding: 20px;
+}
+
+.main h1 {
+  margin-top: 0;
+}
+
+.bottom {
+  background-color: #343a40;
+  color: white;
+  text-align: center;
+  padding: 10px;
+}
+
+/* ---------- کارت‌های آمار: چهار ستون مساوی ---------- */
+.stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 15px;
+}
+
+.stat {
+  background-color: white;
+  border-top: 4px solid #4c6ef5;
+  border-radius: 6px;
+  padding: 15px;
+  font-size: 13px;
+}
+
+.stat strong {
+  display: block;
+  font-size: 24px;
+}
+
+/* ---------- پنل‌ها: نمودار بزرگ ۲×۲ ---------- */
+.panels {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-auto-rows: minmax(140px, auto);
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.panel {
+  background-color: white;
+  border-radius: 6px;
+  padding: 15px;
+}
+
+.panel h2 {
+  margin-top: 0;
+  font-size: 17px;
+}
+
+.chart {
+  grid-column: span 2;
+  grid-row: span 2;
+  background-color: #edf2ff;
+}
+
+/* ---------- گوشی و تبلت ---------- */
+@media (max-width: 700px) {
+  .dashboard {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "top"
+      "side"
+      "main"
+      "bottom";
+  }
+
+  .stats {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .panels {
+    grid-template-columns: 1fr;
+  }
+
+  .chart {
+    grid-column: auto;
+    grid-row: auto;
+  }
+}

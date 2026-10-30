@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Display و Position</title>
+    <style>
+      body {
+        font-family: Tahoma, "Segoe UI", sans-serif;
+        padding: 2rem;
+      }
+
+      .block {
+        display: block;
+        background: #fee2e2;
+        margin-bottom: 0.5rem;
+        padding: 0.5rem;
+      }
+
+      .inline {
+        display: inline;
+        background: #dcfce7;
+        padding: 0.25rem 0.4rem;
+      }
+
+      .inline-block {
+        display: inline-block;
+        width: 120px;
+        background: #dbeafe;
+        padding: 0.5rem;
+        margin-left: 0.5rem;
+      }
+
+      .hidden {
+        display: none;
+      }
+
+      .parent {
+        position: relative;
+        height: 140px;
+        margin-top: 2rem;
+        background: #f8fafc;
+        border: 1px dashed #94a3b8;
+      }
+
+      /* Absolute children are positioned against the nearest positioned ancestor */
+      .badge {
+        position: absolute;
+        top: 0.75rem;
+        /* Logical property: right side in RTL, left side in LTR */
+        inset-inline-start: 0.75rem;
+        background: #dc2626;
+        color: #fff;
+        padding: 0.25rem 0.5rem;
+        border-radius: 999px;
+        font-size: 0.85rem;
+      }
+
+      .relative-shift {
+        position: relative;
+        top: 0.5rem;
+        background: #fef9c3;
+        padding: 0.5rem;
+      }
+
+      /* Sticky: behaves like relative until it reaches top: 0, then sticks */
+      .sticky-bar {
+        position: sticky;
+        top: 0;
+        background: #0f172a;
+        color: #fff;
+        padding: 0.5rem 1rem;
+      }
+
+      .scroll-box {
+        height: 160px;
+        overflow: auto;
+        border: 1px solid #94a3b8;
+        margin-top: 1rem;
+      }
+
+      .scroll-box p {
+        padding: 0 1rem;
+      }
+
+      /* Fixed: positioned against the viewport, stays put while scrolling */
+      .fixed-help {
+        position: fixed;
+        bottom: 1rem;
+        inset-inline-end: 1rem;
+        background: #2563eb;
+        color: #fff;
+        padding: 0.5rem 0.9rem;
+        border-radius: 999px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Display</h1>
+    <p>
+      ویژگی <code>display</code> تعیین می‌کند عنصر در جریان صفحه چطور جا بگیرد.
+      جریان صفحه همان ترتیب طبیعی عنصرها از بالا به پایین است. سه مقدار پرکاربرد
+      را در نمونه‌های زیر با هم مقایسه کنید.
+    </p>
+    <div class="block">
+      عنصر block تمام عرض موجود والد را می‌گیرد و عنصر بعدی را به خط بعد می‌فرستد.
+      عنوان‌ها و پاراگراف‌ها به‌طور پیش‌فرض همین رفتار را دارند و می‌توانید به آن‌ها
+      عرض و ارتفاع بدهید.
+    </div>
+    <p>
+      عنصر inline در همان خط متن می‌نشیند، مثل این دو نمونه. عرض و ارتفاع و
+      مارجین عمودی روی آن اثری ندارد، چون مرورگر آن را بخشی از خط متن حساب می‌کند.
+    </p>
+    <span class="inline">نمونهٔ اینلاین اول</span>
+    <span class="inline">نمونهٔ اینلاین دوم</span>
+    <p>
+      <span class="inline-block">inline-block در جریان متن می‌ماند</span>
+      <span class="inline-block">اما عرض تعیین‌شده را نگه می‌دارد</span>
+    </p>
+    <p>
+      مقدار <code>inline-block</code> عنصر را مثل کلمه در خط قرار می‌دهد، ولی برخلاف
+      <code>inline</code> به عرض و ارتفاع احترام می‌گذارد. دو جعبهٔ آبی بالا هر کدام
+      ۱۲۰ پیکسل پهنا دارند و هنوز کنار هم‌اند.
+    </p>
+    <p class="hidden">این متن display: none دارد</p>
+    <p>
+      یک پاراگراف با <code>display: none</code> همین‌جا در سند هست، اما مرورگر آن را
+      کاملاً از چیدمان حذف کرده است و جایش هم خالی نمانده. این با
+      <code>visibility: hidden</code> فرق دارد؛ در آن حالت عنصر دیده نمی‌شود ولی
+      فضای خودش را همچنان اشغال می‌کند.
+    </p>
+
+    <h2>Position</h2>
+    <p>
+      ویژگی <code>position</code> مرجع جابه‌جایی عنصر را عوض می‌کند.
+      <code>top</code>، <code>right</code>، <code>bottom</code> و <code>left</code>
+      فقط وقتی اثر دارند که مقدار position چیزی غیر از <code>static</code> (پیش‌فرض)
+      باشد.
+    </p>
+    <div class="parent">
+      <span class="badge">حراج</span>
+      <p style="padding: 1rem">
+        والد این جعبه <code>position: relative</code> است، پس جای اولیه‌اش در صفحه
+        حفظ می‌شود و مرجع فرزندان مطلق می‌گردد. نشان «حراج»
+        <code>position: absolute</code> است و از جریان صفحه خارج شده؛ به همین دلیل
+        روی متن می‌افتد و نسبت به همین والد، نه کل صفحه، در گوشه قرار گرفته است.
+      </p>
+    </div>
+
+    <h3>relative</h3>
+    <p class="relative-shift">
+      این عنصر <code>position: relative</code> و <code>top: 0.5rem</code> دارد، پس
+      نسبت به جای اصلی خودش کمی پایین‌تر رسم می‌شود. جای اولیه‌اش در جریان صفحه
+      خالی می‌ماند و عنصر بعدی منتظر همان جای خالی می‌ماند.
+    </p>
+
+    <h3>sticky</h3>
+    <p>
+      عنصر sticky تا وقتی به آستانه نرسیده مثل relative رفتار می‌کند. همین که هنگام
+      اسکرول به <code>top: 0</code> برسد، به لبه می‌چسبد. داخل جعبهٔ زیر اسکرول کنید
+      تا نوار تیره بالا بماند. اگر <code>top</code> را ننویسید، یا یکی از والدها
+      <code>overflow: hidden</code> داشته باشد، چسبیدن اتفاق نمی‌افتد.
+    </p>
+    <div class="scroll-box">
+      <div class="sticky-bar">نوار sticky — داخل این جعبه اسکرول کنید</div>
+      <p>خط ۱ از متن بلند، تا اسکرول ممکن شود.</p>
+      <p>خط ۲ نشان می‌دهد محتوا از زیر نوار رد می‌شود.</p>
+      <p>خط ۳</p>
+      <p>خط ۴</p>
+      <p>خط ۵</p>
+      <p>خط ۶</p>
+      <p>خط ۷ هنوز داخل همین جعبه است، نه کل صفحه.</p>
+    </div>
+
+    <h3>fixed</h3>
+    <p>
+      عنصر fixed نسبت به پنجرهٔ مرورگر (viewport) سنجیده می‌شود و با اسکرول صفحه
+      تکان نمی‌خورد. دکمهٔ «پشتیبانی» گوشهٔ پنجره به همین دلیل سر جایش مانده است.
+      چون از جریان صفحه خارج می‌شود، ممکن است روی محتوا بیفتد و باید برایش در
+      چیدمان جا در نظر بگیرید.
+    </p>
+    <a class="fixed-help" href="mailto:support@example.com">پشتیبانی</a>
+  </body>
+</html>

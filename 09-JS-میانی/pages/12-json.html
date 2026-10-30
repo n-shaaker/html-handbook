@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>۱۲) قالب JSON | آموزش JavaScript سطح میانی</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <script src="../js/log.js" defer></script>
+  <script src="../js/demos/json.js" defer></script>
+</head>
+
+<body>
+
+  <header class="page-header" id="top">
+    <h1>آموزش JavaScript — سطح میانی</h1>
+    <p>۱۲) قالب JSON</p>
+  </header>
+
+  <div class="container">
+
+    <nav class="page-nav" aria-label="ناوبری درس">
+      <a href="11-destructuring-spread.html">→ قبلی: Destructuring</a>
+      <a href="../index.html">فهرست درس‌ها</a>
+      <a href="13-errors.html">بعدی: Errors ←</a>
+    </nav>
+
+    <section class="lesson" id="json">
+      <h2>۱۲) قالب JSON</h2>
+<p>JSON (جِی‌سان) یک قالب <strong>متنی</strong> برای ذخیره و جابه‌جایی داده است. سرورها معمولاً داده را به شکل JSON می‌فرستند. ظاهرش شبیه شیء JavaScript است ولی چند قانون سخت‌تر دارد.</p>
+
+<pre class="code"><code>{
+  "name": "سارا",
+  "age": 25,
+  "skills": ["HTML", "CSS", "JS"],
+  "isStudent": true,
+  "address": { "city": "تهران" }
+}</code></pre>
+
+<table class="ref">
+<tr><th>قانون JSON</th><th>درست</th><th>غلط</th></tr>
+<tr><td>کلیدها حتماً با گیومه دوتایی</td><td><code>"name": 1</code></td><td><code>name: 1</code></td></tr>
+<tr><td>رشته‌ها فقط با گیومه دوتایی</td><td><code>"سارا"</code></td><td><code>'سارا'</code></td></tr>
+<tr><td>بدون کامای آخر</td><td><code>[1, 2]</code></td><td><code>[1, 2,]</code></td></tr>
+<tr><td>تابع، <code>undefined</code>، <code>NaN</code> و توضیح (comment) ممنوع</td><td><code>null</code></td><td><code>function</code>، <code>undefined</code>، <code>//</code></td></tr>
+</table>
+
+<p>مقدارهای مجاز در JSON فقط این‌ها هستند: رشته، عدد، <code>true</code>/<code>false</code>، <code>null</code>، آرایه و شیء.</p>
+
+<h3>JSON.stringify — شیء به متن</h3>
+
+<pre class="code"><code>const user = { name: "علی", age: 30, skills: ["JS", "React"] };
+
+const text = JSON.stringify(user);
+console.log(text);
+console.log(typeof text);
+
+console.log(JSON.stringify(user, null, 2));   // مرتب و خوانا با ۲ فاصله</code></pre>
+
+<p><code>JSON.stringify</code> شیء را به متن JSON تبدیل می‌کند. نتیجه از نوع رشته است، حتی اگر شبیه شیء به نظر برسد. آرگومان دوم برای فیلتر کردن ویژگی‌هاست و اینجا <code>null</code> یعنی همهٔ ویژگی‌های قابل‌تبدیل بمانند. آرگومان سوم، اگر عدد باشد، متن را با همان تعداد فاصله توگذاری می‌کند تا خواندن فایل راحت‌تر شود.</p>
+
+<div class="result">
+<pre class="console" id="out-1"></pre>
+</div>
+
+<h3>JSON.parse — متن به شیء</h3>
+
+<pre class="code"><code>const json = '{"title":"کتاب JS","price":250000,"tags":["آموزش","برنامه‌نویسی"]}';
+
+const book = JSON.parse(json);
+console.log(book.title);     // کتاب JS
+console.log(book.tags[1]);   // برنامه‌نویسی
+console.log(typeof book);    // object</code></pre>
+
+<p><code>JSON.parse</code> متن JSON را به مقدار JavaScript برمی‌گرداند. بعد از تبدیل، <code>book.title</code> یک ویژگی واقعی است و <code>book.tags</code> آرایه. اگر متن قانون JSON را نقض کند، این تابع خطا می‌دهد و اجرا همان‌جا متوقف می‌شود، مگر اینکه خطا را با <code>try</code> بگیرید.</p>
+
+<div class="result">
+<pre class="console" id="out-2"></pre>
+</div>
+
+<h3>چه چیزهایی در stringify گم یا عوض می‌شوند؟</h3>
+
+<pre class="code"><code>const order = {
+  id: 15,
+  note: undefined,                       // حذف می‌شود
+  print: function () { return "..."; },  // حذف می‌شود
+  createdAt: new Date("2026-03-21T08:30:00Z"),  // به رشته تبدیل می‌شود
+  discount: NaN                          // null می‌شود
+};
+
+const saved = JSON.stringify(order);
+console.log(saved);
+// {"id":15,"createdAt":"2026-03-21T08:30:00.000Z","discount":null}
+
+const restored = JSON.parse(saved);
+console.log(typeof restored.createdAt);  // string ← دیگر Date نیست!
+console.log(new Date(restored.createdAt).getFullYear());   // 2026 ← دوباره Date ساختیم</code></pre>
+
+<p>تابع‌ها و مقدار <code>undefined</code> در JSON جایی ندارند و هنگام تبدیل حذف می‌شوند. تاریخ به رشتهٔ استاندارد زمان تبدیل می‌شود و بعد از <code>parse</code> دیگر شیء <code>Date</code> نیست، مگر اینکه خودتان دوباره <code>new Date</code> بسازید. <code>NaN</code> به <code>null</code> تبدیل می‌شود. این تفاوت‌ها وقتی مهم می‌شوند که داده را ذخیره کنید و بعد انتظار نوع اولیه را داشته باشید.</p>
+
+<div class="result">
+<pre class="console" id="out-3"></pre>
+</div>
+
+<p class="tip">بعد از <code>JSON.parse</code> تاریخ‌ها به شکل رشته برمی‌گردند (مثل <code>"2026-03-21T08:30:00.000Z"</code> که همیشه به وقت UTC است)؛ اگر لازم دارید، دوباره با <code>new Date(...)</code> به Date تبدیلشان کنید.</p>
+
+<h3>مثال زنده: بررسی‌کننده JSON</h3>
+
+<pre class="code"><code>const editor = document.getElementById("json-editor");
+const checkBtn = document.getElementById("json-btn");
+const output = document.getElementById("json-out");
+
+checkBtn.addEventListener("click", () =&gt; {
+  try {
+    const data = JSON.parse(editor.value);
+    output.textContent = "✔ JSON درست است:\n" + JSON.stringify(data, null, 2);
+  } catch (err) {
+    output.textContent = "✖ خطا: " + err.message;
+  }
+});</code></pre>
+
+<p>با کلیک، متن داخل ویرایشگر به <code>JSON.parse</code> داده می‌شود. اگر متن معتبر باشد، دوباره با <code>stringify</code> مرتب می‌شود تا کاربر ساختار را ببیند. اگر گیومه، کاما یا نوع مقدار غلط باشد، <code>parse</code> خطا پرتاب می‌کند و شاخهٔ <code>catch</code> فقط پیام خطا را نشان می‌دهد تا بقیهٔ صفحه از کار نیفتد.</p>
+
+<div class="result">
+<label for="json-editor">متن JSON را اینجا بنویسید یا ویرایش کنید:</label><br>
+<textarea id="json-editor" rows="5" cols="50" dir="ltr">{"name": "مریم", "age": 28, "langs": ["fa", "en"]}</textarea>
+<br><button type="button" class="btn" id="json-btn">بررسی</button>
+<pre class="console" id="json-out" aria-live="polite"></pre>
+</div>
+
+<p class="tip">برای امتحان، یکی از قانون‌های جدول را بشکنید: گیومه دور <code>name</code> را بردارید، به جای <code>"</code> از <code>'</code> استفاده کنید یا بعد از آخرین عضو کاما بگذارید و دوباره «بررسی» را بزنید. <code>JSON.parse</code> با متن نامعتبر خطای <code>SyntaxError</code> می‌دهد؛ برای همین همیشه آن را داخل <code>try...catch</code> (درس بعد) می‌نویسیم.</p>
+
+<p class="tip">کاربرد مهم دیگر: ذخیره آرایه و شیء در <code>localStorage</code> که فقط متن قبول می‌کند (در دوره پیشرفته).</p>
+
+<p class="mistake"><strong>اشتباه رایج:</strong> دادن شیء به <code>JSON.parse</code> یا فراموش کردن parse. <code>JSON.parse</code> ورودی <strong>متنی</strong> می‌گیرد و <code>JSON.stringify</code> خروجی <strong>متنی</strong> می‌دهد؛ مثلاً <code>text.name</code> روی رشته JSON مقدار <code>undefined</code> می‌دهد تا وقتی آن را parse نکرده‌اید.</p>
+
+<p class="exercise"><strong>تمرین:</strong> آرایه‌ای از ۳ شیء محصول (<code>name</code>، <code>price</code>، <code>inStock</code>) بسازید، با <code>JSON.stringify(products, null, 2)</code> به متن خوانا تبدیل و چاپ کنید، نوع (<code>typeof</code>) و طول متن را چاپ کنید، سپس با parse به آرایه برگردانید و نام محصول دوم را چاپ کنید. در آخر متن <code>'{name: "کتاب"}'</code> را parse کنید و خطا را با try...catch بگیرید و پیامش را نشان دهید.</p>
+    </section>
+
+    <nav class="page-nav" aria-label="ناوبری درس پایین">
+      <a href="11-destructuring-spread.html">→ قبلی: Destructuring</a>
+      <a href="../index.html">فهرست درس‌ها</a>
+      <a href="13-errors.html">بعدی: Errors ←</a>
+    </nav>
+
+  </div>
+
+  <footer class="page-footer">
+    آموزش JavaScript سطح میانی
+  </footer>
+
+</body>
+
+</html>

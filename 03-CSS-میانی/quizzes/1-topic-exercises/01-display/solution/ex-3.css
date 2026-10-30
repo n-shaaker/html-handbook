@@ -1,0 +1,25 @@
+body {
+  font-family: Tahoma, Arial, sans-serif;
+  line-height: 1.8;
+  padding: 24px;
+}
+
+.notice {
+  margin-bottom: 12px;
+  padding: 16px;
+  border-radius: 6px;
+  background-color: #fff4d6;
+  border: 1px solid #f0a500;
+}
+
+/*
+  display: none     → عنصر و جایش کامل حذف می‌شود.
+  visibility: hidden → عنصر دیده نمی‌شود، ولی جایش خالی می‌ماند.
+*/
+.nowruz-sale {
+  display: none;
+}
+
+.summer-festival {
+  visibility: hidden;
+}

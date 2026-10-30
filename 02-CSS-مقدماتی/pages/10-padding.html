@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>۱۰) فاصله داخلی (Padding) | آموزش CSS از صفر</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/demos/padding.css">
+</head>
+
+<body>
+
+  <header class="page-header">
+    <h1>آموزش CSS از صفر</h1>
+    <p>۱۰) فاصله داخلی (Padding)</p>
+  </header>
+
+  <div class="container">
+
+    <nav class="page-nav" aria-label="ناوبری درس">
+      <a href="09-margins.html">→ قبلی: Margins</a>
+      <a href="../index.html">فهرست درس‌ها</a>
+      <a href="11-size.html">بعدی: واحدها (px/em/rem) ←</a>
+    </nav>
+
+    <section class="lesson" id="padding">
+      <h2>۱۰) فاصله داخلی (Padding)</h2>
+      <p>
+        <code>padding</code> فاصله <strong>داخل</strong> حاشیه است؛ یعنی فضای بین محتوا و لبه جعبه.
+        این فضا جزو خود عنصر است و رنگ پس‌زمینه عنصر را می‌گیرد. ترتیب چند مقدار دقیقاً مثل <code>margin</code> است: از بالا در جهت عقربه‌های ساعت.
+        برخلاف margin، padding نمی‌تواند منفی باشد.
+      </p>
+      <pre class="code"><code>.notice       { background-color: #d8ecff; }
+.notice-tight { padding: 5px; }
+.notice-roomy { padding: 25px 40px; }   /* بالا و پایین ۲۵ ، راست و چپ ۴۰ */</code></pre>
+      <div class="result">
+        <div class="notice notice-tight">padding کم: متن به لبه کادر چسبیده و شلوغ به نظر می‌رسد.</div>
+        <div class="notice notice-roomy">padding زیاد: متن فضای تنفس دارد و خواناتر است.</div>
+      </div>
+
+      <p class="tip">
+        فرق ساده: <strong>padding</strong> داخل جعبه است و رنگ پس‌زمینه جعبه را می‌گیرد، ولی <strong>margin</strong> بیرون
+        حاشیه و همیشه شفاف است. قاعده سرانگشتی: فاصله متن تا لبه خود جعبه = padding؛ فاصله جعبه تا جعبه‌های دیگر = margin.
+      </p>
+
+      <h3>کاربرد واقعی: دکمه</h3>
+      <p>اندازه یک دکمه خوب بیشتر از padding می‌آید، نه از width و height ثابت؛ این‌طوری با هر متنی درست اندازه می‌شود:</p>
+      <pre class="code"><code>.btn {
+  display: inline-block;       /* تا padding بالا و پایین درست اعمال شود */
+  padding: 10px 24px;          /* بالا و پایین ۱۰ ، راست و چپ ۲۴ */
+  background-color: #1a5fb4;
+  color: white;
+  text-decoration: none;
+  border-radius: 6px;
+}</code></pre>
+      <div class="result">
+        <a class="btn" href="#padding">افزودن به سبد خرید</a>
+        <a class="btn" href="#padding">خرید</a>
+      </div>
+      <p>
+        هر دو دکمه padding یکسان دارند، ولی عرضشان با طول متن تنظیم شده است.
+        <code>display: inline-block</code> را در دوره میانی کامل می‌خوانید؛ فعلاً بدانید لینک‌ها به طور پیش‌فرض
+        «درون‌خطی» هستند و بدون آن، padding بالا و پایین روی خط‌های دیگر می‌افتد.
+      </p>
+
+      <table class="ref">
+        <thead>
+          <tr>
+            <th>نوشتن</th>
+            <th>معنی</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>padding-top</code> ، <code>padding-bottom</code></td>
+            <td>فاصله داخلی بالا و پایین</td>
+          </tr>
+          <tr>
+            <td><code>padding-right</code> ، <code>padding-left</code></td>
+            <td>فاصله داخلی راست و چپ (فیزیکی)</td>
+          </tr>
+          <tr>
+            <td><code>padding-inline-start</code> ، <code>padding-inline-end</code></td>
+            <td>لبه شروع و پایان متن؛ در صفحه فارسی به ترتیب راست و چپ (منطقی)</td>
+          </tr>
+          <tr>
+            <td><code>padding-inline: 24px;</code> ، <code>padding-block: 10px;</code></td>
+            <td>خلاصه دو طرف افقی (inline) یا دو طرف عمودی (block)</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p class="mistake">
+        <strong>اشتباه رایج:</strong>
+        فراموش کردن اینکه padding به اندازه جعبه <strong>اضافه</strong> می‌شود: جعبه‌ای با <code>width: 100%</code> و
+        <code>padding: 20px</code> از والدش بیرون می‌زند، مگر اینکه <code>box-sizing: border-box</code> داشته باشد (درس ۱۲).
+        <br>
+        padding نمی‌تواند منفی باشد (برخلاف margin). اگر به درصد بنویسید (مثل <code>padding: 5%</code>)، درصد همیشه از
+        <strong>عرض</strong> والد حساب می‌شود، حتی برای padding بالا و پایین.
+      </p>
+
+      <p class="exercise">
+        <strong>تمرین:</strong> دو دکمه بسازید: «ثبت‌نام» با <code>padding: 12px 32px</code> و پس‌زمینه سبز، و «انصراف» با
+        <code>padding: 12px 20px</code> و پس‌زمینه خاکستری روشن. بعد متن یکی را طولانی کنید و ببینید عرض دکمه چطور تغییر می‌کند.
+      </p>
+    </section>
+
+
+    <nav class="page-nav" aria-label="ناوبری درس پایین">
+      <a href="09-margins.html">→ قبلی: Margins</a>
+      <a href="../index.html">فهرست درس‌ها</a>
+      <a href="11-size.html">بعدی: واحدها (px/em/rem) ←</a>
+    </nav>
+
+  </div>
+
+  <footer class="page-footer">
+    آموزش CSS از صفر
+  </footer>
+
+</body>
+
+</html>

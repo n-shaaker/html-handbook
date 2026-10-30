@@ -1,0 +1,35 @@
+/* ۱۷) Lists */
+
+.l-square  { list-style-type: square; }
+.l-circle  { list-style-type: circle; }
+.l-persian { list-style-type: persian; }
+
+/* علامت رنگی */
+.features li::marker {
+  color: #0b6e4f;
+  font-weight: bold;
+}
+
+/* منوی ساخته‌شده از فهرست */
+.menu {
+  list-style-type: none;
+  padding: 0;
+}
+
+.menu li {
+  background-color: #e8f4fd;
+  border-right: 4px solid #1a5fb4;
+  margin-bottom: 6px;
+}
+
+.menu a {
+  display: block;
+  padding: 6px 10px;
+  color: #1a3a5c;
+  text-decoration: none;
+}
+
+.menu a:hover,
+.menu a:focus-visible {
+  background-color: #d0e7fb;
+}

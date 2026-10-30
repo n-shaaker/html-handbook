@@ -1,0 +1,22 @@
+/* تمرین ۲ — کارت‌های محصولِ له‌شده (نسخه خراب — درستش کنید) */
+
+body {
+  font-family: Tahoma, sans-serif;
+  margin: 20px;
+  background-color: #f8f9fa;
+  color: #212529;
+}
+
+.products {
+  display: flex;
+  flex-wrap: nowrap;
+}
+
+.product {
+  width: 200px;
+  background-color: white;
+  border: 1px solid #dee2e6;
+  border-radius: 8px;
+  padding: 10px;
+  margin: 5px;
+}

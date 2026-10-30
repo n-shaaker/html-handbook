@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>۵) تراز در محور فرعی (align-items) | آموزش Flexbox</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/demos/align-items.css">
+</head>
+
+<body>
+
+  <header class="page-header">
+    <h1>آموزش Flexbox — چیدمان انعطاف‌پذیر</h1>
+    <p>۵) تراز در محور فرعی (align-items)</p>
+  </header>
+
+  <div class="container">
+
+    <nav class="page-nav" aria-label="ناوبری درس">
+      <a href="04-justify-content.html">→ قبلی: justify-content</a>
+      <a href="../index.html">فهرست درس‌ها</a>
+      <a href="06-align-content.html">بعدی: align-content ←</a>
+    </nav>
+
+    <section class="lesson" id="align-items">
+      <h2>۵) تراز در محور فرعی (align-items)</h2>
+      <p>
+        <code>justify-content</code> آیتم‌ها را در محور اصلی جابه‌جا می‌کرد؛ <code>align-items</code> (روی پدر) همین کار را در <strong>محور فرعی</strong> انجام می‌دهد.
+        در حالت <code>row</code> محور فرعی عمودی است، پس <code>align-items</code> می‌گوید آیتم‌ها بالا باشند، پایین، وسط یا تمام ارتفاع را بگیرند.
+        برای اینکه تفاوت دیده شود، ظرف‌ها ارتفاع ۱۲۰ پیکسل دارند و جعبه‌ها متن‌های با طول متفاوت.
+      </p>
+
+      <h3>مثال ۱: <code>stretch</code> (پیش‌فرض)</h3>
+      <p>آیتم‌هایی که ارتفاع ثابت ندارند، کش می‌آیند تا تمام ارتفاع ظرف را بگیرند. راز «ستون‌های هم‌قد» در Flexbox همین است:</p>
+      <pre class="code"><code>.parent {
+  display: flex;
+  align-items: stretch;
+  height: 120px;
+}</code></pre>
+      <div class="result demo-align-items">
+        <div class="parent stretch">
+          <div class="box b1">۱</div>
+          <div class="box b2">۲<br>دو خط</div>
+          <div class="box b3">۳<br>سه<br>خط</div>
+        </div>
+      </div>
+
+      <h3>مثال ۲: <code>flex-start</code></h3>
+      <p>آیتم‌ها به بالای ظرف (شروع محور فرعی) می‌چسبند و فقط به اندازه محتوایشان بلند هستند:</p>
+      <pre class="code"><code>.parent {
+  display: flex;
+  align-items: flex-start;
+}</code></pre>
+      <div class="result demo-align-items">
+        <div class="parent start">
+          <div class="box b1">۱</div>
+          <div class="box b2">۲<br>دو خط</div>
+          <div class="box b3">۳<br>سه<br>خط</div>
+        </div>
+      </div>
+
+      <h3>مثال ۳: <code>flex-end</code></h3>
+      <pre class="code"><code>.parent {
+  display: flex;
+  align-items: flex-end;
+}</code></pre>
+      <div class="result demo-align-items">
+        <div class="parent end">
+          <div class="box b1">۱</div>
+          <div class="box b2">۲<br>دو خط</div>
+          <div class="box b3">۳<br>سه<br>خط</div>
+        </div>
+      </div>
+
+      <h3>مثال ۴: <code>center</code></h3>
+      <p>
+        <code>align-items: center</code> آیتم‌ها را در محور فرعی وسط ظرف می‌گذارد. در حالت <code>row</code> این محور عمودی است، پس آیتم‌ها وسط ارتفاع می‌ایستند و دیگر تا بالا و پایین ظرف کش نمی‌آیند.
+        این همان وسط‌چین عمودی است که قبلاً با ترفندهای ارتفاع و حاشیه‌گذاری ساخته می‌شد.
+      </p>
+      <pre class="code"><code>.parent {
+  display: flex;
+  align-items: center;
+}</code></pre>
+      <div class="result demo-align-items">
+        <div class="parent center">
+          <div class="box b1">۱</div>
+          <div class="box b2">۲<br>دو خط</div>
+          <div class="box b3">۳<br>سه<br>خط</div>
+        </div>
+      </div>
+
+      <h3>مثال ۵: <code>baseline</code></h3>
+      <p>
+        آیتم‌ها طوری تراز می‌شوند که <strong>خط زیر متن</strong> اولین سطرشان یکی باشد، حتی اگر اندازه فونت فرق کند.
+        مثلاً قیمت درشت و واحد پول ریز در کارت محصول:
+      </p>
+      <pre class="code"><code>.parent {
+  display: flex;
+  align-items: baseline;
+}</code></pre>
+      <div class="result demo-align-items">
+        <p class="label">با <code>center</code> (متن‌ها هم‌خط نیستند):</p>
+        <div class="price-row center-price">
+          <span class="big">۲۴۰</span>
+          <span class="mid">هزار</span>
+          <span class="small">تومان</span>
+        </div>
+        <p class="label">با <code>baseline</code> (پایه متن‌ها یکی است):</p>
+        <div class="price-row baseline">
+          <span class="big">۲۴۰</span>
+          <span class="mid">هزار</span>
+          <span class="small">تومان</span>
+        </div>
+      </div>
+
+      <h3>مثال ۶: ترکیب با <code>justify-content</code> — وسط کامل</h3>
+      <p>با هم گذاشتن دو ویژگی، آیتم دقیقاً وسط ظرف می‌نشیند:</p>
+      <pre class="code"><code>.parent {
+  display: flex;
+  justify-content: center;   /* محور اصلی (افقی) */
+  align-items: center;       /* محور فرعی (عمودی) */
+  height: 120px;
+}</code></pre>
+      <div class="result demo-align-items">
+        <div class="parent full-center">
+          <div class="box b4">فروشگاه باز است</div>
+        </div>
+      </div>
+
+      <p class="mistake">
+        <strong>اشتباه رایج:</strong>
+        <code>align-items: center</code> می‌نویسیم ولی هیچ چیزی جابه‌جا نمی‌شود. دلیلش این است که ظرف <strong>ارتفاع اضافه</strong> ندارد؛
+        ارتفاع ظرف دقیقاً اندازه بلندترین آیتم است و جایی برای جابه‌جایی نیست. به ظرف <code>height</code> یا <code>min-height</code> بدهید.
+      </p>
+
+      <p class="mistake">
+        <strong>اشتباه رایج:</strong>
+        به آیتم‌ها <code>height</code> ثابت می‌دهیم و بعد می‌پرسیم چرا <code>stretch</code> کار نمی‌کند.
+        <code>stretch</code> فقط روی آیتم‌هایی اثر دارد که اندازه‌شان در محور فرعی <code>auto</code> باشد.
+      </p>
+
+      <table class="ref">
+        <tr>
+          <th>مقدار</th>
+          <th>رفتار (در حالت row)</th>
+        </tr>
+        <tr>
+          <td><code>stretch</code></td>
+          <td>تمام ارتفاع ظرف را می‌گیرند (پیش‌فرض)</td>
+        </tr>
+        <tr>
+          <td><code>flex-start</code></td>
+          <td>آیتم‌ها به لبهٔ بالای ظرف می‌چسبند و ارتفاعشان فقط به اندازهٔ محتوا می‌ماند.</td>
+        </tr>
+        <tr>
+          <td><code>flex-end</code></td>
+          <td>آیتم‌ها به لبهٔ پایین ظرف می‌چسبند و بالای آن‌ها خالی می‌ماند.</td>
+        </tr>
+        <tr>
+          <td><code>center</code></td>
+          <td>هر آیتم در وسط ارتفاع ظرف قرار می‌گیرد، بدون اینکه کش بیاید.</td>
+        </tr>
+        <tr>
+          <td><code>baseline</code></td>
+          <td>خط پایهٔ سطر اول متن‌ها روی یک خط افقی قرار می‌گیرد، حتی اگر اندازهٔ فونت آیتم‌ها فرق کند.</td>
+        </tr>
+      </table>
+
+      <p class="tip">
+        نام‌ها جهت را لو می‌دهند، به شرطی که اول بدانید کدام محور اصلی است.
+        <code>justify-content</code> همیشه فضای محور اصلی را تقسیم می‌کند؛ همان محوری که <code>flex-direction</code> ساخته است.
+        <code>align-items</code> آیتم‌ها را در محور فرعی، یعنی عمود بر همان جهت، تراز می‌کند. اگر جهت <code>column</code> شود، این دو نقش جایشان عوض می‌شود.
+      </p>
+
+      <p class="exercise">
+        <strong>تمرین:</strong> یک «نوار اطلاع‌رسانی» برای یک آموزشگاه به ارتفاع ۸۰ پیکسل بسازید که داخلش یک آیکون بزرگ (مثلاً 📢)، یک متن و یک دکمه کوچک باشد.
+        هر سه را عمودی وسط کنید. بعد <code>baseline</code> را امتحان کنید و تفاوت را توضیح دهید.
+      </p>
+    </section>
+
+    <nav class="page-nav" aria-label="ناوبری درس پایین">
+      <a href="04-justify-content.html">→ قبلی: justify-content</a>
+      <a href="../index.html">فهرست درس‌ها</a>
+      <a href="06-align-content.html">بعدی: align-content ←</a>
+    </nav>
+
+  </div>
+
+  <footer class="page-footer">
+    آموزش Flexbox
+  </footer>
+
+</body>
+
+</html>

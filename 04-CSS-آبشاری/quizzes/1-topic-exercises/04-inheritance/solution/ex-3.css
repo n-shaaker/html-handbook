@@ -1,0 +1,42 @@
+h2 {
+  border-bottom: 2px solid #dee2e6;
+  padding-bottom: 4px;
+}
+
+.promo {
+  padding: 16px;
+  color: #5f3dc4;
+  text-align: center;
+  border: 2px solid currentColor;
+}
+
+.promo p {
+  color: #333333;
+}
+
+/* border ارثی نیست، پس unset مثل initial عمل می‌کند: بدون کادر */
+.promo h2 {
+  border-bottom: unset;
+}
+
+/* initial برای text-align یعنی start؛ در صفحه rtl همان راست‌چین */
+.rules {
+  text-align: initial;
+}
+
+/* color ارثی است، پس unset مثل inherit عمل می‌کند: رنگ بنفش .promo */
+.promo .brand-note {
+  color: unset;
+}
+
+.site-footer {
+  margin-top: 24px;
+  padding: 12px;
+  background-color: #212529;
+  color: #f1f3f5;
+}
+
+/* لینک‌ها رنگ آبی مرورگر را نگیرند و رنگ روشن پانویس را ارث ببرند */
+.site-footer a {
+  color: inherit;
+}

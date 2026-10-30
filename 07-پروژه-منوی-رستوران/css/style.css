@@ -1,0 +1,374 @@
+/* ========== تنظیمات کلی صفحه ========== */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Tahoma, Arial, sans-serif;
+  line-height: 1.9;
+  color: #3b2314;
+  background-color: #fdf8f3;
+}
+
+h1, h2, h3 {
+  color: #7c2d12;
+}
+
+a {
+  color: #c2410c;
+}
+
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 16px;
+}
+
+/* تیتر هر بخش یک خط نارنجی زیرش دارد */
+.container h2 {
+  margin-top: 50px;
+  padding-bottom: 6px;
+  border-bottom: 3px solid #fb923c;
+}
+
+/* ========== سربرگ و منو ========== */
+.site-header {
+  background-color: #3b2314;
+  padding: 14px 24px;
+  text-align: center;
+}
+
+.logo {
+  color: #fed7aa;
+  font-size: 22px;
+  text-decoration: none;
+}
+
+.logo strong {
+  color: #fb923c;
+}
+
+.main-nav a {
+  display: inline-block;
+  color: white;
+  text-decoration: none;
+  padding: 2px 12px;
+  border-radius: 20px;
+}
+
+.main-nav a:hover {
+  background-color: #c2410c;
+}
+
+/* ========== بخش معرفی با تصویر پس‌زمینه ========== */
+.hero {
+  background-color: #3b2314; /* تا قبل از لود عکس هم متن خوانا بماند */
+  background-image: url("../images/hero.jpg");
+  background-size: cover;
+  background-position: center;
+  padding: 90px 16px;
+  text-align: center;
+}
+
+.hero-box {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 24px;
+  background-color: rgba(59, 35, 20, 0.75);
+  border-radius: 12px;
+  color: white;
+}
+
+.hero-box h1 {
+  color: #fed7aa;
+  margin-top: 0;
+}
+
+/* ========== دکمه‌ها (لینک یا button با ظاهر دکمه) ========== */
+.btn {
+  display: inline-block;
+  background-color: #c2410c;
+  color: white;
+  padding: 10px 22px;
+  margin: 4px;
+  border: 2px solid #c2410c;
+  border-radius: 8px;
+  text-decoration: none;
+  font-family: inherit;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background-color: #7c2d12;
+  border-color: #7c2d12;
+}
+
+.btn-outline {
+  background-color: transparent;
+  border-color: #fed7aa;
+  color: #fed7aa;
+}
+
+/* ========== راهنمای نمادها و برچسب‌ها ========== */
+.legend {
+  background-color: white;
+  border: 1px dashed #fdba74;
+  border-radius: 10px;
+  padding: 10px 20px;
+  margin-top: 30px;
+}
+
+.container .legend h2 {
+  margin: 0;
+  border: none;
+  font-size: 18px;
+}
+
+.legend dd {
+  margin-right: 0;
+  font-size: 14px;
+}
+
+mark {
+  background-color: #fde047;
+  padding: 0 6px;
+  border-radius: 4px;
+  font-size: 13px;
+}
+
+.tag {
+  font-size: 12px;
+  padding: 2px 8px;
+  border-radius: 10px;
+  color: white;
+}
+
+.tag-veg {
+  background-color: #15803d;
+}
+
+.tag-hot {
+  background-color: #dc2626;
+}
+
+.note {
+  font-size: 14px;
+}
+
+.layout-hint {
+  display: inline-block;
+  background-color: #3b2314;
+  color: #fed7aa;
+  font-size: 13px;
+  padding: 2px 12px;
+  border-radius: 6px;
+}
+
+/* ========== چیدمان کارت‌ها با Flexbox (غذای اصلی) ========== */
+/* Flex یک‌بعدی است: کارت‌ها پشت سر هم می‌آیند و اگر جا نشد به ردیف بعد می‌روند.
+   کارتی که تنها در ردیف آخر بماند، کل عرض را پر می‌کند. */
+.dishes-flex {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.dishes-flex .dish {
+  flex: 1 1 260px; /* رشد کن، کوچک شو، عرض پایه ۲۶۰ پیکسل */
+}
+
+/* ========== چیدمان کارت‌ها با Grid (پیش‌غذا و دسر) ========== */
+/* Grid دوبعدی است: اول ستون‌ها ساخته می‌شوند، بعد هر کارت در یک خانه می‌نشیند.
+   اگر کارت کم باشد، خانه‌های خالی خالی می‌مانند. */
+.dishes-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+/* Grid خودش ستون‌ها را کم نمی‌کند؛ در صفحه کوچک باید خودمان بگوییم */
+@media (max-width: 600px) {
+  .dishes-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ========== کارت هر غذا ========== */
+.dish {
+  background-color: white;
+  border: 1px solid #fed7aa;
+  border-radius: 12px;
+  overflow: hidden; /* گوشه‌های عکس هم گرد شوند */
+  padding-bottom: 8px;
+}
+
+.dish img {
+  display: block;
+  width: 100%;
+  height: 240px;
+  object-fit: cover; /* تصویر کش نیاید، فقط بریده شود */
+}
+
+.dish h3,
+.dish p {
+  margin: 8px 20px;
+}
+
+.price {
+  font-weight: bold;
+  font-size: 18px;
+  color: #c2410c;
+}
+
+.price del {
+  color: #6b7280;
+  font-weight: normal;
+  font-size: 15px;
+}
+
+.price ins {
+  text-decoration: none;
+}
+
+.price small {
+  color: #15803d;
+  font-weight: normal;
+}
+
+/* ========== عکس‌های نوشیدنی ========== */
+.drinks-photos {
+  margin: 0 0 20px;
+  text-align: center;
+}
+
+.drinks-photos img {
+  width: 48%;
+  height: 220px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+/* ========== جدول‌ها ========== */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: white;
+}
+
+caption {
+  font-weight: bold;
+  padding: 8px;
+  color: #7c2d12;
+}
+
+th,
+td {
+  border: 1px solid #fed7aa;
+  padding: 10px;
+  text-align: right;
+}
+
+thead th {
+  background-color: #7c2d12;
+  color: white;
+}
+
+tbody tr:nth-child(even) {
+  background-color: #fff7ed;
+}
+
+/* ========== نظر مشتری و امکانات ========== */
+blockquote {
+  background-color: white;
+  border-right: 6px solid #fb923c;
+  margin: 0;
+  padding: 12px 20px;
+  border-radius: 8px;
+  font-size: 18px;
+}
+
+cite {
+  font-size: 14px;
+}
+
+.features {
+  list-style-type: none;
+  padding: 0;
+}
+
+.features li {
+  background-color: white;
+  border-right: 4px solid #15803d;
+  padding: 6px 12px;
+  margin-bottom: 6px;
+}
+
+/* ========== فرم رزرو ========== */
+.reserve-form {
+  background-color: white;
+  border: 1px solid #fed7aa;
+  border-radius: 12px;
+  padding: 16px 24px;
+}
+
+.reserve-form label {
+  display: block;
+  font-weight: bold;
+}
+
+.reserve-form input,
+.reserve-form select,
+.reserve-form textarea {
+  width: 100%;
+  margin-bottom: 12px;
+  padding: 8px 10px;
+  border: 1px solid #d6b89a;
+  border-radius: 6px;
+  font-family: inherit;
+  font-size: 15px;
+}
+
+.reserve-form input:focus,
+.reserve-form select:focus,
+.reserve-form textarea:focus {
+  outline: 3px solid #fdba74;
+}
+
+/* ========== پرسش‌های پرتکرار ========== */
+details {
+  background-color: white;
+  border: 1px solid #fed7aa;
+  border-radius: 8px;
+  padding: 10px 16px;
+  margin-bottom: 10px;
+}
+
+summary {
+  font-weight: bold;
+  cursor: pointer;
+  color: #7c2d12;
+}
+
+/* ========== پاورقی ========== */
+.site-footer {
+  background-color: #3b2314;
+  color: #fde7d2;
+  text-align: center;
+  padding: 30px 16px 10px;
+  margin-top: 60px;
+}
+
+.site-footer h2 {
+  color: #fed7aa;
+  margin-top: 0;
+}
+
+.site-footer address {
+  font-style: normal;
+}
+
+.site-footer a {
+  color: #fdba74;
+}

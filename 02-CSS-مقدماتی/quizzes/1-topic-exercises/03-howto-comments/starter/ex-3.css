@@ -1,0 +1,21 @@
+.site-footer {
+  background-color: #eee3cf;
+  padding: 16px;
+  border: 2px solid red;
+  font-size: 14px;
+}
+h2 {
+  color: #8b5e34;
+}
+body {
+  background-color: #fdf6e3;
+  color: #3d3d3d;
+}
+.content {
+  padding: 16px;
+}
+.site-header {
+  background-color: #8b5e34;
+  color: white;
+  padding: 16px;
+}

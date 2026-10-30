@@ -1,0 +1,25 @@
+body {
+  font-family: Tahoma, Arial, sans-serif;
+  line-height: 1.9;
+  padding: 24px;
+}
+
+article {
+  max-width: 650px;
+  margin: 0 auto;
+}
+
+/* نسل: همه پاراگراف‌های داخل article، حتی داخل نقل‌قول */
+article p {
+  color: #333;
+}
+
+/* فرزند مستقیم: فقط پاراگراف‌های اصلی */
+article > p {
+  font-size: 18px;
+}
+
+blockquote p {
+  font-size: 14px;
+  font-style: italic;
+}

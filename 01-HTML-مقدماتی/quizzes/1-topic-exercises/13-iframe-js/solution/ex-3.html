@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>عسل طبیعی کوهپایه</title>
+  </head>
+  <body>
+    <h1>عسل طبیعی کوهپایه (۱ کیلوگرم)</h1>
+    <p>قیمت: ۸۵۰ هزار تومان</p>
+
+    <!-- HTML فقط دکمه‌ها را می‌سازد -->
+    <button type="button" id="add-btn">افزودن به سبد</button>
+    <button type="button" id="clear-btn">خالی کردن سبد</button>
+    <p>تعداد کالا در سبد: <span id="cart-count">۰</span></p>
+
+    <!-- JavaScript رفتار دکمه‌ها را تعیین می‌کند -->
+    <script>
+      let count = 0;
+
+      document.getElementById("add-btn").addEventListener("click", function () {
+        count = count + 1;
+        document.getElementById("cart-count").textContent = count.toLocaleString("fa-IR");
+      });
+
+      document.getElementById("clear-btn").addEventListener("click", function () {
+        count = 0;
+        document.getElementById("cart-count").textContent = count.toLocaleString("fa-IR");
+      });
+    </script>
+  </body>
+</html>

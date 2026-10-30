@@ -1,0 +1,14 @@
+body {
+  font-family: Tahoma, Arial, sans-serif;
+  line-height: 2;
+  padding: 24px;
+}
+
+/* فقط لینک‌هایی که در تب جدید باز می‌شوند */
+a[target="_blank"] {
+  color: #7b3fa0;
+}
+
+a[target="_blank"]::after {
+  content: " ↗";
+}

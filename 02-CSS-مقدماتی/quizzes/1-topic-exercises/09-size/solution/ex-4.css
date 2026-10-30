@@ -1,0 +1,33 @@
+/* همه اندازه‌ها با rem — ریشه معمولاً ۱۶px است */
+
+.card {
+  max-width: 20rem;     /* ۳۲۰px */
+  padding: 1rem;        /* ۱۶px */
+  margin: 1rem auto;
+  background-color: #f3f0ff;
+  border: 2px solid #7048e8;
+  border-radius: 0.5rem; /* ۸px */
+}
+
+.title {
+  font-size: 1.25rem;   /* ۲۰px */
+  margin: 0 0 0.5rem;
+}
+
+.text {
+  font-size: 1rem;      /* ۱۶px */
+  margin: 0 0 0.75rem;
+}
+
+.price {
+  font-size: 1.5rem;    /* ۲۴px */
+  font-weight: bold;
+  color: #5f3dc4;
+  margin: 0 0 0.5rem;
+}
+
+.note {
+  font-size: 0.875rem;  /* ۱۴px */
+  color: #495057;
+  margin: 0;
+}

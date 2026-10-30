@@ -1,0 +1,40 @@
+body {
+  font-family: Tahoma, Arial, sans-serif;
+  line-height: 1.8;
+  padding: 24px;
+}
+
+.newsletter {
+  max-width: 340px;
+  padding: 16px;
+  background-color: #f7f9fc;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+}
+
+.newsletter h2 {
+  margin-top: 0;
+  font-size: 18px;
+}
+
+.newsletter input {
+  width: 100%;
+  box-sizing: border-box; /* padding و حاشیه داخل همان ۱۰۰٪ */
+  padding: 8px 10px;
+  margin: 4px 0 12px;
+  font-family: inherit;
+  border: 1px solid #bbb;
+  border-radius: 4px;
+}
+
+.newsletter button {
+  width: 100%;
+  padding: 10px;
+  font-family: inherit;
+  font-size: 15px;
+  color: white;
+  background-color: #0b6e4f;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}

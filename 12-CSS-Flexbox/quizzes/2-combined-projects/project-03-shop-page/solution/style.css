@@ -1,0 +1,162 @@
+/* پروژه ۳ — فروشگاه کوچک «برگ سبز» (پاسخ) */
+
+/* ---------- کل صفحه: فوتر چسبان ---------- */
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  margin: 0;
+  font-family: Tahoma, sans-serif;
+  background-color: #f8f9fa;
+  color: #212529;
+}
+
+/* ---------- سربرگ ---------- */
+.site-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 15px;
+  background-color: #2b8a3e;
+  padding: 12px 20px;
+}
+
+.logo {
+  color: white;
+  font-size: 22px;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.menu {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.menu a {
+  color: white;
+  text-decoration: none;
+}
+
+.menu a:hover,
+.menu a:focus-visible {
+  text-decoration: underline;
+}
+
+/* سبد خرید به انتهای سربرگ (سمت چپ) */
+.cart {
+  margin-inline-start: auto;
+  background-color: #fab005;
+  color: #212529;
+  text-decoration: none;
+  padding: 6px 14px;
+  border-radius: 20px;
+}
+
+/* ---------- محتوا ---------- */
+.content {
+  flex: 1;
+  padding: 20px;
+}
+
+.products {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+/* کارت: پایه ۲۰۰ پیکسل، ستونی، هم‌قد بقیه */
+.product {
+  flex: 1 1 200px;
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  border: 1px solid #dee2e6;
+  border-radius: 8px;
+  padding: 12px;
+}
+
+.thumb {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 110px;
+  border-radius: 6px;
+  color: #212529;
+}
+
+.thumb-1 { background-color: #ffd8a8; }
+.thumb-2 { background-color: #d8f5a2; }
+.thumb-3 { background-color: #b2f2bb; }
+.thumb-4 { background-color: #d0bfff; }
+.thumb-5 { background-color: #ffc9c9; }
+
+.product h2 {
+  font-size: 17px;
+  margin: 10px 0 5px;
+}
+
+.product p {
+  margin: 0 0 10px;
+  color: #495057;
+}
+
+/* ردیف قیمت و دکمه، همیشه ته کارت */
+.product-footer {
+  margin-top: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.price {
+  font-weight: bold;
+  color: #2b8a3e;
+}
+
+.btn {
+  background-color: #2b8a3e;
+  color: white;
+  text-decoration: none;
+  padding: 6px 12px;
+  border-radius: 4px;
+}
+
+.btn:hover,
+.btn:focus-visible {
+  background-color: #237032;
+}
+
+/* ---------- پانویس ---------- */
+.site-footer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 10px;
+  background-color: #343a40;
+  color: white;
+  padding: 5px 20px;
+}
+
+/* ---------- گوشی ---------- */
+@media (max-width: 600px) {
+  .site-header {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .cart {
+    margin-inline-start: 0;
+    text-align: center;
+  }
+
+  .site-footer {
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+  }
+}

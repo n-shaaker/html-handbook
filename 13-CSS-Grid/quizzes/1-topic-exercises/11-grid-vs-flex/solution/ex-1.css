@@ -1,0 +1,35 @@
+/* تمرین ۱ — منو با Flex، کارت‌ها با Grid (پاسخ) */
+
+body {
+  font-family: Tahoma, sans-serif;
+  margin: 20px;
+  background-color: #f8f9fa;
+  color: #212529;
+}
+
+/* منو: یک ردیف با آیتم‌های هم‌اندازه محتوا ← Flexbox */
+.menu {
+  display: flex;
+  gap: 15px;
+  background-color: #343a40;
+  padding: 12px;
+}
+
+.menu a {
+  color: white;
+  text-decoration: none;
+}
+
+/* کارت‌ها: ستون‌های هم‌عرض ← Grid */
+.courses {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin-top: 15px;
+}
+
+.course {
+  background-color: #e7f5ff;
+  padding: 30px 10px;
+  text-align: center;
+}

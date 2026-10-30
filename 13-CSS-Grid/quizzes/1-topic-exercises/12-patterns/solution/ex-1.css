@@ -1,0 +1,33 @@
+/* تمرین ۱ — کادر ورود وسط صفحه (پاسخ) */
+
+body {
+  margin: 0;
+  font-family: Tahoma, sans-serif;
+  background-color: #e7f5ff;
+}
+
+/* کل پنجره یک خانه است و کادر وسطش */
+.screen {
+  display: grid;
+  place-items: center;
+  min-height: 100vh;
+}
+
+.login {
+  display: grid;
+  gap: 8px;
+  width: 280px;
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.login h1 {
+  margin: 0;
+  font-size: 22px;
+}
+
+.login input,
+.login button {
+  padding: 8px;
+}

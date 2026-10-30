@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>کارهای امروز</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="app.js" defer></script>
+</head>
+
+<body>
+  <main class="card">
+    <h1>کارهای امروز</h1>
+    <p id="summary" class="summary" aria-live="polite"></p>
+
+    <div class="toolbar">
+      <div role="group" aria-label="فیلتر کارها">
+        <button type="button" class="btn filter-btn" data-filter="all" aria-pressed="true">همه</button>
+        <button type="button" class="btn filter-btn" data-filter="active" aria-pressed="false">مانده</button>
+        <button type="button" class="btn filter-btn" data-filter="done" aria-pressed="false">انجام‌شده</button>
+      </div>
+
+      <div role="group" aria-label="ترتیب نمایش">
+        <button type="button" id="sort-priority" class="btn btn-secondary">مرتب بر اساس اولویت</button>
+        <button type="button" id="sort-reset" class="btn btn-secondary">ترتیب اصلی</button>
+      </div>
+    </div>
+
+    <ul id="task-list" class="task-list"></ul>
+
+    <p id="time-range" class="time-range"></p>
+
+    <section class="import" aria-labelledby="import-title">
+      <h2 id="import-title">وارد کردن کارها از JSON</h2>
+      <label for="import-input">آرایه JSON کارها را این‌جا بچسبانید:</label>
+      <textarea id="import-input" rows="4" dir="ltr"></textarea>
+      <button type="button" id="import-btn" class="btn">وارد کن</button>
+      <p id="import-msg" role="status"></p>
+    </section>
+  </main>
+</body>
+
+</html>

@@ -1,0 +1,59 @@
+/* ۷) Inline-block */
+
+.demo-ib .s {
+  width: 100px;
+  height: 50px;
+  padding: 10px;
+  background-color: #e5dbff;
+  border: 2px solid #7048e8;
+}
+
+.demo-ib .a {
+  display: inline;
+}
+
+.demo-ib .b {
+  display: inline-block;
+}
+
+.demo-ib .c {
+  display: block;
+  margin: 4px 0;
+}
+
+.demo-ib .tag {
+  display: inline-block;
+  padding: 4px 12px;
+  margin: 4px;
+  border-radius: 20px;
+  background-color: #e6fcf5;
+  border: 1px solid #0ca678;
+  color: #087f5b;
+}
+
+.demo-ib .menu {
+  background-color: #1a3a5c;
+}
+
+.demo-ib .menu a {
+  display: inline-block;
+  padding: 10px 20px;
+  color: white;
+  text-decoration: none;
+}
+
+.demo-ib .menu a:hover {
+  background-color: #0b6e4f;
+}
+
+.demo-ib .product {
+  display: inline-block;
+  width: 150px;
+  vertical-align: top;
+  background-color: white;
+  border: 1px solid #cfd8e3;
+  border-radius: 8px;
+  padding: 12px;
+  margin: 4px;
+  text-align: center;
+}

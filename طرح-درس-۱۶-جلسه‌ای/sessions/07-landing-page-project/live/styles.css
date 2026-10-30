@@ -1,0 +1,239 @@
+:root {
+  --bg: #f4f7fb;
+  --surface: #ffffff;
+  --text: #0b1220;
+  --muted: #5b6b7c;
+  --brand: #0f766e;
+  --brand-dark: #115e59;
+  --border: #d9e2ec;
+  --radius: 1rem;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  /* Keep anchor targets from hiding under the sticky header */
+  scroll-padding-top: 5rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+body {
+  margin: 0;
+  font-family: Tahoma, "Segoe UI", system-ui, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.site-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+  padding: 1rem 1.5rem;
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.logo {
+  font-weight: 800;
+  font-size: 1.15rem;
+}
+
+.nav {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  color: var(--muted);
+}
+
+.btn {
+  display: inline-block;
+  padding: 0.75rem 1.15rem;
+  border-radius: 0.65rem;
+  border: 1px solid transparent;
+  background: var(--brand);
+  color: #fff;
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background: var(--brand-dark);
+}
+
+.btn:focus-visible,
+.nav a:focus-visible {
+  outline: 3px solid #f59e0b;
+  outline-offset: 2px;
+}
+
+.btn--small {
+  padding: 0.5rem 0.9rem;
+}
+
+.btn--ghost {
+  background: transparent;
+  color: var(--brand);
+  border-color: var(--brand);
+}
+
+/* On the dark hero background the ghost button must be light to stay readable */
+.hero .btn--ghost {
+  color: #fff;
+  border-color: #fff;
+}
+
+.hero .btn--ghost:hover {
+  background: rgb(255 255 255 / 15%);
+}
+
+.nav a:hover {
+  color: var(--brand);
+}
+
+.hero {
+  /* Full-bleed atmosphere with a soft gradient plane */
+  background:
+    linear-gradient(120deg, rgb(15 118 110 / 90%), rgb(14 116 144 / 75%)),
+    url("https://picsum.photos/seed/novadesk/1600/900") center / cover;
+  color: #fff;
+  padding: 5rem 1.5rem;
+}
+
+.hero__content {
+  max-width: 40rem;
+}
+
+.hero h1 {
+  margin: 0 0 1rem;
+  font-size: clamp(2rem, 4vw, 3rem);
+  line-height: 1.15;
+}
+
+.hero__actions {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  margin-top: 1.5rem;
+}
+
+.section {
+  max-width: 70rem;
+  margin: 0 auto;
+  padding: 3rem 1.5rem;
+}
+
+.section--muted {
+  background: #e8eef5;
+  max-width: none;
+}
+
+.section--muted > * {
+  max-width: 70rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.feature-grid,
+.product-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+
+.feature,
+.product-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.25rem;
+}
+
+.product-card {
+  padding: 0;
+  overflow: hidden;
+}
+
+.product-card img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.product-card h3,
+.product-card p {
+  margin: 0;
+  padding: 0.75rem 1rem;
+}
+
+.product-card p {
+  padding-top: 0;
+  color: var(--muted);
+}
+
+.cta {
+  text-align: center;
+  padding: 3.5rem 1.5rem;
+  background: #0b1220;
+  color: #fff;
+}
+
+.cta-form {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5rem;
+  max-width: 32rem;
+  margin: 1.5rem auto 0;
+}
+
+.cta-form input {
+  flex: 1 1 14rem;
+  padding: 0.75rem 0.9rem;
+  border: 1px solid var(--border);
+  border-radius: 0.65rem;
+  font: inherit;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+.site-footer {
+  padding: 1.25rem 1.5rem;
+  text-align: center;
+  color: var(--muted);
+}
+
+@media (min-width: 720px) {
+  .feature-grid,
+  .product-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}

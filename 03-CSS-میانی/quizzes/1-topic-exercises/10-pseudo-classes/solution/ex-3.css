@@ -1,0 +1,46 @@
+body {
+  font-family: Tahoma, Arial, sans-serif;
+  line-height: 1.8;
+  padding: 24px;
+}
+
+.todo {
+  max-width: 420px;
+  margin: 0 auto;
+}
+
+#new-task {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 8px;
+  margin: 4px 0 16px;
+  font-family: inherit;
+  border: 2px solid #ccc;
+  border-radius: 6px;
+}
+
+#new-task:focus {
+  border-color: #1a5fb4;
+  outline: none; /* حاشیه رنگی جایگزین حلقه فوکوس است */
+}
+
+.todo ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.todo li {
+  padding: 8px;
+  border-bottom: 1px solid #eee;
+}
+
+.todo li:hover {
+  background-color: #f3f6f9;
+}
+
+/* برچسبِ بعد از چک‌باکس تیک‌خورده */
+input:checked + label {
+  color: #999;
+  text-decoration: line-through;
+}

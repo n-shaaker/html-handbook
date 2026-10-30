@@ -1,0 +1,207 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>۸) پیوندها | جزوه HTML</title>
+    <link rel="stylesheet" href="../css/style.css" />
+  </head>
+
+  <body>
+    <header class="page-header">
+      <h1>جزوه HTML مقدماتی</h1>
+      <p>۸) پیوندها (Links)</p>
+    </header>
+
+    <div class="container">
+      <nav class="page-nav">
+        <a href="07-text-tags.html">→ درس قبل</a>
+        <a href="../index.html">فهرست مطالب</a>
+        <a href="09-images.html">درس بعد ←</a>
+      </nav>
+
+      <section class="lesson">
+        <h2>
+          ۸) پیوندها — عنصر
+          <code>&lt;a&gt;</code>
+        </h2>
+        <p>
+          عنصر
+          <code>a</code>
+          (کوتاه‌شدهٔ anchor، یعنی لنگر) پیوند می‌سازد. متن یا تصویری که داخل آن بگذارید قابل کلیک می‌شود
+          و مرورگر کاربر را به مقصد می‌برد. نشانی مقصد را ویژگی
+          <code>href</code>
+          مشخص می‌کند. بدون
+          <code>href</code>
+          این عنصر پیوند قابل‌استفاده نیست.
+        </p>
+
+        <h3>پیوند خارجی</h3>
+        <p>
+          پیوند خارجی به منبعی بیرون از سایت شما می‌رود. نشانی آن باید کامل باشد و با پروتکل، معمولاً
+          <code>https://</code>،
+          شروع شود. در نمونهٔ زیر
+          <code>target="_blank"</code>
+          پیوند را در زبانهٔ تازه باز می‌کند و
+          <code>rel="noopener"</code>
+          دسترسی صفحهٔ تازه به صفحهٔ شما را می‌بندد.
+        </p>
+        <pre
+          class="code"
+        ><code>&lt;a href="https://developer.mozilla.org/" target="_blank" rel="noopener"&gt;مستندات وب در MDN&lt;/a&gt;</code></pre>
+        <div class="result">
+          <a href="https://developer.mozilla.org/" target="_blank" rel="noopener">مستندات وب در MDN</a>
+        </div>
+        <p class="mistake">
+          <strong>خطای متداول:</strong>
+          نوشتن نشانی سایت دیگر بدون <code>https://</code>، مثلاً <code>href="www.wikipedia.org"</code>.
+          مرورگر این مقدار را مسیر نسبی می‌داند و دنبال پوشه یا پرونده‌ای به همین نام در سایت خودتان می‌گردد؛ به همین دلیل پیوند خراب می‌شود.
+        </p>
+
+        <h3>پیوند داخلی (صفحه دیگر پروژه)</h3>
+        <p>
+          پیوند داخلی به صفحه‌ای از همین پروژه می‌رود. مسیر آن نسبت به پروندهٔ HTML فعلی حساب می‌شود.
+          در نمونه، <code>../</code> یعنی یک پوشه به عقب برگرد و بعد <code>index.html</code> را باز کن.
+        </p>
+        <pre
+          class="code"
+        ><code>&lt;a href="../index.html"&gt;بازگشت به فهرست مطالب&lt;/a&gt;</code></pre>
+        <div class="result">
+          <a href="../index.html">بازگشت به فهرست مطالب</a>
+        </div>
+
+        <h3>پیوند به بخشی از همان صفحه</h3>
+        <p>
+          برای پرش به بخشی از همین صفحه، ابتدا به عنصر مقصد یک <code>id</code> یکتا می‌دهید. بعد در <code>href</code> همان نام را با علامت <code>#</code> می‌نویسید. مرورگر صفحه را تا آن عنصر پایین می‌برد. این <code>id</code> باید در کل صفحه یکتا باشد، وگرنه مرورگر فقط اولین مورد را پیدا می‌کند.
+        </p>
+        <pre class="code"><code>&lt;a href="#links-colors"&gt;رفتن به بخش رنگ پیوندها&lt;/a&gt;
+...
+&lt;h3 id="links-colors"&gt;رنگ پیوندها در حالت‌های مختلف&lt;/h3&gt;</code></pre>
+        <div class="result">
+          <a href="#links-colors">رفتن به بخش رنگ پیوندها</a>
+        </div>
+
+        <h3>ویژگی‌های پرکاربرد</h3>
+        <table class="ref">
+          <thead>
+            <tr>
+              <th>ویژگی</th>
+              <th>تعریف</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>href</code></td>
+              <td><code>href</code> نشانی مقصد پیوند را مشخص می‌کند؛ بدون آن، عنصر <code>a</code> جایی نمی‌رود.</td>
+            </tr>
+            <tr>
+              <td><code>target="_blank"</code></td>
+              <td>مقدار <code>_blank</code> پیوند را در زبانهٔ تازه باز می‌کند. صفحهٔ فعلی سر جایش می‌ماند.</td>
+            </tr>
+            <tr>
+              <td><code>rel="noopener"</code></td>
+              <td>
+                وقتی پیوند با <code>target="_blank"</code> باز می‌شود، <code>rel="noopener"</code> نمی‌گذارد صفحهٔ تازه از طریق <code>window.opener</code> به صفحهٔ شما دسترسی پیدا کند. مرورگرهای جدید این محافظت را اغلب خودشان اعمال می‌کنند، اما نوشتن آن هنوز عادت درستی است.
+              </td>
+            </tr>
+            <tr>
+              <td><code>title</code></td>
+              <td>ویژگی <code>title</code> متن راهنمایی است که معمولاً با نگه داشتن نشانگر روی پیوند ظاهر می‌شود. روی صفحهٔ لمسی اغلب دیده نمی‌شود، پس اطلاعات ضروری را فقط داخل آن نگذارید.</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h3>پیوند رایانامه و تماس تلفنی</h3>
+        <p>
+          اگر <code>href</code> با <code>mailto:</code> شروع شود، مرورگر برنامهٔ رایانامهٔ کاربر را باز می‌کند. اگر با <code>tel:</code> شروع شود، در تلفن همراه معمولاً شماره‌گیر باز می‌شود. روی رایانهٔ رومیزی ممکن است برنامهٔ تماس پیش‌فرض باز شود یا هیچ برنامه‌ای نباشد. این پیوندها در صفحهٔ «تماس با ما» کاربردی‌اند، اما جایگزین نوشتن خود نشانی و شماره در متن صفحه نیستند.
+        </p>
+        <pre class="code"><code>&lt;a href="mailto:support@example.com"&gt;ارسال رایانامه به پشتیبانی&lt;/a&gt;
+&lt;a href="tel:+982112345678"&gt;تماس با دفتر: ۰۲۱-۱۲۳۴۵۶۷۸&lt;/a&gt;</code></pre>
+        <div class="result">
+          <a href="mailto:support@example.com">ارسال رایانامه به پشتیبانی</a>
+          <br />
+          <a href="tel:+982112345678">تماس با دفتر: ۰۲۱-۱۲۳۴۵۶۷۸</a>
+        </div>
+
+        <h3>تصویر به‌عنوان پیوند</h3>
+        <p>
+          اگر عنصر <code>img</code> را داخل <code>a</code> بگذارید، خود تصویر پیوند می‌شود و با کلیک روی آن مقصد باز می‌شود. متن جایگزین تصویر باید بگوید این کلیک کاربر را به کجا می‌برد، چون صفحه‌خوان همان متن را به‌جای تصویر می‌خواند.
+        </p>
+        <pre class="code"><code>&lt;a href="../index.html"&gt;
+  &lt;img src="../images/demo.jpg" alt="رفتن به فهرست مطالب" width="120"&gt;
+&lt;/a&gt;</code></pre>
+        <div class="result">
+          <a href="../index.html">
+            <img class="demo-img" src="../images/demo.jpg" alt="رفتن به فهرست مطالب" width="120" />
+          </a>
+        </div>
+
+        <h3>پیوند بارگیری (download)</h3>
+        <p>
+          ویژگی <code>download</code> به مرورگر پیشنهاد می‌کند به‌جای نمایش پرونده، آن را ذخیره کند. مقدار این ویژگی اختیاری است و نام پیشنهادی پروندهٔ ذخیره‌شده است.
+          این رفتار برای پروندهٔ هم‌مبدأ (همان سایت) قابل اتکاتر است. برای نشانی سایت دیگر، مرورگر ممکن است نام را نادیده بگیرد یا پرونده را باز کند.
+        </p>
+        <pre class="code"><code>&lt;a href="../images/profile.jpg" download="my-photo.jpg"&gt;دانلود عکس نمایه&lt;/a&gt;</code></pre>
+        <div class="result">
+          <a href="../images/profile.jpg" download="my-photo.jpg">دانلود عکس نمایه</a>
+        </div>
+
+        <h3 id="links-colors">رنگ پیوندها در حالت‌های مختلف</h3>
+        <p>
+          ظاهر پیش‌فرض مرورگر معمولاً پیوند دیده‌نشده را <span style="color: blue">آبی و زیرخط‌دار</span>،
+          پیوند دیده‌شده را <span style="color: purple">بنفش</span>
+          و پیوند در لحظهٔ کلیک را <span style="color: red">قرمز</span> نشان می‌دهد. این رنگ‌ها قرارداد رایج مرورگرها هستند، نه قانون HTML.
+          با CSS و حالت‌های <code>:link</code>، <code>:visited</code>، <code>:hover</code>
+          و <code>:active</code> می‌توانید این ظاهر را عوض کنید. اگر زیرخط را برمی‌دارید، باید با رنگ یا نشانهٔ دیگری معلوم باشد که متن پیوند است.
+        </p>
+
+        <h3>مسیر نسبی و مطلق در href</h3>
+        <table class="ref">
+          <thead>
+            <tr>
+              <th>نوع</th>
+              <th>مثال</th>
+              <th>کاربرد</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>مطلق (Absolute)</td>
+              <td><code>https://www.wikipedia.org</code></td>
+              <td>وقتی مقصد سایت دیگری است، نشانی کامل با پروتکل نوشته می‌شود.</td>
+            </tr>
+            <tr>
+              <td>نسبی (Relative)</td>
+              <td><code>contact.html</code> یا <code>../index.html</code></td>
+              <td>وقتی مقصد صفحه‌ای از همین سایت است، مسیر نسبت به پروندهٔ فعلی نوشته می‌شود.</td>
+            </tr>
+            <tr>
+              <td>بخشی از صفحه</td>
+              <td><code>#contact</code></td>
+              <td>علامت <code>#</code> صفحه را تا عنصری که <code>id</code> آن همان نام است پایین می‌برد.</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <p class="tip">
+          <strong>نکته:</strong>
+          متن پیوند باید به‌تنهایی بگوید مقصد چیست. عبارت «اینجا کلیک کنید» بیرون از جمله مبهم است، اما «بارگیری رزومه» روشن است.
+          صفحه‌خوان‌ها اغلب فهرست پیوندها را جدا از متن اطراف می‌خوانند، پس متن پیوند باید مستقل قابل فهم باشد.
+        </p>
+
+        <p class="exercise">
+          <strong>تمرین:</strong>
+          صفحهٔ «تماس با ما» برای یک فروشگاه بسازید. در آن پیوند رایانامه، پیوند تلفن، پیوند اینستاگرام فروشگاه در زبانهٔ تازه، و پیوند «بازگشت به بالای صفحه» با <code>#</code> بگذارید. متن هر پیوند باید مقصد را روشن بگوید.
+        </p>
+      </section>
+
+      <nav class="page-nav">
+        <a href="07-text-tags.html">→ درس قبل</a>
+        <a href="../index.html">فهرست مطالب</a>
+        <a href="09-images.html">درس بعد ←</a>
+      </nav>
+    </div>
+
+    <footer class="page-footer">جزوه HTML مقدماتی</footer>
+  </body>
+</html>

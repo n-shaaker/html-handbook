@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>آموزشگاه طراحی وب نقش</title>
+  </head>
+  <body>
+    <h1>آموزشگاه طراحی وب نقش</h1>
+
+    <!-- صفحه پهن‌تر از ۸۰۰ پیکسل: demo.jpg، در غیر این صورت: profile.jpg -->
+    <picture>
+      <source media="(min-width: 800px)" srcset="../../../../images/demo.jpg" />
+      <img src="../../../../images/profile.jpg" alt="بنر آموزشگاه طراحی وب نقش" width="300" />
+    </picture>
+
+    <h2>از کجا شروع کنم؟</h2>
+    <p>روی لپ‌تاپ یا دفترچه کلیک کنید:</p>
+
+    <img src="../../../../images/demo.jpg" alt="میز کار طراح وب" usemap="#desk-map" width="220" height="220" />
+
+    <!-- مختصات از گوشه بالا-چپ تصویر حساب می‌شود -->
+    <map name="desk-map">
+      <area shape="rect" coords="0,0,110,220" href="../../../../pages/04-html-intro.html" alt="لپ‌تاپ: درس HTML چیست؟" />
+      <area shape="rect" coords="110,0,220,220" href="../../../../pages/13-semantic.html" alt="دفترچه: درس بخش‌بندی معنایی" />
+    </map>
+  </body>
+</html>

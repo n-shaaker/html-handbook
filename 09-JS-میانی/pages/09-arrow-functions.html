@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>۹) توابع پیکانی (Arrow Functions) | آموزش JavaScript سطح میانی</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <script src="../js/log.js" defer></script>
+  <script src="../js/demos/arrow-functions.js" defer></script>
+</head>
+
+<body>
+
+  <header class="page-header" id="top">
+    <h1>آموزش JavaScript — سطح میانی</h1>
+    <p>۹) توابع پیکانی (Arrow Functions)</p>
+  </header>
+
+  <div class="container">
+
+    <nav class="page-nav" aria-label="ناوبری درس">
+      <a href="08-hoisting-strict.html">→ قبلی: Hoisting & Strict</a>
+      <a href="../index.html">فهرست درس‌ها</a>
+      <a href="10-this.html">بعدی: this ←</a>
+    </nav>
+
+    <section class="lesson" id="arrow-functions">
+      <h2>۹) توابع پیکانی (Arrow Functions)</h2>
+<p>تابع پیکانی شکل کوتاه‌تری برای نوشتن تابع است و در متدهایی مثل <code>map</code> و <code>filter</code> زیاد دیده می‌شود. کار اصلی‌اش همان اجرای یک بلوک کد و برگرداندن مقدار است. تفاوت مهمش با تابع معمولی در دو جا ظاهر می‌شود: اگر بدنه فقط یک عبارت باشد می‌توان آکولاد و <code>return</code> را حذف کرد، و <code>this</code> خودش را جداگانه نمی‌سازد. مورد دوم را در درس <code>this</code> می‌بینید؛ اینجا اول شکل نوشتن را یاد بگیرید.</p>
+
+<pre class="code"><code>// تابع معمولی
+const add1 = function (a, b) {
+  return a + b;
+};
+
+// تابع پیکانی
+const add2 = (a, b) =&gt; {
+  return a + b;
+};
+
+// کوتاه‌تر: اگر فقط یک return دارد، { } و return حذف می‌شوند
+const add3 = (a, b) =&gt; a + b;
+
+console.log(add1(2, 3), add2(2, 3), add3(2, 3));</code></pre>
+
+<p>هر سه ثابت یک تابع جمع هستند. <code>add1</code> شکل معمولی است. <code>add2</code> همان بدنه را بعد از فلش <code>=&gt;</code> نوشته است. <code>add3</code> چون فقط یک عبارت برمی‌گرداند، آکولاد و <code>return</code> را حذف کرده و خود <code>a + b</code> مقدار خروجی است. هر سه را با آرگومان‌های ۲ و ۳ صدا می‌زنیم و نتیجه یکی است.</p>
+
+<div class="result">
+<pre class="console" id="out-1"></pre>
+</div>
+
+<h3>قوانین کوتاه‌نویسی</h3>
+
+<table class="ref">
+<tr><th>حالت</th><th>نوشتن</th></tr>
+<tr><td>بدون پارامتر</td><td><code>() =&gt; "سلام"</code></td></tr>
+<tr><td>یک پارامتر</td><td><code>x =&gt; x * 2</code> (پرانتز اختیاری)</td></tr>
+<tr><td>چند پارامتر</td><td><code>(a, b) =&gt; a + b</code></td></tr>
+<tr><td>چند خط</td><td><code>(a) =&gt; { const r = a * 2; return r; }</code></td></tr>
+<tr><td>برگرداندن شیء</td><td><code>() =&gt; ({ name: "علی" })</code> (داخل پرانتز)</td></tr>
+</table>
+
+<pre class="code"><code>const hello = () =&gt; "سلام!";
+const double = x =&gt; x * 2;
+const makeUser = (name, age) =&gt; ({ name: name, age: age });
+
+console.log(hello());
+console.log(double(21));
+console.log(makeUser("مریم", 25));</code></pre>
+
+<p>اگر پارامترها صفر تا باشند پرانتز خالی لازم است. اگر دقیقاً یک پارامتر باشد می‌توان پرانتز را برداشت. برای برگرداندن شیء در شکل کوتاه، دور آکولاد شیء یک پرانتز اضافه می‌گذارند؛ وگرنه زبان آکولاد را بدنهٔ تابع حساب می‌کند نه شیء. <code>hello</code> متن ثابت برمی‌گرداند و <code>double</code> ورودی را دو برابر می‌کند.</p>
+
+<div class="result">
+<pre class="console" id="out-2"></pre>
+</div>
+
+<h3>بهترین جا: همراه با map، filter و ...</h3>
+
+<pre class="code"><code>const nums = [1, 2, 3, 4, 5, 6];
+
+// قبل
+const evens1 = nums.filter(function (n) { return n % 2 === 0; });
+
+// بعد
+const evens2 = nums.filter(n =&gt; n % 2 === 0);
+const squares = nums.map(n =&gt; n * n);
+const total = nums.reduce((sum, n) =&gt; sum + n, 0);
+
+console.log(evens2, squares, total);   // [2,4,6] [1,4,9,16,25,36] 21
+
+// مثال واقعی: نام محصولات موجود زیر ۲ میلیون تومان
+const products = [
+  { name: "کیبورد", price: 1500000, inStock: true },
+  { name: "مانیتور", price: 9800000, inStock: true },
+  { name: "ماوس", price: 600000, inStock: false }
+];
+const affordable = products
+  .filter(p =&gt; p.inStock &amp;&amp; p.price &lt; 2000000)
+  .map(p =&gt; p.name);
+console.log(affordable);               // ["کیبورد"]</code></pre>
+
+<p>وقتی تابع فقط یک پارامتر دارد و یک عبارت برمی‌گرداند، فلش جای <code>function</code> و <code>return</code> را می‌گیرد. <code>filter</code> عددهای زوج را جدا می‌کند، <code>map</code> مربع هر عدد را می‌سازد و <code>reduce</code> مجموع را با مقدار شروع صفر حساب می‌کند. در فهرست کالا، شرط موجود بودن و سقف قیمت در همان عبارت فلش نوشته شده است.</p>
+
+<div class="result">
+<pre class="console" id="out-3"></pre>
+</div>
+
+<h3>در رویدادها</h3>
+
+<pre class="code"><code>const btn = document.getElementById("arrow-btn");
+const box = document.getElementById("arrow-box");
+
+btn.addEventListener("click", () =&gt; {
+  box.classList.toggle("active");
+});</code></pre>
+
+<p>شنوندهٔ کلیک یک تابع پیکانی بدون پارامتر است. با هر کلیک، <code>classList.toggle</code> کلاس <code>active</code> را اگر نباشد اضافه و اگر باشد حذف می‌کند. چون بدنه بیش از یک کار مفهومی ندارد، باز هم آکولاد آمده است؛ اگر فقط یک عبارت بود می‌شد آن را بدون آکولاد نوشت. اینجا آکولاد روشن‌تر است چون دستور، مقدار برنمی‌گرداند.</p>
+
+<div class="result">
+<div class="demo-box" id="arrow-box">این جعبه با یک تابع پیکانی تغییر می‌کند</div>
+<button type="button" class="btn" id="arrow-btn">تغییر</button>
+</div>
+
+<h3>تفاوت‌های تابع پیکانی با تابع معمولی</h3>
+
+<table class="ref">
+<tr><th>ویژگی</th><th>تابع معمولی</th><th>تابع پیکانی</th></tr>
+<tr><td><code>this</code> خودش</td><td>دارد (بسته به نحوه صدا زدن)</td><td>ندارد؛ this بیرونی را برمی‌دارد (درس بعد)</td></tr>
+<tr><td>استفاده قبل از تعریف</td><td>با <code>function f() {}</code> بله</td><td>خیر (مثل const)</td></tr>
+<tr><td>شیء <code>arguments</code></td><td>دارد</td><td>ندارد؛ به جایش از Rest (<code>...args</code>) استفاده کنید</td></tr>
+<tr><td>ساختن شیء با <code>new</code></td><td>بله</td><td>خیر (خطا می‌دهد)</td></tr>
+</table>
+
+<p class="tip">فرق مهم تابع پیکانی با تابع معمولی در رفتار <code>this</code> است که در درس بعد می‌بینیم. برای <strong>متدهای شیء</strong> از تابع معمولی (یا شکل کوتاه <code>greet() { ... }</code>) استفاده کنید و برای <strong>callbackها</strong> (تابع‌هایی که به map، filter، addEventListener و ... می‌دهیم) تابع پیکانی بهترین انتخاب است.</p>
+
+<p class="mistake"><strong>اشتباه رایج:</strong> برگرداندن شیء بدون پرانتز: <code>() =&gt; { name: "علی" }</code>. JavaScript آکولاد را بلوک کد می‌فهمد و <code>undefined</code> برمی‌گرداند.</p>
+
+<p class="mistake"><strong>اشتباه رایج:</strong> نوشتن آکولاد در تابع پیکانی و فراموش کردن <code>return</code>: <code>nums.map(n =&gt; { n * 2 })</code> آرایه‌ای پر از <code>undefined</code> می‌دهد. یا آکولاد را بردارید (<code>n =&gt; n * 2</code>) یا <code>return</code> بنویسید.</p>
+
+<p class="exercise"><strong>تمرین:</strong> (الف) این تابع را به شکل پیکانی یک‌خطی بنویسید: <code>function greet(name) { return "سلام " + name; }</code>. (ب) با map و یک تابع پیکانی قیمت‌های <code>[100, 200, 300]</code> را با ۲۰٪ تخفیف حساب کنید (جواب: <code>[80, 160, 240]</code>). (ج) با filter و تابع پیکانی، از آرایه نمره‌ها <code>[12, 19, 8, 15, 20]</code> نمره‌های ۱۵ و بالاتر را جدا کنید.</p>
+    </section>
+
+    <nav class="page-nav" aria-label="ناوبری درس پایین">
+      <a href="08-hoisting-strict.html">→ قبلی: Hoisting & Strict</a>
+      <a href="../index.html">فهرست درس‌ها</a>
+      <a href="10-this.html">بعدی: this ←</a>
+    </nav>
+
+  </div>
+
+  <footer class="page-footer">
+    آموزش JavaScript سطح میانی
+  </footer>
+
+</body>
+
+</html>

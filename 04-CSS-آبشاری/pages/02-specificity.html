@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>قدرت انتخابگر | آبشاری بودن CSS</title>
+  <link rel="stylesheet" href="../css/layout.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="../css/demos/specificity.css">
+</head>
+
+<body>
+
+  <header class="page-header">
+    <h1>آبشاری بودن CSS</h1>
+    <p>۲) قدرت انتخابگر (Specificity)</p>
+  </header>
+
+  <div class="container">
+
+    <nav class="page-nav" aria-label="ناوبری">
+      <a href="01-order.html">→ قبلی: ترتیب قوانین</a>
+      <a href="../index.html">فهرست</a>
+      <a href="03-stylesheets.html">بعدی: چند فایل CSS ←</a>
+    </nav>
+
+    <section class="lesson">
+      <h2>۲) قدرت انتخابگر (Specificity)</h2>
+      <p>
+        ترتیب نوشتن فقط وقتی معنی دارد که انتخابگرها هم‌قدرت باشند. اگر قدرت فرق کند، <strong>ترتیب دیگر تعیین‌کننده نیست</strong>:
+        انتخابگر قوی‌تر حتی اگر بالاتر در فایل نوشته شده باشد برنده است. قدرت انتخابگر را Specificity می‌نامند؛ یعنی مرورگر می‌سنجد این قانون چقدر دقیق عنصر را هدف گرفته است.
+      </p>
+
+      <h3>قدرت انتخابگر چطور حساب می‌شود؟</h3>
+      <p>
+        قدرت هر انتخابگر یک سه‌تایی است به شکل <code>(id, کلاس, نوع)</code>. این سه عدد را با هم جمع نمی‌کنیم.
+        مرورگر آن‌ها را مثل سه ستون جدا مقایسه می‌کند: اول تعداد شناسه‌ها، بعد تعداد کلاس‌ها، و فقط اگر آن دو ستون برابر بودند تعداد نام تگ‌ها.
+        برای همین یک <code>id</code> تنها همیشه از هر تعداد کلاس قوی‌تر است و ستون‌ها روی هم سرریز نمی‌کنند.
+      </p>
+      <ul>
+        <li><strong>ستون اول</strong> تعداد شناسه‌ها را می‌شمارد. هر <code>#id</code> در انتخابگر یک واحد به این ستون اضافه می‌کند و همین ستون از دو ستون دیگر مهم‌تر است.</li>
+        <li><strong>ستون دوم</strong> کلاس‌ها (مثل <code>.note</code>)، انتخابگرهای صفت (مثل <code>[type="text"]</code>) و شبه‌کلاس‌ها (مثل <code>:hover</code>) را با هم می‌شمارد. این سه از نظر قدرت در یک گروه هستند.</li>
+        <li><strong>ستون سوم</strong> نام تگ‌ها (مثل <code>p</code>) و شبه‌عنصرها (مثل <code>::before</code>) را می‌شمارد. این ستون فقط وقتی دو انتخابگر را از هم جدا می‌کند که دو ستون قبلی‌شان برابر باشد.</li>
+      </ul>
+      <p>
+        دو انتخابگر را <strong>ستون به ستون از چپ</strong> مقایسه می‌کنیم: هر کدام در ستون id بیشتر داشت برنده است؛
+        اگر برابر بود، ستون کلاس؛ و اگر باز برابر بود، ستون نوع.
+        انتخابگر همگانی <code>*</code> و ترکیب‌کننده‌ها (فاصله، <code>&gt;</code>، <code>+</code>، <code>~</code>) هیچ امتیازی ندارند.
+      </p>
+
+      <pre class="code"><code>/* specificity.css */
+.demo-spec p {          /* (0, 1, 1) */
+  color: #c92a2a;
+  font-size: 18px;
+}
+
+.demo-spec .note {      /* (0, 2, 0) */
+  color: #1a5fb4;
+}
+
+.demo-spec #special {   /* (1, 1, 0) */
+  color: #0b6e4f;
+  font-weight: bold;
+}</code></pre>
+
+      <p>
+        پیشوند <code>.demo-spec</code> مثال را به کادر نتیجه محدود می‌کند و یک کلاس به ستون دوم همه انتخابگرها اضافه کرده است؛
+        برای همین اعداد بالا را دقیق با همین پیشوند حساب کرده‌ایم.
+      </p>
+
+      <div class="result demo-spec">
+        <p>فقط تگ p با قدرت <code>(0, 1, 1)</code> → قرمز</p>
+        <p class="note">کلاس note با قدرت <code>(0, 2, 0)</code> → آبی (ستون کلاس بیشتر است)</p>
+        <p class="note" id="special">id special با قدرت <code>(1, 1, 0)</code> → سبز (ستون id بیشتر است)</p>
+      </div>
+
+      <h3>سه ستون قدرت</h3>
+      <div class="result demo-spec">
+        <div class="score-tag">نام تگ مثل <code>p</code> → <code>(0, 0, 1)</code></div>
+        <div class="score-class">کلاس مثل <code>.note</code> → <code>(0, 1, 0)</code></div>
+        <div class="score-id">شناسه مثل <code>#special</code> → <code>(1, 0, 0)</code></div>
+      </div>
+
+      <table class="ref">
+        <thead>
+          <tr>
+            <th>انتخابگر</th>
+            <th>قدرت (id, کلاس, نوع)</th>
+            <th>توضیح</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>*</code></td>
+            <td><code>(0, 0, 0)</code></td>
+            <td>انتخابگر همگانی امتیاز ندارد</td>
+          </tr>
+          <tr>
+            <td><code>p</code></td>
+            <td><code>(0, 0, 1)</code></td>
+            <td>یک نام تگ</td>
+          </tr>
+          <tr>
+            <td><code>ul li a</code></td>
+            <td><code>(0, 0, 3)</code></td>
+            <td>سه نام تگ؛ فاصله‌ها امتیاز ندارند</td>
+          </tr>
+          <tr>
+            <td><code>p::first-line</code></td>
+            <td><code>(0, 0, 2)</code></td>
+            <td>شبه‌عنصر در ستون نوع حساب می‌شود</td>
+          </tr>
+          <tr>
+            <td><code>.note</code></td>
+            <td><code>(0, 1, 0)</code></td>
+            <td>یک کلاس</td>
+          </tr>
+          <tr>
+            <td><code>a:hover</code></td>
+            <td><code>(0, 1, 1)</code></td>
+            <td>شبه‌کلاس + نام تگ</td>
+          </tr>
+          <tr>
+            <td><code>input[type="email"]</code></td>
+            <td><code>(0, 1, 1)</code></td>
+            <td>انتخابگر صفت + نام تگ</td>
+          </tr>
+          <tr>
+            <td><code>.card .title</code></td>
+            <td><code>(0, 2, 0)</code></td>
+            <td>دو کلاس</td>
+          </tr>
+          <tr>
+            <td><code>#special</code></td>
+            <td><code>(1, 0, 0)</code></td>
+            <td>یک id</td>
+          </tr>
+          <tr>
+            <td><code>#menu .item a</code></td>
+            <td><code>(1, 1, 1)</code></td>
+            <td>id + کلاس + نام تگ</td>
+          </tr>
+          <tr>
+            <td><code>li:not(.done)</code></td>
+            <td><code>(0, 1, 1)</code></td>
+            <td><code>:not()</code> خودش امتیاز ندارد؛ قدرت آرگومانش حساب می‌شود</td>
+          </tr>
+          <tr>
+            <td><code>:where(.card) p</code></td>
+            <td><code>(0, 0, 1)</code></td>
+            <td>هر چه داخل <code>:where()</code> باشد امتیاز صفر دارد</td>
+          </tr>
+          <tr>
+            <td><code>style="..."</code></td>
+            <td>از همه انتخابگرها قوی‌تر</td>
+            <td>استایل درون‌خطی انتخابگر نیست و جدا از این جدول، بالاتر از همه است</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p class="tip">
+        ترتیب قدرت ساده برای شروع: <code>id</code> &gt; <code>class</code> &gt; نام تگ.
+        وقتی قدرت فرق دارد، قانون قوی‌تر برنده است؛ حتی اگر زودتر آمده باشد.
+        فقط وقتی هر سه ستون برابر باشند، ترتیب نوشتن (مثال ۱) تعیین‌کننده است.
+      </p>
+
+      <p class="mistake">
+        <strong>اشتباه رایج ۱:</strong>
+        حساب کردن قدرت به‌صورت «تگ = ۱، کلاس = ۱۰، id = ۱۰۰» و جمع زدن آن‌ها.
+        ستون‌ها روی هم سرریز نمی‌کنند: انتخابگری با ۱۱ کلاس <code>(0, 11, 0)</code> هنوز از یک id تنها
+        <code>(1, 0, 0)</code> ضعیف‌تر است.
+      </p>
+
+      <p class="mistake">
+        <strong>اشتباه رایج ۲:</strong>
+        زیاد استفاده کردن از <code>id</code> برای استایل. بعداً برای override کردن سخت می‌شود.
+        برای ظاهر معمولاً کلاس بهتر است و انتخابگرها را تا حد ممکن کوتاه نگه دارید.
+      </p>
+
+      <p class="exercise">
+        <strong>تمرین:</strong> به پاراگراف قرمز کلاس <code>note</code> بدهید. رنگش چه می‌شود؟ چرا؟
+      </p>
+    </section>
+
+    <nav class="page-nav" aria-label="ناوبری پایین">
+      <a href="01-order.html">→ قبلی: ترتیب قوانین</a>
+      <a href="../index.html">فهرست</a>
+      <a href="03-stylesheets.html">بعدی: چند فایل CSS ←</a>
+    </nav>
+
+  </div>
+
+  <footer class="page-footer">آبشاری بودن CSS</footer>
+
+</body>
+
+</html>

@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>۱۳) بخش‌بندی معنایی | جزوه HTML</title>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+  <header class="page-header">
+    <h1>جزوه HTML مقدماتی</h1>
+    <p>۱۳) بخش‌بندی معنایی صفحه</p>
+  </header>
+
+  <div class="container">
+    <nav class="page-nav">
+      <a href="12-forms.html">→ درس قبل</a>
+      <a href="../index.html">فهرست مطالب</a>
+      <a href="14-div-span.html">درس بعد ←</a>
+    </nav>
+
+    <section class="lesson">
+      <h2>۱۳) بخش‌بندی معنایی صفحه</h2>
+      <p>
+        به‌جای اینکه همهٔ محتوا را فقط داخل <code>div</code> بریزید، از عنصرهایی استفاده کنید که نقش هر بخش را بیان می‌کنند.
+        این عنصرها معمولاً ظاهر خاصی ندارند و شبیه <code>div</code> دیده می‌شوند. ارزش آن‌ها در معناست: موتور جستجو، صفحه‌خوان و خود شما راحت‌تر می‌فهمید هر قسمت چیست.
+      </p>
+
+      <table class="ref">
+        <thead>
+          <tr>
+            <th>عنصر</th>
+            <th>تعریف</th>
+            <th>نمونه کاربرد</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>header</code></td>
+            <td><code>header</code> سرصفحهٔ سایت یا سرصفحهٔ یک بخش است و معمولاً عنوان و معرفی را نگه می‌دارد.</td>
+            <td>نشان‌واره و عنوان وب‌سایت اغلب داخل سرصفحه قرار می‌گیرند.</td>
+          </tr>
+          <tr>
+            <td><code>nav</code></td>
+            <td><code>nav</code> مجموعهٔ پیوندهای ناوبری است، مثل منوی اصلی سایت یا فهرست بخش‌های همین صفحه.</td>
+            <td>فهرست پیوندهای اصلی نمونهٔ رایج <code>nav</code> است، نه هر گروه کوچکی از پیوندها.</td>
+          </tr>
+          <tr>
+            <td><code>main</code></td>
+            <td><code>main</code> محتوای اصلی و یکتای صفحه را در بر می‌گیرد. در هر صفحه معمولاً یک <code>main</code> کافی است.</td>
+            <td>بدنهٔ یکتای صفحه، جدا از سرصفحه و پاصفحه، داخل <code>main</code> قرار می‌گیرد.</td>
+          </tr>
+          <tr>
+            <td><code>section</code></td>
+            <td><code>section</code> گروهی از محتوای هم‌موضوع است و معمولاً عنوان دارد.</td>
+            <td>بخش مهارت‌ها یا پروژه‌ها، وقتی عنوان مشترک دارند، نمونهٔ <code>section</code> است.</td>
+          </tr>
+          <tr>
+            <td><code>article</code></td>
+            <td><code>article</code> محتوایی است که به‌تنهایی و جدا از بقیهٔ صفحه هم معنا دارد.</td>
+            <td>یک نوشتهٔ وبلاگ، یک خبر یا یک نظر کاربر نمونهٔ <code>article</code> است.</td>
+          </tr>
+          <tr>
+            <td><code>aside</code></td>
+            <td><code>aside</code> محتوای جانبی است که به موضوع اصلی مربوط است، اما متن اصلی صفحه نیست.</td>
+            <td>جعبهٔ نکته، تبلیغ مرتبط یا اطلاعات تکمیلی اغلب در <code>aside</code> قرار می‌گیرد.</td>
+          </tr>
+          <tr>
+            <td><code>footer</code></td>
+            <td><code>footer</code> پاصفحهٔ کل سایت یا پایان یک بخش است و معمولاً حق نشر و پیوندهای پایانی را نگه می‌دارد.</td>
+            <td>حق نشر و پیوندهای پایین صفحه نمونهٔ رایج محتوای <code>footer</code> هستند.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3>نمونه: صفحه اصلی یک وبلاگ آشپزی</h3>
+      <pre class="code"><code>&lt;header&gt;
+  &lt;h1&gt;آشپزخانه مریم&lt;/h1&gt;
+  &lt;nav&gt;
+    &lt;a href="#recipes"&gt;دستور پخت‌ها&lt;/a&gt; |
+    &lt;a href="#contact"&gt;تماس&lt;/a&gt;
+  &lt;/nav&gt;
+&lt;/header&gt;
+
+&lt;main&gt;
+  &lt;section id="recipes"&gt;
+    &lt;h2&gt;تازه‌ترین دستور پخت‌ها&lt;/h2&gt;
+    &lt;article&gt;
+      &lt;h3&gt;قورمه‌سبزی مجلسی&lt;/h3&gt;
+      &lt;p&gt;مواد لازم برای ۴ نفر و مراحل پخت...&lt;/p&gt;
+    &lt;/article&gt;
+  &lt;/section&gt;
+
+  &lt;aside&gt;
+    &lt;p&gt;نکته روز: سبزی را پیش از سرخ کردن خوب خشک کنید.&lt;/p&gt;
+  &lt;/aside&gt;
+
+  &lt;section id="contact"&gt;
+    &lt;h2&gt;تماس&lt;/h2&gt;
+    &lt;p&gt;maryam@example.com&lt;/p&gt;
+  &lt;/section&gt;
+&lt;/main&gt;
+
+&lt;footer&gt;
+  &lt;small&gt;© ۱۴۰۵ آشپزخانه مریم&lt;/small&gt;
+&lt;/footer&gt;</code></pre>
+
+      <div class="result">
+        <header>
+          <strong>آشپزخانه مریم</strong>
+          <nav>
+            <a href="#recipes-demo">دستور پخت‌ها</a> |
+            <a href="#contact-demo">تماس</a>
+          </nav>
+        </header>
+        <main>
+          <section id="recipes-demo">
+            <h3>تازه‌ترین دستور پخت‌ها</h3>
+            <article>
+              <h4>قورمه‌سبزی مجلسی</h4>
+              <p>مواد لازم برای ۴ نفر و مراحل پخت...</p>
+            </article>
+          </section>
+          <aside>
+            <p>نکته روز: سبزی را پیش از سرخ کردن خوب خشک کنید.</p>
+          </aside>
+          <section id="contact-demo">
+            <h3>تماس</h3>
+            <p>maryam@example.com</p>
+          </section>
+        </main>
+        <footer>
+          <small>© ۱۴۰۵ آشپزخانه مریم</small>
+        </footer>
+      </div>
+      <p>
+        <small>
+          (در جعبه نتیجه، برای به‌هم نریختن ساختار عنوان‌های همین صفحه، به‌جای <code>h1</code>/<code>h2</code>/<code>h3</code>
+          از <code>strong</code>/<code>h3</code>/<code>h4</code> استفاده شده است.)
+        </small>
+      </p>
+
+      <p>
+        همان‌طور که می‌بینید، عناصر معنایی ظاهر خاصی ندارند و شبیه <code>div</code> نمایش داده می‌شوند؛
+        ارزش آن‌ها در <strong>معنایی</strong> است که به مرورگر، موتور جستجو و صفحه‌خوان می‌دهند.
+      </p>
+
+      <h3>section یا article یا div؟</h3>
+      <p>
+        اگر آن بخش به‌تنهایی و جدا از صفحه هم معنا دارد، مانند خبر، نوشته، نظر کاربر یا کارت محصول، از <code>article</code> استفاده کنید.
+        اگر گروهی از محتوای هم‌موضوع است و معمولاً عنوان دارد، از <code>section</code> استفاده کنید.
+        اگر فقط برای چیدمان یا استایل چند عنصر را کنار هم می‌گذارید و معنای تازه‌ای در کار نیست، <code>div</code> انتخاب درست است.
+      </p>
+
+      <p class="tip">
+        <strong>نکته:</strong>
+        در هر صفحه معمولاً یک عنصر <code>main</code> کافی است و نباید آن را داخل <code>article</code> یا <code>section</code> پنهان کنید.
+        <code>header</code> و <code>footer</code> می‌توانند بیش از یکی باشند؛ مثلاً سرصفحهٔ کل سایت و سرصفحهٔ یک مقاله جدا هستند.
+      </p>
+
+      <p class="mistake">
+        <strong>خطای متداول:</strong>
+        قرار دادن <code>main</code> داخل <code>header</code>، <code>footer</code> یا <code>article</code>.
+        <code>main</code> باید محتوای اصلی صفحه را در بر بگیرد و معمولاً هم‌سطح سرصفحه و پاصفحه است.
+        همچنین هر دستهٔ کوچکی از پیوندها را <code>nav</code> نکنید؛ <code>nav</code> برای ناوبری اصلی صفحه یا سایت است.
+      </p>
+
+      <p class="exercise">
+        <strong>تمرین:</strong>
+        صفحهٔ معرفی یک رستوران بسازید. در <code>header</code> نام و منوی ناوبری را بگذارید.
+        داخل <code>main</code> دو <code>section</code> داشته باشید: «منوی غذا» و «نظرات مشتریان» با چند <code>article</code>.
+        ساعت کاری را در <code>aside</code> بنویسید و حق نشر را در <code>footer</code> بگذارید.
+      </p>
+    </section>
+
+    <nav class="page-nav">
+      <a href="12-forms.html">→ درس قبل</a>
+      <a href="../index.html">فهرست مطالب</a>
+      <a href="14-div-span.html">درس بعد ←</a>
+    </nav>
+  </div>
+
+  <footer class="page-footer">جزوه HTML مقدماتی</footer>
+</body>
+
+</html>

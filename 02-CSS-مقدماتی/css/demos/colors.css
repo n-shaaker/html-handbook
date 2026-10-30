@@ -1,0 +1,51 @@
+/* ۶) Colors */
+
+.swatch {
+  margin-bottom: 8px;
+  padding: 14px 10px;
+  text-align: center;
+  color: #222;
+  border-radius: 6px;
+  font-size: 14px;
+  direction: ltr;
+}
+
+.sw-name { background-color: tomato; }
+.sw-rgb  { background-color: rgb(60, 179, 113); }
+.sw-hex  { background-color: #1e90ff; }
+.sw-hsl  { background-color: hsl(39, 100%, 50%); }
+.sw-rgba { background-color: rgba(255, 0, 0, 0.4); }
+
+/* پیام‌های موفقیت، خطا و اطلاع‌رسانی */
+.alert {
+  padding: 10px 14px;
+  border-radius: 6px;
+}
+
+.alert-success { background-color: #d3f9d8; color: #1b5e20; }
+.alert-error   { background-color: #ffe3e3; color: #c92a2a; }
+.alert-info    { background-color: #e7f5ff; color: #1864ab; }
+
+/* rgba در برابر opacity — مسیر url نسبت به همین فایل (css/demos) است */
+.photo-stage {
+  background-image: url("../../images/bg.jpg");
+  background-size: cover;
+  background-position: center;
+  padding: 20px;
+}
+
+.caption {
+  padding: 8px 12px;
+  margin: 8px 0;
+}
+
+.caption-rgba {
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+}
+
+.caption-opacity {
+  background-color: black;
+  color: white;
+  opacity: 0.5;
+}

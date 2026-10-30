@@ -1,0 +1,153 @@
+/* ===== فونت ===== */
+@font-face {
+  font-family: "Vazirmatn";
+  src: url("../../../../fonts/Vazirmatn-Regular.woff2") format("woff2");
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: "Vazirmatn";
+  src: url("../../../../fonts/Vazirmatn-Bold.woff2") format("woff2");
+  font-weight: 700;
+}
+
+/* ===== کلی ===== */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background-color: #fdfcfa;
+  color: #333333;
+  font-family: "Vazirmatn", Tahoma, sans-serif;
+}
+
+/* ===== سربرگ ===== */
+#post-header {
+  padding: 72px 16px;
+  text-align: center;
+  color: white;
+  background-color: #2f4f3a;
+  background-image: url("../../../../images/bg.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.blog-name {
+  margin: 0;
+  font-size: 14px;
+  letter-spacing: 3px;
+}
+
+.post-title {
+  margin: 12px 0;
+  font-size: 40px;
+  text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.6);
+}
+
+.post-meta {
+  margin: 0;
+  font-size: 14px;
+}
+
+/* ===== مقاله ===== */
+.post {
+  max-width: 680px;
+  margin: 40px auto;
+  padding: 0 16px;
+  line-height: 1.9;
+}
+
+.lead {
+  font-size: 19px;
+  color: #222222;
+}
+
+.post h2 {
+  margin: 32px 0 8px;
+  color: #2f4f3a;
+  font-size: 22px;
+}
+
+/* ===== جعبه خلاصه ===== */
+.box {
+  width: 100%;
+  max-width: 400px;
+  margin: 24px auto;
+  padding: 16px 20px;
+  background-color: #eef6f0;
+  border: 2px solid #6a9f7a;
+  border-radius: 8px;
+}
+
+/* تیتر جعبه از قانون .post h2 هم رنگ می‌گیرد؛ اینجا فقط فاصله‌اش را کم می‌کنیم */
+.box h2 {
+  margin-top: 0;
+  font-size: 18px;
+}
+
+.box p {
+  margin: 0;
+}
+
+/* ===== نقل‌قول ===== */
+.quote {
+  margin: 28px 0;
+  padding: 16px 20px;
+  background-color: #f6f1e7;
+  border-right: 5px solid #c08a3e;
+  color: #5a4630;
+  font-style: italic;
+}
+
+.quote p {
+  margin: 0 0 8px;
+}
+
+.quote cite {
+  font-size: 14px;
+  font-style: normal;
+  color: #8a7350;
+}
+
+/* ===== لینک‌ها ===== */
+.post a {
+  color: #1a5fb4;
+  text-decoration: underline;
+}
+
+.post a:hover {
+  text-decoration: none;
+}
+
+.post a:focus-visible,
+.site-footer a:focus-visible {
+  outline: 3px solid #e6a700;
+  outline-offset: 2px;
+}
+
+/* ===== متن‌های کوچک ===== */
+.tags,
+.site-footer {
+  font-size: 13px;
+  color: #888888;
+}
+
+.tags {
+  margin-top: 32px;
+}
+
+/* ===== پانویس ===== */
+.site-footer {
+  max-width: 680px;
+  margin: 48px auto 0;
+  padding: 16px;
+  border-top: 1px solid #e2e2e2;
+  text-align: center;
+}
+
+.site-footer a {
+  color: #2f4f3a;
+}

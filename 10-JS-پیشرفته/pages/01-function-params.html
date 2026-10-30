@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>۱) توابع پیشرفته (پارامترها و توابع مرتبه بالا) | آموزش JavaScript سطح پیشرفته</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <script src="../js/log.js" defer></script>
+  <script src="../js/demos/function-params.js" defer></script>
+</head>
+
+<body>
+
+  <header class="page-header" id="top">
+    <h1>آموزش JavaScript — سطح پیشرفته</h1>
+    <p>۱) توابع پیشرفته (پارامترها و توابع مرتبه بالا)</p>
+  </header>
+
+  <div class="container">
+
+    <nav class="page-nav" aria-label="ناوبری درس">
+      <span></span>
+      <a href="../index.html">فهرست درس‌ها</a>
+      <a href="02-closures.html">بعدی: Closures ←</a>
+    </nav>
+
+    <section class="lesson" id="function-params">
+      <h2>۱) توابع پیشرفته (پارامترها و توابع مرتبه بالا)</h2>
+
+<p>تابع فقط یک فهرست ثابت از ورودی‌ها نیست. می‌توانید برای پارامتری که نیامده مقدار پیش‌فرض بگذارید، تعداد ورودی را از قبل ندانید، خود یک تابع را به‌عنوان ورودی بگیرید، یا از یک تابع، تابع تازه‌ای بسازید که بخشی از داده را به یاد داشته باشد. این درس همین حالت‌ها را جدا نشان می‌دهد.</p>
+
+<h3>مقدار پیش‌فرض پارامتر</h3>
+
+<p>اگر آرگومانی فرستاده نشود (یا دقیقاً <code>undefined</code> فرستاده شود)، پارامتر مقدار پیش‌فرضش را می‌گیرد.</p>
+
+<pre class="code"><code>function greet(name = "مهمان", greeting = "سلام") {
+  return `${greeting} ${name}!`;
+}
+
+console.log(greet("سارا", "درود"));          // درود سارا!
+console.log(greet("علی"));                   // سلام علی!
+console.log(greet());                        // سلام مهمان!
+console.log(greet(undefined, "صبح بخیر"));   // صبح بخیر مهمان!
+console.log(greet(null));                    // سلام null!  ← null یعنی «مقدار دارد»</code></pre>
+
+<p>اگر آرگومان را نفرستید یا صریحاً <code>undefined</code> بفرستید، مقدار پیش‌فرض جایگزین می‌شود. فرستادن <code>null</code> پیش‌فرض را فعال نمی‌کند، چون <code>null</code> یک مقدار واقعی است و در خروجی دیده می‌شود. آرگومان دوم را می‌توانید جدا بدهید و اولی را <code>undefined</code> بگذارید تا فقط همان اولی پیش‌فرض بگیرد.</p>
+
+<div class="result">
+<pre class="console" id="out-1"></pre>
+</div>
+
+<p class="tip">مقدار پیش‌فرض فقط جای <code>undefined</code> را می‌گیرد؛ <code>null</code>، <code>0</code> و <code>""</code> مقدار حساب می‌شوند و پیش‌فرض اعمال نمی‌شود.</p>
+
+<h3>پارامتر Rest و شیء arguments</h3>
+
+<p>سه نقطه در <strong>تعریف</strong> تابع (<code>...nums</code>) یعنی Rest: «بقیه آرگومان‌ها را در یک آرایه واقعی جمع کن». همین سه نقطه در <strong>صدا زدن</strong> تابع (<code>average(...scores)</code>) یعنی Spread: «آرایه را باز کن و عضوهایش را جدا جدا بفرست».</p>
+
+<pre class="code"><code>function average(...nums) {           // Rest: همه آرگومان‌ها در آرایه nums
+  if (nums.length === 0) return 0;
+  return nums.reduce((s, n) =&gt; s + n, 0) / nums.length;
+}
+console.log(average(10, 20, 30));     // 20
+
+const scores = [17, 19, 15];
+console.log(average(...scores));      // 17  ← Spread: مثل average(17, 19, 15)
+
+function oldStyle() {
+  console.log(arguments.length, arguments[0]);   // روش قدیمی؛ در تابع پیکانی وجود ندارد
+}
+oldStyle("a", "b", "c");              // 3 a</code></pre>
+
+<p>Rest همهٔ آرگومان‌ها را در آرایهٔ <code>nums</code> می‌ریزد. اگر هیچ عددی نیاید، تابع صفر برمی‌گرداند تا تقسیم بر صفر رخ ندهد. در غیر این صورت جمع را بر تعداد تقسیم می‌کند. سه نقطه موقع صدا زدن، عضوهای آرایهٔ <code>scores</code> را به‌صورت آرگومان جدا می‌فرستد. شیء <code>arguments</code> روش قدیمی‌تر دیدن آرگومان‌هاست و در تابع پیکانی وجود ندارد.</p>
+
+<div class="result">
+<pre class="console" id="out-2"></pre>
+</div>
+
+<p class="tip"><code>arguments</code> شبه‌آرایه است (متدهایی مثل <code>map</code> و <code>reduce</code> را ندارد) و در تابع پیکانی تعریف نشده است. در کد جدید همیشه از پارامتر Rest استفاده کنید. پارامتر Rest باید <strong>آخرین</strong> پارامتر باشد: <code>function f(first, ...others)</code>.</p>
+
+<h3>تابع به عنوان مقدار</h3>
+
+<p>در JavaScript تابع هم یک «مقدار» است: می‌شود آن را در متغیر گذاشت، به تابع دیگر داد یا از تابع برگرداند. به تابعی که تابع دیگری را بگیرد یا برگرداند <strong>تابع مرتبه بالا (Higher-Order Function)</strong> می‌گویند.</p>
+
+<pre class="code"><code>function calculate(a, b, operation) {   // operation یک تابع است
+  return operation(a, b);
+}
+
+const add = (x, y) =&gt; x + y;
+const multiply = (x, y) =&gt; x * y;
+
+console.log(calculate(4, 5, add));                // 9
+console.log(calculate(4, 5, multiply));           // 20
+console.log(calculate(4, 5, (x, y) =&gt; x ** y));   // 1024  ← تابع بی‌نام همان‌جا</code></pre>
+
+<p>پارامتر <code>operation</code> خود یک تابع است. <code>calculate</code> عددها را به آن تابع می‌دهد و نتیجهٔ برگشتی را برمی‌گرداند. می‌توانید تابعی را که از قبل در متغیر است بفرستید، یا همان‌جا یک تابع بی‌نام بنویسید. خود <code>calculate</code> نمی‌داند جمع است یا توان؛ این تصمیم با تابعی است که شما می‌فرستید.</p>
+
+<div class="result">
+<pre class="console" id="out-3"></pre>
+</div>
+
+<p class="tip"><code>map</code>، <code>filter</code>، <code>forEach</code> و <code>addEventListener</code> همه توابع مرتبه بالا هستند؛ چون یک تابع ورودی می‌گیرند.</p>
+
+<h3>تابعی که تابع برمی‌گرداند</h3>
+
+<p>این الگو مثل «کارخانه تابع» است: یک بار تنظیمات را می‌دهیم و تابعی آماده می‌گیریم. مثال کاربردی: ساختن تابع محاسبه قیمت با درصد تخفیف‌های مختلف.</p>
+
+<pre class="code"><code>function makeMultiplier(factor) {
+  return function (n) {
+    return n * factor;
+  };
+}
+
+const double = makeMultiplier(2);
+const triple = makeMultiplier(3);
+console.log(double(10), triple(10));      // 20 30
+
+function makeDiscount(percent) {
+  return price =&gt; price - (price * percent) / 100;
+}
+
+const studentPrice = makeDiscount(20);    // ۲۰٪ تخفیف دانشجویی
+const vipPrice = makeDiscount(35);        // ۳۵٪ تخفیف مشتری ویژه
+console.log(studentPrice(500000), vipPrice(500000));   // 400000 325000</code></pre>
+
+<p><code>makeMultiplier</code> یک تابع تازه برمی‌گرداند که <code>factor</code> را به یاد دارد. هر بار صدا زدن <code>makeMultiplier</code> یک تابع جدا با ضریب خودش می‌سازد، به همین دلیل <code>double</code> و <code>triple</code> مستقل‌اند. <code>makeDiscount</code> همین الگو را برای کم کردن درصد از قیمت به کار می‌برد.</p>
+
+<div class="result">
+<pre class="console" id="out-4"></pre>
+</div>
+
+<h3>IIFE — تابعی که بلافاصله اجرا می‌شود</h3>
+
+<pre class="code"><code>(function () {
+  const secret = "فقط این‌جا دیده می‌شود";
+  console.log(secret);
+})();</code></pre>
+
+<p>پرانتز بیرونی تابع را تعریف می‌کند و پرانتز آخر همان لحظه آن را اجرا می‌کند. اسمی برای بعد باقی نمی‌ماند. <code>secret</code> فقط داخل همین اجرا وجود دارد و بیرون از پرانتزها دیده نمی‌شود. این شکل وقتی به کار می‌آید که یک کار را یک بار انجام دهید و نخواهید متغیرهایش با بقیهٔ فایل قاطی شود.</p>
+
+<div class="result">
+<pre class="console" id="out-5"></pre>
+</div>
+
+<p class="tip">IIFE در کدهای قدیمی برای جلوگیری از ساختن متغیر سراسری زیاد دیده می‌شود. امروزه معمولاً همین کار را با ماژول‌ها (درس ۱۲) یا یک بلوک <code>{ }</code> همراه با <code>let</code>/<code>const</code> انجام می‌دهیم.</p>
+
+<p class="mistake"><strong>اشتباه رایج:</strong> گذاشتن پارامتر پیش‌فرض قبل از پارامتر اجباری: <code>function f(a = 1, b)</code>. این کد خطا نمی‌دهد، ولی برای استفاده از پیش‌فرض a باید <code>f(undefined, 5)</code> بنویسید که خوانا نیست. پارامترهای پیش‌فرض را آخر بگذارید.</p>
+
+<p class="mistake"><strong>اشتباه رایج:</strong> فرستادن نتیجه تابع به جای خود تابع: <code>calculate(4, 5, add(4, 5))</code>. این‌جا <code>add</code> همان لحظه اجرا می‌شود و عدد 9 (نه یک تابع) فرستاده می‌شود؛ درستش <code>calculate(4, 5, add)</code> است.</p>
+
+<p class="exercise"><strong>تمرین:</strong><br>
+۱) تابع <code>repeat(n, action)</code> بنویسید که تابع action را n بار اجرا کند و شماره دور (از ۱ تا n) را به آن بدهد؛ مثلاً <code>repeat(3, i =&gt; console.log("دور " + i))</code> سه خط «دور 1» تا «دور 3» چاپ کند.<br>
+۲) تابع <code>makeGreeting(prefix)</code> بنویسید که تابعی برگرداند؛ آن تابع اسم بگیرد و <code>prefix + " " + name</code> را برگرداند؛ مثلاً <code>makeGreeting("سلام")("سارا")</code> مقدار <code>"سلام سارا"</code> بدهد.<br>
+۳) تابع <code>sumAll(...nums)</code> بنویسید که هر تعداد عدد بگیرد و جمعشان را برگرداند و آن را یک بار با آرایه <code>[5, 10, 15]</code> و Spread صدا بزنید.</p>
+    </section>
+
+    <nav class="page-nav" aria-label="ناوبری درس پایین">
+      <span></span>
+      <a href="../index.html">فهرست درس‌ها</a>
+      <a href="02-closures.html">بعدی: Closures ←</a>
+    </nav>
+
+  </div>
+
+  <footer class="page-footer">
+    آموزش JavaScript سطح پیشرفته
+  </footer>
+
+</body>
+
+</html>

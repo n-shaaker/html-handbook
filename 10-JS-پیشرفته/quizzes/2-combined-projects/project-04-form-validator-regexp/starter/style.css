@@ -1,0 +1,100 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 24px 12px;
+  font-family: Tahoma, Arial, sans-serif;
+  line-height: 1.8;
+  background: #f4f7fb;
+  color: #222;
+}
+
+.card {
+  max-width: 520px;
+  margin: 0 auto;
+  padding: 20px 24px;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+}
+
+h1 {
+  margin-top: 0;
+  font-size: 1.3rem;
+  color: #1a3a5c;
+}
+
+.intro {
+  color: #5b6b80;
+  font-size: 0.9rem;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 6px;
+}
+
+input {
+  font: inherit;
+  padding: 6px 10px;
+  border: 1px solid #b8c4d4;
+  border-radius: 6px;
+}
+
+input[dir="ltr"] {
+  text-align: left;
+}
+
+input:focus {
+  outline: 2px solid #1a3a5c;
+  outline-offset: 1px;
+}
+
+/* JavaScript این ویژگی را روی فیلد نامعتبر می‌گذارد */
+input[aria-invalid="true"] {
+  border-color: #c0392b;
+  background: #fdf3f2;
+}
+
+input[aria-invalid="false"] {
+  border-color: #1e8449;
+}
+
+.field-hint {
+  margin: 2px 0 0;
+  font-size: 0.8rem;
+  color: #888;
+}
+
+.field-error {
+  min-height: 1.6em;
+  margin: 2px 0 0;
+  font-size: 0.85rem;
+  color: #c0392b;
+}
+
+.btn {
+  font: inherit;
+  padding: 8px 24px;
+  border: none;
+  border-radius: 6px;
+  background: #1a3a5c;
+  color: #fff;
+  cursor: pointer;
+}
+
+.form-status {
+  min-height: 1.8em;
+  font-weight: bold;
+}
+
+.form-status.success {
+  color: #1e8449;
+}
+
+.form-status.failure {
+  color: #c0392b;
+}

@@ -1,0 +1,67 @@
+/* ۱۱) Pseudo-elements */
+
+.demo-pe .fl {
+  text-align: left;
+}
+
+.demo-pe .fl::first-letter {
+  font-size: 40px;
+  color: #c92a2a;
+  font-weight: bold;
+}
+
+.demo-pe .fline::first-line {
+  color: #1a5fb4;
+  font-weight: bold;
+}
+
+.demo-pe .done::before {
+  content: "✔ ";
+  color: green;
+}
+
+.demo-pe .price::after {
+  content: " تومان";
+  color: #888;
+}
+
+.demo-pe .required::after {
+  content: " *";
+  color: red;
+}
+
+.demo-pe .quote {
+  margin: 0;
+  font-size: 18px;
+}
+
+.demo-pe .quote::before {
+  content: "«";
+  font-size: 50px;
+  color: #ced4da;
+  vertical-align: middle;
+  margin-left: 6px;
+}
+
+.demo-pe .fancy {
+  margin: 0;
+}
+
+.demo-pe .fancy::after {
+  content: "";
+  display: block;
+  width: 60px;
+  height: 4px;
+  background-color: orange;
+  margin-top: 6px;
+}
+
+.demo-pe .sel::selection {
+  background-color: #ffd43b;
+  color: black;
+}
+
+.demo-pe .mark li::marker {
+  color: #e8590c;
+  font-size: 20px;
+}

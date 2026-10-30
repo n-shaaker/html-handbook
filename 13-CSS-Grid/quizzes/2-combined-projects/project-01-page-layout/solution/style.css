@@ -1,0 +1,155 @@
+/* ===== تنظیمات کلی ===== */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Tahoma, Arial, sans-serif;
+  line-height: 1.8;
+  color: #3b2a1a;
+  background-color: #fdf6ec;
+}
+
+a {
+  color: #c2410c;
+}
+
+/* ===== اسکلت صفحه با نقشه ناحیه‌ها ===== */
+.page {
+  display: grid;
+  grid-template-columns: minmax(180px, 250px) 1fr; /* ستون کناری راست، محتوا بقیه جا */
+  grid-template-rows: auto 1fr auto;               /* ردیف وسط بقیه ارتفاع را می‌گیرد */
+  grid-template-areas:
+    "header  header"
+    "sidebar main"
+    "footer  footer";
+  gap: 16px;
+  min-height: 100vh;   /* تا پانویس همیشه ته صفحه باشد */
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 16px;
+}
+
+.site-header { grid-area: header; }
+.sidebar     { grid-area: sidebar; }
+.content     { grid-area: main; }
+.site-footer { grid-area: footer; }
+
+/* ===== سربرگ ===== */
+.site-header {
+  background-color: #c2410c;
+  color: white;
+  padding: 12px 20px;
+  border-radius: 10px;
+}
+
+.site-header h1 {
+  margin: 0;
+  font-size: 26px;
+}
+
+.site-header nav a {
+  color: white;
+  text-decoration: none;
+  margin-left: 16px;
+}
+
+.site-header nav a:hover {
+  text-decoration: underline;
+}
+
+/* ===== ستون کناری ===== */
+.sidebar {
+  background-color: white;
+  border: 1px solid #f1d9bd;
+  border-radius: 10px;
+  padding: 12px 16px;
+}
+
+.sidebar h2 {
+  font-size: 18px;
+  color: #c2410c;
+  margin: 0 0 6px;
+}
+
+.sidebar p {
+  margin: 0 0 6px;
+}
+
+/* ===== محتوا و لیست منو ===== */
+.content {
+  background-color: white;
+  border: 1px solid #f1d9bd;
+  border-radius: 10px;
+  padding: 12px 20px 20px;
+}
+
+.content h2 {
+  margin-top: 0;
+  color: #c2410c;
+}
+
+.menu-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+}
+
+/* هر آیتم: اسم راست، قیمت چپ (امتیازی) */
+.menu-list li {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 8px;
+  background-color: #fff7ed;
+  border-radius: 8px;
+  padding: 10px 12px;
+}
+
+.item-name {
+  font-weight: bold;
+}
+
+.item-price {
+  color: #15803d;
+  font-weight: bold;
+}
+
+/* پیشنهاد ویژه تمام عرض لیست (امتیازی) */
+.menu-list .special {
+  grid-column: 1 / -1;
+  background-color: #ffedd5;
+  border: 2px dashed #c2410c;
+}
+
+/* ===== پانویس ===== */
+.site-footer {
+  background-color: #3b2a1a;
+  color: #fdf6ec;
+  text-align: center;
+  border-radius: 10px;
+}
+
+.site-footer p {
+  margin: 10px;
+}
+
+/* ===== موبایل: تنها media query ===== */
+@media (max-width: 700px) {
+  .page {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 1fr auto auto;
+    grid-template-areas:
+      "header"
+      "main"
+      "sidebar"
+      "footer";
+  }
+
+  .menu-list {
+    grid-template-columns: 1fr;
+  }
+}

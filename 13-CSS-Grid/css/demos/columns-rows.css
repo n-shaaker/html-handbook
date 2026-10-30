@@ -1,0 +1,66 @@
+/* ۲) ستون‌ها و ردیف‌ها */
+
+/* ظاهر مشترک همه شبکه‌های این صفحه */
+.demo-cols .grid {
+  display: grid;
+  background-color: #f1f3f5;
+  border: 1px solid #ced4da;
+  padding: 8px;
+}
+
+/* جعبه‌های رنگی شماره‌دار */
+.demo-cols .box {
+  color: white;
+  font-weight: bold;
+  text-align: center;
+  padding: 12px 8px;
+  border-radius: 6px;
+}
+
+.demo-cols .b1 { background-color: #1c7ed6; }
+.demo-cols .b2 { background-color: #2f9e44; }
+.demo-cols .b3 { background-color: #e8590c; }
+.demo-cols .b4 { background-color: #ae3ec9; }
+.demo-cols .b5 { background-color: #e03131; }
+.demo-cols .b6 { background-color: #0c8599; }
+
+/* متن راست‌چین برای اسم غذا در مثال ۵ */
+.demo-cols .text-right {
+  text-align: right;
+}
+
+/* مثال ۱ */
+.demo-cols .grid-px {
+  grid-template-columns: 150px 150px 150px;
+  gap: 8px;
+}
+
+/* مثال ۲ (عمداً بدون gap) */
+.demo-cols .grid-percent {
+  grid-template-columns: 50% 25% 25%;
+}
+
+/* مثال ۳ */
+.demo-cols .grid-fr {
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 8px;
+}
+
+/* مثال ۴ */
+.demo-cols .grid-mix {
+  grid-template-columns: 200px 1fr;
+  gap: 8px;
+}
+
+/* مثال ۵ */
+.demo-cols .grid-auto {
+  grid-template-columns: auto 1fr auto;
+  gap: 8px;
+}
+
+/* مثال ۶ */
+.demo-cols .grid-rows {
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 60px 120px;
+  gap: 8px;
+}

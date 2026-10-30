@@ -1,0 +1,42 @@
+/* تمرین ۳ — زبانه‌های ناهم‌عرض و آیکون چاق (نسخه خراب — درستش کنید) */
+
+body {
+  font-family: Tahoma, sans-serif;
+  margin: 20px;
+  background-color: #f8f9fa;
+  color: #212529;
+}
+
+.tabs {
+  display: flex;
+  gap: 4px;
+}
+
+.tab {
+  flex-grow: 1;
+  flex-shrink: 1;
+  flex-basis: auto;
+  background-color: #e9ecef;
+  padding: 10px;
+  text-align: center;
+}
+
+.alert {
+  display: flex;
+  gap: 10px;
+  margin-top: 20px;
+  background-color: #fff5f5;
+  border: 1px solid #ffc9c9;
+  padding: 10px;
+}
+
+.alert .icon {
+  flex: 1;
+  background-color: #e03131;
+  color: white;
+  padding: 5px 10px;
+}
+
+.alert .text {
+  flex: 1;
+}

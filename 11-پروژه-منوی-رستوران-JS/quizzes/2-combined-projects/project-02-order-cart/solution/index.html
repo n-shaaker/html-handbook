@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>منوی رستوران نارنج | سبد سفارش</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="app.js" defer></script>
+  </head>
+
+  <body>
+    <header class="site-header">
+      <p class="logo">رستوران سنتی <strong>نارنج</strong></p>
+    </header>
+
+    <div class="container layout">
+      <!-- ========== منو ========== -->
+      <main>
+        <h1>سفارش آنلاین</h1>
+
+        <div class="dishes-grid">
+          <article class="dish">
+            <img src="../../../../images/koobideh.jpg" alt="کباب کوبیده در بشقاب با گوجه کبابی" />
+            <div class="dish-body">
+              <h3>چلوکباب کوبیده</h3>
+              <p class="price">۴۲۰٬۰۰۰ تومان</p>
+              <button type="button" class="btn add-btn" data-name="چلوکباب کوبیده" data-price="420000">+ افزودن</button>
+            </div>
+          </article>
+
+          <article class="dish">
+            <img src="../../../../images/joojeh.jpg" alt="جوجه‌کباب زعفرانی روی سیخ" />
+            <div class="dish-body">
+              <h3>چلوجوجه‌کباب</h3>
+              <p class="price">۳۸۰٬۰۰۰ تومان</p>
+              <button type="button" class="btn add-btn" data-name="چلوجوجه‌کباب" data-price="380000">+ افزودن</button>
+            </div>
+          </article>
+
+          <article class="dish">
+            <img src="../../../../images/ghormeh.jpg" alt="خورش قورمه‌سبزی کنار برنج" />
+            <div class="dish-body">
+              <h3>چلوخورش قورمه‌سبزی</h3>
+              <p class="price">۳۲۰٬۰۰۰ تومان</p>
+              <button type="button" class="btn add-btn" data-name="چلوخورش قورمه‌سبزی" data-price="320000">+ افزودن</button>
+            </div>
+          </article>
+
+          <article class="dish">
+            <img src="../../../../images/faloodeh.jpg" alt="فالوده شیرازی در جام شیشه‌ای" />
+            <div class="dish-body">
+              <h3>فالوده شیرازی</h3>
+              <p class="price">۹۰٬۰۰۰ تومان</p>
+              <button type="button" class="btn add-btn" data-name="فالوده شیرازی" data-price="90000">+ افزودن</button>
+            </div>
+          </article>
+
+          <article class="dish">
+            <img src="../../../../images/tea.jpg" alt="استکان چای ایرانی" />
+            <div class="dish-body">
+              <h3>چای سنتی</h3>
+              <p class="price">۶۰٬۰۰۰ تومان</p>
+              <button type="button" class="btn add-btn" data-name="چای سنتی" data-price="60000">+ افزودن</button>
+            </div>
+          </article>
+
+          <article class="dish">
+            <img src="../../../../images/doogh.jpg" alt="دوغ محلی با برگ نعنا در کاسه‌های مسی" />
+            <div class="dish-body">
+              <h3>دوغ محلی</h3>
+              <p class="price">۴۵٬۰۰۰ تومان</p>
+              <button type="button" class="btn add-btn" data-name="دوغ محلی" data-price="45000">+ افزودن</button>
+            </div>
+          </article>
+        </div>
+      </main>
+
+      <!-- ========== سبد سفارش ========== -->
+      <aside class="cart" aria-labelledby="cart-title">
+        <h2 id="cart-title">سفارش من <span class="cart-count" id="cart-count">۰</span></h2>
+        <ul class="cart-list" id="cart-list"></ul>
+        <p class="cart-total" id="cart-total" aria-live="polite"></p>
+        <button type="button" class="btn btn-light" id="cart-clear">خالی کردن سبد</button>
+      </aside>
+    </div>
+  </body>
+</html>

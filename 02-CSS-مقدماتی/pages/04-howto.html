@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>۴) سه روش افزودن CSS به HTML | آموزش CSS از صفر</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/demos/howto.css">
+</head>
+
+<body>
+
+  <header class="page-header">
+    <h1>آموزش CSS از صفر</h1>
+    <p>۴) سه روش افزودن CSS به HTML</p>
+  </header>
+
+  <div class="container">
+
+    <nav class="page-nav" aria-label="ناوبری درس">
+      <a href="03-selectors.html">→ قبلی: Selectors</a>
+      <a href="../index.html">فهرست درس‌ها</a>
+      <a href="05-comments.html">بعدی: Comments ←</a>
+    </nav>
+
+    <section class="lesson" id="howto">
+      <h2>۴) سه روش افزودن CSS به HTML</h2>
+
+      <p class="tip">
+        در این پروژه <strong>فقط از روش External</strong> استفاده شده است.
+        روش‌های Internal و Inline را در بلوک‌های کد می‌بینید؛ نتیجه زنده‌شان با کلاس‌هایی در فایل خارجی
+        <code>howto.css</code> شبیه‌سازی شده تا صفحه بدون CSS داخلی یا Inline بماند.
+      </p>
+
+      <h3>روش ۱: External (فایل جداگانه) — بهترین روش</h3>
+      <p>
+        در این روش، قانون‌های CSS را در فایلی با پسوند <code>.css</code> می‌نویسیم و با تگ <code>link</code> داخل <code>head</code> به صفحه وصل می‌کنیم.
+        مرورگر آن فایل را جداگانه می‌خواند و قانون‌هایش را روی HTML اعمال می‌کند. چون فایل جداست، چند صفحه می‌توانند به همان یک فایل لینک شوند و ظاهر مشترک داشته باشند.
+      </p>
+      <pre class="code"><code>&lt;head&gt;
+  &lt;link rel="stylesheet" href="../css/demos/howto.css"&gt;
+&lt;/head&gt;</code></pre>
+      <pre class="code"><code>/* فایل css/demos/howto.css */
+.demo-external {
+  color: #c2185b;
+  font-weight: bold;
+}</code></pre>
+      <div class="result">
+        <p class="demo-external">این متن از فایل howto.css رنگ گرفته است.</p>
+      </div>
+
+      <h3>روش ۲: Internal (داخل تگ style)</h3>
+      <p>
+        در این روش، قانون‌های CSS را داخل تگ <code>style</code> در بخش <code>head</code> همان صفحه می‌نویسیم.
+        مرورگر این قانون‌ها را فقط برای همان سند می‌خواند. انتخابگر و آکولاد مثل فایل خارجی نوشته می‌شوند؛ تفاوت فقط در محل قرار گرفتن کد است.
+        این روش وقتی مناسب است که ظاهر فقط به یک صفحه تعلق دارد و قرار نیست در صفحه‌های دیگر تکرار شود.
+      </p>
+      <pre class="code"><code>&lt;head&gt;
+  &lt;style&gt;
+    .demo-internal {
+      color: purple;
+      font-weight: bold;
+    }
+  &lt;/style&gt;
+&lt;/head&gt;</code></pre>
+      <div class="result">
+        <p class="demo-internal">این متن ظاهر نمونه Internal را نشان می‌دهد (در این پروژه از فایل خارجی آمده).</p>
+      </div>
+
+      <h3>روش ۳: Inline (روی خود تگ)</h3>
+      <p>
+        در این روش، تعریف‌ها را مستقیم در ویژگی <code>style</code> خود تگ می‌نویسیم.
+        چون ظاهر به همان یک عنصر چسبیده است، انتخابگر و آکولاد لازم نیست و فقط جفت‌های ویژگی و مقدار، جدا شده با نقطه‌ویرگول، نوشته می‌شوند.
+        این روش ظاهر را در میان HTML پخش می‌کند و برای پروژه‌ای که چند صفحه دارد نگهداری‌اش دشوار می‌شود.
+      </p>
+      <pre class="code"><code>&lt;p style="color: green; font-size: 18px;"&gt;متن سبز&lt;/p&gt;</code></pre>
+      <div class="result">
+        <p class="demo-inline">متن سبز</p>
+      </div>
+
+      <h3>اگر چند روش با هم تداخل داشته باشند؟</h3>
+      <pre class="code"><code>&lt;p class="demo-external" style="color: green;"&gt;کدام رنگ برنده است؟&lt;/p&gt;</code></pre>
+      <div class="result">
+        <p class="demo-cascade">کدام رنگ برنده است؟</p>
+      </div>
+      <p class="tip">
+        در صفحه واقعی، استایل Inline از قانون‌های فایل External و تگ <code>style</code> قوی‌تر است، پس متن
+        <strong>سبز</strong> می‌شود؛ ولی <code>font-weight: bold</code> فایل External هنوز اعمال می‌شود، چون Inline آن را تغییر نداده است.
+        بین External و Internal تفاوتی در قدرت نیست: اگر انتخابگرها هم‌قدرت باشند، قانونی که <strong>دیرتر</strong>
+        خوانده شده (پایین‌تر در صفحه آمده) برنده است. پس ترتیب <code>link</code> و <code>style</code> در <code>head</code> مهم است.
+        به همین رفتار «آبشاری» (Cascading) می‌گویند.
+      </p>
+
+      <table class="ref">
+        <thead>
+          <tr>
+            <th>روش</th>
+            <th>کجا نوشته می‌شود؟</th>
+            <th>چه زمانی؟</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>External</td>
+            <td>فایل <code>.css</code> جدا</td>
+            <td>همیشه برای پروژه واقعی؛ یک فایل برای همه صفحه‌ها</td>
+          </tr>
+          <tr>
+            <td>Internal</td>
+            <td>تگ <code>style</code> در head</td>
+            <td>وقتی فقط یک صفحه ظاهر خاص دارد</td>
+          </tr>
+          <tr>
+            <td>Inline</td>
+            <td>attribute <code>style</code> روی تگ</td>
+            <td>به‌ندرت؛ برای تست سریع (و در قالب ایمیل‌های HTML)</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p class="tip">
+        <strong>چرا External بهترین است؟</strong> یک فایل CSS به همه صفحه‌ها لینک می‌شود؛ با تغییر آن، ظاهر کل سایت عوض
+        می‌شود. مرورگر هم فایل را یک بار دانلود و در حافظه (cache) نگه می‌دارد، پس صفحه‌های بعدی سریع‌تر باز می‌شوند.
+        استایل Inline برعکس، HTML را شلوغ می‌کند، قابل استفاده دوباره نیست و تغییرش با CSS معمولی سخت است.
+      </p>
+
+      <p class="mistake">
+        <strong>اشتباه رایج:</strong>
+        مسیر غلط در <code>href</code>. اگر فایل CSS در پوشه <code>css/demos</code> است، از داخل <code>pages</code>
+        باید بنویسید <code>../css/demos/howto.css</code> (<code>../</code> یعنی یک پوشه بیرون).
+        <br>
+        فراموش کردن <code>rel="stylesheet"</code> در تگ <code>link</code> هم باعث می‌شود فایل CSS اصلاً اعمال نشود.
+        <br>
+        نوشتن تگ <code>&lt;style&gt;</code> در فایل <code>.css</code> هم غلط است؛ فایل CSS فقط قانون‌های CSS دارد، نه تگ HTML.
+      </p>
+
+      <p class="exercise">
+        <strong>تمرین:</strong> برای صفحه معرفی خودتان یک فایل <code>css/style.css</code> بسازید، آن را با <code>link</code>
+        وصل کنید و رنگ تیترها را تغییر دهید. بعد عمداً مسیر را غلط بنویسید و ببینید چه اتفاقی می‌افتد.
+      </p>
+    </section>
+
+
+    <nav class="page-nav" aria-label="ناوبری درس پایین">
+      <a href="03-selectors.html">→ قبلی: Selectors</a>
+      <a href="../index.html">فهرست درس‌ها</a>
+      <a href="05-comments.html">بعدی: Comments ←</a>
+    </nav>
+
+  </div>
+
+  <footer class="page-footer">
+    آموزش CSS از صفر
+  </footer>
+
+</body>
+
+</html>

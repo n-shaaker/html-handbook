@@ -1,0 +1,233 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>۲۱) گرافیک: SVG و Canvas | جزوه HTML</title>
+    <link rel="stylesheet" href="../css/style.css" />
+  </head>
+
+  <body>
+    <header class="page-header">
+      <h1>جزوه HTML مقدماتی</h1>
+      <p>۲۱) گرافیک در HTML: SVG و Canvas</p>
+    </header>
+
+    <div class="container">
+      <nav class="page-nav">
+        <a href="20-media.html">→ درس قبل</a>
+        <a href="../index.html">فهرست مطالب</a>
+        <a href="22-interactive.html">درس بعد ←</a>
+      </nav>
+
+      <section class="lesson">
+        <h2>۲۱) SVG — گرافیک برداری</h2>
+        <p>
+          <strong>SVG</strong> (Scalable Vector Graphics) شکل را با توصیف هندسی می‌سازد، نه با شبکه‌ای از پیکسل‌های ثابت.
+          به همین دلیل با بزرگ شدن تار نمی‌شود. آیکون و لوگوی سایت‌ها اغلب SVG هستند.
+          کد SVG را می‌توان مستقیم داخل HTML نوشت، چون عنصرهای آن در صفحه قرار می‌گیرند.
+        </p>
+
+        <div class="tag-card">
+          <h4>دایره — circle</h4>
+          <p>عنصر <code>circle</code> یک دایره می‌سازد. <code>cx</code> و <code>cy</code> مختصات مرکز هستند، <code>r</code> شعاع است، <code>fill</code> رنگ داخل را مشخص می‌کند و <code>stroke</code> رنگ خط دور را. مبدأ مختصات گوشهٔ بالا-چپ است و <code>y</code> به سمت پایین زیاد می‌شود.</p>
+          <pre class="code"><code>&lt;svg width="120" height="120"&gt;
+  &lt;circle cx="60" cy="60" r="45" stroke="#1a3a5c" stroke-width="4" fill="gold" /&gt;
+&lt;/svg&gt;</code></pre>
+          <div class="result">
+            <svg width="120" height="120">
+              <circle cx="60" cy="60" r="45" stroke="#1a3a5c" stroke-width="4" fill="gold" />
+            </svg>
+          </div>
+        </div>
+
+        <div class="tag-card">
+          <h4>مستطیل با گوشه گرد — rect</h4>
+          <pre class="code"><code>&lt;svg width="260" height="110"&gt;
+  &lt;rect x="10" y="10" width="240" height="90" rx="16"
+        fill="#0b6e4f" stroke="#1a3a5c" stroke-width="4" /&gt;
+&lt;/svg&gt;</code></pre>
+          <div class="result">
+            <svg width="260" height="110">
+              <rect x="10" y="10" width="240" height="90" rx="16" fill="#0b6e4f" stroke="#1a3a5c" stroke-width="4" />
+            </svg>
+          </div>
+        </div>
+
+        <div class="tag-card">
+          <h4>خط، چندضلعی و متن — line / polygon / text</h4>
+          <pre class="code"><code>&lt;svg width="300" height="130"&gt;
+  &lt;line x1="10" y1="120" x2="120" y2="10" stroke="crimson" stroke-width="4" /&gt;
+  &lt;polygon points="200,10 250,120 150,120" fill="#1a5fb4" /&gt;
+  &lt;text x="150" y="70" fill="#222" font-size="18"&gt;SVG&lt;/text&gt;
+&lt;/svg&gt;</code></pre>
+          <div class="result">
+            <svg width="300" height="130">
+              <line x1="10" y1="120" x2="120" y2="10" stroke="crimson" stroke-width="4" />
+              <polygon points="200,10 250,120 150,120" fill="#1a5fb4" />
+              <text x="150" y="70" fill="#222" font-size="18">SVG</text>
+            </svg>
+          </div>
+        </div>
+
+        <div class="tag-card">
+          <h4>یک لوگوی ساده (با توضیح برای صفحه‌خوان)</h4>
+          <p>
+            <code>role="img"</code> و <code>aria-label</code> به صفحه‌خوان می‌گویند این SVG یک تصویر است و چه معنایی دارد، شبیه <code>alt</code> برای <code>img</code>.
+            اگر این توضیح نباشد، صفحه‌خوان ممکن است تکه‌های داخلی شکل را جدا جدا بخواند یا از آن بگذرد.
+          </p>
+          <pre class="code"><code>&lt;svg width="320" height="100" role="img" aria-label="لوگوی کتاب‌فروشی Ketabyar"&gt;
+  &lt;rect width="320" height="100" rx="12" fill="#1a3a5c" /&gt;
+  &lt;circle cx="55" cy="50" r="30" fill="gold" /&gt;
+  &lt;text x="100" y="62" fill="white" font-size="32" font-family="Tahoma"&gt;Ketabyar&lt;/text&gt;
+&lt;/svg&gt;</code></pre>
+          <div class="result">
+            <svg width="320" height="100" role="img" aria-label="لوگوی کتاب‌فروشی Ketabyar">
+              <rect width="320" height="100" rx="12" fill="#1a3a5c" />
+              <circle cx="55" cy="50" r="30" fill="gold" />
+              <text x="100" y="62" fill="white" font-size="32" font-family="Tahoma">Ketabyar</text>
+            </svg>
+          </div>
+        </div>
+
+        <div class="tag-card">
+          <h4>نمونه کاربردی: نمودار میله‌ای فروش سه ماه</h4>
+          <pre class="code"><code>&lt;svg width="300" height="160" role="img" aria-label="فروش: فروردین ۴۰، اردیبهشت ۷۰، خرداد ۱۰۰ میلیون تومان"&gt;
+  &lt;rect x="30"  y="100" width="50" height="40"  fill="#9fb3c8" /&gt;
+  &lt;rect x="120" y="70"  width="50" height="70"  fill="#1a5fb4" /&gt;
+  &lt;rect x="210" y="40"  width="50" height="100" fill="#0b6e4f" /&gt;
+  &lt;line x1="20" y1="140" x2="280" y2="140" stroke="#222" stroke-width="2" /&gt;
+&lt;/svg&gt;</code></pre>
+          <div class="result">
+            <svg width="300" height="160" role="img" aria-label="فروش: فروردین ۴۰، اردیبهشت ۷۰، خرداد ۱۰۰ میلیون تومان">
+              <rect x="30" y="100" width="50" height="40" fill="#9fb3c8" />
+              <rect x="120" y="70" width="50" height="70" fill="#1a5fb4" />
+              <rect x="210" y="40" width="50" height="100" fill="#0b6e4f" />
+              <line x1="20" y1="140" x2="280" y2="140" stroke="#222" stroke-width="2" />
+            </svg>
+          </div>
+          <p>
+            چون <code>y</code> از بالا به پایین زیاد می‌شود، میله‌ای که بلندتر است <code>y</code> کوچک‌تری دارد
+            (<code>y + height</code> برای همه میله‌ها ۱۴۰ است تا روی یک خط بنشینند).
+          </p>
+        </div>
+
+        <p class="tip">
+          <strong>نکته:</strong>
+          پروندهٔ SVG را می‌توان مانند تصویر معمولی با <code>&lt;img src="logo.svg" alt="لوگو"&gt;</code> هم آورد.
+          در این حالت اسکریپت داخل SVG اجرا نمی‌شود و بعضی تعامل‌ها کار نمی‌کنند. اگر بخواهید رنگ شکل را از CSS صفحه عوض کنید، کد SVG را مستقیم در HTML بگذارید.
+          محور مختصات از گوشهٔ بالا-چپ شروع می‌شود و <code>y</code> به سمت پایین زیاد می‌شود.
+        </p>
+      </section>
+
+      <section class="lesson">
+        <h2>Canvas — بوم نقاشی با JavaScript</h2>
+        <p>
+          عنصر <code>canvas</code> فقط یک بوم خالی با اندازهٔ مشخص است. خود HTML شکلی روی آن نمی‌کشد. نقاشی با JavaScript و زمینهٔ دوبعدی انجام می‌شود.
+          Canvas برای بازی، نمودار پویا و ویرایش تصویر به‌کار می‌رود. برخلاف SVG، شکل‌های کشیده‌شده عنصر جدا در صفحه نیستند و بعد از کشیدن، فقط پیکسل باقی می‌ماند.
+        </p>
+
+        <pre class="code"><code>&lt;canvas id="myCanvas" width="300" height="150" style="border: 1px solid #999; background: white;"&gt;
+  مرورگر شما از canvas پشتیبانی نمی‌کند.
+&lt;/canvas&gt;
+
+&lt;script&gt;
+  const canvas = document.getElementById("myCanvas");
+  const ctx = canvas.getContext("2d");
+
+  ctx.fillStyle = "#0b6e4f";         // رنگ پر کردن
+  ctx.fillRect(20, 20, 120, 80);     // مستطیل پر: فاصله از چپ، فاصله از بالا، عرض، ارتفاع
+
+  ctx.beginPath();
+  ctx.arc(220, 60, 40, 0, 2 * Math.PI); // دایره: مرکز افقی، مرکز عمودی، شعاع
+  ctx.fillStyle = "gold";
+  ctx.fill();
+
+  ctx.font = "20px Tahoma";
+  ctx.fillStyle = "#1a3a5c";
+  ctx.fillText("Canvas", 110, 135);  // متن
+&lt;/script&gt;</code></pre>
+        <div class="result">
+          <canvas id="myCanvas" width="300" height="150" style="border: 1px solid #999; background: white">
+            مرورگر شما از canvas پشتیبانی نمی‌کند.
+          </canvas>
+        </div>
+
+        <h3>تفاوت SVG و Canvas</h3>
+        <table class="ref">
+          <thead>
+            <tr>
+              <th>مورد</th>
+              <th>SVG</th>
+              <th>Canvas</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>نوع</td>
+              <td>تصویر برداری است و شکل‌ها با توصیف هندسی ساخته می‌شوند.</td>
+              <td>تصویر پیکسلی است و بعد از رسم، شبکه‌ای از نقطه‌ها باقی می‌ماند.</td>
+            </tr>
+            <tr>
+              <td>بزرگ‌نمایی</td>
+              <td>با بزرگ شدن تیز می‌ماند، چون شکل دوباره محاسبه می‌شود.</td>
+              <td>اگر نقشهٔ پیکسل را بزرگ‌تر از اندازهٔ واقعی‌اش نشان دهید تار می‌شود. با تنظیم درست اندازهٔ بوم می‌توان آن را واضح نگه داشت.</td>
+            </tr>
+            <tr>
+              <td>نوشتن</td>
+              <td>با عنصرهایی شبیه HTML نوشته می‌شود و می‌توان آن را مستقیم در صفحه گذاشت.</td>
+              <td>رسم فقط با JavaScript انجام می‌شود.</td>
+            </tr>
+            <tr>
+              <td>بهترین کاربرد</td>
+              <td>برای آیکون، لوگو، نقشه و نمودار ساده مناسب است.</td>
+              <td>برای بازی، پویانمایی سنگین و ویرایش عکس مناسب است.</td>
+            </tr>
+            <tr>
+              <td>دسترس‌پذیری</td>
+              <td>متن و شکل‌ها در DOM هستند و می‌توان برایشان توضیح نوشت</td>
+              <td>فقط پیکسل است؛ باید متن جایگزین را داخل تگ <code>canvas</code> یا کنار آن نوشت</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <p class="exercise">
+          <strong>تمرین:</strong>
+          با SVG یک چراغ راهنمایی بکشید: یک مستطیل تیره و سه دایرهٔ قرمز، زرد و سبز زیر هم.
+          برای هر دایره مرکز و شعاع را خودتان حساب کنید و به یاد داشته باشید <code>y</code> به سمت پایین زیاد می‌شود.
+        </p>
+
+        <p>
+          مطالعه بیشتر:
+          <a href="https://developer.mozilla.org/en-US/docs/Web/SVG/Tutorials/SVG_from_scratch" target="_blank" rel="noopener">SVG Tutorial (MDN)</a>،
+          <a href="https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial" target="_blank" rel="noopener">Canvas Tutorial (MDN)</a>
+        </p>
+      </section>
+
+      <nav class="page-nav">
+        <a href="20-media.html">→ درس قبل</a>
+        <a href="../index.html">فهرست مطالب</a>
+        <a href="22-interactive.html">درس بعد ←</a>
+      </nav>
+    </div>
+
+    <footer class="page-footer">جزوه HTML مقدماتی</footer>
+
+    <script>
+      const canvas = document.getElementById("myCanvas");
+      const ctx = canvas.getContext("2d");
+
+      ctx.fillStyle = "#0b6e4f";
+      ctx.fillRect(20, 20, 120, 80);
+
+      ctx.beginPath();
+      ctx.arc(220, 60, 40, 0, 2 * Math.PI);
+      ctx.fillStyle = "gold";
+      ctx.fill();
+
+      ctx.font = "20px Tahoma";
+      ctx.fillStyle = "#1a3a5c";
+      ctx.fillText("Canvas", 110, 135);
+    </script>
+  </body>
+</html>

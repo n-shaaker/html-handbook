@@ -1,0 +1,35 @@
+/* تمرین ۲ — سه ستون با خانه خالی (پاسخ) */
+
+body {
+  font-family: Tahoma, sans-serif;
+  margin: 20px;
+  background-color: #f8f9fa;
+  color: #212529;
+}
+
+.page {
+  display: grid;
+  grid-template-columns: 150px 1fr 150px;
+  grid-template-areas:
+    "header header header"
+    "menu   main   ads"
+    "footer footer .";
+  gap: 10px;
+}
+
+.header { grid-area: header; }
+.menu   { grid-area: menu; }
+.main   { grid-area: main; }
+.ads    { grid-area: ads; }
+.footer { grid-area: footer; }
+
+.page > * {
+  padding: 15px;
+  background-color: #fff3bf;
+}
+
+.header,
+.footer {
+  background-color: #f08c00;
+  color: white;
+}

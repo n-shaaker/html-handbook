@@ -1,0 +1,28 @@
+/* تمرین ۲ — بازی حافظه، وسطِ وسط (پاسخ) */
+
+body {
+  font-family: Tahoma, sans-serif;
+  margin: 20px;
+  background-color: #f8f9fa;
+  color: #212529;
+}
+
+/* place-content = align-content + justify-content */
+.board {
+  display: grid;
+  grid-template-columns: repeat(3, 80px);
+  grid-template-rows: repeat(3, 80px);
+  gap: 8px;
+  place-content: center;
+  height: 400px;
+  background-color: #e6fcf5;
+}
+
+.tile {
+  background-color: #12b886;
+  color: white;
+  font-size: 30px;
+  text-align: center;
+  line-height: 80px;
+  border-radius: 8px;
+}

@@ -1,0 +1,106 @@
+.code {
+  direction: ltr;
+  text-align: left;
+  background-color: #1e1e2e;
+  color: #e6e6e6;
+  font-family: Consolas, "Courier New", monospace;
+  font-size: 14px;
+  line-height: 1.6;
+  padding: 14px 16px;
+  border-radius: 6px;
+  overflow-x: auto;
+}
+
+code {
+  font-family: Consolas, "Courier New", monospace;
+  background-color: #eef1f5;
+  padding: 1px 5px;
+  border-radius: 3px;
+  direction: ltr;
+  unicode-bidi: embed;
+}
+
+.code code {
+  background: none;
+  padding: 0;
+}
+
+.result {
+  position: relative;
+  border: 2px dashed #9fb3c8;
+  background-color: #fbfcfd;
+  padding: 30px 16px 16px;
+  margin: 10px 0 16px;
+  border-radius: 6px;
+}
+
+.result::before {
+  content: "نمونه واقعی";
+  position: absolute;
+  top: 0;
+  right: 0;
+  background-color: #4a6580;
+  color: white;
+  font-size: 12px;
+  padding: 2px 10px;
+  border-bottom-left-radius: 6px;
+}
+
+.tip,
+.mistake,
+.exercise,
+.realuse {
+  padding: 10px 14px;
+  margin: 12px 0;
+  border-radius: 4px;
+}
+
+.tip {
+  background-color: #e8f4fd;
+  border-right: 5px solid #1a5fb4;
+}
+
+.mistake {
+  background-color: #fff0f0;
+  border-right: 5px solid #c92a2a;
+}
+
+.exercise {
+  background-color: #fff8e7;
+  border-right: 5px solid #e6a700;
+}
+
+.realuse {
+  background-color: #ebfbee;
+  border-right: 5px solid #0b6e4f;
+}
+
+table.ref {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 10px 0;
+}
+
+table.ref th,
+table.ref td {
+  border: 1px solid #c7d2de;
+  padding: 8px;
+  text-align: right;
+}
+
+table.ref th {
+  background-color: #1a3a5c;
+  color: white;
+}
+
+.compare {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+@media (max-width: 700px) {
+  .compare {
+    grid-template-columns: 1fr;
+  }
+}

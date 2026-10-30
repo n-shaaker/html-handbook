@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>۸) بالا بردن و حالت سخت‌گیرانه (Hoisting & Strict Mode) | آموزش JavaScript سطح میانی</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <script src="../js/log.js" defer></script>
+  <script src="../js/demos/hoisting-strict.js" defer></script>
+</head>
+
+<body>
+
+  <header class="page-header" id="top">
+    <h1>آموزش JavaScript — سطح میانی</h1>
+    <p>۸) بالا بردن و حالت سخت‌گیرانه (Hoisting & Strict Mode)</p>
+  </header>
+
+  <div class="container">
+
+    <nav class="page-nav" aria-label="ناوبری درس">
+      <a href="07-scope.html">→ قبلی: Scope</a>
+      <a href="../index.html">فهرست درس‌ها</a>
+      <a href="09-arrow-functions.html">بعدی: Arrow Functions ←</a>
+    </nav>
+
+    <section class="lesson" id="hoisting-strict">
+      <h2>۸) بالا بردن و حالت سخت‌گیرانه (Hoisting & Strict Mode)</h2>
+<p>گاهی نامی که پایین‌تر در فایل نوشته شده بالاتر قابل استفاده است و گاهی همان کار خطا می‌دهد. JavaScript پیش از اجرای هر محدوده، بعضی اسم‌ها را ثبت می‌کند. این رفتار را Hoisting می‌نامند، ولی مقدار همان لحظهٔ رسیدن اجرا به خط تعریف داده می‌شود. حالت سخت‌گیرانه هم بعضی اشتباه‌هایی را که بی‌صدا متغیر سراسری می‌ساختند به خطا تبدیل می‌کند تا زودتر دیده شوند.</p>
+
+<h3>Hoisting چیست؟</h3>
+
+<p>JavaScript قبل از اجرای کد، همه تعریف‌های هر محدوده را پیدا می‌کند و اسم‌ها را از قبل «ثبت» می‌کند؛ انگار تعریف‌ها به بالای محدوده برده شده‌اند (Hoist). ولی <strong>مقدار</strong> فقط وقتی اجرا به همان خط برسد داده می‌شود. نتیجه برای هر نوع تعریف فرق دارد:</p>
+
+<table class="ref">
+<tr><th>تعریف</th><th>استفاده قبل از تعریف</th></tr>
+<tr><td><code>function f() {}</code> (تعریف تابع)</td><td>✔ کار می‌کند؛ کل تابع از قبل آماده است</td></tr>
+<tr><td><code>var x = 5</code></td><td>خطا نمی‌دهد ولی مقدار <code>undefined</code> است</td></tr>
+<tr><td><code>let</code> / <code>const</code></td><td>✖ خطا: اسم ثبت شده ولی تا خط تعریف «منطقه مرده موقت» (Temporal Dead Zone) است</td></tr>
+<tr><td><code>const f = function () {}</code> یا <code>const f = () =&gt; {}</code></td><td>✖ خطا؛ مثل هر <code>const</code> دیگری رفتار می‌کند</td></tr>
+</table>
+
+<h3>تابع قبل از تعریف</h3>
+
+<pre class="code"><code>sayHi();           // ✔ کار می‌کند
+
+function sayHi() {
+  console.log("سلام از تابع!");
+}</code></pre>
+
+<p>تعریف تابع با کلمهٔ <code>function</code> کل بدنه را هم در همان مرحلهٔ ثبت آماده می‌کند. به همین دلیل می‌توانید <code>sayHi</code> را در خطی بالاتر از خود تعریف صدا بزنید. این رفتار مخصوص همین شکل تعریف است و شامل تابعی که داخل <code>const</code> ذخیره شده نمی‌شود.</p>
+
+<div class="result">
+<pre class="console" id="out-1"></pre>
+</div>
+
+<h3>var و let قبل از تعریف</h3>
+
+<pre class="code"><code>console.log(a);    // undefined
+var a = 5;
+
+console.log(b);    // ✖ ReferenceError: Cannot access 'b' before initialization
+let b = 10;</code></pre>
+
+<p><code>var</code> اسم را از اول محدوده ثبت می‌کند ولی تا خط مقداردهی، مقدارش <code>undefined</code> است؛ پس چاپ قبل از مقداردهی خطا نیست و <code>undefined</code> نشان می‌دهد. <code>let</code> هم اسم را ثبت می‌کند، اما تا رسیدن اجرا به خط خودش در منطقهٔ مردهٔ موقت است و خواندنش <code>ReferenceError</code> می‌دهد. بعد از همان خط، <code>b</code> مثل متغیر عادی قابل استفاده است.</p>
+
+<div class="result">
+<pre class="console" id="out-2"></pre>
+</div>
+
+<h3>تابع پیکانی یا عبارت تابعی قبل از تعریف</h3>
+
+<pre class="code"><code>console.log(calcTax(1000));   // ✖ ReferenceError: Cannot access 'calcTax' before initialization
+
+const calcTax = (price) =&gt; price * 0.1;</code></pre>
+
+<p>اینجا تابع پیکانی داخل <code>const</code> است، نه یک تعریف تابع مستقل. اسم <code>calcTax</code> مثل هر <code>const</code> دیگری تا خط مقداردهی قابل خواندن نیست. اگر لازم دارید تابع را بالاتر صدا بزنید، یا تعریف را به بالای محل استفاده ببرید یا از شکل <code>function calcTax() { ... }</code> استفاده کنید.</p>
+
+<div class="result">
+<pre class="console" id="out-4"></pre>
+</div>
+
+<p class="tip">قانون ساده: همیشه متغیرها را <strong>بالای</strong> محدوده‌شان تعریف کنید و قبل از تعریف از آن‌ها استفاده نکنید. خطای TDZ در واقع به نفع شماست: به جای اینکه بی‌صدا با <code>undefined</code> کار کنید (مثل var)، فوراً اشتباه را نشان می‌دهد.</p>
+
+<h3>حالت سخت‌گیرانه ("use strict")</h3>
+
+<p>با نوشتن <code>"use strict";</code> در اول فایل یا تابع، JavaScript سخت‌گیرتر می‌شود و بعضی اشتباه‌های بی‌صدا را به خطا تبدیل می‌کند.</p>
+
+<pre class="code"><code>// "use strict"; ← اگر اینجا (خط اول فایل) بود، کل فایل strict می‌شد
+
+function test() {
+  "use strict";    // فقط همین تابع strict است
+  total = 100;     // ✖ ReferenceError: total is not defined
+}                  //   (بدون strict بی‌صدا یک متغیر سراسری می‌ساخت)
+test();</code></pre>
+
+<p>رشتهٔ <code>"use strict"</code> باید ابتدای فایل یا ابتدای همان تابع باشد تا اثر کند. داخل این تابع، نسبت دادن به نامی که تعریف نشده خطا می‌دهد. بدون حالت سخت‌گیرانه، همان خط در مرورگر اغلب یک ویژگی روی شیء سراسری می‌ساخت و اشتباه دیرتر دیده می‌شد. تابع‌های دیگر فایل، اگر خودشان این رشته را نداشته باشند، با همین یک تابع سخت‌گیر نمی‌شوند.</p>
+
+<div class="result">
+<pre class="console" id="out-3"></pre>
+</div>
+
+<table class="ref">
+<tr><th>در حالت strict</th><th>نتیجه</th></tr>
+<tr><td>استفاده از متغیر تعریف‌نشده</td><td>خطا</td></tr>
+<tr><td>تکرار اسم پارامتر: <code>function f(a, a)</code></td><td>خطا</td></tr>
+<tr><td>حذف متغیر: <code>delete x</code></td><td>خطا (SyntaxError)</td></tr>
+<tr><td>تغییر ویژگی فقط‌خواندنی، مثل <code>NaN = 5</code></td><td>خطا (بدون strict بی‌صدا نادیده گرفته می‌شود)</td></tr>
+<tr><td><code>this</code> در تابعی که تنها صدا زده شود: <code>f()</code></td><td><code>undefined</code> (به جای window) — درس ۱۰</td></tr>
+</table>
+
+<p class="tip">فایل‌های ماژول (<code>type="module"</code>) و کلاس‌ها خودبه‌خود strict هستند. در دوره پیشرفته با ماژول‌ها آشنا می‌شوید.</p>
+
+<p class="mistake"><strong>اشتباه رایج:</strong> گذاشتن <code>"use strict"</code> وسط فایل. فقط وقتی اثر دارد که <strong>اولین</strong> دستور فایل یا تابع باشد.</p>
+
+<p class="exercise"><strong>تمرین:</strong> (الف) تابعی بنویسید که داخلش به اشتباه <code>discount = 20</code> (بدون let) نوشته شده باشد؛ آن را صدا بزنید و بیرون تابع <code>discount</code> را چاپ کنید تا ببینید متغیر سراسری ناخواسته ساخته شده است. سپس <code>"use strict"</code> را اول تابع اضافه کنید و پیام خطا را در Console (کلید F12) ببینید. (ب) پیش‌بینی کنید خروجی <code>console.log(x); var x = 1;</code> و <code>console.log(y); let y = 1;</code> چیست و بعد امتحان کنید.</p>
+    </section>
+
+    <nav class="page-nav" aria-label="ناوبری درس پایین">
+      <a href="07-scope.html">→ قبلی: Scope</a>
+      <a href="../index.html">فهرست درس‌ها</a>
+      <a href="09-arrow-functions.html">بعدی: Arrow Functions ←</a>
+    </nav>
+
+  </div>
+
+  <footer class="page-footer">
+    آموزش JavaScript سطح میانی
+  </footer>
+
+</body>
+
+</html>

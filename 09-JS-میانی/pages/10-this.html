@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>۱۰) کلمه کلیدی this | آموزش JavaScript سطح میانی</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <script src="../js/log.js" defer></script>
+  <script src="../js/demos/this.js" defer></script>
+</head>
+
+<body>
+
+  <header class="page-header" id="top">
+    <h1>آموزش JavaScript — سطح میانی</h1>
+    <p>۱۰) کلمه کلیدی this</p>
+  </header>
+
+  <div class="container">
+
+    <nav class="page-nav" aria-label="ناوبری درس">
+      <a href="09-arrow-functions.html">→ قبلی: Arrow Functions</a>
+      <a href="../index.html">فهرست درس‌ها</a>
+      <a href="11-destructuring-spread.html">بعدی: Destructuring ←</a>
+    </nav>
+
+    <section class="lesson" id="this">
+      <h2>۱۰) کلمه کلیدی this</h2>
+<p><code>this</code> یک کلمه کلیدی است که داخل تابع معمولی به «شیئی که تابع را صدا زده» اشاره می‌کند. مقدارش به این بستگی ندارد که تابع <strong>کجا نوشته شده</strong>، بلکه به این بستگی دارد که <strong>چطور صدا زده شده</strong>. قانون ساده: در <code>obj.method()</code> هر چه <strong>قبل از نقطه</strong> است، this می‌شود.</p>
+
+<table class="ref">
+<tr><th>کجا / چطور صدا زده شده</th><th>this برابر است با</th></tr>
+<tr><td>متد شیء: <code>obj.method()</code></td><td>همان شیء (<code>obj</code>)</td></tr>
+<tr><td>تابع معمولی در addEventListener</td><td>عنصری که listener روی آن نصب شده (<code>event.currentTarget</code>)</td></tr>
+<tr><td>تابع معمولی که تنها صدا زده شود: <code>f()</code></td><td>در حالت strict: <code>undefined</code> — بدون strict: <code>window</code></td></tr>
+<tr><td>بیرون از همه توابع (اسکریپت معمولی در مرورگر)</td><td><code>window</code> (در ماژول‌ها <code>undefined</code>)</td></tr>
+<tr><td>تابع پیکانی</td><td>this ندارد؛ this محدوده بیرونی را برمی‌دارد (هر طور صدا زده شود)</td></tr>
+</table>
+
+<h3>this در متد شیء</h3>
+
+<pre class="code"><code>const user = {
+  name: "سارا",
+  greet: function () {
+    return "سلام، من " + this.name + " هستم";
+  }
+};
+
+console.log(user.greet());</code></pre>
+
+<p><code>greet</code> تابع معمولی است و با شکل <code>user.greet()</code> صدا زده می‌شود. چیزی که قبل از نقطه است <code>user</code> است، پس داخل تابع <code>this</code> همان شیء است و <code>this.name</code> مقدار «سارا» را می‌خواند. اگر پرانتز را فراموش کنید، تابع اجرا نمی‌شود و متن سلام ساخته نمی‌شود.</p>
+
+<div class="result">
+<pre class="console" id="out-1"></pre>
+</div>
+
+<h3>تابع پیکانی this خودش را ندارد</h3>
+
+<pre class="code"><code>const user2 = {
+  name: "علی",
+  normal: function () { return this.name; },
+  arrow: () =&gt; this.name        // this اینجا مال بیرون است، نه user2
+};
+
+console.log("normal:", user2.normal());   // normal: علی
+console.log("arrow:", user2.arrow());     // arrow:  ← خالی!</code></pre>
+
+<div class="result">
+<pre class="console" id="out-2"></pre>
+</div>
+
+<p>چرا خالی؟ آکولاد شیء (<code>{ }</code>) محدوده جدید <strong>نمی‌سازد</strong>؛ پس this تابع پیکانی همان this بیرون از شیء است که در این صفحه <code>window</code> است. <code>window.name</code> یک ویژگی آماده مرورگر است که معمولاً رشته خالی است؛ برای همین چیزی چاپ نشد. (در ماژول یا حالت strict، this بیرونی <code>undefined</code> است و همین کد خطای TypeError می‌دهد.)</p>
+
+<h3>جدا کردن متد از شیء — this گم می‌شود</h3>
+
+<pre class="code"><code>const shop = {
+  name: "کتاب‌فروشی دانش",
+  welcome: function () {
+    return "به " + this.name + " خوش آمدید";
+  }
+};
+
+console.log(shop.welcome());     // ✔ به کتاب‌فروشی دانش خوش آمدید
+
+const welcomeFn = shop.welcome;  // فقط خود تابع کپی شد، نه shop
+console.log(welcomeFn());        // ✖ به  خوش آمدید ← this دیگر shop نیست
+
+const fixed = shop.welcome.bind(shop);   // bind: this را برای همیشه shop کن
+console.log(fixed());            // ✔ به کتاب‌فروشی دانش خوش آمدید</code></pre>
+
+<p>وقتی متد را در متغیر دیگری می‌ریزید، فقط خود تابع کپی می‌شود و ارتباطش با <code>shop</code> قطع می‌شود. صدا زدن <code>welcomeFn()</code> دیگر «قبل از نقطه» ندارد، پس <code>this</code> شیء فروشگاه نیست. <code>bind(shop)</code> تابع تازه‌ای می‌سازد که <code>this</code> آن همیشه <code>shop</code> است، حتی اگر آن را بدون نقطه صدا بزنید.</p>
+
+<div class="result">
+<pre class="console" id="out-4"></pre>
+</div>
+
+<p class="tip">وقتی <code>welcomeFn()</code> را بدون نقطه صدا می‌زنیم، چیزی قبل از نقطه نیست؛ پس this در این صفحه <code>window</code> می‌شود (در حالت strict <code>undefined</code> و خطای <code>Cannot read properties of undefined (reading 'name')</code>). همین اتفاق وقتی هم می‌افتد که متد را به عنوان callback بدهید: <code>setTimeout(shop.welcome, 1000)</code> یا <code>btn.addEventListener("click", shop.welcome)</code>. راه‌حل: <code>shop.welcome.bind(shop)</code> یا یک تابع پیکانی: <code>() =&gt; shop.welcome()</code>.</p>
+
+<h3>کجا تابع پیکانی مفید است؟ داخل یک متد</h3>
+
+<pre class="code"><code>const team = {
+  name: "تیم آبی",
+  members: ["سارا", "علی"],
+  show: function () {
+    this.members.forEach(m =&gt; {
+      console.log(m + " عضو " + this.name);   // this همان team است
+    });
+  }
+};
+
+team.show();
+// اگر به جای m =&gt; {...} می‌نوشتیم function (m) {...}، آن تابع this خودش را
+// داشت (چون forEach آن را تنها صدا می‌زند) و this.name دیگر «تیم آبی» نبود.</code></pre>
+
+<p><code>show</code> با <code>team.show()</code> صدا زده می‌شود، پس <code>this</code> داخل آن همان <code>team</code> است. تابع پیکانی داخل <code>forEach</code> this جدا نمی‌سازد و this همان تابع بیرونی را برمی‌دارد؛ به همین دلیل <code>this.name</code> هنوز «تیم آبی» است. اگر به‌جای فلش یک <code>function</code> معمولی می‌نوشتید، <code>forEach</code> آن را تنها صدا می‌زد و <code>this</code> دیگر تیم نبود.</p>
+
+<div class="result">
+<pre class="console" id="out-3"></pre>
+</div>
+
+<h3>this در رویداد</h3>
+
+<pre class="code"><code>const buttons = document.querySelectorAll(".this-btn");
+
+buttons.forEach(btn =&gt; {
+  btn.addEventListener("click", function () {
+    this.textContent = "کلیک شدم ✔";   // this = همان دکمه‌ای که کلیک شد
+  });
+});</code></pre>
+
+<p>حلقه روی همهٔ دکمه‌هایی اجرا می‌شود که کلاس <code>this-btn</code> دارند. شنونده یک تابع معمولی است. در <code>addEventListener</code>، <code>this</code> این نوع تابع همان عنصری است که شنونده روی آن نصب شده، یعنی دکمه‌ای که کلیک شده. <code>textContent</code> متن همان دکمه را عوض می‌کند.</p>
+
+<div class="result">
+<button type="button" class="btn this-btn">دکمه ۱</button>
+<button type="button" class="btn this-btn">دکمه ۲</button>
+<button type="button" class="btn this-btn">دکمه ۳</button>
+</div>
+
+<h3>رویداد با تابع پیکانی: از event.currentTarget استفاده کنید</h3>
+
+<pre class="code"><code>const arrowButtons = document.querySelectorAll(".arrow-this-btn");
+
+arrowButtons.forEach(btn =&gt; {
+  btn.addEventListener("click", (event) =&gt; {
+    // this اینجا دکمه نیست (this بیرونی است)؛ پس از event استفاده می‌کنیم
+    event.currentTarget.textContent = "کلیک شدم ✔ (currentTarget)";
+  });
+});</code></pre>
+
+<p>این شنونده تابع پیکانی است و <code>this</code> را از بیرون می‌گیرد، نه از دکمه. اطلاعات رویداد در پارامتر <code>event</code> است. <code>currentTarget</code> عنصری است که شنونده روی آن ثبت شده، پس متن همان دکمه عوض می‌شود. اگر به‌جای آن <code>this</code> می‌نوشتید، به دکمه نمی‌رسیدید.</p>
+
+<div class="result">
+<button type="button" class="btn secondary arrow-this-btn">دکمه الف</button>
+<button type="button" class="btn secondary arrow-this-btn">دکمه ب</button>
+</div>
+
+<p class="tip"><code>event.currentTarget</code> همیشه عنصری است که listener روی آن نصب شده؛ چه تابع معمولی بنویسید چه پیکانی. برای همین در کد امروزی معمولاً این روش واضح‌تر از <code>this</code> است.</p>
+
+<p class="mistake"><strong>اشتباه رایج:</strong> نوشتن متد شیء با تابع پیکانی و انتظار داشتن اینکه <code>this</code> خود شیء باشد.</p>
+
+<p class="mistake"><strong>اشتباه رایج:</strong> استفاده از <code>this</code> داخل تابع پیکانی رویداد: <code>btn.addEventListener("click", () =&gt; this.classList.add("x"))</code>. اینجا this دکمه نیست و خطا می‌گیرید؛ از <code>event.currentTarget</code> یا همان متغیر <code>btn</code> استفاده کنید.</p>
+
+<p class="exercise"><strong>تمرین:</strong> شیء <code>cart</code> (سبد خرید) با ویژگی <code>items: []</code> و این متدها بسازید که همه با <code>this</code> کار کنند: <code>add(name, price)</code> یک کالا به <code>this.items</code> اضافه کند، <code>total()</code> جمع قیمت‌ها را برگرداند (با reduce) و <code>show()</code> همه کالاها را چاپ کند (داخلش از <code>forEach</code> با تابع پیکانی استفاده کنید). سپس <code>const t = cart.total;</code> را صدا بزنید، توضیح دهید چرا خطا می‌دهد و با <code>bind</code> درستش کنید.</p>
+    </section>
+
+    <nav class="page-nav" aria-label="ناوبری درس پایین">
+      <a href="09-arrow-functions.html">→ قبلی: Arrow Functions</a>
+      <a href="../index.html">فهرست درس‌ها</a>
+      <a href="11-destructuring-spread.html">بعدی: Destructuring ←</a>
+    </nav>
+
+  </div>
+
+  <footer class="page-footer">
+    آموزش JavaScript سطح میانی
+  </footer>
+
+</body>
+
+</html>

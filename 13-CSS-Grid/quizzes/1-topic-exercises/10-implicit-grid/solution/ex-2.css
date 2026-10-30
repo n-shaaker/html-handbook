@@ -1,0 +1,23 @@
+/* تمرین ۲ — فهرست مخاطبان ستون‌به‌ستون (پاسخ) */
+
+body {
+  font-family: Tahoma, sans-serif;
+  margin: 20px;
+  background-color: #f8f9fa;
+  color: #212529;
+}
+
+/* پر شدن ستونی؛ ستون‌های تازه ۱۵۰ پیکسلی */
+.contacts {
+  display: grid;
+  grid-template-rows: repeat(4, auto);
+  grid-auto-flow: column;
+  grid-auto-columns: 150px;
+  gap: 6px;
+}
+
+.contact {
+  background-color: white;
+  border: 1px solid #dee2e6;
+  padding: 8px;
+}

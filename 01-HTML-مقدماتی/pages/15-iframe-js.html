@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>۱۵) iframe و آشنایی با JavaScript | جزوه HTML</title>
+    <link rel="stylesheet" href="../css/style.css" />
+  </head>
+
+  <body>
+    <header class="page-header">
+      <h1>جزوه HTML مقدماتی</h1>
+      <p>۱۵) iframe و آشنایی با JavaScript</p>
+    </header>
+
+    <div class="container">
+      <nav class="page-nav">
+        <a href="14-div-span.html">→ درس قبل</a>
+        <a href="../index.html">فهرست مطالب</a>
+        <a href="16-attributes-styles.html">درس بعد ←</a>
+      </nav>
+
+      <section class="lesson">
+        <h2>۱۵) iframe و آشنایی با JavaScript</h2>
+        <p>
+          عنصر <code>iframe</code> یک صفحهٔ دیگر را داخل صفحهٔ شما نشان می‌دهد، مثل پنجره‌ای که محتوای جدا دارد.
+          HTML ساختار صفحه را می‌سازد. JavaScript می‌تواند بعد از آن رفتار و واکنش بسازد. این درس هر دو را در حد آشنایی معرفی می‌کند.
+        </p>
+
+        <h3>الف) iframe = جاسازی یک صفحه دیگر</h3>
+        <div class="tag-card">
+          <h4>&lt;iframe&gt;</h4>
+          <p>
+            <strong>تعریف:</strong>
+            عنصر <code>iframe</code> یک قاب داخل صفحه است که صفحهٔ HTML دیگری را نمایش می‌دهد.
+            محتوای داخل قاب سند جداگانه‌ای است و استایل صفحهٔ شما به‌طور خودکار به داخل آن نمی‌رود.
+            برای دسترس‌پذیری همیشه ویژگی <code>title</code> را بنویسید تا صفحه‌خوان بگوید این قاب چیست.
+          </p>
+          <pre class="code"><code>&lt;iframe src="mini-page.html" title="صفحه کوچک نمونه داخل iframe"&gt;&lt;/iframe&gt;</code></pre>
+          <div class="result">
+            <iframe class="demo-iframe" src="mini-page.html" title="صفحه کوچک نمونه داخل iframe"></iframe>
+          </div>
+        </div>
+
+        <table class="ref">
+          <thead>
+            <tr>
+              <th>ویژگی</th>
+              <th>تعریف</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>src</code></td>
+              <td><code>src</code> نشانی صفحه‌ای است که باید داخل قاب نمایش داده شود.</td>
+            </tr>
+            <tr>
+              <td><code>title</code></td>
+              <td><code>title</code> توضیح کوتاه محتوای قاب است و صفحه‌خوان آن را می‌خواند. این متن روی صفحه دیده نمی‌شود.</td>
+            </tr>
+            <tr>
+              <td><code>width</code> / <code>height</code></td>
+              <td><code>width</code> و <code>height</code> اندازهٔ قاب را مشخص می‌کنند. اندازهٔ نهایی را معمولاً با CSS تنظیم می‌کنند.</td>
+            </tr>
+            <tr>
+              <td><code>loading="lazy"</code></td>
+              <td>مقدار <code>lazy</code> بارگذاری قاب را تا نزدیک شدن کاربر عقب می‌اندازد. برای نقشه و ویدیوی پایین صفحه مفید است.</td>
+            </tr>
+            <tr>
+              <td><code>allowfullscreen</code></td>
+              <td>ویژگی <code>allowfullscreen</code> اجازه می‌دهد محتوای قاب، معمولاً ویدیو، تمام‌صفحه شود.</td>
+            </tr>
+            <tr>
+              <td><code>sandbox</code></td>
+              <td>ویژگی <code>sandbox</code> دسترسی‌های صفحهٔ جاسازی‌شده را محدود می‌کند، مثل اجرای اسکریپت یا ارسال فرم. اگر مقداری ننویسید، محدودیت شدید است و هر اجازه‌ای را باید جداگانه اضافه کنید.</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h3>نمونه واقعی: نقشه محل فروشگاه در صفحه «تماس با ما»</h3>
+        <p>
+          سرویس‌های نقشه (مانند Google Maps یا نشان) و ویدیو (مانند یوتیوب و آپارات) در بخش «اشتراک‌گذاری / Embed»
+          یک کد <code>iframe</code> آماده می‌دهند که کافی است آن را در صفحه خود بچسبانید:
+        </p>
+        <pre class="code"><code>&lt;iframe
+  src="https://www.google.com/maps/embed?pb=..."
+  title="نقشه محل فروشگاه در تهران"
+  width="600" height="300"
+  loading="lazy"&gt;
+&lt;/iframe&gt;</code></pre>
+
+        <p class="tip">
+          <strong>نکته:</strong>
+          بعضی سایت‌ها، مثلاً بانک‌ها و بسیاری از سایت‌های بزرگ، به دلایل امنیتی اجازه نمی‌دهند صفحه‌شان داخل <code>iframe</code> سایت دیگر دیده شود
+          و به‌جای صفحه، قاب خالی یا پیام خطا دیده می‌شود. برای نقشه و ویدیو از کد جاسازی رسمی همان سرویس استفاده کنید.
+        </p>
+
+        <h3>ب) تفاوت HTML و JavaScript</h3>
+        <p>
+          دکمهٔ زیر فقط با HTML ساخته شده است. روی آن کلیک کنید؛ اتفاقی نمی‌افتد،
+          چون HTML فقط خود دکمه را می‌سازد. اینکه بعد از کلیک چه کاری انجام شود، کار JavaScript است.
+        </p>
+        <pre class="code"><code>&lt;button type="button"&gt;دکمه بدون رفتار&lt;/button&gt;</code></pre>
+        <div class="result">
+          <button type="button" class="demo-button">دکمه بدون رفتار</button>
+        </div>
+
+        <p>
+          حالا همان نوع دکمه را با چند خط JavaScript داخل عنصر <code>script</code> فعال می‌کنیم.
+          با هر کلیک، یک عدد به شمارندهٔ سبد خرید اضافه می‌شود. لازم نیست همین حالا همهٔ جزئیات این کد را بدانید؛ ببینید HTML چه چیزی را می‌سازد و JavaScript چه کاری روی آن انجام می‌دهد.
+        </p>
+        <pre class="code"><code>&lt;button type="button" id="add-btn"&gt;افزودن به سبد خرید&lt;/button&gt;
+&lt;p&gt;تعداد کالا در سبد: &lt;span id="cart-count"&gt;۰&lt;/span&gt;&lt;/p&gt;
+
+&lt;script&gt;
+  let count = 0;
+  document.getElementById("add-btn").addEventListener("click", function () {
+    count = count + 1;
+    document.getElementById("cart-count").textContent = count.toLocaleString("fa-IR");
+  });
+&lt;/script&gt;</code></pre>
+        <div class="result">
+          <button type="button" id="add-btn" class="demo-button">افزودن به سبد خرید</button>
+          <p>تعداد کالا در سبد: <span id="cart-count">۰</span></p>
+        </div>
+        <script>
+          let count = 0;
+          document.getElementById("add-btn").addEventListener("click", function () {
+            count = count + 1;
+            document.getElementById("cart-count").textContent = count.toLocaleString("fa-IR");
+          });
+        </script>
+        <p>
+          جزئیات همین الگو در <a href="22-interactive.html">درس ۲۲</a> آمده است. تا آنجا کافی است این تقسیم کار را به خاطر بسپارید.
+        </p>
+
+        <table class="ref">
+          <thead>
+            <tr>
+              <th>فناوری</th>
+              <th>نقش</th>
+              <th>مثال</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>HTML</td>
+              <td>HTML ساختار و معنای صفحه را می‌سازد.</td>
+              <td>عنوان، جعبه، پیوند و دکمه با HTML ساخته می‌شوند.</td>
+            </tr>
+            <tr>
+              <td>CSS</td>
+              <td>CSS ظاهر همان ساختار را تنظیم می‌کند.</td>
+              <td>رنگ، اندازه، فاصله و چیدمان کار CSS است.</td>
+            </tr>
+            <tr>
+              <td>JavaScript</td>
+              <td>JavaScript رفتار و تعامل را اضافه می‌کند.</td>
+              <td>کاری که بعد از کلیک روی دکمه انجام می‌شود با JavaScript نوشته می‌شود.</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <p class="exercise">
+          <strong>تمرین:</strong>
+          یک صفحهٔ کوچک، مثلاً <code>card.html</code>، بسازید و آن را با <code>iframe</code> داخل صفحهٔ اصلی نشان دهید.
+          ویژگی <code>title</code> را فراموش نکنید. سپس کد جاسازی یک ویدیوی آموزشی را از آپارات یا یوتیوب بگیرید و در همان صفحه قرار دهید.
+        </p>
+      </section>
+
+      <nav class="page-nav">
+        <a href="14-div-span.html">→ درس قبل</a>
+        <a href="../index.html">فهرست مطالب</a>
+        <a href="16-attributes-styles.html">درس بعد ←</a>
+      </nav>
+    </div>
+
+    <footer class="page-footer">جزوه HTML مقدماتی</footer>
+  </body>
+</html>

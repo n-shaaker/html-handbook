@@ -1,0 +1,159 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Tahoma, "Segoe UI", Arial, sans-serif;
+  line-height: 1.8;
+  color: #e8eaed;
+  background-color: #0b0d10;
+}
+
+.lab {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 28px 20px 48px;
+}
+
+.lab-header {
+  text-align: center;
+}
+
+.lab-header h1 {
+  margin: 0 0 8px;
+  font-size: 1.6rem;
+}
+
+.lab-header p {
+  margin: 0 0 24px;
+  color: #aeb6c2;
+}
+
+code {
+  font-family: Consolas, "Courier New", monospace;
+  background-color: #1c2430;
+  color: #9ecbff;
+  padding: 1px 6px;
+  border-radius: 4px;
+  direction: ltr;
+  unicode-bidi: embed;
+}
+
+/* دو پنل کنار هم */
+.labs-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+}
+
+.panel,
+.explain {
+  background-color: #12161d;
+  border: 1px solid #2a3340;
+  border-radius: 14px;
+  padding: 18px;
+}
+
+.panel-title,
+.panel-desc {
+  margin: 0;
+  text-align: center;
+}
+
+.panel-desc {
+  margin-bottom: 14px;
+  color: #9aa3b2;
+  font-size: 0.9rem;
+}
+
+/* مربع پیش‌نمایش؛ رنگ پس‌زمینه را جاوااسکریپت عوض می‌کند */
+.swatch {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 110px;
+  margin-bottom: 18px;
+  border-radius: 12px;
+  border: 1px solid #2a3340;
+  background-color: #ff8800;
+}
+
+.swatch-label {
+  color: #fff;
+  font-weight: bold;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.7);
+}
+
+/* اسلایدرها */
+.control {
+  margin-bottom: 16px;
+}
+
+.control label {
+  display: block;
+  font-weight: bold;
+}
+
+.control input {
+  width: 100%;
+  accent-color: #9ecbff;
+}
+
+/* نوار رنگین‌کمانی برای فام */
+#hue {
+  direction: ltr; /* تا صفر سمت چپ باشد، هم‌جهت با گرادیان */
+  appearance: none;
+  height: 12px;
+  border-radius: 6px;
+  background: linear-gradient(to right, red, yellow, lime, cyan, blue, magenta, red);
+}
+
+.control-hint {
+  margin: 4px 0 0;
+  font-size: 0.85rem;
+  color: #9aa3b2;
+}
+
+h3 {
+  margin: 0 0 8px;
+  font-size: 0.95rem;
+}
+
+.code {
+  direction: ltr;
+  text-align: left;
+  background-color: #151a22;
+  font-family: Consolas, "Courier New", monospace;
+  padding: 12px 14px;
+  border-radius: 10px;
+  border: 1px solid #2a3340;
+  overflow-x: auto;
+  margin: 0;
+}
+
+.hex-line {
+  margin: 14px 0 0;
+  text-align: center;
+  color: #aeb6c2;
+}
+
+.explain {
+  margin-top: 22px;
+}
+
+.explain h2 {
+  margin: 0 0 10px;
+  font-size: 1.05rem;
+}
+
+.explain li {
+  margin-bottom: 6px;
+  color: #c5ccd6;
+}
+
+@media (max-width: 860px) {
+  .labs-grid {
+    grid-template-columns: 1fr;
+  }
+}

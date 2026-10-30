@@ -1,0 +1,156 @@
+/* ===== کل صفحه ===== */
+body {
+  margin: 0;
+  background-color: #fffaf0;
+  color: #3b2f2f;
+  font-family: Tahoma, Arial, sans-serif;
+  line-height: 1.8;
+}
+
+h2 {
+  color: #7f4f24;
+  border-bottom: 2px solid #e6ccb2;
+  padding-bottom: 4px;
+}
+
+/* ===== سربرگ ===== */
+.site-header {
+  background-color: #582f0e;
+  color: rgb(255, 243, 224);
+  text-align: center;
+  padding: 32px 16px;
+}
+
+.site-header h1 {
+  margin: 0;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
+}
+
+.tagline {
+  margin: 8px 0 0;
+}
+
+/* letter-spacing و uppercase فقط روی متن انگلیسی */
+.en {
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+/* ===== ستون محتوا ===== */
+.page {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 0 16px;
+}
+
+.about p {
+  text-align: justify;
+}
+
+/* ===== پیشنهاد امروز ===== */
+.specials-list {
+  list-style-type: square;
+  background-color: hsl(36, 100%, 93%);
+  padding: 12px 32px;
+  border-inline-start: 4px solid hsl(36, 90%, 45%);
+}
+
+.specials-list li::marker {
+  color: hsl(36, 90%, 45%);
+}
+
+/* ===== جدول منو ===== */
+.menu-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.menu-table caption {
+  font-size: 14px;
+  color: #7f6a5d;
+  padding: 6px;
+}
+
+.menu-table th,
+.menu-table td {
+  padding: 10px;
+  text-align: start;
+  border-bottom: 1px solid #e6ccb2;
+}
+
+.menu-table th {
+  background-color: #7f4f24;
+  color: white;
+}
+
+.menu-table tbody tr:nth-child(even) {
+  background-color: #fdf0e0;
+}
+
+.menu-table tbody tr:hover {
+  background-color: #ffe8cc;
+}
+
+/* قیمت‌ها زیر هم مرتب و یک‌خطی */
+.menu-table td.price {
+  text-align: left;
+  white-space: nowrap;
+  font-weight: bold;
+}
+
+.menu-note {
+  font-size: 13px;
+  color: #7f6a5d;
+}
+
+/* ===== مراحل سفارش ===== */
+.steps {
+  list-style-type: persian;
+}
+
+.steps li {
+  margin-bottom: 6px;
+}
+
+/* ===== ساعت کار ===== */
+.hours-table {
+  border-collapse: collapse;
+}
+
+.hours-table th,
+.hours-table td {
+  padding: 6px 16px;
+  text-align: start;
+  border-bottom: 1px dashed #e6ccb2;
+}
+
+.hours-table th {
+  font-weight: normal;
+}
+
+.hours-table tr.today {
+  background-color: #d8f3dc;
+  font-weight: bold;
+}
+
+/* ===== پانویس ===== */
+.site-footer {
+  margin-top: 32px;
+  padding: 16px;
+  background-color: #ede0d4;
+  text-align: center;
+}
+
+.site-footer a {
+  color: #582f0e;
+  font-weight: bold;
+}
+
+.site-footer a:hover {
+  color: #9c6644;
+}
+
+.site-footer a:focus-visible {
+  outline: 2px solid #582f0e;
+  outline-offset: 2px;
+}

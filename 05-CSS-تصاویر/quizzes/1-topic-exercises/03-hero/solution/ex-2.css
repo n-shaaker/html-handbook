@@ -1,0 +1,40 @@
+body {
+  font-family: Tahoma, Arial, sans-serif;
+  line-height: 1.8;
+  margin: 0;
+}
+
+/* لایه اول (گرادیان تیره) روی لایه دوم (عکس) می‌نشیند */
+.hero {
+  min-height: 380px;
+  padding: 80px 24px 40px;
+  color: white;
+  background-image:
+    linear-gradient(rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.75)),
+    url("../../../../images/hero.jpg");
+  background-size: cover;
+  background-position: center;
+}
+
+.hero-text {
+  max-width: 480px;
+}
+
+.btn {
+  display: inline-block;
+  padding: 10px 22px;
+  color: white;
+  background-color: #b5452a;
+  border-radius: 6px;
+  text-decoration: none;
+}
+
+.btn:hover,
+.btn:focus-visible {
+  background-color: #8f3520;
+}
+
+.btn:focus-visible {
+  outline: 3px solid white;
+  outline-offset: 2px;
+}

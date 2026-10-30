@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>۱۴) عبارت‌های منظم (Regular Expressions) | آموزش JavaScript سطح پیشرفته</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <script src="../js/log.js" defer></script>
+  <script src="../js/demos/regexp.js" defer></script>
+</head>
+
+<body>
+
+  <header class="page-header" id="top">
+    <h1>آموزش JavaScript — سطح پیشرفته</h1>
+    <p>۱۴) عبارت‌های منظم (Regular Expressions)</p>
+  </header>
+
+  <div class="container">
+
+    <nav class="page-nav" aria-label="ناوبری درس">
+      <a href="13-web-storage.html">→ قبلی: Web Storage</a>
+      <a href="../index.html">فهرست درس‌ها</a>
+      <a href="15-event-delegation.html">بعدی: Event Delegation ←</a>
+    </nav>
+
+    <section class="lesson" id="regexp">
+      <h2>۱۴) عبارت‌های منظم (Regular Expressions)</h2>
+<p>عبارت منظم (RegExp) یک «الگو» برای جستجو در متن است؛ مثلاً «۱۱ رقم که با ۰۹ شروع شود». بین دو اسلش نوشته می‌شود: <code>/الگو/پرچم</code>. کاربرد اصلی‌اش در وب، <strong>اعتبارسنجی فرم</strong> (موبایل، ایمیل، کد ملی و ...) و جستجو و جایگزینی در متن است.</p>
+
+<table class="ref">
+<tr><th>نماد</th><th>معنی</th><th>مثال</th></tr>
+<tr><td><code>\d</code></td><td>یک رقم انگلیسی (0 تا 9). <strong>ارقام فارسی ۰ تا ۹ را شامل نمی‌شود!</strong></td><td><code>/\d\d/</code> دو رقم</td></tr>
+<tr><td><code>\w</code></td><td>حرف انگلیسی، رقم انگلیسی یا _ (حروف فارسی را شامل نمی‌شود)</td><td><code>/\w+/</code></td></tr>
+<tr><td><code>\s</code></td><td>فاصله سفید: space، tab، خط جدید</td><td><code>/\s+/</code></td></tr>
+<tr><td><code>.</code></td><td>هر کاراکتری به جز خط جدید</td><td><code>/a.c/</code></td></tr>
+<tr><td><code>[abc]</code></td><td>یکی از a، b یا c</td><td><code>/[aeiou]/</code></td></tr>
+<tr><td><code>[^abc]</code></td><td>هر چیزی به جز a، b و c</td><td><code>/[^0-9]/</code> غیر رقم</td></tr>
+<tr><td><code>[0-9]</code></td><td>بازه</td><td><code>/[a-z]/</code>، <code>/[۰-۹]/</code> رقم فارسی</td></tr>
+<tr><td><code>+</code> / <code>*</code> / <code>?</code></td><td>یک یا بیشتر / صفر یا بیشتر / صفر یا یک (اختیاری)</td><td><code>/\d+/</code></td></tr>
+<tr><td><code>{n}</code> / <code>{n,m}</code> / <code>{n,}</code></td><td>دقیقاً n بار / n تا m بار / حداقل n بار</td><td><code>/\d{4}/</code></td></tr>
+<tr><td><code>^</code> / <code>$</code></td><td>شروع / پایان متن</td><td><code>/^09\d{9}$/</code></td></tr>
+<tr><td><code>a|b</code></td><td>a یا b</td><td><code>/jpg|png/</code></td></tr>
+<tr><td><code>( )</code></td><td>گروه‌بندی (و ذخیره بخش پیداشده)</td><td><code>/(\d{4})-(\d{2})/</code></td></tr>
+<tr><td><code>\.</code></td><td>خود کاراکتر نقطه (کاراکترهای خاص با <code>\</code> عادی می‌شوند)</td><td><code>/\.ir$/</code></td></tr>
+</table>
+
+<table class="ref">
+<tr><th>پرچم</th><th>معنی</th></tr>
+<tr><td><code>g</code></td><td>همه موارد (نه فقط اولی)</td></tr>
+<tr><td><code>i</code></td><td>بدون توجه به حروف بزرگ و کوچک</td></tr>
+<tr><td><code>m</code></td><td>چندخطی: <code>^</code> و <code>$</code> شروع و پایان هر خط را می‌گیرند</td></tr>
+<tr><td><code>u</code></td><td>حالت یونیکد؛ برای کار درست با ایموجی و برخی کاراکترهای خاص</td></tr>
+</table>
+
+<h3>متدهای اصلی</h3>
+
+<pre class="code"><code>const text = "قیمت‌ها: 120 و 4500 و 78 تومان";
+
+console.log(/\d+/.test(text));            // true ← آیا عدد دارد؟
+console.log(text.match(/\d+/));           // ["120"] ← اولین مورد (همراه با index و ...)
+console.log(text.match(/\d+/g));          // ["120","4500","78"] ← همه موارد
+console.log(text.replace(/\d+/g, "؟"));   // قیمت‌ها: ؟ و ؟ و ؟ تومان
+console.log("JavaScript".search(/script/i));   // 4 ← جایگاه اولین مورد
+console.log("a, b;c  d".split(/[,;\s]+/));     // ["a","b","c","d"]</code></pre>
+
+<p><code>test</code> فقط می‌گوید الگو در متن هست یا نه. <code>match</code> بدون پرچم <code>g</code> اولین مورد و اطلاعات اضافه را برمی‌گرداند و با <code>g</code> همهٔ موردها را در یک آرایه می‌دهد. <code>replace</code> موردهای مطابق را با متن تازه عوض می‌کند. <code>search</code> شمارهٔ شروع اولین مورد است و <code>split</code> متن را از روی جداکننده‌هایی که الگو می‌گوید می‌بُرد.</p>
+
+<div class="result">
+<pre class="console" id="out-1"></pre>
+</div>
+
+<h3>مشکل ارقام فارسی</h3>
+
+<p>کاربر ایرانی ممکن است شماره موبایل را با صفحه‌کلید فارسی (<code>۰۹۱۲...</code>) یا عربی (<code>٠٩١٢...</code>) وارد کند. <code>\d</code> این ارقام را نمی‌شناسد؛ پس قبل از اعتبارسنجی، ارقام را به انگلیسی تبدیل می‌کنیم:</p>
+
+<pre class="code"><code>function toEnglishDigits(str) {
+  return str
+    .replace(/[۰-۹]/g, d =&gt; "۰۱۲۳۴۵۶۷۸۹".indexOf(d))    // ارقام فارسی
+    .replace(/[٠-٩]/g, d =&gt; "٠١٢٣٤٥٦٧٨٩".indexOf(d));   // ارقام عربی
+}
+
+console.log(/^\d+$/.test("۰۹۱۲"));                 // false ← \d رقم فارسی را نمی‌شناسد
+console.log(toEnglishDigits("۰۹۱۲۱۲۳۴۵۶۷"));       // 09121234567</code></pre>
+
+<p>کلاس <code>\d</code> در JavaScript رقم‌های فارسی و عربی را رقم حساب نمی‌کند. این تابع هر رقم فارسی را با جایگاهش در رشتهٔ «۰۱۲۳۴۵۶۷۸۹» به رقم انگلیسی متناظر تبدیل می‌کند و همین کار را برای رقم عربی تکرار می‌کند. بعد از این تبدیل می‌شود الگوهای عددی معمولی را به کار برد.</p>
+
+<div class="result">
+<pre class="console" id="out-3"></pre>
+</div>
+
+<h3>الگوهای کاربردی ایرانی</h3>
+
+<pre class="code"><code>const mobile = /^09\d{9}$/;                       // 09 و ۹ رقم دیگر (جمعاً ۱۱ رقم)
+const mobileIntl = /^(\+98|0)9\d{9}$/;            // با پیشوند 0 یا +98
+const postalCode = /^\d{5}-?\d{5}$/;              // ۱۰ رقم؛ خط تیره وسط اختیاری
+const email = /^[\w.-]+@[\w.-]+\.[a-z]{2,}$/i;    // نام @ دامنه . پسوند
+
+console.log(mobile.test("09121234567"));              // true
+console.log(mobile.test("0912123"));                  // false ← کوتاه است
+console.log(mobileIntl.test("+989121234567"));        // true
+console.log(postalCode.test("13185-34567"));          // true
+console.log(email.test("sara@example.com"));          // true
+console.log(email.test("ali.rezaei@mail.ut.ac.ir"));  // true ← زیردامنه هم مجاز است
+console.log(email.test("sara@com"));                  // false ← پسوند دامنه ندارد</code></pre>
+
+<p>علامت <code>^</code> ابتدای متن و <code>$</code> انتهای آن است، پس الگو باید کل رشته را پوشش دهد نه یک تکه را. <code>\d{9}</code> دقیقاً نه رقم است. الگوی بین‌المللی یکی از پیشوندهای <code>+98</code> یا <code>0</code> را می‌پذیرد. کد پستی خط تیره را اختیاری کرده و ایمیل با پرچم <code>i</code> به بزرگی و کوچکی حروف حساس نیست. این الگوها نمونهٔ آموزشی‌اند و هر نشانی واقعی دنیا را پوشش نمی‌دهند.</p>
+
+<div class="result">
+<pre class="console" id="out-2"></pre>
+</div>
+
+<p class="tip">در <code>(\+98|0)</code> پرانتز دو حالت پیشوند را گروه می‌کند و <code>\+</code> یعنی خود کاراکتر +. الگوی ایمیل بالا برای فرم‌ها کافی است، ولی هیچ RegExp ساده‌ای همه ایمیل‌های معتبر را پوشش نمی‌دهد؛ تنها راه مطمئن، فرستادن ایمیل تأیید است. الگوی کد پستی هم فقط «قالب» (۱۰ رقم) را بررسی می‌کند، نه وجود واقعی آن را.</p>
+
+<h3>کد ملی: الگو کافی نیست!</h3>
+
+<p>کد ملی ایران ۱۰ رقم است، اما هر ۱۰ رقمی کد ملی معتبر نیست: رقم آخر یک «رقم کنترل» است که از روی ۹ رقم اول حساب می‌شود. پس RegExp فقط قالب را بررسی می‌کند و بقیه کار با کد معمولی انجام می‌شود:</p>
+
+<pre class="code"><code>function isValidNationalCode(input) {
+  const code = toEnglishDigits(input.trim());
+  if (!/^\d{10}$/.test(code)) return false;        // دقیقاً ۱۰ رقم
+  if (code === code[0].repeat(10)) return false;   // ده رقم یکسان (مثل 1111111111) قابل قبول نیست
+
+  const check = Number(code[9]);                   // رقم کنترل (آخرین رقم)
+  let sum = 0;
+  for (let i = 0; i &lt; 9; i++) {
+    sum += Number(code[i]) * (10 - i);             // رقم اول × 10، دوم × 9، ...، نهم × 2
+  }
+  const r = sum % 11;
+  if (r &lt; 2) {
+    return check === r;
+  } else {
+    return check === 11 - r;
+  }
+}
+
+console.log(isValidNationalCode("0012345679"));    // true
+console.log(isValidNationalCode("0012345678"));    // false ← رقم کنترل اشتباه
+console.log(isValidNationalCode("1111111111"));    // false
+console.log(isValidNationalCode("۰۰۱۲۳۴۵۶۷۹"));    // true ← ارقام فارسی هم پذیرفته شد</code></pre>
+
+<p>اول رقم‌های فارسی به انگلیسی تبدیل می‌شوند و طول باید دقیقاً ده رقم باشد. ده رقم یکسان رد می‌شود. نه رقم اول هر کدام در وزن خودش ضرب و جمع می‌شوند. باقیماندهٔ تقسیم این جمع بر ۱۱ اگر کمتر از ۲ باشد باید با رقم آخر برابر باشد؛ در غیر این صورت رقم آخر باید برابر ۱۱ منهای همان باقیمانده باشد. اگر این برابری برقرار نباشد تابع false برمی‌گرداند، حتی وقتی طول کد درست است.</p>
+
+<div class="result">
+<pre class="console" id="out-4"></pre>
+</div>
+
+<p class="tip"><code>code[0].repeat(10)</code> رقم اول را ده بار پشت هم می‌گذارد (مثلاً <code>"1111111111"</code>)؛ اگر کد ملی با آن برابر بود، یعنی همه رقم‌ها یکسان‌اند.</p>
+
+<h3>مثال زنده: اعتبارسنجی هم‌زمان فرم</h3>
+
+<pre class="code"><code>function validate(input, check, msgEl) {
+  input.addEventListener("input", () =&gt; {
+    const value = toEnglishDigits(input.value.trim());
+    if (value === "") {
+      msgEl.textContent = "";
+      input.removeAttribute("aria-invalid");
+      return;
+    }
+    const ok = check(value);
+    msgEl.textContent = ok ? "✔ معتبر" : "✖ نامعتبر";
+    msgEl.className = ok ? "msg-ok" : "msg-error";
+    input.setAttribute("aria-invalid", !ok);       // برای صفحه‌خوان‌ها
+  });
+}
+
+validate(mobileInput, v =&gt; mobile.test(v), mobileMsg);
+validate(emailInput, v =&gt; email.test(v), emailMsg);
+validate(nationalInput, isValidNationalCode, nationalMsg);
+validate(postalInput, v =&gt; postalCode.test(v), postalMsg);</code></pre>
+
+<p>این تابع شنوندهٔ <code>input</code> را روی یک کادر نصب می‌کند و بررسی را به تابع <code>check</code> می‌سپارد. کادر خالی پیام را پاک می‌کند تا قبل از تایپ خطا نشان داده نشود. نتیجهٔ بررسی، متن و کلاس پیام را عوض می‌کند و <code>aria-invalid</code> را برای ابزارهای کمکی تنظیم می‌کند. هر کادر می‌تواند تابع بررسی خودش را داشته باشد.</p>
+
+<div class="result">
+<label>موبایل: <input type="tel" id="mobile-input" dir="ltr" inputmode="numeric" placeholder="09121234567" aria-describedby="mobile-msg"></label> <strong id="mobile-msg" aria-live="polite"></strong><br>
+<label>ایمیل: <input type="email" id="email-input" dir="ltr" placeholder="name@site.com" aria-describedby="email-msg"></label> <strong id="email-msg" aria-live="polite"></strong><br>
+<label>کد ملی: <input type="text" id="national-input" dir="ltr" inputmode="numeric" maxlength="10" placeholder="0012345679" aria-describedby="national-msg"></label> <strong id="national-msg" aria-live="polite"></strong><br>
+<label>کد پستی: <input type="text" id="postal-input" dir="ltr" inputmode="numeric" maxlength="11" placeholder="13185-34567" aria-describedby="postal-msg"></label> <strong id="postal-msg" aria-live="polite"></strong>
+</div>
+
+<p class="tip">ارقام فارسی را هم امتحان کنید (مثلاً <code>۰۹۱۲۱۲۳۴۵۶۷</code>)؛ چون تابع validate اول <code>toEnglishDigits</code> را صدا می‌زند، پذیرفته می‌شوند. یادتان باشد اعتبارسنجی سمت مرورگر فقط برای راحتی کاربر است؛ سرور هم باید داده را دوباره بررسی کند.</p>
+
+<p class="tip">برای تست و یادگیری RegExp از سایت <a href="https://regex101.com" target="_blank" rel="noopener">regex101.com</a> استفاده کنید (گزینه Flavor را روی ECMAScript/JavaScript بگذارید)؛ هر بخش الگو را توضیح می‌دهد.</p>
+
+<p class="mistake"><strong>اشتباه رایج:</strong> فراموش کردن <code>^</code> و <code>$</code> در اعتبارسنجی. بدون آن‌ها <code>/09\d{9}/</code> متن <code>abc09121234567xyz</code> را هم قبول می‌کند.</p>
+
+<p class="mistake"><strong>اشتباه رایج:</strong> استفاده از پرچم <code>g</code> همراه با <code>test</code> روی یک الگوی ذخیره‌شده در متغیر. الگوی g «جای آخرین جستجو» (<code>lastIndex</code>) را به خاطر می‌سپارد؛ برای همین با <code>const re = /\d/g;</code> دو بار پشت سر هم <code>re.test("a1")</code> اول true و بعد false می‌دهد! برای اعتبارسنجی پرچم g لازم نیست.</p>
+
+<p class="mistake"><strong>اشتباه رایج:</strong> فراموش کردن <code>\</code> قبل از نقطه: <code>/\.ir$/</code> یعنی «با .ir تمام شود»، اما <code>/.ir$/</code> هر کاراکتری قبل از ir را قبول می‌کند (مثلاً <code>"amir"</code>).</p>
+
+<p class="exercise"><strong>تمرین:</strong><br>
+۱) تابع <code>isStrongPassword(pass)</code> بنویسید که بررسی کند رمز عبور حداقل ۸ کاراکتر، حداقل یک رقم و حداقل یک حرف انگلیسی دارد (راهنما: سه تست جدا با <code>/.{8,}/</code>، <code>/\d/</code> و <code>/[a-z]/i</code>). یک input رمز بسازید و قدرت رمز را هم‌زمان نشان دهید.<br>
+۲) الگویی بنویسید که فقط نام فارسی (حروف فارسی، فاصله و نیم‌فاصله) را بپذیرد و آن را با «علی‌رضا محمدی» (معتبر) و «Ali» (نامعتبر) امتحان کنید (راهنما: <code>/^[آ-ی\s\u200c]+$/</code>؛ <code>\u200c</code> همان نیم‌فاصله است).<br>
+۳) با <code>replace</code> و یک الگوی g، همه فاصله‌های تکراری یک متن را به یک فاصله تبدیل کنید.</p>
+    </section>
+
+    <nav class="page-nav" aria-label="ناوبری درس پایین">
+      <a href="13-web-storage.html">→ قبلی: Web Storage</a>
+      <a href="../index.html">فهرست درس‌ها</a>
+      <a href="15-event-delegation.html">بعدی: Event Delegation ←</a>
+    </nav>
+
+  </div>
+
+  <footer class="page-footer">
+    آموزش JavaScript سطح پیشرفته
+  </footer>
+
+</body>
+
+</html>

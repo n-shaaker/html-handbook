@@ -1,0 +1,94 @@
+/* ۱۴) جمع‌بندی و تمرین */
+
+/* چک‌لیست با علامت تیک به‌جای نقطه */
+.checklist {
+  list-style: none;
+  padding: 0;
+}
+
+.checklist li {
+  padding: 4px 28px 4px 0;
+  position: relative;
+}
+
+.checklist li::before {
+  content: "☐";
+  position: absolute;
+  right: 0;
+  color: #0b6e4f;
+}
+
+/* کارت سفارش */
+.demo-practice .order {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-width: 460px;
+  background-color: white;
+  border: 1px solid #cfd8e3;
+  border-radius: 10px;
+  padding: 14px;
+}
+
+.demo-practice .order-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+  border-bottom: 1px solid #e9ecef;
+  padding-bottom: 8px;
+}
+
+.demo-practice .status {
+  background-color: #fff3bf;
+  color: #e67700;
+  font-size: 13px;
+  padding: 2px 10px;
+  border-radius: 12px;
+}
+
+.demo-practice .order-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.demo-practice .thumb {
+  flex: none;
+  width: 40px;
+  height: 40px;
+  line-height: 40px;
+  text-align: center;
+  font-size: 22px;
+  background-color: #fff4e6;
+  border-radius: 8px;
+}
+
+.demo-practice .name {
+  flex: 1;
+}
+
+.demo-practice .qty {
+  color: #868e96;
+}
+
+.demo-practice .order-foot {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border-top: 1px solid #e9ecef;
+  padding-top: 10px;
+}
+
+.demo-practice .link {
+  color: #1a5fb4;
+}
+
+.demo-practice .pay {
+  margin-inline-start: auto;
+  background-color: #2b8a3e;
+  color: white;
+  text-decoration: none;
+  padding: 6px 12px;
+  border-radius: 6px;
+}

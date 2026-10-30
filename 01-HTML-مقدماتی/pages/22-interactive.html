@@ -1,0 +1,251 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>۲۲) عناصر تعاملی و JavaScript در HTML | جزوه HTML</title>
+    <link rel="stylesheet" href="../css/style.css" />
+  </head>
+
+  <body>
+    <header class="page-header">
+      <h1>جزوه HTML مقدماتی</h1>
+      <p>۲۲) عناصر تعاملی (details، dialog، progress، meter) و JavaScript در HTML</p>
+    </header>
+
+    <div class="container">
+      <nav class="page-nav">
+        <a href="21-graphics.html">→ درس قبل</a>
+        <a href="../index.html">فهرست مطالب</a>
+        <a href="23-responsive-guide.html">درس بعد ←</a>
+      </nav>
+
+      <section class="lesson">
+        <h2>۲۲) عناصر کاربردی HTML5</h2>
+
+        <div class="tag-card">
+          <h4>&lt;details&gt; و &lt;summary&gt;</h4>
+          <p>
+            عنصر <code>details</code> یک بخش باز و بسته شونده می‌سازد و برای این کار به JavaScript نیاز ندارد.
+            <code>summary</code> عنوانی است که همیشه دیده می‌شود. با کلیک یا با صفحه‌کلید روی آن، بقیهٔ محتوا باز و بسته می‌شود.
+            برای پرسش‌های متداول مناسب است. ویژگی <code>open</code> همان بخش را از ابتدا باز نگه می‌دارد.
+          </p>
+          <pre class="code"><code>&lt;details&gt;
+  &lt;summary&gt;هزینه ارسال سفارش چقدر است؟&lt;/summary&gt;
+  &lt;p&gt;برای خریدهای بالای ۵۰۰ هزار تومان، ارسال رایگان است.&lt;/p&gt;
+&lt;/details&gt;
+
+&lt;details open&gt;
+  &lt;summary&gt;چند روز فرصت مرجوع کردن کالا دارم؟&lt;/summary&gt;
+  &lt;p&gt;تا ۷ روز پس از تحویل (این مورد با ویژگی open از ابتدا باز است).&lt;/p&gt;
+&lt;/details&gt;</code></pre>
+          <div class="result">
+            <details>
+              <summary>هزینه ارسال سفارش چقدر است؟</summary>
+              <p>برای خریدهای بالای ۵۰۰ هزار تومان، ارسال رایگان است.</p>
+            </details>
+            <details open>
+              <summary>چند روز فرصت مرجوع کردن کالا دارم؟</summary>
+              <p>تا ۷ روز پس از تحویل (این مورد با ویژگی open از ابتدا باز است).</p>
+            </details>
+          </div>
+        </div>
+
+        <div class="tag-card">
+          <h4>&lt;progress&gt;</h4>
+          <p>
+            عنصر <code>progress</code> پیشرفت یک کار را نشان می‌دهد، مثل بارگذاری پرونده یا تکمیل مراحل ثبت‌نام.
+            <code>value</code> مقدار فعلی است و <code>max</code> سقف آن. اگر <code>value</code> نوشته نشود، نوار نامعین است؛ یعنی کار در جریان است اما درصد مشخصی ندارد.
+            متن داخل عنصر برای مرورگرهایی است که <code>progress</code> را نمی‌شناسند.
+          </p>
+          <pre class="code"><code>&lt;label for="dl"&gt;تکمیل پروفایل:&lt;/label&gt;
+&lt;progress id="dl" value="70" max="100"&gt;۷۰٪&lt;/progress&gt;</code></pre>
+          <div class="result">
+            <label for="dl">تکمیل پروفایل:</label>
+            <progress id="dl" value="70" max="100">۷۰٪</progress>
+          </div>
+        </div>
+
+        <div class="tag-card">
+          <h4>&lt;meter&gt;</h4>
+          <p>
+            عنصر <code>meter</code> یک مقدار معلوم را در یک بازه نشان می‌دهد، مثل فضای پر دیسک یا قدرت رمز. این با <code>progress</code> فرق دارد، چون پیشرفت یک کار در حال انجام نیست.
+            <code>low</code>، <code>high</code> و <code>optimum</code> به مرورگر می‌گویند کدام بخش بازه کم، زیاد یا مطلوب است.
+            مرورگرها موظف نیستند رنگ را دقیقاً یکسان نشان دهند؛ این ویژگی‌ها معنا را می‌گویند و ظاهر نهایی ممکن است فرق کند.
+          </p>
+          <pre class="code"><code>&lt;label for="disk1"&gt;درایو C:&lt;/label&gt;
+&lt;meter id="disk1" value="0.9" low="0.3" high="0.8" optimum="0.1"&gt;90%&lt;/meter&gt;
+
+&lt;label for="disk2"&gt;درایو D:&lt;/label&gt;
+&lt;meter id="disk2" value="0.2" low="0.3" high="0.8" optimum="0.1"&gt;20%&lt;/meter&gt;</code></pre>
+          <div class="result">
+            <label for="disk1">درایو C:</label>
+            <meter id="disk1" value="0.9" low="0.3" high="0.8" optimum="0.1">90%</meter>
+            <br />
+            <label for="disk2">درایو D:</label>
+            <meter id="disk2" value="0.2" low="0.3" high="0.8" optimum="0.1">20%</meter>
+          </div>
+          <p><small><code>progress</code> = پیشرفت یک کار، <code>meter</code> = اندازه یک مقدار ثابت.</small></p>
+        </div>
+
+        <div class="tag-card">
+          <h4>&lt;time&gt;</h4>
+          <p>
+            عنصر <code>time</code> تاریخ یا ساعت را برای مرورگر و موتور جستجو قابل فهم می‌کند. ظاهر خاصی ندارد.
+            متن داخل عنصر برای انسان است و ویژگی <code>datetime</code> مقدار ماشینی و استاندارد است. اگر این ویژگی نباشد، ماشین باید از روی متن حدس بزند و متن فارسی معمولاً برایش کافی نیست.
+          </p>
+          <pre class="code"><code>&lt;p&gt;کلاس در &lt;time datetime="2026-11-01T17:00"&gt;۱۰ آبان ساعت ۱۷&lt;/time&gt; برگزار می‌شود.&lt;/p&gt;</code></pre>
+          <div class="result">
+            <p>کلاس در <time datetime="2026-11-01T17:00">۱۰ آبان ساعت ۱۷</time> برگزار می‌شود.</p>
+          </div>
+        </div>
+
+        <div class="tag-card">
+          <h4>&lt;dialog&gt;</h4>
+          <p>
+            عنصر <code>dialog</code> پنجرهٔ گفتگو یا مودال استاندارد است. تابع <code>showModal()</code> آن را به‌صورت مودال باز می‌کند و تعامل با بقیهٔ صفحه را می‌بندد.
+            <code>show()</code> پنجره را بدون این حالت مودال نشان می‌دهد. بستن با <code>close()</code> یا با فرمی که <code>method="dialog"</code> دارد انجام می‌شود.
+          </p>
+          <pre class="code"><code>&lt;button type="button" onclick="document.getElementById('myDialog').showModal()"&gt;
+  باز کردن پنجره
+&lt;/button&gt;
+
+&lt;dialog id="myDialog"&gt;
+  &lt;p&gt;سلام! این یک پنجره dialog است.&lt;/p&gt;
+  &lt;form method="dialog"&gt;
+    &lt;button&gt;بستن&lt;/button&gt;
+  &lt;/form&gt;
+&lt;/dialog&gt;</code></pre>
+          <div class="result">
+            <button type="button" class="demo-button" onclick="document.getElementById('myDialog').showModal()">
+              باز کردن پنجره
+            </button>
+            <dialog id="myDialog">
+              <p>سلام! این یک پنجره dialog است.</p>
+              <form method="dialog">
+                <button class="demo-button">بستن</button>
+              </form>
+            </dialog>
+          </div>
+        </div>
+
+        <div class="tag-card">
+          <h4>contenteditable</h4>
+          <p>ویژگی <code>contenteditable</code> محتوای یک عنصر را در همان صفحه قابل ویرایش می‌کند. روی متن زیر کلیک کنید و تایپ کنید. این تغییر فقط در مرورگر شما می‌ماند و تا وقتی آن را با اسکریپت ذخیره نکنید، با تازه‌سازی صفحه از بین می‌رود.</p>
+          <pre class="code"><code>&lt;p contenteditable="true"&gt;این متن را می‌توانید ویرایش کنید.&lt;/p&gt;</code></pre>
+          <div class="result">
+            <p contenteditable="true" style="border: 1px dashed #1a5fb4; padding: 6px">این متن را می‌توانید ویرایش کنید.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="lesson">
+        <h2>JavaScript در HTML</h2>
+        <p>
+          در درس ۱۵ دیدیم دکمه HTML به‌تنهایی کاری نمی‌کند. اینجا اولین قدم‌ها برای دادن
+          <strong>رفتار</strong> به صفحه را برمی‌داریم.
+        </p>
+
+        <div class="tag-card">
+          <h4>&lt;script&gt;</h4>
+          <p>
+            کد JavaScript یا داخل عنصر <code>script</code> نوشته می‌شود یا از پروندهٔ جدا بارگذاری می‌شود.
+            مرورگر هنگام رسیدن به <code>script</code> معمولی، ساخت صفحه را متوقف می‌کند تا آن را اجرا کند.
+            برای همین یا اسکریپت را انتهای <code>body</code> می‌گذارند، یا پروندهٔ خارجی را با <code>defer</code> در <code>head</code> می‌آورند تا بعد از خوانده شدن HTML اجرا شود و ترتیب پرونده‌ها حفظ شود.
+            ویژگی <code>async</code> هم صفحه را معطل نمی‌کند، اما ترتیب اجرا را تضمین نمی‌کند. برای کدی که به عنصرهای صفحه وابسته است، <code>defer</code> انتخاب مطمئن‌تری است.
+          </p>
+          <pre class="code"><code>&lt;!-- کد داخلی، انتهای body --&gt;
+&lt;script&gt;
+  document.getElementById("demo").textContent = "سلام از JavaScript!";
+&lt;/script&gt;
+
+&lt;!-- فایل خارجی در head (روش بهتر) --&gt;
+&lt;script src="js/app.js" defer&gt;&lt;/script&gt;</code></pre>
+          <p>
+            <strong>اشتباه رایج:</strong> اجرای کدی که به عنصری مثل <code>#demo</code> دسترسی دارد، <em>پیش از</em> آنکه آن عنصر در صفحه ساخته شده باشد
+            (مثلاً <code>script</code> بدون <code>defer</code> در <code>head</code>)؛ نتیجه خطای <code>null</code> است.
+          </p>
+        </div>
+
+        <div class="tag-card">
+          <h4>رویداد (Event) — onclick</h4>
+          <p>با ویژگی <code>onclick</code> مشخص می‌کنید با کلیک چه کدی اجرا شود. این روش برای یادگیری روشن است. در پروژهٔ واقعی، رفتار را در پروندهٔ جدا و با <code>addEventListener</code> وصل می‌کنند تا HTML و رفتار از هم جدا بمانند. دکمه‌ها را امتحان کنید:</p>
+          <pre class="code"><code>&lt;p id="demo"&gt;متن اولیه&lt;/p&gt;
+
+&lt;button type="button" onclick="document.getElementById('demo').textContent = 'متن عوض شد! 🎉'"&gt;
+  تغییر متن
+&lt;/button&gt;
+
+&lt;button type="button" onclick="document.getElementById('demo').style.color = 'crimson'"&gt;
+  قرمز کن
+&lt;/button&gt;
+
+&lt;button type="button" onclick="alert('سلام!')"&gt;پیام&lt;/button&gt;</code></pre>
+          <div class="result">
+            <p id="demo">متن اولیه</p>
+            <button type="button" class="demo-button" onclick="document.getElementById('demo').textContent = 'متن عوض شد! 🎉'">
+              تغییر متن
+            </button>
+            <button type="button" class="demo-button" onclick="document.getElementById('demo').style.color = 'crimson'">
+              قرمز کن
+            </button>
+            <button type="button" class="demo-button" onclick="alert('سلام!')">پیام</button>
+          </div>
+          <p>
+            <code>textContent</code> فقط متن را عوض می‌کند. <code>innerHTML</code> هم وجود دارد و HTML را تفسیر می‌کند،
+            اما هرگز نباید ورودی کاربر را با آن در صفحه قرار داد، چون راه نفوذ کدهای مخرب (حمله XSS) را باز می‌کند.
+          </p>
+        </div>
+
+        <div class="tag-card">
+          <h4>نمایش و پنهان کردن تصویر</h4>
+          <pre class="code"><code>&lt;img id="photo" src="../images/profile.jpg" alt="نمایه" width="120"&gt;
+&lt;button type="button" onclick="document.getElementById('photo').hidden = true"&gt;پنهان&lt;/button&gt;
+&lt;button type="button" onclick="document.getElementById('photo').hidden = false"&gt;نمایش&lt;/button&gt;</code></pre>
+          <div class="result">
+            <img id="photo" src="../images/profile.jpg" alt="عکس نمایه کاربر" width="120" style="border-radius: 8px" />
+            <button type="button" class="demo-button" onclick="document.getElementById('photo').hidden = true">پنهان</button>
+            <button type="button" class="demo-button" onclick="document.getElementById('photo').hidden = false">نمایش</button>
+          </div>
+        </div>
+
+        <div class="tag-card">
+          <h4>&lt;noscript&gt;</h4>
+          <p>عنصر <code>noscript</code> محتوایی را نشان می‌دهد که فقط وقتی JavaScript در مرورگر خاموش یا مسدود باشد دیده می‌شود. اگر اسکریپت فعال باشد، این محتوا نمایش داده نمی‌شود.</p>
+          <pre class="code"><code>&lt;noscript&gt;برای استفاده از این صفحه، JavaScript را فعال کنید.&lt;/noscript&gt;</code></pre>
+        </div>
+
+        <p class="tip">
+          <strong>نکته:</strong>
+          نوشتن کد داخل <code>onclick</code> برای یادگیری مناسب است، اما در پروژهٔ واقعی کد را در پروندهٔ <code>.js</code> جدا می‌نویسند و با <code>addEventListener</code> به عنصر وصل می‌کنند.
+          این جداسازی در دورهٔ JavaScript کامل‌تر آموزش داده می‌شود.
+        </p>
+
+        <p class="exercise">
+          <strong>تمرین:</strong>
+          یک صفحه «سؤالات متداول» با حداقل چهار <code>details</code> بسازید. در انتها یک دکمه بگذارید
+          که با کلیک، رنگ پس‌زمینه صفحه را عوض کند:
+          <code>document.body.style.backgroundColor = 'lightyellow'</code>
+        </p>
+
+        <p>
+          مطالعه بیشتر:
+          <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/script" target="_blank" rel="noopener">script (MDN)</a>،
+          <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/details" target="_blank" rel="noopener">details (MDN)</a>،
+          <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/dialog" target="_blank" rel="noopener">dialog (MDN)</a>،
+          <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/meter" target="_blank" rel="noopener">meter (MDN)</a>،
+          <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/progress" target="_blank" rel="noopener">progress (MDN)</a>،
+          <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/time" target="_blank" rel="noopener">time (MDN)</a>
+        </p>
+      </section>
+
+      <nav class="page-nav">
+        <a href="21-graphics.html">→ درس قبل</a>
+        <a href="../index.html">فهرست مطالب</a>
+        <a href="23-responsive-guide.html">درس بعد ←</a>
+      </nav>
+    </div>
+
+    <footer class="page-footer">جزوه HTML مقدماتی</footer>
+  </body>
+</html>

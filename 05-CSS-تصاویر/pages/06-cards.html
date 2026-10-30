@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>کارت محصول | تصاویر در CSS</title>
+  <link rel="stylesheet" href="../css/layout.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="../css/demos/cards.css">
+</head>
+
+<body>
+  <header class="page-header">
+    <h1>تصاویر در CSS</h1>
+    <p>۶) کارت محصول واقعی</p>
+  </header>
+
+  <div class="container">
+    <nav class="page-nav" aria-label="ناوبری درس‌ها">
+      <a href="05-object-fit.html">→ قبلی</a>
+      <a href="../index.html">فهرست</a>
+      <a href="07-responsive.html">بعدی: واکنش‌گرا ←</a>
+    </nav>
+
+    <section class="lesson">
+      <h2>۶) کارت محصول — الگوی فروشگاه و منو</h2>
+      <p>
+        کارت محصول یک قطعهٔ تکرارشونده است: عکس در بالا، عنوان و قیمت در پایین، و یک دکمه برای اقدام.
+        همین الگو را در منوی رستوران، ویترین فروشگاه، نمونه‌کار و فهرست مقاله‌ها می‌بینید.
+        چون عکس‌ها نسبت‌های مختلفی دارند، قاب عکس باید نسبت ثابتی داشته باشد و خود تصویر با <code>object-fit: cover</code> داخل آن قاب بنشیند؛ وگرنه یک کارت بلند و کارت دیگر کوتاه می‌شود و ردیف به‌هم می‌ریزد.
+      </p>
+      <p>
+        در مثال زیر هر کارت یک <code>article</code> است. <code>div.thumb</code> فقط قاب تصویر است و <code>div.body</code> متن و دکمه را جدا نگه می‌دارد تا استایل عکس به نوشته نشت نکند.
+      </p>
+
+      <pre class="code"><code>&lt;article class="product-card"&gt;
+  &lt;div class="thumb"&gt;
+    &lt;img src="../images/food-1.jpg" alt="چلو کباب کوبیده"&gt;
+  &lt;/div&gt;
+  &lt;div class="body"&gt;
+    &lt;h3&gt;چلو کباب کوبیده&lt;/h3&gt;
+    &lt;p class="price"&gt;۲۸۵٬۰۰۰ تومان&lt;/p&gt;
+    &lt;button class="btn" type="button" aria-label="سفارش چلو کباب کوبیده"&gt;سفارش&lt;/button&gt;
+  &lt;/div&gt;
+&lt;/article&gt;</code></pre>
+
+      <pre class="code"><code>.product-card .thumb {
+  aspect-ratio: 4 / 3;   /* نسبت ثابت؛ ارتفاع خودکار */
+  overflow: hidden;
+}
+
+.product-card .thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.25s ease;
+}
+
+.product-card:hover .thumb img {
+  transform: scale(1.05); /* زوم ملایم هنگام هاور */
+}</code></pre>
+
+      <div class="result">
+        <div class="demo-cards">
+          <article class="product-card">
+            <div class="thumb">
+              <img src="../images/food-1.jpg" alt="چلو کباب کوبیده">
+            </div>
+            <div class="body">
+              <h3>چلو کباب کوبیده</h3>
+              <p class="price">۲۸۵٬۰۰۰ تومان</p>
+              <button class="btn" type="button" aria-label="سفارش چلو کباب کوبیده">سفارش</button>
+            </div>
+          </article>
+          <article class="product-card">
+            <div class="thumb">
+              <img src="../images/food-2.jpg" alt="زرشک‌پلو با مرغ">
+            </div>
+            <div class="body">
+              <h3>زرشک‌پلو با مرغ</h3>
+              <p class="price">۲۴۰٬۰۰۰ تومان</p>
+              <button class="btn" type="button" aria-label="سفارش زرشک‌پلو با مرغ">سفارش</button>
+            </div>
+          </article>
+          <article class="product-card">
+            <div class="thumb">
+              <img src="../images/food-3.jpg" alt="چای سنتی">
+            </div>
+            <div class="body">
+              <h3>چای سنتی</h3>
+              <p class="price">۳۵٬۰۰۰ تومان</p>
+              <button class="btn" type="button" aria-label="سفارش چای سنتی">سفارش</button>
+            </div>
+          </article>
+        </div>
+      </div>
+
+      <p class="realuse">
+        <strong>چرا <code>aspect-ratio</code>؟</strong>
+        این ویژگی نسبت عرض به ارتفاع قاب را قفل می‌کند. با <code>4 / 3</code>، هر وقت عرض کارت عوض شود ارتفاع قاب هم با همان نسبت عوض می‌شود.
+        برخلاف ارتفاع ثابت پیکسلی، در موبایل و دسکتاپ قاب نه بیش از حد کوتاه می‌شود و نه فضای صفحه را بی‌دلیل بلند می‌کند، و همهٔ کارت‌های یک ردیف هم‌قد می‌مانند.
+      </p>
+
+      <p class="tip">
+        <code>overflow: hidden</code> روی قاب عکس لازم است، چون <code>transform: scale(1.05)</code> تصویر را از اندازهٔ قاب بزرگ‌تر می‌کند.
+        بدون پنهان کردن سرریز، گوشه‌های بزرگ‌شده روی عنوان کارت یا حاشیهٔ کناری می‌افتند.
+      </p>
+
+      <p class="tip">
+        «سفارش» یک <strong>عمل</strong> در همین صفحه است (افزودن به سبد)، نه رفتن به صفحه دیگر؛ پس
+        <code>&lt;button type="button"&gt;</code> درست است، نه لینک با <code>href="#"</code>.
+        چون متن همه دکمه‌ها «سفارش» است، با <code>aria-label</code> نام غذا را هم برای صفحه‌خوان اضافه کرده‌ایم.
+        اگر دکمه به صفحه جزئیات محصول می‌برد، باید <code>&lt;a href="product.html"&gt;</code> می‌بود.
+      </p>
+
+      <p class="mistake">
+        <strong>اشتباه رایج:</strong>
+        خالی گذاشتن <code>alt</code> عکس محصول، یا نوشتن کلمه‌ای مثل «عکس».
+        این تصویر محتواست: صفحه‌خوان و موتور جستجو باید بفهمند چه غذایی یا چه کالایی نشان داده شده، پس <code>alt</code> باید همان چیزی را بگوید که در تصویر دیده می‌شود، مثلاً «چلو کباب کوبیده».
+      </p>
+
+      <p class="exercise">
+        <strong>تمرین:</strong> سه کارت برای نمونه‌کارهای خودتان بسازید (عکس + عنوان + دکمه «مشاهده»).
+      </p>
+    </section>
+
+    <nav class="page-nav" aria-label="ناوبری درس‌ها">
+      <a href="05-object-fit.html">→ قبلی</a>
+      <a href="../index.html">فهرست</a>
+      <a href="07-responsive.html">بعدی: واکنش‌گرا ←</a>
+    </nav>
+  </div>
+  <footer class="page-footer">تصاویر در CSS</footer>
+</body>
+</html>

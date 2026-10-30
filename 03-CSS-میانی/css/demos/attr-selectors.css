@@ -1,0 +1,81 @@
+/* ۱۵) Attribute Selectors */
+
+.demo-attr a[target="_blank"]::after {
+  content: " ↗";
+}
+
+.demo-attr input {
+  padding: 8px;
+  margin: 4px 0 4px 8px;
+  border-radius: 4px;
+  font-family: inherit;
+}
+
+.demo-attr input[type="text"] {
+  border: 2px solid #1a5fb4;
+}
+
+.demo-attr input[type="password"] {
+  border: 2px solid #c92a2a;
+}
+
+.demo-attr input[type="email"] {
+  border: 2px solid #2b8a3e;
+}
+
+.demo-attr .files a[href$=".pdf"]::before {
+  content: "📄 ";
+}
+
+.demo-attr .files a[href$=".zip"]::before {
+  content: "🗜️ ";
+}
+
+.demo-attr .files a[href^="mailto:"]::before {
+  content: "✉️ ";
+}
+
+/* لینک‌های نمونه: کلیک نشوند تا به فایل ناموجود نروند */
+.demo-attr .files .sample-link {
+  pointer-events: none;
+  cursor: default;
+  color: #1a5fb4;
+}
+
+.demo-attr .sample-note {
+  font-size: 13px;
+  color: #666;
+  margin: 6px 0 0;
+}
+
+.demo-attr [class*="btn"] {
+  display: inline-block;
+  padding: 6px 14px;
+  border-radius: 4px;
+  color: white;
+  direction: ltr;
+}
+
+.demo-attr .btn-red {
+  background-color: #e03131;
+}
+
+.demo-attr .btn-green {
+  background-color: #2f9e44;
+}
+
+.demo-attr .btn-blue {
+  background-color: #1971c2;
+}
+
+.demo-attr .thumb {
+  width: 100px;
+  height: 70px;
+  object-fit: cover;
+  margin-left: 10px;
+}
+
+.demo-attr [title~="new"] {
+  outline: 3px dashed orange;
+  outline-offset: 3px;
+}

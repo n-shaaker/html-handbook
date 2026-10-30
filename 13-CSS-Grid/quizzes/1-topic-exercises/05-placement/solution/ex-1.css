@@ -1,0 +1,29 @@
+/* تمرین ۱ — تیتر تمام‌عرض (پاسخ) */
+
+body {
+  font-family: Tahoma, sans-serif;
+  margin: 20px;
+  background-color: #f8f9fa;
+  color: #212529;
+}
+
+.album {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+
+/* از خط ۱ تا آخرین خط (‎-1 یعنی آخرین خط، هر چند ستون که باشد) */
+.title {
+  grid-column: 1 / -1;
+  margin: 0;
+  background-color: #2f9e44;
+  color: white;
+  padding: 10px;
+}
+
+.photo {
+  height: 80px;
+  background-color: #b2f2bb;
+  padding: 10px;
+}

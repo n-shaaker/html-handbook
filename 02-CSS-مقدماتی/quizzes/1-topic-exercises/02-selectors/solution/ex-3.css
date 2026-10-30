@@ -1,0 +1,29 @@
+/* ۱. همه عنصرهای وسط‌چین */
+.center {
+  text-align: center;
+}
+
+/* ۲. فقط پاراگراف‌های large (نه div) */
+p.large {
+  font-size: 22px;
+}
+
+/* ۳. عنصری که هم center و هم large است */
+.center.large {
+  color: #c92a2a;
+}
+
+/* ۴. فقط شماره تلفن */
+#phone {
+  color: #1a5fb4;
+}
+
+/* ۵. دو تیتر فرعی با یک قانون */
+h2, h3 {
+  color: #5f3dc4;
+}
+
+/* ۶. همه عنصرهای large، چه p چه div */
+.large {
+  font-weight: bold;
+}

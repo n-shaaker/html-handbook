@@ -1,0 +1,24 @@
+/* تمرین ۱ — ستون کناری ۲۰۰ پیکسلی (پاسخ) */
+
+body {
+  font-family: Tahoma, sans-serif;
+  margin: 20px;
+  background-color: #f8f9fa;
+  color: #212529;
+}
+
+/* ستون اول ۲۰۰ پیکسل، ستون دوم بقیه */
+.page {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+}
+
+.side {
+  background-color: #ebfbee;
+  padding: 10px;
+}
+
+.main {
+  background-color: white;
+  padding: 10px;
+}

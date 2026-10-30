@@ -1,0 +1,35 @@
+/* تمرین ۲ — قیمت پایین-چپ، برچسب جدید بالا-راست (پاسخ) */
+
+body {
+  font-family: Tahoma, sans-serif;
+  margin: 20px;
+  background-color: #f8f9fa;
+  color: #212529;
+}
+
+/* در rtl شروع خط سمت راست است؛ پس end یعنی چپ */
+.showcase {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, 120px);
+  gap: 10px;
+  justify-items: end;
+  align-items: end;
+  background-color: #fff0f6;
+  padding: 10px;
+}
+
+.tag {
+  background-color: #d6336c;
+  color: white;
+  padding: 4px 10px;
+  border-radius: 4px;
+}
+
+/* فقط این یکی: بالا-راست */
+.new {
+  justify-self: start;
+  align-self: start;
+  background-color: #fab005;
+  color: #212529;
+}

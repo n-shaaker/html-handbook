@@ -1,0 +1,44 @@
+/* تمرین ۳ — ابر برچسب و یادداشت با gap‌های جدا (پاسخ) */
+
+body {
+  font-family: Tahoma, sans-serif;
+  margin: 20px;
+  background-color: #f8f9fa;
+  color: #212529;
+}
+
+/* یادداشت: زیر هم با فاصله کم */
+.note {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  max-width: 300px;
+  background-color: #fff9db;
+  padding: 15px;
+  border-radius: 8px;
+}
+
+.note h2,
+.note p {
+  margin: 0;
+}
+
+.date {
+  color: #868e96;
+  font-size: 13px;
+}
+
+/* برچسب‌ها: فاصله افقی و عمودی جدا */
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  row-gap: 8px;
+  column-gap: 16px;
+}
+
+.tag {
+  background-color: #fab005;
+  padding: 3px 10px;
+  border-radius: 10px;
+  font-size: 13px;
+}

@@ -1,0 +1,16 @@
+.box {
+  width: 250px;
+  padding: 10px;
+  background-color: #fff3bf;
+}
+
+/* border جزو جعبه است: جعبه ۱۶ پیکسل بزرگ‌تر می‌شود */
+.with-border {
+  border: 8px solid #e67700;
+}
+
+/* outline فضا نمی‌گیرد: اندازه جعبه و جای متن پایینی عوض نمی‌شود */
+.with-outline {
+  outline: 8px solid #e67700;
+  outline-offset: 4px;
+}

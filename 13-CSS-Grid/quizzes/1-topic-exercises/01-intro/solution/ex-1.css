@@ -1,0 +1,23 @@
+/* تمرین ۱ — شش جعبه در سه ستون (پاسخ) */
+
+body {
+  font-family: Tahoma, sans-serif;
+  margin: 20px;
+  background-color: #f8f9fa;
+  color: #212529;
+}
+
+/* سه ستون مساوی */
+.flowers {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  background-color: #f1f3f5;
+}
+
+.box {
+  background-color: #e64980;
+  color: white;
+  text-align: center;
+  padding: 25px 5px;
+  border: 2px solid white;
+}

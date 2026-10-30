@@ -1,0 +1,14 @@
+body {
+  font-family: Tahoma, Arial, sans-serif;
+}
+
+.quote {
+  font-family: Georgia, "Times New Roman", serif;
+  font-style: italic;
+}
+
+.code {
+  font-family: "Courier New", Consolas, monospace;
+  background-color: #f1f3f5;
+  padding: 8px;
+}

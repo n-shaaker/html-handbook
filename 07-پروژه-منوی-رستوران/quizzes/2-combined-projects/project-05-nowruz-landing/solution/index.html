@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="منوی ویژه نوروز رستوران سنتی نارنج، ۱ تا ۱۳ فروردین">
+  <title>منوی ویژه نوروز | رستوران سنتی نارنج</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <header class="site-header">
+    <a href="#" class="logo">رستوران سنتی <strong>نارنج</strong></a>
+    <nav aria-label="منوی اصلی">
+      <ul class="nav-list">
+        <li><a href="#special">منوی ویژه</a></li>
+        <li><a href="#desserts">دسر</a></li>
+        <li><a href="#reserve">رزرو</a></li>
+        <li><a href="#faq">پرسش‌ها</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <div>
+      <span class="badge">۱ تا ۱۳ فروردین</span>
+      <h1>سفره نوروزی نارنج</h1>
+      <p>زرشک‌پلو، قورمه‌سبزی و کباب با ۱۰٪ تخفیف نوروزی؛ سال نو را کنار ما شروع کنید.</p>
+      <a href="#reserve" class="btn">همین حالا رزرو کنید</a>
+    </div>
+  </section>
+
+  <main class="container">
+    <section id="special">
+      <h2>منوی ویژه نوروز</h2>
+      <div class="dishes-flex">
+        <article class="dish">
+          <img src="../../../../images/zereshk.jpg" alt="زرشک‌پلو با مرغ و خلال پسته">
+          <h3>زرشک‌پلو با مرغ <mark>ویژه نوروز</mark></h3>
+          <p class="price"><del>۳۵۰٬۰۰۰</del> <ins>۳۱۵٬۰۰۰ تومان</ins></p>
+        </article>
+        <article class="dish">
+          <img src="../../../../images/ghormeh.jpg" alt="خورش قورمه‌سبزی کنار برنج">
+          <h3>چلوخورش قورمه‌سبزی</h3>
+          <p class="price"><del>۳۲۰٬۰۰۰</del> <ins>۲۸۸٬۰۰۰ تومان</ins></p>
+        </article>
+        <article class="dish">
+          <img src="../../../../images/koobideh.jpg" alt="کباب کوبیده در بشقاب با گوجه کبابی">
+          <h3>چلوکباب کوبیده</h3>
+          <p class="price"><del>۴۲۰٬۰۰۰</del> <ins>۳۷۸٬۰۰۰ تومان</ins></p>
+        </article>
+      </div>
+    </section>
+
+    <section id="desserts">
+      <h2>دسرهای نوروزی</h2>
+      <div class="dishes-grid">
+        <article class="dish">
+          <img src="../../../../images/sholehzard.jpg" alt="شله‌زرد تزیین‌شده با دارچین و خلال بادام">
+          <h3>شله‌زرد</h3>
+          <p class="price">۷۰٬۰۰۰ تومان</p>
+        </article>
+        <article class="dish">
+          <img src="../../../../images/faloodeh.jpg" alt="فالوده شیرازی در جام شیشه‌ای">
+          <h3>فالوده شیرازی</h3>
+          <p class="price">۹۰٬۰۰۰ تومان</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="reserve">
+      <h2>رزرو میز نوروزی</h2>
+      <form action="#" method="post" class="reserve-form">
+        <label for="name">نام و نام خانوادگی</label>
+        <input type="text" id="name" name="name" required>
+
+        <label for="phone">شماره موبایل</label>
+        <input type="tel" id="phone" name="phone" dir="ltr" placeholder="09123456789"
+          pattern="09[0-9]{9}" title="شماره موبایل ۱۱ رقمی که با ۰۹ شروع می‌شود" required>
+
+        <label for="date">تاریخ (۱ تا ۱۳ فروردین)</label>
+        <input type="date" id="date" name="date" min="2027-03-21" max="2027-04-02" required>
+
+        <label for="time">ساعت (۱۲ تا ۲۳)</label>
+        <input type="time" id="time" name="time" min="12:00" max="23:00" required>
+
+        <label for="guests">تعداد نفرات</label>
+        <input type="number" id="guests" name="guests" min="1" max="20" value="4">
+
+        <fieldset>
+          <legend>نوع منو</legend>
+          <label class="inline"><input type="radio" name="menu" value="nowruz" checked> ویژه نوروز</label>
+          <label class="inline"><input type="radio" name="menu" value="normal"> منوی عادی</label>
+        </fieldset>
+
+        <label for="note">توضیحات (اختیاری)</label>
+        <textarea id="note" name="note" rows="3" placeholder="مثلاً: سفره هفت‌سین کنار میز می‌خواهیم"></textarea>
+
+        <label class="inline"><input type="checkbox" name="rules" required> قوانین رزرو را می‌پذیرم</label>
+
+        <button type="submit" class="btn">ثبت رزرو</button>
+      </form>
+    </section>
+
+    <section id="faq">
+      <h2>پرسش‌های پرتکرار</h2>
+      <details open>
+        <summary>روز سیزده‌به‌در باز هستید؟</summary>
+        <p>بله، از ظهر تا ساعت ۲۴ باز هستیم و بیرون‌بر هم داریم.</p>
+      </details>
+      <details>
+        <summary>منوی ویژه برای کودکان هم هست؟</summary>
+        <p>بله، همه غذاهای منوی ویژه نیم‌پرس هم دارند.</p>
+      </details>
+      <details>
+        <summary>تا کی می‌شود رزرو را لغو کرد؟</summary>
+        <p>تا ۲۴ ساعت قبل از زمان رزرو، با تماس تلفنی.</p>
+      </details>
+    </section>
+  </main>
+
+  <footer id="contact" class="site-footer">
+    <h2>تماس با ما</h2>
+    <address>
+      تهران، خیابان ولیعصر، کوچه نارنج، پلاک ۱۲<br>
+      تلفن: <a href="tel:+982112345678">۰۲۱-۱۲۳۴۵۶۷۸</a><br>
+      ایمیل: <a href="mailto:info@example.com">info@example.com</a>
+    </address>
+  </footer>
+</body>
+
+</html>

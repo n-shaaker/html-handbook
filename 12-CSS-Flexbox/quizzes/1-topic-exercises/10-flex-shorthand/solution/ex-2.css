@@ -1,0 +1,27 @@
+/* تمرین ۲ — ستون کناری ثابت، محتوای منعطف (پاسخ) */
+
+body {
+  font-family: Tahoma, sans-serif;
+  margin: 20px;
+  background-color: #f8f9fa;
+  color: #212529;
+}
+
+.page {
+  display: flex;
+  gap: 15px;
+}
+
+/* grow 0 (بزرگ نشو)، shrink 0 (کوچک نشو)، basis 220px (اندازه پایه) */
+.side {
+  flex: 0 0 220px;
+  background-color: #f3f0ff;
+  padding: 10px;
+}
+
+.main {
+  flex: 1;
+  background-color: white;
+  padding: 10px;
+  border: 1px solid #dee2e6;
+}

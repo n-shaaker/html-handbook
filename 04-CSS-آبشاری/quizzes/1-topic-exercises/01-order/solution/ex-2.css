@@ -1,0 +1,29 @@
+/* قاعده: اول قانون‌های عمومی، بعد قانون‌های خاص (چون قدرتشان برابر است) */
+
+/* ===== همه پیام‌ها ===== */
+.alert {
+  padding: 10px;
+  color: #333333;
+  border: 1px solid #adb5bd;
+}
+
+/* پیام خطا */
+.alert-error {
+  color: #c92a2a;
+  border-color: #c92a2a;
+}
+
+/* ===== همه دکمه‌ها ===== */
+.btn {
+  display: inline-block;
+  padding: 8px 20px;
+  background-color: #1a5fb4;
+  color: white;
+  text-decoration: none;
+  border-radius: 6px;
+}
+
+/* دکمه تخفیف */
+.btn-sale {
+  background-color: #c92a2a;
+}

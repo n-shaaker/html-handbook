@@ -1,0 +1,87 @@
+/* ۱) Grid چیست؟ */
+
+/* جعبه‌های رنگی شماره‌دار */
+.demo-intro .box {
+  color: white;
+  font-weight: bold;
+  text-align: center;
+  padding: 12px 6px;
+  border: 2px solid white;   /* فعلاً به‌جای gap که در درس ۴ می‌آید */
+  border-radius: 6px;
+}
+
+.demo-intro .b1 { background-color: #1c7ed6; }
+.demo-intro .b2 { background-color: #2f9e44; }
+.demo-intro .b3 { background-color: #e8590c; }
+.demo-intro .b4 { background-color: #ae3ec9; }
+.demo-intro .b5 { background-color: #e03131; }
+.demo-intro .b6 { background-color: #0c8599; }
+
+/* مثال ۱ و ۴: سه ستون مساوی */
+.demo-intro .menu {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  background-color: #f1f3f5;
+}
+
+/* مثال ۲: فقط display: grid */
+.demo-intro .menu-one {
+  display: grid;
+  background-color: #f1f3f5;
+}
+
+/* مثال ۳: خط‌کش شماره خط‌ها بالای شبکه */
+.demo-intro .lines-ruler {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  font-size: 13px;
+  color: #c92a2a;
+  font-weight: bold;
+}
+
+/* خانه آخر خط‌کش دو شماره دارد: یکی راست و یکی چپ */
+.demo-intro .last-ruler {
+  display: flex;
+  justify-content: space-between;
+}
+
+/* مثال ۳: شبکه اصطلاحات */
+.demo-intro .terms {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: 60px 60px 60px;
+  border: 2px solid #c92a2a;
+}
+
+.demo-intro .cell {
+  border: 1px dashed #c92a2a;   /* خط‌های شبکه را نشان می‌دهد */
+  background-color: #f8f9fa;
+  color: #868e96;
+  text-align: center;
+  padding-top: 16px;
+  font-size: 14px;
+}
+
+.demo-intro .is-column {
+  background-color: #a5d8ff;
+  color: #1864ab;
+  font-weight: bold;
+}
+
+.demo-intro .is-row {
+  background-color: #b2f2bb;
+  color: #2b8a3e;
+  font-weight: bold;
+}
+
+.demo-intro .is-area {
+  background-color: #eebefa;
+  color: #862e9c;
+  font-weight: bold;
+}
+
+.demo-intro .is-cell {
+  background-color: #ffd8a8;
+  color: #d9480f;
+  font-weight: bold;
+}

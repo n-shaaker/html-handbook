@@ -1,0 +1,40 @@
+/* تمرین ۱ — اسکلت سایت: کنار هم در دسکتاپ، زیر هم در گوشی (پاسخ) */
+
+body {
+  font-family: Tahoma, sans-serif;
+  margin: 20px;
+  background-color: #f8f9fa;
+  color: #212529;
+}
+
+.page {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  grid-template-areas:
+    "header header"
+    "side   main"
+    "footer footer";
+  gap: 10px;
+}
+
+.header { grid-area: header; }
+.side   { grid-area: side; }
+.main   { grid-area: main; }
+.footer { grid-area: footer; }
+
+.page > * {
+  background-color: #e3fafc;
+  padding: 12px;
+}
+
+/* گوشی: فقط نقشه عوض می‌شود */
+@media (max-width: 700px) {
+  .page {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "header"
+      "main"
+      "side"
+      "footer";
+  }
+}

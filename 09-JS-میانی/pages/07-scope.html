@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>۷) محدوده دسترسی (Scope) | آموزش JavaScript سطح میانی</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <script src="../js/log.js" defer></script>
+  <script src="../js/demos/scope.js" defer></script>
+</head>
+
+<body>
+
+  <header class="page-header" id="top">
+    <h1>آموزش JavaScript — سطح میانی</h1>
+    <p>۷) محدوده دسترسی (Scope)</p>
+  </header>
+
+  <div class="container">
+
+    <nav class="page-nav" aria-label="ناوبری درس">
+      <a href="06-math-random.html">→ قبلی: Math & Random</a>
+      <a href="../index.html">فهرست درس‌ها</a>
+      <a href="08-hoisting-strict.html">بعدی: Hoisting & Strict ←</a>
+    </nav>
+
+    <section class="lesson" id="scope">
+      <h2>۷) محدوده دسترسی (Scope)</h2>
+<p>Scope یعنی یک متغیر از کدام بخش برنامه قابل خواندن و عوض کردن است. اگر نامی را بیرون از محدوده‌اش به کار ببرید، برنامه آن را نمی‌شناسد و معمولاً <code>ReferenceError</code> می‌دهد. سه محدودهٔ رایج در جدول زیر آمده‌اند. این تفکیک جلوی دو اشتباه را می‌گیرد: استفاده از متغیری که در آن بخش وجود ندارد، و فرض کردن اینکه دو متغیر هم‌نام در دو جای مختلف یکی هستند.</p>
+
+<table class="ref">
+<tr><th>نوع</th><th>کجا تعریف شده</th><th>از کجا قابل دسترسی</th></tr>
+<tr><td>سراسری (Global)</td><td>بیرون از همه توابع و بلوک‌ها</td><td>همه جا</td></tr>
+<tr><td>تابعی (Function)</td><td>داخل یک تابع</td><td>فقط داخل همان تابع</td></tr>
+<tr><td>بلوکی (Block)</td><td>داخل <code>{ }</code> با let یا const</td><td>فقط داخل همان بلوک</td></tr>
+</table>
+
+<h3>Global و Function scope</h3>
+
+<pre class="code"><code>const siteName = "آموزش JS";      // سراسری
+
+function showInfo() {
+  const author = "سارا";          // تابعی
+  console.log(siteName + " - " + author);
+}
+
+showInfo();
+console.log(siteName);
+console.log(author);              // ✖ ReferenceError: author is not defined</code></pre>
+
+<p><code>siteName</code> بیرون از تابع ساخته شده، پس هم داخل <code>showInfo</code> دیده می‌شود و هم بعد از آن. <code>author</code> داخل تابع است و فقط تا پایان همان اجرا زنده است. خط آخر خطا می‌دهد چون در محدودهٔ سراسری چنین نامی ثبت نشده است. تابع می‌تواند متغیر بیرونی را بخواند، ولی بیرون نمی‌تواند متغیر درونی را بخواند.</p>
+
+<p>خط آخر خطا می‌دهد و اجرای برنامه همان‌جا متوقف می‌شود (در جعبه Console پایین، خطا با ✖ نشان داده شده است). مدیریت خطا را در درس ۱۳ می‌بینیم.</p>
+
+<div class="result">
+<pre class="console" id="out-1"></pre>
+</div>
+
+<h3>Block scope</h3>
+
+<pre class="code"><code>if (true) {
+  let x = 10;
+  const y = 20;
+  var z = 30;         // var به بلوک اهمیت نمی‌دهد!
+}
+console.log(z);       // 30
+console.log(x);       // ✖ ReferenceError: x is not defined</code></pre>
+
+<p>آکولاد <code>if</code> یک بلوک است. <code>let</code> و <code>const</code> فقط داخل همان بلوک وجود دارند، حتی اگر شرط همیشه درست باشد. <code>var</code> به این آکولاد توجه نمی‌کند و بعد از بلوک هم قابل خواندن است. به همین دلیل در کد تازه، متغیر داخل شرط را با <code>let</code> یا <code>const</code> می‌سازیم.</p>
+
+<div class="result">
+<pre class="console" id="out-2"></pre>
+</div>
+
+<p class="tip">یکی از دلایلی که <code>var</code> را کنار گذاشتیم همین است: var داخل if و for هم بیرون «نشت» می‌کند (var فقط به <strong>تابع</strong> محدود می‌شود، نه بلوک). <code>let</code> و <code>const</code> درست به بلوک محدود می‌شوند. در کد امروزی <code>var</code> ننویسید؛ اینجا فقط برای شناختن کدهای قدیمی آمده است.</p>
+
+<h3>let در حلقه for</h3>
+
+<pre class="code"><code>const prices = [120000, 85000, 40000];
+let total = 0;
+
+for (let i = 0; i &lt; prices.length; i++) {
+  const price = prices[i];     // هر دور یک price جدید
+  total += price;
+}
+
+console.log(total);            // 245000 ← total بیرون حلقه تعریف شده، پس در دسترس است
+console.log(typeof i);         // "undefined" ← i فقط داخل حلقه وجود دارد</code></pre>
+
+<p><code>total</code> قبل از حلقه ساخته شده تا هر دور بتواند به همان جمع اضافه کند و بعد از حلقه هم خوانده شود. <code>price</code> و <code>i</code> با <code>let</code> یا <code>const</code> داخل حلقه هستند و بیرون از آن وجود ندارند. <code>typeof</code> برای نام اعلام‌نشده خطا نمی‌دهد و رشتهٔ <code>"undefined"</code> برمی‌گرداند.</p>
+
+<div class="result">
+<pre class="console" id="out-5"></pre>
+</div>
+
+<p class="tip">قانون عملی: متغیر را در <strong>کوچک‌ترین</strong> محدوده‌ای تعریف کنید که لازم است. اگر نتیجه حلقه را بعد از حلقه لازم دارید (مثل <code>total</code>)، آن را قبل از حلقه تعریف کنید.</p>
+
+<h3>سایه انداختن (Shadowing)</h3>
+
+<pre class="code"><code>let color = "قرمز";
+
+function paint() {
+  let color = "آبی";    // یک متغیر جدید و جدا، فقط داخل تابع
+  console.log("داخل:", color);
+}
+
+paint();
+console.log("بیرون:", color);</code></pre>
+
+<p>هر دو متغیر <code>color</code> نام دارند، ولی یکی نیستند. نسخهٔ داخل تابع متغیر بیرونی را پنهان می‌کند و هر تغییری روی همان نسخهٔ درونی می‌ماند. بعد از اتمام تابع، <code>console.log</code> بیرونی هنوز «قرمز» را می‌بیند. اگر داخل تابع <code>let</code> را نمی‌نوشتید، همان متغیر بیرونی خوانده و در صورت انتساب عوض می‌شد.</p>
+
+<div class="result">
+<pre class="console" id="out-3"></pre>
+</div>
+
+<h3>تابع به بیرون دسترسی دارد، ولی برعکس نه</h3>
+
+<pre class="code"><code>let cartCount = 0;          // تعداد کالاهای سبد خرید
+
+function addToCart() {
+  cartCount++;              // متغیر بیرونی را تغییر می‌دهد
+  const message = "کالا اضافه شد";   // فقط داخل تابع
+}
+
+addToCart();
+addToCart();
+console.log(cartCount);     // 2
+console.log(typeof message);   // "undefined" ← بیرون به متغیر داخل تابع دسترسی ندارد</code></pre>
+
+<p><code>cartCount</code> در محدودهٔ بیرونی است و تابع، چون متغیر هم‌نام داخلی نساخته، همان را یکی‌یکی زیاد می‌کند. <code>message</code> با <code>const</code> داخل تابع ساخته شده و بعد از بازگشت تابع دیگر وجود ندارد. دو بار صدا زدن تابع یعنی دو بار اضافه شدن به همان شمارندهٔ مشترک.</p>
+
+<div class="result">
+<pre class="console" id="out-4"></pre>
+</div>
+
+<p class="tip">تغییر دادن متغیر سراسری از داخل تابع کار می‌کند، ولی در برنامه‌های بزرگ باعث می‌شود نفهمید چه کسی مقدار را عوض کرده است. تا جای ممکن تعداد متغیرهای سراسری را کم نگه دارید و داده را با پارامتر و <code>return</code> جابه‌جا کنید.</p>
+
+<p class="mistake"><strong>اشتباه رایج:</strong> تعریف متغیر بدون <code>let</code>/<code>const</code> داخل تابع: <code>total = 5</code>. این‌طوری یک متغیر سراسری ناخواسته ساخته می‌شود (در حالت strict خطا می‌دهد؛ درس بعد).</p>
+
+<p class="exercise"><strong>تمرین:</strong> یک متغیر سراسری <code>score</code> (امتیاز بازی) و دو تابع <code>addPoint()</code> (یک امتیاز اضافه کند) و <code>resetScore()</code> (امتیاز را صفر کند) بنویسید و بعد از هر صدا زدن، امتیاز را چاپ کنید. سپس با یک حلقه for و یک متغیر <code>let</code>، جمع عددهای ۱ تا ۱۰ را حساب کنید و بررسی کنید متغیر شمارنده حلقه بعد از حلقه در دسترس است یا نه (جمع درست: 55).</p>
+    </section>
+
+    <nav class="page-nav" aria-label="ناوبری درس پایین">
+      <a href="06-math-random.html">→ قبلی: Math & Random</a>
+      <a href="../index.html">فهرست درس‌ها</a>
+      <a href="08-hoisting-strict.html">بعدی: Hoisting & Strict ←</a>
+    </nav>
+
+  </div>
+
+  <footer class="page-footer">
+    آموزش JavaScript سطح میانی
+  </footer>
+
+</body>
+
+</html>

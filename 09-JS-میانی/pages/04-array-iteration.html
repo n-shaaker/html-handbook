@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>۴) پیمایش آرایه (forEach، map، filter، reduce) | آموزش JavaScript سطح میانی</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <script src="../js/log.js" defer></script>
+  <script src="../js/demos/array-iteration.js" defer></script>
+</head>
+
+<body>
+
+  <header class="page-header" id="top">
+    <h1>آموزش JavaScript — سطح میانی</h1>
+    <p>۴) پیمایش آرایه (forEach، map، filter، reduce)</p>
+  </header>
+
+  <div class="container">
+
+    <nav class="page-nav" aria-label="ناوبری درس">
+      <a href="03-array-search-sort.html">→ قبلی: Search & Sort</a>
+      <a href="../index.html">فهرست درس‌ها</a>
+      <a href="05-dates.html">بعدی: Dates ←</a>
+    </nav>
+
+    <section class="lesson" id="array-iteration">
+      <h2>۴) پیمایش آرایه (forEach، map، filter، reduce)</h2>
+<p>به‌جای نوشتن حلقه برای هر کاری که باید روی همهٔ عضوهای یک فهرست انجام شود، می‌توانید تابعی بدهید و از متد بخواهید آن تابع را روی <strong>تک‌تک عضوها</strong> اجرا کند. تفاوت متدها در خروجی است: بعضی فقط کار جانبی انجام می‌دهند، بعضی آرایهٔ تازه می‌سازند و بعضی همهٔ عضو‌ها را به یک مقدار جمع می‌کنند. آرایهٔ اصلی در <code>map</code> و <code>filter</code> و <code>reduce</code> دست نمی‌خورد، مگر اینکه خودتان داخل تابع آن را عوض کنید.</p>
+
+<table class="ref">
+<tr><th>متد</th><th>کار</th><th>خروجی</th></tr>
+<tr><td><code>forEach</code></td><td>برای هر عضو کاری انجام بده</td><td>هیچ (undefined)</td></tr>
+<tr><td><code>map</code></td><td>هر عضو را به چیز جدیدی تبدیل کن</td><td>آرایه جدید هم‌اندازه</td></tr>
+<tr><td><code>filter</code></td><td>فقط عضوهایی که شرط را دارند نگه دار</td><td>آرایه جدید (کوچک‌تر یا مساوی)</td></tr>
+<tr><td><code>reduce</code></td><td>همه را در یک مقدار جمع کن</td><td>یک مقدار</td></tr>
+<tr><td><code>some</code></td><td>آیا <strong>حداقل یکی</strong> شرط را دارد؟</td><td>true / false</td></tr>
+<tr><td><code>every</code></td><td>آیا <strong>همه</strong> شرط را دارند؟</td><td>true / false</td></tr>
+</table>
+
+<h3>forEach</h3>
+
+<pre class="code"><code>const fruits = ["سیب", "موز", "انار"];
+fruits.forEach(function (fruit, index) {
+  console.log(index + 1 + ". " + fruit);
+});</code></pre>
+
+<div class="result">
+<pre class="console" id="out-1"></pre>
+</div>
+
+<p><code>forEach</code> برای هر عضو تابع را صدا می‌زند. پارامتر اول خود عضو است و پارامتر دوم، اگر بنویسید، شمارهٔ همان عضو است. این متد آرایهٔ تازه برنمی‌گرداند؛ اگر چیزی <code>return</code> کنید نادیده گرفته می‌شود. از آن وقتی استفاده می‌کنید که فقط می‌خواهید برای هر عضو کاری مثل چاپ یا به‌روزرسانی صفحه انجام دهید.</p>
+
+<h3>map — تبدیل</h3>
+
+<pre class="code"><code>const prices = [100, 250, 80];
+const withTax = prices.map(function (p) {
+  return p * 1.1;            // ۱۰٪ مالیات
+});
+console.log(withTax);        // [110.00000000000001, 275, 88] ‼
+console.log(prices);         // اصلی دست نخورده
+
+const rounded = prices.map(function (p) {
+  return Math.round(p * 1.1);
+});
+console.log(rounded);        // [110, 275, 88]</code></pre>
+
+<div class="result">
+<pre class="console" id="out-2"></pre>
+</div>
+
+<p><code>map</code> به تعداد عضوهای آرایهٔ اصلی، عضو جدید می‌سازد و آن‌ها را در آرایهٔ دیگری می‌ریزد. تابع باید مقدار تازه را <code>return</code> کند. ضرب در <code>1.1</code> ده درصد به قیمت اضافه می‌کند، ولی بعضی حاصل‌ها به‌خاطر ذخیرهٔ دودویی اعشار دقیقاً همان عددی که روی کاغذ انتظار دارید نیستند. <code>Math.round</code> همان نتیجه را به عدد صحیح نزدیک گرد می‌کند. چاپ <code>prices</code> نشان می‌دهد فهرست اولیه عوض نشده است.</p>
+
+<p class="tip">عددهای اعشاری در کامپیوتر (و همه زبان‌های برنامه‌نویسی) به شکل دودویی ذخیره می‌شوند و بعضی‌شان دقیق نیستند؛ مثلاً <code>0.1 + 0.2</code> می‌شود <code>0.30000000000000004</code>. برای قیمت، نتیجه را گرد کنید (<code>Math.round</code>) یا برای نمایش از <code>toFixed</code> استفاده کنید.</p>
+
+<h3>filter — فیلتر کردن</h3>
+
+<pre class="code"><code>const ages = [12, 25, 17, 40, 8, 19];
+const adults = ages.filter(function (age) {
+  return age &gt;= 18;
+});
+console.log(adults);</code></pre>
+
+<div class="result">
+<pre class="console" id="out-3"></pre>
+</div>
+
+<p><code>filter</code> فقط عضوهایی را در آرایهٔ جدید نگه می‌دارد که تابع برایشان true برگرداند. سن‌های کمتر از ۱۸ حذف می‌شوند، ولی از آرایهٔ <code>ages</code> کم نمی‌شوند. اگر هیچ عضوی شرط را نداشته باشد، نتیجه آرایهٔ خالی است، نه <code>undefined</code>.</p>
+
+<h3>reduce — جمع کردن به یک مقدار</h3>
+
+<pre class="code"><code>const cart = [120, 45, 300];
+const total = cart.reduce(function (sum, item) {
+  return sum + item;
+}, 0);                 // 0 مقدار اولیه sum است
+console.log(total);    // 465
+
+// سبد خرید واقعی: قیمت × تعداد
+const basket = [
+  { name: "دفتر", price: 45000, qty: 3 },
+  { name: "خودکار", price: 12000, qty: 5 },
+  { name: "کوله‌پشتی", price: 680000, qty: 1 }
+];
+const basketTotal = basket.reduce(function (sum, item) {
+  return sum + item.price * item.qty;
+}, 0);
+console.log(basketTotal);   // 875000</code></pre>
+
+<p>مراحل اجرای reduce روی <code>[120, 45, 300]</code>: <code>sum</code> اول ۰ است؛ بعد ۰+۱۲۰=۱۲۰، بعد ۱۲۰+۴۵=۱۶۵، و در آخر ۱۶۵+۳۰۰=۴۶۵ برگردانده می‌شود.</p>
+
+<div class="result">
+<pre class="console" id="out-4"></pre>
+</div>
+
+<p>در <code>reduce</code> پارامتر اول تابع، جمع جاری است و پارامتر دوم عضو فعلی. عدد <code>0</code> بعد از تابع، مقدار شروع <code>sum</code> است؛ بدون آن، اولین عضو به‌جای شروع استفاده می‌شود و اگر آرایه خالی باشد خطا می‌گیرید. در سبد خرید، هر دور قیمت را در تعداد ضرب می‌کند و به جمع اضافه می‌کند تا در پایان فقط یک عدد بماند.</p>
+
+<h3>some و every</h3>
+
+<pre class="code"><code>const scores = [15, 18, 9, 20];
+console.log(scores.some(function (s) { return s &lt; 10; }));   // کسی مردود شده؟
+console.log(scores.every(function (s) { return s &gt;= 10; })); // همه قبول شدند؟</code></pre>
+
+<div class="result">
+<pre class="console" id="out-5"></pre>
+</div>
+
+<p><code>some</code> همین که یک عضو شرط را داشته باشد true می‌شود و لازم نیست بقیه را تا آخر نشان دهد. <code>every</code> فقط وقتی true است که همهٔ عضو‌ها شرط را داشته باشند؛ اولین مورد مخالف، نتیجه را false می‌کند. هر دو به‌جای آرایه، یک بولین برمی‌گردانند.</p>
+
+<h3>ترکیب: آرایه‌ای از اشیا</h3>
+
+<pre class="code"><code>const products = [
+  { name: "لپ‌تاپ", price: 40000000, inStock: true },
+  { name: "ماوس", price: 600000, inStock: false },
+  { name: "کیبورد", price: 1500000, inStock: true }
+];
+
+const available = products
+  .filter(function (p) { return p.inStock; })
+  .map(function (p) { return p.name; });
+
+console.log(available);</code></pre>
+
+<div class="result">
+<pre class="console" id="out-6"></pre>
+</div>
+
+<p>اول <code>filter</code> کالاهای موجود را جدا می‌کند. خروجی آن آرایه‌ای از شیء است. <code>map</code> روی همان خروجی اجرا می‌شود و از هر شیء فقط نام را برمی‌دارد. چون هر دو متد آرایهٔ تازه می‌دهند، می‌شود آن‌ها را پشت سر هم نوشت. آرایهٔ <code>products</code> همچنان هر سه کالا را دارد.</p>
+
+<h3>مثال زنده: جستجوی فوری</h3>
+
+<pre class="code"><code>const cities = ["تهران", "تبریز", "مشهد", "اصفهان", "شیراز", "یزد", "کرمان", "رشت", "ساری", "اهواز"];
+const searchInput = document.getElementById("search");
+const list = document.getElementById("city-list");
+
+function showCities(items) {
+  if (items.length === 0) {
+    list.innerHTML = "&lt;li&gt;شهری پیدا نشد&lt;/li&gt;";
+    return;
+  }
+  list.innerHTML = items.map(function (city) {
+    return `&lt;li&gt;&lt;span&gt;${city}&lt;/span&gt;&lt;/li&gt;`;
+  }).join("");
+}
+
+searchInput.addEventListener("input", function () {
+  const text = searchInput.value.trim();
+  const found = cities.filter(function (city) {
+    return city.includes(text);
+  });
+  showCities(found);
+});
+
+showCities(cities);</code></pre>
+
+<div class="result">
+<label for="search">جستجوی شهر:</label>
+<input type="search" id="search" placeholder="مثلاً «ت»">
+<ul class="js-list" id="city-list" aria-live="polite"></ul>
+</div>
+
+<p>با هر تغییر کادر، متن اطراف فاصله‌ها حذف می‌شود و <code>filter</code> شهرهایی را نگه می‌دارد که آن متن داخل نامشان باشد. اگر چیزی پیدا نشود، تابع پیام «شهری پیدا نشد» را می‌نویسد و با <code>return</code> بیرون می‌آید. در غیر این صورت <code>map</code> برای هر شهر یک آیتم فهرست می‌سازد و <code>join("")</code> آن آرایهٔ رشته‌ها را به یک متن HTML تبدیل می‌کند.</p>
+
+<p class="tip"><code>map</code> و <code>filter</code> آرایه اصلی را تغییر نمی‌دهند و همیشه آرایه جدید برمی‌گردانند؛ برای همین می‌شود آن‌ها را پشت سر هم نوشت. <code>join("")</code> آرایه رشته‌های <code>&lt;li&gt;</code> را به یک رشته تبدیل می‌کند تا داخل <code>innerHTML</code> قرار بگیرد.</p>
+
+<p class="mistake"><strong>اشتباه رایج:</strong> فراموش کردن <code>return</code> داخل تابع map یا filter. نتیجه آرایه‌ای پر از <code>undefined</code> یا یک آرایه خالی است.</p>
+
+<p class="mistake"><strong>اشتباه رایج:</strong> استفاده از <code>map</code> فقط برای چاپ یا انجام کار (بدون استفاده از خروجی). اگر آرایه جدید لازم ندارید، <code>forEach</code> یا <code>for...of</code> بنویسید. توجه کنید که <code>forEach</code> را نمی‌شود با <code>break</code> وسط کار متوقف کرد؛ برای این کار <code>for...of</code> یا <code>some</code>/<code>find</code> مناسب‌ترند.</p>
+
+<p class="exercise"><strong>تمرین ۱:</strong> از آرایه <code>[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]</code> با filter عددهای زوج را جدا کنید، با map به توان ۲ برسانید و با reduce جمع کنید (جواب درست: 220).</p>
+
+<p class="exercise"><strong>تمرین ۲ (کارنامه):</strong> آرایه <code>[{ name: "سارا", score: 18 }, { name: "علی", score: 9 }, { name: "مریم", score: 15 }, { name: "رضا", score: 12 }]</code> را در نظر بگیرید. با reduce میانگین نمره کلاس، با filter فهرست قبولی‌ها (نمره ۱۰ و بالاتر) و با map رشته‌هایی مثل <code>"سارا: 18"</code> بسازید و چاپ کنید (میانگین درست: 13.5).</p>
+    </section>
+
+    <nav class="page-nav" aria-label="ناوبری درس پایین">
+      <a href="03-array-search-sort.html">→ قبلی: Search & Sort</a>
+      <a href="../index.html">فهرست درس‌ها</a>
+      <a href="05-dates.html">بعدی: Dates ←</a>
+    </nav>
+
+  </div>
+
+  <footer class="page-footer">
+    آموزش JavaScript سطح میانی
+  </footer>
+
+</body>
+
+</html>

@@ -1,0 +1,76 @@
+body {
+  font-family: Tahoma, Arial, sans-serif;
+  line-height: 1.8;
+  margin: 0;
+}
+
+.menu {
+  background-color: #1a3a5c;
+}
+
+.menu ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.menu > ul > li {
+  display: inline-block;
+}
+
+.menu a {
+  display: block;
+  padding: 12px 16px;
+  color: white;
+  text-decoration: none;
+}
+
+.menu a:hover,
+.menu a:focus-visible {
+  background-color: #0f2740;
+}
+
+.menu a:focus-visible {
+  outline: 2px solid #ffd166;
+}
+
+/* زیرمنو */
+.has-sub {
+  position: relative;
+}
+
+.sub {
+  display: none;
+  position: absolute;
+  top: 100%;
+  right: 0;
+  z-index: 10;
+  min-width: 160px;
+  background-color: white;
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.2);
+}
+
+/* با ماوس و با کیبورد باز می‌شود */
+.has-sub:hover .sub,
+.has-sub:focus-within .sub {
+  display: block;
+}
+
+.sub a {
+  color: #1a3a5c;
+}
+
+.sub a:hover,
+.sub a:focus-visible {
+  background-color: #e7eef7;
+}
+
+.content {
+  padding: 16px;
+}
+
+.notice {
+  position: relative; /* موقعیت‌دار است؛ زیرمنو باید رویش بیاید */
+  padding: 12px;
+  background-color: #fff4d6;
+}

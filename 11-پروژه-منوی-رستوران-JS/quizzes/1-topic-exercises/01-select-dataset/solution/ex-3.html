@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>تمرین ۳ — جدول قیمت خودکار | منوی نارنج</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="ex-3.js" defer></script>
+  </head>
+  <body>
+    <header class="site-header">
+      <p class="logo">رستوران سنتی <strong>نارنج</strong></p>
+    </header>
+
+    <main class="container">
+      <h1>تمرین ۳ — جدول قیمت خودکار</h1>
+
+      <table class="price-table">
+        <caption>فهرست قیمت (ارزان به گران)</caption>
+        <thead>
+          <tr>
+            <th scope="col">نام</th>
+            <th scope="col">دسته</th>
+            <th scope="col">قیمت (تومان)</th>
+          </tr>
+        </thead>
+        <tbody id="price-body"></tbody>
+      </table>
+
+      <h2>کارت‌های منو</h2>
+      <div class="dishes-grid">
+        <article class="dish" data-name="میرزاقاسمی" data-price="185000" data-category="starter">
+          <img src="../../../../images/mirza.jpg" alt="میرزاقاسمی با نان و سبزی" />
+          <div class="dish-body">
+            <h3>میرزاقاسمی <span class="tag tag-veg">گیاهی</span></h3>
+            <p class="desc">بادمجان کبابی، سیر، گوجه و تخم‌مرغ</p>
+            <p class="price">۱۸۵٬۰۰۰ تومان</p>
+          </div>
+        </article>
+
+        <article class="dish" data-name="سالاد شیرازی" data-price="75000" data-category="starter">
+          <img src="../../../../images/shirazi.jpg" alt="سالاد شیرازی در کاسه" />
+          <div class="dish-body">
+            <h3>سالاد شیرازی <span class="tag tag-veg">گیاهی</span></h3>
+            <p class="desc">خیار، گوجه و پیاز با آبغوره و نعنا</p>
+            <p class="price">۷۵٬۰۰۰ تومان</p>
+          </div>
+        </article>
+
+        <article class="dish" data-name="چلوکباب کوبیده" data-price="420000" data-category="main">
+          <img src="../../../../images/koobideh.jpg" alt="کباب کوبیده در بشقاب با گوجه کبابی" />
+          <div class="dish-body">
+            <h3>چلوکباب کوبیده</h3>
+            <p class="desc">دو سیخ کوبیده روی آتش ذغال</p>
+            <p class="price">۴۲۰٬۰۰۰ تومان</p>
+          </div>
+        </article>
+
+        <article class="dish" data-name="چلوجوجه‌کباب" data-price="380000" data-category="main">
+          <img src="../../../../images/joojeh.jpg" alt="جوجه‌کباب زعفرانی روی سیخ" />
+          <div class="dish-body">
+            <h3>چلوجوجه‌کباب <span class="tag tag-hot">تند</span></h3>
+            <p class="desc">سینه مرغ زعفرانی با لیمو و فلفل</p>
+            <p class="price">۳۸۰٬۰۰۰ تومان</p>
+          </div>
+        </article>
+
+        <article class="dish" data-name="زرشک‌پلو با مرغ" data-price="350000" data-category="main">
+          <img src="../../../../images/zereshk.jpg" alt="زرشک‌پلو با مرغ" />
+          <div class="dish-body">
+            <h3>زرشک‌پلو با مرغ <mark>جدید</mark></h3>
+            <p class="desc">برنج زعفرانی با زرشک و ران مرغ</p>
+            <p class="price">۳۵۰٬۰۰۰ تومان</p>
+          </div>
+        </article>
+
+        <article class="dish" data-name="فالوده شیرازی" data-price="90000" data-category="dessert">
+          <img src="../../../../images/faloodeh.jpg" alt="فالوده شیرازی در جام شیشه‌ای" />
+          <div class="dish-body">
+            <h3>فالوده شیرازی</h3>
+            <p class="desc">رشته‌های یخ‌زده با گلاب و آبلیمو</p>
+            <p class="price">۹۰٬۰۰۰ تومان</p>
+          </div>
+        </article>
+
+        <article class="dish" data-name="چای سنتی" data-price="60000" data-category="drink">
+          <img src="../../../../images/tea.jpg" alt="استکان چای ایرانی" />
+          <div class="dish-body">
+            <h3>چای سنتی</h3>
+            <p class="desc">قوری دونفره با نبات</p>
+            <p class="price">۶۰٬۰۰۰ تومان</p>
+          </div>
+        </article>
+
+        <article class="dish" data-name="دوغ محلی" data-price="45000" data-category="drink">
+          <img src="../../../../images/doogh.jpg" alt="دوغ محلی با برگ نعنا در کاسه‌های مسی" />
+          <div class="dish-body">
+            <h3>دوغ محلی</h3>
+            <p class="desc">با پونه و نعنا</p>
+            <p class="price">۴۵٬۰۰۰ تومان</p>
+          </div>
+        </article>
+      </div>
+
+    </main>
+  </body>
+</html>

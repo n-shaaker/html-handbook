@@ -1,0 +1,27 @@
+.site-nav {
+  background-color: #1a3a5c;
+  padding: 8px;
+}
+
+.site-nav a {
+  display: inline-block;
+  padding: 8px 14px;
+  color: white;
+  text-decoration: none;
+  border-radius: 4px;
+}
+
+.site-nav a:hover {
+  background-color: #2f5d8a;
+}
+
+.site-nav a:focus-visible {
+  outline: 2px solid #ffd43b;
+  outline-offset: 2px;
+}
+
+/* صفحه فعلی بعد از hover آمده تا همیشه مشخص بماند */
+.site-nav a.current {
+  background-color: #ffd43b;
+  color: #1a3a5c;
+}

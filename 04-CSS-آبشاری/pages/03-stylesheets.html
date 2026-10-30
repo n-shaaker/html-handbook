@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>چند فایل CSS | آبشاری بودن CSS</title>
+  <link rel="stylesheet" href="../css/layout.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <!-- ترتیب لینک مهم است: اول A، بعد B -->
+  <link rel="stylesheet" href="../css/demos/sheet-a.css">
+  <link rel="stylesheet" href="../css/demos/sheet-b.css">
+</head>
+
+<body>
+
+  <header class="page-header">
+    <h1>آبشاری بودن CSS</h1>
+    <p>۳) چند فایل CSS و ترتیب لینک</p>
+  </header>
+
+  <div class="container">
+
+    <nav class="page-nav" aria-label="ناوبری">
+      <a href="02-specificity.html">→ قبلی: قدرت انتخابگر</a>
+      <a href="../index.html">فهرست</a>
+      <a href="04-inheritance.html">بعدی: وراثت ←</a>
+    </nav>
+
+    <section class="lesson">
+      <h2>۳) چند فایل CSS و ترتیب لینک</h2>
+      <p>
+        آبشار فقط داخل یک فایل نیست. مرورگر همهٔ CSS صفحه را، از هر فایلی که با <code>link</code> آمده باشد، به ترتیب ظاهر شدن در سند جمع می‌کند.
+        اگر دو فایل خارجی برای همان ویژگی و همان عنصر قانون <strong>هم‌قدرت</strong> داشته باشند، فایلی که <strong>دیرتر در <code>head</code> لینک شده</strong> برنده است؛ درست مثل قانونی که پایین‌تر در یک فایل نوشته شده باشد.
+      </p>
+      <p>
+        این برتری باز هم ویژگی‌به‌ویژگی است. اگر فایل دوم فقط <code>color</code> را عوض کند، <code>font-size</code> و <code>font-weight</code> فایل اول روی همان عنصر می‌مانند.
+        و اگر انتخابگر فایل اول قوی‌تر باشد، دیرتر لینک شدن فایل دوم آن را شکست نمی‌دهد.
+      </p>
+
+      <pre class="code"><code>&lt;!-- در head --&gt;
+&lt;link rel="stylesheet" href="../css/demos/sheet-a.css"&gt;
+&lt;link rel="stylesheet" href="../css/demos/sheet-b.css"&gt;</code></pre>
+
+      <div class="compare">
+        <pre class="code"><code>/* sheet-a.css */
+.demo-sheets .msg {
+  color: #c92a2a;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.demo-sheets .from-a {
+  background-color: #ffe0b2;
+  padding: 10px;
+}</code></pre>
+        <pre class="code"><code>/* sheet-b.css */
+.demo-sheets .msg {
+  color: #0b6e4f;
+}
+
+.demo-sheets .from-b {
+  background-color: #c3fae8;
+  padding: 10px;
+}</code></pre>
+      </div>
+
+      <div class="result demo-sheets">
+        <p class="msg">متن سبز است → فایل B دیرتر آمده و برنده شده. درشتی و ضخامت متن هنوز از فایل A می‌آید.</p>
+        <div class="from-a">این پس‌زمینه فقط در فایل A تعریف شده.</div>
+        <div class="from-b">این پس‌زمینه فقط در فایل B تعریف شده.</div>
+      </div>
+
+      <p class="tip">
+        اگر قانونی فقط در یک فایل باشد، همان اعمال می‌شود.
+        تداخل فقط وقتی پیش می‌آید که هر دو فایل برای <strong>همان ویژگی همان عنصر</strong> مقدار بدهند.
+        برای همین <code>font-size</code> و <code>font-weight</code> فایل A روی <code>.msg</code> باقی می‌مانند.
+      </p>
+
+      <p class="tip">
+        از دید مرورگر، همه CSSهای صفحه (فایل‌های <code>link</code>، تگ‌های <code>style</code> و فایل‌هایی که با
+        <code>@import</code> آورده می‌شوند) پشت سر هم در یک صف قرار می‌گیرند؛ به همان ترتیبی که در سند آمده‌اند.
+        پس اگر یک تگ <code>style</code> بعد از <code>link</code> بیاید، در قدرت برابر از آن برنده است.
+        یادتان باشد ترتیب فقط وقتی مهم است که قدرت انتخابگرها برابر باشد؛ انتخابگر قوی‌تر در فایل اول
+        همچنان از انتخابگر ضعیف‌تر در فایل دوم برنده است.
+      </p>
+
+      <p class="mistake">
+        <strong>اشتباه رایج:</strong>
+        جابه‌جا لینک کردن فایل‌ها و تعجب از اینکه رنگ یا اندازه عوض شده است.
+        ترتیب <code>link</code>ها، در قدرت برابر، همان نقش ترتیب قوانین داخل یک فایل را دارد: منبع دیرتر، ویژگی‌های مشترک را بازنویسی می‌کند.
+      </p>
+
+      <p class="exercise">
+        <strong>تمرین:</strong> در این صفحه جای دو <code>link</code> مربوط به <code>sheet-a</code> و
+        <code>sheet-b</code> را عوض کنید. رنگ <code>.msg</code> چه می‌شود؟
+      </p>
+    </section>
+
+    <nav class="page-nav" aria-label="ناوبری پایین">
+      <a href="02-specificity.html">→ قبلی: قدرت انتخابگر</a>
+      <a href="../index.html">فهرست</a>
+      <a href="04-inheritance.html">بعدی: وراثت ←</a>
+    </nav>
+
+  </div>
+
+  <footer class="page-footer">آبشاری بودن CSS</footer>
+
+</body>
+
+</html>

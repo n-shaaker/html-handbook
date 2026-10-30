@@ -1,0 +1,23 @@
+/* ===== اشکال‌یابی (غیرفعال) ===== */
+/* outline فضا نمی‌گیرد، پس چیدمان را به هم نمی‌زند */
+/* * {
+  outline: 1px solid red;
+} */
+
+/* ===== صفحه ===== */
+.page {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 16px;
+}
+
+.note {
+  max-width: 100%; /* قبلاً width: 640px بود و از .page بیرون می‌زد */
+  background-color: #e7f5ff;
+  padding: 8px;
+}
+
+.photo {
+  max-width: 100%; /* قبلاً width: 900px بود */
+  height: auto;
+}

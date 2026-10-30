@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>مرجع کنترل‌های فرم</title>
+  </head>
+  <body>
+    <h1>کنترل‌های رایج فرم</h1>
+    <p>
+      فرم راه فرستادن داده از کاربر به برنامه است. هر کنترل باید نام قابل‌دیدن
+      داشته باشد. این نام را با <code>label</code> می‌نویسید و با ویژگی
+      <code>for</code> به <code>id</code> همان فیلد وصل می‌کنید. با این اتصال،
+      کلیک روی متن، فیلد را فعال می‌کند و صفحه‌خوان نام فیلد را پیش از مقدار آن
+      می‌خواند. ویژگی <code>name</code> نام همان داده هنگام ارسال است؛ فیلدی که
+      <code>name</code> نداشته باشد در دادهٔ ارسالی نمی‌آید، حتی اگر کاربر آن را
+      پر کرده باشد.
+    </p>
+    <p>
+      نوع فیلد را با <code>type</code> انتخاب می‌کنید تا مرورگر صفحه‌کلید و
+      بررسی مناسب را نشان دهد. مثلاً <code>type="email"</code> شکل کلی ایمیل را
+      بررسی می‌کند و <code>type="number"</code> فقط عدد می‌پذیرد. متن خاکستری
+      داخل فیلد (<code>placeholder</code>) راهنمای نمونه است و با شروع تایپ
+      ناپدید می‌شود، پس هرگز جایگزین <code>label</code> نیست.
+    </p>
+
+    <!--
+      Teaching tip:
+      - label[for] must match input[id]
+      - name is what gets submitted with the form data
+    -->
+    <form action="#" method="post">
+      <p>
+        <label for="full-name">نام کامل</label>
+        <input id="full-name" name="fullName" type="text" autocomplete="name" required />
+      </p>
+
+      <p>
+        <label for="email">ایمیل</label>
+        <input id="email" name="email" type="email" autocomplete="email" required />
+      </p>
+
+      <p>
+        <label for="password">رمز عبور</label>
+        <input
+          id="password"
+          name="password"
+          type="password"
+          autocomplete="new-password"
+          minlength="8"
+          required
+        />
+      </p>
+
+      <p>
+        <label for="age">سن</label>
+        <input id="age" name="age" type="number" min="1" max="120" />
+      </p>
+
+      <!-- tel opens the numeric keypad on phones; pattern adds a format check -->
+      <p>
+        <label for="phone">شماره موبایل</label>
+        <input
+          id="phone"
+          name="phone"
+          type="tel"
+          autocomplete="tel"
+          inputmode="numeric"
+          pattern="09[0-9]{9}"
+          placeholder="09123456789"
+          dir="ltr"
+        />
+      </p>
+
+      <p>
+        <label for="start-date">تاریخ شروع</label>
+        <input id="start-date" name="startDate" type="date" />
+      </p>
+
+      <p>
+        دکمه‌های رادیویی یک سؤال با چند گزینهٔ مانعة‌الجمع‌اند. اگر
+        <code>name</code> آن‌ها یکی باشد، مرورگر فقط یک گزینه را انتخاب‌شده نگه
+        می‌دارد. <code>fieldset</code> این گزینه‌ها را یک گروه می‌کند و
+        <code>legend</code> نام گروه را اعلام می‌کند، همان نقشی که
+        <code>label</code> برای یک فیلد تنها دارد.
+      </p>
+      <fieldset>
+        <legend>مسیر مورد علاقه</legend>
+        <label>
+          <input type="radio" name="track" value="frontend" checked />
+          فرانت‌اند
+        </label>
+        <label>
+          <input type="radio" name="track" value="backend" />
+          بک‌اند
+        </label>
+      </fieldset>
+
+      <p>
+        <label>
+          <input type="checkbox" name="newsletter" value="yes" />
+          عضویت در خبرنامه
+        </label>
+      </p>
+
+      <p>
+        <label for="role">نقش</label>
+        <select id="role" name="role">
+          <option value="student">دانشجو</option>
+          <option value="teacher">مدرس</option>
+          <option value="other">سایر</option>
+        </select>
+      </p>
+
+      <p>
+        <label for="message">پیام</label>
+        <textarea id="message" name="message" rows="4" cols="40"></textarea>
+      </p>
+
+      <p>
+        دکمهٔ داخل فرم اگر <code>type</code> نداشته باشد، پیش‌فرضش
+        <code>submit</code> است و فرم را می‌فرستد. برای دکمه‌ای که فقط کاری در
+        صفحه انجام می‌دهد و نباید فرم را بفرستد، صریحاً
+        <code>type="button"</code> بنویسید. ویژگی‌هایی مثل
+        <code>required</code> و <code>minlength</code> را مرورگر پیش از ارسال
+        بررسی می‌کند. این بررسی فقط تجربهٔ کاربر را بهتر می‌کند و سرور باید
+        داده را دوباره بسنجد.
+      </p>
+      <button type="submit">ارسال</button>
+    </form>
+  </body>
+</html>

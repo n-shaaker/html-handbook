@@ -1,0 +1,24 @@
+/* تمرین ۲ — کارت‌هایی که از ۱۵۰ پیکسل کوچک‌تر نمی‌شوند (پاسخ) */
+
+body {
+  font-family: Tahoma, sans-serif;
+  margin: 20px;
+  background-color: #f8f9fa;
+  color: #212529;
+}
+
+/*
+  در عرض کمتر از ۴۵۰ پیکسل سه ستون ۱۵۰ پیکسلی جا نمی‌شوند
+  و صفحه اسکرول افقی می‌خورد؛ auto-fill در درس ۹ این را حل می‌کند.
+*/
+.teachers {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(150px, 1fr));
+  grid-template-rows: repeat(2, minmax(100px, auto));
+}
+
+.card {
+  background-color: #e7f5ff;
+  padding: 10px;
+  border: 2px solid white;
+}

@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>۱۵) فونت (Fonts) | آموزش CSS از صفر</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lalezar&amp;family=Vazirmatn:wght@400;700&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/demos/fonts.css">
+</head>
+
+<body>
+
+  <header class="page-header">
+    <h1>آموزش CSS از صفر</h1>
+    <p>۱۵) فونت (Fonts)</p>
+  </header>
+
+  <div class="container">
+
+    <nav class="page-nav" aria-label="ناوبری درس">
+      <a href="14-text.html">→ قبلی: Text</a>
+      <a href="../index.html">فهرست درس‌ها</a>
+      <a href="16-links.html">بعدی: Links ←</a>
+    </nav>
+
+    <section class="lesson" id="fonts">
+      <h2>۱۵) فونت (Fonts)</h2>
+
+      <p>
+        فونت شکلی است که مرورگر با آن نویسه‌ها را رسم می‌کند. ویژگی <code>font-family</code> فهرست فونت‌های دلخواه را به ترتیب اولویت می‌گیرد.
+        مرورگر از اول فهرست شروع می‌کند و اولین فونتی را به کار می‌برد که روی دستگاه کاربر نصب باشد یا قبلاً به صفحه معرفی شده باشد.
+        اگر هیچ‌کدام پیدا نشود، آخرین نام باید یک خانواده عمومی باشد تا مرورگر دست‌کم یک قلم خوانا انتخاب کند.
+      </p>
+
+      <h3>نوع فونت و فونت جایگزین</h3>
+      <pre class="code"><code>body {
+  font-family: Tahoma, Arial, sans-serif;
+}</code></pre>
+      <p>
+        مرورگر اول <code>Tahoma</code> را امتحان می‌کند؛ اگر روی دستگاه کاربر نبود <code>Arial</code>، و اگر آن هم نبود یک
+        فونت <code>sans-serif</code>. به این فهرست «فونت‌های جایگزین» (Fallback) می‌گویند.
+        همیشه در آخر یک خانواده عمومی بنویسید. پنج خانواده عمومی: <code>serif</code>، <code>sans-serif</code>،
+        <code>monospace</code>، <code>cursive</code> و <code>fantasy</code>.
+      </p>
+      <pre class="code"><code>.f-serif { font-family: "Times New Roman", Times, serif; }
+.f-sans  { font-family: Arial, Helvetica, sans-serif; }
+.f-mono  { font-family: "Courier New", monospace; }</code></pre>
+      <div class="result">
+        <p class="f-serif" dir="ltr" lang="en">serif: letters have small strokes at the ends (Times New Roman)</p>
+        <p class="f-sans" dir="ltr" lang="en">sans-serif: clean letters without strokes (Arial)</p>
+        <p class="f-mono" dir="ltr" lang="en">monospace: all letters have the same width (Courier New)</p>
+      </div>
+      <p>
+        سه خانواده عمومی را در نمونه بالا می‌بینید. <code>serif</code> در انتهای حروف زائده کوچک دارد، مثل Times. <code>sans-serif</code> همان حروف را بدون زائده رسم می‌کند، مثل Arial. <code>monospace</code> به هر نویسه عرض یکسان می‌دهد و برای کد مناسب است.
+        برای متن فارسی روی صفحه معمولاً از خانواده بدون زائده استفاده می‌شود، مثل Vazirmatn یا Tahoma، چون در اندازه معمولی خواناتر می‌ماند.
+      </p>
+
+      <h3>اندازه، ضخامت و حالت</h3>
+      <p>
+        <code>font-size</code> اندازه قلم را تعیین می‌کند. با <code>px</code> اندازه ثابت می‌ماند. با <code>rem</code> اندازه نسبت به قلم ریشه (<code>html</code>) حساب می‌شود و با <code>em</code>، وقتی روی خود <code>font-size</code> باشد، نسبت به قلم عنصر والد.
+        <code>font-weight</code> ضخامت را مشخص می‌کند: <code>400</code> یا <code>normal</code> وزن معمولی است و <code>700</code> یا <code>bold</code> وزن ضخیم. مرورگر فقط وزن‌هایی را دقیق نشان می‌دهد که آن فونت واقعاً داشته باشد.
+        <code>font-style: italic</code> حالت کج را درخواست می‌کند. بسیاری از فونت‌های فارسی این حالت را ندارند و مرورگر فقط حروف را مایل می‌کشد، که معمولاً خوانا نیست.
+      </p>
+      <pre class="code"><code>.f-px   { font-size: 24px; }    /* اندازه ثابت */
+.f-rem  { font-size: 1.5rem; }  /* ۱.۵ برابر اندازه فونت ریشه (html) */
+.f-em   { font-size: 1.5em; }   /* ۱.۵ برابر اندازه فونت والد */
+.f-bold { font-weight: bold; }  /* یا عدد: 400 معمولی، 700 ضخیم */
+.f-italic { font-style: italic; }
+
+/* خلاصه: ضخامت، اندازه، نوع فونت */
+.f-short { font: bold 20px Tahoma, sans-serif; }</code></pre>
+      <div class="result">
+        <p class="f-px">اندازه ۲۴ پیکسل</p>
+        <p class="f-rem">اندازه ۱.۵rem</p>
+        <p class="f-em">اندازه ۱.۵em</p>
+        <p class="f-bold">متن ضخیم</p>
+        <p class="f-italic" dir="ltr" lang="en">Italic text (font-style: italic)</p>
+        <p class="f-short">نوشتن خلاصه font</p>
+      </div>
+
+      <p class="tip">
+        <strong>px یا rem؟</strong> اندازه فونت ریشه معمولاً ۱۶ پیکسل است، پس <code>1rem</code> ≈ ۱۶ پیکسل.
+        اگر کاربر فونت مرورگر را بزرگ کند، <code>rem</code> هم بزرگ می‌شود ولی <code>px</code> ثابت می‌ماند.
+        <code>em</code> نسبت به والد است و در عنصرهای تودرتو ضرب می‌شود.
+        مثال‌های بیشتر (دکمه با <code>em</code>، کارت با <code>rem</code>، تله تودرتو) در
+        <a href="11-size.html">درس ۱۱ — واحدها</a> آمده است.
+        <br>
+        در خلاصه <code>font</code>، اندازه و نوع فونت <strong>اجباری‌اند</strong> و باید آخر بیایند (اول اندازه، بعد نوع فونت).
+      </p>
+
+      <p class="mistake">
+        <strong>اشتباه رایج:</strong>
+        ننوشتن گیومه دور نام فونت‌هایی که فاصله دارند. درست: <code>"Times New Roman"</code>.
+        همچنین <code>font-style: italic</code> روی متن فارسی معمولاً زیبا و خوانا نیست (بیشتر فونت‌های فارسی حالت ایتالیک ندارند و مرورگر حروف را فقط کج می‌کند).
+      </p>
+
+      <h3>روش ۱: فونت اینترنتی (Google Fonts)</h3>
+      <p>
+        فونت‌هایی مثل <code>Tahoma</code> روی همه کامپیوترها نصب نیستند یا ظاهر ساده‌ای دارند.
+        سایت <code>fonts.google.com</code> صدها فونت رایگان دارد (فونت‌های فارسی مثل Vazirmatn و Lalezar هم دارد)
+        که مستقیم از اینترنت لود می‌شوند.
+      </p>
+      <ol>
+        <li>به سایت <code>fonts.google.com</code> بروید و نام فونت را جستجو کنید (مثلاً <code>Vazirmatn</code>).</li>
+        <li>روی فونت کلیک کنید، دکمه <strong>Get font</strong> و بعد <strong>Get embed code</strong> را بزنید.</li>
+        <li>ضخامت‌هایی که لازم دارید را انتخاب کنید (مثلاً 400 برای معمولی و 700 برای ضخیم).</li>
+        <li>کدهای <code>link</code> را کپی کنید و داخل <code>head</code>، <strong>قبل از</strong> فایل CSS خودتان بگذارید.</li>
+        <li>در CSS با <code>font-family</code> از نام فونت استفاده کنید.</li>
+      </ol>
+
+      <pre class="code"><code>&lt;head&gt;
+  &lt;!-- ۱. اول فونت گوگل (دو خط preconnect اتصال به سرور فونت را زودتر شروع می‌کنند) --&gt;
+  &lt;link rel="preconnect" href="https://fonts.googleapis.com"&gt;
+  &lt;link rel="preconnect" href="https://fonts.gstatic.com" crossorigin&gt;
+  &lt;link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;700&amp;display=swap" rel="stylesheet"&gt;
+
+  &lt;!-- ۲. بعد فایل CSS خودمان --&gt;
+  &lt;link rel="stylesheet" href="css/style.css"&gt;
+&lt;/head&gt;</code></pre>
+
+      <pre class="code"><code>body {
+  font-family: "Vazirmatn", Tahoma, sans-serif;
+}
+
+h1 {
+  font-family: "Lalezar", Tahoma, sans-serif;   /* یک فونت دیگر برای تیترها */
+}</code></pre>
+
+      <div class="result">
+        <p class="f-google-vazir">این متن با فونت Vazirmatn از گوگل نوشته شده است.</p>
+        <p class="f-google-vazir f-bold">این متن Vazirmatn ضخیم (700) است.</p>
+        <p class="f-google-lalezar">این تیتر با فونت Lalezar است</p>
+      </div>
+      <p>
+        در این صفحه برای اینکه فونت کل جزوه عوض نشود، همین <code>font-family</code>ها روی کلاس‌های جداگانه
+        (<code>f-google-vazir</code> و <code>f-google-lalezar</code> در <code>fonts.css</code>) اعمال شده‌اند.
+      </p>
+
+      <p>
+        <strong>چند فونت با هم:</strong> اگر در سایت گوگل چند فونت انتخاب کنید، همه در یک <code>link</code> می‌آیند و با
+        <code>&amp;family=</code> از هم جدا می‌شوند:
+      </p>
+      <pre class="code"><code>&lt;link href="https://fonts.googleapis.com/css2?family=Lalezar&amp;family=Vazirmatn:wght@400;700&amp;display=swap" rel="stylesheet"&gt;</code></pre>
+
+      <p>
+        <strong>روش دیگر (<code>@import</code>):</strong> به جای <code>link</code> در HTML، می‌توانید آدرس را در
+        <strong>اولین خط</strong> فایل CSS بنویسید:
+      </p>
+      <pre class="code"><code>/* باید بالاترین خط فایل CSS باشد */
+@import url("https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;700&amp;display=swap");
+
+body {
+  font-family: "Vazirmatn", Tahoma, sans-serif;
+}</code></pre>
+
+      <p class="tip">
+        اگر اینترنت قطع باشد، فونت گوگل لود نمی‌شود و مرورگر سراغ فونت بعدی (<code>Tahoma</code>) می‌رود. برای همین
+        همیشه یک فونت جایگزین بنویسید.
+        روش <code>link</code> سریع‌تر از <code>@import</code> است (چون مرورگر با <code>@import</code> تا خواندن فایل CSS
+        صبر می‌کند و بعد سراغ فونت می‌رود) و پیشنهاد می‌شود.
+        <br>
+        بخش <code>display=swap</code> در آدرس یعنی تا فونت لود نشده، متن با فونت جایگزین نشان داده شود و صفحه خالی نماند.
+        <br>
+        اگر سرورهای گوگل برای کاربران شما کند یا در دسترس نباشند، صفحه با فونت جایگزین نمایش داده می‌شود؛ برای سایت
+        واقعی، روش ۲ (فونت لوکال) مطمئن‌تر است.
+      </p>
+
+      <h3>روش ۲: فونت لوکال (فایل فونت داخل پروژه)</h3>
+      <p>
+        گاهی فونت مورد نظر در گوگل نیست، یا می‌خواهید سایت بدون اینترنت هم فونت درست را نشان دهد.
+        در این حالت فایل فونت را داخل پروژه می‌گذاریم و با <code>@font-face</code> به مرورگر معرفی می‌کنیم.
+      </p>
+      <ol>
+        <li>فایل فونت را دانلود کنید. بهترین فرمت برای وب <code>woff2</code> است (فرمت‌های <code>woff</code> و
+          <code>ttf</code> هم کار می‌کنند).</li>
+        <li>یک پوشه <code>fonts</code> در پروژه بسازید و فایل‌ها را داخلش بگذارید.</li>
+        <li>در فایل CSS با <code>@font-face</code> یک نام برای فونت تعیین کنید و آدرس فایل را بدهید.</li>
+        <li>با همان نام در <code>font-family</code> از آن استفاده کنید.</li>
+      </ol>
+
+      <pre class="code"><code>my-site/
+├── index.html
+├── css/
+│   └── style.css
+└── fonts/
+    ├── Vazirmatn-Regular.woff2
+    └── Vazirmatn-Bold.woff2</code></pre>
+
+      <pre class="code"><code>/* css/style.css */
+
+/* معرفی فونت معمولی */
+@font-face {
+  font-family: "MyVazir";                               /* هر نامی که دوست دارید */
+  src: url("../fonts/Vazirmatn-Regular.woff2") format("woff2");
+  font-weight: 400;                                     /* normal */
+  font-style: normal;
+  font-display: swap;                                   /* تا لود فونت، متن با فونت جایگزین دیده شود */
+}
+
+/* معرفی نسخه ضخیم همان فونت، با همان نام */
+@font-face {
+  font-family: "MyVazir";
+  src: url("../fonts/Vazirmatn-Bold.woff2") format("woff2");
+  font-weight: 700;                                     /* bold */
+  font-style: normal;
+  font-display: swap;
+}
+
+/* استفاده از فونت */
+body {
+  font-family: "MyVazir", Tahoma, sans-serif;
+}</code></pre>
+
+      <div class="result">
+        <p class="f-local">این متن با فایل فونت لوکال (Vazirmatn-Regular.woff2) نوشته شده است.</p>
+        <p class="f-local f-bold">این متن از فایل Vazirmatn-Bold.woff2 آمده است.</p>
+      </div>
+
+      <p class="tip">
+        <strong>نکته مسیر:</strong> مثل <code>background-image</code>، مسیر داخل <code>url()</code> نسبت به
+        <strong>فایل CSS</strong> حساب می‌شود.
+        چون <code>style.css</code> داخل پوشه <code>css</code> است، با <code>../</code> یک پوشه بیرون می‌رویم و وارد
+        <code>fonts</code> می‌شویم.
+        در همین صفحه فایل <code>fonts.css</code> داخل <code>css/demos</code> است، پس آنجا مسیر
+        <code>../../fonts/</code> نوشته شده.
+        <br>
+        هر ضخامت یک فایل جدا دارد. چون هر دو <code>@font-face</code> نام یکسان دارند، وقتی <code>font-weight: bold</code>
+        بنویسید مرورگر خودش فایل Bold را انتخاب می‌کند. اگر نسخه ضخیم را معرفی نکنید، مرورگر حروف را مصنوعی ضخیم می‌کند که زیبا نیست.
+      </p>
+
+      <table class="ref">
+        <thead>
+          <tr>
+            <th>مقایسه</th>
+            <th>Google Fonts</th>
+            <th>فونت لوکال</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>نیاز به اینترنت</td>
+            <td>دارد (و دسترسی به سرور گوگل)</td>
+            <td>فقط به سرور سایت خودتان</td>
+          </tr>
+          <tr>
+            <td>کجا نوشته می‌شود</td>
+            <td><code>link</code> در HTML یا <code>@import</code> در CSS</td>
+            <td><code>@font-face</code> در CSS</td>
+          </tr>
+          <tr>
+            <td>فایل فونت</td>
+            <td>روی سرور گوگل</td>
+            <td>داخل پوشه <code>fonts</code> پروژه</td>
+          </tr>
+          <tr>
+            <td>مناسب برای</td>
+            <td>شروع سریع و تمرین</td>
+            <td>فونت‌هایی که در گوگل نیستند و سایت‌هایی که باید همیشه درست دیده شوند</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p class="mistake">
+        <strong>اشتباه‌های رایج در فونت لوکال:</strong>
+        مسیر اشتباه فایل (مسیر را نسبت به HTML نوشتن به جای CSS)،
+        فرق داشتن نام داخل <code>@font-face</code> با نامی که در <code>font-family</code> نوشته شده،
+        و اشتباه تایپی در نام فایل (حروف بزرگ و کوچک روی سرور مهم است).
+      </p>
+
+      <p class="exercise">
+        <strong>تمرین:</strong>
+        ۱) تیترهای صفحه معرفی‌تان را با فونت <code>Lalezar</code> از گوگل بنویسید.
+        ۲) فایل فونت Vazirmatn را در پوشه <code>fonts</code> بگذارید و با <code>@font-face</code> برای متن
+        <code>body</code> استفاده کنید. بعد اینترنت را قطع کنید و ببینید کدام فونت هنوز درست نمایش داده می‌شود.
+      </p>
+    </section>
+
+
+    <nav class="page-nav" aria-label="ناوبری درس پایین">
+      <a href="14-text.html">→ قبلی: Text</a>
+      <a href="../index.html">فهرست درس‌ها</a>
+      <a href="16-links.html">بعدی: Links ←</a>
+    </nav>
+
+  </div>
+
+  <footer class="page-footer">
+    آموزش CSS از صفر
+  </footer>
+
+</body>
+
+</html>

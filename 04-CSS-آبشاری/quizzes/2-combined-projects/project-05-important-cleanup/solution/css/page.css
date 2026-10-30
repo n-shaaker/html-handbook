@@ -1,0 +1,60 @@
+/* ===== سربرگ ===== */
+/* (0, 2, 0) از .site-header a (0, 1, 1) قوی‌تر است */
+.site-header .nav-current {
+  color: #ffd43b;
+}
+
+/* ===== محصول ===== */
+.product-title {
+  color: #1a3a5c;
+  font-size: 26px;
+}
+
+.badge {
+  padding: 2px 8px;
+  background-color: #c92a2a;
+  color: #ffffff;
+  border-radius: 4px;
+  font-size: 13px;
+}
+
+/* (0, 2, 0) از .product p (0, 1, 1) قوی‌تر است */
+.product .old-price {
+  color: #868e96;
+  text-decoration: line-through;
+}
+
+.product .price {
+  color: #2b8a3e;
+  font-size: 22px;
+  font-weight: bold;
+}
+
+/* ===== دکمه خرید ===== */
+/* (0, 1, 0) از a (0, 0, 1) قوی‌تر است */
+.buy-btn {
+  display: inline-block;
+  padding: 10px 24px;
+  background-color: #e8590c;
+  color: #ffffff;
+  text-decoration: none;
+  border-radius: 6px;
+}
+
+/* (0, 2, 0) و بعد از قانون دکمه */
+.buy-btn:hover {
+  background-color: #d9480f;
+}
+
+/* ===== نظرها: اول حالت عادی، بعد حالت ویژه ===== */
+.review {
+  padding: 10px;
+  background-color: #ffffff;
+  border: 1px solid #dee2e6;
+  border-radius: 6px;
+}
+
+.review-best {
+  background-color: #fff9db;
+  border-color: #fab005;
+}

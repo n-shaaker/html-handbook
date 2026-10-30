@@ -1,0 +1,300 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>۱۴) Block و Inline، div و span، class و id | جزوه HTML</title>
+    <link rel="stylesheet" href="../css/style.css" />
+  </head>
+
+  <body>
+    <header class="page-header">
+      <h1>جزوه HTML مقدماتی</h1>
+      <p>۱۴) Block و Inline، div و span، class و id</p>
+    </header>
+
+    <div class="container">
+      <nav class="page-nav">
+        <a href="13-semantic.html">→ درس قبل</a>
+        <a href="../index.html">فهرست مطالب</a>
+        <a href="15-iframe-js.html">درس بعد ←</a>
+      </nav>
+
+      <section class="lesson">
+        <h2>۱۴) Block و Inline، div و span، class و id</h2>
+        <p>
+          در این درس چند مفهوم نزدیک به هم را کنار هم می‌بینیم تا فرق‌شان روشن شود.
+          هر بخش را بخوانید، مثال را ببینید و بعد جدول همان بخش را مرور کنید.
+          این مفهوم‌ها ظاهر را توضیح می‌دهند، اما انتخاب عنصر هنوز باید بر اساس معنا باشد.
+        </p>
+
+        <h3>الف) تفاوت Block و Inline</h3>
+        <p>
+          مرورگر هر عنصر را با یک نحوهٔ نمایش پیش‌فرض نشان می‌دهد.
+          عنصر بلوکی (Block) از خط تازه شروع می‌شود و معمولاً تمام عرض موجود را می‌گیرد، مثل یک ردیف کامل.
+          عنصر درون‌خطی (Inline) در همان خط کنار متن می‌ماند و فقط به اندازهٔ محتوایش جا می‌گیرد.
+          این رفتار پیش‌فرض است و با CSS و ویژگی <code>display</code> می‌توان آن را عوض کرد.
+        </p>
+
+        <pre class="code"><code>&lt;div&gt;من یک عنصر Block هستم (div)&lt;/div&gt;
+&lt;div&gt;من هم Block هستم (div بعدی)&lt;/div&gt;
+&lt;p&gt;من هم Block هستم (پاراگراف p)&lt;/p&gt;</code></pre>
+        <div class="result">
+          <div class="demo-block">من یک عنصر Block هستم (div)</div>
+          <div class="demo-block">من هم Block هستم (div بعدی)</div>
+          <p class="demo-block">من هم Block هستم (پاراگراف p)</p>
+        </div>
+
+        <pre class="code"><code>&lt;p&gt;
+  این بخش‌ها داخل همان خط کنار هم می‌مانند:
+  &lt;span&gt;span اول&lt;/span&gt;
+  &lt;span&gt;span دوم&lt;/span&gt;
+  &lt;a href="#about"&gt;یک لینک&lt;/a&gt;
+  و متن عادی ادامه پیدا می‌کند.
+&lt;/p&gt;</code></pre>
+        <div class="result">
+          <p>
+            این بخش‌ها داخل همان خط کنار هم می‌مانند:
+            <span class="demo-inline">span اول</span>
+            <span class="demo-inline">span دوم</span>
+            <a class="demo-inline" href="#about">یک لینک</a>
+            و متن عادی ادامه پیدا می‌کند.
+          </p>
+        </div>
+
+        <table class="ref">
+          <thead>
+            <tr>
+              <th>مورد</th>
+              <th>Block</th>
+              <th>Inline</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>شروع</td>
+              <td>از خط تازه شروع می‌شود.</td>
+              <td>در همان خط جاری می‌ماند.</td>
+            </tr>
+            <tr>
+              <td>عرض</td>
+              <td>به‌طور پیش‌فرض کل عرض موجود را می‌گیرد.</td>
+              <td>فقط به اندازهٔ محتوایش جا می‌گیرد.</td>
+            </tr>
+            <tr>
+              <td>مثال</td>
+              <td><code>div</code>، <code>p</code>، <code>h1</code>، <code>ul</code>، <code>table</code></td>
+              <td><code>span</code>، <code>a</code>، <code>strong</code>، <code>em</code>، <code>img</code></td>
+            </tr>
+            <tr>
+              <td>کاربرد</td>
+              <td>برای ساختن بخش و جعبه به‌کار می‌رود.</td>
+              <td>برای علامت زدن تکهٔ کوچکی از متن به‌کار می‌رود.</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <p class="tip">
+          <strong>نکته:</strong>
+          بلوکی یا درون‌خطی بودن، رفتار پیش‌فرض مرورگر است و با ویژگی CSS
+          <code>display</code> قابل تغییر است؛ مثلاً <code>display: block</code> یا <code>display: inline</code>.
+          از نظر ساختار HTML، داخل <code>span</code> یا <code>p</code> نباید عنصر بلوکی مثل <code>div</code> بگذارید.
+          استثنای مهم عنصر <code>a</code> است: در HTML5 یک پیوند می‌تواند یک بلوک کامل، مثلاً کارت شامل عنوان و بند، را در بر بگیرد، به شرطی که داخل آن پیوند دیگری نباشد.
+        </p>
+
+        <h3>ب) تفاوت div و span</h3>
+        <p>
+          <code>div</code> و <code>span</code> هر دو عنصر عمومی هستند و معنای خاصی مثل عنوان یا بند ندارند.
+          فرق اصلی در نمایش پیش‌فرض است: <code>div</code> بلوکی است و <code>span</code> درون‌خطی.
+          اگر عنصر معنایی مناسب وجود دارد، همان را به این دو ترجیح دهید.
+        </p>
+
+        <div class="tag-card">
+          <h4>&lt;div&gt;</h4>
+          <p>
+            <strong>تعریف:</strong>
+            عنصر <code>div</code> ظرف بلوکی عمومی و بدون معنای خاص است. وقتی به‌کار می‌رود که عنصر معنایی مناسب در دسترس نباشد
+            یا بخواهید چند عنصر را فقط برای CSS کنار هم گروه‌بندی کنید. خود <code>div</code> ظاهر ویژه‌ای ندارد؛ ظاهر کارت‌های نمونه از کلاس CSS می‌آید.
+          </p>
+          <pre class="code"><code>&lt;div class="card"&gt;
+  &lt;h4&gt;کتاب «شازده کوچولو»&lt;/h4&gt;
+  &lt;p&gt;نویسنده: آنتوان دو سنت‌اگزوپری — ۱۸۰٬۰۰۰ تومان&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;div class="card"&gt;
+  &lt;h4&gt;کتاب «کیمیاگر»&lt;/h4&gt;
+  &lt;p&gt;نویسنده: پائولو کوئیلو — ۲۱۰٬۰۰۰ تومان&lt;/p&gt;
+&lt;/div&gt;</code></pre>
+          <div class="result">
+            <div class="demo-card">
+              <h4>کتاب «شازده کوچولو»</h4>
+              <p>نویسنده: آنتوان دو سنت‌اگزوپری — ۱۸۰٬۰۰۰ تومان</p>
+            </div>
+            <div class="demo-card">
+              <h4>کتاب «کیمیاگر»</h4>
+              <p>نویسنده: پائولو کوئیلو — ۲۱۰٬۰۰۰ تومان</p>
+            </div>
+          </div>
+          <p><small>(ظاهر کارت‌ها با CSS کلاس <code>card</code> ساخته می‌شود؛ خود <code>div</code> ظاهری ندارد.)</small></p>
+        </div>
+
+        <div class="tag-card">
+          <h4>&lt;span&gt;</h4>
+          <p>
+            <strong>تعریف:</strong>
+            عنصر <code>span</code> قطعهٔ درون‌خطی داخل متن است و خط تازه نمی‌سازد. وقتی فقط چند کلمه از یک جمله را می‌خواهید علامت بزنید یا به آن استایل بدهید، از <code>span</code> استفاده کنید. اگر کل بند معنا دارد، <code>span</code> جای <code>p</code> را نمی‌گیرد.
+          </p>
+          <pre class="code"><code>&lt;p&gt;من در کلاس HTML &lt;span class="highlight"&gt;ساختار صفحه&lt;/span&gt; را یاد می‌گیرم.&lt;/p&gt;
+&lt;p&gt;قیمت: &lt;span class="price"&gt;۲۵۰٬۰۰۰ تومان&lt;/span&gt;&lt;/p&gt;</code></pre>
+          <div class="result">
+            <p>من در کلاس HTML <span class="demo-highlight">ساختار صفحه</span> را یاد می‌گیرم.</p>
+            <p>قیمت: <span class="price">۲۵۰٬۰۰۰ تومان</span></p>
+          </div>
+        </div>
+
+        <table class="ref">
+          <thead>
+            <tr>
+              <th>مورد</th>
+              <th>div</th>
+              <th>span</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>نمایش پیش‌فرض</td>
+              <td>Block (شروع در خط جدید)</td>
+              <td>Inline (ادامه همان خط)</td>
+            </tr>
+            <tr>
+              <td>چه زمانی؟</td>
+              <td>برای گروه‌بندی بخش‌های بزرگ‌تر، وقتی عنصر معنایی مناسب نیست.</td>
+              <td>برای برجسته یا علامت‌گذاری کردن چند کلمه داخل جمله.</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <p class="mistake">
+          <strong>خطای متداول:</strong>
+          استفادهٔ افراطی از <code>div</code> در همه جا. ابتدا عنصر معنایی مناسب را بررسی کنید،
+          مانند <code>header</code>، <code>nav</code> و <code>section</code>.
+          اگر گزینهٔ مناسبی نبود، از <code>div</code> استفاده کنید. <code>div</code> خطا نیست، اما معنا را هم اضافه نمی‌کند.
+        </p>
+
+        <h3>ج) تفاوت class و id</h3>
+        <p>
+          ویژگی <code>id</code> نام یک عنصر است و در هر صفحه باید یکتا باشد. اگر دو عنصر <code>id</code> یکسان داشته باشند، پیوند و اسکریپت فقط به یکی از آن‌ها، معمولاً اولین، می‌رسند.
+          ویژگی <code>class</code> نام گروه است و می‌تواند روی چند عنصر تکرار شود.
+          پیوندی مثل <code>#about</code> به عنصری وصل می‌شود که <code>id="about"</code> دارد.
+        </p>
+
+        <pre class="code"><code>&lt;a href="#about"&gt;درباره&lt;/a&gt; |
+&lt;a href="#skills"&gt;مهارت‌ها&lt;/a&gt; |
+&lt;a href="#contact"&gt;تماس&lt;/a&gt;
+
+&lt;div id="about" class="section"&gt; ... &lt;/div&gt;
+&lt;div id="skills" class="section"&gt; ... &lt;/div&gt;
+&lt;div id="contact" class="section"&gt; ... &lt;/div&gt;</code></pre>
+        <div class="result">
+          <p>
+            پرش سریع با id:
+            <a href="#about">درباره</a> |
+            <a href="#skills">مهارت‌ها</a> |
+            <a href="#contact">تماس</a>
+          </p>
+
+          <div id="about" class="demo-section">
+            <h4>بخش درباره من</h4>
+            <p>
+              این بخش دارد: <code>id="about"</code> (یکتا) و
+              <code>class="section"</code> (مشترک با بخش‌های دیگر)
+            </p>
+          </div>
+
+          <div id="skills" class="demo-section">
+            <h4>بخش مهارت‌ها</h4>
+            <ul>
+              <li>HTML</li>
+              <li>ساختار صفحه</li>
+              <li>گروه‌بندی با div</li>
+            </ul>
+          </div>
+
+          <div id="contact" class="demo-section">
+            <h4>بخش تماس</h4>
+            <p>ایمیل نمونه: sara@example.com</p>
+          </div>
+        </div>
+
+        <table class="ref">
+          <thead>
+            <tr>
+              <th>مورد</th>
+              <th>id</th>
+              <th>class</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>تکرار</td>
+              <td class="text-bad">نباید در یک صفحه تکرار شود.</td>
+              <td class="text-ok">می‌تواند روی چند عنصر تکرار شود.</td>
+            </tr>
+            <tr>
+              <td>نوشتن در HTML</td>
+              <td><code>id="about"</code></td>
+              <td><code>class="section"</code></td>
+            </tr>
+            <tr>
+              <td>کاربرد رایج</td>
+              <td>لنگر صفحه و انتخاب یک عنصر خاص در CSS یا JavaScript.</td>
+              <td>استایل گروهی چند عنصر شبیه هم.</td>
+            </tr>
+            <tr>
+              <td>در CSS</td>
+              <td><code>#about { ... }</code></td>
+              <td><code>.section { ... }</code></td>
+            </tr>
+          </tbody>
+        </table>
+
+        <p class="mistake">
+          <strong>خطای متداول:</strong>
+          اگر دو عنصر هر دو <code>id="menu"</code> داشته باشند، پیوند و اسکریپت به‌درستی به هر دو نمی‌رسند.
+          برای چیزهای مشترک از <code>class</code> استفاده کنید.
+          در HTML5 شناسه می‌تواند با رقم شروع شود، اما انتخاب آن در CSS دشوار است؛ قرارداد رایج این است که نام <code>id</code> و <code>class</code> با حرف شروع شود.
+          فاصله در مقدار <code>class</code> یعنی چند کلاس جدا: <code>class="product card"</code> دو کلاس <code>product</code> و <code>card</code> است، نه یک نام با فاصله.
+        </p>
+
+        <h3>چند عنصر کمکی دیگر</h3>
+        <p>
+          <code>figure</code> یک تصویر، نمودار یا قطعهٔ کد را با توضیحش گروه‌بندی می‌کند و <code>figcaption</code> همان توضیح است. جزئیات بیشتر در درس ۲۰ آمده است.
+          <code>time</code> تاریخ یا ساعت را با معنای مشخص علامت می‌زند تا ماشین هم آن را بفهمد، نه فقط انسان. در درس ۲۲ دیده می‌شود.
+          <code>code</code> تکه‌ای از کد را داخل جمله نشان می‌دهد و <code>pre</code> فاصله‌ها و خط‌های یک بلوک را همان‌طور که نوشته‌اید نگه می‌دارد. این دو در درس ۱۷ کامل‌تر توضیح داده شده‌اند.
+        </p>
+
+        <h3>جمع‌بندی</h3>
+        <ol>
+          <li><strong>Block</strong> معمولاً زیر هم می‌آید؛ <strong>Inline</strong> کنار هم می‌ماند.</li>
+          <li><strong>div</strong> جعبه بلوکی است؛ <strong>span</strong> تکه متن داخل خط است.</li>
+          <li><strong>id</strong> یکتا است؛ <strong>class</strong> می‌تواند مشترک باشد.</li>
+        </ol>
+
+        <p class="exercise">
+          <strong>تمرین:</strong>
+          یک صفحهٔ کوچک با سه <code>div</code> بسازید.
+          به هر سه <code>class="section"</code> بدهید و برایشان <code>id</code>های <code>about</code>، <code>skills</code> و <code>contact</code> بگذارید.
+          بعد با پیوندهای <code>#</code> بین بخش‌ها جابه‌جا شوید و مطمئن شوید هیچ <code>id</code> تکراری نیست.
+        </p>
+      </section>
+
+      <nav class="page-nav">
+        <a href="13-semantic.html">→ درس قبل</a>
+        <a href="../index.html">فهرست مطالب</a>
+        <a href="15-iframe-js.html">درس بعد ←</a>
+      </nav>
+    </div>
+
+    <footer class="page-footer">جزوه HTML مقدماتی</footer>
+  </body>
+</html>

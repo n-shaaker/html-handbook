@@ -1,0 +1,28 @@
+.product .product-title {
+  color: #1a5fb4;
+}
+
+h2 {
+  color: #c92a2a;
+}
+
+#featured p {
+  color: #2b8a3e;
+}
+
+.price {
+  color: #e67700;
+  font-weight: bold;
+}
+
+div p.desc {
+  color: #7b2cbf;
+}
+
+.product a {
+  color: #c92a2a;
+}
+
+a.buy {
+  color: #1a5fb4;
+}

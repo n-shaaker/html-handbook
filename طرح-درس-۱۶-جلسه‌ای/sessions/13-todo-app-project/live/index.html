@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>اپلیکیشن Todo</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="app">
+      <h1>لیست کارها</h1>
+
+      <form id="todo-form" class="todo-form">
+        <label class="sr-only" for="todo-input">کار جدید</label>
+        <input
+          id="todo-input"
+          name="todo"
+          type="text"
+          placeholder="چه کاری باید انجام شود؟"
+          autocomplete="off"
+          maxlength="120"
+        />
+        <button type="submit">افزودن</button>
+      </form>
+
+      <div class="filters" role="group" aria-label="فیلتر کارها">
+        <button type="button" data-filter="all" class="is-active" aria-pressed="true">همه</button>
+        <button type="button" data-filter="active" aria-pressed="false">فعال</button>
+        <button type="button" data-filter="completed" aria-pressed="false">انجام‌شده</button>
+      </div>
+
+      <ul id="todo-list" class="todo-list"></ul>
+      <p id="todo-empty" class="todo-empty" hidden></p>
+
+      <footer class="todo-footer">
+        <p id="todo-counter" aria-live="polite"></p>
+        <button id="clear-completed" type="button">پاک کردن انجام‌شده‌ها</button>
+      </footer>
+    </main>
+    <script src="app.js"></script>
+  </body>
+</html>

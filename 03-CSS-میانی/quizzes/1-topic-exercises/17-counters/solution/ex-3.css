@@ -1,0 +1,27 @@
+body {
+  font-family: Tahoma, Arial, sans-serif;
+  line-height: 2;
+  padding: 24px;
+}
+
+.toc ol {
+  list-style-type: none;
+  padding-right: 0;
+  counter-reset: item; /* هر ol شمارش خودش را دارد */
+}
+
+/* تورفتگی سطح دوم */
+.toc ol ol {
+  padding-right: 28px;
+}
+
+.toc li {
+  counter-increment: item;
+}
+
+/* counters همه سطح‌ها را با "." کنار هم می‌گذارد */
+.toc li::before {
+  content: counters(item, ".", persian) ". ";
+  color: #1a5fb4;
+  font-weight: bold;
+}

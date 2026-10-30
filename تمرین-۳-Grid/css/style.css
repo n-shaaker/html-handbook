@@ -1,0 +1,253 @@
+/* ===================== Base ===================== */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Vazirmatn", Tahoma, sans-serif;
+  background-color: #f4f6fb;
+  color: #333;
+  margin: 0;
+  line-height: 1.8;
+}
+
+.page-title {
+  text-align: center;
+  background-color: #4f46e5;
+  color: white;
+  margin: 0;
+  padding: 30px;
+}
+
+.container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.section {
+  background-color: white;
+  border-radius: 10px;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.note {
+  color: #555;
+}
+
+code {
+  background-color: #eef1ff;
+  color: #4f46e5;
+  padding: 2px 6px;
+  border-radius: 4px;
+  direction: ltr;
+  display: inline-block;
+}
+
+/* A simple colored box used in most examples.
+   All colored boxes are dark enough for white text (contrast at least 4.5:1). */
+.item {
+  background-color: #4f46e5;
+  color: white;
+  padding: 20px;
+  text-align: center;
+  border-radius: 8px;
+  font-weight: bold;
+}
+
+
+/* ===================== Example 1: three equal columns ===================== */
+.grid-1 {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+/* Thin border so students can see each cell */
+.grid-1 .item {
+  border: 2px solid white;
+}
+
+
+/* ===================== Example 2: gap + repeat ===================== */
+.grid-2 {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+
+/* ===================== Example 3: different column widths ===================== */
+.grid-3a {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.grid-3b {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  gap: 10px;
+}
+
+
+/* ===================== Example 4: span columns ===================== */
+.grid-4 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+
+.item-wide {
+  grid-column: span 2;
+  background-color: #e11d48;
+}
+
+.item-full {
+  grid-column: span 3;          /* or: grid-column: 1 / -1; (from the first line to the last) */
+  background-color: #b45309;
+}
+
+
+/* ===================== Example 5: span rows ===================== */
+.grid-5 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+
+.item-tall {
+  grid-row: span 2;
+  background-color: #047857;
+}
+
+
+/* ===================== Example 6: center items ===================== */
+.grid-6 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  height: 150px;
+  place-items: center;
+  background-color: #eef1ff;
+  border-radius: 8px;
+}
+
+.circle {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background-color: #4f46e5;
+  color: white;
+  display: grid;
+  place-items: center;
+  font-weight: bold;
+}
+
+
+/* ===================== Example 7: page layout with areas ===================== */
+.layout {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  /* Each string is one row; a name repeated in a row = that area spans those columns */
+  grid-template-areas:
+    "header  header"
+    "sidebar main"
+    "footer  footer";
+  gap: 10px;
+  text-align: center;
+  color: white;
+  font-weight: bold;
+}
+
+.l-header {
+  grid-area: header;
+  background-color: #4f46e5;
+  padding: 20px;
+  border-radius: 8px;
+}
+
+.l-sidebar {
+  grid-area: sidebar;
+  background-color: #047857;
+  padding: 20px;
+  border-radius: 8px;
+}
+
+.l-main {
+  grid-area: main;
+  background-color: #7c3aed;
+  padding: 80px 20px;
+  border-radius: 8px;
+}
+
+.l-footer {
+  grid-area: footer;
+  background-color: #334155;
+  padding: 20px;
+  border-radius: 8px;
+}
+
+
+/* ===================== Example 8: product cards ===================== */
+.products {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+
+.product {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 12px;
+  text-align: center;
+}
+
+.product-img {
+  background-color: #e5e7eb;
+  color: #4b5563;
+  height: 120px;
+  border-radius: 6px;
+  display: grid;
+  place-items: center;
+}
+
+.product h3 {
+  font-size: 16px;
+  margin: 10px 0 0;
+}
+
+.product p {
+  color: #047857;
+  font-weight: bold;
+  margin: 0;
+}
+
+
+/* ===================== Responsive ===================== */
+/* Tablet: 2 columns */
+@media (max-width: 768px) {
+  .products {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .grid-2 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Mobile: 1 column */
+@media (max-width: 480px) {
+  .products {
+    grid-template-columns: 1fr;
+  }
+
+  .layout {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "header"
+      "main"
+      "sidebar"
+      "footer";
+  }
+}

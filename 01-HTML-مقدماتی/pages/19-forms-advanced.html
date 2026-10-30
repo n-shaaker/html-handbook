@@ -1,0 +1,553 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>۱۹) فرم‌های پیشرفته | جزوه HTML</title>
+    <link rel="stylesheet" href="../css/style.css" />
+  </head>
+
+  <body>
+    <header class="page-header">
+      <h1>جزوه HTML مقدماتی</h1>
+      <p>۱۹) فرم‌های پیشرفته: انواع input، ویژگی‌ها و اعتبارسنجی</p>
+    </header>
+
+    <div class="container">
+      <nav class="page-nav">
+        <a href="18-entities-emoji.html">→ درس قبل</a>
+        <a href="../index.html">فهرست مطالب</a>
+        <a href="20-media.html">درس بعد ←</a>
+      </nav>
+
+      <section class="lesson">
+        <h2>۱۹) ویژگی‌های تگ form</h2>
+        <p>
+          در درس ۱۲ با عنصرهای اصلی فرم آشنا شدیم. اینجا می‌بینیم فرم داده را کجا می‌فرستد، هر نوع <code>input</code> چه رفتاری دارد و مرورگر پیش از ارسال چه چیزهایی را بررسی می‌کند.
+          این بررسی مرورگر برای کمک به کاربر است و جای بررسی سمت سرور را نمی‌گیرد.
+        </p>
+
+        <pre class="code"><code>&lt;form action="/register" method="post" target="_blank" autocomplete="on"&gt;
+  ...
+&lt;/form&gt;</code></pre>
+
+        <table class="ref">
+          <thead>
+            <tr>
+              <th>ویژگی</th>
+              <th>کاربرد</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>action</code></td>
+              <td><code>action</code> نشانی صفحه یا برنامهٔ سمت سرور است که داده‌ها را دریافت می‌کند.</td>
+            </tr>
+            <tr>
+              <td><code>method="get"</code></td>
+              <td>داده‌ها به انتهای آدرس اضافه می‌شوند (<code>?name=sara</code>). مناسب جستجو. برای اطلاعات حساس <span class="text-bad">نه</span>.</td>
+            </tr>
+            <tr>
+              <td><code>method="post"</code></td>
+              <td>
+                داده‌ها در بدنه درخواست ارسال می‌شوند و در نوار نشانی دیده نمی‌شوند. مناسب ثبت‌نام، ورود و اطلاعات حساس.
+                (توجه: post به‌تنهایی داده را رمزنگاری نمی‌کند؛ امنیت واقعی با <code>https</code> تأمین می‌شود.)
+              </td>
+            </tr>
+            <tr>
+              <td><code>target</code></td>
+              <td><code>target</code> می‌گوید پاسخ فرم کجا باز شود. <code>_self</code> پیش‌فرض است و همان زبانه را عوض می‌کند. <code>_blank</code> زبانهٔ تازه باز می‌کند.</td>
+            </tr>
+            <tr>
+              <td><code>autocomplete</code></td>
+              <td>با <code>on</code> مرورگر می‌تواند مقدارهای قبلی را پیشنهاد دهد و با <code>off</code> این پیشنهاد برای همان فرم کمتر می‌شود. مرورگرها همیشه این درخواست را مو به مو اجرا نمی‌کنند.</td>
+            </tr>
+            <tr>
+              <td><code>novalidate</code></td>
+              <td>ویژگی بولی <code>novalidate</code> بررسی خودکار مرورگر را برای همین فرم خاموش می‌کند. داده همچنان ارسال می‌شود و سرور باید خودش آن را بررسی کند.</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <p class="mistake">
+          <strong>خطای متداول:</strong>
+          فراموش کردن ویژگی <code>name</code> روی فیلدها. فیلدی که <code>name</code> نداشته باشد ارسال نمی‌شود.
+          <code>name</code> نام داده است و <code>value</code> مقدار آن. <code>id</code> فقط فیلد را در صفحه پیدا می‌کند و جای <code>name</code> را نمی‌گیرد.
+        </p>
+
+        <p>این فرم را پر کنید و ارسال کنید، سپس به نوار نشانی نگاه کنید. چون روش <code>get</code> است، نام و مقدار فیلد به انتهای نشانی اضافه می‌شود:</p>
+        <pre class="code"><code>&lt;form action="" method="get"&gt;
+  &lt;label for="q"&gt;جستجو:&lt;/label&gt;
+  &lt;input type="search" id="q" name="q"&gt;
+  &lt;button type="submit"&gt;برو&lt;/button&gt;
+&lt;/form&gt;</code></pre>
+        <div class="result">
+          <form action="" method="get">
+            <label for="q">جستجو:</label>
+            <input type="search" id="q" name="q" />
+            <button type="submit">برو</button>
+          </form>
+        </div>
+      </section>
+
+      <section class="lesson">
+        <h2>همه انواع input</h2>
+        <p>با تغییر ویژگی <code>type</code>، همان عنصر <code>input</code> شکل و رفتار متفاوتی پیدا می‌کند. نوع، هم ظاهر را عوض می‌کند و هم به مرورگر می‌گوید چه مقداری معتبر است. همه را در جدول زنده امتحان کنید:</p>
+
+        <div class="result">
+          <table class="ref">
+            <thead>
+              <tr>
+                <th>type</th>
+                <th>نمونه زنده</th>
+                <th>کاربرد</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><code>text</code></td>
+                <td><input type="text" placeholder="نام" aria-label="نمونه text" /></td>
+                <td>متن یک‌خطی است. اگر <code>type</code> ننویسید، همین حالت پیش‌فرض است.</td>
+              </tr>
+              <tr>
+                <td><code>password</code></td>
+                <td><input type="password" value="123456" aria-label="نمونه password" /></td>
+                <td>گذرواژه را پنهان نشان می‌دهد. این پنهان‌سازی فقط ظاهری است.</td>
+              </tr>
+              <tr>
+                <td><code>email</code></td>
+                <td><input type="email" dir="ltr" placeholder="name@example.com" aria-label="نمونه email" /></td>
+                <td>رایانامه را می‌گیرد، شکل کلی آن را بررسی می‌کند و در تلفن همراه معمولاً صفحه‌کلید دارای @ باز می‌کند.</td>
+              </tr>
+              <tr>
+                <td><code>number</code></td>
+                <td><input type="number" min="1" max="10" value="3" aria-label="نمونه number" /></td>
+                <td>عدد می‌گیرد و معمولاً دکمهٔ کم و زیاد نشان می‌دهد. بازه را با <code>min</code> و <code>max</code> محدود می‌کنند.</td>
+              </tr>
+              <tr>
+                <td><code>tel</code></td>
+                <td><input type="tel" placeholder="09121234567" aria-label="نمونه tel" /></td>
+                <td>شمارهٔ تلفن را می‌گیرد. مرورگر قالب بین‌المللی را سخت‌گیرانه بررسی نمی‌کند، اما در تلفن همراه معمولاً صفحه‌کلید عددی باز می‌کند.</td>
+              </tr>
+              <tr>
+                <td><code>url</code></td>
+                <td><input type="url" dir="ltr" placeholder="https://..." aria-label="نمونه url" /></td>
+                <td>نشانی وب را می‌گیرد و وجود پروتکل را معمولاً لازم می‌داند.</td>
+              </tr>
+              <tr>
+                <td><code>search</code></td>
+                <td><input type="search" placeholder="جستجو..." aria-label="نمونه search" /></td>
+                <td>کادر جستجو است. از نظر ارسال داده شبیه متن است، اما بعضی مرورگرها دکمهٔ پاک کردن نشان می‌دهند.</td>
+              </tr>
+              <tr>
+                <td><code>date</code></td>
+                <td><input type="date" aria-label="نمونه date" /></td>
+                <td>تاریخ را با انتخاب‌گر مرورگر می‌گیرد. شکل نمایش به زبان و مرورگر بستگی دارد.</td>
+              </tr>
+              <tr>
+                <td><code>time</code></td>
+                <td><input type="time" aria-label="نمونه time" /></td>
+                <td>ساعت را جدا از تاریخ می‌گیرد.</td>
+              </tr>
+              <tr>
+                <td><code>datetime-local</code></td>
+                <td><input type="datetime-local" aria-label="نمونه datetime-local" /></td>
+                <td>تاریخ و ساعت محلی را با هم می‌گیرد و منطقهٔ زمانی را در خود مقدار ذخیره نمی‌کند.</td>
+              </tr>
+              <tr>
+                <td><code>month</code> / <code>week</code></td>
+                <td><input type="month" aria-label="نمونه month" /></td>
+                <td>ماه یا هفته را می‌گیرد. نمونهٔ زنده <code>month</code> است. در بعضی مرورگرها، مثل Firefox، این نوع‌ها هنوز کادر متنی ساده‌اند.</td>
+              </tr>
+              <tr>
+                <td><code>color</code></td>
+                <td><input type="color" value="#0b6e4f" aria-label="نمونه color" /></td>
+                <td>یک رنگ را انتخاب می‌کند و مقدار آن معمولاً به شکل HEX فرستاده می‌شود.</td>
+              </tr>
+              <tr>
+                <td><code>range</code></td>
+                <td><input type="range" min="0" max="100" value="40" aria-label="نمونه range" /></td>
+                <td>مقدار را با یک لغزنده بین <code>min</code> و <code>max</code> می‌گیرد، مثل تنظیم صدا.</td>
+              </tr>
+              <tr>
+                <td><code>file</code></td>
+                <td><input type="file" aria-label="نمونه file" /></td>
+                <td>به کاربر اجازه می‌دهد پرونده‌ای را برای ارسال انتخاب کند. خود HTML پرونده را ذخیره نمی‌کند.</td>
+              </tr>
+              <tr>
+                <td><code>checkbox</code></td>
+                <td><label><input type="checkbox" /> موافقم</label></td>
+                <td>چند انتخاب مستقل را ممکن می‌کند. هر خانه جداگانه تیک می‌خورد.</td>
+              </tr>
+              <tr>
+                <td><code>radio</code></td>
+                <td>
+                  <label><input type="radio" name="demo-r" /> بله</label>
+                  <label><input type="radio" name="demo-r" /> خیر</label>
+                </td>
+                <td>فقط یک گزینه از گروهی که <code>name</code> یکسان دارند انتخاب می‌شود.</td>
+              </tr>
+              <tr>
+                <td><code>hidden</code></td>
+                <td>(دیده نمی‌شود)<br /><code>&lt;input type="hidden" name="product_id" value="1024"&gt;</code></td>
+                <td>داده‌ای را می‌فرستد که در صفحه دیده نمی‌شود، مثل شناسهٔ کالا. این مقدار با ابزار توسعه‌دهنده قابل تغییر است و نباید مبنای امنیت باشد.</td>
+              </tr>
+              <tr>
+                <td><code>submit</code></td>
+                <td><input type="submit" value="ارسال" /></td>
+                <td>فرم را ارسال می‌کند. عنصر <code>button</code> داخل فرم هم اگر نوع دیگری نداشته باشد همین کار را می‌کند.</td>
+              </tr>
+              <tr>
+                <td><code>reset</code></td>
+                <td><input type="reset" value="پاک کردن" /></td>
+                <td>فیلدها را به مقدار اولیهٔ صفحه برمی‌گرداند، نه لزوماً به خالی.</td>
+              </tr>
+              <tr>
+                <td><code>button</code></td>
+                <td><input type="button" value="دکمه" /></td>
+                <td>دکمه‌ای است که فرم را ارسال نمی‌کند و تا وقتی JavaScript به آن رفتار ندهد کاری انجام نمی‌دهد.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="tag-card">
+          <h4>radio — یک گروه با name یکسان</h4>
+          <p>
+            دکمه‌های رادیویی فقط وقتی «یکی از چند» می‌شوند که <code>name</code> یکسان داشته باشند. اگر نام‌ها فرق کند، هر کدام جدا انتخاب می‌شود.
+            <code>value</code> مشخص می‌کند چه چیزی به سرور برسد. متن کنار دکمه فقط برای کاربر است.
+          </p>
+          <pre class="code"><code>&lt;fieldset&gt;
+  &lt;legend&gt;روش ارسال سفارش:&lt;/legend&gt;
+  &lt;input type="radio" id="post" name="shipping" value="post" checked&gt;
+  &lt;label for="post"&gt;پست پیشتاز&lt;/label&gt;
+  &lt;input type="radio" id="courier" name="shipping" value="courier"&gt;
+  &lt;label for="courier"&gt;پیک (فقط تهران)&lt;/label&gt;
+  &lt;input type="radio" id="pickup" name="shipping" value="pickup"&gt;
+  &lt;label for="pickup"&gt;تحویل حضوری&lt;/label&gt;
+&lt;/fieldset&gt;</code></pre>
+          <div class="result">
+            <fieldset>
+              <legend>روش ارسال سفارش:</legend>
+              <input type="radio" id="post" name="shipping" value="post" checked />
+              <label for="post">پست پیشتاز</label>
+              <input type="radio" id="courier" name="shipping" value="courier" />
+              <label for="courier">پیک (فقط تهران)</label>
+              <input type="radio" id="pickup" name="shipping" value="pickup" />
+              <label for="pickup">تحویل حضوری</label>
+            </fieldset>
+          </div>
+          <p>
+            قرار دادن گروه radio یا checkbox داخل <code>fieldset</code> با <code>legend</code> باعث می‌شود صفحه‌خوان
+            پرسش اصلی («روش ارسال سفارش») را همراه هر گزینه بخواند.
+          </p>
+        </div>
+
+        <div class="tag-card">
+          <h4>checkbox — چند انتخاب</h4>
+          <pre class="code"><code>&lt;fieldset&gt;
+  &lt;legend&gt;مهارت‌های شما:&lt;/legend&gt;
+  &lt;input type="checkbox" id="html" name="skills" value="html" checked&gt;
+  &lt;label for="html"&gt;HTML&lt;/label&gt;
+  &lt;input type="checkbox" id="css" name="skills" value="css"&gt;
+  &lt;label for="css"&gt;CSS&lt;/label&gt;
+  &lt;input type="checkbox" id="js" name="skills" value="js"&gt;
+  &lt;label for="js"&gt;JavaScript&lt;/label&gt;
+&lt;/fieldset&gt;</code></pre>
+          <div class="result">
+            <fieldset>
+              <legend>مهارت‌های شما:</legend>
+              <input type="checkbox" id="html" name="skills" value="html" checked />
+              <label for="html">HTML</label>
+              <input type="checkbox" id="css" name="skills" value="css" />
+              <label for="css">CSS</label>
+              <input type="checkbox" id="js" name="skills" value="js" />
+              <label for="js">JavaScript</label>
+            </fieldset>
+          </div>
+        </div>
+      </section>
+
+      <section class="lesson">
+        <h2>ویژگی‌های input</h2>
+        <table class="ref">
+          <thead>
+            <tr>
+              <th>ویژگی</th>
+              <th>کاربرد</th>
+              <th>نمونه زنده</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>value</code></td>
+              <td>مقدار اولیهٔ فیلد است و اگر کاربر آن را عوض نکند، همین مقدار ارسال می‌شود.</td>
+              <td><input type="text" value="تهران" aria-label="value" /></td>
+            </tr>
+            <tr>
+              <td><code>placeholder</code></td>
+              <td>متن راهنمای کم‌رنگ داخل کادر است و با شروع تایپ ناپدید می‌شود. جای <code>label</code> را نمی‌گیرد.</td>
+              <td><input type="text" placeholder="مثلاً: ۰۹۱۲..." aria-label="placeholder" /></td>
+            </tr>
+            <tr>
+              <td><code>readonly</code></td>
+              <td>فیلد را فقط‌خواندنی می‌کند. کاربر مقدار را عوض نمی‌کند، اما مقدار هنگام ارسال فرستاده می‌شود.</td>
+              <td><input type="text" value="کد: 1024" readonly aria-label="readonly" /></td>
+            </tr>
+            <tr>
+              <td><code>disabled</code></td>
+              <td>فیلد را غیرفعال می‌کند. نه قابل ویرایش است و نه مقدارش ارسال می‌شود.</td>
+              <td><input type="text" value="غیرفعال" disabled aria-label="disabled" /></td>
+            </tr>
+            <tr>
+              <td><code>required</code></td>
+              <td>پر کردن فیلد را پیش از ارسال اجباری می‌کند. اگر خالی بماند، مرورگر فرم را نمی‌فرستد.</td>
+              <td>(مثال پایین)</td>
+            </tr>
+            <tr>
+              <td><code>maxlength</code> / <code>minlength</code></td>
+              <td>حداکثر و حداقل تعداد نویسه را مشخص می‌کند. این محدودیت با تعداد نویسه است، نه با تعداد کلمه.</td>
+              <td><input type="text" maxlength="5" placeholder="حداکثر ۵ حرف" aria-label="maxlength" /></td>
+            </tr>
+            <tr>
+              <td><code>min</code> / <code>max</code> / <code>step</code></td>
+              <td>بازه و گام مقدار عددی یا تاریخی را مشخص می‌کند. <code>step</code> فاصلهٔ مقدارهای مجاز است.</td>
+              <td><input type="number" min="0" max="20" step="0.5" value="10" aria-label="min max step" /></td>
+            </tr>
+            <tr>
+              <td><code>pattern</code></td>
+              <td>الگوی مجاز را با عبارت باقاعده (Regex) مشخص می‌کند و فقط وقتی فیلد خالی نباشد بررسی می‌شود.</td>
+              <td>(مثال پایین)</td>
+            </tr>
+            <tr>
+              <td><code>size</code></td>
+              <td>عرض کادر را بر حسب تعداد نویسه پیشنهاد می‌کند. اندازهٔ دقیق ظاهری را CSS بهتر کنترل می‌کند.</td>
+              <td><input type="text" size="6" aria-label="size" /></td>
+            </tr>
+            <tr>
+              <td><code>multiple</code></td>
+              <td>اجازه می‌دهد چند پرونده، یا در <code>email</code> چند نشانی، انتخاب شود.</td>
+              <td><input type="file" multiple aria-label="multiple" /></td>
+            </tr>
+            <tr>
+              <td><code>autofocus</code></td>
+              <td>با باز شدن صفحه، مکان‌نما را داخل این فیلد می‌گذارد. در هر صفحه فقط یکی از این ویژگی معنا دارد.</td>
+              <td>—</td>
+            </tr>
+            <tr>
+              <td><code>checked</code></td>
+              <td>وضعیت انتخاب‌شدهٔ اولیه را برای <code>checkbox</code> و <code>radio</code> مشخص می‌کند.</td>
+              <td><input type="checkbox" checked aria-label="checked" /></td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h3>اعتبارسنجی بدون JavaScript</h3>
+        <p>
+          مرورگر قبل از ارسال، فیلدها را بررسی می‌کند. فرم زیر را <strong>خالی یا اشتباه</strong> ارسال کنید
+          تا پیام خطا را ببینید:
+        </p>
+        <pre class="code"><code>&lt;form action="" method="get"&gt;
+  &lt;p&gt;
+    &lt;label for="uname"&gt;نام کاربری (۴ تا ۱۰ حرف انگلیسی):&lt;/label&gt;&lt;br&gt;
+    &lt;input id="uname" name="uname" required pattern="[A-Za-z]{4,10}"
+           title="فقط ۴ تا ۱۰ حرف انگلیسی"&gt;
+  &lt;/p&gt;
+  &lt;p&gt;
+    &lt;label for="mail"&gt;ایمیل:&lt;/label&gt;&lt;br&gt;
+    &lt;input type="email" id="mail" name="mail" required&gt;
+  &lt;/p&gt;
+  &lt;p&gt;
+    &lt;label for="mobile"&gt;شماره موبایل:&lt;/label&gt;&lt;br&gt;
+    &lt;input type="tel" id="mobile" name="mobile" pattern="09[0-9]{9}"
+           placeholder="09121234567" title="۱۱ رقم و شروع با ۰۹"&gt;
+  &lt;/p&gt;
+  &lt;p&gt;
+    &lt;label for="age"&gt;سن (۱۸ تا ۹۹):&lt;/label&gt;&lt;br&gt;
+    &lt;input type="number" id="age" name="age" min="18" max="99"&gt;
+  &lt;/p&gt;
+  &lt;button type="submit"&gt;ثبت‌نام&lt;/button&gt;
+&lt;/form&gt;</code></pre>
+        <div class="result">
+          <form action="" method="get">
+            <p>
+              <label for="uname">نام کاربری (۴ تا ۱۰ حرف انگلیسی):</label><br />
+              <input id="uname" name="uname" required pattern="[A-Za-z]{4,10}" title="فقط ۴ تا ۱۰ حرف انگلیسی" />
+            </p>
+            <p>
+              <label for="mail">ایمیل:</label><br />
+              <input type="email" id="mail" name="mail" required />
+            </p>
+            <p>
+              <label for="mobile">شماره موبایل:</label><br />
+              <input type="tel" id="mobile" name="mobile" pattern="09[0-9]{9}" placeholder="09121234567" title="۱۱ رقم و شروع با ۰۹" />
+            </p>
+            <p>
+              <label for="age">سن (۱۸ تا ۹۹):</label><br />
+              <input type="number" id="age" name="age" min="18" max="99" />
+            </p>
+            <button type="submit">ثبت‌نام</button>
+          </form>
+        </div>
+        <p>
+          <code>pattern</code> فقط وقتی بررسی می‌شود که فیلد خالی نباشد. برای اجباری کردن، <code>required</code> هم لازم است.
+          بسیاری از مرورگرها متن <code>title</code> را کنار پیام خطای الگوی نامعتبر نشان می‌دهند، اما متن دقیق پیام به مرورگر بستگی دارد. <code>title</code> را راهنمای قالب بنویسید، نه تنها راه توضیح خطا.
+        </p>
+
+        <p class="tip">
+          <strong>نکته امنیتی:</strong>
+          اعتبارسنجی HTML فقط برای راحتی کاربر است و با تغییر کد صفحه یا خاموش کردن JavaScript و حتی بدون آن، قابل دور زدن است.
+          سرور همیشه باید داده‌ها را دوباره بررسی کند. مرورگر جایگزین بررسی سمت سرور نیست.
+        </p>
+      </section>
+
+      <section class="lesson">
+        <h2>عناصر دیگر فرم</h2>
+
+        <div class="tag-card">
+          <h4>&lt;fieldset&gt; و &lt;legend&gt;</h4>
+          <p><code>fieldset</code> فیلدهای مرتبط را در یک گروه می‌گذارد و <code>legend</code> عنوان همان گروه است. صفحه‌خوان این عنوان را همراه فیلدهای داخل گروه می‌خواند.</p>
+          <pre class="code"><code>&lt;fieldset&gt;
+  &lt;legend&gt;اطلاعات شخصی&lt;/legend&gt;
+  &lt;label for="fn"&gt;نام:&lt;/label&gt;
+  &lt;input id="fn" name="fname"&gt;
+  &lt;label for="ln"&gt;نام خانوادگی:&lt;/label&gt;
+  &lt;input id="ln" name="lname"&gt;
+&lt;/fieldset&gt;</code></pre>
+          <div class="result">
+            <fieldset>
+              <legend>اطلاعات شخصی</legend>
+              <label for="fn">نام:</label>
+              <input id="fn" name="fname" />
+              <label for="ln">نام خانوادگی:</label>
+              <input id="ln" name="lname" />
+            </fieldset>
+          </div>
+        </div>
+
+        <div class="tag-card">
+          <h4>&lt;select&gt;، &lt;optgroup&gt;، selected و multiple</h4>
+          <p>
+            <code>optgroup</code> گزینه‌ها را دسته‌بندی می‌کند و <code>label</code> آن فقط عنوان دسته است و خودش انتخاب نمی‌شود.
+            <code>selected</code> گزینهٔ پیش‌فرض را مشخص می‌کند. <code>value</code> مقداری است که ارسال می‌شود و متن داخل <code>option</code> فقط برای نمایش است.
+            با <code>multiple</code> روی <code>select</code>، کاربر می‌تواند چند گزینه را با هم انتخاب کند. در بسیاری از رایانه‌ها این کار با نگه داشتن Ctrl انجام می‌شود و در مک با Command.
+          </p>
+          <pre class="code"><code>&lt;label for="city"&gt;شهر:&lt;/label&gt;
+&lt;select id="city" name="city"&gt;
+  &lt;optgroup label="شمال"&gt;
+    &lt;option value="rasht"&gt;رشت&lt;/option&gt;
+    &lt;option value="sari"&gt;ساری&lt;/option&gt;
+  &lt;/optgroup&gt;
+  &lt;optgroup label="مرکز"&gt;
+    &lt;option value="tehran" selected&gt;تهران&lt;/option&gt;
+    &lt;option value="isfahan"&gt;اصفهان&lt;/option&gt;
+  &lt;/optgroup&gt;
+&lt;/select&gt;</code></pre>
+          <div class="result">
+            <label for="city">شهر:</label>
+            <select id="city" name="city">
+              <optgroup label="شمال">
+                <option value="rasht">رشت</option>
+                <option value="sari">ساری</option>
+              </optgroup>
+              <optgroup label="مرکز">
+                <option value="tehran" selected>تهران</option>
+                <option value="isfahan">اصفهان</option>
+              </optgroup>
+            </select>
+          </div>
+        </div>
+
+        <div class="tag-card">
+          <h4>&lt;datalist&gt;</h4>
+          <p>
+            عنصر <code>datalist</code> فهرست پیشنهادی برای یک <code>input</code> است. کاربر می‌تواند یکی از پیشنهادها را انتخاب کند یا چیز دیگری تایپ کند. این با <code>select</code> فرق دارد، چون <code>select</code> معمولاً فقط گزینه‌های خودش را می‌پذیرد.
+            اتصال با ویژگی <code>list</code> انجام می‌شود و مقدار آن باید برابر <code>id</code> همان <code>datalist</code> باشد.
+          </p>
+          <pre class="code"><code>&lt;label for="browser"&gt;مرورگر شما:&lt;/label&gt;
+&lt;input list="browsers" id="browser" name="browser"&gt;
+&lt;datalist id="browsers"&gt;
+  &lt;option value="Chrome"&gt;
+  &lt;option value="Firefox"&gt;
+  &lt;option value="Edge"&gt;
+  &lt;option value="Safari"&gt;
+&lt;/datalist&gt;</code></pre>
+          <div class="result">
+            <label for="browser">مرورگر شما:</label>
+            <input list="browsers" id="browser" name="browser" />
+            <datalist id="browsers">
+              <option value="Chrome"></option>
+              <option value="Firefox"></option>
+              <option value="Edge"></option>
+              <option value="Safari"></option>
+            </datalist>
+          </div>
+        </div>
+
+        <div class="tag-card">
+          <h4>&lt;textarea&gt; با rows و cols</h4>
+          <p>
+            <code>rows</code> تعداد خطوط قابل مشاهده و <code>cols</code> عرض تقریبی بر حسب نویسه است.
+            برخلاف <code>input</code>، مقدار اولیه <code>textarea</code> بین تگ آغازین و پایانی نوشته می‌شود، نه در <code>value</code>.
+          </p>
+          <pre class="code"><code>&lt;label for="bio"&gt;درباره شما:&lt;/label&gt;&lt;br&gt;
+&lt;textarea id="bio" name="bio" rows="4" cols="40" placeholder="درباره خودتان بنویسید..."&gt;&lt;/textarea&gt;</code></pre>
+          <div class="result">
+            <label for="bio">درباره شما:</label><br />
+            <textarea id="bio" name="bio" rows="4" cols="40" placeholder="درباره خودتان بنویسید..."></textarea>
+          </div>
+        </div>
+
+        <div class="tag-card">
+          <h4>انواع button</h4>
+          <table class="ref">
+            <tbody>
+              <tr>
+                <td><code>type="submit"</code></td>
+                <td>فرم را ارسال می‌کند (پیش‌فرض دکمه داخل فرم)</td>
+              </tr>
+              <tr>
+                <td><code>type="reset"</code></td>
+                <td>فیلدها را به مقدار اولیه برمی‌گرداند و لزوماً آن‌ها را خالی نمی‌کند.</td>
+              </tr>
+              <tr>
+                <td><code>type="button"</code></td>
+                <td>هیچ کاری نمی‌کند تا JavaScript به آن رفتار بدهد</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <p class="mistake">
+          <strong>خطای متداول:</strong>
+          دکمه‌ای که فقط برای JavaScript است را داخل فرم بدون <code>type="button"</code> می‌گذارند.
+          نوع پیش‌فرض <code>button</code> داخل فرم <code>submit</code> است، پس با کلیک، فرم ناخواسته ارسال و صفحه دوباره بارگذاری می‌شود.
+        </p>
+
+        <p class="exercise">
+          <strong>تمرین:</strong>
+          یک فرم «ثبت‌نام در دوره» بسازید با: نام (اجباری)، ایمیل (اجباری)، تاریخ تولد،
+          انتخاب دوره با <code>select</code>، سطح با <code>radio</code>، روزهای آزاد با
+          <code>checkbox</code>، رنگ دلخواه با <code>color</code>، توضیحات با <code>textarea</code>،
+          و دکمه‌های ارسال و پاک کردن. بخش‌ها را با <code>fieldset</code> گروه‌بندی کنید.
+        </p>
+
+        <p>
+          مطالعه بیشتر:
+          <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/form" target="_blank" rel="noopener">form (MDN)</a>،
+          <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/input" target="_blank" rel="noopener">input و انواع آن (MDN)</a>،
+          <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Guides/Constraint_validation" target="_blank" rel="noopener">Constraint validation (MDN)</a>،
+          <a href="https://developer.mozilla.org/en-US/docs/Learn_web_development/Extensions/Forms" target="_blank" rel="noopener">Web forms (MDN)</a>
+        </p>
+      </section>
+
+      <nav class="page-nav">
+        <a href="18-entities-emoji.html">→ درس قبل</a>
+        <a href="../index.html">فهرست مطالب</a>
+        <a href="20-media.html">درس بعد ←</a>
+      </nav>
+    </div>
+
+    <footer class="page-footer">جزوه HTML مقدماتی</footer>
+  </body>
+</html>

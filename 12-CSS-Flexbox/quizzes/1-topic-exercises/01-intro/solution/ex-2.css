@@ -1,0 +1,34 @@
+/* تمرین ۲ — منوی خراب: flex روی عنصر اشتباه (پاسخ) */
+
+body {
+  font-family: Tahoma, sans-serif;
+  margin: 20px;
+  background-color: #f8f9fa;
+  color: #212529;
+}
+
+/* درست شد: display: flex روی ظرف (سربرگ) */
+.topbar {
+  display: flex;
+  background-color: #343a40;
+  padding: 10px;
+}
+
+.logo {
+  color: #ffd43b;
+  font-weight: bold;
+  margin: 5px;
+}
+
+/* nav هم خودش ظرف لینک‌هاست */
+.links {
+  display: flex;
+  margin: 5px;
+}
+
+/* درست شد: display: flex از روی لینک‌ها برداشته شد */
+.links a {
+  color: white;
+  text-decoration: none;
+  margin: 0 10px;
+}

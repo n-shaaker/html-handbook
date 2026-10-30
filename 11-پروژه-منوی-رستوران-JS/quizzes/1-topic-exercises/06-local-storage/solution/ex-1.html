@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>تمرین ۱ — سفارش به نام شما | منوی نارنج</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="ex-1.js" defer></script>
+  </head>
+  <body>
+    <header class="site-header">
+      <p class="logo">رستوران سنتی <strong>نارنج</strong></p>
+    </header>
+
+    <main class="container">
+      <h1>تمرین ۱ — سفارش به نام شما</h1>
+
+      <form class="reserve-form" id="name-form">
+        <label for="customer">سفارش به نام:</label>
+        <input type="text" id="customer" autocomplete="name" />
+        <button type="button" class="btn btn-light" id="forget">پاک کردن نام</button>
+      </form>
+      <p class="message" id="greeting" aria-live="polite"></p>
+
+    </main>
+  </body>
+</html>

@@ -1,0 +1,14 @@
+.benefits {
+  list-style-type: square;
+  list-style-position: inside; /* علامت جزو خط اول و داخل پس‌زمینه */
+  background-color: #f1f8f5;
+  padding: 12px;
+}
+
+.benefits li {
+  margin-bottom: 6px;
+}
+
+.benefits li::marker {
+  color: #0b6e4f;
+}

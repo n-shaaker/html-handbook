@@ -1,0 +1,42 @@
+/* تمرین ۲ — مراحل سفارش وارونه شده (پاسخ) */
+
+body {
+  font-family: Tahoma, sans-serif;
+  margin: 20px;
+  background-color: #f8f9fa;
+  color: #212529;
+}
+
+/* درست شد: row یعنی از شروع محور (در rtl از راست) */
+.steps {
+  display: flex;
+  flex-direction: row;
+}
+
+.step {
+  background-color: #2f9e44;
+  color: white;
+  padding: 10px 15px;
+  margin: 4px;
+  border-radius: 6px;
+}
+
+/* درست شد: column یعنی از بالا به پایین، به ترتیب HTML */
+.card {
+  display: flex;
+  flex-direction: column;
+  width: 250px;
+  background-color: white;
+  border: 1px solid #dee2e6;
+  padding: 15px;
+  margin-top: 20px;
+}
+
+.btn {
+  background-color: #1c7ed6;
+  color: white;
+  text-decoration: none;
+  text-align: center;
+  padding: 8px;
+  border-radius: 4px;
+}

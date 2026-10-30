@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>آب‌وهوای سفر</title>
+    <link rel="stylesheet" href="style.css" />
+    <!-- ترتیب مهم است: اول سرور شبیه‌سازی‌شده، بعد کد شما -->
+    <script src="fake-api.js" defer></script>
+    <script src="app.js" defer></script>
+  </head>
+  <body>
+    <main class="card">
+      <h1>⛅ آب‌وهوای سفر</h1>
+
+      <form id="search-form">
+        <label for="city">نام شهر:</label>
+        <input type="text" id="city" list="city-names" placeholder="مثلاً تهران" />
+        <datalist id="city-names">
+          <option value="تهران"></option>
+          <option value="تبریز"></option>
+          <option value="رشت"></option>
+          <option value="بندرعباس"></option>
+          <option value="مشهد"></option>
+        </datalist>
+        <button type="submit" id="search-btn">جستجو</button>
+      </form>
+
+      <label class="check">
+        <input type="checkbox" id="fail" />
+        شبیه‌سازی قطعی سرور
+      </label>
+
+      <section class="result" aria-live="polite">
+        <p class="weather" id="weather"></p>
+        <p class="source" id="source"></p>
+      </section>
+
+      <button type="button" class="light" id="clear-cache">پاک کردن حافظه</button>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,17 @@
+/* left در صفحه فارسی عجیب است؛ center برای تیتر مناسب است */
+.post-title {
+  text-align: center;
+}
+
+/* letter-spacing اتصال حروف فارسی را به هم می‌زند، پس برداشته شد */
+.post-meta {
+  color: #868e96;
+  font-size: 14px;
+}
+
+/* رنگ تیره‌تر برای کنتراست بهتر و line-height راحت برای متن بلند */
+.post-body {
+  color: #333333;
+  line-height: 1.9;
+  text-align: justify;
+}

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="آموزش آبشاری بودن CSS با مثال‌های زنده">
+  <title>آبشاری بودن CSS | مثال به مثال</title>
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+</head>
+
+<body>
+
+  <header class="page-header">
+    <h1>آبشاری بودن CSS</h1>
+    <p>وقتی چند قانون با هم تداخل دارند، کدام‌یک برنده می‌شود؟</p>
+  </header>
+
+  <div class="container">
+
+    <p class="tip">
+      <strong>Cascading</strong> (حرف C در نام CSS) یعنی قوانین CSS مثل آبشار روی هم می‌ریزند.
+      مرورگر برای هر ویژگی (مثل <code>color</code>) فقط <strong>یک مقدار نهایی</strong> انتخاب می‌کند.
+      در این مجموعه با مثال‌های جدا می‌بینید چه چیزی برنده را مشخص می‌کند.
+    </p>
+
+    <nav class="toc" aria-label="فهرست مثال‌ها">
+      <strong>فهرست مثال‌ها</strong>
+      <ol>
+        <li><a href="pages/01-order.html">ترتیب قوانین در یک فایل</a></li>
+        <li><a href="pages/02-specificity.html">قدرت انتخابگر (Specificity)</a></li>
+        <li><a href="pages/03-stylesheets.html">چند فایل CSS و ترتیب لینک</a></li>
+        <li><a href="pages/04-inheritance.html">وراثت از والد به فرزند</a></li>
+        <li><a href="pages/05-important.html">استفاده از !important</a></li>
+        <li><a href="pages/06-tie-break.html">چند کلاس هم‌قدرت روی یک عنصر</a></li>
+      </ol>
+    </nav>
+
+    <section class="lesson">
+      <h2>خلاصه قانون آبشار</h2>
+      <p>
+        وقتی چند قانون برای <strong>یک ویژگی از یک عنصر</strong> مقدار می‌دهند، مرورگر این مراحل را
+        به‌ترتیب بررسی می‌کند. هر مرحله که برنده را مشخص کرد، مراحل بعدی دیگر بررسی نمی‌شوند.
+      </p>
+      <table class="ref">
+        <thead>
+          <tr>
+            <th>مرحله (به‌ترتیب بررسی)</th>
+            <th>یعنی چه؟</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>۱. منبع و <code>!important</code></td>
+            <td>
+              اعلان‌های <code>!important</code> از اعلان‌های عادی قوی‌ترند.
+              در اعلان‌های عادی، CSS نویسنده (ما) از CSS پیش‌فرض مرورگر قوی‌تر است.
+            </td>
+          </tr>
+          <tr>
+            <td>۲. استایل درون‌خطی</td>
+            <td>صفت <code>style="..."</code> از هر انتخابگری در فایل CSS قوی‌تر است (مگر در برابر <code>!important</code>).</td>
+          </tr>
+          <tr>
+            <td>۳. قدرت انتخابگر (Specificity)</td>
+            <td>id قوی‌تر از کلاس، و کلاس قوی‌تر از نام تگ است.</td>
+          </tr>
+          <tr>
+            <td>۴. ترتیب</td>
+            <td>اگر همه‌چیز برابر بود، قانون پایین‌تر / فایلی که دیرتر لینک شده برنده است.</td>
+          </tr>
+          <tr>
+            <td>اگر هیچ قانونی نبود</td>
+            <td>
+              ویژگی‌های ارثی (مثل <code>color</code>) مقدار والد را می‌گیرند؛
+              بقیه (مثل <code>border</code>) مقدار اولیه (initial) را می‌گیرند.
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <p class="tip">
+        همه ظاهر این مجموعه فقط با فایل‌های CSS خارجی نوشته شده است؛ بدون تگ <code>style</code> و بدون
+        <code>style="..."</code>.
+      </p>
+    </section>
+
+  </div>
+
+  <footer class="page-footer">
+    آبشاری بودن CSS
+  </footer>
+
+</body>
+
+</html>

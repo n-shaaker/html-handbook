@@ -1,0 +1,28 @@
+/* تمرین ۲ — چهار ستون در دسکتاپ، دو ستون در گوشی (پاسخ) */
+
+body {
+  font-family: Tahoma, sans-serif;
+  margin: 20px;
+  background-color: #f8f9fa;
+  color: #212529;
+}
+
+.categories {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+}
+
+.cat {
+  background-color: #fff4e6;
+  border: 1px solid #ffc078;
+  padding: 25px 10px;
+  text-align: center;
+}
+
+/* گوشی: دو ستون */
+@media (max-width: 600px) {
+  .categories {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}

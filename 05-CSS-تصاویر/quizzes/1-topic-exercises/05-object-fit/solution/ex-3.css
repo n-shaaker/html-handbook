@@ -1,0 +1,21 @@
+body {
+  font-family: Tahoma, Arial, sans-serif;
+  line-height: 1.8;
+  padding: 16px;
+}
+
+.wide {
+  display: block;
+  width: 320px;
+  height: 140px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+/* کدام قسمت عکس در قاب بماند */
+.pos-top    { object-position: center top; }
+.pos-center { object-position: center center; }
+.pos-bottom { object-position: center bottom; }
+
+/* صورت معمولاً در یک‌سوم بالای عکس پرسنلی است */
+.pos-face   { object-position: center 20%; }

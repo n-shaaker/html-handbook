@@ -1,0 +1,37 @@
+/* مثال ۲: قدرت انتخابگر (Specificity) — سه‌تایی (id, کلاس, نوع) */
+
+.demo-spec p {          /* (0, 1, 1) */
+  color: #c92a2a;
+  font-size: 18px;
+}
+
+.demo-spec .note {      /* (0, 2, 0) */
+  color: #1a5fb4;
+}
+
+.demo-spec #special {   /* (1, 1, 0) */
+  color: #0b6e4f;
+  font-weight: bold;
+}
+
+/* جعبه‌های راهنمای سه ستون قدرت */
+.demo-spec .score-tag {
+  border-right: 4px solid #c92a2a;
+  padding: 6px 10px;
+  margin: 6px 0;
+  background-color: #fff5f5;
+}
+
+.demo-spec .score-class {
+  border-right: 4px solid #1a5fb4;
+  padding: 6px 10px;
+  margin: 6px 0;
+  background-color: #e8f4fd;
+}
+
+.demo-spec .score-id {
+  border-right: 4px solid #0b6e4f;
+  padding: 6px 10px;
+  margin: 6px 0;
+  background-color: #ebfbee;
+}

@@ -1,0 +1,37 @@
+/* ۱۵) Fonts */
+
+/* فونت لوکال: مسیر نسبت به همین فایل (css/demos) است */
+@font-face {
+  font-family: "MyVazir";
+  src: url("../../fonts/Vazirmatn-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "MyVazir";
+  src: url("../../fonts/Vazirmatn-Bold.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* نمونه‌های انگلیسی با dir="ltr" در HTML چپ‌چین شده‌اند */
+.f-serif  { font-family: "Times New Roman", Times, serif; }
+.f-sans   { font-family: Arial, Helvetica, sans-serif; }
+.f-mono   { font-family: "Courier New", monospace; }
+
+.f-px     { font-size: 24px; }
+.f-rem    { font-size: 1.5rem; }
+.f-em     { font-size: 1.5em; }
+.f-bold   { font-weight: bold; }
+.f-italic { font-style: italic; }
+.f-short  { font: bold 20px Tahoma, sans-serif; }
+
+/* Google Fonts (link در head صفحه) */
+.f-google-vazir   { font-family: "Vazirmatn", Tahoma, sans-serif; font-size: 18px; }
+.f-google-lalezar { font-family: "Lalezar", Tahoma, sans-serif; font-size: 28px; color: #0b6e4f; }
+
+/* فونت لوکال (از پوشه fonts) */
+.f-local { font-family: "MyVazir", Tahoma, sans-serif; font-size: 18px; }

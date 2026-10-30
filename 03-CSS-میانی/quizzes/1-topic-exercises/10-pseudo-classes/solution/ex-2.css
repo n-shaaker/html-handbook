@@ -1,0 +1,44 @@
+body {
+  font-family: Tahoma, Arial, sans-serif;
+  line-height: 1.8;
+  padding: 24px;
+}
+
+.menu {
+  max-width: 450px;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  border: 1px solid #ddd;
+}
+
+.menu li {
+  padding: 8px 12px;
+  border-bottom: 1px solid #ddd;
+}
+
+.menu li:nth-child(even) {
+  background-color: #f3f6f9;
+}
+
+/* پرفروش‌ترین */
+.menu li:first-child {
+  font-weight: bold;
+}
+
+.menu li:last-child {
+  border-bottom: none;
+}
+
+.price {
+  float: left;
+}
+
+.menu li:not(.sold-out) .price {
+  color: #0b6e4f;
+}
+
+.menu li.sold-out {
+  color: #999;
+  text-decoration: line-through;
+}

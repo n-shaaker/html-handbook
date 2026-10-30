@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>۱۴) DOM: انتخاب عنصرها | آموزش JavaScript سطح میانی</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <script src="../js/log.js" defer></script>
+  <script src="../js/demos/dom-selecting.js" defer></script>
+</head>
+
+<body>
+
+  <header class="page-header" id="top">
+    <h1>آموزش JavaScript — سطح میانی</h1>
+    <p>۱۴) DOM: انتخاب عنصرها</p>
+  </header>
+
+  <div class="container">
+
+    <nav class="page-nav" aria-label="ناوبری درس">
+      <a href="13-errors.html">→ قبلی: Errors</a>
+      <a href="../index.html">فهرست درس‌ها</a>
+      <a href="15-dom-changing.html">بعدی: DOM Changing ←</a>
+    </nav>
+
+    <section class="lesson" id="dom-selecting">
+      <h2>۱۴) DOM: انتخاب عنصرها</h2>
+<p>وقتی مرورگر صفحه را می‌خواند، از HTML یک <strong>درخت از اشیا</strong> می‌سازد به اسم DOM (Document Object Model). JavaScript با این درخت کار می‌کند؛ هر تگ یک «گره» (node) است.</p>
+
+<pre class="code"><code>document
+└── html
+    ├── head
+    │   └── title
+    └── body
+        ├── h1
+        └── ul
+            ├── li
+            └── li</code></pre>
+
+<p>مرورگر سند را به شکل درخت نگه می‌دارد. <code>document</code> ریشهٔ دسترسی شماست. <code>html</code> دو شاخهٔ اصلی <code>head</code> و <code>body</code> دارد و هر تگ داخل بدنه یک گره است. انتخاب عنصر یعنی پیدا کردن یکی از این گره‌ها تا بعداً بتوانید متن یا ظاهرش را عوض کنید.</p>
+
+<h3>روش‌های انتخاب</h3>
+
+<table class="ref">
+<tr><th>روش</th><th>خروجی</th><th>مثال</th></tr>
+<tr><td><code>getElementById("id")</code></td><td>یک عنصر (یا null)</td><td><code>document.getElementById("menu")</code></td></tr>
+<tr><td><code>querySelector("css")</code></td><td><strong>اولین</strong> عنصر منطبق (یا null)</td><td><code>document.querySelector(".card p")</code></td></tr>
+<tr><td><code>querySelectorAll("css")</code></td><td>همه عنصرها (NodeList؛ اگر نبود، خالی با طول ۰)</td><td><code>document.querySelectorAll("li")</code></td></tr>
+<tr><td><code>getElementsByClassName()</code></td><td>همه با آن کلاس (HTMLCollection)</td><td><code>document.getElementsByClassName("item")</code></td></tr>
+<tr><td><code>getElementsByTagName()</code></td><td>همه با آن تگ (HTMLCollection)</td><td><code>document.getElementsByTagName("p")</code></td></tr>
+</table>
+
+<p class="tip"><code>querySelector</code> و <code>querySelectorAll</code> همان انتخابگرهای CSS را قبول می‌کنند که در دوره CSS یاد گرفتید؛ برای همین معمولاً فقط از همین دو استفاده می‌کنیم. NodeList خروجی <code>querySelectorAll</code> متد <code>forEach</code> دارد ولی <code>map</code> و <code>filter</code> ندارد؛ اگر لازم شد با <code>Array.from(list)</code> یا <code>[...list]</code> آن را به آرایه تبدیل کنید. HTMLCollection حتی <code>forEach</code> هم ندارد.</p>
+
+<h3>مثال</h3>
+
+<pre class="code"><code>&lt;ul id="menu"&gt;
+  &lt;li class="item"&gt;خانه&lt;/li&gt;
+  &lt;li class="item special"&gt;محصولات&lt;/li&gt;
+  &lt;li class="item"&gt;تماس&lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+
+<p>این نشانه‌گذاری همان درختی است که مثال بعدی انتخاب می‌کند. <code>id</code> باید در صفحه یکتا باشد. کلاس <code>item</code> روی هر سه آیتم تکرار شده و کلاس <code>special</code> فقط یکی را متمایز می‌کند. انتخابگرها از همین شناسه و کلاس‌ها استفاده می‌کنند.</p>
+
+<pre class="code"><code>const menu = document.getElementById("menu");
+const firstItem = document.querySelector("#menu .item");
+const special = document.querySelector(".special");
+const allItems = document.querySelectorAll("#menu li");
+
+console.log(menu);                    // خود عنصر &lt;ul&gt;
+console.log(firstItem.textContent);   // خانه
+console.log(special.textContent);     // محصولات
+console.log(allItems.length);         // 3
+
+allItems.forEach(item =&gt; console.log("-", item.textContent));
+
+console.log(document.querySelector("#no-such-id"));   // null ← پیدا نشد</code></pre>
+
+<p><code>getElementById</code> فقط با شناسه کار می‌کند و یک عنصر یا <code>null</code> برمی‌گرداند. <code>querySelector</code> اولین عنصری را می‌دهد که با انتخابگر CSS جور باشد. <code>querySelectorAll</code> همهٔ موارد را در یک فهرست می‌ریزد که می‌شود روی آن <code>forEach</code> زد. اگر چیزی پیدا نشود، <code>querySelector</code> مقدار <code>null</code> می‌دهد و نباید مستقیم روی آن ویژگی بخوانید.</p>
+
+<div class="result">
+<ul id="menu"><li class="item">خانه</li><li class="item special">محصولات</li><li class="item">تماس</li></ul>
+<pre class="console" id="out-1"></pre>
+</div>
+
+<h3>مثال زنده: آزمایشگاه انتخابگر</h3>
+
+<p>یک انتخابگر CSS بنویسید (مثلاً <code>.fruit</code>، <code>li:first-child</code>، <code>#c3</code>، <code>.red</code>) تا عنصرهای منطبق با <code>querySelectorAll</code> پیدا و رنگی شوند:</p>
+
+<pre class="code"><code>const selectorInput = document.getElementById("sel-input");
+const info = document.getElementById("sel-info");
+const lab = document.getElementById("lab");
+
+function highlight() {
+  lab.querySelectorAll(".demo-box").forEach(el =&gt; el.classList.remove("active"));
+  if (selectorInput.value.trim() === "") {
+    info.textContent = "یک انتخابگر بنویسید";
+    return;
+  }
+  try {
+    const found = lab.querySelectorAll(selectorInput.value);
+    found.forEach(el =&gt; el.classList.add("active"));
+    info.textContent = found.length + " عنصر پیدا شد";
+  } catch (error) {               // انتخابگر نامعتبر (مثل "..") خطای SyntaxError می‌دهد
+    info.textContent = "انتخابگر نامعتبر است";
+  }
+}
+
+selectorInput.addEventListener("input", highlight);
+highlight();                      // یک بار هم در شروع اجرا شود</code></pre>
+
+<p class="tip">جستجو روی <code>lab.querySelectorAll(...)</code> انجام شده، نه <code>document</code>؛ یعنی فقط داخل همان فهرست می‌گردد. querySelector روی هر عنصری هم صدا زده می‌شود و فقط بین فرزندان آن جستجو می‌کند.</p>
+
+<div class="result">
+<label for="sel-input">انتخابگر CSS:</label>
+<input type="text" id="sel-input" value=".fruit" dir="ltr">
+<p id="sel-info" aria-live="polite"></p>
+<ul class="js-list" id="lab"><li class="demo-box fruit red" id="c1">سیب (fruit red)</li><li class="demo-box fruit" id="c2">موز (fruit)</li><li class="demo-box veg red" id="c3">گوجه (veg red) #c3</li><li class="demo-box veg" id="c4">هویج (veg)</li></ul>
+</div>
+
+<p class="mistake"><strong>اشتباه رایج:</strong> فراموش کردن <code>.</code> یا <code>#</code> در querySelector: <code>querySelector("menu")</code> دنبال تگی به اسم menu می‌گردد، نه id.</p>
+
+<p class="mistake"><strong>اشتباه رایج:</strong> صدا زدن متد عنصر روی <code>querySelectorAll</code>: <code>document.querySelectorAll("li").textContent = ...</code> کار نمی‌کند؛ باید با <code>forEach</code> روی تک‌تک عضوها کار کنید.</p>
+
+<p class="mistake"><strong>اشتباه رایج:</strong> اجرای اسکریپت قبل از ساخته شدن عنصر. اگر <code>&lt;script&gt;</code> در <code>&lt;head&gt;</code> و بدون <code>defer</code> باشد، هنوز <code>body</code> خوانده نشده و <code>getElementById</code> مقدار <code>null</code> برمی‌گرداند؛ بعد <code>null.textContent</code> خطای TypeError می‌دهد. در این جزوه همه اسکریپت‌ها با <code>defer</code> بارگذاری می‌شوند تا بعد از ساخته شدن کامل صفحه اجرا شوند.</p>
+
+<p class="exercise"><strong>تمرین:</strong> صفحه‌ای با چهار کارت محصول بسازید (<code>&lt;div class="product"&gt;</code>) که یکی از آن‌ها کلاس اضافه <code>sold-out</code> دارد و هر کارت یک <code>&lt;h3&gt;</code> برای نام دارد. (الف) با querySelectorAll همه کارت‌ها را بگیرید و تعدادشان را چاپ کنید. (ب) نام همه محصولات را با forEach چاپ کنید (راهنما: <code>card.querySelector("h3").textContent</code>). (ج) با یک انتخابگر، فقط کارت ناموجود را پیدا کنید و نامش را چاپ کنید.</p>
+    </section>
+
+    <nav class="page-nav" aria-label="ناوبری درس پایین">
+      <a href="13-errors.html">→ قبلی: Errors</a>
+      <a href="../index.html">فهرست درس‌ها</a>
+      <a href="15-dom-changing.html">بعدی: DOM Changing ←</a>
+    </nav>
+
+  </div>
+
+  <footer class="page-footer">
+    آموزش JavaScript سطح میانی
+  </footer>
+
+</body>
+
+</html>

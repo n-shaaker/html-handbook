@@ -1,0 +1,178 @@
+/* ۱۳) Navigation Bar */
+
+.demo-nav ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.demo-nav a {
+  text-decoration: none;
+}
+
+/* منوی عمودی */
+.demo-nav .vertical {
+  width: 200px;
+  background-color: #f1f1f1;
+}
+
+.demo-nav .vertical a {
+  display: block;
+  padding: 8px 16px;
+  color: #000;
+}
+
+.demo-nav .vertical a:hover,
+.demo-nav .vertical a:focus-visible {
+  background-color: #555;
+  color: white;
+}
+
+.demo-nav .vertical a.active {
+  background-color: #0b6e4f;
+  color: white;
+}
+
+/* منوی افقی inline-block */
+.demo-nav .horizontal {
+  background-color: #333;
+}
+
+.demo-nav .horizontal li {
+  display: inline-block;
+}
+
+.demo-nav .horizontal a {
+  display: block;
+  color: white;
+  padding: 14px 16px;
+}
+
+.demo-nav .horizontal a:hover,
+.demo-nav .horizontal a:focus-visible {
+  background-color: #111;
+}
+
+.demo-nav .horizontal a.active {
+  background-color: #0b6e4f;
+}
+
+/* منوی افقی float (روش قدیمی) */
+.demo-nav .floated {
+  overflow: hidden;
+  background-color: #1a3a5c;
+}
+
+.demo-nav .floated li {
+  float: right;
+}
+
+.demo-nav .floated li.left {
+  float: left;
+}
+
+.demo-nav .floated a {
+  display: block;
+  color: white;
+  padding: 14px 16px;
+}
+
+.demo-nav .floated a:hover,
+.demo-nav .floated a:focus-visible {
+  background-color: #0f2740;
+}
+
+.demo-nav .floated a.active {
+  background-color: #e8590c;
+}
+
+/* نوار منوی فروشگاه با Flexbox */
+.demo-nav .shop-nav {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  flex-wrap: wrap;
+  background-color: #1a3a5c;
+  padding: 0 8px;
+}
+
+.demo-nav .shop-nav a {
+  display: block;
+  color: white;
+  padding: 14px 16px;
+}
+
+.demo-nav .shop-nav a:hover,
+.demo-nav .shop-nav a:focus-visible {
+  background-color: #0f2740;
+}
+
+.demo-nav .shop-nav a.active {
+  background-color: #e8590c;
+}
+
+.demo-nav .shop-nav .logo a {
+  color: #ffd43b;
+  font-size: 18px;
+  font-weight: bold;
+  padding-left: 24px;
+}
+
+.demo-nav .shop-nav .cart {
+  margin-right: auto;
+}
+
+/* نشان تعداد کنار متن سبد خرید */
+.demo-nav .cart-count {
+  padding: 0 7px;
+  border-radius: 10px;
+  background-color: #e8590c;
+  font-size: 12px;
+}
+
+/* منوی تب با خط زیر */
+.demo-nav .underline {
+  border-bottom: 1px solid #dee2e6;
+}
+
+.demo-nav .underline li {
+  display: inline-block;
+}
+
+.demo-nav .underline a {
+  display: block;
+  color: #495057;
+  padding: 10px 16px;
+  border-bottom: 3px solid transparent;
+}
+
+.demo-nav .underline a:hover,
+.demo-nav .underline a:focus-visible,
+.demo-nav .underline a.active {
+  border-bottom-color: #e8590c;
+  color: #e8590c;
+}
+
+/* منوی دکمه‌ای گرد */
+.demo-nav .pills li {
+  display: inline-block;
+}
+
+.demo-nav .pills a {
+  display: block;
+  color: #1a5fb4;
+  padding: 8px 20px;
+  border: 1px solid #1a5fb4;
+  border-radius: 20px;
+  margin-left: 6px;
+}
+
+.demo-nav .pills a:hover,
+.demo-nav .pills a:focus-visible {
+  background-color: #e8f4fd;
+}
+
+.demo-nav .pills a.active {
+  background-color: #1a5fb4;
+  color: white;
+}

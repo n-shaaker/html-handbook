@@ -1,0 +1,20 @@
+/* کیت آماده دکمه و کارت؛ این فایل را تغییر ندهید */
+.card {
+  max-width: 360px;
+  padding: 16px;
+  border: 1px solid #ced4da;
+  border-radius: 8px;
+}
+
+.card-title {
+  color: #212529;
+}
+
+.card .btn {
+  display: inline-block;
+  padding: 8px 18px;
+  background-color: #495057;
+  color: white;
+  text-decoration: none;
+  border-radius: 4px;
+}

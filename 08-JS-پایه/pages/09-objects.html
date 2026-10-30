@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>۹) اشیا (Objects) | آموزش JavaScript سطح پایه</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <script src="../js/log.js" defer></script>
+  <script src="../js/demos/objects.js" defer></script>
+</head>
+
+<body>
+
+  <header class="page-header" id="top">
+    <h1>آموزش JavaScript — سطح پایه</h1>
+    <p>۹) اشیا (Objects)</p>
+  </header>
+
+  <div class="container">
+
+    <nav class="page-nav" aria-label="ناوبری درس">
+      <a href="08-functions.html">→ قبلی: Functions</a>
+      <a href="../index.html">فهرست درس‌ها</a>
+      <a href="10-events.html">بعدی: Events ←</a>
+    </nav>
+
+    <section class="lesson" id="objects">
+      <h2>۹) اشیا (Objects)</h2>
+<p>شیء (Object) چند مقدار مرتبط را با «اسم» کنار هم نگه می‌دارد. هر جفت <code>کلید: مقدار</code> یک <strong>ویژگی (property)</strong> است. وقتی اطلاعات یک چیز واقعی — مثل یک دانش‌آموز یا یک کالا — چند تکه دارد، به‌جای ساختن متغیرهای جدا و بی‌ربط، آن‌ها را در یک شیء جمع می‌کنید تا معلوم باشد همه متعلق به همان چیز هستند.</p>
+
+<pre class="code"><code>const student = {
+  firstName: "سارا",
+  lastName: "احمدی",
+  age: 20,
+  isActive: true
+};
+
+console.log(student.firstName);     // سارا ← دسترسی با نقطه
+console.log(student["age"]);        // 20   ← دسترسی با براکت (اسم ویژگی داخل گیومه)
+console.log(student.grade);         // undefined ← ویژگی‌ای که وجود ندارد خطا نمی‌دهد</code></pre>
+
+<div class="result">
+<pre class="console" id="out-1"></pre>
+</div>
+
+<p>آکولاد شیء را می‌سازد و هر ویژگی با کاما از ویژگی بعدی جدا می‌شود. <code>student.firstName</code> مقدار ویژگی <code>firstName</code> را می‌خواند. شکل <code>student["age"]</code> همان کار را با براکت انجام می‌دهد و نام ویژگی را به‌صورت متن می‌گیرد. اگر ویژگی‌ای وجود نداشته باشد، JavaScript خطا نمی‌دهد و <code>undefined</code> برمی‌گرداند.</p>
+
+<h3>تغییر، اضافه و حذف ویژگی</h3>
+
+<pre class="code"><code>student.age = 21;               // تغییر
+student.city = "تهران";         // اضافه
+delete student.isActive;        // حذف
+console.log(student);</code></pre>
+
+<div class="result">
+<pre class="console" id="out-2"></pre>
+</div>
+
+<p>دادن مقدار تازه به یک ویژگی موجود، همان ویژگی را عوض می‌کند. اگر نام ویژگی از قبل نباشد، با همان شکل نوشتن به شیء اضافه می‌شود. <code>delete</code> ویژگی را از شیء برمی‌دارد. خود متغیر <code>student</code> همچنان به همان شیء اشاره می‌کند؛ فقط محتوای داخل شیء عوض شده است.</p>
+
+<p class="tip">Console واقعی مرورگر شیء را به شکل <code>{firstName: 'سارا', lastName: 'احمدی', age: 21, city: 'تهران'}</code> نشان می‌دهد؛ جعبه Console این صفحه آن را به شکل JSON (با گیومه دور کلیدها) می‌نویسد. محتوا یکی است.</p>
+
+<p class="tip">با اینکه <code>student</code> با <code>const</code> ساخته شده، می‌توانیم <strong>داخلش</strong> را تغییر دهیم. <code>const</code> فقط اجازه نمی‌دهد کل متغیر را با یک شیء دیگر عوض کنیم.</p>
+
+<h3>متد: تابعی که داخل شیء است</h3>
+
+<pre class="code"><code>const person = {
+  firstName: "علی",
+  lastName: "رضایی",
+  fullName: function () {
+    return this.firstName + " " + this.lastName;   // this یعنی «همین شیء»
+  }
+};
+
+console.log(person.fullName());     // علی رضایی</code></pre>
+
+<div class="result">
+<pre class="console" id="out-3"></pre>
+</div>
+
+<p>وقتی مقدار یک ویژگی تابع باشد، به آن متد می‌گوییم. <code>this</code> داخل متد معمولی به همان شیئی اشاره می‌کند که متد از روی آن صدا زده شده؛ پس <code>this.firstName</code> یعنی ویژگی <code>firstName</code> خود <code>person</code>. پرانتز در <code>person.fullName()</code> متد را اجرا می‌کند. بدون پرانتز خود تابع برمی‌گردد و متن نام ساخته نمی‌شود.</p>
+
+<h3>مثال کاربردی: یک قلم از سبد خرید</h3>
+
+<pre class="code"><code>const cartItem = {
+  title: "هدفون بی‌سیم",
+  price: 1200000,
+  quantity: 2,
+  total: function () {
+    return this.price * this.quantity;
+  }
+};
+
+console.log(`${cartItem.title}: ${cartItem.total()} تومان`);   // هدفون بی‌سیم: 2400000 تومان
+cartItem.quantity = 3;                                          // کاربر یکی دیگر اضافه کرد
+console.log(`${cartItem.title}: ${cartItem.total()} تومان`);   // هدفون بی‌سیم: 3600000 تومان</code></pre>
+
+<div class="result">
+<pre class="console" id="out-4"></pre>
+</div>
+
+<p>متد <code>total</code> هر بار قیمت و تعداد فعلی را در هم ضرب می‌کند و نتیجه را برمی‌گرداند. چون محاسبه داخل متد است، بعد از عوض کردن <code>quantity</code> لازم نیست قیمت کل را دستی دوباره بنویسید؛ کافی است <code>total()</code> را یک بار دیگر صدا بزنید. بک‌تیک و <code>${...}</code> مقدار را وسط متن می‌گذارند.</p>
+
+<p class="tip">در کد بالا از بک‌تیک و <code>${...}</code> استفاده شده تا مقدارها داخل متن قرار بگیرند. این روش (Template Literal) را در درس ۱۳ کامل یاد می‌گیرید؛ فعلاً کافی است بدانید <code>${cartItem.title}</code> مقدار ویژگی را داخل متن می‌گذارد.</p>
+
+<h3>چه موقع براکت لازم است؟</h3>
+
+<pre class="code"><code>const key = "lastName";
+console.log(person[key]);        // رضایی ← وقتی اسم ویژگی داخل متغیر است
+console.log(person.key);         // undefined ← دنبال ویژگی به اسم key می‌گردد
+
+const product = { "unit-price": 50000 };   // اسم ویژگی خط تیره دارد
+console.log(product["unit-price"]);        // 50000 ← فقط با براکت می‌شود</code></pre>
+
+<div class="result">
+<pre class="console" id="out-5"></pre>
+</div>
+
+<p>نقطه فقط وقتی کار می‌کند که نام ویژگی را همان‌جا در کد بنویسید. اگر نام داخل یک متغیر باشد، باید از براکت استفاده کنید تا مقدار آن متغیر به‌عنوان نام ویژگی خوانده شود. <code>person.key</code> دنبال ویژگی‌ای به نام واقعی <code>key</code> می‌گردد و چون چنین ویژگی‌ای نیست، <code>undefined</code> می‌دهد. نام‌هایی که خط تیره یا فاصله دارند هم با نقطه قابل نوشتن نیستند و فقط با براکت خوانده می‌شوند.</p>
+
+<p class="mistake"><strong>اشتباه رایج:</strong> فراموش کردن پرانتز موقع صدا زدن متد: <code>person.fullName</code> خود تابع است و <code>person.fullName()</code> نتیجه آن.</p>
+
+<p class="mistake"><strong>اشتباه رایج:</strong> فراموش کردن <code>this</code> داخل متد: نوشتن <code>return firstName + " " + lastName;</code> خطای <code>firstName is not defined</code> می‌دهد، چون ویژگی‌های شیء متغیر جداگانه نیستند.</p>
+
+<p class="exercise"><strong>تمرین:</strong> یک شیء <code>book</code> با ویژگی‌های <code>title</code>، <code>author</code> و <code>price</code> بسازید و متد <code>info()</code> به آن بدهید که متنی مثل «شازده کوچولو اثر اگزوپری» برگرداند. سپس ویژگی <code>price</code> را ۲۰٪ گران‌تر کنید (<code>book.price *= 1.2</code> یا <code>book.price += book.price * 20 / 100</code>) و قیمت جدید را چاپ کنید.</p>
+    </section>
+
+    <nav class="page-nav" aria-label="ناوبری درس پایین">
+      <a href="08-functions.html">→ قبلی: Functions</a>
+      <a href="../index.html">فهرست درس‌ها</a>
+      <a href="10-events.html">بعدی: Events ←</a>
+    </nav>
+
+  </div>
+
+  <footer class="page-footer">
+    آموزش JavaScript سطح پایه
+  </footer>
+
+</body>
+
+</html>

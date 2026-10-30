@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>۱۴) تمرین جمع‌بندی | آموزش CSS Grid</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/demos/practice.css">
+</head>
+
+<body>
+
+  <header class="page-header">
+    <h1>آموزش CSS Grid — چیدمان شبکه‌ای</h1>
+    <p>۱۴) تمرین جمع‌بندی</p>
+  </header>
+
+  <div class="container">
+
+    <nav class="page-nav" aria-label="ناوبری درس">
+      <a href="13-responsive.html">→ قبلی: Grid واکنش‌گرا</a>
+      <a href="../index.html">فهرست درس‌ها</a>
+      <span aria-hidden="true"></span>
+    </nav>
+
+    <section class="lesson" id="practice">
+      <h2>۱۴) تمرین جمع‌بندی</h2>
+      <p>
+        به آخر دوره رسیدیم! در این صفحه یک چک‌لیست برای مرور، یک جدول مرجع از همه ویژگی‌ها،
+        چند مثال ترکیبی و در آخر تمرین‌هایی از ساده به سخت آمده است.
+      </p>
+
+      <h3>چک‌لیست: این‌ها را بدون نگاه کردن به جزوه بلدم؟</h3>
+      <ul class="checklist">
+        <li>می‌دانم <code>display: grid</code> روی <strong>پدر</strong> نوشته می‌شود و فقط فرزندهای مستقیم آیتم هستند.</li>
+        <li>با <code>grid-template-columns</code> و واحدهای <code>px</code>، <code>fr</code> و <code>auto</code> ستون می‌سازم.</li>
+        <li>در <code>repeat()</code> و <code>minmax()</code> ویرگول می‌گذارم، ولی بین ستون‌ها نه.</li>
+        <li>برای فاصله از <code>gap</code> استفاده می‌کنم، نه <code>margin</code>.</li>
+        <li>می‌دانم <code>grid-column: 1 / 3</code> یعنی <strong>دو</strong> ستون و <code>1 / -1</code> یعنی تمام عرض.</li>
+        <li>می‌دانم در صفحه راست‌چین خط ۱ سمت <strong>راست</strong> است.</li>
+        <li>با <code>grid-template-areas</code> نقشه صفحه می‌کشم و می‌دانم هر ناحیه باید مستطیل باشد.</li>
+        <li>فرق <code>-items</code> (داخل خانه) و <code>-content</code> (کل شبکه) را می‌دانم.</li>
+        <li>با <code>repeat(auto-fill, minmax(200px, 1fr))</code> کارت واکنش‌گرا بدون media query می‌سازم.</li>
+        <li>برای تعداد نامعلوم آیتم <code>grid-auto-rows</code> می‌نویسم.</li>
+        <li>می‌دانم کجا Grid و کجا Flexbox بهتر است و چطور با هم ترکیبشان کنم.</li>
+        <li>با یک media query نقشه صفحه را برای موبایل یک‌ستونه می‌کنم.</li>
+      </ul>
+
+      <h3>جدول مرجع: ویژگی‌های ظرف (پدر)</h3>
+      <table class="ref">
+        <tr>
+          <th>ویژگی</th>
+          <th>نمونه</th>
+          <th>کار</th>
+          <th>درس</th>
+        </tr>
+        <tr>
+          <td><code>display</code></td>
+          <td><code>grid</code></td>
+          <td>ساختن ظرف شبکه</td>
+          <td><a href="01-intro.html">۱</a></td>
+        </tr>
+        <tr>
+          <td><code>grid-template-columns</code></td>
+          <td><code>200px 1fr</code></td>
+          <td>تعداد و پهنای ستون‌ها</td>
+          <td><a href="02-columns-rows.html">۲</a></td>
+        </tr>
+        <tr>
+          <td><code>grid-template-rows</code></td>
+          <td><code>80px auto</code></td>
+          <td>تعداد و ارتفاع ردیف‌ها</td>
+          <td><a href="02-columns-rows.html">۲</a></td>
+        </tr>
+        <tr>
+          <td><code>repeat()</code> / <code>minmax()</code></td>
+          <td><code>repeat(3, minmax(100px, 1fr))</code></td>
+          <td>تکرار / کمترین و بیشترین اندازه</td>
+          <td><a href="03-repeat-minmax.html">۳</a></td>
+        </tr>
+        <tr>
+          <td><code>gap</code>، <code>row-gap</code>، <code>column-gap</code></td>
+          <td><code>16px</code> یا <code>20px 10px</code></td>
+          <td>فاصله بین خانه‌ها</td>
+          <td><a href="04-gap.html">۴</a></td>
+        </tr>
+        <tr>
+          <td><code>grid-template-areas</code></td>
+          <td><code>"header header" "side main"</code></td>
+          <td>نقشه ناحیه‌ها با اسم</td>
+          <td><a href="06-template-areas.html">۶</a></td>
+        </tr>
+        <tr>
+          <td><code>justify-items</code>، <code>align-items</code>، <code>place-items</code></td>
+          <td><code>center</code></td>
+          <td>تراز همه آیتم‌ها داخل خانه‌شان</td>
+          <td><a href="07-align-items.html">۷</a></td>
+        </tr>
+        <tr>
+          <td><code>justify-content</code>، <code>align-content</code>، <code>place-content</code></td>
+          <td><code>space-between</code></td>
+          <td>تراز کل شبکه داخل ظرف</td>
+          <td><a href="08-align-content.html">۸</a></td>
+        </tr>
+        <tr>
+          <td><code>auto-fill</code> / <code>auto-fit</code></td>
+          <td><code>repeat(auto-fill, minmax(200px, 1fr))</code></td>
+          <td>تعداد ستون خودکار</td>
+          <td><a href="09-auto-fit-fill.html">۹</a></td>
+        </tr>
+        <tr>
+          <td><code>grid-auto-rows</code>، <code>grid-auto-columns</code></td>
+          <td><code>minmax(100px, auto)</code></td>
+          <td>اندازه ردیف/ستون‌های خودکار</td>
+          <td><a href="10-implicit-grid.html">۱۰</a></td>
+        </tr>
+        <tr>
+          <td><code>grid-auto-flow</code></td>
+          <td><code>row</code>، <code>column</code>، <code>dense</code></td>
+          <td>جهت پر شدن خانه‌ها</td>
+          <td><a href="10-implicit-grid.html">۱۰</a></td>
+        </tr>
+      </table>
+
+      <h3>جدول مرجع: ویژگی‌های آیتم (فرزند)</h3>
+      <table class="ref">
+        <tr>
+          <th>ویژگی</th>
+          <th>نمونه</th>
+          <th>کار</th>
+          <th>درس</th>
+        </tr>
+        <tr>
+          <td><code>grid-column</code></td>
+          <td><code>1 / 3</code>، <code>span 2</code>، <code>1 / -1</code></td>
+          <td>از کدام خط ستون تا کدام خط</td>
+          <td><a href="05-placement.html">۵</a></td>
+        </tr>
+        <tr>
+          <td><code>grid-row</code></td>
+          <td><code>1 / 3</code>، <code>span 2</code></td>
+          <td>از کدام خط ردیف تا کدام خط</td>
+          <td><a href="05-placement.html">۵</a></td>
+        </tr>
+        <tr>
+          <td><code>grid-area</code></td>
+          <td><code>main</code></td>
+          <td>اسم آیتم برای نقشه</td>
+          <td><a href="06-template-areas.html">۶</a></td>
+        </tr>
+        <tr>
+          <td><code>justify-self</code>، <code>align-self</code>، <code>place-self</code></td>
+          <td><code>end</code></td>
+          <td>تراز فقط همین آیتم</td>
+          <td><a href="07-align-items.html">۷</a></td>
+        </tr>
+      </table>
+
+      <h3>مثال ۱: «حدس بزنید» — این آیتم کجا می‌نشیند؟</h3>
+      <p>قبل از نگاه کردن به نتیجه، روی کاغذ یک شبکه ۴×۳ بکشید و جای آیتم ۱ را حدس بزنید:</p>
+      <pre class="code"><code>.quiz-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-auto-rows: 50px;
+  gap: 6px;
+}
+
+.guess {
+  grid-column: 2 / 4;   /* ستون ۲ و ۳ */
+  grid-row: 1 / 3;      /* ردیف ۱ و ۲ */
+}</code></pre>
+      <div class="result demo-practice">
+        <div class="quiz-grid">
+          <div class="box b1 guess">۱</div>
+          <div class="box b2">۲</div>
+          <div class="box b3">۳</div>
+          <div class="box b4">۴</div>
+          <div class="box b5">۵</div>
+          <div class="box b6">۶</div>
+          <div class="box b2">۷</div>
+          <div class="box b3">۸</div>
+        </div>
+      </div>
+      <p>آیتم ۱ ستون‌های ۲ و ۳ (وسط شبکه) و ردیف‌های ۱ و ۲ را گرفته؛ ستون ۱ (راست) و ستون ۴ (چپ) برای بقیه آیتم‌ها مانده و آن‌ها خودشان دورش پر شده‌اند.</p>
+
+      <h3>مثال ۲: صفحه کامل یک فروشگاه کوچک</h3>
+      <p>نقشه صفحه با <code>grid-template-areas</code> و کارت‌های محصول داخل محتوا با <code>auto-fill</code>:</p>
+      <pre class="code"><code>.store {
+  display: grid;
+  grid-template-columns: 160px 1fr;
+  grid-template-areas:
+    "header  header"
+    "filters products"
+    "footer  footer";
+  gap: 8px;
+}
+
+.products {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  gap: 8px;
+}</code></pre>
+      <div class="result demo-practice">
+        <div class="store">
+          <div class="store-header">۱. فروشگاه لوازم‌التحریر مداد</div>
+          <div class="store-filters">۲. فیلترها: دفتر، خودکار، کیف</div>
+          <div class="products">
+            <div class="box b1">۳. دفتر ۱۰۰ برگ</div>
+            <div class="box b2">۴. خودکار آبی</div>
+            <div class="box b3">۵. جامدادی</div>
+            <div class="box b4">۶. کوله مدرسه</div>
+            <div class="box b5">۷. مداد رنگی</div>
+          </div>
+          <div class="store-footer">۸. پانویس</div>
+        </div>
+      </div>
+
+      <h3>مثال ۳: کارت آموزشگاه — همه چیز وسط</h3>
+      <pre class="code"><code>.badge-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-auto-rows: 100px;
+  gap: 8px;
+  place-items: center;
+}</code></pre>
+      <div class="result demo-practice">
+        <div class="badge-grid">
+          <div class="badge b1">۱. ۱۲۰۰ هنرجو</div>
+          <div class="badge b2">۲. ۳۵ دوره</div>
+          <div class="badge b3">۳. ۱۸ مدرس</div>
+        </div>
+      </div>
+
+      <p class="mistake">
+        <strong>اشتباه رایج:</strong>
+        ترکیب <code>auto-fill</code> با آیتمی که <code>grid-column: span 2</code> دارد. در گوشی که فقط یک ستون جا می‌شود،
+        مرورگر به‌خاطر آن آیتم یک ستون اضافه می‌سازد و صفحه افقی اسکرول می‌خورد.
+        راه ساده: در media query موبایل، <code>span</code> را به <code>auto</code> برگردانید (<code>grid-column: auto;</code>).
+      </p>
+
+      <h3>تمرین‌ها (از ساده به سخت)</h3>
+
+      <p class="exercise">
+        <strong>تمرین ۱ ⭐:</strong> منوی نوشیدنی‌های یک کافه با ۹ آیتم را در یک شبکه سه‌ستونه با فاصله ۱۲ پیکسل بچینید.
+        هر آیتم اسم و قیمت داشته باشد.
+      </p>
+
+      <p class="exercise">
+        <strong>تمرین ۲ ⭐:</strong> جدول «برنامه هفتگی کلاس‌ها»: یک ستون ۸۰ پیکسلی برای ساعت و ۵ ستون مساوی برای روزها
+        (با <code>repeat</code>). ردیف عنوان روزها تمام‌رنگی باشد.
+      </p>
+
+      <p class="exercise">
+        <strong>تمرین ۳ ⭐⭐:</strong> صفحه «محصولات فروشگاه» با بنر تمام‌عرض (<code>1 / -1</code>)، یک محصول ویژه ۲×۲ و ۸ محصول معمولی
+        در شبکه ۴ ستونه با <code>grid-auto-rows: 120px</code>.
+      </p>
+
+      <p class="exercise">
+        <strong>تمرین ۴ ⭐⭐:</strong> گالری عکس سفر با <code>repeat(auto-fill, minmax(180px, 1fr))</code>.
+        هر کارت عکس، اسم شهر و تاریخ سفر داشته باشد و با Flexbox دکمه «جزئیات» ته کارت بنشیند.
+      </p>
+
+      <p class="exercise">
+        <strong>تمرین ۵ ⭐⭐⭐:</strong> اسکلت کامل سایت یک آموزشگاه با <code>grid-template-areas</code>: سربرگ، منو، محتوا، ستون کناری و پانویس.
+        داخل محتوا یک فرم ثبت‌نام دوستونه (برچسب/فیلد) باشد. در عرض کمتر از ۷۰۰ پیکسل همه بخش‌ها و فرم یک‌ستونه شوند (فقط یک media query).
+      </p>
+
+      <p class="exercise">
+        <strong>تمرین ۶ ⭐⭐⭐:</strong> داشبورد مدیریت یک کافه: ۴ کارت آمار، نمودار فروش (۳ ستون)، لیست سفارش‌ها (۱ ستون و ۲ ردیف)
+        و جدول موجودی انبار (تمام‌عرض). در موبایل کارت‌های آمار دوتایی و بقیه بخش‌ها تمام‌عرض شوند.
+      </p>
+
+      <p class="tip">
+        بعد از این تمرین‌ها، سراغ کوییزهای عملی پوشه <code>quizzes</code> بروید (راهنما: <code>quizzes/README.md</code>).
+      </p>
+    </section>
+
+    <nav class="page-nav" aria-label="ناوبری درس پایین">
+      <a href="13-responsive.html">→ قبلی: Grid واکنش‌گرا</a>
+      <a href="../index.html">فهرست درس‌ها</a>
+      <span aria-hidden="true"></span>
+    </nav>
+
+  </div>
+
+  <footer class="page-footer">
+    آموزش CSS Grid
+  </footer>
+
+</body>
+
+</html>

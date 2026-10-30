@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>دفترچه تلفن کاربران</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="app.js" defer></script>
+</head>
+
+<body>
+  <header class="page-header">
+    <h1>👥 فهرست کاربران</h1>
+    <div class="search">
+      <label for="search">جستجو:</label>
+      <input type="search" id="search" autocomplete="off" placeholder="نام، ایمیل یا شهر..." disabled>
+    </div>
+  </header>
+
+  <div class="layout">
+    <section class="users" aria-labelledby="users-title">
+      <h2 id="users-title" class="visually-hidden">کاربران</h2>
+      <div class="status-bar">
+        <p id="status" role="status" aria-live="polite"></p>
+        <button type="button" id="retry-btn" class="btn" hidden>تلاش دوباره</button>
+      </div>
+      <ul id="users-list" class="users-list"></ul>
+    </section>
+
+    <aside id="posts-panel" class="posts-panel" aria-labelledby="posts-title" hidden>
+      <div class="panel-header">
+        <h2 id="posts-title"></h2>
+        <button type="button" id="close-posts" class="btn btn-light" aria-label="بستن پنل پست‌ها">✕</button>
+      </div>
+      <p id="posts-status" aria-live="polite"></p>
+      <ol id="posts-list" class="posts-list"></ol>
+    </aside>
+  </div>
+</body>
+
+</html>

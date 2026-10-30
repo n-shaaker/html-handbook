@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>۲) ساختار نوشتن CSS (Syntax) | آموزش CSS از صفر</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/demos/syntax.css">
+</head>
+
+<body>
+
+  <header class="page-header">
+    <h1>آموزش CSS از صفر</h1>
+    <p>۲) ساختار نوشتن CSS (Syntax)</p>
+  </header>
+
+  <div class="container">
+
+    <nav class="page-nav" aria-label="ناوبری درس">
+      <a href="01-intro.html">→ قبلی: CSS چیست؟</a>
+      <a href="../index.html">فهرست درس‌ها</a>
+      <a href="03-selectors.html">بعدی: Selectors ←</a>
+    </nav>
+
+    <section class="lesson" id="syntax">
+      <h2>۲) ساختار نوشتن CSS (Syntax)</h2>
+      <p>
+        هر دستور CSS یک «قانون» است. قانون از دو بخش ساخته می‌شود: <strong>انتخابگر</strong>، که می‌گوید ظاهر روی کدام عنصرها اعمال شود،
+        و <strong>بلوک تعریف‌ها</strong>، که داخل آکولاد مشخص می‌کند آن عنصرها چه ظاهری بگیرند.
+      </p>
+
+      <pre class="code"><code>p {
+  color: red;
+  text-align: center;
+}</code></pre>
+      <p>
+        در این قانون، انتخابگر <code>p</code> به مرورگر می‌گوید ظاهر روی همه پاراگراف‌ها اعمال شود.
+        داخل آکولاد دو تعریف آمده است. تعریف اول ویژگی <code>color</code> را برابر <code>red</code> می‌گذارد و رنگ متن را قرمز می‌کند.
+        تعریف دوم ویژگی <code>text-align</code> را برابر <code>center</code> می‌گذارد و متن را در وسط جعبه خودش قرار می‌دهد.
+        دونقطه ویژگی را از مقدار جدا می‌کند و نقطه‌ویرگول پایان هر تعریف را نشان می‌دهد. اگر چند تعریف در یک بلوک باشد، مرورگر همه آن‌ها را با هم روی همان عنصرها اعمال می‌کند.
+      </p>
+
+      <table class="ref">
+        <thead>
+          <tr>
+            <th>بخش</th>
+            <th>در مثال بالا</th>
+            <th>معنی</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Selector (انتخابگر)</td>
+            <td><code>p</code></td>
+            <td>مشخص می‌کند این قانون روی کدام عنصرهای صفحه اعمال شود.</td>
+          </tr>
+          <tr>
+            <td>Property (ویژگی)</td>
+            <td><code>color</code></td>
+            <td>نام چیزی است که می‌خواهیم تغییر کند؛ مثل رنگ متن یا ترازبندی.</td>
+          </tr>
+          <tr>
+            <td>Value (مقدار)</td>
+            <td><code>red</code></td>
+            <td>نتیجهٔ دلخواه همان ویژگی است؛ در این مثال رنگ قرمز.</td>
+          </tr>
+          <tr>
+            <td>Declaration (تعریف)</td>
+            <td><code>color: red;</code></td>
+            <td>یک جفت ویژگی و مقدار که با <code>:</code> از هم جدا و با <code>;</code> تمام می‌شود</td>
+          </tr>
+          <tr>
+            <td>Declaration block (بلوک تعریف‌ها)</td>
+            <td><code>{ ... }</code></td>
+            <td>همه تعریف‌های یک قانون، داخل آکولاد</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="result demo-syntax">
+        <p>همه پاراگراف‌ها قرمز و وسط‌چین می‌شوند.</p>
+        <p>این پاراگراف دوم است و همان ظاهر را گرفته است.</p>
+      </div>
+
+      <h3>چند قاعده نوشتاری</h3>
+      <ul>
+        <li>فاصله‌ها و خط‌های جدید برای مرورگر مهم نیستند؛ <code>p{color:red}</code> هم درست است، ولی نوشتن هر تعریف در یک خط، کد را خواناتر می‌کند.</li>
+        <li>نام ویژگی‌ها و مقدارها را با حروف کوچک بنویسید (مثل <code>background-color</code>). کلمه‌های چندبخشی با خط تیره (<code>-</code>) به هم وصل می‌شوند.</li>
+        <li>بعد از آخرین تعریف هم <code>;</code> بگذارید تا اگر بعداً تعریف تازه‌ای اضافه کردید، خطا پیش نیاید.</li>
+        <li>اگر مرورگر نام ویژگی یا مقداری را نشناسد، فقط همان یک تعریف را نادیده می‌گیرد و بقیه قانون اجرا می‌شود.</li>
+      </ul>
+
+      <p class="mistake">
+        <strong>اشتباه رایج:</strong>
+        فراموش کردن <code>;</code> در پایان یک تعریف. در این حالت مرورگر آن تعریف و تعریف بعدی را یکی می‌خواند و
+        <strong>هر دو</strong> از کار می‌افتند. فراموش کردن <code>}</code> در پایان قانون بدتر است: قانون‌های بعدی هم ممکن است خراب شوند.
+        <br>
+        غلط‌های تایپی هم رایج‌اند: <code>colour</code> به جای <code>color</code>، یا <code>=</code> به جای <code>:</code>.
+      </p>
+
+      <p class="exercise">
+        <strong>تمرین:</strong> قانونی بنویسید که همه تیترهای <code>h2</code> سبز و وسط‌چین شوند.
+      </p>
+    </section>
+
+
+    <nav class="page-nav" aria-label="ناوبری درس پایین">
+      <a href="01-intro.html">→ قبلی: CSS چیست؟</a>
+      <a href="../index.html">فهرست درس‌ها</a>
+      <a href="03-selectors.html">بعدی: Selectors ←</a>
+    </nav>
+
+  </div>
+
+  <footer class="page-footer">
+    آموزش CSS از صفر
+  </footer>
+
+</body>
+
+</html>

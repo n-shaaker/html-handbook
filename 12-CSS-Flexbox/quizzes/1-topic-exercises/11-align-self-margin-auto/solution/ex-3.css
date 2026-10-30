@@ -1,0 +1,42 @@
+/* تمرین ۳ — حباب‌های گفتگو (پاسخ) */
+
+body {
+  font-family: Tahoma, sans-serif;
+  margin: 20px;
+  background-color: #f8f9fa;
+  color: #212529;
+}
+
+.chat {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  max-width: 450px;
+  background-color: white;
+  border: 1px solid #dee2e6;
+  padding: 10px;
+}
+
+.msg {
+  max-width: 70%;
+  margin: 0;
+  padding: 8px 12px;
+  border-radius: 12px;
+}
+
+/* در ستون، محور فرعی افقی است و در rtl شروعش سمت راست است */
+.me {
+  align-self: flex-start;
+  background-color: #d3f9d8;
+}
+
+.them {
+  align-self: flex-end;
+  background-color: #e9ecef;
+}
+
+.system {
+  align-self: center;
+  color: #868e96;
+  font-size: 12px;
+}

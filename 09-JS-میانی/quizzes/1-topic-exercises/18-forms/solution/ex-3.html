@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>تمرین ۳ — سفارش چای</title>
+  <script src="ex-3.js" defer></script>
+</head>
+
+<body>
+  <h1>سفارش از چایخانه</h1>
+  <form id="order" novalidate>
+    <label for="size">اندازه قوری:</label>
+    <select id="size" name="size">
+      <option value="small">کوچک (۴۰٬۰۰۰)</option>
+      <option value="large">بزرگ (۶۰٬۰۰۰)</option>
+    </select>
+
+    <fieldset>
+      <legend>شیرینی کنار چای</legend>
+      <label><input type="radio" name="sweet" value="نبات" checked> نبات</label>
+      <label><input type="radio" name="sweet" value="خرما"> خرما</label>
+      <label><input type="radio" name="sweet" value="بدون شیرینی"> بدون شیرینی</label>
+    </fieldset>
+
+    <fieldset>
+      <legend>افزودنی (هر کدام ۱۰٬۰۰۰)</legend>
+      <label><input type="checkbox" name="cardamom"> هل</label>
+      <label><input type="checkbox" name="cinnamon"> دارچین</label>
+    </fieldset>
+
+    <label for="qty">تعداد:</label>
+    <input type="number" id="qty" name="qty" value="1" min="1" max="10">
+
+    <p>قیمت: <strong id="live-total" aria-live="polite"></strong></p>
+    <button type="submit">ثبت سفارش</button>
+  </form>
+  <div id="summary"></div>
+</body>
+
+</html>

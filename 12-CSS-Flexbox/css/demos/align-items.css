@@ -1,0 +1,85 @@
+/* ۵) align-items */
+
+/* جعبه‌های رنگی شماره‌دار */
+.demo-align-items .box {
+  padding: 6px 16px;
+  margin: 0 4px;
+  color: white;
+  font-weight: bold;
+  text-align: center;
+  border-radius: 6px;
+}
+
+.demo-align-items .b1 { background-color: #1c7ed6; }
+.demo-align-items .b2 { background-color: #2b8a3e; }
+.demo-align-items .b3 { background-color: #e8590c; }
+.demo-align-items .b4 { background-color: #ae3ec9; }
+
+/* ظرف مشترک با ارتفاع ثابت تا محور فرعی دیده شود */
+.demo-align-items .parent {
+  display: flex;
+  height: 120px;
+  background-color: #f1f3f5;
+  border: 2px solid #868e96;
+  padding: 4px;
+}
+
+.demo-align-items .stretch {
+  align-items: stretch;
+}
+
+.demo-align-items .start {
+  align-items: flex-start;
+}
+
+.demo-align-items .end {
+  align-items: flex-end;
+}
+
+.demo-align-items .center {
+  align-items: center;
+}
+
+.demo-align-items .full-center {
+  justify-content: center;
+  align-items: center;
+}
+
+/* ردیف قیمت برای مقایسه center و baseline */
+.demo-align-items .price-row {
+  display: flex;
+  background-color: #fff9db;
+  border: 1px solid #f59f00;
+  padding: 4px 10px;
+}
+
+.demo-align-items .center-price {
+  align-items: center;
+}
+
+.demo-align-items .baseline {
+  align-items: baseline;
+}
+
+.demo-align-items .big {
+  font-size: 40px;
+  font-weight: bold;
+  color: #c92a2a;
+  margin-left: 6px;
+}
+
+.demo-align-items .mid {
+  font-size: 20px;
+  margin-left: 6px;
+}
+
+.demo-align-items .small {
+  font-size: 13px;
+  color: #868e96;
+}
+
+.demo-align-items .label {
+  margin: 4px 0;
+  font-size: 14px;
+  color: #495057;
+}

@@ -1,0 +1,35 @@
+body {
+  font-family: Tahoma, Arial, sans-serif;
+  line-height: 1.8;
+  margin: 0;
+}
+
+/*
+  این فایل داخل solution/css است، پس اول یک پله بالا می‌رویم تا به solution برسیم.
+  برای همین مسیر CSS یک ../ بیشتر از مسیر HTML دارد.
+*/
+.banner {
+  min-height: 220px;
+  padding: 80px 16px 0;
+  text-align: center;
+  color: white;
+  background-image: url("../../../../../images/hero.jpg");
+  background-size: cover;
+  background-position: center;
+}
+
+.banner h1 {
+  margin: 0;
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.8);
+}
+
+.page {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 16px;
+}
+
+.page img {
+  max-width: 100%;
+  height: auto;
+}

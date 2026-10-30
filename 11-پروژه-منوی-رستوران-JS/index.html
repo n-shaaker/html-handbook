@@ -1,0 +1,428 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="منوی رستوران سنتی نارنج: کباب، خورش، پیش‌غذا، دسر و نوشیدنی"
+    />
+    <title>رستوران سنتی نارنج | منوی غذا</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <script src="js/app.js" defer></script>
+  </head>
+
+  <body>
+    <!-- ========== سربرگ و منوی بالای صفحه ========== -->
+    <header class="site-header">
+      <a href="index.html" class="logo">
+        رستوران سنتی
+        <strong>نارنج</strong>
+      </a>
+
+      <nav class="main-nav" aria-label="منوی اصلی">
+        <a href="#starters">پیش‌غذا</a>
+        <a href="#mains">غذای اصلی</a>
+        <a href="#desserts">دسر</a>
+        <a href="#drinks">نوشیدنی</a>
+        <a href="#reserve">رزرو میز</a>
+        <a href="#contact">تماس</a>
+      </nav>
+
+      <!-- «باز هستیم / بسته‌ایم» را JavaScript بر اساس ساعت فعلی می‌نویسد -->
+      <p class="open-status" id="open-status"></p>
+    </header>
+
+    <!-- ========== بخش معرفی با تصویر پس‌زمینه ========== -->
+    <section class="hero">
+      <div class="hero-box">
+        <h1>طعم اصیل آشپزی ایرانی</h1>
+        <p>کباب تازه روی ذغال، خورش‌های جاافتاده و چای دارچینی، هر روز از ظهر تا شب.</p>
+        <a href="#mains" class="btn">دیدن منو</a>
+        <a href="#reserve" class="btn btn-outline">رزرو میز</a>
+      </div>
+    </section>
+
+    <main class="container">
+      <!-- ========== راهنمای نمادها ========== -->
+      <section class="legend">
+        <h2>راهنمای منو</h2>
+        <dl>
+          <dt><mark>جدید</mark></dt>
+          <dd>غذایی که تازه به منو اضافه شده</dd>
+          <dt><span class="tag tag-veg">گیاهی</span></dt>
+          <dd>بدون گوشت</dd>
+          <dt><span class="tag tag-hot">تند</span></dt>
+          <dd>کمی تند؛ هنگام سفارش بگویید اگر تند دوست ندارید</dd>
+        </dl>
+      </section>
+
+      <!-- ========== جستجو و فیلتر غذاها (با JavaScript کار می‌کند) ========== -->
+      <div class="menu-tools">
+        <label for="search">جستجو در منو:</label>
+        <input type="search" id="search" placeholder="جستجوی نام غذا... (مثلاً کباب)" />
+        <div class="filters">
+          <button type="button" class="filter-btn active" data-filter="all">همه</button>
+          <button type="button" class="filter-btn" data-filter="veg">گیاهی</button>
+          <button type="button" class="filter-btn" data-filter="hot">تند</button>
+          <button type="button" class="filter-btn" data-filter="new">جدید</button>
+        </div>
+        <p class="no-result" id="no-result" hidden>غذا یا نوشیدنی‌ای با این مشخصات پیدا نشد.</p>
+      </div>
+
+      <!-- ========== پیش‌غذا ========== -->
+      <section id="starters" class="menu-section">
+        <h2>پیش‌غذا</h2>
+        <p class="layout-hint">چیدمان این بخش: <code>display: grid</code></p>
+        <div class="dishes-grid">
+
+          <article class="dish" data-name="میرزاقاسمی" data-price="185000">
+            <img src="images/mirza.jpg" alt="میرزاقاسمی با نان و سبزی" />
+            <div class="dish-body">
+              <h3>
+                میرزاقاسمی
+                <span class="tag tag-veg">گیاهی</span>
+              </h3>
+              <p>
+                بادمجان کبابی، سیر، گوجه و تخم‌مرغ به سبک
+                <em>گیلانی</em>؛ همراه نان تازه.
+              </p>
+              <p class="price">۱۸۵٬۰۰۰ تومان</p>
+            </div>
+          </article>
+
+          <article class="dish" data-name="سالاد شیرازی" data-price="75000">
+            <img src="images/shirazi.jpg" alt="سالاد شیرازی در کاسه" />
+            <div class="dish-body">
+              <h3>
+                سالاد شیرازی
+                <span class="tag tag-veg">گیاهی</span>
+              </h3>
+              <p>خیار، گوجه و پیاز خردشده با آبغوره و نعنا خشک.</p>
+              <p class="price">
+                <del>۹۵٬۰۰۰</del>
+                <ins>۷۵٬۰۰۰ تومان</ins>
+                <small>(تخفیف این هفته)</small>
+              </p>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- ========== غذای اصلی ========== -->
+      <section id="mains" class="menu-section">
+        <h2>غذای اصلی</h2>
+        <p class="section-note">همه غذاهای اصلی با برنج ایرانی، کره و گوجه کبابی سرو می‌شوند.</p>
+        <p class="layout-hint">چیدمان این بخش: <code>display: flex</code></p>
+        <div class="dishes-flex">
+
+          <article class="dish" data-name="چلوکباب کوبیده" data-price="420000">
+            <img src="images/koobideh.jpg" alt="کباب کوبیده در بشقاب با گوجه کبابی و فلفل سبز" />
+            <div class="dish-body">
+              <h3>چلوکباب کوبیده</h3>
+              <p>
+                دو سیخ کباب کوبیده از گوشت گوسفندی تازه، روی
+                <strong>آتش ذغال</strong>.
+              </p>
+              <p class="price">۴۲۰٬۰۰۰ تومان</p>
+            </div>
+          </article>
+
+          <article class="dish" data-name="چلوجوجه‌کباب" data-price="380000">
+            <img src="images/joojeh.jpg" alt="جوجه‌کباب زعفرانی روی سیخ" />
+            <div class="dish-body">
+              <h3>
+                چلوجوجه‌کباب
+                <span class="tag tag-hot">تند</span>
+              </h3>
+              <p>سینه مرغ خوابانده در زعفران، لیمو و فلفل؛ با یا بدون استخوان.</p>
+              <p class="price">۳۸۰٬۰۰۰ تومان</p>
+            </div>
+          </article>
+
+          <article class="dish" data-name="چلوخورش قورمه‌سبزی" data-price="320000">
+            <img src="images/ghormeh.jpg" alt="خورش قورمه‌سبزی کنار برنج" />
+            <div class="dish-body">
+              <h3>چلوخورش قورمه‌سبزی</h3>
+              <p>سبزی تازه، لوبیا قرمز، لیمو عمانی و گوشت گوسفندی که چند ساعت آرام پخته شده.</p>
+              <p class="price">۳۲۰٬۰۰۰ تومان</p>
+            </div>
+          </article>
+
+          <article class="dish" data-name="زرشک‌پلو با مرغ" data-price="350000">
+            <img src="images/zereshk.jpg" alt="زرشک‌پلو با مرغ و جوجه‌کباب" />
+            <div class="dish-body">
+              <h3>
+                زرشک‌پلو با مرغ
+                <mark>جدید</mark>
+              </h3>
+              <p>برنج زعفرانی با زرشک و خلال پسته، همراه ران مرغ در سس گوجه.</p>
+              <p class="price">۳۵۰٬۰۰۰ تومان</p>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- ========== دسر ========== -->
+      <section id="desserts" class="menu-section">
+        <h2>دسر</h2>
+        <p class="layout-hint">چیدمان این بخش: <code>display: grid</code></p>
+        <div class="dishes-grid">
+
+          <article class="dish" data-name="فالوده شیرازی" data-price="90000">
+            <img src="images/faloodeh.jpg" alt="فالوده شیرازی در جام شیشه‌ای" />
+            <div class="dish-body">
+              <h3>فالوده شیرازی</h3>
+              <p>رشته‌های یخ‌زده نشاسته با گلاب و آبلیمو؛ اگر بخواهید با بستنی سنتی.</p>
+              <p class="price">۹۰٬۰۰۰ تومان</p>
+            </div>
+          </article>
+
+          <article class="dish" data-name="شله‌زرد" data-price="70000">
+            <img src="images/sholehzard.jpg" alt="شله‌زرد تزیین‌شده با دارچین و خلال بادام" />
+            <div class="dish-body">
+              <h3>شله‌زرد</h3>
+              <p>برنج و زعفران و گلاب، تزیین‌شده با دارچین و خلال بادام.</p>
+              <p class="price">۷۰٬۰۰۰ تومان</p>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- ========== نوشیدنی: جدول قیمت + عکس ========== -->
+      <section id="drinks" class="menu-section">
+        <h2>نوشیدنی</h2>
+
+        <figure class="drinks-photos">
+          <img src="images/tea.jpg" alt="استکان چای ایرانی" />
+          <img src="images/doogh.jpg" alt="دوغ محلی با برگ نعنا در کاسه‌های مسی" />
+          <figcaption>چای تازه‌دم و دوغ محلی، دو نوشیدنی محبوب مهمان‌های ما</figcaption>
+        </figure>
+
+        <table class="price-table" id="drinks-table">
+          <caption>فهرست قیمت نوشیدنی‌ها</caption>
+          <thead>
+            <tr>
+              <th scope="col">نوشیدنی</th>
+              <th scope="col">توضیح</th>
+              <th scope="col">قیمت (تومان)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr data-name="چای سنتی" data-price="60000">
+              <th scope="row">چای سنتی</th>
+              <td>قوری دونفره، با نبات یا خرما</td>
+              <td>۶۰٬۰۰۰</td>
+            </tr>
+            <tr data-name="دوغ محلی" data-price="45000">
+              <th scope="row">دوغ محلی</th>
+              <td>با پونه و نعنا</td>
+              <td>۴۵٬۰۰۰</td>
+            </tr>
+            <tr data-name="شربت بهارنارنج" data-price="55000">
+              <th scope="row">شربت بهارنارنج</th>
+              <td>خنک، بدون گاز</td>
+              <td>۵۵٬۰۰۰</td>
+            </tr>
+            <tr data-name="دمنوش گل‌گاوزبان" data-price="50000">
+              <th scope="row">دمنوش گل‌گاوزبان</th>
+              <td>با لیمو عمانی</td>
+              <td>۵۰٬۰۰۰</td>
+            </tr>
+            <tr data-name="آب معدنی" data-price="20000">
+              <th scope="row">آب معدنی</th>
+              <td>بطری کوچک</td>
+              <td>۲۰٬۰۰۰</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <!-- ========== نظر مشتری ========== -->
+      <section class="review">
+        <h2>نظر مهمان‌ها</h2>
+        <blockquote>
+          <p>کوبیده‌اش واقعاً روی ذغال بود و چای بعد از غذا حرف نداشت. حتماً دوباره می‌آییم.</p>
+          <cite>مریم، مهمان رستوران</cite>
+        </blockquote>
+      </section>
+
+      <!-- ========== ساعت کاری ========== -->
+      <section class="hours">
+        <h2>ساعت کاری</h2>
+        <table class="price-table">
+          <caption>ساعت سرو ناهار و شام</caption>
+          <thead>
+            <tr>
+              <th scope="col">روز</th>
+              <th scope="col">ناهار</th>
+              <th scope="col">شام</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">شنبه تا چهارشنبه</th>
+              <td>
+                <time datetime="12:00">۱۲</time>
+                تا
+                <time datetime="16:00">۱۶</time>
+              </td>
+              <td>
+                <time datetime="19:00">۱۹</time>
+                تا
+                <time datetime="23:00">۲۳</time>
+              </td>
+            </tr>
+            <tr>
+              <th scope="row">پنجشنبه و جمعه</th>
+              <td>
+                <time datetime="12:00">۱۲</time>
+                تا
+                <time datetime="17:00">۱۷</time>
+              </td>
+              <td>
+                <time datetime="19:00">۱۹</time>
+                تا
+                <time datetime="00:00">۲۴</time>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h3>امکانات رستوران</h3>
+        <ul class="features">
+          <li>پارکینگ رایگان برای مهمان‌ها</li>
+          <li>فضای خانوادگی و تخت سنتی</li>
+          <li>سفارش بیرون‌بر</li>
+        </ul>
+      </section>
+
+      <!-- ========== فرم رزرو میز ========== -->
+      <section id="reserve" class="reserve">
+        <h2>رزرو میز</h2>
+        <p>فرم زیر را پر کنید؛ برای تأیید رزرو با شما تماس می‌گیریم.</p>
+
+        <!-- novalidate: بررسی فرم را خودمان با JavaScript انجام می‌دهیم.
+             هر <small class="field-error"> جای پیام خطای کادر بالایش است. -->
+        <form action="#" method="post" class="reserve-form" id="reserve-form" novalidate>
+          <p>
+            <label for="name">نام و نام خانوادگی</label>
+            <input type="text" id="name" name="name" autocomplete="name" />
+            <small class="field-error" id="name-error"></small>
+          </p>
+          <p>
+            <label for="phone">شماره موبایل</label>
+            <input type="tel" id="phone" name="phone" placeholder="09123456789" dir="ltr" />
+            <small class="field-error" id="phone-error"></small>
+          </p>
+          <p>
+            <label for="date">تاریخ</label>
+            <input type="date" id="date" name="date" />
+            <small class="field-error" id="date-error"></small>
+          </p>
+          <p>
+            <label for="time">ساعت</label>
+            <input type="time" id="time" name="time" />
+            <small class="field-error" id="time-error"></small>
+          </p>
+          <p>
+            <label for="guests">تعداد نفرات</label>
+            <input type="number" id="guests" name="guests" min="1" max="20" value="2" />
+            <small class="field-error" id="guests-error"></small>
+          </p>
+          <p>
+            <label for="area">محل نشستن</label>
+            <select id="area" name="area">
+              <option value="hall">سالن اصلی</option>
+              <option value="bed">تخت سنتی</option>
+              <option value="yard">حیاط</option>
+            </select>
+          </p>
+          <p>
+            <label for="note">توضیحات (اختیاری)</label>
+            <textarea id="note" name="note" rows="3" placeholder="مثلاً: جشن تولد داریم"></textarea>
+          </p>
+          <button type="submit" class="btn">ثبت رزرو</button>
+          <!-- پیام نتیجه رزرو را JavaScript اینجا می‌نویسد -->
+          <p class="form-message" id="form-message" aria-live="polite"></p>
+        </form>
+      </section>
+
+      <!-- ========== پرسش‌های پرتکرار ========== -->
+      <section class="faq">
+        <h2>پرسش‌های پرتکرار</h2>
+
+        <!-- details‌هایی که name یکسان دارند، خودشان فقط یکی‌شان باز می‌ماند (بدون JavaScript) -->
+        <details name="faq">
+          <summary>آیا غذای بیرون‌بر دارید؟</summary>
+          <p>بله، همه غذاهای منو را می‌توانید بیرون‌بر سفارش دهید.</p>
+        </details>
+
+        <details name="faq">
+          <summary>برای جمع‌های بزرگ باید زودتر رزرو کنیم؟</summary>
+          <p>برای بیشتر از ۱۰ نفر، لطفاً دست‌کم یک روز قبل رزرو کنید.</p>
+        </details>
+
+        <details name="faq">
+          <summary>غذای گیاهی هم دارید؟</summary>
+          <p>
+            بله؛ غذاهایی که برچسب
+            <span class="tag tag-veg">گیاهی</span>
+            دارند بدون گوشت هستند.
+          </p>
+        </details>
+      </section>
+    </main>
+
+    <!-- ========== پاورقی و اطلاعات تماس ========== -->
+    <footer id="contact" class="site-footer">
+      <h2>تماس با ما</h2>
+      <address>
+        تهران، خیابان ولیعصر، کوچه نارنج، پلاک ۱۲
+        <br />
+        تلفن:
+        <a href="tel:+982112345678">۰۲۱-۱۲۳۴۵۶۷۸</a>
+        <br />
+        ایمیل:
+        <a href="mailto:info@example.com">info@example.com</a>
+      </address>
+
+      <p>
+        <a
+          href="https://www.openstreetmap.org/#map=16/35.7000/51.4100"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          نمایش روی نقشه
+        </a>
+        |
+        <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer">
+          اینستاگرام
+        </a>
+      </p>
+    </footer>
+
+    <!-- ========== بخش‌هایی که فقط با JavaScript کار می‌کنند ========== -->
+
+    <!-- دکمه شناور سبد سفارش -->
+    <button type="button" class="cart-toggle" id="cart-toggle" aria-expanded="false">
+      🧺 سفارش من
+      <span class="cart-count" id="cart-count">۰</span>
+    </button>
+
+    <!-- پنل سبد سفارش -->
+    <aside class="cart" id="cart" aria-label="سبد سفارش" hidden>
+      <div class="cart-head">
+        <h2>سفارش من</h2>
+        <button type="button" class="cart-close" id="cart-close" aria-label="بستن سبد سفارش">✕</button>
+      </div>
+      <ul class="cart-list" id="cart-list"></ul>
+      <p class="cart-total" id="cart-total"></p>
+      <button type="button" class="btn" id="cart-submit">ثبت سفارش</button>
+      <button type="button" class="btn btn-light" id="cart-clear">خالی کردن</button>
+    </aside>
+
+    <!-- پیام کوتاه پایین صفحه -->
+    <div class="toast" id="toast"></div>
+  </body>
+</html>

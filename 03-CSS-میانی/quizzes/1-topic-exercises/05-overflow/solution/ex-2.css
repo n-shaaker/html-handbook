@@ -1,0 +1,29 @@
+body {
+  font-family: Tahoma, Arial, sans-serif;
+  line-height: 1.8;
+  padding: 16px;
+}
+
+/* فقط همین بخش اسکرول افقی می‌خورد */
+.table-wrap {
+  overflow-x: auto;
+  border: 1px solid #ccc;
+}
+
+table {
+  min-width: 600px;
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th,
+td {
+  padding: 8px;
+  border: 1px solid #ddd;
+  text-align: center;
+}
+
+th {
+  color: white;
+  background-color: #1a3a5c;
+}

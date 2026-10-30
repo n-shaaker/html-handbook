@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>۱) نمایش (Display) | آموزش CSS سطح میانی</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/demos/display.css">
+</head>
+
+<body>
+
+  <header class="page-header">
+    <h1>آموزش CSS — سطح میانی</h1>
+    <p>۱) نمایش (Display)</p>
+  </header>
+
+  <div class="container">
+
+    <nav class="page-nav" aria-label="ناوبری درس">
+      <a href="../../02-CSS-مقدماتی/index.html">→ دوره مقدماتی</a>
+      <a href="../index.html">فهرست درس‌ها</a>
+      <a href="02-max-width.html">بعدی: Max-width ←</a>
+    </nav>
+
+    <section class="lesson" id="display">
+      <h2>۱) نمایش (Display)</h2>
+      <p>
+        ویژگی <code>display</code> تعیین می‌کند مرورگر برای یک عنصر چه نوع جعبه بسازد و آن جعبه در کنار عنصرهای دیگر چطور جا بگیرد.
+        هر تگ HTML یک مقدار پیش‌فرض دارد. بیشتر تگ‌ها یا <strong>block</strong> هستند، یعنی از خط تازه شروع می‌شوند و تمام عرض در دسترس را می‌گیرند، یا <strong>inline</strong> هستند، یعنی در همان خط کنار متن می‌نشینند و فقط به اندازه محتوایشان جا می‌گیرند.
+        با عوض کردن <code>display</code> ظاهر و جای جعبه عوض می‌شود، ولی معنی تگ در HTML همان می‌ماند؛ مثلاً یک لینک که <code>display: block</code> گرفته هنوز لینک است.
+      </p>
+
+      <h3>مثال ۱: تفاوت block و inline</h3>
+      <table class="ref">
+        <tr>
+          <th>block (بلوکی)</th>
+          <th>inline (درون‌خطی)</th>
+        </tr>
+        <tr>
+          <td>همیشه از خط جدید شروع می‌شود و کل عرض را می‌گیرد.</td>
+          <td>کنار بقیه در همان خط می‌نشیند و فقط به اندازه محتوایش جا می‌گیرد.</td>
+        </tr>
+        <tr>
+          <td><code>div</code>، <code>p</code>، <code>h1</code> تا <code>h6</code>، <code>ul</code>، <code>form</code></td>
+          <td><code>span</code>، <code>a</code>، <code>strong</code>، <code>em</code>، <code>label</code></td>
+        </tr>
+        <tr>
+          <td><code>width</code>، <code>height</code> و <code>margin</code> بالا/پایین اثر دارند.</td>
+          <td><code>width</code> و <code>height</code> اثر ندارند؛ <code>margin</code> و <code>padding</code> بالا/پایین جای خط را تغییر نمی‌دهند.</td>
+        </tr>
+      </table>
+      <p class="tip">
+        <code>img</code>، <code>input</code> و <code>button</code> هم درون‌خطی هستند، ولی از نوع «جایگزین‌شونده» (replaced)؛
+        یعنی برخلاف <code>span</code>، می‌شود به آن‌ها <code>width</code> و <code>height</code> داد. رفتارشان شبیه <code>inline-block</code> است.
+      </p>
+      <div class="result demo-display">
+        <div class="box-block">من یک div هستم (block)</div>
+        <div class="box-block">من هم div هستم؛ زیر قبلی آمدم</div>
+        <span class="box-inline">من span هستم</span>
+        <span class="box-inline">من هم span هستم؛ کنار قبلی نشستم</span>
+      </div>
+
+      <h3>مثال ۲: منوی افقی با <code>display: inline</code></h3>
+      <p>آیتم‌های فهرست (<code>li</code>) به‌طور پیش‌فرض block هستند (دقیق‌تر: <code>list-item</code>) و زیر هم می‌آیند. با inline کردنشان کنار هم قرار می‌گیرند:</p>
+      <pre class="code"><code>.menu-inline {
+  margin: 0;
+  padding: 0;          /* فاصله پیش‌فرض فهرست حذف شود */
+}
+
+.menu-inline li {
+  display: inline;
+  margin-left: 16px;   /* در صفحه راست‌چین، فاصله با آیتم بعدی (سمت چپ) */
+}</code></pre>
+      <div class="result demo-display">
+        <ul class="menu-inline">
+          <li><a href="#display">خانه</a></li>
+          <li><a href="#display">محصولات</a></li>
+          <li><a href="#display">درباره ما</a></li>
+          <li><a href="#display">تماس</a></li>
+        </ul>
+      </div>
+
+      <h3>مثال ۳: block کردن یک عنصر inline</h3>
+      <p>برعکس هم ممکن است. اینجا هر <code>span</code> مثل یک خط کامل رفتار می‌کند:</p>
+      <pre class="code"><code>.span-block span {
+  display: block;
+}</code></pre>
+      <div class="result demo-display">
+        <p class="span-block">
+          <span>نام: سارا</span>
+          <span>شهر: شیراز</span>
+          <span>رشته: طراحی وب</span>
+        </p>
+      </div>
+
+      <h3>مثال ۴: پنهان کردن با <code>display: none</code> و <code>visibility: hidden</code></h3>
+      <p>
+        <code>display: none</code> عنصر را از چیدمان صفحه حذف می‌کند: نه دیده می‌شود، نه جا اشغال می‌کند، و معمولاً صفحه‌خوان هم آن را نمی‌خواند.
+        <code>visibility: hidden</code> عنصر را نامرئی می‌کند، ولی جعبه خالی‌اش سر جایش می‌ماند و عنصرهای بعدی را هل می‌دهد.
+        این دو وقتی به کار می‌آیند که بخواهید بخشی را موقتاً پنهان کنید؛ مثلاً یک پیام یا یک آیتم منو. برای پنهان کردن واقعی، <code>none</code> مناسب است. برای حفظ فاصله، <code>hidden</code>.
+      </p>
+      <pre class="code"><code>.hide-none   { display: none; }       /* کاملاً حذف؛ جایش هم خالی نمی‌ماند */
+.hide-hidden { visibility: hidden; }  /* نامرئی؛ ولی جایش خالی می‌ماند */</code></pre>
+      <div class="result demo-display">
+        <p><strong>با display: none</strong> (جعبه ۲ حذف شده و ۳ بالا آمده):</p>
+        <div class="row-boxes">
+          <div class="mini">۱</div>
+          <div class="mini hide-none">۲</div>
+          <div class="mini">۳</div>
+        </div>
+        <p><strong>با visibility: hidden</strong> (جای جعبه ۲ خالی مانده):</p>
+        <div class="row-boxes">
+          <div class="mini">۱</div>
+          <div class="mini hide-hidden">۲</div>
+          <div class="mini">۳</div>
+        </div>
+      </div>
+
+      <p class="tip">
+        <code>display</code> ظاهر عنصر را عوض می‌کند، نه نوع تگ را.
+        یعنی <code>a</code> با <code>display: block</code> هنوز یک لینک است؛ فقط مثل block جا می‌گیرد.
+      </p>
+
+      <h3>مقدارهای مهم دیگر <code>display</code></h3>
+      <table class="ref">
+        <tr>
+          <th>مقدار</th>
+          <th>کاربرد</th>
+        </tr>
+        <tr>
+          <td><code>inline-block</code></td>
+          <td>کنار بقیه در یک خط، ولی با عرض و ارتفاع؛ در درس ۷ می‌بینیم.</td>
+        </tr>
+        <tr>
+          <td><code>flex</code></td>
+          <td>چیدن فرزندان در یک ردیف یا ستون با کنترل فاصله و تراز؛ روش امروزی ساخت منو و ردیف کارت‌ها.</td>
+        </tr>
+        <tr>
+          <td><code>grid</code></td>
+          <td>چیدمان دوبعدی (سطر و ستون)؛ مناسب اسکلت صفحه و گالری.</td>
+        </tr>
+        <tr>
+          <td><code>none</code></td>
+          <td>عنصر کاملاً از صفحه حذف می‌شود (برای منوی کشویی، پنجره مودال و ...).</td>
+        </tr>
+      </table>
+
+      <p class="mistake">
+        <strong>اشتباه رایج:</strong>
+        دادن <code>width</code> و <code>height</code> به یک عنصر inline (مثل <code>span</code> یا <code>a</code>). روی inline اثری ندارد؛
+        اول باید آن را <code>block</code> یا <code>inline-block</code> کنید.
+      </p>
+
+      <p class="mistake">
+        <strong>اشتباه رایج:</strong>
+        فکر کنیم <code>visibility: hidden</code> و <code>opacity: 0</code> عنصر را حذف می‌کنند.
+        هر دو جای عنصر را نگه می‌دارند؛ عنصری که <code>opacity: 0</code> دارد حتی هنوز کلیک‌پذیر است.
+        برای حذف واقعی از <code>display: none</code> استفاده کنید.
+      </p>
+
+      <p class="exercise">
+        <strong>تمرین:</strong> یک فهرست سه‌تایی از غذاهای مورد علاقه‌تان بسازید و با <code>display: inline</code> آن را افقی کنید.
+        سپس با <code>display: none</code> یکی از آیتم‌ها را پنهان کنید.
+      </p>
+    </section>
+
+    <nav class="page-nav" aria-label="ناوبری درس پایین">
+      <a href="../../02-CSS-مقدماتی/index.html">→ دوره مقدماتی</a>
+      <a href="../index.html">فهرست درس‌ها</a>
+      <a href="02-max-width.html">بعدی: Max-width ←</a>
+    </nav>
+
+  </div>
+
+  <footer class="page-footer">
+    آموزش CSS سطح میانی
+  </footer>
+
+</body>
+
+</html>

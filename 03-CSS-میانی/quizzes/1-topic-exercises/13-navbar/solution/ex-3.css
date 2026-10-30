@@ -1,0 +1,41 @@
+body {
+  font-family: Tahoma, Arial, sans-serif;
+  margin: 0;
+}
+
+.shop-nav {
+  display: flex;
+  align-items: center;
+  padding: 0 16px;
+  background-color: white;
+  border-bottom: 1px solid #ddd;
+}
+
+.shop-nav a {
+  padding: 14px 16px;
+  color: #333;
+  text-decoration: none;
+  border-bottom: 3px solid transparent;
+}
+
+.shop-nav a:hover {
+  color: #0b6e4f;
+}
+
+.shop-nav a.active {
+  border-bottom-color: #0b6e4f;
+}
+
+.logo {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+/* در صفحه راست‌چین، margin-right: auto آیتم را به سمت چپ هل می‌دهد */
+.shop-nav a.cart {
+  margin-right: auto;
+  color: white;
+  background-color: #0b6e4f;
+  border-radius: 6px;
+  padding: 8px 14px;
+}

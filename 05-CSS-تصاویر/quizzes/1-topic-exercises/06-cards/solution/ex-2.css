@@ -1,0 +1,53 @@
+body {
+  font-family: Tahoma, Arial, sans-serif;
+  line-height: 1.8;
+  margin: 0;
+  background-color: #f7f9fc;
+}
+
+.chef-picks {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 24px 16px;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+.card {
+  overflow: hidden;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* همه عکس‌ها با یک نسبت، هر چقدر هم عکس اصلی فرق داشته باشد */
+.card img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+}
+
+.card img.focus-top {
+  object-position: center top;
+}
+
+.card h2 {
+  margin: 8px 12px 0;
+  font-size: 1.05rem;
+}
+
+.card p {
+  margin: 0 12px 12px;
+  color: #b5452a;
+}
+
+@media (max-width: 700px) {
+  .cards {
+    grid-template-columns: 1fr;
+  }
+}

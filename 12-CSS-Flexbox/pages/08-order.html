@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>۸) ترتیب نمایش (order) | آموزش Flexbox</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/demos/order.css">
+</head>
+
+<body>
+
+  <header class="page-header">
+    <h1>آموزش Flexbox — چیدمان انعطاف‌پذیر</h1>
+    <p>۸) ترتیب نمایش (order)</p>
+  </header>
+
+  <div class="container">
+
+    <nav class="page-nav" aria-label="ناوبری درس">
+      <a href="07-gap.html">→ قبلی: gap</a>
+      <a href="../index.html">فهرست درس‌ها</a>
+      <a href="09-grow-shrink-basis.html">بعدی: grow، shrink، basis ←</a>
+    </nav>
+
+    <section class="lesson" id="order">
+      <h2>۸) ترتیب نمایش (order)</h2>
+      <p>
+        این اولین ویژگی است که روی <strong>آیتم</strong> (فرزند) نوشته می‌شود، نه پدر.
+        <code>order</code> یک عدد صحیح است و می‌گوید آیتم در صف چندم نمایش داده شود، بدون اینکه HTML را تغییر دهیم.
+        مقدار پیش‌فرض همه آیتم‌ها <code>0</code> است؛ آیتم با عدد کوچک‌تر جلوتر (نزدیک شروع خط) می‌آید.
+      </p>
+
+      <h3>مثال ۱: یک آیتم را آخر بفرستیم</h3>
+      <p>همه <code>order: 0</code> دارند، جعبه ۱ عدد بزرگ‌تری گرفته و به پایان صف رفته:</p>
+      <pre class="code"><code>.first-box {
+  order: 1;
+}</code></pre>
+      <div class="result demo-order">
+        <div class="parent">
+          <div class="box b1 to-end">۱</div>
+          <div class="box b2">۲</div>
+          <div class="box b3">۳</div>
+          <div class="box b4">۴</div>
+        </div>
+      </div>
+
+      <h3>مثال ۲: یک آیتم را اول بیاوریم</h3>
+      <p>عدد منفی هم مجاز است. جعبه ۴ با <code>order: -1</code> از همه جلوتر می‌آید:</p>
+      <pre class="code"><code>.last-box {
+  order: -1;
+}</code></pre>
+      <div class="result demo-order">
+        <div class="parent">
+          <div class="box b1">۱</div>
+          <div class="box b2">۲</div>
+          <div class="box b3">۳</div>
+          <div class="box b4 to-start">۴</div>
+        </div>
+      </div>
+
+      <h3>مثال ۳: چیدن کامل با عدد</h3>
+      <p>آیتم‌هایی که <code>order</code> برابر دارند، به همان ترتیب HTML می‌آیند:</p>
+      <pre class="code"><code>.box-1 { order: 3; }
+.box-2 { order: 1; }
+.box-3 { order: 2; }
+.box-4 { order: 1; }</code></pre>
+      <div class="result demo-order">
+        <div class="parent">
+          <div class="box b1 o3">۱ (order: 3)</div>
+          <div class="box b2 o1">۲ (order: 1)</div>
+          <div class="box b3 o2">۳ (order: 2)</div>
+          <div class="box b4 o1">۴ (order: 1)</div>
+        </div>
+      </div>
+
+      <h3>مثال ۴: کاربرد واقعی — آیتم ویژه اول نمایش داده شود</h3>
+      <p>در فهرست غذاهای یک کافه، «پیشنهاد امروز» در HTML جای خودش است ولی در نمایش اول می‌آید:</p>
+      <pre class="code"><code>.special {
+  order: -1;
+}</code></pre>
+      <div class="result demo-order">
+        <ul class="foods">
+          <li>لازانیا</li>
+          <li>سالاد سزار</li>
+          <li class="special">⭐ پیشنهاد امروز: پاستا آلفردو</li>
+          <li>سوپ قارچ</li>
+        </ul>
+      </div>
+
+      <p class="mistake">
+        <strong>اشتباه رایج:</strong>
+        با <code>order</code> ترتیب «معنایی» صفحه را عوض می‌کنیم. <code>order</code> فقط <strong>ظاهر</strong> را عوض می‌کند؛
+        صفحه‌خوان‌ها و کلید Tab همان ترتیب HTML را دنبال می‌کنند و کاربر کیبورد گیج می‌شود (فوکوس یک‌دفعه از این سر به آن سر می‌پرد).
+        <code>order</code> را برای جابه‌جایی‌های تزئینی و کوچک نگه دارید.
+      </p>
+
+      <p class="mistake">
+        <strong>اشتباه رایج:</strong>
+        <code>order</code> را روی پدر می‌نویسیم، یا روی عنصری که آیتم فلکس نیست (پدرش <code>display: flex</code> ندارد). در هر دو حالت بی‌اثر است.
+      </p>
+
+      <table class="ref">
+        <tr>
+          <th>مقدار</th>
+          <th>معنی</th>
+        </tr>
+        <tr>
+          <td><code>order: 0</code></td>
+          <td>پیش‌فرض؛ ترتیب HTML</td>
+        </tr>
+        <tr>
+          <td><code>order: 1</code> یا بیشتر</td>
+          <td>بعد از آیتم‌های با عدد کمتر (به سمت پایان)</td>
+        </tr>
+        <tr>
+          <td><code>order: -1</code> یا کمتر</td>
+          <td>قبل از آیتم‌های با عدد بیشتر (به سمت شروع)</td>
+        </tr>
+      </table>
+
+      <p class="exercise">
+        <strong>تمرین:</strong> فهرست پنج محصول یک فروشگاه را بسازید. محصول «پرفروش‌ترین» را که در HTML چهارمی است، با <code>order</code> اول نمایش دهید
+        و محصول «ناموجود» را آخر. سپس صفحه را با کلید Tab پیمایش کنید و ببینید ترتیب فوکوس چطور است.
+      </p>
+    </section>
+
+    <nav class="page-nav" aria-label="ناوبری درس پایین">
+      <a href="07-gap.html">→ قبلی: gap</a>
+      <a href="../index.html">فهرست درس‌ها</a>
+      <a href="09-grow-shrink-basis.html">بعدی: grow، shrink، basis ←</a>
+    </nav>
+
+  </div>
+
+  <footer class="page-footer">
+    آموزش Flexbox
+  </footer>
+
+</body>
+
+</html>

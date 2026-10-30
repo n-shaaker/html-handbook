@@ -1,0 +1,40 @@
+/* تمرین ۳ — repeat و minmax نوشته‌شده به‌شکل غلط (نسخه خراب — درستش کنید) */
+
+body {
+  font-family: Tahoma, sans-serif;
+  margin: 20px;
+  background-color: #f8f9fa;
+  color: #212529;
+}
+
+.photos {
+  display: grid;
+  grid-template-columns: repeat(1fr, 3);
+}
+
+.photo {
+  background-color: #868e96;
+  color: white;
+  padding: 30px 5px;
+  text-align: center;
+  border: 2px solid white;
+}
+
+.specs {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(1fr, 120px) 1fr);
+  margin-top: 15px;
+  background-color: white;
+}
+
+.label {
+  background-color: #f1f3f5;
+  font-weight: bold;
+  padding: 8px;
+  border: 1px solid #dee2e6;
+}
+
+.value {
+  padding: 8px;
+  border: 1px solid #dee2e6;
+}

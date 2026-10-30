@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>۳) نحوه اتصال اجزای وب | جزوه HTML</title>
+    <link rel="stylesheet" href="../css/style.css" />
+  </head>
+
+  <body>
+    <header class="page-header">
+      <h1>جزوه HTML مقدماتی</h1>
+      <p>۳) نحوه اتصال اجزای وب</p>
+    </header>
+
+    <div class="container">
+      <nav class="page-nav">
+        <a href="02-browser.html">→ درس قبل</a>
+        <a href="../index.html">فهرست مطالب</a>
+        <a href="04-html-intro.html">درس بعد ←</a>
+      </nav>
+
+      <section class="lesson">
+        <h2>۳) اینترنت، مرورگر و HTML چگونه به یکدیگر مرتبط می‌شوند؟</h2>
+        <p>
+          وقتی نشانی یک وب‌سایت را در مرورگر وارد می‌کنید، چند جزء با هم کار می‌کنند تا صفحه دیده شود.
+          مسیر معمول، با کمی ساده‌سازی، این است:
+        </p>
+
+        <div class="flow">
+          <div class="flow-box">
+            ۱) کاربر
+            <br />
+            نشانی را وارد می‌کند
+          </div>
+          <div class="flow-arrow">→</div>
+          <div class="flow-box">
+            ۲) مرورگر
+            <br />
+            درخواست می‌فرستد
+          </div>
+          <div class="flow-arrow">→</div>
+          <div class="flow-box alt">
+            ۳) اینترنت
+            <br />
+            داده را منتقل می‌کند
+          </div>
+          <div class="flow-arrow">→</div>
+          <div class="flow-box">
+            ۴) سرور
+            <br />
+            HTML را ارسال می‌کند
+          </div>
+          <div class="flow-arrow">→</div>
+          <div class="flow-box alt">
+            ۵) مرورگر
+            <br />
+            صفحه را نمایش می‌دهد
+          </div>
+        </div>
+
+        <h3>نقش هر جزء</h3>
+        <table class="ref">
+          <thead>
+            <tr>
+              <th>جزء</th>
+              <th>نقش</th>
+              <th>نمونه</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>اینترنت</td>
+              <td>اینترنت مسیری است که داده را میان دستگاه شما و سرور جابه‌جا می‌کند.</td>
+              <td>شبکهٔ بی‌سیم، دادهٔ تلفن همراه یا کابل شبکه</td>
+            </tr>
+            <tr>
+              <td>مرورگر</td>
+              <td>مرورگر درخواست را می‌فرستد و پاسخ دریافتی را به شکل صفحه نشان می‌دهد.</td>
+              <td>Chrome</td>
+            </tr>
+            <tr>
+              <td>سرور</td>
+              <td>سرور پرونده‌های سایت را نگه می‌دارد و در پاسخ به درخواست، آن‌ها را می‌فرستد.</td>
+              <td>رایانه‌ای که وب‌سایت روی آن میزبانی شده است</td>
+            </tr>
+            <tr>
+              <td>HTML</td>
+              <td>HTML ساختار و معنای محتوا را مشخص می‌کند؛ یعنی کدام بخش عنوان است، کدام بند و کدام پیوند.</td>
+              <td>عنوان، بند، پیوند</td>
+            </tr>
+            <tr>
+              <td>CSS</td>
+              <td>CSS ظاهر همان ساختار را تنظیم می‌کند، مانند رنگ، قلم و چیدمان.</td>
+              <td>رنگ، قلم، چیدمان</td>
+            </tr>
+            <tr>
+              <td>JavaScript</td>
+              <td>JavaScript رفتار صفحه را می‌سازد؛ مثلاً بعد از کلیک واکنشی نشان می‌دهد یا یک حرکت ساده ایجاد می‌کند.</td>
+              <td>واکنش به کلیک، پویانمایی ساده</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h3>URL چیست؟</h3>
+        <p>
+          <strong>URL</strong>
+          نشانی دقیق یک منبع در وب است. منبع می‌تواند یک صفحه، یک تصویر یا پروندهٔ دیگری باشد. این نشانی معمولاً در نوار نشانی مرورگر دیده می‌شود و سه بخش رایج دارد:
+        </p>
+        <pre class="code"><code>https://www.example.com/about.html
+│       │               │
+│       │               └─ مسیر صفحه یا پرونده
+│       └─ نام دامنه
+└─ پروتکل امن (HTTPS)</code></pre>
+
+        <p class="tip">
+          <strong>نکته (DNS):</strong>
+          پیش از آنکه درخواست به سرور برسد، مرورگر باید بداند آن سرور در شبکه کجاست. برای همین ابتدا نام دامنه، مثلاً
+          <code>www.example.com</code>،
+          را از سامانهٔ DNS می‌پرسد و نشانی IP را می‌گیرد. بعد درخواست
+          <code>HTTP</code>
+          یا
+          <code>HTTPS</code>
+          را به همان نشانی می‌فرستد. در نمودار بالا این پرسش DNS پیش از مرحلهٔ ۲ انجام می‌شود.
+        </p>
+
+        <p class="tip">
+          <strong>نکته:</strong>
+          وقتی روی رایانهٔ خودتان تمرین می‌کنید، پرونده را مستقیم در مرورگر باز می‌کنید و معمولاً سرور واقعی در کار نیست. بعد از انتشار، همان پرونده‌ها روی سرور قرار می‌گیرند تا دیگران از طریق اینترنت به آن‌ها برسند.
+        </p>
+
+        <p class="mistake">
+          <strong>خطای متداول:</strong>
+          این تصور که HTML خودش شبکه است یا بدون درخواست «در اینترنت حرکت می‌کند». پروندهٔ HTML از طریق اینترنت فرستاده می‌شود، اما فرستنده سرور است، مسیر اینترنت است و نمایش‌دهنده مرورگر. HTML فقط محتوای ساختاریافتهٔ همان پرونده است.
+        </p>
+      </section>
+
+      <nav class="page-nav">
+        <a href="02-browser.html">→ درس قبل</a>
+        <a href="../index.html">فهرست مطالب</a>
+        <a href="04-html-intro.html">درس بعد ←</a>
+      </nav>
+    </div>
+
+    <footer class="page-footer">جزوه HTML مقدماتی</footer>
+  </body>
+</html>

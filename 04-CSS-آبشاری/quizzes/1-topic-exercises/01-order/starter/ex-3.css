@@ -1,0 +1,27 @@
+.lead {
+  font-weight: bold;
+  line-height: 2;
+}
+
+.card {
+  padding-top: 32px;
+  background-color: #fff4e6;
+}
+
+.tab {
+  border-bottom: 3px solid #1a5fb4;
+  padding: 4px 10px;
+}
+
+/* ----- این قانون‌ها بعداً اضافه شده‌اند ----- */
+.lead {
+  font: 18px Tahoma, sans-serif;
+}
+
+.card {
+  padding: 12px;
+}
+
+.tab {
+  border: 1px solid #dee2e6;
+}

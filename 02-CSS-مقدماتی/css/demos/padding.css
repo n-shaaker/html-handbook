@@ -1,0 +1,23 @@
+/* ۱۰) Padding */
+
+.notice {
+  background-color: #d8ecff;
+  margin-bottom: 10px;
+}
+
+.notice-tight { padding: 5px; }
+.notice-roomy { padding: 25px 40px; }
+
+.btn {
+  display: inline-block;
+  padding: 10px 24px;
+  background-color: #1a5fb4;
+  color: white;
+  text-decoration: none;
+  border-radius: 6px;
+}
+
+.btn:focus-visible {
+  outline: 3px solid #e6a700;
+  outline-offset: 2px;
+}

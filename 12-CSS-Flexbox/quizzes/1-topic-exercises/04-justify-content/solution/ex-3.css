@@ -1,0 +1,53 @@
+/* تمرین ۳ — سه ردیف با تراز اشتباه (پاسخ) */
+
+body {
+  font-family: Tahoma, sans-serif;
+  margin: 20px;
+  background-color: #f8f9fa;
+  color: #212529;
+}
+
+.pager,
+.features,
+.form-buttons {
+  background-color: white;
+  border: 1px solid #dee2e6;
+  padding: 10px;
+}
+
+/* درست شد: align-items برای محور فرعی است؛ وسط افقی کار justify-content است */
+.pager {
+  display: flex;
+  justify-content: center;
+}
+
+.pager a {
+  background-color: #1c7ed6;
+  color: white;
+  text-decoration: none;
+  padding: 6px 12px;
+  margin: 0 3px;
+  border-radius: 4px;
+}
+
+/* درست شد: space-between کنار لبه‌ها فاصله نمی‌گذارد؛ space-evenly همه فاصله‌ها را برابر می‌کند */
+.features {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.feature {
+  background-color: #ebfbee;
+  padding: 10px;
+}
+
+/* درست شد: در rtl شروع محور سمت راست است، پس برای سمت چپ flex-end لازم است */
+.form-buttons {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.form-buttons button {
+  padding: 8px 16px;
+  margin: 0 4px;
+}

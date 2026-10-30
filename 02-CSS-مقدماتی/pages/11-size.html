@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>۱۱) عرض، ارتفاع و واحدها (px / em / rem) | آموزش CSS از صفر</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/demos/size.css">
+</head>
+
+<body>
+
+  <header class="page-header">
+    <h1>آموزش CSS از صفر</h1>
+    <p>۱۱) عرض، ارتفاع و واحدها (px / em / rem)</p>
+  </header>
+
+  <div class="container">
+
+    <nav class="page-nav" aria-label="ناوبری درس">
+      <a href="10-padding.html">→ قبلی: Padding</a>
+      <a href="../index.html">فهرست درس‌ها</a>
+      <a href="12-boxmodel.html">بعدی: Box Model ←</a>
+    </nav>
+
+    <section class="lesson" id="size">
+      <h2>۱۱) عرض، ارتفاع و واحدها (px / em / rem)</h2>
+      <p>
+        به طور پیش‌فرض (<code>width: auto</code> و <code>height: auto</code>) یک عنصر بلوکی مثل <code>div</code> کل عرض در دسترس والدش را می‌گیرد و ارتفاعش به اندازه محتوا، به‌اضافه padding و border، تنظیم می‌شود.
+        با <code>width</code> و <code>height</code> می‌توان این اندازه را عوض کرد.
+        بعد از هر عدد طول، به‌جز صفر، باید <strong>واحد</strong> نوشت؛ مثل <code>220px</code> یا <code>1.5rem</code>. اگر واحد جا بیفتد، مرورگر آن تعریف را نادیده می‌گیرد.
+      </p>
+
+      <!-- ========== عرض و ارتفاع ========== -->
+      <h3>عرض و ارتفاع با پیکسل و درصد</h3>
+      <pre class="code"><code>.fixed   { width: 220px; height: 80px; }   /* اندازه ثابت */
+.percent { width: 50%; }                    /* نصف عرض والد */
+.max     { width: 100%; max-width: 400px; } /* حداکثر ۴۰۰ پیکسل */</code></pre>
+      <div class="result">
+        <div class="fixed">۲۲۰ در ۸۰ پیکسل</div>
+        <div class="percent">۵۰٪ عرض والد</div>
+        <div class="max">در صفحه بزرگ ۴۰۰ پیکسل، در موبایل کوچک‌تر</div>
+      </div>
+      <p class="tip">
+        پنجره مرورگر را کوچک کنید: جعبه اول ثابت می‌ماند (و در صفحه خیلی باریک بیرون می‌زند)، ولی جعبه سوم خودش را با صفحه
+        کوچک می‌کند. برای همین <code>max-width</code> برای موبایل بهتر از <code>width</code> ثابت است.
+      </p>
+
+      <table class="ref">
+        <thead>
+          <tr>
+            <th>ویژگی</th>
+            <th>کاربرد</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>width</code> ، <code>height</code></td>
+            <td>اندازه مشخص (پیش‌فرض: <code>auto</code>)</td>
+          </tr>
+          <tr>
+            <td><code>max-width</code> ، <code>max-height</code></td>
+            <td>بزرگ‌تر از این نشود (مثل عرض ستون محتوای سایت)</td>
+          </tr>
+          <tr>
+            <td><code>min-width</code> ، <code>min-height</code></td>
+            <td>کوچک‌تر از این نشود؛ ولی اگر محتوا بیشتر بود، بزرگ‌تر شود</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <!-- ========== جدول واحدها ========== -->
+      <h3>واحدهای اندازه: px ، em ، rem ، %</h3>
+      <p>
+        سه واحدی که خیلی می‌بینید <code>px</code>، <code>em</code> و <code>rem</code> هستند.
+        فرق اصلی‌شان این است که هر کدام نسبت به <strong>چه چیزی</strong> حساب می‌شوند:
+      </p>
+      <table class="ref">
+        <thead>
+          <tr>
+            <th>واحد</th>
+            <th>یعنی چه؟</th>
+            <th>مناسب برای</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>px</code></td>
+            <td>پیکسل؛ اندازه <strong>ثابت</strong></td>
+            <td>حاشیه نازک، سایه، اندازه دقیق تصویر</td>
+          </tr>
+          <tr>
+            <td><code>em</code></td>
+            <td>نسبت به اندازه قلم عنصر والد وقتی برای <code>font-size</code> به کار رود. در ویژگی‌هایی مثل padding و margin، نسبت به اندازه قلم خود عنصر حساب می‌شود.</td>
+            <td>padding دکمه که با فونتش بزرگ شود</td>
+          </tr>
+          <tr>
+            <td><code>rem</code></td>
+            <td>نسبت به فونت ریشه (<code>html</code>)؛ معمولاً <code>1rem = 16px</code></td>
+            <td>فونت، فاصله‌ها، پدینگ کلی صفحه</td>
+          </tr>
+          <tr>
+            <td><code>%</code></td>
+            <td>درصدی از اندازه والد</td>
+            <td>عرض ستون، نوار پیشرفت</td>
+          </tr>
+        </tbody>
+      </table>
+      <p class="tip">
+        ریشه (<code>html</code>) در مرورگر معمولاً فونت ۱۶ پیکسل دارد.
+        پس <code>1rem = 16px</code>، <code>1.5rem = 24px</code>، <code>2rem = 32px</code>.
+        اگر کاربر در تنظیمات مرورگر فونت را بزرگ کند، همهٔ <code>rem</code>ها هم بزرگ می‌شوند؛ <code>px</code> ثابت می‌ماند.
+      </p>
+
+      <!-- ========== مثال px ========== -->
+      <h3>مثال ۱: <code>px</code> — اندازه ثابت</h3>
+      <p>
+        واحد <code>px</code> اندازه را به پیکسل CSS ثابت می‌کند. عدد ۱۲ یعنی دوازده پیکسل، چه قلم والد بزرگ باشد چه کوچک.
+        برای همین اگر بعداً اندازه قلم صفحه را عوض کنید، متنی که با <code>px</code> نوشته شده همان‌قدر می‌ماند و با تنظیمات درشت‌نمایی قلم کاربر هم بزرگ نمی‌شود.
+      </p>
+      <pre class="code"><code>.px12 { font-size: 12px; }
+.px16 { font-size: 16px; }
+.px24 { font-size: 24px; }
+.px32 { font-size: 32px; }</code></pre>
+      <div class="result demo-units">
+        <p class="px12">۱۲ پیکسل — ریز</p>
+        <p class="px16">۱۶ پیکسل — معمولی مرورگر</p>
+        <p class="px24">۲۴ پیکسل — تیتر کوچک</p>
+        <p class="px32">۳۲ پیکسل — تیتر بزرگ</p>
+      </div>
+
+      <!-- ========== مثال rem ========== -->
+      <h3>مثال ۲: <code>rem</code> — نسبت به ریشه</h3>
+      <p>
+        <code>rem</code> یعنی «root em». همیشه نسبت به فونت تگ <code>html</code> حساب می‌شود،
+        نه نسبت به پدر. برای همین قابل پیش‌بینی است.
+      </p>
+      <pre class="code"><code>.rem-1   { font-size: 1rem; }     /* ۱۶px */
+.rem-125 { font-size: 1.25rem; }  /* ۲۰px */
+.rem-15  { font-size: 1.5rem; }   /* ۲۴px */
+.rem-2   { font-size: 2rem; }     /* ۳۲px */</code></pre>
+      <div class="result demo-units">
+        <div class="rem-box rem-1">۱rem — متن معمولی</div>
+        <div class="rem-box rem-125">۱٫۲۵rem — کمی بزرگ‌تر</div>
+        <div class="rem-box rem-15">۱٫۵rem — تیتر بخش</div>
+        <div class="rem-box rem-2">۲rem — تیتر اصلی</div>
+      </div>
+      <p class="tip">
+        جدول تبدیل سریع (با ریشه ۱۶ پیکسل):
+        <code>0.5rem=8px</code> ·
+        <code>0.75rem=12px</code> ·
+        <code>1rem=16px</code> ·
+        <code>1.25rem=20px</code> ·
+        <code>1.5rem=24px</code> ·
+        <code>2rem=32px</code>
+      </p>
+
+      <!-- ========== مثال em در برابر rem ========== -->
+      <h3>مثال ۳: <code>em</code> در برابر <code>rem</code></h3>
+      <p>
+        پدر اینجا فونت ۲۰ پیکسل دارد.
+        <code>1.5em</code> می‌شود ۳۰ پیکسل (۱٫۵ × ۲۰)، ولی <code>1.5rem</code> می‌شود ۲۴ پیکسل (۱٫۵ × ۱۶) — پدر را نادیده می‌گیرد.
+      </p>
+      <pre class="code"><code>.em-parent { font-size: 20px; }
+
+.em-child  { font-size: 1.5em; }   /* ۱.۵ × ۲۰ = ۳۰px */
+.rem-child { font-size: 1.5rem; }  /* ۱.۵ × ۱۶ = ۲۴px */</code></pre>
+      <div class="result demo-units">
+        <div class="em-parent">
+          متن پدر (۲۰ پیکسل)
+          <p class="em-child">فرزند با 1.5em ← ۳۰ پیکسل (قرمز)</p>
+          <p class="rem-child">فرزند با 1.5rem ← ۲۴ پیکسل (آبی)</p>
+        </div>
+      </div>
+
+      <!-- ========== تله em ========== -->
+      <h3>مثال ۴: تله <code>em</code> در عنصرهای تودرتو</h3>
+      <p>
+        اگر هر سطح <code>font-size: 1.2em</code> بگیرد، اندازه‌ها در هم ضرب می‌شوند:
+        ۱۶ → ۱۹٫۲ → ۲۳ → ۲۷٫۶ ... و متن هر سطح درشت‌تر می‌شود.
+      </p>
+      <pre class="code"><code>.nest { font-size: 1.2em; }</code></pre>
+      <div class="result demo-units">
+        <div class="nest">سطح ۱ (۱٫۲em)
+          <div class="nest">سطح ۲ (۱٫۲ × ۱٫۲)
+            <div class="nest">سطح ۳ — هر بار درشت‌تر!</div>
+          </div>
+        </div>
+      </div>
+      <p class="mistake">
+        <strong>اشتباه رایج:</strong>
+        نوشتن <code>li { font-size: 1.2em; }</code> وقتی فهرست داخل فهرست دارید.
+        برای فونت معمولاً <code>rem</code> امن‌تر است چون زنجیره‌ای بزرگ نمی‌شود.
+      </p>
+
+      <!-- ========== دکمه با em ========== -->
+      <h3>مثال ۵: padding با <code>em</code> — دکمه متناسب</h3>
+      <p>
+        اینجا فقط <code>font-size</code> فرق دارد؛ <code>padding: 0.5em 1em</code> روی هر سه دکمه یکی است.
+        چون <code>em</code> نسبت به فونت <strong>خود دکمه</strong> است، دکمه بزرگ‌تر، فاصله داخلی بزرگ‌تری هم می‌گیرد.
+      </p>
+      <pre class="code"><code>.btn {
+  padding: 0.5em 1em;
+  border-radius: 0.3em;
+}
+
+.btn-sm { font-size: 12px; }
+.btn-md { font-size: 16px; }
+.btn-lg { font-size: 24px; }</code></pre>
+      <div class="result demo-units">
+        <button type="button" class="btn btn-sm">کوچک</button>
+        <button type="button" class="btn btn-md">متوسط</button>
+        <button type="button" class="btn btn-lg">بزرگ</button>
+      </div>
+      <p class="tip">
+        اگر padding را با <code>px</code> می‌نوشتید (<code>8px 16px</code>)، دکمه بزرگ فقط متنش درشت می‌شد و دورش تنگ می‌ماند.
+        با <code>em</code> دکمه «با فونتش» رشد می‌کند.
+      </p>
+
+      <!-- ========== کارت با rem ========== -->
+      <h3>مثال ۶: کارت محصول با <code>rem</code></h3>
+      <p>
+        فونت و فاصله‌ها همه با <code>rem</code>: یک واحد مشترک، قابل پیش‌بینی، و سازگار با تنظیمات دسترسی کاربر.
+      </p>
+      <pre class="code"><code>.card {
+  max-width: 280px;
+  padding: 1rem;          /* ۱۶px */
+  margin-bottom: 0.75rem; /* ۱۲px */
+  border-radius: 0.5rem;  /* ۸px */
+}
+
+.card-title { font-size: 1.25rem; }  /* ۲۰px */
+.card-text  { font-size: 1rem; }     /* ۱۶px */
+.card-price { font-size: 1.5rem; }   /* ۲۴px */</code></pre>
+      <div class="result demo-units">
+        <div class="card">
+          <h4 class="card-title">کتاب آموزش CSS</h4>
+          <p class="card-text">از صفر تا ساخت صفحه معرفی، با مثال‌های فارسی.</p>
+          <p class="card-price">۲۴۰٬۰۰۰ تومان</p>
+        </div>
+      </div>
+
+      <!-- ========== مقایسه عرض ========== -->
+      <h3>مثال ۷: یک عرض، سه واحد</h3>
+      <p>
+        هر سه جعبه حدود ۲۰۰ پیکسل عرض دارند — فقط واحد نوشتن فرق کرده.
+        با فونت پیش‌فرض ۱۶ پیکسل، <code>12.5em</code> و <code>12.5rem</code> هر دو ۲۰۰ پیکسل می‌شوند.
+      </p>
+      <pre class="code"><code>.compare-px  { width: 200px; }
+.compare-em  { width: 12.5em; }    /* ۱۲.۵ × فونت خود عنصر */
+.compare-rem { width: 12.5rem; }   /* ۱۲.۵ × فونت ریشه */</code></pre>
+      <div class="result demo-units">
+        <p class="label">width: 200px</p>
+        <span class="compare compare-px">با پیکسل</span>
+        <p class="label">width: 12.5em</p>
+        <span class="compare compare-em">با em</span>
+        <p class="label">width: 12.5rem</p>
+        <span class="compare compare-rem">با rem</span>
+      </div>
+
+      <!-- ========== تصویر واکنش‌گرا ========== -->
+      <h3>کاربرد واقعی: تصویر واکنش‌گرا</h3>
+      <pre class="code"><code>.article-img {
+  max-width: 100%;   /* هیچ‌وقت از ظرفش پهن‌تر نشود */
+  height: auto;      /* نسبت طول و عرض حفظ شود */
+}</code></pre>
+      <div class="result">
+        <img class="article-img" src="../images/bg.jpg" alt="منظره آبدره و کوه‌های سنگی" width="1200" height="500">
+      </div>
+      <p>
+        این دو خط تقریباً در همه سایت‌ها برای تصویرها نوشته می‌شود.
+        نوشتن <code>width</code> و <code>height</code> واقعی تصویر در HTML هم کمک می‌کند مرورگر قبل از لود شدن تصویر جایش را نگه دارد.
+      </p>
+
+      <!-- ========== قاعده ساده ========== -->
+      <h3>چه واحدی را کی بنویسم؟</h3>
+      <table class="ref">
+        <thead>
+          <tr>
+            <th>می‌خواهم ...</th>
+            <th>واحد پیشنهادی</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>اندازه فونت تیتر و متن</td>
+            <td><code>rem</code></td>
+          </tr>
+          <tr>
+            <td>فاصله و پدینگ کلی صفحه / کارت</td>
+            <td><code>rem</code></td>
+          </tr>
+          <tr>
+            <td>padding دکمه‌ای که چند اندازه دارد</td>
+            <td><code>em</code> (با فونت دکمه بزرگ می‌شود)</td>
+          </tr>
+          <tr>
+            <td>حاشیه ۱ پیکسلی، سایه، آیکن ثابت</td>
+            <td><code>px</code></td>
+          </tr>
+          <tr>
+            <td>عرض ستون نسبت به والد</td>
+            <td><code>%</code> یا <code>max-width</code> با <code>px</code>/<code>rem</code></td>
+          </tr>
+          <tr>
+            <td>حداقل ارتفاع به اندازه صفحه</td>
+            <td><code>min-height: 100vh</code></td>
+          </tr>
+        </tbody>
+      </table>
+      <p class="tip">
+        قاعده ساده برای شروع این دوره:
+        <strong>فونت و فاصله‌ها با <code>rem</code></strong>،
+        <strong>عرض‌ها با <code>%</code> یا <code>max-width</code></strong>،
+        <strong>جزئیات خیلی کوچک با <code>px</code></strong>.
+        واحد <code>vh</code> که در جدول آخر آمده، یک‌صدم ارتفاع پنجره مرورگر است. <code>min-height: 100vh</code> یعنی جعبه دست‌کم به اندازه تمام ارتفاع پنجره بلند شود.
+        در صفحه موبایل، نوار آدرس ممکن است این ارتفاع را تغییر دهد. واحدهای دقیق‌تر، از جمله <code>vw</code> و <code>dvh</code>، در
+        <a href="../../03-CSS-میانی/pages/18-units.html">درس واحدها در دوره میانی</a> آمده است.
+      </p>
+
+      <p class="mistake">
+        <strong>اشتباه رایج:</strong>
+        فاصله بین عدد و واحد — <code>20 px</code> اشتباه است؛ درستش <code>20px</code> است.
+        همچنین جا انداختن واحد: <code>width: 20</code> نامعتبر است و مرورگر آن خط را نادیده می‌گیرد (فقط <code>0</code> بدون واحد مجاز است).
+        <br>
+        دادن <code>height</code> ثابت به جعبه‌ای که متن دارد؛ در موبایل یا با متن بیشتر، متن بیرون می‌زند — از <code>min-height</code> استفاده کنید.
+        <br>
+        دادن <code>width</code> به عنصرهای درون‌خطی مثل <code>span</code>؛ روی آن‌ها اثری ندارد مگر با <code>display: block</code> یا <code>inline-block</code>.
+        <br>
+        <code>height: 50%</code> وقتی والد ارتفاع مشخصی ندارد کار نمی‌کند.
+      </p>
+
+      <p class="exercise">
+        <strong>تمرین الف:</strong>
+        یک کارت محصول با <code>max-width: 300px</code> بسازید که تیترش <code>1.25rem</code>، متنش <code>1rem</code> و قیمتش <code>1.5rem</code> باشد؛
+        پدینگ کارت را هم با <code>rem</code> بنویسید.
+      </p>
+      <p class="exercise">
+        <strong>تمرین ب:</strong>
+        سه دکمه کوچک / متوسط / بزرگ بسازید که فقط <code>font-size</code>شان فرق کند و <code>padding</code> همه با <code>em</code> باشد.
+        ببینید با بزرگ شدن فونت، فاصله داخلی هم بزرگ می‌شود.
+      </p>
+      <p class="exercise">
+        <strong>تمرین ج:</strong>
+        یک فهرست تودرتو با <code>li { font-size: 1.2em; }</code> بسازید و ببینید متن چطور درشت می‌شود؛
+        بعد همان را با <code>rem</code> عوض کنید و فرق را مقایسه کنید.
+      </p>
+    </section>
+
+    <nav class="page-nav" aria-label="ناوبری درس پایین">
+      <a href="10-padding.html">→ قبلی: Padding</a>
+      <a href="../index.html">فهرست درس‌ها</a>
+      <a href="12-boxmodel.html">بعدی: Box Model ←</a>
+    </nav>
+
+  </div>
+
+  <footer class="page-footer">
+    آموزش CSS از صفر
+  </footer>
+
+</body>
+
+</html>

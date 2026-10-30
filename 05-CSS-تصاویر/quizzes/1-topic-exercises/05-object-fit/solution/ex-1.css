@@ -1,0 +1,22 @@
+body {
+  font-family: Tahoma, Arial, sans-serif;
+  line-height: 1.8;
+  padding: 16px;
+}
+
+h2 {
+  font-size: 16px;
+}
+
+/* قاب پهن ثابت؛ بدون object-fit عکس کش می‌آید */
+.frame {
+  display: block;
+  width: 300px;
+  height: 200px;
+  border-radius: 8px;
+}
+
+/* قاب پر می‌شود و اضافه عکس بریده می‌شود */
+.frame.fit {
+  object-fit: cover;
+}

@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>۱۱) تجزیه و پخش (Destructuring، Spread و Rest) | آموزش JavaScript سطح میانی</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <script src="../js/log.js" defer></script>
+  <script src="../js/demos/destructuring-spread.js" defer></script>
+</head>
+
+<body>
+
+  <header class="page-header" id="top">
+    <h1>آموزش JavaScript — سطح میانی</h1>
+    <p>۱۱) تجزیه و پخش (Destructuring، Spread و Rest)</p>
+  </header>
+
+  <div class="container">
+
+    <nav class="page-nav" aria-label="ناوبری درس">
+      <a href="10-this.html">→ قبلی: this</a>
+      <a href="../index.html">فهرست درس‌ها</a>
+      <a href="12-json.html">بعدی: JSON ←</a>
+    </nav>
+
+    <section class="lesson" id="destructuring-spread">
+      <h2>۱۱) تجزیه و پخش (Destructuring، Spread و Rest)</h2>
+
+<p>تجزیه (Destructuring) یعنی عضوهای یک آرایه یا ویژگی‌های یک شیء را همان موقع خواندن، در متغیرهای جدا بریزید. پخش (Spread) با سه نقطه یک فهرست یا شیء را باز می‌کند تا داخل فهرست یا شیء دیگری کپی شود. Rest برعکس عمل می‌کند و بقیهٔ مقدارها را در یک آرایه یا شیء جمع می‌کند. این سه شکل کد را کوتاه‌تر می‌کنند، به شرطی که معلوم باشد کدام بخش واقعاً کپی شده و کدام هنوز به دادهٔ اصلی وصل است.</p>
+
+<h3>Destructuring آرایه</h3>
+
+<p>با Destructuring می‌توان عضوهای آرایه یا شیء را در یک خط داخل چند متغیر ریخت.</p>
+
+<pre class="code"><code>const colors = ["قرمز", "سبز", "آبی"];
+
+const [first, second] = colors;
+console.log(first, second);
+
+let a = 1, b = 2;
+[a, b] = [b, a];                // جابه‌جا کردن دو متغیر!
+console.log(a, b);</code></pre>
+
+<p>کروشهٔ سمت چپ، عضوهای آرایه را به ترتیب در متغیرهای جدید می‌ریزد. <code>first</code> عضو شمارهٔ صفر است و <code>second</code> عضو بعدی. عضوهایی که متغیر نگیرند نادیده گرفته می‌شوند و خود آرایه عوض نمی‌شود. در خط جابه‌جایی، سمت راست اول آرایهٔ تازه‌ای از مقدارهای فعلی <code>b</code> و <code>a</code> می‌سازد و بعد همان مقدارها در متغیرهای قبلی ریخته می‌شوند.</p>
+
+<div class="result">
+<pre class="console" id="out-1"></pre>
+</div>
+
+<h3>Destructuring شیء</h3>
+
+<pre class="code"><code>const user = { name: "سارا", age: 25, city: "شیراز" };
+
+const { name, age } = user;
+console.log(name, age);
+
+const { city: town, job = "نامشخص" } = user;   // تغییر نام و مقدار پیش‌فرض
+console.log(town, job);</code></pre>
+
+<p>آکولاد سمت چپ ویژگی‌ها را با همان نام بیرون می‌کشد. <code>city: town</code> ویژگی <code>city</code> را در متغیری به نام <code>town</code> می‌ریزد. اگر ویژگی <code>job</code> در شیء نباشد، مقدار پیش‌فرض «نامشخص» استفاده می‌شود. ویژگی‌هایی که در این خط نیامده‌اند، مثل بقیهٔ اطلاعات کاربر، سر جایشان در شیء می‌مانند.</p>
+
+<div class="result">
+<pre class="console" id="out-2"></pre>
+</div>
+
+<h3>در پارامتر تابع</h3>
+
+<pre class="code"><code>function showUser({ name, age }) {
+  console.log(`${name} - ${age} ساله`);
+}
+showUser({ name: "علی", age: 30, city: "تبریز" });   // علی - 30 ساله</code></pre>
+
+<p>به‌جای گرفتن کل شیء و بعد خواندن <code>user.name</code>، خود پارامتر را تجزیه کرده‌ایم. موقع صدا زدن، ویژگی‌های هم‌نام از شیء آرگومان در <code>name</code> و <code>age</code> قرار می‌گیرند. ویژگی <code>city</code> چون در پارامتر نیست خوانده نمی‌شود، ولی فرستادنش خطا نیست.</p>
+
+<div class="result">
+<pre class="console" id="out-3"></pre>
+</div>
+
+<h3>Spread (...) — پخش کردن</h3>
+
+<pre class="code"><code>const a1 = [1, 2, 3];
+const a2 = [4, 5];
+const all = [...a1, ...a2, 6];      // ترکیب آرایه‌ها
+console.log(all);                   // [1,2,3,4,5,6]
+
+const copy = [...a1];               // کپی آرایه
+copy.push(99);
+console.log(a1, copy);              // [1,2,3] [1,2,3,99]
+
+const base = { theme: "روشن", lang: "fa" };
+const settings = { ...base, theme: "تیره" };  // کپی و تغییر شیء (آخری برنده است)
+console.log(settings);              // {"theme":"تیره","lang":"fa"}
+
+console.log(Math.max(...all));      // 6
+
+// کاربرد واقعی: اضافه کردن کالا به سبد بدون تغییر سبد قبلی
+const cart = [{ name: "دفتر", qty: 2 }];
+const newCart = [...cart, { name: "خودکار", qty: 1 }];
+console.log(cart.length, newCart.length);   // 1 2</code></pre>
+
+<p>سه نقطه عضوهای یک آرایه را داخل آرایهٔ دیگر باز می‌کند، نه اینکه خود آرایه را به‌صورت یک عضو تودرتو بگذارد. <code>copy</code> فهرست تازه‌ای است؛ <code>push</code> روی آن، <code>a1</code> را بلندتر نمی‌کند. در شیء تنظیمات، ویژگی‌های <code>base</code> کپی می‌شوند و <code>theme</code> بعدی مقدار قبلی همان کلید را عوض می‌کند. <code>newCart</code> عضوهای سبد قبلی را به اضافهٔ یک کالای جدید دارد، ولی <code>cart</code> هنوز یک عضو است. این کپی برای شیءهای داخل آرایه سطحی است و در بخش بعد دیده می‌شود.</p>
+
+<div class="result">
+<pre class="console" id="out-4"></pre>
+</div>
+
+<h3>کپی سطحی (Shallow Copy)</h3>
+
+<pre class="code"><code>const order = { id: 7, customer: { name: "سارا" } };
+const orderCopy = { ...order };
+
+orderCopy.id = 8;                    // روی اصلی اثر ندارد
+orderCopy.customer.name = "مریم";    // ‼ روی اصلی هم اثر دارد!
+console.log(order.id, order.customer.name);   // 7 مریم
+
+const deepCopy = { ...order, customer: { ...order.customer } };   // شیء داخلی را هم کپی می‌کنیم
+deepCopy.customer.name = "رضا";
+console.log(order.customer.name);             // مریم ← دست نخورد</code></pre>
+
+<p><code>orderCopy</code> شیء تازه‌ای در لایهٔ اول است، پس عوض کردن <code>id</code> روی سفارش اصلی اثر ندارد. ویژگی <code>customer</code> هنوز به همان شیء درونی اشاره می‌کند؛ به همین دلیل عوض کردن نام مشتری در کپی، نام را در اصل هم عوض می‌کند. در <code>deepCopy</code> شیء مشتری جدا ساخته شده است و تغییر بعدی دیگر به سفارش اصلی نمی‌رسد.</p>
+
+<div class="result">
+<pre class="console" id="out-6"></pre>
+</div>
+
+<p class="tip">Spread فقط <strong>لایه اول</strong> را کپی می‌کند. اگر داخل شیء یا آرایه، شیء یا آرایه دیگری باشد، کپی و اصلی هنوز به همان شیء داخلی اشاره می‌کنند. برای کپی کامل، شیء داخلی را هم جداگانه با Spread کپی کنید (مثل <code>deepCopy</code> بالا).</p>
+
+<h3>Rest (...) — جمع کردن باقی‌مانده</h3>
+
+<pre class="code"><code>function sum(...numbers) {          // هر تعداد ورودی → یک آرایه
+  return numbers.reduce((s, n) =&gt; s + n, 0);
+}
+console.log(sum(1, 2), sum(1, 2, 3, 4, 5));   // 3 15
+
+const [head, ...tail] = [10, 20, 30, 40];
+console.log(head, tail);                      // 10 [20,30,40]
+
+const { name: n, ...others } = { name: "رضا", age: 22, city: "یزد" };
+console.log(n, others);                       // رضا {"age":22,"city":"یزد"}</code></pre>
+
+<p>سه نقطه در تعریف پارامتر، هر تعداد آرگومان را در آرایهٔ <code>numbers</code> جمع می‌کند. <code>reduce</code> همان آرایه را جمع می‌زند و اگر هیچ آرگومانی نیاید، مقدار شروع صفر برمی‌گردد. در تجزیهٔ آرایه، <code>head</code> عضو اول است و <code>tail</code> بقیه را در یک آرایهٔ جدید دارد. در شیء، <code>others</code> ویژگی‌هایی را نگه می‌دارد که جدا نشده‌اند.</p>
+
+<div class="result">
+<pre class="console" id="out-5"></pre>
+</div>
+
+<p class="tip">سه نقطه <code>...</code> دو کار متضاد دارد: سمت <strong>راست</strong> مساوی یا موقع صدا زدن تابع «پخش» می‌کند (Spread)؛ سمت <strong>چپ</strong> مساوی یا در پارامترها «جمع» می‌کند (Rest).</p>
+
+<p class="mistake"><strong>اشتباه رایج:</strong> فکر کردن اینکه <code>const copy = arr</code> کپی می‌سازد. این فقط یک اسم دیگر برای همان آرایه است؛ برای کپی از <code>[...arr]</code> استفاده کنید.</p>
+
+<p class="mistake"><strong>اشتباه رایج:</strong> Rest باید <strong>آخرین</strong> عضو باشد: <code>const [...rest, last] = arr</code> و <code>function f(...a, b)</code> خطای SyntaxError می‌دهند.</p>
+
+<p class="exercise"><strong>تمرین:</strong> (الف) از شیء <code>{ title: "JS", price: 200, author: "سارا" }</code> با Destructuring، <code>title</code> و <code>price</code> را بیرون بکشید و برای <code>discount</code> مقدار پیش‌فرض <code>0</code> بگذارید. (ب) تابع <code>average(...scores)</code> بنویسید که میانگین هر تعداد نمره را برگرداند (<code>average(18, 15, 12)</code> باید <code>15</code> شود). (ج) با Spread یک کپی از شیء محصول بسازید که قیمتش ۱۰٪ بیشتر باشد، بدون اینکه شیء اصلی تغییر کند.</p>
+    </section>
+
+    <nav class="page-nav" aria-label="ناوبری درس پایین">
+      <a href="10-this.html">→ قبلی: this</a>
+      <a href="../index.html">فهرست درس‌ها</a>
+      <a href="12-json.html">بعدی: JSON ←</a>
+    </nav>
+
+  </div>
+
+  <footer class="page-footer">
+    آموزش JavaScript سطح میانی
+  </footer>
+
+</body>
+
+</html>

@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>۷) زمان‌بندی (setTimeout، setInterval و debounce) | آموزش JavaScript سطح پیشرفته</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <script src="../js/log.js" defer></script>
+  <script src="../js/demos/timing.js" defer></script>
+</head>
+
+<body>
+
+  <header class="page-header" id="top">
+    <h1>آموزش JavaScript — سطح پیشرفته</h1>
+    <p>۷) زمان‌بندی (setTimeout، setInterval و debounce)</p>
+  </header>
+
+  <div class="container">
+
+    <nav class="page-nav" aria-label="ناوبری درس">
+      <a href="06-sets-maps.html">→ قبلی: Set & Map</a>
+      <a href="../index.html">فهرست درس‌ها</a>
+      <a href="08-callbacks.html">بعدی: Callbacks ←</a>
+    </nav>
+
+    <section class="lesson" id="timing">
+      <h2>۷) زمان‌بندی (setTimeout، setInterval و debounce)</h2>
+
+<p>بعضی کارها نباید همین لحظه یا فقط یک بار انجام شوند: صبر کردن، تکرار هر ثانیه، یا محدود کردن تعداد اجرای یک رویداد شلوغ. تابع‌های زمان‌بندی، تابع شما را به صف مرورگر می‌سپارند و اجرای خط‌های بعدی را متوقف نمی‌کنند. شناسه‌ای که برمی‌گردانند برای لغو همان زمان‌بندی لازم است.</p>
+
+<table class="ref">
+<tr><th>تابع</th><th>کار</th></tr>
+<tr><td><code>setTimeout(fn, ms)</code></td><td>fn را <strong>یک بار</strong> بعد از ms میلی‌ثانیه اجرا کن</td></tr>
+<tr><td><code>setInterval(fn, ms)</code></td><td>fn را <strong>هر</strong> ms میلی‌ثانیه تکرار کن</td></tr>
+<tr><td><code>clearTimeout(id)</code></td><td>لغو setTimeout</td></tr>
+<tr><td><code>clearInterval(id)</code></td><td>توقف setInterval</td></tr>
+</table>
+
+<h3>setTimeout</h3>
+
+<pre class="code"><code>log("۱. شروع");
+
+setTimeout(() =&gt; {
+  log("۳. بعد از ۱.۵ ثانیه");
+}, 1500);
+
+log("۲. این خط منتظر نمی‌ماند!");</code></pre>
+
+<p><code>setTimeout</code> تابع را همین حالا اجرا نمی‌کند؛ آن را برای حدود ۱۵۰۰ میلی‌ثانیهٔ بعد در صف می‌گذارد و ادامهٔ برنامه را متوقف نمی‌کند. به همین دلیل پیام دوم قبل از پیام سوم چاپ می‌شود. زمان داده‌شده حداقل انتظار است، نه ضمانت دقیق، چون اگر برنامه مشغول باشد اجرا کمی دیرتر شروع می‌شود.</p>
+
+<div class="result">
+<button class="btn" id="timeout-btn">اجرا</button>
+<pre class="console" id="out-1" aria-live="polite"></pre>
+</div>
+
+<p class="tip">در این مثال‌ها از تابع <code>log</code> به جای <code>console.log</code> استفاده شده چون خروجی بعد از چند ثانیه می‌آید. کار هر دو یکی است.</p>
+
+<p class="tip">JavaScript برای setTimeout صبر نمی‌کند؛ کار را «زمان‌بندی» می‌کند و سراغ خط بعد می‌رود. این اولین آشنایی ما با <strong>کد ناهمگام (Asynchronous)</strong> است. حتی <code>setTimeout(fn, 0)</code> هم بعد از تمام شدن کدهای همگام فعلی اجرا می‌شود (جزئیات در درس ۹، بخش «ترتیب اجرا»).</p>
+
+<p class="tip">عدد ms «حداقل» زمان انتظار است نه زمان دقیق. اگر مرورگر مشغول کار دیگری باشد (یا زبانه در پس‌زمینه باشد)، اجرا دیرتر انجام می‌شود. برای همین در کرنومتر زیر برای کارهای دقیق (مثل زمان‌سنجی آزمون) بهتر است زمان شروع را با <code>Date.now()</code> نگه دارید و اختلاف را حساب کنید.</p>
+
+<h3>مثال زنده: کرنومتر با setInterval</h3>
+
+<pre class="code"><code>let seconds = 0;
+let timerId = null;
+
+startBtn.addEventListener("click", () =&gt; {
+  if (timerId !== null) return;          // جلوی چند بار شروع شدن را بگیر
+  timerId = setInterval(() =&gt; {
+    seconds++;
+    display.textContent = format(seconds);
+  }, 1000);
+});
+
+stopBtn.addEventListener("click", () =&gt; {
+  clearInterval(timerId);
+  timerId = null;
+});
+
+resetBtn.addEventListener("click", () =&gt; {
+  clearInterval(timerId);
+  timerId = null;
+  seconds = 0;
+  display.textContent = format(0);
+});
+
+function format(s) {
+  const m = String(Math.floor(s / 60)).padStart(2, "0");
+  const r = String(s % 60).padStart(2, "0");
+  return `${m}:${r}`;
+}</code></pre>
+
+<p><code>setInterval</code> تابع را هر ۱۰۰۰ میلی‌ثانیه تکرار می‌کند و شناسهٔ تایمر را برمی‌گرداند. اگر شناسه از قبل باشد، کلیک دوباره تایمر دوم نمی‌سازد. دکمهٔ توقف با <code>clearInterval</code> همان شناسه را لغو می‌کند و متغیر را خالی می‌کند تا شروع بعدی ممکن باشد. صفر کردن، هم عدد را صفر می‌کند و هم اگر تایمر هنوز روشن باشد آن را خاموش می‌کند.</p>
+
+<div class="result">
+<span class="big-number" id="watch">00:00</span><br>
+<button class="btn" id="watch-start">شروع</button>
+<button class="btn secondary" id="watch-stop">توقف</button>
+<button class="btn danger" id="watch-reset">صفر</button>
+</div>
+
+<h3>مثال زنده: پیام موقت (Toast) با setTimeout</h3>
+
+<pre class="code"><code>let hideId = null;
+
+toastBtn.addEventListener("click", () =&gt; {
+  toast.classList.remove("hidden");
+  clearTimeout(hideId);       // اگر پیام قبلی هنوز باز است، تایمر قبلی را لغو کن
+  hideId = setTimeout(() =&gt; toast.classList.add("hidden"), 2000);
+});</code></pre>
+
+<p>هر کلیک پیام را نشان می‌دهد و یک تایمر دوثانیه‌ای برای پنهان کردن می‌سازد. اگر تایمر قبلی هنوز نرسیده باشد، <code>clearTimeout</code> آن را لغو می‌کند تا پیام زودتر از دو ثانیهٔ آخرین کلیک مخفی نشود. بدون این لغو، تایمرهای قدیمی هر کدام جداگانه کلاس را برمی‌داشتند.</p>
+
+<div class="result">
+<button class="btn" id="toast-btn">ذخیره</button>
+<p class="demo-box active hidden" id="toast" role="status">✔ تغییرات ذخیره شد (بعد از ۲ ثانیه محو می‌شود)</p>
+</div>
+
+<p class="tip">بدون <code>clearTimeout</code>، اگر کاربر دو بار پشت سر هم کلیک کند، تایمر کلیک اول پیام را زودتر از موعد پنهان می‌کند.</p>
+
+<h3>مثال زنده: جستجو با debounce</h3>
+
+<p>فرض کنید با هر حرفی که کاربر در کادر جستجو تایپ می‌کند، یک درخواست به سرور بفرستیم؛ برای کلمه «کرمانشاه» ۸ درخواست بی‌فایده! <strong>debounce</strong> یعنی «صبر کن تا کاربر تایپ کردن را <strong>تمام</strong> کند (مثلاً ۵۰۰ میلی‌ثانیه چیزی ننویسد)، بعد فقط یک بار اجرا کن». هر حرف جدید، تایمر قبلی را لغو می‌کند و تایمر تازه‌ای می‌سازد.</p>
+
+<pre class="code"><code>function debounce(fn, delay) {
+  let timerId;                              // closure: بین همه صدا زدن‌ها مشترک است
+  return (...args) =&gt; {
+    clearTimeout(timerId);                  // تایمر قبلی لغو شود
+    timerId = setTimeout(() =&gt; fn(...args), delay);
+  };
+}
+
+const cities = ["تهران", "تبریز", "شیراز", "اصفهان", "مشهد", "کرج", "کرمان", "کرمانشاه", "رشت", "یزد"];
+let keys = 0;
+let searches = 0;
+
+function search(query) {
+  searches++;                               // در پروژه واقعی: این‌جا fetch می‌زنیم
+  const q = query.trim();
+  const found = q ? cities.filter(c =&gt; c.includes(q)) : [];
+  results.textContent = `«${q}»: ${found.join("، ") || "نتیجه‌ای نیست"}`;
+  stats.textContent = `${keys} بار تایپ ← فقط ${searches} بار جستجو`;
+}
+
+const debouncedSearch = debounce(search, 500);
+
+searchInput.addEventListener("input", () =&gt; {
+  keys++;
+  debouncedSearch(searchInput.value);
+});</code></pre>
+
+<div class="result">
+<input type="search" id="city-search" placeholder="نام شهر را تایپ کنید (مثلاً کر)" aria-label="جستجوی شهر">
+<p id="city-results" aria-live="polite"></p>
+<p class="msg-ok" id="city-stats"></p>
+</div>
+
+<p class="tip"><strong>throttle</strong> خویشاوند debounce است: «حداکثر هر X میلی‌ثانیه یک بار اجرا کن، هر چقدر هم رویداد بیاید». debounce برای جستجو و ذخیره خودکار فرم مناسب است (منتظر پایان کار کاربر)؛ throttle برای رویدادهای پشت سر همی مثل <code>scroll</code>، <code>resize</code> و <code>mousemove</code> (به‌روزرسانی منظم در حین کار). یک پیاده‌سازی ساده:</p>
+
+<pre class="code"><code>function throttle(fn, interval) {
+  let last = 0;
+  return (...args) =&gt; {
+    const now = Date.now();
+    if (now - last &gt;= interval) {
+      last = now;
+      fn(...args);
+    }
+  };
+}
+
+window.addEventListener("scroll", throttle(() =&gt; console.log(window.scrollY), 200));</code></pre>
+
+<p>Throttle تابعی برمی‌گرداند که <code>fn</code> را حداکثر یک بار در هر بازهٔ زمانی صدا می‌زند. <code>last</code> زمان آخرین اجرای واقعی را نگه می‌دارد. اگر از آن زمان به اندازهٔ <code>interval</code> نگذشته باشد، این دور نادیده گرفته می‌شود. برای رویدادهایی مثل اسکرول که خیلی تند تکرار می‌شوند، این کار از اجرای بی‌وقفهٔ تابع سنگین جلوگیری می‌کند.</p>
+
+<p class="mistake"><strong>اشتباه رایج:</strong> نوشتن <code>setTimeout(myFunc(), 1000)</code>. با پرانتز، تابع همان لحظه اجرا می‌شود و <strong>نتیجه</strong> آن (معمولاً undefined) به setTimeout داده می‌شود؛ درستش <code>setTimeout(myFunc, 1000)</code> است. اگر آرگومان لازم دارید: <code>setTimeout(() =&gt; myFunc(5), 1000)</code>.</p>
+
+<p class="mistake"><strong>اشتباه رایج:</strong> ساختن interval جدید بدون متوقف کردن قبلی. اگر در کرنومتر بالا شرط <code>if (timerId !== null) return;</code> نبود، هر کلیک روی «شروع» یک interval تازه می‌ساخت؛ کرنومتر تند و تندتر می‌شد و دکمه «توقف» فقط آخرین interval را متوقف می‌کرد.</p>
+
+<p class="mistake"><strong>اشتباه رایج:</strong> ساختن تابع debounce داخل listener: <code>input.addEventListener("input", () =&gt; debounce(search, 500)())</code>. این‌طوری با هر حرف یک debounce تازه (با timerId تازه) ساخته می‌شود و هیچ تایمری لغو نمی‌شود. debounce را <strong>یک بار</strong> بسازید و نتیجه‌اش را استفاده کنید.</p>
+
+<p class="exercise"><strong>تمرین:</strong><br>
+۱) یک «شمارش معکوس» بسازید: کاربر تعداد ثانیه را در یک input وارد کند و دکمه «شروع» را بزند؛ با setInterval هر ثانیه یکی کم شود و روی صفحه نمایش داده شود، در صفر با <code>clearInterval</code> متوقف شود و پیام «تمام!» بدهد. ورودی خالی یا منفی را نپذیرید.<br>
+۲) یک textarea بسازید که متنش با debounce (۱ ثانیه بعد از آخرین تایپ) در Console چاپ شود و کنارش پیام «ذخیره شد» ظاهر شود.</p>
+    </section>
+
+    <nav class="page-nav" aria-label="ناوبری درس پایین">
+      <a href="06-sets-maps.html">→ قبلی: Set & Map</a>
+      <a href="../index.html">فهرست درس‌ها</a>
+      <a href="08-callbacks.html">بعدی: Callbacks ←</a>
+    </nav>
+
+  </div>
+
+  <footer class="page-footer">
+    آموزش JavaScript سطح پیشرفته
+  </footer>
+
+</body>
+
+</html>

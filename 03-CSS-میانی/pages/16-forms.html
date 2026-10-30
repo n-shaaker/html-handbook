@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>۱۶) فرم‌ها (Forms) | آموزش CSS سطح میانی</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/demos/forms.css">
+</head>
+
+<body>
+
+  <header class="page-header">
+    <h1>آموزش CSS — سطح میانی</h1>
+    <p>۱۶) فرم‌ها (Forms)</p>
+  </header>
+
+  <div class="container">
+
+    <nav class="page-nav" aria-label="ناوبری درس">
+      <a href="15-attr-selectors.html">→ قبلی: Attribute Selectors</a>
+      <a href="../index.html">فهرست درس‌ها</a>
+      <a href="17-counters.html">بعدی: Counters ←</a>
+    </nav>
+
+    <section class="lesson" id="forms">
+      <h2>۱۶) فرم‌ها (Forms)</h2>
+      <p>
+        کنترل‌های فرم در HTML کار جمع‌آوری داده را انجام می‌دهند و ظاهر پیش‌فرضشان را خود مرورگر می‌سازد: کادر کوچک، فونت سیستم، و حاشیه ساده.
+        CSS اندازه، فاصله داخلی، رنگ حاشیه و حالت فوکوس را عوض می‌کند تا پر کردن فرم روشن‌تر شود.
+        برای جدا کردن انواع <code>input</code> از انتخابگر ویژگی درس ۱۵ استفاده می‌کنیم، چون نام تگ همه آن‌ها <code>input</code> است و تفاوتشان در ویژگی <code>type</code> است.
+        بسیاری از کنترل‌های فرم، فونت عنصر والد را به ارث نمی‌برند. برای همین <code>font-family: inherit</code> قلم داخل کادر را با قلم بقیه صفحه یکی می‌کند.
+        اگر به کادر <code>width: 100%</code> و padding بدهید، در حالت پیش‌فرض <code>content-box</code> عرض از پدر بیرون می‌زند. <code>box-sizing: border-box</code> padding و border را داخل همان صددرصد نگه می‌دارد.
+      </p>
+      <p class="tip">
+        عنصرهای فرم فونت صفحه را به ارث نمی‌برند؛ برای همین در همه مثال‌ها <code>font-family: inherit</code> گذاشته‌ایم
+        تا متن داخل کادرها هم با فونت سایت (اینجا Tahoma) نمایش داده شود.
+      </p>
+
+      <h3>مثال ۱: کادر متن تمام‌عرض</h3>
+      <pre class="code"><code>input[type="text"] {
+  width: 100%;
+  padding: 12px 16px;
+  margin: 8px 0;
+  box-sizing: border-box;   /* padding از عرض بیرون نزند */
+  font-family: inherit;
+}</code></pre>
+      <div class="result demo-form">
+        <input type="text" class="f1" placeholder="نام شما" aria-label="نام شما">
+      </div>
+
+      <h3>مثال ۲: سبک‌های مختلف حاشیه</h3>
+      <pre class="code"><code>.f-border  { border: 2px solid #1a5fb4; border-radius: 4px; }
+.f-bottom  { border: none; border-bottom: 2px solid #e8590c; }
+.f-filled  { border: none; background-color: #3f51b5; color: white; }</code></pre>
+      <div class="result demo-form">
+        <input type="text" class="f-border" placeholder="حاشیه کامل و گرد" aria-label="نمونه حاشیه کامل">
+        <input type="text" class="f-bottom" placeholder="فقط خط پایین" aria-label="نمونه خط پایین">
+        <input type="text" class="f-filled" placeholder="پس‌زمینه رنگی" aria-label="نمونه پس‌زمینه رنگی">
+      </div>
+
+      <h3>مثال ۳: حالت focus</h3>
+      <p>کاربر باید همیشه ببیند الان در کدام کادر تایپ می‌کند. اگر <code>outline</code> پیش‌فرض را برمی‌دارید، حتماً یک نشانه واضح جایگزین بگذارید:</p>
+      <pre class="code"><code>input:focus {
+  outline: none;                                   /* فقط چون جایگزین داریم */
+  border-color: #0b6e4f;
+  box-shadow: 0 0 0 3px rgba(11, 110, 79, 0.35);   /* حلقه سبز واضح */
+}</code></pre>
+      <div class="result demo-form">
+        <input type="text" class="f-focus" placeholder="روی من کلیک کنید" aria-label="نمونه حالت فوکوس">
+      </div>
+
+      <h3>مثال ۴: کادر جستجو با آیکون</h3>
+      <p>در صفحه راست‌چین متن از راست شروع می‌شود؛ پس آیکون را سمت راست می‌گذاریم و همان سمت <code>padding</code> اضافه می‌دهیم:</p>
+      <pre class="code"><code>.search {
+  background-image: url("search-icon.svg");  /* در این صفحه، آیکون به شکل SVG داخل خود CSS نوشته شده */
+  background-position: right 14px center;
+  background-repeat: no-repeat;
+  padding-right: 42px;   /* جا برای آیکون */
+  border-radius: 20px;
+}</code></pre>
+      <div class="result demo-form">
+        <input type="search" class="search" placeholder="جستجوی محصول..." aria-label="جستجوی محصول">
+      </div>
+
+      <h3>مثال ۵: textarea و select</h3>
+      <pre class="code"><code>textarea {
+  height: 120px;
+  resize: vertical;   /* کاربر فقط بتواند ارتفاع را تغییر دهد، نه عرض را */
+}
+
+select {
+  padding: 10px;
+  border-radius: 4px;
+}</code></pre>
+      <div class="result demo-form">
+        <label for="province">استان</label>
+        <select class="f-select" id="province">
+          <option value="">استان را انتخاب کنید</option>
+          <option>تهران</option>
+          <option>فارس</option>
+          <option>اصفهان</option>
+        </select>
+        <label for="message">پیام</label>
+        <textarea class="f-area" id="message" placeholder="پیام شما..."></textarea>
+      </div>
+
+      <h3>مثال ۶: دکمه‌ها</h3>
+      <pre class="code"><code>.submit {
+  background-color: #0b6e4f;
+  color: white;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 4px;
+  font-family: inherit;
+  cursor: pointer;    /* نشانگر دست */
+}
+
+.submit:hover { background-color: #08533b; }</code></pre>
+      <div class="result demo-form">
+        <button type="button" class="submit">ارسال</button>
+        <button type="button" class="reset">پاک کردن</button>
+      </div>
+
+      <h3>مثال ۷: یک فرم کامل ثبت‌نام</h3>
+      <p>
+        هر کادر یک <code>label</code> دارد که با <code>for</code> به <code>id</code> کادر وصل شده؛ با کلیک روی برچسب، کادر فعال می‌شود
+        و صفحه‌خوان‌ها هم می‌فهمند هر کادر برای چیست. کادرهایی که <code>required</code> دارند و اشتباه پر شده‌اند،
+        بعد از تایپ کاربر با <code>:user-invalid</code> قرمز می‌شوند:
+      </p>
+      <pre class="code"><code>.signup label {
+  display: block;          /* برچسب بالای کادر، در خط جدا */
+  font-size: 14px;
+}
+
+.signup input:user-invalid {
+  border-color: #c92a2a;   /* فقط بعد از اینکه کاربر چیزی وارد کرد */
+}</code></pre>
+      <div class="result demo-form">
+        <form class="signup" action="#forms">
+          <h4>ساخت حساب کاربری</h4>
+          <label for="su-name">نام و نام خانوادگی</label>
+          <input type="text" id="su-name" name="name" autocomplete="name" required>
+          <label for="su-email">ایمیل</label>
+          <input type="email" id="su-email" name="email" autocomplete="email" placeholder="example@mail.com" dir="ltr" required>
+          <label for="su-pass">رمز عبور (حداقل ۸ کاراکتر)</label>
+          <input type="password" id="su-pass" name="password" autocomplete="new-password" minlength="8" dir="ltr" required>
+          <label class="remember"><input type="checkbox" name="terms" required> قوانین سایت را می‌پذیرم</label>
+          <button type="submit" class="submit full">ثبت‌نام</button>
+        </form>
+      </div>
+
+      <p class="mistake">
+        <strong>اشتباه رایج:</strong>
+        دادن <code>width: 100%</code> و <code>padding</code> بدون <code>box-sizing: border-box</code>؛ کادر از فرم بیرون می‌زند.
+      </p>
+
+      <p class="mistake">
+        <strong>اشتباه رایج:</strong>
+        استفاده از <code>placeholder</code> به‌جای <code>label</code>. متن placeholder با شروع تایپ ناپدید می‌شود،
+        رنگش معمولاً کم‌رنگ و کم‌خواناست و همه صفحه‌خوان‌ها آن را نمی‌خوانند. placeholder فقط برای «نمونه ورودی» است، نه نام کادر.
+      </p>
+
+      <p class="tip">
+        برای هم‌رنگ کردن چک‌باکس و رادیو با رنگ سایت، یک خط کافی است: <code>accent-color: #0b6e4f;</code>
+      </p>
+
+      <p class="exercise">
+        <strong>تمرین:</strong> یک فرم «تماس با ما» بسازید با نام، ایمیل، موضوع (select)، پیام (textarea) و دکمه ارسال.
+        همه کادرها <code>label</code> داشته باشند و حالت <code>:focus</code> واضح باشد.
+      </p>
+    </section>
+
+    <nav class="page-nav" aria-label="ناوبری درس پایین">
+      <a href="15-attr-selectors.html">→ قبلی: Attribute Selectors</a>
+      <a href="../index.html">فهرست درس‌ها</a>
+      <a href="17-counters.html">بعدی: Counters ←</a>
+    </nav>
+
+  </div>
+
+  <footer class="page-footer">
+    آموزش CSS سطح میانی
+  </footer>
+
+</body>
+
+</html>

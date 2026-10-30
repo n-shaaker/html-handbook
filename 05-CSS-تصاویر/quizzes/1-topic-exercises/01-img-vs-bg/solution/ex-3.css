@@ -1,0 +1,37 @@
+/*
+  profile.jpg → img: معرفی شخص است، کاربر باید بداند او کیست (محتوا).
+  pattern.jpg → background: فقط تزئین است و اطلاعاتی نمی‌دهد.
+  food-2.jpg  → img: غذای معرفی‌شده را نشان می‌دهد (محتوا).
+*/
+
+body {
+  font-family: Tahoma, Arial, sans-serif;
+  line-height: 1.8;
+  margin: 0;
+}
+
+.top-strip {
+  height: 120px;
+  background-image: url("../../../../images/pattern.jpg");
+  background-size: cover;
+  background-position: center;
+}
+
+.about {
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 16px;
+}
+
+.chef {
+  width: 160px;
+  height: auto;
+  border-radius: 8px;
+}
+
+.dish {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+}

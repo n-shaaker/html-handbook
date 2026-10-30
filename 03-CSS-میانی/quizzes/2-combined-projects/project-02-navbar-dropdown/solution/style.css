@@ -1,0 +1,127 @@
+/* ===== تنظیمات کلی ===== */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Tahoma, Arial, sans-serif;
+  line-height: 1.8;
+  color: #222;
+  background-color: #f7f9fc;
+}
+
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 16px 40px;
+}
+
+/* ===== سربرگ چسبان ===== */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 100; /* روی همه محتوا، حتی اطلاعیه */
+  background-color: #1a3a5c;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+}
+
+.header-inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 24px;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 16px;
+}
+
+.logo {
+  color: white;
+  font-size: 22px;
+  text-decoration: none;
+}
+
+.logo strong {
+  color: #ffd166;
+}
+
+/* ===== منوی افقی ===== */
+.menu {
+  display: flex;
+  flex-wrap: wrap;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.menu a {
+  display: block;
+  padding: 14px 16px;
+  color: white;
+  text-decoration: none;
+}
+
+.menu a:hover,
+.menu a:focus-visible {
+  background-color: #0f2740;
+}
+
+.menu a:focus-visible {
+  outline: 3px solid #ffd166;
+}
+
+.menu a.active {
+  background-color: #0b6e4f;
+  font-weight: bold;
+}
+
+/* ===== زیرمنوی کشویی ===== */
+.has-dropdown {
+  position: relative; /* مرجع موقعیت زیرمنو */
+}
+
+.submenu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  right: 0;
+  min-width: 180px;
+  list-style-type: none;
+  margin: 0;
+  padding: 6px 0;
+  background-color: white;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.has-dropdown:hover .submenu,
+.has-dropdown:focus-within .submenu {
+  display: block;
+}
+
+.submenu a {
+  color: #1a3a5c;
+  padding: 10px 16px;
+}
+
+.submenu a:hover,
+.submenu a:focus-visible {
+  background-color: #e7eef7;
+}
+
+/* ===== محتوای صفحه ===== */
+.notice {
+  position: relative; /* عمداً موقعیت‌دار است تا z-index سربرگ امتحان شود */
+  margin-top: 24px;
+  padding: 12px 16px;
+  background-color: #fff4d6;
+  border-right: 5px solid #f0a500;
+}
+
+/* ===== پانویس ===== */
+.site-footer {
+  padding: 12px 16px;
+  text-align: center;
+  color: white;
+  background-color: #1a3a5c;
+}

@@ -1,0 +1,68 @@
+/* ۴) Z-index */
+
+.demo-z .stage {
+  position: relative;
+  height: 190px;
+}
+
+.demo-z .layer {
+  position: absolute;
+  width: 150px;
+  height: 110px;
+  padding: 8px;
+  color: white;
+  border-radius: 8px;
+  border: 2px solid white;
+}
+
+.demo-z .red {
+  background-color: #e03131;
+  top: 0;
+  right: 0;
+  z-index: 1;
+}
+
+.demo-z .green {
+  background-color: #2f9e44;
+  top: 30px;
+  right: 60px;
+  z-index: 2;
+}
+
+.demo-z .blue {
+  background-color: #1971c2;
+  top: 60px;
+  right: 120px;
+  z-index: 3;
+}
+
+.demo-z .reverse .red {
+  z-index: 3;
+}
+
+.demo-z .reverse .blue {
+  z-index: 1;
+}
+
+.demo-z .photo {
+  position: relative;
+  max-width: 400px;
+}
+
+.demo-z .photo img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.demo-z .caption {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  z-index: 2;
+  margin: 0;
+  padding: 8px;
+  background-color: rgba(0, 0, 0, 0.6);
+  color: white;
+}

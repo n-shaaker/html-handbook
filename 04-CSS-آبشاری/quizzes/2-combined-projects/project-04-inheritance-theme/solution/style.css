@@ -1,0 +1,119 @@
+/* ===== صفحه ===== */
+body {
+  margin: 0;
+  background-color: #eef1f4;
+  font-family: Tahoma, sans-serif;
+}
+
+.page {
+  max-width: 480px;
+  margin: 32px auto;
+  padding: 0 16px;
+}
+
+.page-title {
+  font-size: 20px;
+  color: #444444;
+}
+
+/* ===== کارت (همه چیز از اینجا ارث می‌رسد) ===== */
+.card {
+  margin-bottom: 24px;
+  padding: 24px;
+  background-color: #ffffff;
+  color: #1a3a5c;
+  font-size: 15px;
+  line-height: 1.9;
+  text-align: center;
+  border: 1px solid currentColor;
+  border-radius: 12px;
+}
+
+/* پوسته تیره: فقط دو ویژگی والد عوض می‌شود و بقیه خودشان دنبالش می‌آیند */
+.card.dark {
+  background-color: #1e2a36;
+  color: #e3ecf5;
+}
+
+.card.sepia {
+  background-color: #f6efe0;
+  color: #6b4423;
+}
+
+.card h2 {
+  margin: 8px 0;
+  font-size: 22px;
+}
+
+/* لینک‌ها رنگ آبی پیش‌فرض مرورگر را نگیرند و رنگ کارت را به ارث ببرند */
+.card a {
+  color: inherit;
+  text-decoration: underline;
+}
+
+/* ===== برچسب ===== */
+.badge {
+  padding: 2px 10px;
+  font-size: 12px;
+  border: 1px solid currentColor;
+  border-radius: 999px;
+}
+
+/* ===== فهرست ویژگی‌ها ===== */
+/* کارت وسط‌چین است؛ initial برای text-align یعنی start که در صفحه rtl همان راست‌چین است */
+.features {
+  text-align: initial;
+}
+
+/* ===== فرم ===== */
+/* p هیچ قانون پیش‌فرضی برای font ندارد و ارث می‌برد؛ ولی مرورگر برای input و button
+   مستقیماً font و color گذاشته و این قانون مستقیم از مقدار ارثی قوی‌تر است */
+.card input,
+.card button {
+  font: inherit;
+  color: inherit;
+}
+
+.card input {
+  padding: 6px 10px;
+  background-color: transparent;
+  border: 1px solid currentColor;
+  border-radius: 6px;
+}
+
+.subscribe-btn {
+  padding: 6px 18px;
+  background-color: transparent;
+  border: 2px solid currentColor;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+/* خاکستری نیمه‌شفاف روی هر دو پوسته (روشن و تیره) دیده می‌شود */
+.subscribe-btn:hover {
+  background-color: rgba(128, 128, 128, 0.2);
+}
+
+.card input:focus-visible,
+.card button:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 2px;
+}
+
+/* ===== دکمه‌ای که شبیه لینک است ===== */
+/* unset روی ویژگی‌های غیرارثی مثل initial عمل می‌کند: پس‌زمینه شفاف، بدون کادر و بدون padding */
+.link-button {
+  margin-top: 12px;
+  background-color: unset;
+  border: unset;
+  padding: unset;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+/* ===== متن ریز ===== */
+.fine-print {
+  margin-bottom: 0;
+  font-size: 12px;
+}

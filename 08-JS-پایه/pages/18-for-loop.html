@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>۱۸) حلقه For | آموزش JavaScript سطح پایه</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <script src="../js/log.js" defer></script>
+  <script src="../js/demos/for-loop.js" defer></script>
+</head>
+
+<body>
+
+  <header class="page-header" id="top">
+    <h1>آموزش JavaScript — سطح پایه</h1>
+    <p>۱۸) حلقه For</p>
+  </header>
+
+  <div class="container">
+
+    <nav class="page-nav" aria-label="ناوبری درس">
+      <a href="17-switch.html">→ قبلی: Switch</a>
+      <a href="../index.html">فهرست درس‌ها</a>
+      <a href="19-while-break.html">بعدی: While ←</a>
+    </nav>
+
+    <section class="lesson" id="for-loop">
+      <h2>۱۸) حلقه For</h2>
+<p>حلقه (Loop) یعنی یک کار را چند بار تکرار کنید، بدون اینکه همان دستور را به تعداد تکرار در کد کپی کنید. حلقهٔ <code>for</code> وقتی مناسب است که از قبل بدانید تکرار چند بار، یا از چه شماره‌ای تا چه شماره‌ای، انجام می‌شود. سه بخش داخل پرانتز این محدوده را مشخص می‌کنند: از کجا شروع شود، تا کی ادامه پیدا کند و بعد از هر دور شمارنده چقدر عوض شود.</p>
+
+<pre class="code"><code>for (let i = 1; i &lt;= 5; i++) {
+  console.log("تکرار شماره " + i);
+}</code></pre>
+
+<div class="result">
+<pre class="console" id="out-1"></pre>
+</div>
+
+<p><code>let i = 1</code> فقط یک بار، قبل از شروع، شمارنده را می‌سازد. پیش از هر دور، شرط <code>i &lt;= 5</code> بررسی می‌شود. اگر درست باشد، دستور داخل آکولاد اجرا می‌شود و بعد <code>i++</code> یکی به شمارنده اضافه می‌کند. وقتی <code>i</code> به ۶ برسد شرط غلط می‌شود و حلقه تمام می‌شود. به همین دلیل عددهای ۱ تا ۵ چاپ می‌شوند، نه ۶.</p>
+
+<table class="ref">
+<tr><th>بخش</th><th>مثال</th><th>کی اجرا می‌شود</th></tr>
+<tr><td>شروع</td><td><code>let i = 1</code></td><td>یک بار، اول کار</td></tr>
+<tr><td>شرط</td><td><code>i &lt;= 5</code></td><td>قبل از هر تکرار؛ اگر false شد حلقه تمام می‌شود</td></tr>
+<tr><td>گام</td><td><code>i++</code></td><td>بعد از هر تکرار</td></tr>
+</table>
+
+<p>سه بخش داخل پرانتز با <code>;</code> از هم جدا می‌شوند. گام لازم نیست همیشه <code>i++</code> باشد؛ می‌تواند <code>i += 10</code> یا <code>i--</code> (شمارش معکوس) هم باشد.</p>
+
+<h3>مثال: جمع اعداد ۱ تا ۱۰۰</h3>
+
+<pre class="code"><code>let sum = 0;
+for (let i = 1; i &lt;= 100; i++) {
+  sum += i;
+}
+console.log(sum);   // 5050</code></pre>
+
+<div class="result">
+<pre class="console" id="out-2"></pre>
+</div>
+
+<p><code>sum</code> بیرون از حلقه ساخته شده تا حاصل هر دور از بین نرود. در هر تکرار، مقدار فعلی <code>i</code> به جمع اضافه می‌شود. اگر <code>sum</code> را داخل حلقه با <code>let</code> می‌ساختید، هر دور از صفر شروع می‌شد و نتیجهٔ نهایی فقط عدد آخر بود. بعد از پایان حلقه، متغیر جمع هنوز وجود دارد و می‌توان آن را چاپ کرد.</p>
+
+<h3>مثال کاربردی: جدول تبدیل دما (گام ۱۰تایی)</h3>
+
+<pre class="code"><code>for (let c = 0; c &lt;= 40; c += 10) {
+  const f = c * 9 / 5 + 32;
+  console.log(`${c}°C = ${f}°F`);
+}</code></pre>
+
+<div class="result">
+<pre class="console" id="out-3"></pre>
+</div>
+
+<p>شمارنده از صفر شروع می‌شود، تا ۴۰ ادامه دارد و به‌جای یکی‌یکی، هر بار ۱۰ واحد زیاد می‌شود. داخل هر دور، همان دما با فرمول به فارنهایت تبدیل می‌شود و هر دو عدد در یک رشتهٔ قالبی چاپ می‌شوند. چون گام ۱۰ است، پنج خط دارید: ۰، ۱۰، ۲۰، ۳۰ و ۴۰.</p>
+
+<h3>محدوده متغیر حلقه (let در for)</h3>
+
+<p>متغیری که با <code>let</code> در پرانتز for ساخته شود، فقط <strong>داخل</strong> حلقه وجود دارد. اگر بعد از حلقه به مقدار نهایی نیاز دارید، متغیر را قبل از حلقه تعریف کنید.</p>
+
+<pre class="code"><code>for (let i = 1; i &lt;= 3; i++) {
+  // i فقط اینجا قابل استفاده است
+}
+console.log(typeof i);   // undefined ← i بیرون از حلقه وجود ندارد
+
+let tries;
+for (tries = 1; tries &lt;= 3; tries++) {
+  // ...
+}
+console.log(tries);      // 4 ← بعد از آخرین تکرار، شرط 4 &lt;= 3 غلط شد و حلقه تمام شد</code></pre>
+
+<div class="result">
+<pre class="console" id="out-4"></pre>
+</div>
+
+<p>در حلقهٔ اول، <code>i</code> جزئی از خود <code>for</code> است و بعد از آکولاد دیگر وجود ندارد؛ به همین دلیل <code>typeof i</code> رشتهٔ <code>"undefined"</code> است و خطا نمی‌دهد. در حلقهٔ دوم، <code>tries</code> قبل از حلقه ساخته شده تا بعد از پایان هم قابل خواندن باشد. وقتی شرط <code>tries &lt;= 3</code> غلط می‌شود، گام قبلی شمارنده را به ۴ رسانده است؛ پس مقدار باقی‌مانده ۴ است، نه ۳.</p>
+
+<p class="tip">در کدهای قدیمی <code>for (var i = 0; ...)</code> زیاد می‌بینید. <code>var</code> بیرون از حلقه هم باقی می‌ماند و اگر داخل حلقه رویداد بسازید، همهٔ رویدادها ممکن است آخرین مقدار همان متغیر را ببینند. در کد تازه شمارنده را با <code>let</code> بسازید. <code>var</code> را فقط وقتی نگه دارید که دارید کد قدیمی را می‌خوانید و به این تفاوت آگاهید.</p>
+
+<h3>حلقه روی حرف‌های یک رشته</h3>
+
+<pre class="code"><code>let word = "سلام";
+for (let i = 0; i &lt; word.length; i++) {
+  console.log(i, word[i]);
+}</code></pre>
+
+<div class="result">
+<pre class="console" id="out-5"></pre>
+</div>
+
+<p>طول رشته تعداد دورها را مشخص می‌کند و <code>i</code> شمارهٔ هر حرف است. چون شماره از صفر شروع می‌شود، شرط باید <code>i &lt; word.length</code> باشد تا آخرین حرف هم خوانده شود و یک خانهٔ بعد از پایان رشته خوانده نشود. در هر دور، هم شماره و هم خود حرف چاپ می‌شود.</p>
+
+<p class="tip">چون شماره‌ها از ۰ شروع می‌شوند، شرط <code>i &lt; word.length</code> است، نه <code>i &lt;= word.length</code>. با <code>&lt;=</code> یک دور اضافه اجرا می‌شود و <code>word[4]</code> برابر <code>undefined</code> است.</p>
+
+<h3>for...of — ساده‌تر برای پیمایش</h3>
+
+<pre class="code"><code>let vowels = 0;
+for (const letter of "JavaScript") {
+  if ("aeiou".includes(letter.toLowerCase())) {
+    vowels++;
+  }
+}
+console.log("تعداد حروف صدادار:", vowels);   // 3</code></pre>
+
+<div class="result">
+<pre class="console" id="out-6"></pre>
+</div>
+
+<p><code>for...of</code> به‌جای شماره، خود هر حرف رشته را یکی‌یکی در <code>letter</code> می‌گذارد. <code>toLowerCase</code> حرف را کوچک می‌کند تا هم <code>A</code> و هم <code>a</code> با فهرست مصوت‌ها مقایسه شوند. <code>includes</code> می‌گوید آن حرف داخل <code>"aeiou"</code> هست یا نه. اگر باشد، شمارنده یکی زیاد می‌شود. در پایان، تعداد مصوت‌های کلمه چاپ می‌شود.</p>
+
+<p class="tip">در <code>for...of</code> به شماره (index) نیاز نداریم و هر بار مستقیم خود حرف را می‌گیریم. اگر شماره هم لازم بود، از همان for معمولی استفاده کنید.</p>
+
+<h3>مثال زنده: جدول ضرب</h3>
+
+<pre class="code"><code>const numInput = document.getElementById("table-num");
+const tableBtn = document.getElementById("table-btn");
+const list = document.getElementById("table-list");
+
+tableBtn.addEventListener("click", function () {
+  const n = Number(numInput.value);
+  let html = "";
+  for (let i = 1; i &lt;= 10; i++) {
+    html += `&lt;li&gt;${n} × ${i} = ${n * i}&lt;/li&gt;`;
+  }
+  list.innerHTML = html;
+});</code></pre>
+
+<div class="result">
+<label for="table-num">عدد:</label>
+<input type="number" id="table-num" value="7">
+<button class="btn" id="table-btn">جدول ضرب</button>
+<ul class="js-list" id="table-list"></ul>
+</div>
+
+<p>با کلیک، متن کادر به عدد تبدیل می‌شود. متغیر <code>html</code> خالی شروع می‌شود و حلقه ده بار یک آیتم فهرست به آن اضافه می‌کند؛ هر آیتم حاصل‌ضرب عدد در شمارنده است. بعد از تمام شدن حلقه، کل این متن یک‌باره داخل <code>ul</code> گذاشته می‌شود. چون <code>n</code> عدد است، متن تایپ‌شدهٔ کاربر مستقیم به‌صورت HTML تفسیر نمی‌شود.</p>
+
+<p class="mistake"><strong>اشتباه رایج:</strong> حلقه بی‌پایان: <code>for (let i = 0; i &lt; 10; i--)</code>. چون i هیچ‌وقت به ۱۰ نمی‌رسد، مرورگر هنگ می‌کند!</p>
+
+<p class="tip">در اینجا <code>innerHTML</code> مشکلی ندارد، چون <code>n</code> با <code>Number()</code> به عدد تبدیل شده و متن کاربر مستقیم وارد HTML نمی‌شود. HTML را اول در متغیر <code>html</code> جمع کرده‌ایم و یک بار در صفحه گذاشته‌ایم که سریع‌تر از ده بار تغییر صفحه است.</p>
+
+<p class="exercise"><strong>تمرین:</strong> (۱) با حلقه for همه اعداد زوج بین ۱ تا ۳۰ را چاپ کنید (دو راه: گام <code>i += 2</code> یا شرط <code>i % 2 === 0</code>). (۲) با حلقه یک «مثلث ستاره» ۵ طبقه در Console بسازید (راهنما: <code>"*".repeat(i)</code>). (۳) قسط‌بندی: کالایی ۱۲٬۰۰۰٬۰۰۰ تومانی در ۶ قسط مساوی پرداخت می‌شود؛ با حلقه برای هر ماه بنویسید «قسط ماه ۱: ۲٬۰۰۰٬۰۰۰ تومان — باقیمانده: ۱۰٬۰۰۰٬۰۰۰ تومان».</p>
+    </section>
+
+    <nav class="page-nav" aria-label="ناوبری درس پایین">
+      <a href="17-switch.html">→ قبلی: Switch</a>
+      <a href="../index.html">فهرست درس‌ها</a>
+      <a href="19-while-break.html">بعدی: While ←</a>
+    </nav>
+
+  </div>
+
+  <footer class="page-footer">
+    آموزش JavaScript سطح پایه
+  </footer>
+
+</body>
+
+</html>

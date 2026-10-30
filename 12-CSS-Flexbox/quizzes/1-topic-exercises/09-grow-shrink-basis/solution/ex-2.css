@@ -1,0 +1,33 @@
+/* تمرین ۲ — سه ستون با سهم ۱ و ۲ و ۱ (پاسخ) */
+
+body {
+  font-family: Tahoma, sans-serif;
+  margin: 20px;
+  background-color: #f8f9fa;
+  color: #212529;
+}
+
+.layout {
+  display: flex;
+  gap: 10px;
+}
+
+/*
+  با basis صفر، کل فضا فقط بر اساس grow تقسیم می‌شود؛
+  وگرنه طول متن هر ستون هم در عرضش اثر می‌گذارد.
+*/
+.col {
+  flex-basis: 0;
+  padding: 10px;
+}
+
+.side {
+  flex-grow: 1;
+  background-color: #e7f5ff;
+}
+
+.main {
+  flex-grow: 2;
+  background-color: white;
+  border: 1px solid #dee2e6;
+}

@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>۸) توابع Callback و کد ناهمگام | آموزش JavaScript سطح پیشرفته</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <script src="../js/log.js" defer></script>
+  <script src="../js/demos/callbacks.js" defer></script>
+</head>
+
+<body>
+
+  <header class="page-header" id="top">
+    <h1>آموزش JavaScript — سطح پیشرفته</h1>
+    <p>۸) توابع Callback و کد ناهمگام</p>
+  </header>
+
+  <div class="container">
+
+    <nav class="page-nav" aria-label="ناوبری درس">
+      <a href="07-timing.html">→ قبلی: Timing</a>
+      <a href="../index.html">فهرست درس‌ها</a>
+      <a href="09-promises.html">بعدی: Promises ←</a>
+    </nav>
+
+    <section class="lesson" id="callbacks">
+      <h2>۸) توابع Callback و کد ناهمگام</h2>
+<p><strong>Callback</strong> تابعی است که آن را به تابع دیگری می‌دهید تا در زمان مناسب صدایش بزند. گاهی این صدا زدن همان لحظه است، مثل وقتی که <code>map</code> برای هر عضو یک تابع را اجرا می‌کند. گاهی صدا زدن بعداً است، وقتی کاری مثل تایمر یا پاسخ شبکه تمام شده باشد. تفاوت این دو را اول ببینید، چون شکل نوشتن callback در هر دو شبیه است ولی زمان اجرا فرق دارد.</p>
+
+<h3>همگام (Synchronous) در مقابل ناهمگام (Asynchronous)</h3>
+
+<table class="ref">
+<tr><th>همگام</th><th>ناهمگام</th></tr>
+<tr><td>خط‌به‌خط؛ هر خط منتظر خط قبل می‌ماند</td><td>کار طولانی شروع می‌شود و برنامه منتظر نمی‌ماند</td></tr>
+<tr><td><code>map</code>، <code>forEach</code>، <code>sort</code></td><td><code>setTimeout</code>، دانلود از سرور، خواندن فایل</td></tr>
+<tr><td>callback همان لحظه اجرا می‌شود</td><td>callback بعداً، وقتی کار تمام شد، اجرا می‌شود</td></tr>
+</table>
+
+<h3>Callback همگام</h3>
+
+<pre class="code"><code>function processUser(name, callback) {
+  const formatted = name.trim().toUpperCase();
+  callback(formatted);
+}
+
+processUser("  sara ", (result) =&gt; {
+  console.log("نتیجه:", result);
+});</code></pre>
+
+<p><code>processUser</code> نام را تمیز و بزرگ می‌کند، ولی خودش نتیجه را چاپ نمی‌کند. تابعی که شما به‌عنوان <code>callback</code> می‌دهید بعد از آماده‌شدن متن صدا زده می‌شود و نتیجه را تحویل می‌گیرد. این جدایی باعث می‌شود همان پردازش را با کارهایی غیر از چاپ هم استفاده کنید.</p>
+
+<div class="result">
+<pre class="console" id="out-1" aria-live="polite"></pre>
+</div>
+
+<h3>Callback ناهمگام: شبیه‌سازی گرفتن داده از سرور</h3>
+
+<pre class="code"><code>function getUser(id, callback) {
+  log(`در حال دریافت کاربر ${id}...`);
+  setTimeout(() =&gt; {
+    const user = { id: id, name: "سارا" };
+    callback(user);                  // وقتی داده آماده شد
+  }, 1000);
+}
+
+getUser(7, (user) =&gt; {
+  log("کاربر رسید:", user);
+});
+log("این خط زودتر چاپ می‌شود!");
+
+// ترتیب خروجی:
+// در حال دریافت کاربر 7...
+// این خط زودتر چاپ می‌شود!
+// کاربر رسید: {"id":7,"name":"سارا"}   ← یک ثانیه بعد</code></pre>
+
+<p><code>setTimeout</code> شبیه‌سازی کاری است که طول می‌کشد، مثل پاسخ سرور. خط بعد از <code>getUser</code> منتظر تایمر نمی‌ماند و زودتر اجرا می‌شود. وقتی زمان بگذرد، شیء کاربر ساخته می‌شود و به callback داده می‌شود. به همین دلیل پیام «کاربر رسید» بعد از پیام همگام دیده می‌شود.</p>
+
+<div class="result">
+<button class="btn" id="cb-btn">اجرا</button>
+<pre class="console" id="out-2" aria-live="polite"></pre>
+</div>
+
+<h3>مشکل: جهنم Callback (Callback Hell)</h3>
+
+<p>وقتی چند کار ناهمگام باید پشت سر هم انجام شوند (هر مرحله به نتیجه مرحله قبل نیاز دارد)، callbackها تو در تو می‌شوند و خواندن و مدیریت خطا سخت می‌شود. کد زیر فقط برای نشان دادن شکل مشکل است (توابع آن فرضی‌اند):</p>
+
+<pre class="code"><code>getUser(1, (user) =&gt; {
+  getOrders(user.id, (orders) =&gt; {
+    getOrderDetails(orders[0], (details) =&gt; {
+      getShipping(details.shipId, (shipping) =&gt; {
+        console.log(shipping);       // هرم وحشت 😱
+      });
+    });
+  });
+});</code></pre>
+
+<p>راه‌حل این مشکل <strong>Promise</strong> و <strong>async/await</strong> است که در دو درس بعد می‌بینیم.</p>
+
+<h3>الگوی رایج: callback خطا و موفقیت</h3>
+
+<pre class="code"><code>function divideLater(a, b, onSuccess, onError) {
+  setTimeout(() =&gt; {
+    if (b === 0) onError("تقسیم بر صفر!");
+    else onSuccess(a / b);
+  }, 500);
+}
+
+divideLater(10, 2, r =&gt; log("✔", r), e =&gt; log("✖", e));   // ✔ 5
+divideLater(10, 0, r =&gt; log("✔", r), e =&gt; log("✖", e));   // ✖ تقسیم بر صفر!</code></pre>
+
+<p>به‌جای یک callback، دو تابع جدا برای موفقیت و خطا گرفته شده است. داخل تایمر، اگر مقسوم‌علیه صفر باشد <code>onError</code> صدا زده می‌شود و وگرنه <code>onSuccess</code> حاصل تقسیم را می‌گیرد. هر دو مسیر غیرهمگام‌اند و حدود نیم ثانیه بعد اجرا می‌شوند.</p>
+
+<div class="result">
+<button class="btn" id="cb2-btn">اجرا</button>
+<pre class="console" id="out-3" aria-live="polite"></pre>
+</div>
+
+<p class="tip">در Node.js و کتابخانه‌های قدیمی الگوی دیگری هم رایج است به اسم <strong>error-first callback</strong>: یک callback که پارامتر اولش خطاست: <code>callback(err, result)</code>. اگر <code>err</code> مقدار داشت یعنی کار ناموفق بوده است.</p>
+
+<p class="mistake"><strong>اشتباه رایج:</strong> انتظار داشتن نتیجه با return از تابع ناهمگام: <code>const user = getUser(7)</code>. چون داده بعداً می‌رسد و getUser چیزی return نمی‌کند، user برابر <code>undefined</code> است؛ باید از callback (یا Promise) استفاده کنید.</p>
+
+<p class="exercise"><strong>تمرین:</strong> تابع <code>loadImage(name, callback)</code> بنویسید که بعد از زمان تصادفی بین ۵۰۰ تا ۲۰۰۰ میلی‌ثانیه (راهنما: <code>500 + Math.random() * 1500</code>) callback را با پیام «تصویر name بارگذاری شد» صدا بزند. سه تصویر را پشت سر هم بارگذاری کنید و با چند بار اجرا ببینید ترتیب رسیدن‌شان ثابت نیست. سپس کاری کنید که پیام «همه تصویرها آماده شد» فقط بعد از رسیدن هر سه چاپ شود (راهنما: یک شمارنده).</p>
+    </section>
+
+    <nav class="page-nav" aria-label="ناوبری درس پایین">
+      <a href="07-timing.html">→ قبلی: Timing</a>
+      <a href="../index.html">فهرست درس‌ها</a>
+      <a href="09-promises.html">بعدی: Promises ←</a>
+    </nav>
+
+  </div>
+
+  <footer class="page-footer">
+    آموزش JavaScript سطح پیشرفته
+  </footer>
+
+</body>
+
+</html>

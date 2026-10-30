@@ -1,0 +1,149 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Tahoma, Arial, sans-serif;
+  line-height: 1.9;
+  color: #3b2314;
+  background-color: #fdf8f3;
+}
+
+h1, h2 {
+  color: #7c2d12;
+}
+
+h1 {
+  border-bottom: 3px solid #fb923c;
+}
+
+a {
+  color: #c2410c;
+}
+
+.container {
+  max-width: 1040px;
+  margin: 0 auto;
+  padding: 24px 16px 48px;
+}
+
+/* ===== چیدمان: موبایل زیر هم، دسکتاپ دو ستون ===== */
+.reserve-layout {
+  display: grid;
+  gap: 32px;
+}
+
+@media (min-width: 800px) {
+  .reserve-layout {
+    grid-template-columns: 3fr 2fr;
+    align-items: start;
+  }
+}
+
+/* ===== فرم رزرو ===== */
+.reserve-form {
+  padding: 16px 20px 20px;
+  border: 1px solid #fed7aa;
+  border-radius: 12px;
+  background-color: white;
+}
+
+.req {
+  color: #dc2626;
+  font-weight: bold;
+}
+
+.hint {
+  margin: 4px 0 0;
+  font-size: 13px;
+  color: #78350f;
+}
+
+.field {
+  margin-bottom: 12px;
+}
+
+.field label {
+  display: block;
+  font-weight: bold;
+}
+
+.field input,
+.field select,
+.field textarea {
+  width: 100%;
+  padding: 8px 10px;
+  border: 1px solid #d6b89a;
+  border-radius: 6px;
+  font-family: inherit;
+  font-size: 15px;
+}
+
+.field input:focus,
+.field select:focus,
+.field textarea:focus {
+  outline: 3px solid #fdba74;
+  border-color: #c2410c;
+}
+
+/* تاریخ و ساعت کنار هم؛ اگر جا نبود زیر هم می‌روند */
+.field-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0 16px;
+}
+
+.field-row .field {
+  flex: 1 1 180px;
+}
+
+.btn {
+  padding: 10px 28px;
+  border: none;
+  border-radius: 8px;
+  background-color: #c2410c;
+  color: white;
+  font-family: inherit;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background-color: #7c2d12;
+}
+
+/* ===== تماس ===== */
+.contact-card {
+  margin-bottom: 20px;
+  padding: 14px 18px;
+  border-right: 5px solid #fb923c;
+  border-radius: 8px;
+  background-color: white;
+  font-style: normal; /* address به‌طور پیش‌فرض کج است */
+}
+
+/* ===== جدول ساعت کاری ===== */
+.hours-table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: white;
+}
+
+.hours-table caption {
+  padding: 8px;
+  font-weight: bold;
+  color: #7c2d12;
+}
+
+.hours-table th,
+.hours-table td {
+  padding: 8px 10px;
+  border: 1px solid #fed7aa;
+  text-align: right;
+}
+
+.hours-table thead th {
+  background-color: #7c2d12;
+  color: white;
+}

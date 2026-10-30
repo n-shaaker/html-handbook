@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>۱۱) align-self و ترفند margin خودکار | آموزش Flexbox</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/demos/align-self.css">
+</head>
+
+<body>
+
+  <header class="page-header">
+    <h1>آموزش Flexbox — چیدمان انعطاف‌پذیر</h1>
+    <p>۱۱) align-self و ترفند margin خودکار</p>
+  </header>
+
+  <div class="container">
+
+    <nav class="page-nav" aria-label="ناوبری درس">
+      <a href="10-flex-shorthand.html">→ قبلی: میان‌بُر flex</a>
+      <a href="../index.html">فهرست درس‌ها</a>
+      <a href="12-patterns.html">بعدی: الگوهای پرکاربرد ←</a>
+    </nav>
+
+    <section class="lesson" id="align-self">
+      <h2>۱۱) align-self و ترفند margin خودکار</h2>
+      <p>
+        <code>align-items</code> روی پدر، همه آیتم‌ها را با هم تراز می‌کرد. گاهی فقط <strong>یک</strong> آیتم باید رفتار متفاوتی داشته باشد.
+        در این درس دو ابزار برای جابه‌جا کردن یک آیتم تنها یاد می‌گیریم: <code>align-self</code> برای محور فرعی و <code>margin: auto</code> برای محور اصلی.
+      </p>
+
+      <h3>مثال ۱: <code>align-self</code> — استثنا در محور فرعی</h3>
+      <p>
+        <code>align-self</code> را روی خود آیتم می‌نویسند، نه روی پدر. مقدارهایش همان مقدارهای <code>align-items</code> است
+        (<code>stretch</code>، <code>flex-start</code>، <code>center</code>، <code>flex-end</code> و <code>baseline</code>)،
+        اما فقط همان یک آیتم را در محور فرعی جابه‌جا می‌کند و تراز بقیه را عوض نمی‌کند.
+        اگر پدر <code>align-items: flex-start</code> داشته باشد و یک فرزند <code>align-self: center</code>، فقط همان فرزند وسط ارتفاع می‌ایستد.
+      </p>
+      <pre class="code"><code>.parent {
+  display: flex;
+  align-items: flex-start;   /* همه بالا */
+  height: 140px;
+}
+
+.box-2 { align-self: center; }
+.box-3 { align-self: flex-end; }
+.box-4 { align-self: stretch; }</code></pre>
+      <div class="result demo-self">
+        <div class="parent tall">
+          <div class="box b1">۱</div>
+          <div class="box b2 self-center">۲ (center)</div>
+          <div class="box b3 self-end">۳ (flex-end)</div>
+          <div class="box b4 self-stretch">۴ (stretch)</div>
+        </div>
+      </div>
+
+      <h3>مثال ۲: <code>margin: auto</code> در Flexbox</h3>
+      <p>
+        در درس‌های قبل دیدیم <code>margin: auto</code> فقط افقی وسط می‌کرد. داخل ظرف فلکس، margin خودکار <strong>همه فضای خالی</strong> آن سمت را می‌بلعد.
+        پس یک جعبه با <code>margin: auto</code> در هر دو جهت دقیقاً وسط می‌نشیند:
+      </p>
+      <pre class="code"><code>.parent {
+  display: flex;
+  height: 140px;
+}
+
+.box {
+  margin: auto;
+}</code></pre>
+      <div class="result demo-self">
+        <div class="parent tall">
+          <div class="box b2 m-auto">وسطِ وسط</div>
+        </div>
+      </div>
+
+      <h3>مثال ۳: هل دادن یک آیتم به پایان خط</h3>
+      <p>
+        <code>margin-inline-start</code> یعنی «margin سمت <strong>شروع</strong>». در صفحه فارسی شروع سمت راست است،
+        پس <code>margin-inline-start: auto</code> کل فضای خالی را سمت راست آیتم می‌گذارد و آن را (و هر چیزی بعد از آن) به سمت چپ هل می‌دهد:
+      </p>
+      <pre class="code"><code>.box-4 {
+  margin-inline-start: auto;
+}</code></pre>
+      <div class="result demo-self">
+        <div class="parent">
+          <div class="box b1">۱</div>
+          <div class="box b2">۲</div>
+          <div class="box b3">۳</div>
+          <div class="box b4 push">۴</div>
+          <div class="box b5">۵</div>
+        </div>
+      </div>
+      <p class="tip">
+        چرا <code>margin-inline-start</code> و نه <code>margin-right</code>؟ چون اگر روزی همین صفحه انگلیسی (<code>ltr</code>) شود، «شروع» خودکار سمت چپ می‌شود و ترفند باز هم درست کار می‌کند.
+        در صفحه فارسی <code>margin-right: auto</code> هم همین نتیجه را می‌دهد.
+      </p>
+
+      <h3>مثال ۴: نوار منو — لوگو یک طرف، دکمه طرف دیگر</h3>
+      <p>
+        لوگو و لینک‌ها از شروع خط (راست) می‌آیند و دکمه «ورود» با <code>margin-inline-start: auto</code> به انتهای خط (چپ) می‌رود.
+        بدون حساب عرض و بدون <code>space-between</code>:
+      </p>
+      <pre class="code"><code>.navbar {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.navbar .login {
+  margin-inline-start: auto;
+}</code></pre>
+      <div class="result demo-self">
+        <nav class="navbar" aria-label="منوی نمونه آموزشگاه">
+          <a href="#align-self" class="logo">🎓 آموزشگاه فردا</a>
+          <a href="#align-self">دوره‌ها</a>
+          <a href="#align-self">استادها</a>
+          <a href="#align-self">تماس</a>
+          <a href="#align-self" class="login">ورود</a>
+        </nav>
+      </div>
+
+      <h3>مثال ۵: لوگو یک طرف، بقیه همه طرف دیگر</h3>
+      <p>این بار margin خودکار را روی <strong>اولین لینک بعد از لوگو</strong> می‌گذاریم؛ لوگو راست می‌ماند و همه لینک‌ها با هم به چپ می‌روند:</p>
+      <pre class="code"><code>.navbar .first-link {
+  margin-inline-start: auto;
+}</code></pre>
+      <div class="result demo-self">
+        <nav class="navbar" aria-label="منوی نمونه کافه">
+          <a href="#align-self" class="logo">☕ کافه نارنج</a>
+          <a href="#align-self" class="first-link">منو</a>
+          <a href="#align-self">گالری</a>
+          <a href="#align-self">رزرو</a>
+        </nav>
+      </div>
+
+      <p class="mistake">
+        <strong>اشتباه رایج:</strong>
+        برای اینکه دکمه «ورود» به سمت چپ برود، <code>float: left</code> یا <code>position: absolute</code> می‌نویسیم.
+        داخل ظرف فلکس <code>float</code> اصلاً کار نمی‌کند و <code>absolute</code> آیتم را از چیدمان بیرون می‌برد و ممکن است روی لینک‌ها بیفتد.
+        راه درست همان <code>margin-inline-start: auto</code> است.
+      </p>
+
+      <p class="mistake">
+        <strong>اشتباه رایج:</strong>
+        برای جابه‌جایی افقی یک آیتم در ردیف از <code>align-self</code> استفاده می‌کنیم. <code>align-self</code> فقط محور <strong>فرعی</strong> (در row یعنی عمودی) را عوض می‌کند؛
+        چیزی به اسم <code>justify-self</code> هم در Flexbox کار نمی‌کند. برای محور اصلی از margin خودکار کمک بگیرید.
+      </p>
+
+      <table class="ref">
+        <tr>
+          <th>می‌خواهم یک آیتم ...</th>
+          <th>روش</th>
+        </tr>
+        <tr>
+          <td>در محور فرعی جای دیگری باشد</td>
+          <td><code>align-self</code> روی همان آیتم</td>
+        </tr>
+        <tr>
+          <td>به پایان خط برود (به‌همراه آیتم‌های بعدی‌اش)</td>
+          <td><code>margin-inline-start: auto</code></td>
+        </tr>
+        <tr>
+          <td>آیتم‌های بعدی‌اش را به پایان خط هل دهد و خودش بماند</td>
+          <td><code>margin-inline-end: auto</code></td>
+        </tr>
+        <tr>
+          <td>دقیقاً وسط ظرف بنشیند</td>
+          <td><code>margin: auto</code></td>
+        </tr>
+      </table>
+
+      <p class="exercise">
+        <strong>تمرین:</strong> سربرگ یک فروشگاه اینترنتی بسازید: لوگو، سه لینک دسته‌بندی، و در انتهای خط دو آیتم «سبد خرید» و «ورود» کنار هم.
+        فقط با یک <code>margin-inline-start: auto</code> این دو را به انتهای خط بفرستید. سپس لوگو را با <code>align-self</code> کمی بالاتر (<code>flex-start</code>) بنشانید.
+      </p>
+    </section>
+
+    <nav class="page-nav" aria-label="ناوبری درس پایین">
+      <a href="10-flex-shorthand.html">→ قبلی: میان‌بُر flex</a>
+      <a href="../index.html">فهرست درس‌ها</a>
+      <a href="12-patterns.html">بعدی: الگوهای پرکاربرد ←</a>
+    </nav>
+
+  </div>
+
+  <footer class="page-footer">
+    آموزش Flexbox
+  </footer>
+
+</body>
+
+</html>

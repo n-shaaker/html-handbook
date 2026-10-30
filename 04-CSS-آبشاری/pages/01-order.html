@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ترتیب قوانین | آبشاری بودن CSS</title>
+  <link rel="stylesheet" href="../css/layout.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="../css/demos/order.css">
+</head>
+
+<body>
+
+  <header class="page-header">
+    <h1>آبشاری بودن CSS</h1>
+    <p>۱) ترتیب قوانین در یک فایل</p>
+  </header>
+
+  <div class="container">
+
+    <nav class="page-nav" aria-label="ناوبری">
+      <span></span>
+      <a href="../index.html">فهرست</a>
+      <a href="02-specificity.html">بعدی: قدرت انتخابگر ←</a>
+    </nav>
+
+    <section class="lesson">
+      <h2>۱) ترتیب قوانین در یک فایل</h2>
+      <p>
+        آبشار یعنی وقتی چند قانون CSS هم‌زمان به یک عنصر می‌رسند، مرورگر با قاعده‌ای ثابت تصمیم می‌گیرد کدام مقدار بماند.
+        ساده‌ترین حالت این است که دو قانون <strong>قدرت یکسان</strong> داشته باشند؛ مثلاً هر دو فقط یک کلاس باشند و همان عنصر را هدف بگیرند.
+        در این حالت ترتیب نوشتن تعیین‌کننده است: قانونی که <strong>پایین‌تر در همان فایل</strong> آمده برنده می‌شود، چون مرورگر stylesheet را از بالا به پایین می‌خواند و برای ویژگی تکراری، مقدار دیرتر را جایگزین مقدار قبلی می‌کند.
+      </p>
+      <p>
+        این جایگزینی برای <strong>هر ویژگی جداگانه</strong> انجام می‌شود. اگر قانون دوم فقط <code>color</code> را دوباره بنویسد، ویژگی‌هایی مثل <code>font-size</code> که فقط در قانون اول آمده‌اند سر جایشان می‌مانند.
+        قانون بعدی کل بلوک قبلی را پاک نمی‌کند؛ فقط ویژگی‌های مشترک را بازنویسی می‌کند.
+      </p>
+
+      <pre class="code"><code>/* order.css */
+.demo-order .first {
+  color: #c92a2a;      /* قرمز */
+  font-size: 20px;
+}
+
+.demo-order .first {
+  color: #0b6e4f;      /* این دیرتر آمده → برنده برای color */
+}
+
+.demo-order .later-wins {
+  background-color: #ffe0b2;   /* نارنجی روشن */
+  padding: 10px;
+  margin: 8px 0;
+}
+
+.demo-order .later-wins {
+  background-color: #c3fae8;   /* سبز روشن → برنده */
+}</code></pre>
+
+      <p>
+        پیشوند <code>.demo-order</code> فقط برای این است که قانون‌های این مثال به کادر «نتیجه» محدود شوند
+        و روی بقیه صفحه اثر نگذارند. هر دو قانون این پیشوند را دارند، پس قدرتشان همچنان برابر است.
+      </p>
+
+      <div class="result demo-order">
+        <p class="first">این متن سبز تیره است، نه قرمز؛ ولی اندازه ۲۰px از قانون اول هنوز اعمال می‌شود.</p>
+        <div class="later-wins">پس‌زمینه سبز روشن است، نه نارنجی.</div>
+      </div>
+
+      <p class="tip">
+        مرورگر اول همه قوانین را جمع می‌کند، بعد <strong>برای هر ویژگی جداگانه</strong> تصمیم می‌گیرد.
+        اینجا هر دو قانون برای <code>color</code> مقدار داده‌اند؛ پس رنگ آخر پیروز می‌شود.
+        اما <code>font-size</code> فقط در قانون اول آمده و تداخلی ندارد؛ پس همان اعمال می‌شود.
+        یعنی قانون دوم کل قانون اول را «پاک» نمی‌کند، فقط ویژگی‌های مشترک را بازنویسی می‌کند.
+      </p>
+
+      <p class="mistake">
+        <strong>اشتباه رایج:</strong>
+        فکر کردن که «قانون اول همیشه اعمال می‌شود»، یا برعکس، تصور کردن که قانون دوم همهٔ قانون اول را بی‌اثر می‌کند.
+        در قدرت برابر، برای هر ویژگی که در هر دو قانون آمده مقدار قانون آخر می‌ماند و بقیه ویژگی‌ها از همان قانونی جمع می‌شوند که آن‌ها را نوشته است.
+      </p>
+
+      <p class="exercise">
+        <strong>تمرین:</strong> در فایل <code>order.css</code> جای دو قانون <code>.first</code> را عوض کنید.
+        رنگ متن چه می‌شود؟
+      </p>
+    </section>
+
+    <nav class="page-nav" aria-label="ناوبری پایین">
+      <span></span>
+      <a href="../index.html">فهرست</a>
+      <a href="02-specificity.html">بعدی: قدرت انتخابگر ←</a>
+    </nav>
+
+  </div>
+
+  <footer class="page-footer">آبشاری بودن CSS</footer>
+
+</body>
+
+</html>

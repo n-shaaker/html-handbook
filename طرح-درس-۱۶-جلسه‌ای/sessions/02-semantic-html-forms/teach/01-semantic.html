@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>نمایش HTML معنایی</title>
+  </head>
+  <body>
+    <!-- Landmark: top-of-page branding / intro -->
+    <header id="home">
+      <h1>خبرشهر</h1>
+      <p>
+        ساختار معنایی یعنی هر بخش صفحه با عنصری نام‌گذاری شود که نقش آن را بگوید.
+        انسان با یک نگاه می‌فهمد کجا عنوان است و کجا متن اصلی، و فناوری کمکی مثل
+        صفحه‌خوان می‌تواند بین این بخش‌ها بپرد. در این صفحه به‌جای ظرف عمومی
+        <code>div</code> از عنصرهای معنایی HTML5 استفاده شده است.
+      </p>
+    </header>
+
+    <!-- Landmark: primary navigation -->
+    <p>
+      عنصر <code>nav</code> فقط گروه پیوندهای ناوبری اصلی است. صفحه‌خوان با این
+      نشانه می‌تواند منو را رد کند یا مستقیم به آن بپرد. پیوندهای شبکه‌های
+      اجتماعی در پایین صفحه لزوماً <code>nav</code> نیستند، چون مسیر اصلی حرکت
+      در سایت به حساب نمی‌آیند.
+    </p>
+    <nav aria-label="اصلی">
+      <ul>
+        <li><a href="#home">خانه</a></li>
+        <li><a href="#articles">مقاله‌ها</a></li>
+        <li><a href="#about">درباره</a></li>
+      </ul>
+    </nav>
+
+    <!-- Landmark: unique main content of this page -->
+    <main>
+      <!-- Section groups related content under one theme -->
+      <section id="articles" aria-labelledby="articles-title">
+        <h2 id="articles-title">آخرین مقاله‌ها</h2>
+        <p>
+          عنصر <code>section</code> چند قطعهٔ هم‌موضوع را زیر یک عنوان جمع می‌کند.
+          این بخش عنوان «آخرین مقاله‌ها» را دارد. تاریخ هر مقاله داخل
+          <code>time</code> است. متن داخل آن برای انسان خوانده می‌شود و ویژگی
+          <code>datetime</code> همان تاریخ را به شکلی می‌نویسد که ماشین، مثلاً
+          موتور جست‌وجو، بدون ابهام بفهمد.
+        </p>
+
+        <!-- Article is self-contained content that can stand alone -->
+        <article>
+          <h3>چرا HTML معنایی مهم است؟</h3>
+          <!-- time gives machines a parseable date next to the human-readable one -->
+          <p><time datetime="2026-10-20">۲۸ مهر ۱۴۰۵</time></p>
+          <p>
+            عنصر <code>article</code> برای محتوایی است که به‌تنهایی هم معنا دارد،
+            مثل همین یادداشت. اگر به‌جای آن فقط <code>div</code> بگذارید، کد هنوز
+            نمایش داده می‌شود، اما نه خوانندهٔ کد و نه صفحه‌خوان از نقش آن باخبر
+            می‌شوند. تگ معنادار خواندن کد، دسترس‌پذیری و نگهداری صفحه را ساده‌تر
+            می‌کند.
+          </p>
+        </article>
+
+        <article>
+          <h3>کی هنوز از div استفاده کنیم؟</h3>
+          <p><time datetime="2026-10-18">۲۶ مهر ۱۴۰۵</time></p>
+          <p>
+            <code>div</code> را وقتی نگه دارید که فقط به یک ظرف برای چیدمان یا
+            استایل نیاز دارید و هیچ عنصر معنایی مناسبی وجود ندارد. مثلاً یک پوشش
+            دور دو کارت که خودش عنوان یا موضوع مستقلی ندارد، <code>div</code> است.
+            اگر آن ظرف موضوع تازه‌ای را معرفی می‌کند، <code>section</code> یا
+            <code>article</code> انتخاب درست‌تری است.
+          </p>
+        </article>
+      </section>
+
+      <!-- Fragment links like href="#about" jump to the element with id="about" -->
+      <section id="about" aria-labelledby="about-title">
+        <h2 id="about-title">درباره خبرشهر</h2>
+        <p>
+          این بخش با <code>id="about"</code> نشانه شده است. پیوند
+          <code>href="#about"</code> در ناوبری، صفحه را به همین عنصر می‌برد. اگر
+          شناسه را ننویسید، کلیک روی «درباره» هیچ جایی از صفحه را پیدا نمی‌کند.
+          خبرشهر یک وبلاگ آموزشی است که هر هفته یک نکتهٔ کاربردی دربارهٔ HTML و
+          دسترس‌پذیری منتشر می‌کند.
+        </p>
+      </section>
+    </main>
+
+    <!-- Aside: related but secondary content (sidebar, tips, ads) -->
+    <aside aria-labelledby="tip-title">
+      <h2 id="tip-title">نکتهٔ روز</h2>
+      <p>
+        عنصر <code>aside</code> محتوای جانبی است؛ نکته، پیوند مرتبط یا ستون کناری
+        که بدون آن هم متن اصلی قابل فهم می‌ماند. در هر صفحه فقط یک
+        <code>main</code> بگذارید، چون محتوای یکتای همان صفحه است. نکتهٔ کناری را
+        داخل <code>main</code> تکرار نکنید.
+      </p>
+    </aside>
+
+    <!-- Landmark: site-wide footer content -->
+    <footer>
+      <p>
+        عنصر <code>footer</code> اطلاعات پایانی صفحه است؛ مثل نام صاحب اثر و سال.
+        این نقش با پایینِ ظاهری صفحه یکی نیست: اگر یک مقاله هم پاورقی خودش را
+        داشته باشد، می‌تواند <code>footer</code> جداگانه داشته باشد.
+      </p>
+      <p>&copy; ۱۴۰۵ دموی خبرشهر</p>
+    </footer>
+  </body>
+</html>

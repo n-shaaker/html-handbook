@@ -1,0 +1,22 @@
+/* تمرین ۱ — گالری با gap (پاسخ) */
+
+body {
+  font-family: Tahoma, sans-serif;
+  margin: 20px;
+  background-color: #f8f9fa;
+  color: #212529;
+}
+
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+.photo {
+  height: 100px;
+  background-color: #15aabf;
+  color: white;
+  padding: 10px;
+  border-radius: 6px;
+}

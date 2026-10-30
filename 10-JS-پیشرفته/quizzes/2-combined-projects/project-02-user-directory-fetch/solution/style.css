@@ -1,0 +1,163 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Tahoma, Arial, sans-serif;
+  line-height: 1.8;
+  background: #f4f7fb;
+  color: #222;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+.page-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 16px 24px;
+  background: #1a3a5c;
+  color: #fff;
+}
+
+.page-header h1 {
+  margin: 0;
+  font-size: 1.4rem;
+}
+
+.search {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+input {
+  font: inherit;
+  padding: 6px 10px;
+  border: 1px solid #b8c4d4;
+  border-radius: 6px;
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+  max-width: 1000px;
+  margin: 16px auto;
+  padding: 0 12px;
+}
+
+@media (min-width: 800px) {
+  .layout {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.status-bar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.btn {
+  font: inherit;
+  padding: 4px 14px;
+  border: none;
+  border-radius: 6px;
+  background: #1a3a5c;
+  color: #fff;
+  cursor: pointer;
+}
+
+.btn-light {
+  background: #e3e8ef;
+  color: #222;
+}
+
+.users-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.user-btn {
+  display: block;
+  width: 100%;
+  margin-bottom: 8px;
+  padding: 10px 14px;
+  font: inherit;
+  text-align: right;
+  background: #fff;
+  border: 1px solid #e3e8ef;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.user-btn:hover,
+.user-btn:focus-visible {
+  border-color: #1a3a5c;
+}
+
+.user-btn[aria-pressed="true"] {
+  border-color: #1a3a5c;
+  background: #eef4fb;
+}
+
+.user-name {
+  display: block;
+  font-weight: bold;
+}
+
+.user-meta {
+  display: block;
+  font-size: 0.85rem;
+  color: #5b6b80;
+}
+
+.posts-panel {
+  align-self: start;
+  padding: 12px 18px;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+}
+
+.panel-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.panel-header h2 {
+  margin: 0;
+  font-size: 1.1rem;
+}
+
+.posts-list {
+  padding-right: 20px;
+}
+
+.posts-list li {
+  margin-bottom: 10px;
+}
+
+.posts-list h3 {
+  margin: 0;
+  font-size: 0.95rem;
+}
+
+.posts-list p {
+  margin: 0;
+  font-size: 0.85rem;
+  color: #555;
+}

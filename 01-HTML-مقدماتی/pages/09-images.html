@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>۹) تصاویر | جزوه HTML</title>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+  <header class="page-header">
+    <h1>جزوه HTML مقدماتی</h1>
+    <p>۹) تصاویر</p>
+  </header>
+
+  <div class="container">
+    <nav class="page-nav">
+      <a href="08-links.html">→ درس قبل</a>
+      <a href="../index.html">فهرست مطالب</a>
+      <a href="10-lists.html">درس بعد ←</a>
+    </nav>
+
+    <section class="lesson">
+      <h2>۹) تصاویر — عنصر <code>&lt;img&gt;</code></h2>
+      <p>
+        عنصر <code>img</code> تصویر را در صفحه قرار می‌دهد. این عنصر تهی است و تگ پایانی ندارد، چون محتوایش پروندهٔ تصویر است نه متن میان دو تگ.
+        دو ویژگی اساسی آن <code>src</code> و <code>alt</code> هستند. <code>src</code> مسیر پرونده را می‌گوید و <code>alt</code> متنی است که وقتی تصویر دیده نشود، یا صفحه‌خوان آن را بخواند، جای تصویر را می‌گیرد.
+      </p>
+
+      <pre class="code"><code>&lt;img src="../images/profile.jpg" alt="عکس پرسنلی نویسنده رزومه" width="160"&gt;</code></pre>
+      <div class="result">
+        <img class="demo-img" src="../images/profile.jpg" alt="عکس پرسنلی نویسنده رزومه" width="160">
+      </div>
+
+      <table class="ref">
+        <thead>
+          <tr>
+            <th>ویژگی</th>
+            <th>تعریف</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>src</code></td>
+            <td><code>src</code> مسیر پروندهٔ تصویر را مشخص می‌کند. این مسیر می‌تواند نسبی باشد یا نشانی کامل اینترنتی.</td>
+          </tr>
+          <tr>
+            <td><code>alt</code></td>
+            <td>متن <code>alt</code> جایگزین تصویر است. اگر پرونده بارگذاری نشود، همین متن دیده می‌شود و صفحه‌خوان آن را برای کاربر نابینا می‌خواند.</td>
+          </tr>
+          <tr>
+            <td><code>width</code> / <code>height</code></td>
+            <td>
+              <code>width</code> و <code>height</code> عرض و ارتفاع را به پیکسل و بدون واحد <code>px</code> می‌نویسند.
+              اگر هر دو را بدهید، مرورگر پیش از رسیدن پرونده جا را رزرو می‌کند و بقیهٔ صفحه هنگام بارگذاری کمتر می‌پرد.
+              اندازهٔ نهایی نمایش را معمولاً با CSS تنظیم می‌کنند. اگر فقط یکی را بنویسید، مرورگر نسبت تصویر را از روی پرونده حدس می‌زند و تا رسیدن تصویر ممکن است چیدمان جابه‌جا شود.
+            </td>
+          </tr>
+          <tr>
+            <td><code>loading="lazy"</code></td>
+            <td>مقدار <code>lazy</code> بارگذاری تصویر را عقب می‌اندازد تا وقتی کاربر به آن نزدیک شد. برای تصویرهای پایین صفحه سرعت اولیه بهتر می‌شود. تصویر مهم بالای صفحه را معمولاً تنبل بارگذاری نمی‌کنند.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <pre class="code"><code>&lt;img src="../images/demo.jpg" alt="نمای کلی تصویر نمونه جزوه" loading="lazy" class="demo-img"&gt;</code></pre>
+      <div class="result">
+        <img class="demo-img" src="../images/demo.jpg" alt="نمای کلی تصویر نمونه جزوه" loading="lazy">
+      </div>
+
+      <h3>alt خوب چگونه نوشته می‌شود؟</h3>
+      <p>
+        متن <code>alt</code> باید همان اطلاعاتی را برساند که تصویر می‌رساند، طوری که کسی که تصویر را نمی‌بیند محتوا را از دست ندهد.
+        لازم نیست اول آن «عکسِ» یا «تصویرِ» بنویسید، چون صفحه‌خوان خودش می‌داند با یک تصویر طرف است.
+      </p>
+      <table class="ref">
+        <thead>
+          <tr>
+            <th>موقعیت</th>
+            <th>alt مناسب</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>عکس محصول در فروشگاه</td>
+            <td><code>alt="کفش ورزشی مردانه مشکی، مدل رانر"</code>، چون خریدار باید مدل و رنگ را بفهمد.</td>
+          </tr>
+          <tr>
+            <td>لوگویی که پیوند صفحه اصلی است</td>
+            <td><code>alt="صفحه اصلی فروشگاه کتاب‌یار"</code>، چون مقصد کلیک مهم‌تر از توصیف شکل لوگو است.</td>
+          </tr>
+          <tr>
+            <td>تصویر صرفاً تزئینی (خط یا طرح زمینه)</td>
+            <td><code>alt=""</code> خالی اما حاضر، تا صفحه‌خوان از تصویر تزئینی بگذرد. حذف کامل ویژگی با خالی گذاشتن آن یکی نیست.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p class="mistake">
+        <strong>خطای متداول:</strong>
+        حذف کامل ویژگی <code>alt</code>، یا نوشتن عبارتی بی‌معنا مانند «عکس» یا نام فایل <code>IMG_2041.jpg</code>.
+        اگر تصویر تزئینی است <code>alt=""</code> بگذارید تا صفحه‌خوان از آن بگذرد. اگر تصویر بخشی از محتواست، توضیح معنادار لازم است. خالی گذاشتن <code>alt</code> با حذف کردنش فرق دارد: حالت خالی یعنی «این تصویر را نخوان»، و حذف ویژگی یعنی «توضیح فراموش شده است».
+      </p>
+
+      <h3>قالب‌های رایج تصویر</h3>
+      <table class="ref">
+        <thead>
+          <tr>
+            <th>قالب</th>
+            <th>مناسب برای</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>.jpg</code> / <code>.jpeg</code></td>
+            <td>عکس واقعی با رنگ‌های زیاد. حجم معمولاً کم است، اما پس‌زمینهٔ شفاف ندارد.</td>
+          </tr>
+          <tr>
+            <td><code>.png</code></td>
+            <td>لوگو، نمودار و تصویری که پس‌زمینهٔ شفاف یا لبهٔ تیز دارد. برای عکس واقعی معمولاً حجیم‌تر از JPEG است.</td>
+          </tr>
+          <tr>
+            <td><code>.webp</code></td>
+            <td>قالب جدیدتری است که اغلب همان کیفیت را در حجم کمتر می‌دهد و مرورگرهای امروزی آن را پشتیبانی می‌کنند.</td>
+          </tr>
+          <tr>
+            <td><code>.svg</code></td>
+            <td>تصویر برداری برای آیکون و لوگو. با بزرگ شدن تار نمی‌شود. جزئیات آن در درس ۲۱ آمده است.</td>
+          </tr>
+          <tr>
+            <td><code>.gif</code></td>
+            <td>پویانمایی کوتاه و ساده. برای ویدیوی واقعی مناسب نیست، چون حجم بالا و کیفیت محدودی دارد.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3>تفاوت مسیرهای فایل (File Paths)</h3>
+      <p>
+        وقتی تصویر یا صفحهٔ دیگری را صدا می‌زنید، باید مسیر پرونده را درست بنویسید.
+        مسیر، محل پرونده را نسبت به پروندهٔ HTML فعلی یا به‌صورت نشانی کامل اینترنتی بیان می‌کند.
+        اگر مسیر غلط باشد، تصویر شکسته دیده می‌شود یا پیوند به جایی نمی‌رسد.
+      </p>
+
+      <table class="ref">
+        <thead>
+          <tr>
+            <th>نوع مسیر</th>
+            <th>مثال</th>
+            <th>معنی ساده</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>نسبی (هم‌پوشه)</td>
+            <td><code>images/photo.jpg</code></td>
+            <td>مرورگر از محل همین پروندهٔ HTML شروع می‌کند و وارد پوشهٔ <code>images</code> می‌شود.</td>
+          </tr>
+          <tr>
+            <td>نسبی (یک پوشه بالاتر)</td>
+            <td><code>../images/photo.jpg</code></td>
+            <td>علامت <code>../</code> یک پوشه به عقب برمی‌گردد و بعد پرونده را پیدا می‌کند.</td>
+          </tr>
+          <tr>
+            <td>مطلق</td>
+            <td><code>https://www.example.com/images/logo.png</code></td>
+            <td>نشانی کامل اینترنتی است و به محل پروندهٔ HTML روی رایانهٔ شما وابسته نیست.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p>ساختار پوشه‌های همین جزوه:</p>
+      <pre class="code"><code>01-HTML-مقدماتی/
+├── index.html
+├── css/
+│   └── style.css
+├── images/
+│   ├── demo.jpg
+│   └── profile.jpg
+└── pages/
+    └── 09-images.html   ← این صفحه</code></pre>
+
+      <div class="result">
+        <img class="demo-img" src="../images/demo.jpg" alt="تصویر نمونه برای آموزش مسیر فایل" width="120">
+        <p>
+          مسیر درست از داخل پوشه <code>pages</code>:
+          <code class="text-ok">../images/demo.jpg</code>
+        </p>
+        <p>
+          مسیر اشتباه:
+          <code class="text-bad">images/demo.jpg</code>
+          (پوشه images کنار این فایل نیست و عکس لود نمی‌شود)
+        </p>
+        <p>
+          مسیر اشتباه:
+          <code class="text-bad">../image/demo.jpg</code>
+          (نام پوشه غلط است)
+        </p>
+      </div>
+
+      <p class="tip">
+        <strong>نکته:</strong>
+        مسیر در HTML نسبت به همان پروندهٔ HTML حساب می‌شود، نه نسبت به پوشه‌ای که در ذهن شماست.
+        این صفحه داخل <code>pages/</code> است، پس تصویر پوشهٔ <code>images</code> با <code>../images/...</code> پیدا می‌شود.
+        همین قاعده برای <code>href</code> پیوندها و پروندهٔ CSS هم برقرار است.
+      </p>
+
+      <p class="mistake">
+        <strong>خطای متداول:</strong>
+        استفاده از مسیر رایانهٔ خودتان، مثل <code>C:\Users\Ali\Desktop\photo.jpg</code>.
+        این مسیر فقط روی همان رایانه وجود دارد و روی سرور یا رایانهٔ دیگران کار نمی‌کند. همیشه مسیر نسبی پروژه یا نشانی اینترنتی را بنویسید.
+        روی بسیاری از سرورها بزرگی و کوچکی حروف مهم است: <code>Photo.JPG</code> با <code>photo.jpg</code> یکی نیست. ویندوز این تفاوت را اغلب نادیده می‌گیرد و خطا دیرتر، بعد از انتشار، دیده می‌شود.
+      </p>
+    </section>
+
+    <nav class="page-nav">
+      <a href="08-links.html">→ درس قبل</a>
+      <a href="../index.html">فهرست مطالب</a>
+      <a href="10-lists.html">درس بعد ←</a>
+    </nav>
+  </div>
+
+  <footer class="page-footer">جزوه HTML مقدماتی</footer>
+</body>
+
+</html>

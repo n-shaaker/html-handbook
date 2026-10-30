@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>۴) ترتیب لایه‌ها (Z-index) | آموزش CSS سطح میانی</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/demos/z-index.css">
+</head>
+
+<body>
+
+  <header class="page-header">
+    <h1>آموزش CSS — سطح میانی</h1>
+    <p>۴) ترتیب لایه‌ها (Z-index)</p>
+  </header>
+
+  <div class="container">
+
+    <nav class="page-nav" aria-label="ناوبری درس">
+      <a href="03-position.html">→ قبلی: Position</a>
+      <a href="../index.html">فهرست درس‌ها</a>
+      <a href="05-overflow.html">بعدی: Overflow ←</a>
+    </nav>
+
+    <section class="lesson" id="z-index">
+      <h2>۴) ترتیب لایه‌ها (Z-index)</h2>
+      <p>
+        وقتی چند عنصر روی هم رسم می‌شوند، <code>z-index</code> ترتیب عمقی آن‌ها را تعیین می‌کند. عدد بزرگ‌تر روی عدد کوچک‌تر قرار می‌گیرد؛ مثل برگه‌هایی که روی میز روی هم چیده شده‌اند.
+        این ویژگی فقط وقتی اثر دارد که عنصر از حالت <code>position: static</code> خارج شده باشد، یا فرزند مستقیم یک ظرف <code>flex</code> یا <code>grid</code> باشد.
+        اگر <code>z-index</code> ننویسید، عنصری که در HTML دیرتر آمده، در شرایط برابر، روی عنصر قبلی رسم می‌شود.
+      </p>
+
+      <h3>مثال ۱: سه کارت روی هم</h3>
+      <pre class="code"><code>.stage { position: relative; height: 190px; }   /* مرجع سه کارت */
+
+.red   { position: absolute; top: 0;    right: 0;     z-index: 1; }
+.green { position: absolute; top: 30px; right: 60px;  z-index: 2; }
+.blue  { position: absolute; top: 60px; right: 120px; z-index: 3; }  /* از همه بالاتر */</code></pre>
+      <div class="result demo-z">
+        <div class="stage">
+          <div class="layer red">قرمز z=1</div>
+          <div class="layer green">سبز z=2</div>
+          <div class="layer blue">آبی z=3</div>
+        </div>
+      </div>
+
+      <h3>مثال ۲: همان کارت‌ها، ترتیب برعکس</h3>
+      <pre class="code"><code>.red  { z-index: 3; }  /* حالا قرمز رو است */
+.blue { z-index: 1; }</code></pre>
+      <div class="result demo-z">
+        <div class="stage reverse">
+          <div class="layer red">قرمز z=3</div>
+          <div class="layer green">سبز z=2</div>
+          <div class="layer blue">آبی z=1</div>
+        </div>
+      </div>
+
+      <h3>مثال ۳: متن روی تصویر (بنر محصول)</h3>
+      <p>
+        عنصری که position دارد به‌طور پیش‌فرض روی عنصرهای بدون position (مثل همین <code>img</code>) می‌نشیند؛
+        <code>z-index: 2</code> را برای اطمینان می‌گذاریم تا اگر بعداً عنصر positioned دیگری اضافه شد، متن باز هم رو بماند.
+      </p>
+      <pre class="code"><code>.photo   { position: relative; }
+.caption {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  left: 0;                              /* تمام‌عرض روی پایین تصویر */
+  z-index: 2;
+  background-color: rgba(0, 0, 0, 0.6); /* نوار نیمه‌شفاف تا متن خوانا باشد */
+}</code></pre>
+      <div class="result demo-z">
+        <div class="photo">
+          <img src="../images/bg.jpg" alt="تصویر نمونه بنر">
+          <p class="caption">حراج پاییزه — تا ۴۰٪ تخفیف</p>
+        </div>
+      </div>
+
+      <p class="tip">
+        اگر <code>z-index</code> مشخص نکنید، عنصری که در HTML <strong>دیرتر</strong> آمده، روی قبلی‌ها می‌نشیند.
+        عدد منفی هم مجاز است؛ <code>z-index: -1</code> عنصر را پشت محتوای عادی پدرش می‌فرستد (مثلاً برای یک شکل تزئینی پشت متن).
+      </p>
+
+      <p class="mistake">
+        <strong>اشتباه رایج:</strong>
+        <code>z-index</code> روی عنصرهایی کار می‌کند که <code>position</code> آن‌ها <code>static</code> نیست
+        (یعنی relative، absolute، fixed یا sticky). تنها استثنا فرزندان مستقیم <code>flex</code> و <code>grid</code> هستند؛
+        در بقیه موارد، بدون position هر عددی بنویسید بی‌اثر است.
+      </p>
+
+      <h3>نکته مهم: z-index فقط بین «هم‌گروه‌ها» مقایسه می‌شود</h3>
+      <p>
+        مقایسه <code>z-index</code> سراسری نیست. مرورگر عنصرها را در گروه‌هایی به نام stacking context می‌چیند و عددها را فقط داخل همان گروه با هم می‌سنجد.
+        یک گروه تازه وقتی ساخته می‌شود که عنصری <code>position</code> غیر از <code>static</code> و <code>z-index</code> غیر از <code>auto</code> داشته باشد، یا <code>opacity</code> کمتر از ۱ داشته باشد، یا <code>transform</code> غیر از <code>none</code> داشته باشد.
+        فرزندان فقط داخل گروه پدرشان بالا و پایین می‌روند. برای همین منویی با <code>z-index</code> خیلی بزرگ هم ممکن است زیر بخش دیگری بماند، اگر پدر آن منو در گروه پایین‌تری باشد. در این حالت باید <code>z-index</code> را به پدر بدهید.
+      </p>
+
+      <p class="mistake">
+        <strong>اشتباه رایج:</strong>
+        استفاده از عددهای بی‌حساب مثل <code>99999</code>. بهتر است چند سطح ثابت داشته باشید؛
+        مثلاً محتوای عادی ۱، منوی کشویی ۱۰، هدر چسبان ۱۰۰ و پنجره مودال ۱۰۰۰.
+      </p>
+
+      <p class="exercise">
+        <strong>تمرین:</strong> دو دایره رنگی بسازید که نیمی از آن‌ها روی هم بیفتد. با تغییر z-index جای «رو» و «زیر» را عوض کنید.
+      </p>
+    </section>
+
+    <nav class="page-nav" aria-label="ناوبری درس پایین">
+      <a href="03-position.html">→ قبلی: Position</a>
+      <a href="../index.html">فهرست درس‌ها</a>
+      <a href="05-overflow.html">بعدی: Overflow ←</a>
+    </nav>
+
+  </div>
+
+  <footer class="page-footer">
+    آموزش CSS سطح میانی
+  </footer>
+
+</body>
+
+</html>

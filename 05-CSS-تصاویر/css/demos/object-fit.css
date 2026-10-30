@@ -1,0 +1,50 @@
+/* object-fit برای کارت محصول / گالری */
+
+.demo-fit-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+
+@media (max-width: 700px) {
+  .demo-fit-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.demo-fit-card {
+  background: #fff;
+  border: 1px solid #d9e2ec;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.demo-fit-card .frame {
+  width: 100%;
+  height: 150px;
+  background-color: #eef1f5;
+}
+
+.demo-fit-card img {
+  width: 100%;
+  height: 150px;
+  display: block;
+}
+
+.demo-fit-card .fill {
+  object-fit: fill; /* پیش‌فرض — کش می‌آید */
+}
+
+.demo-fit-card .cover {
+  object-fit: cover; /* پرکاربردترین در واقعیت */
+}
+
+.demo-fit-card .contain {
+  object-fit: contain; /* کل عکس دیده شود، ممکن است فضای خالی بماند */
+}
+
+.demo-fit-card .caption {
+  padding: 8px 10px;
+  font-size: 0.9rem;
+  margin: 0;
+}

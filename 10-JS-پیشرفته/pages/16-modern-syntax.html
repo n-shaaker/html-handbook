@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>۱۶) عملگرهای مدرن و متدهای Object | آموزش JavaScript سطح پیشرفته</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <script src="../js/log.js" defer></script>
+  <script src="../js/demos/modern-syntax.js" defer></script>
+</head>
+
+<body>
+
+  <header class="page-header" id="top">
+    <h1>آموزش JavaScript — سطح پیشرفته</h1>
+    <p>۱۶) عملگرهای مدرن و متدهای Object</p>
+  </header>
+
+  <div class="container">
+
+    <nav class="page-nav" aria-label="ناوبری درس">
+      <a href="15-event-delegation.html">→ قبلی: Event Delegation</a>
+      <a href="../index.html">فهرست درس‌ها</a>
+      <a href="17-debugging.html">بعدی: Debugging ←</a>
+    </nav>
+
+    <section class="lesson" id="modern-syntax">
+      <h2>۱۶) عملگرهای مدرن و متدهای Object</h2>
+
+<p>نسخه‌های جدید JavaScript چند شکل نوشتاری اضافه کرده‌اند که کد را کوتاه‌تر و بعضی خطاهای رایج را قابل‌پیشگیری می‌کنند. هیچ‌کدام منطق تازهٔ پنهان نیست: یا خواندن امن مقدار است، یا کپی، یا ساختن شیء از روی دادهٔ موجود. هر کدام را با مثالی می‌بینید که بدون آن شکل چه خطایی یا چه مقدار اشتباهی پیش می‌آید.</p>
+
+<h3>Optional Chaining (?.)</h3>
+
+<p>اگر بخواهیم به ویژگی یک شیء که ممکن است وجود نداشته باشد دسترسی پیدا کنیم، <code>?.</code> به جای خطا <code>undefined</code> برمی‌گرداند.</p>
+
+<pre class="code"><code>const user = { name: "سارا", address: { city: "شیراز" } };
+const guest = { name: "مهمان" };
+
+console.log(user.address.city);          // شیراز
+console.log(guest.address?.city);        // undefined (بدون ?. خطا می‌داد)
+console.log(guest.getAge?.());           // undefined ← متدی که شاید نباشد
+console.log(user.orders?.[0]);           // undefined ← آرایه‌ای که شاید نباشد</code></pre>
+
+<p>اگر <code>address</code> وجود نداشته باشد، خواندن <code>.city</code> بدون علامت سؤال خطا می‌دهد چون نمی‌شود از <code>undefined</code> ویژگی خواند. <code>?.</code> در همان نقطه توقف می‌کند و کل عبارت <code>undefined</code> می‌شود. همین شکل برای صدازدن متدی که شاید نباشد و برای عضو آرایه‌ای که شاید نباشد هم به کار می‌رود. اگر مقدار واقعاً وجود داشته باشد، خواندن عادی ادامه پیدا می‌کند.</p>
+
+<div class="result">
+<pre class="console" id="out-1"></pre>
+</div>
+
+<h3>Nullish Coalescing (??)</h3>
+
+<p><code>a ?? b</code> یعنی «اگر a برابر <code>null</code> یا <code>undefined</code> بود، b». فرقش با <code>||</code> این است که <code>0</code> و <code>""</code> را مقدار معتبر می‌داند.</p>
+
+<pre class="code"><code>const settings = { volume: 0, title: "" };
+
+console.log(settings.volume || 50);   // 50 ✖ صفر را نادیده گرفت
+console.log(settings.volume ?? 50);   // 0  ✔
+console.log(settings.title ?? "بدون عنوان");   // "" ← رشته خالی حفظ شد (یک خط خالی چاپ می‌شود)
+console.log(settings.color ?? "آبی");          // آبی ← color وجود ندارد (undefined)</code></pre>
+
+<p>عملگر <code>||</code> هر مقدار falsy، از جمله صفر و رشتهٔ خالی، را کنار می‌گذارد و طرف راست را برمی‌گرداند. <code>??</code> فقط وقتی طرف راست را انتخاب می‌کند که طرف چپ <code>null</code> یا <code>undefined</code> باشد. صفر و متن خالی با این عملگر حفظ می‌شوند. برای تنظیماتی که صفر معنی دارد، <code>??</code> انتخاب دقیق‌تری است.</p>
+
+<div class="result">
+<pre class="console" id="out-2"></pre>
+</div>
+
+<h3>عملگرهای انتساب منطقی</h3>
+
+<pre class="code"><code>let a = null;
+a ??= "پیش‌فرض";      // اگر null/undefined بود مقدار بده
+console.log(a);       // پیش‌فرض
+
+let count = 0;
+count ||= 10;         // اگر falsy بود مقدار بده
+console.log(count);   // 10 ← چون 0 هم falsy است
+
+let isAdmin = true;
+isAdmin &amp;&amp;= "دسترسی کامل";   // اگر truthy بود مقدار بده
+console.log(isAdmin);            // دسترسی کامل</code></pre>
+
+<p><code>??=</code> فقط اگر متغیر <code>null</code> یا <code>undefined</code> باشد مقدار جدید می‌گذارد. <code>||=</code> هر مقدار falsy را عوض می‌کند، به همین دلیل صفر را به ۱۰ تبدیل کرده است. <code>&&=</code> فقط وقتی انتساب می‌کند که مقدار فعلی truthy باشد. این سه عملگر هم مقایسه می‌کنند و هم در صورت نیاز همان متغیر را به‌روز می‌کنند.</p>
+
+<p class="tip"><code>a ??= b</code> کوتاه‌شده <code>a ?? (a = b)</code> است؛ کاربرد رایجش مقدار پیش‌فرض دادن به تنظیمات است: <code>options.lang ??= "fa";</code></p>
+
+<div class="result">
+<pre class="console" id="out-3"></pre>
+</div>
+
+<h3>متدهای Object</h3>
+
+<table class="ref">
+<tr><th>متد</th><th>خروجی</th></tr>
+<tr><td><code>Object.keys(obj)</code></td><td>آرایه کلیدها</td></tr>
+<tr><td><code>Object.values(obj)</code></td><td>آرایه مقدارها</td></tr>
+<tr><td><code>Object.entries(obj)</code></td><td>آرایه جفت‌های <code>[کلید, مقدار]</code></td></tr>
+<tr><td><code>Object.fromEntries(arr)</code></td><td>برعکس entries</td></tr>
+<tr><td><code>Object.assign(target, src)</code></td><td>کپی ویژگی‌ها</td></tr>
+<tr><td><code>Object.freeze(obj)</code></td><td>قفل کردن شیء (تغییرناپذیر)؛ فقط سطح اول — شیءهای تو در تو قفل نمی‌شوند</td></tr>
+<tr><td><code>structuredClone(obj)</code></td><td>کپی عمیق (شامل شیءهای تو در تو)</td></tr>
+</table>
+
+<pre class="code"><code>const scores = { سارا: 18, علی: 15, مریم: 19 };
+
+console.log(Object.keys(scores));       // ["سارا","علی","مریم"]
+console.log(Object.values(scores));     // [18,15,19]
+
+for (const [name, score] of Object.entries(scores)) {
+  console.log(`${name}: ${score}`);
+}
+
+// یک نمره ارفاقی به همه: شیء ← آرایه جفت‌ها ← map ← دوباره شیء
+const withBonus = Object.fromEntries(
+  Object.entries(scores).map(([name, score]) =&gt; [name, score + 1])
+);
+console.log(withBonus);                 // {"سارا":19,"علی":16,"مریم":20}</code></pre>
+
+<p><code>Object.keys</code> نام ویژگی‌ها را در آرایه می‌دهد و <code>Object.values</code> فقط مقدارها را. <code>Object.entries</code> هر ویژگی را به زوج <code>[کلید, مقدار]</code> تبدیل می‌کند تا بشود در حلقه نام و نمره را با هم دید. <code>fromEntries</code> آن آرایهٔ زوج‌ها را دوباره شیء می‌کند. در این مثال هر نمره یکی زیاد شده و شیء تازه ساخته شده است.</p>
+
+<div class="result">
+<pre class="console" id="out-4"></pre>
+</div>
+
+<h3>کپی سطحی در مقابل کپی عمیق</h3>
+
+<pre class="code"><code>const original = { name: "سارا", skills: ["JS"] };
+
+const shallow = { ...original };
+const deep = structuredClone(original);
+
+shallow.skills.push("CSS");       // آرایه داخلی مشترک است!
+console.log(original.skills);     // ["JS","CSS"] ← اصلی هم تغییر کرد
+
+deep.skills.push("React");        // کاملاً جدا
+console.log(original.skills, deep.skills);   // ["JS","CSS"] ["JS","React"]</code></pre>
+
+<p>گسترش با سه نقطه فقط لایهٔ اول را کپی می‌کند. آرایهٔ <code>skills</code> در کپی سطحی همان آرایهٔ اصلی است و <code>push</code> هر دو را عوض می‌کند. <code>structuredClone</code> ساختار تودرتو را جدا می‌کند، پس افزودن مهارت به کپی عمیق، فهرست اصلی را تغییر نمی‌دهد. این تابع بعضی چیزها مثل تابع و گرهٔ DOM را کپی نمی‌کند.</p>
+
+<p class="tip">deep قبل از push کردن "CSS" ساخته شده؛ برای همین فقط "JS" را دارد. <code>structuredClone</code> تابع‌ها و عنصرهای DOM را کپی نمی‌کند (خطا می‌دهد)؛ برای داده‌های معمولی (شیء، آرایه، Date، Map، Set) مناسب است. روش قدیمی <code>JSON.parse(JSON.stringify(obj))</code> هم Date را به رشته تبدیل می‌کند و undefined را حذف می‌کند.</p>
+
+<div class="result">
+<pre class="console" id="out-5"></pre>
+</div>
+
+<h3>چند ترفند کوچک دیگر</h3>
+
+<pre class="code"><code>const big = 1_000_000;                 // جداکننده عددی برای خوانایی
+console.log(big);                      // 1000000
+
+const name = "علی", age = 30;
+const person = { name, age };          // خلاصه‌نویسی ویژگی
+console.log(person);                   // {"name":"علی","age":30}
+
+const key = "color";
+const obj = { [key]: "قرمز" };         // نام ویژگی محاسبه‌شده
+console.log(obj);                      // {"color":"قرمز"}
+
+console.log([10, 20, 30].at(-1));      // 30 ← آخرین عضو (به جای arr[arr.length - 1])</code></pre>
+
+<p>زیرخط داخل عدد فقط برای خواندن انسان است و در مقدار ذخیره نمی‌شود. اگر نام متغیر و نام ویژگی یکی باشد، می‌توان فقط یک بار آن را در شیء نوشت. کروشه دور نام ویژگی یعنی کلید از روی مقدار یک عبارت ساخته شود، نه اینکه کلمهٔ <code>key</code> خودش نام ویژگی باشد. <code>at(-1)</code> آخرین عضو آرایه را بدون حساب کردن <code>length - 1</code> می‌دهد.</p>
+
+<div class="result">
+<pre class="console" id="out-6"></pre>
+</div>
+
+<p class="mistake"><strong>اشتباه رایج:</strong> استفاده از <code>||</code> برای مقدار پیش‌فرض وقتی <code>0</code> یا <code>""</code> مقدار معتبر است. در این موارد از <code>??</code> استفاده کنید.</p>
+
+<p class="mistake"><strong>اشتباه رایج:</strong> استفاده بیش از حد از <code>?.</code>. اگر یک مقدار <strong>حتماً</strong> باید وجود داشته باشد (مثلاً عنصری که در HTML نوشته‌اید)، <code>?.</code> فقط باگ را پنهان می‌کند؛ بهتر است خطا بگیرید و علتش را پیدا کنید.</p>
+
+<p class="exercise"><strong>تمرین:</strong><br>
+۱) تابع <code>getAvatar(response)</code> بنویسید که از پاسخ API با <code>?.</code> و <code>??</code> مقدار <code>response.data.user.profile.avatar</code> را بخواند و اگر هر کدام از بخش‌ها نبود <code>"default.png"</code> برگرداند. آن را با این سه ورودی امتحان کنید: <code>{ data: { user: { profile: null } } }</code>، <code>{}</code> و <code>{ data: { user: { profile: { avatar: "sara.jpg" } } } }</code>. خروجی مورد انتظار: <code>default.png</code>، <code>default.png</code>، <code>sara.jpg</code>.<br>
+۲) از شیء <code>{ سیب: 45000, موز: 80000, انار: 60000 }</code> با <code>Object.entries</code>، <code>filter</code> و <code>Object.fromEntries</code> شیء جدیدی بسازید که فقط میوه‌های ارزان‌تر از ۷۰٬۰۰۰ تومان را داشته باشد.</p>
+    </section>
+
+    <nav class="page-nav" aria-label="ناوبری درس پایین">
+      <a href="15-event-delegation.html">→ قبلی: Event Delegation</a>
+      <a href="../index.html">فهرست درس‌ها</a>
+      <a href="17-debugging.html">بعدی: Debugging ←</a>
+    </nav>
+
+  </div>
+
+  <footer class="page-footer">
+    آموزش JavaScript سطح پیشرفته
+  </footer>
+
+</body>
+
+</html>

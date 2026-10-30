@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>۵) وراثت، static و فیلدهای خصوصی | آموزش JavaScript سطح پیشرفته</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <script src="../js/log.js" defer></script>
+  <script src="../js/demos/inheritance.js" defer></script>
+</head>
+
+<body>
+
+  <header class="page-header" id="top">
+    <h1>آموزش JavaScript — سطح پیشرفته</h1>
+    <p>۵) وراثت، static و فیلدهای خصوصی</p>
+  </header>
+
+  <div class="container">
+
+    <nav class="page-nav" aria-label="ناوبری درس">
+      <a href="04-classes.html">→ قبلی: Classes</a>
+      <a href="../index.html">فهرست درس‌ها</a>
+      <a href="06-sets-maps.html">بعدی: Set & Map ←</a>
+    </nav>
+
+    <section class="lesson" id="inheritance">
+      <h2>۵) وراثت، static و فیلدهای خصوصی</h2>
+
+<p>وراثت یعنی کلاس فرزند رفتار کلاس پدر را به ارث ببرد و فقط تفاوت‌های خودش را اضافه یا جایگزین کند. <code>extends</code> این رابطه را می‌سازد و <code>super</code> سازنده یا متد پدر را صدا می‌زند. در کنار آن، عضو ایستا به خود کلاس تعلق دارد و فیلد خصوصی با <code>#</code> از بیرون کلاس مخفی می‌ماند.</p>
+
+<h3>وراثت با extends و super</h3>
+
+<p>کلاس فرزند همه ویژگی‌ها و متدهای کلاس پدر را به ارث می‌برد و می‌تواند چیزهای جدید اضافه یا متدها را بازنویسی (override) کند.</p>
+
+<pre class="code"><code>class Animal {
+  constructor(name) {
+    this.name = name;
+  }
+  speak() {
+    return `${this.name} صدایی درمی‌آورد.`;
+  }
+}
+
+class Dog extends Animal {
+  constructor(name, breed) {
+    super(name);              // اجرای constructor پدر (اجباری، قبل از this)
+    this.breed = breed;
+  }
+  speak() {                   // بازنویسی متد پدر
+    return `${this.name} (${this.breed}) واق واق می‌کند!`;
+  }
+}
+
+class Cat extends Animal {
+  speak() {
+    return super.speak() + " میو!";   // استفاده از نسخه پدر
+  }
+}
+
+const animals = [new Animal("حیوان"), new Dog("رکس", "ژرمن"), new Cat("پیشی")];
+animals.forEach(a =&gt; console.log(a.speak()));
+console.log(animals[1] instanceof Animal);   // true ← سگ، حیوان هم هست</code></pre>
+
+<p><code>extends</code> متدهای کلاس پدر را در دسترس فرزند می‌گذارد. در سازندهٔ سگ، <code>super(name)</code> باید پیش از استفاده از <code>this</code> سازندهٔ پدر را اجرا کند تا <code>name</code> ساخته شود و بعد نژاد روی همان شیء ذخیره شود. سگ <code>speak</code> را کاملاً عوض می‌کند. گربه سازندهٔ جدا ندارد و <code>speak</code> پدر را با <code>super.speak()</code> صدا می‌زند و فقط «میو» را به آن اضافه می‌کند. هر سه نمونه در یک آرایه هستند و <code>instanceof Animal</code> برای سگ هم true است، چون در زنجیرهٔ وراثت حیوان مانده است.</p>
+
+<div class="result">
+<pre class="console" id="out-1"></pre>
+</div>
+
+<table class="ref">
+<tr><th>شکل استفاده از super</th><th>کجا</th><th>کار</th></tr>
+<tr><td><code>super(...)</code></td><td>فقط داخل constructor فرزند</td><td>constructor پدر را اجرا می‌کند؛ باید قبل از اولین استفاده از <code>this</code> باشد</td></tr>
+<tr><td><code>super.method()</code></td><td>داخل هر متد فرزند</td><td>نسخه پدرِ یک متد را صدا می‌زند (مثل <code>Cat</code> بالا)</td></tr>
+</table>
+
+<p class="tip">کلاس <code>Cat</code> constructor ندارد؛ در این حالت JavaScript خودش یک constructor پیش‌فرض می‌سازد که همه آرگومان‌ها را به <code>super(...args)</code> می‌دهد. پس فقط وقتی constructor بنویسید که ویژگی جدیدی (مثل <code>breed</code>) لازم دارید.</p>
+
+<h3>متد و ویژگی static</h3>
+
+<p>عضوهای <code>static</code> مال خود کلاس هستند نه نمونه‌ها؛ با اسم کلاس صدا زده می‌شوند (مثل <code>Math.random()</code>).</p>
+
+<pre class="code"><code>class MathHelper {
+  static PI = 3.14159;
+
+  static circleArea(r) {
+    return MathHelper.PI * r * r;
+  }
+}
+
+console.log(MathHelper.circleArea(2));   // 12.56636
+const m = new MathHelper();
+console.log(m.circleArea);    // undefined ← روی نمونه نیست</code></pre>
+
+<p>متد و ویژگی <code>static</code> به خود کلاس تعلق دارند، نه به نمونه‌هایی که با <code>new</code> ساخته می‌شوند. آن‌ها را با نام کلاس صدا می‌زنید. روی نمونه، <code>circleArea</code> وجود ندارد و <code>undefined</code> است. از این شکل برای ابزارهایی استفاده می‌کنید که به دادهٔ یک شیء خاص وابسته نیستند.</p>
+
+<div class="result">
+<pre class="console" id="out-2"></pre>
+</div>
+
+<p class="tip">نمونه‌های آشنای static در خود JavaScript: <code>Math.round()</code>، <code>Array.isArray()</code>، <code>Number.isInteger()</code>، <code>Object.keys()</code> و <code>Date.now()</code>. همه با اسم کلاس صدا زده می‌شوند، نه روی یک نمونه.</p>
+
+<h3>فیلد و متد خصوصی با #</h3>
+
+<p>عضوی که اسمش با <code>#</code> شروع شود <strong>واقعاً</strong> خصوصی است: فقط کدهای داخل همان کلاس به آن دسترسی دارند. مثال کاربردی: حساب بانکی که موجودی آن فقط از راه واریز و برداشت تغییر می‌کند.</p>
+
+<pre class="code"><code>class BankAccount {
+  #balance = 0;                 // فیلد خصوصی: فقط داخل کلاس قابل دسترسی
+
+  constructor(owner, initial) {
+    this.owner = owner;
+    this.#balance = initial;
+  }
+
+  deposit(amount) {
+    if (amount &lt;= 0) throw new Error("مبلغ نامعتبر است");
+    this.#balance += amount;
+    return this.#balance;
+  }
+
+  withdraw(amount) {
+    if (amount &gt; this.#balance) throw new Error("موجودی کافی نیست");
+    this.#balance -= amount;
+    return this.#balance;
+  }
+
+  getBalance() {                // تنها راه خواندن موجودی از بیرون
+    return this.#balance;
+  }
+}
+
+const acc = new BankAccount("سارا", 500);
+console.log(acc.deposit(200));          // 700
+
+try {
+  acc.withdraw(5000);
+} catch (err) {
+  console.log("خطا:", err.message);    // خطا: موجودی کافی نیست
+}
+
+acc.balance = 1000000;                  // یک ویژگی معمولی تازه می‌سازد؛ ربطی به #balance ندارد
+console.log(acc.getBalance());          // 700
+console.log(Object.keys(acc));          // ["owner","balance"] ← فیلد خصوصی #balance دیده نمی‌شود
+// console.log(acc.#balance);           // ✖ SyntaxError</code></pre>
+
+<p>فیلدهایی که با <code>#</code> شروع می‌شوند فقط داخل بدنهٔ همان کلاس قابل خواندن‌اند. حتی کد بیرونی که به نمونه دسترسی دارد نمی‌تواند <code>acc.#balance</code> را بنویسد و این کار خطای نحوی است. واریز و برداشت از متدها انجام می‌شود تا مبلغ نامعتبر قبل از تغییر موجودی رد شود.</p>
+
+<div class="result">
+<pre class="console" id="out-3"></pre>
+</div>
+
+<p class="tip">اگر خط آخر (<code>acc.#balance</code>) را از حالت توضیح دربیاورید، کل فایل با خطای نحوی <code>SyntaxError: Private field '#balance' must be declared in an enclosing class</code> اصلاً اجرا نمی‌شود. (Console مرورگر Chrome برای راحتی اشکال‌زدایی اجازه خواندن فیلد خصوصی را می‌دهد؛ این استثنا فقط مخصوص DevTools است و در فایل JS کار نمی‌کند.)</p>
+
+<p class="tip"><code>balance</code> و <code>#balance</code> دو چیز کاملاً جدا هستند. برای همین خط <code>acc.balance = 1000000</code> موجودی واقعی حساب را تغییر نمی‌دهد.</p>
+
+<p class="tip">قبل از وجود <code>#</code>، برنامه‌نویس‌ها اسم ویژگی‌های «خصوصی» را با خط زیر شروع می‌کردند (<code>this._balance</code>). این فقط یک قرارداد است و از بیرون قابل تغییر است؛ <code>#</code> واقعاً جلوی دسترسی را می‌گیرد.</p>
+
+<p class="mistake"><strong>اشتباه رایج:</strong> استفاده از <code>this</code> در constructor فرزند قبل از <code>super()</code>. خطای <code>ReferenceError: Must call super constructor in derived class before accessing 'this' or returning from derived constructor</code> می‌گیرید.</p>
+
+<p class="mistake"><strong>اشتباه رایج:</strong> استفاده از فیلد خصوصی بدون تعریف آن در بدنه کلاس. <code>this.#x = 1</code> فقط وقتی مجاز است که بالای کلاس <code>#x;</code> (یا <code>#x = مقدار;</code>) نوشته شده باشد.</p>
+
+<p class="exercise"><strong>تمرین:</strong> کلاس <code>Shape</code> با متد <code>area()</code> (که در کلاس پدر 0 برمی‌گرداند) بسازید. دو کلاس <code>Rectangle</code> (با عرض و طول) و <code>Circle</code> (با شعاع) از آن به ارث ببرند و <code>area()</code> را بازنویسی کنند. یک متد static به اسم <code>Shape.compare(a, b)</code> بنویسید که از بین دو شکل، شکلی را که مساحت بزرگ‌تری دارد برگرداند. در آخر به <code>Circle</code> یک فیلد خصوصی <code>#radius</code> با getter و setter بدهید که شعاع منفی را نپذیرد (خطا throw کند).</p>
+    </section>
+
+    <nav class="page-nav" aria-label="ناوبری درس پایین">
+      <a href="04-classes.html">→ قبلی: Classes</a>
+      <a href="../index.html">فهرست درس‌ها</a>
+      <a href="06-sets-maps.html">بعدی: Set & Map ←</a>
+    </nav>
+
+  </div>
+
+  <footer class="page-footer">
+    آموزش JavaScript سطح پیشرفته
+  </footer>
+
+</body>
+
+</html>

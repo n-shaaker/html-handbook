@@ -1,0 +1,35 @@
+/* فونت و رنگ فقط یک بار؛ فرزندان ارث می‌برند */
+body {
+  font-family: Tahoma, sans-serif;
+  color: #2d3748;
+}
+
+h1 {
+  font-size: 28px;
+}
+
+h2 {
+  font-size: 22px;
+}
+
+p, li {
+  line-height: 1.8;
+}
+
+td {
+  padding: 6px 10px;
+  border: 1px solid #cbd5e0;
+}
+
+/* مرورگر برای دکمه فونت و رنگ مستقیم می‌گذارد؛ inherit آن را به والد برمی‌گرداند */
+button {
+  font: inherit;
+  color: inherit;
+  padding: 6px 14px;
+}
+
+/* p داخل پانویس رنگ و اندازه را از اینجا ارث می‌برد */
+.site-footer {
+  color: #718096;
+  font-size: 14px;
+}

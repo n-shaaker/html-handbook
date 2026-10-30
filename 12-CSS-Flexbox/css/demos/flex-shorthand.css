@@ -1,0 +1,68 @@
+/* ۱۰) میان‌بُر flex */
+
+/* جعبه‌های رنگی شماره‌دار */
+.demo-flex .box {
+  padding: 10px 12px;
+  color: white;
+  font-weight: bold;
+  text-align: center;
+  border-radius: 6px;
+}
+
+.demo-flex .b1 { background-color: #1c7ed6; }
+.demo-flex .b2 { background-color: #2b8a3e; }
+.demo-flex .b3 { background-color: #e8590c; }
+.demo-flex .b4 { background-color: #ae3ec9; }
+
+/* ظرف مشترک */
+.demo-flex .parent {
+  display: flex;
+  gap: 8px;
+  background-color: #f1f3f5;
+  border: 2px solid #868e96;
+  padding: 6px;
+}
+
+.demo-flex .f-1 {
+  flex: 1;
+}
+
+.demo-flex .f-2 {
+  flex: 2;
+}
+
+.demo-flex .f-auto {
+  flex: auto;
+}
+
+.demo-flex .f-none {
+  flex: none;
+}
+
+/* پنل مدیریت آموزشگاه */
+.demo-flex .panel {
+  display: flex;
+  border: 1px solid #cfd8e3;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.demo-flex .sidebar {
+  flex: 0 0 200px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  background-color: #1a3a5c;
+  color: white;
+  padding: 12px;
+}
+
+.demo-flex .content {
+  flex: 1;
+  background-color: white;
+  padding: 12px;
+}
+
+.demo-flex .content p {
+  margin: 6px 0 0;
+}

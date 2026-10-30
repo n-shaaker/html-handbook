@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>تمرین ۱ — نام رزروکننده | منوی نارنج</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="ex-1.js" defer></script>
+  </head>
+  <body>
+    <header class="site-header">
+      <p class="logo">رستوران سنتی <strong>نارنج</strong></p>
+    </header>
+
+    <main class="container">
+      <h1>تمرین ۱ — نام رزروکننده</h1>
+
+      <form class="reserve-form" id="reserve-form" novalidate>
+        <p>
+          <label for="name">نام و نام خانوادگی</label>
+          <input type="text" id="name" autocomplete="name" />
+          <small class="field-error" id="name-error"></small>
+        </p>
+        <button type="submit" class="btn">ثبت رزرو</button>
+        <p class="form-message" id="form-message" aria-live="polite"></p>
+      </form>
+
+    </main>
+  </body>
+</html>

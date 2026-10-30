@@ -1,0 +1,27 @@
+/* تمرین ۳ — فهرست شهرها در چند ستون (پاسخ) */
+
+body {
+  font-family: Tahoma, sans-serif;
+  margin: 20px;
+  background-color: #f8f9fa;
+  color: #212529;
+}
+
+/* ستونی، و وقتی ستون پر شد برو ستون بعد */
+.cities {
+  display: flex;
+  flex-flow: column wrap;
+  height: 160px;
+  list-style: none;
+  padding: 10px;
+  margin: 0;
+  background-color: white;
+  border: 1px solid #dee2e6;
+}
+
+.cities li {
+  width: 120px;
+  padding: 6px;
+  margin: 2px;
+  background-color: #fff4e6;
+}

@@ -1,0 +1,302 @@
+/* رنگ‌ها: قهوه‌ای #3b2314 و #7c2d12 — نارنجی #c2410c و #fb923c — کرم #fed7aa — سبز بهاری #15803d */
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Tahoma, Arial, sans-serif;
+  line-height: 1.9;
+  color: #3b2314;
+  background-color: #fdf8f3;
+}
+
+h1,
+h2,
+h3 {
+  color: #7c2d12;
+}
+
+a {
+  color: #c2410c;
+}
+
+a:focus,
+summary:focus {
+  outline: 3px solid #fdba74;
+}
+
+/* ========== سربرگ ========== */
+.site-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  background-color: #3b2314;
+  padding: 14px 24px;
+}
+
+.logo {
+  color: #fed7aa;
+  font-size: 22px;
+  text-decoration: none;
+}
+
+.logo strong {
+  color: #fb923c;
+}
+
+.nav-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-list a {
+  display: inline-block;
+  color: white;
+  text-decoration: none;
+  padding: 2px 12px;
+  border-radius: 20px;
+}
+
+.nav-list a:hover {
+  background-color: #15803d;
+}
+
+/* ========== hero ========== */
+.hero {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 70vh;
+  padding: 60px 16px;
+  background-color: #3b2314;
+  background-image: linear-gradient(rgba(21, 128, 61, 0.45), rgba(59, 35, 20, 0.85)), url("../../../../images/hero.jpg");
+  background-size: cover;
+  background-position: center;
+  color: white;
+  text-align: center;
+}
+
+.hero h1 {
+  color: #fed7aa;
+  font-size: 36px;
+  margin: 10px 0;
+}
+
+.badge {
+  background-color: #15803d;
+  color: white;
+  font-size: 14px;
+  padding: 4px 16px;
+  border-radius: 999px;
+}
+
+.btn {
+  display: inline-block;
+  background-color: #c2410c;
+  color: white;
+  padding: 12px 26px;
+  border: none;
+  border-radius: 8px;
+  text-decoration: none;
+  font-family: inherit;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background-color: #7c2d12;
+}
+
+/* ========== بخش‌ها ========== */
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 16px;
+}
+
+.container h2 {
+  margin-top: 50px;
+  padding-bottom: 6px;
+  border-bottom: 3px solid #fb923c;
+}
+
+/* ========== کارت‌ها ========== */
+.dishes-flex {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.dishes-flex .dish {
+  flex: 1 1 240px;
+}
+
+.dishes-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+.dish {
+  background-color: white;
+  border: 1px solid #fed7aa;
+  border-radius: 12px;
+  overflow: hidden;
+  padding-bottom: 8px;
+}
+
+.dish img {
+  display: block;
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.dish h3,
+.dish p {
+  margin: 8px 16px;
+}
+
+.price {
+  font-weight: bold;
+  font-size: 18px;
+  color: #c2410c;
+}
+
+.price del {
+  color: #6b7280;
+  font-weight: normal;
+  font-size: 15px;
+}
+
+.price ins {
+  text-decoration: none;
+}
+
+mark {
+  background-color: #bbf7d0;
+  color: #14532d;
+  padding: 0 6px;
+  border-radius: 4px;
+  font-size: 13px;
+}
+
+/* ========== فرم رزرو ========== */
+.reserve-form {
+  background-color: white;
+  border: 1px solid #fed7aa;
+  border-radius: 12px;
+  padding: 16px 24px;
+}
+
+.reserve-form label {
+  display: block;
+  font-weight: bold;
+}
+
+.reserve-form input,
+.reserve-form select,
+.reserve-form textarea {
+  width: 100%;
+  margin-bottom: 12px;
+  padding: 8px 10px;
+  border: 1px solid #d6b89a;
+  border-radius: 6px;
+  font-family: inherit;
+  font-size: 15px;
+}
+
+.reserve-form input:focus,
+.reserve-form textarea:focus {
+  outline: 3px solid #fdba74;
+}
+
+.reserve-form .inline {
+  display: inline-block;
+  font-weight: normal;
+  margin-left: 14px;
+}
+
+.reserve-form .inline input {
+  width: auto;
+  margin: 0;
+}
+
+fieldset {
+  border: 1px solid #fed7aa;
+  border-radius: 8px;
+  margin-bottom: 12px;
+}
+
+legend {
+  font-weight: bold;
+  padding: 0 6px;
+}
+
+/* ========== پرسش‌ها ========== */
+details {
+  background-color: white;
+  border: 1px solid #fed7aa;
+  border-radius: 8px;
+  padding: 10px 16px;
+  margin-bottom: 10px;
+}
+
+details[open] {
+  border-color: #15803d;
+}
+
+summary {
+  font-weight: bold;
+  color: #7c2d12;
+  cursor: pointer;
+}
+
+/* ========== پاورقی ========== */
+.site-footer {
+  margin-top: 60px;
+  background-color: #3b2314;
+  color: #fde7d2;
+  text-align: center;
+  padding: 30px 16px 16px;
+}
+
+.site-footer h2 {
+  color: #fed7aa;
+  margin-top: 0;
+}
+
+.site-footer address {
+  font-style: normal;
+}
+
+.site-footer a {
+  color: #fdba74;
+}
+
+/* ========== موبایل ========== */
+@media (max-width: 600px) {
+  .dishes-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .hero {
+    padding: 40px 12px;
+  }
+
+  .hero h1 {
+    font-size: 26px;
+  }
+
+  .hero .btn {
+    display: block;
+  }
+}

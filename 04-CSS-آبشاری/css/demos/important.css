@@ -1,0 +1,36 @@
+/* مثال ۵: !important — فقط وقتی واقعاً لازم است */
+
+.demo-imp .normal {
+  color: #c92a2a;
+  font-size: 20px;
+}
+
+.demo-imp .normal {
+  color: #1a5fb4;
+}
+
+.demo-imp .force {
+  color: #c92a2a !important;
+  font-size: 20px;
+}
+
+.demo-imp .force {
+  color: #1a5fb4;
+}
+
+.demo-imp #force-id {
+  color: #0b6e4f;
+}
+
+.demo-imp .force-vs-id {
+  color: #c92a2a !important;
+}
+
+/* دو !important در برابر هم: دوباره قدرت انتخابگر و ترتیب تصمیم می‌گیرند */
+.demo-imp p.both {      /* (0, 2, 1) */
+  color: #0b6e4f !important;
+}
+
+.demo-imp .both {       /* (0, 2, 0) — دیرتر آمده ولی ضعیف‌تر است */
+  color: #c92a2a !important;
+}

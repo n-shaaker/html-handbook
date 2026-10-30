@@ -1,0 +1,44 @@
+/* base.css — این فایل اول لینک شده است */
+
+/* ===== کلی ===== */
+body {
+  font-family: Tahoma, sans-serif;
+  margin: 24px;
+}
+
+p {
+  color: #333333;
+  font-size: 16px;
+}
+
+/* ===== پیام ===== */
+.msg {
+  color: red;
+  font-size: 20px;
+}
+
+/* ===== کارت ===== */
+.card p {
+  color: purple;
+}
+
+#intro {
+  color: teal;
+}
+
+/* ===== پنل ===== */
+.panel {
+  color: navy;
+  border: 2px solid navy;
+  padding: 8px;
+  margin: 16px 0;
+}
+
+em {
+  color: gray;
+}
+
+/* ===== هشدار ===== */
+.warn {
+  color: orange !important;
+}

@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ثبت‌نام کارگاه طراحی وب از صفر | انجمن علمی دانشگاه اصفهان</title>
+    <style>
+      .field {
+        margin: 0 0 12px;
+      }
+
+      fieldset {
+        margin-bottom: 16px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <header>
+      <p>انجمن علمی کامپیوتر دانشگاه اصفهان</p>
+      <h1>کارگاه یک‌روزه «طراحی وب از صفر»</h1>
+    </header>
+
+    <main>
+      <section>
+        <p>
+          زمان برگزاری: پنجشنبه <time datetime="2026-12-10">۱۹ آذر ۱۴۰۵</time>، ساعت ۹ تا ۱۶ — سالن شیخ بهایی.
+        </p>
+        <p>
+          <label for="capacity">ظرفیت پرشده:</label>
+          <!-- meter چون یک مقدار اندازه‌گیری‌شده در یک بازه مشخص است، نه پیشرفت یک کار در حال انجام -->
+          <meter id="capacity" min="0" max="40" low="30" high="36" optimum="10" value="28">۲۸ از ۴۰</meter>
+          ۲۸ نفر از ۴۰ نفر (۱۲ جای خالی)
+        </p>
+      </section>
+
+      <section>
+        <h2>فرم ثبت‌نام</h2>
+        <form action="" method="post">
+          <fieldset>
+            <legend>اطلاعات شخصی</legend>
+
+            <div class="field">
+              <label for="full-name">نام و نام خانوادگی:</label>
+              <input type="text" id="full-name" name="full_name" placeholder="مثلاً: علی رضایی" autocomplete="name" required />
+            </div>
+
+            <div class="field">
+              <label for="email">ایمیل:</label>
+              <input type="email" id="email" name="email" dir="ltr" placeholder="name@example.com" autocomplete="email" required />
+            </div>
+
+            <div class="field">
+              <label for="mobile">شماره موبایل:</label>
+              <input
+                type="tel"
+                id="mobile"
+                name="mobile"
+                dir="ltr"
+                placeholder="09121234567"
+                pattern="09[0-9]{9}"
+                title="۱۱ رقم و شروع با ۰۹، مثلاً 09121234567"
+                autocomplete="tel"
+                required
+              />
+            </div>
+
+            <div class="field">
+              <label for="birth-date">تاریخ تولد:</label>
+              <input type="date" id="birth-date" name="birth_date" />
+            </div>
+          </fieldset>
+
+          <fieldset>
+            <legend>اطلاعات کارگاه</legend>
+
+            <div class="field">
+              <label for="experience">سابقه برنامه‌نویسی (سال):</label>
+              <input type="number" id="experience" name="experience" min="0" max="30" value="0" />
+            </div>
+
+            <fieldset>
+              <legend>سطح شما:</legend>
+              <input type="radio" id="level-beginner" name="level" value="beginner" checked required />
+              <label for="level-beginner">مبتدی</label>
+              <input type="radio" id="level-intermediate" name="level" value="intermediate" />
+              <label for="level-intermediate">متوسط</label>
+              <input type="radio" id="level-advanced" name="level" value="advanced" />
+              <label for="level-advanced">پیشرفته</label>
+            </fieldset>
+
+            <fieldset>
+              <legend>به کدام مباحث علاقه دارید؟</legend>
+              <input type="checkbox" id="topic-html" name="topics" value="html" />
+              <label for="topic-html">HTML</label>
+              <input type="checkbox" id="topic-css" name="topics" value="css" />
+              <label for="topic-css">CSS</label>
+              <input type="checkbox" id="topic-js" name="topics" value="javascript" />
+              <label for="topic-js">JavaScript</label>
+            </fieldset>
+          </fieldset>
+
+          <fieldset>
+            <legend>سایر</legend>
+
+            <div class="field">
+              <label for="major">رشته تحصیلی:</label>
+              <select id="major" name="major" required>
+                <option value="">انتخاب کنید</option>
+                <optgroup label="فنی و مهندسی">
+                  <option value="computer">مهندسی کامپیوتر</option>
+                  <option value="electrical">مهندسی برق</option>
+                  <option value="industrial">مهندسی صنایع</option>
+                </optgroup>
+                <optgroup label="علوم انسانی و هنر">
+                  <option value="graphic">گرافیک</option>
+                  <option value="psychology">روان‌شناسی</option>
+                  <option value="literature">ادبیات فارسی</option>
+                </optgroup>
+              </select>
+            </div>
+
+            <div class="field">
+              <label for="city">شهر محل سکونت:</label>
+              <input type="text" id="city" name="city" list="city-list" placeholder="نام شهر را بنویسید" />
+              <datalist id="city-list">
+                <option value="اصفهان"></option>
+                <option value="کاشان"></option>
+                <option value="نجف‌آباد"></option>
+                <option value="شهرکرد"></option>
+                <option value="تهران"></option>
+              </datalist>
+            </div>
+
+            <div class="field">
+              <label for="notes">توضیحات یا انتظار شما از کارگاه (حداکثر ۳۰۰ نویسه):</label>
+              <textarea id="notes" name="notes" rows="4" cols="40" maxlength="300"></textarea>
+            </div>
+
+            <div class="field">
+              <input type="checkbox" id="accept-rules" name="accept_rules" value="yes" required />
+              <label for="accept-rules">قوانین کارگاه را خوانده‌ام و می‌پذیرم.</label>
+            </div>
+          </fieldset>
+
+          <button type="submit">ثبت‌نام</button>
+          <button type="reset">پاک کردن فرم</button>
+        </form>
+      </section>
+
+      <section>
+        <h2>پرسش‌های متداول</h2>
+
+        <details>
+          <summary>شرکت در کارگاه هزینه دارد؟</summary>
+          <p>برای دانشجویان دانشگاه اصفهان رایگان و برای سایر شرکت‌کنندگان ۵۰۰٬۰۰۰ تومان است.</p>
+        </details>
+
+        <details>
+          <summary>باید لپ‌تاپ همراه داشته باشم؟</summary>
+          <p>بله؛ لطفاً لپ‌تاپ با یک مرورگر به‌روز و ویرایشگر کد (مثل VS Code) بیاورید.</p>
+        </details>
+
+        <details>
+          <summary>گواهی شرکت داده می‌شود؟</summary>
+          <p>بله، به کسانی که در تمام ساعات کارگاه حضور داشته باشند گواهی الکترونیکی داده می‌شود.</p>
+        </details>
+      </section>
+    </main>
+
+    <footer>
+      <p>&copy; ۱۴۰۵ انجمن علمی کامپیوتر دانشگاه اصفهان — تماس: <a href="mailto:webworkshop@example.com">webworkshop@example.com</a></p>
+    </footer>
+  </body>
+</html>

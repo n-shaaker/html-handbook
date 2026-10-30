@@ -1,0 +1,23 @@
+body {
+  font-family: Tahoma, Arial, sans-serif;
+  line-height: 1.9;
+  margin: 0;
+}
+
+.recipe {
+  max-width: 650px;
+  margin: 0 auto;
+  padding: 16px;
+}
+
+/*
+  width و height در HTML نسبت عکس را به مرورگر می‌گوید تا جایش را از قبل نگه دارد.
+  height: auto در اینجا عکس را واکنش‌گرا نگه می‌دارد.
+*/
+.recipe img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin: 16px 0;
+  border-radius: 8px;
+}

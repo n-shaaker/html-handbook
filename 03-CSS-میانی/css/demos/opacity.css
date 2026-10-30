@@ -1,0 +1,78 @@
+/* ۱۲) Opacity */
+
+.demo-op .pic {
+  width: 140px;
+  height: 100px;
+  object-fit: cover;
+  margin-left: 6px;
+  border-radius: 6px;
+}
+
+.demo-op .o1 {
+  opacity: 0.2;
+}
+
+.demo-op .o2 {
+  opacity: 0.5;
+}
+
+.demo-op .o3 {
+  opacity: 0.8;
+}
+
+.demo-op .o4 {
+  opacity: 1;
+}
+
+.demo-op .gallery img {
+  width: 160px;
+  height: 110px;
+  object-fit: cover;
+  margin-left: 6px;
+  border-radius: 6px;
+  opacity: 0.5;
+  transition: opacity 0.3s;
+}
+
+.demo-op .gallery img:hover {
+  opacity: 1;
+}
+
+.demo-op .btn {
+  background-color: #0b6e4f;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 6px;
+  font-family: inherit;
+  cursor: pointer;
+}
+
+.demo-op .btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.demo-op .bg-photo {
+  background-image: url("../../images/bg.jpg");
+  background-size: cover;
+  background-position: center;
+  padding: 20px;
+}
+
+.demo-op .box-op,
+.demo-op .box-rgba {
+  color: white;
+  font-weight: bold;
+  padding: 14px;
+  margin: 8px 0;
+}
+
+.demo-op .box-op {
+  background-color: rgb(26, 95, 180);
+  opacity: 0.4;
+}
+
+.demo-op .box-rgba {
+  background-color: rgba(26, 95, 180, 0.4);
+}

@@ -1,0 +1,19 @@
+body {
+  background-color: #faf7f2;
+}
+
+.top-bar {
+  background-color: #2f4858;
+  color: white;
+  padding: 16px;
+}
+
+.offer {
+  background-color: #ffe0b2;
+  padding: 16px;
+}
+
+.bottom-bar {
+  background-color: #e9ecef;
+  padding: 16px;
+}

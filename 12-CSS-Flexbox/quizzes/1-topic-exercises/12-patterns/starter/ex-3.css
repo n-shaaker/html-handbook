@@ -1,0 +1,37 @@
+/* تمرین ۳ — کارت‌های هم‌قدِ خراب (نسخه خراب — درستش کنید) */
+
+body {
+  font-family: Tahoma, sans-serif;
+  margin: 20px;
+  background-color: #f8f9fa;
+  color: #212529;
+}
+
+.cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.card {
+  width: 220px;
+  height: 220px;
+  background-color: white;
+  border: 1px solid #dee2e6;
+  border-radius: 8px;
+  padding: 15px;
+}
+
+.card h2 {
+  margin-top: 0;
+}
+
+.btn {
+  display: block;
+  background-color: #e8590c;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  padding: 8px;
+  border-radius: 4px;
+}

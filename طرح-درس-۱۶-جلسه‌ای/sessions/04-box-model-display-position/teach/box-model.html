@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>نمایش Box Model</title>
+    <style>
+      body {
+        font-family: Tahoma, "Segoe UI", sans-serif;
+        padding: 2rem;
+        background: #f1f5f9;
+      }
+
+      .demo {
+        width: 240px;
+        margin: 1rem 0;
+        padding: 24px;
+        border: 8px solid #2563eb;
+        background: #dbeafe;
+      }
+
+      /*
+        content-box (browser default): width = content only.
+        Rendered width = 240 + 2×24 padding + 2×8 border = 304px.
+      */
+      .demo--content-box {
+        box-sizing: content-box;
+      }
+
+      /*
+        border-box: width includes padding + border.
+        Rendered width stays 240px (margin is always outside).
+      */
+      .demo--border-box {
+        box-sizing: border-box;
+      }
+
+      .label {
+        margin: 0;
+        font-weight: 700;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>مدل جعبه‌ای (Box Model)</h1>
+    <p>
+      هر عنصر روی صفحه یک جعبه است. از داخل به بیرون، چهار لایه دارد: محتوا،
+      پدینگ (فاصلهٔ داخل تا خط حاشیه)، بوردر (خط دور جعبه) و مارجین (فاصلهٔ بیرون
+      جعبه تا عنصر بعدی). وقتی می‌گویید عرض یک جعبه ۲۴۰ پیکسل است، باید بدانید
+      این عدد کدام لایه‌ها را شامل می‌شود.
+    </p>
+    <p>
+      هر دو جعبهٔ زیر <code>width: 240px</code> دارند. در ابزار توسعه‌دهنده
+      (DevTools) روی هرکدام کلیک کنید و نمودار Box Model را ببینید تا تفاوت عدد
+      اعلام‌شده با عرض واقعی روشن شود.
+    </p>
+
+    <div class="demo demo--content-box">
+      <p class="label">content-box (پیش‌فرض مرورگر)</p>
+      <p>
+        در حالت پیش‌فرض، <code>width</code> فقط پهنای محتواست. پدینگ ۲۴ پیکسل از
+        هر طرف و بوردر ۸ پیکسل از هر طرف به آن اضافه می‌شوند، پس عرض نهایی
+        ۳۰۴ پیکسل می‌شود: ۲۴۰ به‌علاوهٔ دو بار ۲۴ به‌علاوهٔ دو بار ۸.
+      </p>
+    </div>
+
+    <div class="demo demo--border-box">
+      <p class="label">border-box</p>
+      <p>
+        با <code>box-sizing: border-box</code> عدد ۲۴۰ پیکسل شامل محتوا، پدینگ و
+        بوردر است. مارجین همچنان بیرون جعبه می‌ماند. عرض قابل دیدن همان چیزی است
+        که نوشته‌اید و جمع‌زدن دستی لازم نیست.
+      </p>
+    </div>
+
+    <p>
+      به همین دلیل در همهٔ پروژه‌ها، پیش از بقیهٔ قانون‌ها، این بازنشانی را
+      می‌نویسیم:
+      <code>*, *::before, *::after { box-sizing: border-box; }</code>
+      ستاره همهٔ عنصرها را انتخاب می‌کند و <code>::before</code> و
+      <code>::after</code> جعبه‌های ساختگی CSS را هم شامل می‌شود. اگر دو جعبهٔ
+      بلوکی زیر هم مارجین عمودی داشته باشند، مارجین‌ها با هم جمع نمی‌شوند و فقط
+      مقدار بزرگ‌تر فاصله می‌سازد. به این رفتار جمع‌نشدن مارجین می‌گویند.
+    </p>
+  </body>
+</html>

@@ -1,0 +1,27 @@
+.box {
+  background-color: #d0ebff;
+  border-style: solid;
+  border-color: #1a5fb4;
+}
+
+.box-a {
+  width: 300px;
+  padding: 20px;
+  border-width: 5px;
+  margin: 10px;
+}
+
+.box-b {
+  width: 200px;
+  padding: 10px 30px;
+  border-width: 2px;
+  margin: 0 15px;
+}
+
+.box-c {
+  width: 300px;
+  padding: 20px;
+  border-width: 5px;
+  margin: 10px;
+  box-sizing: border-box;
+}

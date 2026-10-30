@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>۶) نام‌گذاری ناحیه‌ها (template-areas) | آموزش CSS Grid</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/demos/template-areas.css">
+</head>
+
+<body>
+
+  <header class="page-header">
+    <h1>آموزش CSS Grid — چیدمان شبکه‌ای</h1>
+    <p>۶) نام‌گذاری ناحیه‌ها (template-areas)</p>
+  </header>
+
+  <div class="container">
+
+    <nav class="page-nav" aria-label="ناوبری درس">
+      <a href="05-placement.html">→ قبلی: جای‌گذاری آیتم‌ها</a>
+      <a href="../index.html">فهرست درس‌ها</a>
+      <a href="07-align-items.html">بعدی: تراز آیتم‌ها ←</a>
+    </nav>
+
+    <section class="lesson" id="template-areas">
+      <h2>۶) نام‌گذاری ناحیه‌ها (template-areas)</h2>
+      <p>
+        حساب کردن شماره خط‌ها برای چیدمان کل صفحه کمی سخت است. Grid راه خیلی خواناتری هم دارد:
+        نقشه صفحه را با <strong>اسم</strong> می‌کشیم! دو قدم دارد:
+      </p>
+      <ol>
+        <li>روی هر آیتم با <code>grid-area</code> یک اسم می‌گذاریم (مثلاً <code>header</code>).</li>
+        <li>روی پدر با <code>grid-template-areas</code> نقشه را می‌نویسیم: هر جفت گیومه <code>"..."</code> یک ردیف است و هر اسم یک خانه.</li>
+      </ol>
+
+      <h3>مثال ۱: اسکلت کلاسیک سایت — سربرگ، ستون کناری، محتوا، پانویس</h3>
+      <pre class="code"><code>.page {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  grid-template-areas:
+    "header  header"
+    "sidebar main"
+    "footer  footer";
+  gap: 8px;
+}
+
+.page-top    { grid-area: header; }
+.page-side   { grid-area: sidebar; }
+.page-main   { grid-area: main; }
+.page-bottom { grid-area: footer; }</code></pre>
+      <div class="result demo-areas">
+        <div class="page">
+          <div class="box b1 page-top">۱. سربرگ: کافه نارنج</div>
+          <div class="box b4 page-side">۲. ستون کناری: ساعت کاری</div>
+          <div class="box b2 page-main">۳. محتوا: منوی امروز و معرفی کافه</div>
+          <div class="box b6 page-bottom">۴. پانویس: نشانی و تلفن</div>
+        </div>
+      </div>
+      <p>
+        نقشه دقیقاً شبیه شکل نهایی است: <code>header</code> دو بار نوشته شده چون دو ستون را می‌گیرد.
+        در صفحه راست‌چین، اولین اسم هر ردیف (<code>sidebar</code>) <strong>سمت راست</strong> می‌نشیند.
+      </p>
+      <p class="tip">
+        اسم‌ها دلخواه‌اند و ربطی به تگ‌های <code>header</code> یا <code>main</code> ندارند؛ فقط باید در <code>grid-area</code> و نقشه یکسان باشند.
+        در <code>grid-area</code> اسم را <strong>بدون گیومه</strong> می‌نویسیم.
+      </p>
+
+      <h3>مثال ۲: جابه‌جا کردن ستون کناری فقط با عوض کردن نقشه</h3>
+      <p>بدون دست زدن به HTML، ستون کناری را به سمت چپ می‌بریم. فقط ترتیب اسم‌ها و ستون‌ها عوض شده:</p>
+      <pre class="code"><code>.page-left {
+  grid-template-columns: 1fr 200px;
+  grid-template-areas:
+    "header header"
+    "main   sidebar"
+    "footer footer";
+}</code></pre>
+      <div class="result demo-areas">
+        <div class="page page-left">
+          <div class="box b1 page-top">۱. سربرگ</div>
+          <div class="box b4 page-side">۲. ستون کناری (حالا چپ)</div>
+          <div class="box b2 page-main">۳. محتوا</div>
+          <div class="box b6 page-bottom">۴. پانویس</div>
+        </div>
+      </div>
+
+      <h3>مثال ۳: سه ستون — منو، محتوا و تبلیغ</h3>
+      <pre class="code"><code>.shop-page {
+  display: grid;
+  grid-template-columns: 150px 1fr 150px;
+  grid-template-areas:
+    "header header header"
+    "menu   main   ads"
+    "footer footer footer";
+  gap: 8px;
+}</code></pre>
+      <div class="result demo-areas">
+        <div class="shop-page">
+          <div class="box b1 shop-header">۱. سربرگ فروشگاه</div>
+          <div class="box b4 shop-menu">۲. منو</div>
+          <div class="box b2 shop-main">۳. محصولات</div>
+          <div class="box b3 shop-ads">۴. تبلیغ</div>
+          <div class="box b6 shop-footer">۵. پانویس</div>
+        </div>
+      </div>
+
+      <h3>مثال ۴: خانه خالی با نقطه (<code>.</code>)</h3>
+      <p>اگر خانه‌ای قرار نیست چیزی داشته باشد، جایش یک نقطه بگذارید:</p>
+      <pre class="code"><code>.with-empty {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-areas:
+    "logo  .     login"
+    "main  main  main";
+  gap: 8px;
+}</code></pre>
+      <div class="result demo-areas">
+        <div class="with-empty">
+          <div class="box b5 e-logo">۱. لوگو</div>
+          <div class="box b3 e-login">۲. ورود</div>
+          <div class="box b2 e-main">۳. محتوا</div>
+        </div>
+      </div>
+
+      <h3>مثال ۵: ارتفاع ردیف‌ها کنار نقشه</h3>
+      <p>
+        <code>grid-template-areas</code> فقط جای ناحیه‌ها را می‌گوید؛ ارتفاع ردیف‌ها را مثل قبل با <code>grid-template-rows</code> بدهید.
+        اینجا ردیف وسط بقیه جا را می‌گیرد و سربرگ و پانویس به اندازه محتوایشان هستند:
+      </p>
+      <pre class="code"><code>.tall-page {
+  height: 300px;
+  grid-template-rows: auto 1fr auto;
+}</code></pre>
+      <div class="result demo-areas">
+        <div class="page tall-page">
+          <div class="box b1 page-top">۱. سربرگ (auto)</div>
+          <div class="box b4 page-side">۲. ستون کناری</div>
+          <div class="box b2 page-main">۳. محتوا (1fr = بقیه ارتفاع)</div>
+          <div class="box b6 page-bottom">۴. پانویس (auto)</div>
+        </div>
+      </div>
+
+      <p class="mistake">
+        <strong>اشتباه رایج:</strong>
+        کشیدن ناحیه‌ای که مستطیل نیست، مثل شکل L در نقشهٔ زیر.
+      </p>
+      <pre class="code"><code>/* اشتباه: main شکل L ساخته */
+grid-template-areas:
+  "main main"
+  "main side";</code></pre>
+      <p>
+        هر ناحیه باید یک مستطیل کامل باشد. اگر نباشد، مرورگر <strong>کل</strong> <code>grid-template-areas</code> را نادیده می‌گیرد و آیتم‌ها به ترتیب عادی می‌نشینند.
+      </p>
+
+      <p class="mistake">
+        <strong>اشتباه رایج:</strong>
+        تعداد اسم‌ها در ردیف‌ها برابر نیست؛ مثلاً ردیف اول ۲ اسم و ردیف دوم ۳ اسم دارد. همه ردیف‌ها باید به تعداد ستون‌ها اسم داشته باشند
+        (برای خانه خالی از <code>.</code> استفاده کنید). غلط املایی در اسم‌ها هم (مثلاً <code>sidbar</code>) همین‌قدر دردسر دارد.
+      </p>
+
+      <table class="ref">
+        <tr>
+          <th>ویژگی</th>
+          <th>روی</th>
+          <th>کار</th>
+        </tr>
+        <tr>
+          <td><code>grid-area: main;</code></td>
+          <td>آیتم</td>
+          <td>اسم گذاشتن روی آیتم</td>
+        </tr>
+        <tr>
+          <td><code>grid-template-areas</code></td>
+          <td>پدر</td>
+          <td>کشیدن نقشه؛ هر <code>"..."</code> یک ردیف</td>
+        </tr>
+        <tr>
+          <td><code>.</code></td>
+          <td>داخل نقشه</td>
+          <td>خانه خالی</td>
+        </tr>
+      </table>
+
+      <p class="exercise">
+        <strong>تمرین:</strong> اسکلت صفحه یک «آموزشگاه زبان» را با <code>grid-template-areas</code> بسازید:
+        سربرگ تمام‌عرض، منوی دوره‌ها سمت راست، محتوا وسط، بخش «اخبار» سمت چپ و پانویس تمام‌عرض.
+        بعد فقط با تغییر نقشه، بخش اخبار را زیر محتوا ببرید.
+      </p>
+    </section>
+
+    <nav class="page-nav" aria-label="ناوبری درس پایین">
+      <a href="05-placement.html">→ قبلی: جای‌گذاری آیتم‌ها</a>
+      <a href="../index.html">فهرست درس‌ها</a>
+      <a href="07-align-items.html">بعدی: تراز آیتم‌ها ←</a>
+    </nav>
+
+  </div>
+
+  <footer class="page-footer">
+    آموزش CSS Grid
+  </footer>
+
+</body>
+
+</html>

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>۲) محل نوشتن JavaScript (Where To) | آموزش JavaScript سطح پایه</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <script src="../js/log.js" defer></script>
+  <script src="../js/demos/where-to.js" defer></script>
+</head>
+
+<body>
+
+  <header class="page-header" id="top">
+    <h1>آموزش JavaScript — سطح پایه</h1>
+    <p>۲) محل نوشتن JavaScript (Where To)</p>
+  </header>
+
+  <div class="container">
+
+    <nav class="page-nav" aria-label="ناوبری درس">
+      <a href="01-intro.html">→ قبلی: JS چیست؟</a>
+      <a href="../index.html">فهرست درس‌ها</a>
+      <a href="03-output.html">بعدی: Output ←</a>
+    </nav>
+
+    <section class="lesson" id="where-to">
+      <h2>۲) محل نوشتن JavaScript (Where To)</h2>
+<p>مرورگر کد JavaScript را خودش حدس نمی‌زند؛ باید به او بگوییم این کد کجاست و چه وقت اجرا شود. کد را داخل تگ <code>&lt;script&gt;</code> می‌نویسیم. سه روش برای قرار دادن این تگ وجود دارد و انتخاب روش روی تمیزی پروژه و زمان اجرای کد اثر می‌گذارد.</p>
+
+<h3>روش ۱: داخل تگ script در همان صفحه (داخلی)</h3>
+
+<pre class="code"><code>&lt;body&gt;
+  &lt;p id="demo"&gt;&lt;/p&gt;
+
+  &lt;script&gt;
+    document.getElementById("demo").textContent = "سلام از داخل صفحه!";
+  &lt;/script&gt;
+&lt;/body&gt;</code></pre>
+
+<p>در این روش، کد و صفحه در یک فایل هستند. مرورگر وقتی به تگ <code>script</code> می‌رسد آن را اجرا می‌کند. <code>document.getElementById("demo")</code> پاراگرافی را که بالاتر با همان شناسه ساخته شده پیدا می‌کند و <code>textContent</code> متن داخلش را می‌نویسد. چون اسکریپت بعد از آن پاراگراف آمده، عنصر از قبل وجود دارد.</p>
+
+<h3>روش ۲: فایل جداگانه (خارجی) — روش پیشنهادی</h3>
+
+<p>کد را در یک فایل با پسوند <code>.js</code> می‌نویسیم و با ویژگی <code>src</code> به صفحه وصل می‌کنیم:</p>
+
+<pre class="code"><code>project/
+├── index.html
+├── css/
+│   └── style.css
+└── js/
+    └── app.js</code></pre>
+
+<p>پوشهٔ <code>css</code> ظاهر صفحه را نگه می‌دارد و پوشهٔ <code>js</code> رفتار صفحه را. جدا کردن فایل‌ها باعث می‌شود HTML فقط ساختار بماند و همان فایل JavaScript را بتوان در چند صفحه استفاده کرد.</p>
+
+<pre class="code"><code>&lt;head&gt;
+  &lt;link rel="stylesheet" href="css/style.css"&gt;
+  &lt;script src="js/app.js" defer&gt;&lt;/script&gt;
+&lt;/head&gt;</code></pre>
+
+<p>ویژگی <code>src</code> آدرس فایل را نسبت به همین صفحهٔ HTML می‌گوید. <code>defer</code> به مرورگر می‌گوید فایل را دانلود کند، ولی اجرای آن را تا وقتی ساختار HTML کامل شود عقب بیندازد. بدون این ویژگی، اگر اسکریپت داخل <code>head</code> باشد، ممکن است پیش از ساخته شدن عنصرها اجرا شود و چیزی برای تغییر پیدا نکند.</p>
+
+<pre class="code"><code>// فایل js/app.js  (داخل فایل js دیگر تگ script نمی‌نویسیم)
+document.getElementById("demo").textContent = "سلام از فایل خارجی! (این متن در HTML نبود)";</code></pre>
+
+<div class="result">
+<p>همین صفحه یک فایل خارجی به اسم <code>js/demos/where-to.js</code> دارد که این خروجی را نوشته:</p>
+<p class="demo-box" id="demo"></p>
+</div>
+
+<p>داخل فایل <code>.js</code> دیگر تگ <code>script</code> نمی‌نویسیم؛ فقط دستورهای JavaScript. خط بالا همان کاری را می‌کند که در روش داخلی دیدید: عنصر <code>demo</code> را پیدا می‌کند و متنش را عوض می‌کند. تفاوت فقط محل نگهداری کد است.</p>
+
+<p class="tip">مسیر <code>src</code> نسبت به همان فایل HTML نوشته می‌شود. اگر صفحه داخل پوشه <code>pages</code> باشد، مسیر می‌شود <code>../js/app.js</code> (دو نقطه یعنی «یک پوشه بالاتر»).</p>
+
+<h3>defer چیست؟</h3>
+
+<p>مرورگر صفحه را از بالا به پایین می‌خواند. اگر اسکریپت قبل از ساخته شدن عنصرها اجرا شود، <code>getElementById</code> چیزی پیدا نمی‌کند. با <code>defer</code> می‌گوییم: «فایل را دانلود کن، ولی بعد از ساخته شدن کامل HTML اجرا کن».</p>
+
+<table class="ref">
+<tr><th>محل script</th><th>نتیجه</th></tr>
+<tr><td>داخل <code>head</code> بدون defer</td><td>قبل از ساخته شدن عنصرها اجرا می‌شود؛ معمولاً خطا</td></tr>
+<tr><td>داخل <code>head</code> با <code>defer</code></td><td>بعد از ساخته شدن HTML اجرا می‌شود (پیشنهادی)</td></tr>
+<tr><td>آخر <code>body</code>، قبل از <code>&lt;/body&gt;</code></td><td>عنصرها ساخته شده‌اند؛ روش قدیمی‌تر ولی درست</td></tr>
+</table>
+
+<p class="tip">اگر چند اسکریپت <code>defer</code> داشته باشید، به همان <strong>ترتیبی</strong> که در HTML نوشته شده‌اند اجرا می‌شوند. برای همین در صفحه‌های این دوره اول <code>log.js</code> و بعد فایل مثال درس آمده است. (ویژگی دیگری به اسم <code>async</code> هم هست که ترتیب را تضمین نمی‌کند؛ فعلاً با همان <code>defer</code> کار کنید.)</p>
+
+<h3>روش ۳: داخل ویژگی‌های HTML (اینلاین)</h3>
+
+<pre class="code"><code>&lt;button onclick="alert('سلام')"&gt;کلیک&lt;/button&gt;   &lt;!-- پیشنهاد نمی‌شود --&gt;</code></pre>
+
+<p>در این روش کد JavaScript با HTML قاطی می‌شود. در این دوره، مثل دوره CSS که از <code>style="..."</code> استفاده نکردیم، از <code>onclick="..."</code> هم استفاده نمی‌کنیم و رویدادها را با <code>addEventListener</code> در فایل خارجی می‌نویسیم.</p>
+
+<p class="tip">مزیت فایل خارجی: HTML تمیزتر می‌ماند، یک فایل JS را می‌توان در چند صفحه استفاده کرد و مرورگر فایل را کش (ذخیره) می‌کند.</p>
+
+<p class="mistake"><strong>اشتباه رایج:</strong> نوشتن تگ <code>&lt;script&gt;</code> داخل فایل <code>.js</code>. فایل خارجی فقط کد خالص JavaScript دارد.</p>
+
+<p class="mistake"><strong>اشتباه رایج:</strong> اسکریپت را داخل <code>head</code> بگذارید ولی <code>defer</code> را فراموش کنید. نتیجه خطایی مثل <code>Cannot set properties of null</code> است، چون وقتی کد اجرا می‌شود عنصر هنوز ساخته نشده و <code>getElementById</code> مقدار <code>null</code> برمی‌گرداند.</p>
+
+<p class="exercise"><strong>تمرین:</strong> یک پوشه <code>js</code> بسازید و داخلش فایل <code>app.js</code>. با <code>defer</code> آن را به یک صفحه HTML وصل کنید و داخلش بنویسید <code>console.log("فایل وصل شد");</code>. در Console مرورگر پیام را ببینید.</p>
+    </section>
+
+    <nav class="page-nav" aria-label="ناوبری درس پایین">
+      <a href="01-intro.html">→ قبلی: JS چیست؟</a>
+      <a href="../index.html">فهرست درس‌ها</a>
+      <a href="03-output.html">بعدی: Output ←</a>
+    </nav>
+
+  </div>
+
+  <footer class="page-footer">
+    آموزش JavaScript سطح پایه
+  </footer>
+
+</body>
+
+</html>

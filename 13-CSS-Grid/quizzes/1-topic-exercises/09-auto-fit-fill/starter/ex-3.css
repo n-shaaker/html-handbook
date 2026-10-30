@@ -1,0 +1,35 @@
+/* تمرین ۳ — سه شبکه خودکارِ خراب (نسخه خراب — درستش کنید) */
+
+body {
+  font-family: Tahoma, sans-serif;
+  margin: 20px;
+  background-color: #f8f9fa;
+  color: #212529;
+}
+
+.gallery,
+.team,
+.tags {
+  display: grid;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.gallery {
+  grid-template-columns: repeat(auto-fill, 200px);
+}
+
+.team {
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+}
+
+.tags {
+  grid-template-columns: repeat(auto-fit, 1fr);
+}
+
+.gallery div,
+.team div,
+.tags span {
+  background-color: #ffe3e3;
+  padding: 15px;
+}

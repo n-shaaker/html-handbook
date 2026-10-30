@@ -1,0 +1,179 @@
+/* ۱۲) الگوهای پرکاربرد */
+
+/* ----- ۱. وسط‌چین کامل ----- */
+.demo-patterns .center-wrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 180px;
+  background-color: #f1f3f5;
+  border-radius: 8px;
+}
+
+.demo-patterns .center-card {
+  background-color: white;
+  border: 1px solid #cfd8e3;
+  border-radius: 8px;
+  padding: 12px 24px;
+  text-align: center;
+}
+
+.demo-patterns .center-card p {
+  margin: 0;
+}
+
+.demo-patterns .big-icon {
+  font-size: 36px;
+}
+
+/* ----- ۲. نوار منو ----- */
+.demo-patterns .navbar {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  background-color: #7c4a1e;
+  padding: 10px 16px;
+  border-radius: 8px;
+}
+
+.demo-patterns .navbar a {
+  color: white;
+  text-decoration: none;
+}
+
+.demo-patterns .nav-logo {
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.demo-patterns .nav-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* ----- ۳. کارت‌های هم‌قد ----- */
+.demo-patterns .cards {
+  display: flex;
+  gap: 12px;
+}
+
+.demo-patterns .card {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  border: 1px solid #cfd8e3;
+  border-top: 4px solid #1c7ed6;
+  border-radius: 8px;
+  padding: 12px;
+}
+
+.demo-patterns .card h4 {
+  margin: 0 0 6px;
+}
+
+.demo-patterns .card p {
+  margin: 0 0 12px;
+}
+
+.demo-patterns .btn {
+  margin-top: auto; /* دکمه به ته کارت می‌چسبد */
+  background-color: #1c7ed6;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  padding: 6px;
+  border-radius: 6px;
+}
+
+/* ----- ۴. عکس + متن ----- */
+.demo-patterns .media {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  background-color: #fff9db;
+  padding: 12px;
+  border-radius: 8px;
+}
+
+.demo-patterns .avatar {
+  flex: none;
+  width: 56px;
+  height: 56px;
+  line-height: 56px;
+  text-align: center;
+  border-radius: 50%;
+  background-color: #e8590c;
+  color: white;
+  font-size: 22px;
+  font-weight: bold;
+}
+
+.demo-patterns .text {
+  flex: 1;
+}
+
+.demo-patterns .text p {
+  margin: 4px 0 0;
+}
+
+/* ----- ۵. فوتر چسبان (ارتفاع ثابت فقط برای نمایش) ----- */
+.demo-patterns .page {
+  display: flex;
+  flex-direction: column;
+  height: 240px;
+  border: 2px solid #868e96;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.demo-patterns .page-top {
+  background-color: #1a3a5c;
+  color: white;
+  padding: 8px 12px;
+}
+
+.demo-patterns .page-main {
+  flex: 1;
+  background-color: white;
+  padding: 8px 12px;
+}
+
+.demo-patterns .page-bottom {
+  background-color: #2b8a3e;
+  color: white;
+  padding: 8px 12px;
+}
+
+/* ----- ۶. گروه دکمه ----- */
+.demo-patterns .btn-group {
+  display: inline-flex;
+  border: 1px solid #1c7ed6;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.demo-patterns .btn-group button {
+  background-color: white;
+  color: #1c7ed6;
+  border: none;
+  border-left: 1px solid #1c7ed6;
+  padding: 8px 16px;
+  font-family: inherit;
+  cursor: pointer;
+}
+
+.demo-patterns .btn-group button:last-child {
+  border-left: none;
+}
+
+.demo-patterns .btn-group .active {
+  background-color: #1c7ed6;
+  color: white;
+}

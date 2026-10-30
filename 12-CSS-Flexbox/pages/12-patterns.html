@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>۱۲) الگوهای پرکاربرد | آموزش Flexbox</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/demos/patterns.css">
+</head>
+
+<body>
+
+  <header class="page-header">
+    <h1>آموزش Flexbox — چیدمان انعطاف‌پذیر</h1>
+    <p>۱۲) الگوهای پرکاربرد</p>
+  </header>
+
+  <div class="container">
+
+    <nav class="page-nav" aria-label="ناوبری درس">
+      <a href="11-align-self-margin-auto.html">→ قبلی: align-self و margin خودکار</a>
+      <a href="../index.html">فهرست درس‌ها</a>
+      <a href="13-responsive.html">بعدی: Flexbox واکنش‌گرا ←</a>
+    </nav>
+
+    <section class="lesson" id="patterns">
+      <h2>۱۲) الگوهای پرکاربرد</h2>
+      <p>
+        حالا که همه ویژگی‌ها را می‌شناسیم، وقت ساختن چیزهای واقعی است. این شش الگو را تقریباً در هر سایتی می‌بینید؛
+        هر کدام فقط چند خط CSS است. خوب نگاهشان کنید، چون در کوییزها به کارشان می‌برید.
+      </p>
+
+      <h3>مثال ۱: وسط‌چین کامل</h3>
+      <p>
+        وقتی هم محور اصلی و هم محور فرعی باید یک عنصر را وسط ظرف بگذارند، روی پدر <code>justify-content: center</code> و <code>align-items: center</code> را با هم می‌نویسند.
+        ظرف باید در محوری که وسط‌چین می‌شود فضای اضافه داشته باشد؛ برای همین اینجا <code>min-height</code> ارتفاع را از محتوای کارت بلندتر می‌کند. این الگو برای پیام «سبد خرید خالی است» یا حالت خالی یک بخش به کار می‌رود.
+      </p>
+      <pre class="code"><code>.empty-cart {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 180px;
+}</code></pre>
+      <div class="result demo-patterns">
+        <div class="center-wrap">
+          <div class="center-card">
+            <span class="big-icon">🛒</span>
+            <p>سبد خرید شما خالی است</p>
+          </div>
+        </div>
+      </div>
+
+      <h3>مثال ۲: نوار منو</h3>
+      <p>
+        نوار منو دو گروه دارد که باید دو سر خط بروند: لوگو در شروع و لینک‌ها در پایان. <code>justify-content: space-between</code> همین کار را می‌کند و <code>align-items: center</code> همه را در ارتفاع نوار وسط می‌گذارد.
+        <code>flex-wrap: wrap</code> باعث می‌شود اگر عرض صفحه به لینک‌ها نرسد، به‌جای بیرون زدن از صفحه به خط بعد بروند.
+      </p>
+      <pre class="code"><code>.navbar {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+}
+
+.navbar ul {
+  display: flex;
+  gap: 16px;
+  list-style: none;
+}</code></pre>
+      <div class="result demo-patterns">
+        <header class="navbar">
+          <a href="#patterns" class="nav-logo">🥐 نانوایی سحر</a>
+          <nav aria-label="منوی نانوایی نمونه">
+            <ul class="nav-links">
+              <li><a href="#patterns">محصولات</a></li>
+              <li><a href="#patterns">سفارش</a></li>
+              <li><a href="#patterns">شعبه‌ها</a></li>
+              <li><a href="#patterns">تماس</a></li>
+            </ul>
+          </nav>
+        </header>
+      </div>
+
+      <h3>مثال ۳: ردیف کارت‌های هم‌قد</h3>
+      <p>
+        کارت‌ها با <code>flex: 1</code> هم‌عرض و با <code>stretch</code> پیش‌فرض هم‌قد می‌شوند.
+        داخل هر کارت هم <code>column</code> است و دکمه با <code>margin-top: auto</code> به ته کارت می‌چسبد، حتی اگر متن کارت‌ها کوتاه و بلند باشد:
+      </p>
+      <pre class="code"><code>.cards { display: flex; gap: 12px; }
+
+.card {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.card .btn {
+  margin-top: auto;   /* دکمه همیشه پایین کارت */
+}</code></pre>
+      <div class="result demo-patterns">
+        <div class="cards">
+          <article class="card">
+            <h4>دوره HTML</h4>
+            <p>شروع از صفر.</p>
+            <a href="#patterns" class="btn">ثبت‌نام</a>
+          </article>
+          <article class="card">
+            <h4>دوره CSS</h4>
+            <p>رنگ، فونت، چیدمان با Flexbox و Grid و ساخت چند صفحه واقعی برای نمونه‌کار.</p>
+            <a href="#patterns" class="btn">ثبت‌نام</a>
+          </article>
+          <article class="card">
+            <h4>دوره JavaScript</h4>
+            <p>تعامل با کاربر و ساخت صفحه‌های پویا.</p>
+            <a href="#patterns" class="btn">ثبت‌نام</a>
+          </article>
+        </div>
+      </div>
+
+      <h3>مثال ۴: شیء رسانه‌ای (عکس + متن)</h3>
+      <p>
+        الگوی «عکس یک طرف، متن طرف دیگر»؛ در نظرات کاربران، پیام‌ها و فهرست خبرها همه‌جا هست.
+        عکس با <code>flex: none</code> اندازه‌اش را حفظ می‌کند و متن بقیه جا را می‌گیرد:
+      </p>
+      <pre class="code"><code>.media {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.media .avatar { flex: none; }
+.media .text   { flex: 1; }</code></pre>
+      <div class="result demo-patterns">
+        <div class="media">
+          <div class="avatar">م</div>
+          <div class="text">
+            <strong>مریم رضایی</strong>
+            <p>قهوه‌اش عالی بود و فضای کافه خیلی آرام. فقط کاش صبح‌ها زودتر باز می‌کرد تا قبل از کار سر بزنم. حتماً دوباره می‌آیم!</p>
+          </div>
+        </div>
+      </div>
+
+      <h3>مثال ۵: فوتر چسبان (Sticky Footer)</h3>
+      <p>
+        وقتی محتوای صفحه کم است، فوتر نباید وسط صفحه بماند. کل صفحه را <code>column</code> می‌کنیم و به بخش اصلی <code>flex: 1</code> می‌دهیم تا فضای خالی را بگیرد
+        و فوتر را به پایین هل دهد. (در سایت واقعی به‌جای <code>height</code> این مثال، روی <code>body</code> از <code>min-height: 100vh</code> استفاده کنید.)
+      </p>
+      <pre class="code"><code>body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+main {
+  flex: 1;   /* هر چقدر جا ماند، مال محتوا */
+}</code></pre>
+      <div class="result demo-patterns">
+        <div class="page">
+          <div class="page-top">سربرگ</div>
+          <div class="page-main">محتوای کم (فقط یک خط)</div>
+          <div class="page-bottom">فوتر همیشه پایین</div>
+        </div>
+      </div>
+
+      <h3>مثال ۶: گروه دکمه‌ها</h3>
+      <p>دکمه‌ها به هم چسبیده‌اند و فقط دو گوشه بیرونی گرد است. با <code>inline-flex</code> گروه فقط به اندازه دکمه‌هایش جا می‌گیرد:</p>
+      <pre class="code"><code>.btn-group {
+  display: inline-flex;
+  border: 1px solid #1c7ed6;
+  border-radius: 8px;
+  overflow: hidden;   /* گوشه‌های گرد روی دکمه‌ها هم اعمال شود */
+}</code></pre>
+      <div class="result demo-patterns">
+        <div class="btn-group" role="group" aria-label="مرتب‌سازی محصولات">
+          <button type="button" class="active">جدیدترین</button>
+          <button type="button">ارزان‌ترین</button>
+          <button type="button">پرفروش‌ترین</button>
+        </div>
+      </div>
+
+      <p class="mistake">
+        <strong>اشتباه رایج:</strong>
+        برای چسباندن دکمه به ته کارت، به متن کارت <code>height</code> ثابت می‌دهیم. با کمی متن بیشتر، متن بیرون می‌زند.
+        راه درست: کارت <code>flex-direction: column</code> و دکمه <code>margin-top: auto</code>؛ هر چقدر متن کم و زیاد شود، دکمه پایین می‌ماند.
+      </p>
+
+      <p class="mistake">
+        <strong>اشتباه رایج:</strong>
+        در فوتر چسبان <code>flex: 1</code> را روی <code>footer</code> می‌گذاریم و فوتر غول‌پیکر می‌شود!
+        <code>flex: 1</code> باید روی بخشی باشد که قرار است فضای خالی را بگیرد، یعنی <code>main</code>.
+      </p>
+
+      <table class="ref">
+        <tr>
+          <th>الگو</th>
+          <th>ویژگی‌های کلیدی</th>
+        </tr>
+        <tr>
+          <td>وسط‌چین کامل</td>
+          <td><code>justify-content: center</code> + <code>align-items: center</code> + ارتفاع روی پدر</td>
+        </tr>
+        <tr>
+          <td>نوار منو</td>
+          <td><code>space-between</code> یا <code>margin-inline-start: auto</code>، <code>align-items: center</code>، <code>flex-wrap</code></td>
+        </tr>
+        <tr>
+          <td>کارت‌های هم‌قد</td>
+          <td><code>flex: 1</code> روی کارت، <code>column</code> داخل کارت، <code>margin-top: auto</code> روی دکمه</td>
+        </tr>
+        <tr>
+          <td>عکس + متن</td>
+          <td><code>flex: none</code> روی عکس، <code>flex: 1</code> روی متن</td>
+        </tr>
+        <tr>
+          <td>فوتر چسبان</td>
+          <td><code>column</code> + <code>min-height: 100vh</code> روی body، <code>flex: 1</code> روی main</td>
+        </tr>
+        <tr>
+          <td>گروه دکمه</td>
+          <td><code>inline-flex</code> + <code>overflow: hidden</code></td>
+        </tr>
+      </table>
+
+      <p class="exercise">
+        <strong>تمرین:</strong> یک صفحه کامل برای «کافه نارنج» بسازید که همه این الگوها را داشته باشد:
+        سربرگ با لوگو و منو، سه کارت هم‌قد برای «نوشیدنی گرم»، «نوشیدنی سرد» و «کیک» با دکمه «سفارش» در ته کارت،
+        بخش «نظر مشتری‌ها» با الگوی عکس + متن، و فوتری که حتی با محتوای کم پایین صفحه بماند.
+      </p>
+    </section>
+
+    <nav class="page-nav" aria-label="ناوبری درس پایین">
+      <a href="11-align-self-margin-auto.html">→ قبلی: align-self و margin خودکار</a>
+      <a href="../index.html">فهرست درس‌ها</a>
+      <a href="13-responsive.html">بعدی: Flexbox واکنش‌گرا ←</a>
+    </nav>
+
+  </div>
+
+  <footer class="page-footer">
+    آموزش Flexbox
+  </footer>
+
+</body>
+
+</html>

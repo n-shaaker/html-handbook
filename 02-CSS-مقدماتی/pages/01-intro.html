@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>۱) CSS چیست؟ | آموزش CSS از صفر</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/demos/intro.css">
+</head>
+
+<body>
+
+  <header class="page-header">
+    <h1>آموزش CSS از صفر</h1>
+    <p>۱) CSS چیست؟</p>
+  </header>
+
+  <div class="container">
+
+    <nav class="page-nav" aria-label="ناوبری درس">
+      <span></span>
+      <a href="../index.html">فهرست درس‌ها</a>
+      <a href="02-syntax.html">بعدی: Syntax ←</a>
+    </nav>
+
+    <section class="lesson" id="intro">
+      <h2>۱) CSS چیست؟</h2>
+      <p>
+        <strong>CSS</strong> مخفف <code>Cascading Style Sheets</code>، یعنی «برگه‌های سبک آبشاری» است.
+        مرورگر ابتدا HTML را می‌خواند و با آن ساختار صفحه را می‌سازد: کدام بخش تیتر است، کدام پاراگراف است و تصویر کجا قرار دارد.
+        سپس قانون‌های CSS را روی همان عنصرها اعمال می‌کند و ظاهر را تعیین می‌کند؛ از جمله رنگ، نوع و اندازه قلم، فاصله‌ها و شیوه قرار گرفتن عنصرها کنار هم.
+      </p>
+      <p>
+        اگر HTML را اسکلت و دیوارهای یک خانه بدانیم، CSS رنگ دیوار، نوع کف‌پوش و چیدمان وسایل است.
+        متن و معنی صفحه در HTML می‌ماند و ظاهر در CSS نوشته می‌شود. به همین دلیل می‌توان همان محتوا را با تغییر CSS متفاوت نشان داد، بدون اینکه جمله‌های صفحه عوض شوند.
+      </p>
+
+      <h3>چرا CSS؟</h3>
+      <ul>
+        <li><strong>جدا بودن محتوا از ظاهر:</strong> متن و ساختار در HTML می‌ماند و ظاهر در فایل CSS؛ هر دو ساده‌تر خوانده و ویرایش می‌شوند.</li>
+        <li><strong>یک بار نوشتن، همه‌جا استفاده:</strong> با یک فایل CSS می‌توان ظاهر صدها صفحه را یک‌جا تغییر داد.</li>
+        <li><strong>نمایش مناسب در دستگاه‌های مختلف:</strong> با CSS می‌شود ظاهر صفحه را برای موبایل و کامپیوتر جداگانه تنظیم کرد.</li>
+      </ul>
+      <p>
+        کلمه <strong>Cascading</strong> به معنی «آبشاری» است.
+        گاهی چند قانون هم‌زمان به یک عنصر می‌رسند؛ مثلاً یک قانون رنگ همه پاراگراف‌ها را قرمز می‌کند و قانون دیگری همان پاراگراف را آبی.
+        مرورگر این قانون‌ها را با قاعده‌های مشخص مقایسه می‌کند و یکی را اعمال می‌کند. این مقایسه همان رفتار آبشاری است.
+        در درس‌های ۳ و ۴ می‌بینید قدرت انتخابگر و ترتیب نوشتن قانون‌ها چطور برنده را مشخص می‌کنند.
+      </p>
+
+      <h3>همان HTML، بدون CSS و با CSS</h3>
+      <p>
+        برای دیدن تفاوت، همان دو خط HTML را یک بار بدون قانون CSS و یک بار با قانون‌های رنگ، تراز و قلم نشان می‌دهیم.
+        متن هر دو نمونه یکی است؛ فقط ظاهر عوض می‌شود.
+      </p>
+      <pre class="code"><code>&lt;h1&gt;کافه کتاب&lt;/h1&gt;
+&lt;p&gt;قهوه تازه، کتاب خوب و فضایی آرام برای مطالعه.&lt;/p&gt;</code></pre>
+      <pre class="code"><code>body {
+  background-color: lightblue;
+  padding: 10px;
+}
+
+h1 {
+  color: #1a3a5c;
+  text-align: center;
+}
+
+p {
+  font-family: Tahoma, sans-serif;
+  font-size: 20px;
+}</code></pre>
+
+      <div class="result">
+        <p><strong>بدون CSS این درس:</strong></p>
+        <h1>کافه کتاب</h1>
+        <p>قهوه تازه، کتاب خوب و فضایی آرام برای مطالعه.</p>
+      </div>
+
+      <div class="result">
+        <p><strong>با CSS:</strong></p>
+        <div class="demo-intro-styled">
+          <h1>کافه کتاب</h1>
+          <p>قهوه تازه، کتاب خوب و فضایی آرام برای مطالعه.</p>
+        </div>
+      </div>
+
+      <p class="tip">
+        محتوا (متن) در هر دو حالت یکی است؛ فقط ظاهر عوض شده. این یعنی «جدا بودن محتوا از ظاهر».
+        <br>
+        در این صفحه برای اینکه کل صفحه آبی نشود، قانون‌های <code>body</code>، <code>h1</code> و <code>p</code> فقط روی
+        یک جعبه (<code>div</code>) دور مثال اعمال شده‌اند (فایل <code>css/demos/intro.css</code>). در صفحه واقعی خودتان،
+        همان کد بالا را بنویسید.
+      </p>
+
+      <p class="mistake">
+        <strong>اشتباه رایج:</strong>
+        استفاده از HTML برای ظاهر؛ مثلاً استفاده از <code>&lt;h1&gt;</code> فقط برای درشت شدن متن، یا تگ‌های قدیمی
+        مثل <code>&lt;font&gt;</code> و <code>&lt;center&gt;</code>. تگ HTML نقش و معنی محتوا را می‌گوید و ظاهر را باید با CSS ساخت.
+      </p>
+    </section>
+
+
+    <nav class="page-nav" aria-label="ناوبری درس پایین">
+      <span></span>
+      <a href="../index.html">فهرست درس‌ها</a>
+      <a href="02-syntax.html">بعدی: Syntax ←</a>
+    </nav>
+
+  </div>
+
+  <footer class="page-footer">
+    آموزش CSS از صفر
+  </footer>
+
+</body>
+
+</html>

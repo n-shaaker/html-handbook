@@ -1,0 +1,23 @@
+/* تمرین ۲ — فاصله‌های margin به‌هم ریخته (نسخه خراب — درستش کنید) */
+
+body {
+  font-family: Tahoma, sans-serif;
+  margin: 20px;
+  background-color: #f8f9fa;
+  color: #212529;
+}
+
+.cards {
+  display: flex;
+  flex-wrap: wrap;
+  background-color: white;
+  border: 1px solid #dee2e6;
+  padding: 10px;
+}
+
+.card {
+  width: 150px;
+  background-color: #e7f5ff;
+  padding: 15px;
+  margin-left: 20px;
+}

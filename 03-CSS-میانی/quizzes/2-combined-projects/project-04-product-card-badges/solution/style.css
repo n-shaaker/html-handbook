@@ -1,0 +1,147 @@
+/* ===== تنظیمات کلی ===== */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Tahoma, Arial, sans-serif;
+  line-height: 1.8;
+  color: #222;
+  background-color: #f4f1ec;
+}
+
+.container {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 24px 16px 40px;
+}
+
+/* ===== ردیف کارت‌ها ===== */
+/* فاصله کوچک بین کارت‌های inline-block از فاصله (space) بین تگ‌ها در HTML می‌آید */
+.products > .card {
+  display: inline-block;
+  vertical-align: top; /* بالای کارت‌ها هم‌تراز شود */
+  width: 250px;
+  margin: 0 6px 20px;
+}
+
+/* ===== کارت ===== */
+.card {
+  position: relative; /* مرجع نشان تخفیف */
+  background-color: white;
+  border-radius: 10px;
+}
+
+.thumb {
+  position: relative; /* مرجع لینک مشاهده سریع */
+  height: 170px;
+}
+
+.thumb img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 10px 10px 0 0;
+}
+
+.card-body {
+  padding: 8px 14px 14px;
+}
+
+.card-title {
+  margin: 0 0 4px;
+  font-size: 16px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* ===== قیمت ===== */
+.price {
+  font-weight: bold;
+}
+
+.price::after {
+  content: " تومان";
+  font-weight: normal;
+  font-size: 13px;
+}
+
+/* قیمت جدید فقط وقتی قیمت قبلی کنارش هست قرمز می‌شود */
+.old-price ~ .price {
+  color: #c92a2a;
+}
+
+.old-price {
+  color: #8a8f96;
+  font-size: 14px;
+}
+
+/* ===== نشان تخفیف ===== */
+.badge {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  z-index: 1;
+  padding: 2px 10px;
+  background-color: #e8590c;
+  color: white;
+  font-size: 13px;
+  border-radius: 4px;
+}
+
+.badge::before {
+  content: "★ ";
+}
+
+.badge-muted {
+  background-color: #495057;
+}
+
+/* ===== مشاهده سریع ===== */
+.quick-view {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  padding: 4px 12px;
+  background-color: white;
+  color: #2d3a4a;
+  font-size: 14px;
+  text-decoration: none;
+  border-radius: 20px;
+  opacity: 0;
+}
+
+.card:hover .quick-view,
+.quick-view:focus {
+  opacity: 1;
+}
+
+/* ===== دکمه ===== */
+.btn {
+  width: 100%;
+  padding: 8px 12px;
+  border: none;
+  border-radius: 6px;
+  background-color: #2d6a4f;
+  color: white;
+  font-family: inherit;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background-color: #1b4332;
+}
+
+/* بعد از hover نوشته شده تا روی آن اعمال شود */
+.btn:disabled {
+  background-color: #adb5bd;
+  cursor: not-allowed;
+}
+
+/* ===== کارت ناموجود ===== */
+.is-sold-out {
+  opacity: 0.6;
+}

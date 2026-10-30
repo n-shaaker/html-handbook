@@ -1,0 +1,20 @@
+body {
+  font-family: Tahoma, Arial, sans-serif;
+  line-height: 1.9;
+  padding: 24px;
+}
+
+.guide {
+  max-width: 650px;
+  margin: 0 auto;
+  counter-reset: section; /* شروع شمارش از صفر */
+}
+
+.guide h2 {
+  counter-increment: section; /* هر h2 یکی اضافه می‌کند */
+}
+
+.guide h2::before {
+  content: "بخش " counter(section, persian) ": ";
+  color: #0b6e4f;
+}

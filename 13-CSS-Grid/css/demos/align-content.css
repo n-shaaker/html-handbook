@@ -1,0 +1,65 @@
+/* ۸) تراز کل شبکه داخل ظرف */
+
+/* شبکه کوچک‌تر از ظرف: ستون و ردیف با اندازه ثابت */
+.demo-content .grid {
+  display: grid;
+  grid-template-columns: repeat(3, 90px);
+  grid-template-rows: repeat(2, 50px);
+  gap: 8px;
+  height: 220px;
+  background-color: #f1f3f5;
+  border: 1px dashed #868e96;
+  margin-bottom: 10px;
+}
+
+/* ظرف کوتاه با یک ردیف برای مثال‌های افقی */
+.demo-content .short {
+  grid-template-rows: 50px;
+  height: auto;
+  padding: 6px 0;
+}
+
+/* سه ظرف مثال ۳ کنار هم */
+.demo-content .row-of-grids {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+
+/* جعبه‌های رنگی شماره‌دار */
+.demo-content .box {
+  color: white;
+  font-weight: bold;
+  text-align: center;
+  padding-top: 12px;
+  border-radius: 6px;
+  font-size: 14px;
+}
+
+.demo-content .b1 { background-color: #1c7ed6; }
+.demo-content .b2 { background-color: #2f9e44; }
+.demo-content .b3 { background-color: #e8590c; }
+.demo-content .b4 { background-color: #ae3ec9; }
+.demo-content .b5 { background-color: #e03131; }
+.demo-content .b6 { background-color: #0c8599; }
+
+/* مثال ۲ و ۵: تراز افقی */
+.demo-content .jc-center  { justify-content: center; }
+.demo-content .jc-end     { justify-content: end; }
+.demo-content .jc-between { justify-content: space-between; }
+.demo-content .jc-around  { justify-content: space-around; }
+.demo-content .jc-evenly  { justify-content: space-evenly; }
+
+/* مثال ۳: تراز عمودی (ستون‌ها کوچک‌تر تا سه ظرف کنار هم جا شوند) */
+.demo-content .row-of-grids .grid {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.demo-content .ac-center  { align-content: center; }
+.demo-content .ac-end     { align-content: end; }
+.demo-content .ac-between { align-content: space-between; }
+
+/* مثال ۴ */
+.demo-content .keypad {
+  place-content: center;
+}

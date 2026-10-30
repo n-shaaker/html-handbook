@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>مسیر فایل تصویر | تصاویر در CSS</title>
+  <link rel="stylesheet" href="../css/layout.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="../css/demos/paths.css">
+</head>
+
+<body>
+  <header class="page-header">
+    <h1>تصاویر در CSS</h1>
+    <p>۲) مسیر فایل تصویر — توضیح کامل با دیاگرام</p>
+  </header>
+
+  <div class="container">
+    <nav class="page-nav" aria-label="ناوبری درس‌ها">
+      <a href="01-img-vs-bg.html">→ قبلی</a>
+      <a href="../index.html">فهرست</a>
+      <a href="03-hero.html">بعدی: هیرو ←</a>
+    </nav>
+
+    <section class="lesson">
+      <h2>۲) مسیر فایل تصویر — کامل و تصویری</h2>
+      <p>
+        وقتی می‌نویسید <code>src="..."</code> یا <code>url("...")</code>، مرورگر از یک نقطه شروع می‌کند و قدم‌قدم
+        داخل پوشه‌ها می‌رود تا به فایل عکس برسد.
+        اگر نقطهٔ شروع را اشتباه بگیرید، عکس نمی‌آید؛ حتی اگر فایل واقعاً روی هارد باشد و نامش را درست نوشته باشید.
+        مرورگر مسیر نسبی را از محل همان فایلی حساب می‌کند که آدرس داخل آن نوشته شده، نه از پوشه‌ای که شما در ذهن‌تان «ریشهٔ پروژه» می‌دانید.
+      </p>
+
+      <p class="tip">
+        <strong>قانون طلایی:</strong>
+        مسیر در HTML نسبت به <strong>همان فایل HTML</strong> است.
+        مسیر در CSS نسبت به <strong>همان فایل CSS</strong> است — نه نسبت به HTML.
+      </p>
+
+      <h3>۱) اول ساختار پروژه را ببینید</h3>
+      <p>
+        قبل از نوشتن مسیر، باید بدانید فایل HTML و فایل CSS هر کدام در کدام پوشه نشسته‌اند.
+        درخت زیر همان چیدمان این دوره است: صفحهٔ فعلی داخل <code>pages</code> است، فایل‌های نمایش داخل <code>css/demos</code> هستند و عکس‌ها در <code>images</code>، هم‌سطح با آن دو پوشه.
+      </p>
+
+      <div class="folder-tree">
+        <div><span class="root">project/</span></div>
+        <div>├── <span class="file">index.html</span></div>
+        <div>├── <span class="folder">pages/</span></div>
+        <div>│&nbsp;&nbsp;&nbsp;└── <span class="file here-html">02-paths.html</span> ← الان اینجاییم (HTML)</div>
+        <div>├── <span class="folder">css/</span></div>
+        <div>│&nbsp;&nbsp;&nbsp;└── <span class="folder">demos/</span></div>
+        <div>│&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└── <span class="file here-css">hero.css</span> ← فایل CSS اینجاست</div>
+        <div>└── <span class="folder">images/</span></div>
+        <div>&nbsp;&nbsp;&nbsp;&nbsp;├── <span class="file target">profile.jpg</span> ← مقصد</div>
+        <div>&nbsp;&nbsp;&nbsp;&nbsp;└── <span class="file target">hero.jpg</span></div>
+      </div>
+
+      <h3>۲) دیاگرام مسیر: HTML در برابر CSS</h3>
+      <p>
+        دیاگرام زیر همان مسیر را از دو مبدأ جدا نشان می‌دهد. فلش آبی از فایل HTML حرکت می‌کند و فلش سبز از فایل CSS. هر دو به یک عکس می‌رسند، اما چون فایل CSS یک پوشه عمیق‌تر است، تعداد <code>../</code> در دو مسیر یکی نیست.
+      </p>
+      <figure>
+        <img
+          class="diagram-img"
+          src="../images/path-diagram.jpg"
+          alt="دیاگرام مسیر نسبی: از HTML با ../images و از CSS با ../../images به پوشه تصاویر می‌رسیم"
+          width="1280"
+          height="720"
+          loading="lazy"
+        >
+        <figcaption class="tip">
+          فلش آبی = مسیر از HTML. فلش سبز = مسیر از CSS. هر دو به یک عکس می‌رسند، ولی تعداد
+          <code>../</code> فرق دارد.
+        </figcaption>
+      </figure>
+
+      <h3>۳) معنی علامت‌های مسیر</h3>
+      <table class="ref">
+        <thead>
+          <tr>
+            <th>نوشتن</th>
+            <th>معنی</th>
+            <th>مثال ذهنی</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>images/a.jpg</code></td>
+            <td>برو داخل پوشه هم‌سطح</td>
+            <td>«از همین‌جا وارد images شو»</td>
+          </tr>
+          <tr>
+            <td><code>./images/a.jpg</code></td>
+            <td>دقیقاً مثل بالا (از همین پوشه)</td>
+            <td>نقطه یعنی «همین‌جا»</td>
+          </tr>
+          <tr>
+            <td><code>../images/a.jpg</code></td>
+            <td>یک پوشه بالاتر، بعد images</td>
+            <td>«برو بیرون، بعد وارد images»</td>
+          </tr>
+          <tr>
+            <td><code>../../images/a.jpg</code></td>
+            <td>دو پوشه بالاتر، بعد images</td>
+            <td>«دو پله برو بالا، بعد images»</td>
+          </tr>
+          <tr>
+            <td><code>/images/a.jpg</code></td>
+            <td>از ریشه سایت/دامنه</td>
+            <td>
+              روی سرور درست کار می‌کند؛ اما اگر HTML را مستقیم از روی هارد باز کنید، «ریشه» یعنی ریشه درایو
+              (مثلاً <code>C:/images/a.jpg</code>) و عکس نمی‌آید
+            </td>
+          </tr>
+          <tr>
+            <td><code>https://example.com/a.jpg</code></td>
+            <td>آدرس کامل (مطلق)</td>
+            <td>برای عکسی که روی سایت دیگری است؛ مستقل از محل فایل HTML/CSS</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3>۴) پیاده‌روی مسیر از صفحه فعلی (HTML)</h3>
+      <p>
+        این صفحه خودش داخل پوشهٔ <code>pages</code> است و عکس هدف <code>images/profile.jpg</code> است. مرورگر از پوشهٔ فایل HTML شروع می‌کند، نه از ریشهٔ پروژه، برای همین مسیر باید اول یک پوشه بالا برود.
+      </p>
+
+      <div class="path-walk">
+        <span class="path-chip">pages/02-paths.html</span>
+        <span class="path-arrow">→</span>
+        <span class="path-chip up">../</span>
+        <span class="path-arrow">→</span>
+        <span class="path-chip">project/</span>
+        <span class="path-arrow">→</span>
+        <span class="path-chip into">images/</span>
+        <span class="path-arrow">→</span>
+        <span class="path-chip into">profile.jpg</span>
+      </div>
+
+      <div class="steps">
+        <div class="step">
+          <div class="step-num">۱</div>
+          <div>
+            <h4>شروع از فایل HTML</h4>
+            <p>مرورگر از پوشهٔ همان فایل HTML شروع می‌کند، یعنی <code>pages/</code>، نه از ریشهٔ پروژه. هر بخش مسیر را نسبت به همین نقطه می‌خواند.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">۲</div>
+          <div>
+            <h4>یک پله بالا با <code>../</code></h4>
+            <p>علامت <code>../</code> یعنی «یک پوشه بالاتر برو». با این قدم از <code>pages/</code> بیرون می‌آیید و به ریشهٔ پروژه می‌رسید، جایی که پوشهٔ <code>images</code> کنار <code>pages</code> نشسته است.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">۳</div>
+          <div>
+            <h4>ورود به <code>images/</code></h4>
+            <p>از ریشه وارد پوشهٔ <code>images</code> می‌شوید و به فایل می‌رسید. مسیر کامل نسبت به این صفحه می‌شود <code>../images/profile.jpg</code>.</p>
+          </div>
+        </div>
+      </div>
+
+      <pre class="code"><code>&lt;img src="../images/profile.jpg" alt="پروفایل"&gt;</code></pre>
+      <div class="result">
+        <p><strong>نتیجه درست:</strong></p>
+        <img class="live-ok" src="../images/profile.jpg" alt="پروفایل — مسیر درست">
+      </div>
+
+      <h3>۵) پیاده‌روی مسیر از فایل CSS</h3>
+      <p>
+        فایل <code>css/demos/hero.css</code> داخل دو پوشهٔ تودرتو است، پس از ریشهٔ پروژه دو سطح پایین‌تر است.
+        برای رسیدن به <code>images</code> باید دو بار به پوشهٔ والد برگردد و بعد وارد <code>images</code> شود.
+      </p>
+
+      <div class="path-walk">
+        <span class="path-chip">css/demos/hero.css</span>
+        <span class="path-arrow">→</span>
+        <span class="path-chip up">../</span>
+        <span class="path-arrow">→</span>
+        <span class="path-chip">css/</span>
+        <span class="path-arrow">→</span>
+        <span class="path-chip up">../</span>
+        <span class="path-arrow">→</span>
+        <span class="path-chip">project/</span>
+        <span class="path-arrow">→</span>
+        <span class="path-chip into">images/hero.jpg</span>
+      </div>
+
+      <pre class="code"><code>/* فایل: css/demos/hero.css */
+.hero {
+  background-image: url("../../images/hero.jpg");
+}</code></pre>
+
+      <div class="vs-box">
+        <div class="vs-card html-side">
+          <h4>از HTML (<code>pages/</code>)</h4>
+          <p>از <code>pages</code> فقط یک پوشه تا ریشه فاصله است، پس یک <code>../</code> کافی است و بعد نام <code>images</code> می‌آید.</p>
+          <pre class="code"><code>../images/hero.jpg</code></pre>
+        </div>
+        <div class="vs-card css-side">
+          <h4>از CSS (<code>css/demos/</code>)</h4>
+          <p>فایل CSS دو پوشه پایین‌تر از ریشه است (<code>css</code> و بعد <code>demos</code>)، پس دو بار <code>../</code> لازم دارد.</p>
+          <pre class="code"><code>../../images/hero.jpg</code></pre>
+        </div>
+      </div>
+
+      <p class="mistake">
+        <strong>اشتباه کلاسیک:</strong>
+        کپی کردن مسیر HTML داخل CSS.
+        مثلاً اگر در <code>css/demos/hero.css</code> بنویسید <code>../images/hero.jpg</code>،
+        مرورگر می‌رود به <code>css/images/hero.jpg</code> که وجود ندارد؛ پس عکس نمی‌آید.
+      </p>
+
+      <h3>۶) اگر مسیر غلط باشد چه می‌بینید؟</h3>
+      <div class="result">
+        <div class="broken-box">
+          عکس شکسته / آیکون خالی مرورگر<br>
+          یعنی فایل در آن مسیر پیدا نشد
+        </div>
+      </div>
+      <p class="tip">
+        در Chrome با <kbd>F12</kbd> بروید به تب Network یا Console؛ برای مسیر غلط معمولاً خطای
+        <code>404</code> (روی سرور) یا <code>ERR_FILE_NOT_FOUND</code> (فایل محلی) می‌بینید.
+        همان‌جا مسیر واقعیِ درخواست‌شده را چک کنید. تصویر پس‌زمینه‌ای که پیدا نشود هیچ آیکون شکسته‌ای
+        نشان نمی‌دهد و فقط جایش خالی می‌ماند؛ پس برای <code>url()</code> حتماً به همین تب‌ها سر بزنید.
+      </p>
+
+      <h3>۷) جدول میانبر مسیرهای همین پروژه</h3>
+      <table class="ref">
+        <thead>
+          <tr>
+            <th>از این فایل</th>
+            <th>به images</th>
+            <th>مسیر درست</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>index.html</code> (ریشه)</td>
+            <td>هم‌سطح</td>
+            <td><code>images/food-1.jpg</code></td>
+          </tr>
+          <tr>
+            <td><code>pages/*.html</code></td>
+            <td>یک پله بالا</td>
+            <td><code>../images/food-1.jpg</code></td>
+          </tr>
+          <tr>
+            <td><code>css/layout.css</code></td>
+            <td>یک پله بالا</td>
+            <td><code>../images/food-1.jpg</code></td>
+          </tr>
+          <tr>
+            <td><code>css/demos/*.css</code></td>
+            <td>دو پله بالا</td>
+            <td><code>../../images/food-1.jpg</code></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3>۸) نکات واقعی پروژه‌ها</h3>
+      <ul>
+        <li>نام فایل را انگلیسی و بدون فاصله بگذارید: <code>hero.jpg</code> نه «عکس من.jpg».</li>
+        <li>حروف بزرگ/کوچک روی بعضی سرورها مهم است: <code>Hero.jpg</code> با <code>hero.jpg</code> فرق دارد.</li>
+        <li>اسلش را درست بنویسید: در وب همیشه <code>/</code> (نه بک‌اسلش ویندوز).</li>
+        <li>داخل <code>url()</code> گذاشتن کوتیشن اختیاری است، ولی اگر نام فایل فاصله یا پرانتز دارد لازم است؛ بهتر است همیشه بگذارید.</li>
+        <li>اگر عکس فقط در HTML است، مسیر را نسبت به HTML بنویسید؛ اگر در CSS است، نسبت به CSS.</li>
+      </ul>
+
+      <p class="realuse">
+        <strong>ترفند سریع:</strong>
+        تعداد پوشه‌هایی که فایل CSS/HTML پایین‌تر از ریشه است را بشمارید؛
+        همان تعداد <code>../</code> لازم دارید تا به ریشه برگردید، بعد وارد <code>images</code> شوید.
+      </p>
+
+      <p class="exercise">
+        <strong>تمرین ۱:</strong> عمداً در این صفحه مسیر را به <code>images/profile.jpg</code> (بدون
+        <code>../</code>) عوض کنید و رفرش کنید. چرا می‌شکند؟<br>
+        <strong>تمرین ۲:</strong> در یک فایل CSS داخل <code>css/demos</code> مسیر را یک‌بار با یک
+        <code>../</code> و یک‌بار با دو <code>../</code> تست کنید و فرق را ببینید.
+      </p>
+    </section>
+
+    <nav class="page-nav" aria-label="ناوبری درس‌ها">
+      <a href="01-img-vs-bg.html">→ قبلی</a>
+      <a href="../index.html">فهرست</a>
+      <a href="03-hero.html">بعدی: هیرو ←</a>
+    </nav>
+  </div>
+  <footer class="page-footer">تصاویر در CSS</footer>
+</body>
+
+</html>

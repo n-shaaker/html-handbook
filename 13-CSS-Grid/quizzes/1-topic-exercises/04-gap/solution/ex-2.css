@@ -1,0 +1,26 @@
+/* تمرین ۲ — قفسه کتاب: فاصله ردیف و ستون جدا (پاسخ) */
+
+body {
+  font-family: Tahoma, sans-serif;
+  margin: 20px;
+  background-color: #f8f9fa;
+  color: #212529;
+}
+
+/* همین دو خط = gap: 30px 10px; (اول ردیف، بعد ستون) */
+.shelf {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  row-gap: 30px;
+  column-gap: 10px;
+  padding: 15px;
+  background-color: #8b5e3c;
+}
+
+.book {
+  height: 90px;
+  background-color: #ffe8cc;
+  padding: 6px;
+  font-size: 13px;
+  border-radius: 3px;
+}

@@ -1,0 +1,31 @@
+body {
+  font-family: Tahoma, Arial, sans-serif;
+  line-height: 1.8;
+  margin: 0;
+}
+
+h2 {
+  margin: 16px;
+  font-size: 16px;
+}
+
+.cover-photo {
+  height: 220px;
+  background-image: url("../../../../images/hero.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.before {
+  background-position: center;
+}
+
+/* غذا سمت راست عکس است؛ پس سمت راست را نگه می‌داریم */
+.after {
+  background-position: right center;
+}
+
+.page-name {
+  padding: 0 16px;
+  font-weight: bold;
+}

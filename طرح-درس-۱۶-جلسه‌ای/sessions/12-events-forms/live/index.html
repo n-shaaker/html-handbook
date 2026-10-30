@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>فرم ورود</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="panel">
+      <h1>ورود</h1>
+      <!-- novalidate: we replace the browser's built-in bubbles with our own JS validation -->
+      <form id="login-form" novalidate>
+        <label for="email">ایمیل</label>
+        <input id="email" name="email" type="email" autocomplete="email" dir="ltr" />
+
+        <label for="password">رمز عبور</label>
+        <input
+          id="password"
+          name="password"
+          type="password"
+          autocomplete="current-password"
+          dir="ltr"
+        />
+
+        <p id="error" class="error" role="alert" hidden></p>
+        <p id="success" class="success" role="status" hidden>ورود معتبر به‌نظر می‌رسد (فقط دمو).</p>
+
+        <button type="submit">ورود</button>
+      </form>
+      <p>حساب ندارید؟ <a href="../../02-semantic-html-forms/live/registration-form.html">ثبت‌نام</a></p>
+    </main>
+    <script src="app.js"></script>
+  </body>
+</html>

@@ -1,0 +1,26 @@
+body {
+  font-family: Tahoma, Arial, sans-serif;
+  line-height: 1.8;
+  padding: 24px;
+}
+
+.news {
+  width: 320px;
+  border: 1px solid #ccc;
+  padding: 8px 16px;
+}
+
+.news ul {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+
+/* سه خط لازم برای سه‌نقطه */
+.news li {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding: 6px 0;
+  border-bottom: 1px solid #eee;
+}

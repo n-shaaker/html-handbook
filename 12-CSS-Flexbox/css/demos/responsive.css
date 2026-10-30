@@ -1,0 +1,121 @@
+/* ۱۳) Flexbox واکنش‌گرا */
+
+/* ----- کارت‌های ساده شماره‌دار ----- */
+.demo-responsive .cards {
+  display: flex;
+  gap: 10px;
+}
+
+.demo-responsive .card {
+  padding: 16px 10px;
+  color: white;
+  font-weight: bold;
+  text-align: center;
+  border-radius: 6px;
+}
+
+.demo-responsive .c1 { background-color: #1c7ed6; }
+.demo-responsive .c2 { background-color: #2b8a3e; }
+.demo-responsive .c3 { background-color: #e8590c; }
+.demo-responsive .c4 { background-color: #ae3ec9; }
+
+/* مثال ۱: بدون wrap */
+.demo-responsive .no-wrap .card {
+  flex: 1;
+}
+
+/* مثال ۲: با wrap و flex-basis */
+.demo-responsive .auto-wrap {
+  flex-wrap: wrap;
+}
+
+.demo-responsive .auto-wrap .card {
+  flex: 1 1 180px;
+}
+
+/* ----- کارت‌های محصول ----- */
+.demo-responsive .products {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.demo-responsive .product {
+  flex: 1 1 200px;
+  background-color: white;
+  border: 1px solid #cfd8e3;
+  border-radius: 8px;
+  padding: 12px;
+  text-align: center;
+}
+
+.demo-responsive .product h4 {
+  margin: 6px 0;
+}
+
+.demo-responsive .emoji {
+  font-size: 32px;
+}
+
+.demo-responsive .price {
+  margin: 0;
+  color: #2b8a3e;
+  font-weight: bold;
+}
+
+/* ----- محتوا + ستون کناری ----- */
+.demo-responsive .layout {
+  display: flex;
+  gap: 12px;
+}
+
+.demo-responsive .main {
+  flex: 3;
+  background-color: #e7f5ff;
+  border-radius: 8px;
+  padding: 12px;
+}
+
+.demo-responsive .aside {
+  flex: 1;
+  background-color: #fff4e6;
+  border-radius: 8px;
+  padding: 12px;
+}
+
+.demo-responsive .main h4,
+.demo-responsive .aside h4 {
+  margin: 0 0 6px;
+}
+
+.demo-responsive .main p,
+.demo-responsive .aside p {
+  margin: 0;
+}
+
+/* ----- منو ----- */
+.demo-responsive .menu {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  background-color: #1a3a5c;
+  padding: 8px;
+  border-radius: 8px;
+}
+
+.demo-responsive .menu a {
+  color: white;
+  text-decoration: none;
+  text-align: center;
+  padding: 6px 12px;
+  border-radius: 4px;
+  background-color: #2c5282;
+}
+
+/* ----- گوشی: زیر هم ----- */
+@media (max-width: 600px) {
+  .demo-responsive .layout,
+  .demo-responsive .menu {
+    flex-direction: column;
+  }
+}

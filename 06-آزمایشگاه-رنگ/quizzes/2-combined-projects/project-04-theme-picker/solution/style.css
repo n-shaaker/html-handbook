@@ -1,0 +1,111 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 24px 16px;
+  font-family: Tahoma, Arial, sans-serif;
+  line-height: 1.9;
+  background-color: hsl(0, 0%, 98%);
+  color: hsl(0, 0%, 15%);
+}
+
+.page {
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+h1 {
+  margin-top: 0;
+}
+
+h2 {
+  font-size: 1.1rem;
+  margin-top: 24px;
+}
+
+.controls label {
+  display: block;
+  margin-top: 10px;
+  font-weight: bold;
+}
+
+.controls input,
+.controls select {
+  width: 100%;
+  font-family: inherit;
+  font-size: 15px;
+}
+
+/* مقدارهای پیش‌فرض؛ JavaScript همه را عوض می‌کند */
+.preview {
+  --page-bg: hsl(210, 30%, 96%);
+  --card-bg: hsla(0, 0%, 100%, 0.85);
+  --text: hsl(210, 30%, 15%);
+  --primary: hsl(210, 70%, 40%);
+  --primary-hover: hsl(210, 70%, 33%);
+  --on-primary: hsl(0, 0%, 100%);
+  --primary-soft: hsla(210, 70%, 50%, 0.12);
+
+  padding: 40px 24px;
+  border-radius: 12px;
+  background-color: var(--page-bg);
+  /* یک دایره رنگی پشت کارت تا شفافیت کارت دیده شود */
+  background-image: radial-gradient(circle at 25% 35%, var(--primary) 0 70px, transparent 71px);
+}
+
+.card {
+  max-width: 380px;
+  padding: 16px 20px;
+  border-radius: 10px;
+  background-color: var(--card-bg);
+  color: var(--text);
+}
+
+.card h3 {
+  margin: 0;
+}
+
+.btn-primary,
+.btn-outline {
+  padding: 7px 18px;
+  font-family: inherit;
+  font-size: 15px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.btn-primary {
+  border: 2px solid var(--primary);
+  background-color: var(--primary);
+  color: var(--on-primary);
+}
+
+.btn-primary:hover {
+  border-color: var(--primary-hover);
+  background-color: var(--primary-hover);
+}
+
+.btn-outline {
+  border: 2px solid var(--primary);
+  background-color: transparent;
+  color: var(--primary);
+}
+
+.btn-outline:hover {
+  background-color: var(--primary-soft);
+}
+
+.btn-primary:focus-visible,
+.btn-outline:focus-visible {
+  outline: 3px solid var(--primary-hover);
+  outline-offset: 2px;
+}
+
+.code {
+  padding: 12px 16px;
+  border-radius: 8px;
+  background-color: hsl(220, 20%, 15%);
+  color: hsl(220, 20%, 92%);
+}

@@ -1,0 +1,88 @@
+/* ۹) auto-fill و auto-fit */
+
+/* ظاهر مشترک شبکه‌ها */
+.demo-auto .grid {
+  display: grid;
+  gap: 8px;
+  background-color: #f1f3f5;
+  border: 1px dashed #868e96;
+  padding: 8px;
+}
+
+/* جعبه‌های رنگی شماره‌دار */
+.demo-auto .box {
+  color: white;
+  font-weight: bold;
+  text-align: center;
+  padding: 16px 8px;
+  border-radius: 6px;
+}
+
+.demo-auto .b1 { background-color: #1c7ed6; }
+.demo-auto .b2 { background-color: #2f9e44; }
+.demo-auto .b3 { background-color: #e8590c; }
+.demo-auto .b4 { background-color: #ae3ec9; }
+.demo-auto .b5 { background-color: #e03131; }
+.demo-auto .b6 { background-color: #0c8599; }
+
+/* توضیح کوچک بالای هر شبکه در مثال ۳ */
+.demo-auto .label {
+  margin: 8px 0 4px;
+  font-size: 14px;
+  color: #495057;
+}
+
+/* مثال ۱ */
+.demo-auto .fixed-cards {
+  grid-template-columns: repeat(auto-fill, 150px);
+}
+
+/* مثال ۲ */
+.demo-auto .products {
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 12px;
+}
+
+/* مثال ۳ */
+.demo-auto .fill {
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+}
+
+.demo-auto .fit {
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+}
+
+/* مثال ۴: گالری */
+.demo-auto .gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 12px;
+}
+
+.demo-auto .photo-card {
+  background-color: white;
+  border: 1px solid #dee2e6;
+  border-radius: 6px;
+}
+
+.demo-auto .photo-card p {
+  margin: 0;
+  padding: 8px;
+  font-size: 14px;
+}
+
+.demo-auto .photo-card .photo {
+  height: 100px;
+  border-radius: 6px 6px 0 0;
+  color: white;
+  font-size: 28px;
+  font-weight: bold;
+  text-align: center;
+  padding-top: 26px;
+}
+
+.demo-auto .p1 { background-color: #1c7ed6; }
+.demo-auto .p2 { background-color: #2f9e44; }
+.demo-auto .p3 { background-color: #e8590c; }
+.demo-auto .p4 { background-color: #ae3ec9; }
+.demo-auto .p5 { background-color: #0c8599; }

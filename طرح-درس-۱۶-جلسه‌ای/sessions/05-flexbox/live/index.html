@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Flexbox زنده — نوار ناوبری و کارت‌ها</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <!-- Navbar: classic flex row with space-between -->
+    <header class="navbar">
+      <a class="logo" href="index.html">شاپلی</a>
+      <nav class="nav-links" aria-label="اصلی">
+        <a href="#products">محصولات</a>
+        <a href="#pricing">قیمت‌گذاری</a>
+        <a href="mailto:support@example.com">تماس</a>
+      </nav>
+      <a class="nav-cta" href="../../12-events-forms/live/index.html">ورود</a>
+    </header>
+
+    <main>
+      <section id="products" class="section" aria-labelledby="products-title">
+        <h1 id="products-title">محصولات ویژه</h1>
+        <div class="cards">
+          <article class="card">
+            <h2>چراغ رومیزی</h2>
+            <p>۲۹۰٬۰۰۰ تومان</p>
+          </article>
+          <article class="card">
+            <h2>هاب USB</h2>
+            <p>۱۹۰٬۰۰۰ تومان</p>
+          </article>
+          <article class="card">
+            <h2>دفترچه</h2>
+            <p>۱۲۰٬۰۰۰ تومان</p>
+          </article>
+        </div>
+      </section>
+
+      <!-- Student exercise target: extend this pricing row -->
+      <section id="pricing" class="section" aria-labelledby="pricing-title">
+        <h2 id="pricing-title">قیمت‌گذاری</h2>
+        <div class="pricing">
+          <article class="plan">
+            <h3>پایه</h3>
+            <p class="plan__price">۹۰٬۰۰۰ تومان <span>/ ماهانه</span></p>
+            <ul>
+              <li>۱ پروژه</li>
+              <li>پشتیبانی ایمیلی</li>
+            </ul>
+          </article>
+          <article class="plan plan--featured">
+            <h3>حرفه‌ای</h3>
+            <p class="plan__price">۱۹۰٬۰۰۰ تومان <span>/ ماهانه</span></p>
+            <ul>
+              <li>۱۰ پروژه</li>
+              <li>پشتیبانی اولویت‌دار</li>
+            </ul>
+          </article>
+          <article class="plan">
+            <h3>ویژه</h3>
+            <p class="plan__price">۳۹۰٬۰۰۰ تومان <span>/ ماهانه</span></p>
+            <ul>
+              <li>پروژه نامحدود</li>
+              <li>منتورینگ یک‌به‌یک</li>
+            </ul>
+          </article>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

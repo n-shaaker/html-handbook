@@ -1,0 +1,52 @@
+/* ۳) repeat() و minmax() */
+
+/* ظاهر مشترک همه شبکه‌های این صفحه */
+.demo-repeat .grid {
+  display: grid;
+  gap: 8px;
+  background-color: #f1f3f5;
+  border: 1px solid #ced4da;
+  padding: 8px;
+}
+
+/* جعبه‌های رنگی شماره‌دار */
+.demo-repeat .box {
+  color: white;
+  font-weight: bold;
+  text-align: center;
+  padding: 12px 8px;
+  border-radius: 6px;
+}
+
+.demo-repeat .b1 { background-color: #1c7ed6; }
+.demo-repeat .b2 { background-color: #2f9e44; }
+.demo-repeat .b3 { background-color: #e8590c; }
+.demo-repeat .b4 { background-color: #ae3ec9; }
+.demo-repeat .b5 { background-color: #e03131; }
+.demo-repeat .b6 { background-color: #0c8599; }
+
+/* مثال ۱ */
+.demo-repeat .shop {
+  grid-template-columns: repeat(4, 1fr);
+}
+
+/* مثال ۲ */
+.demo-repeat .pattern {
+  grid-template-columns: repeat(2, 80px 1fr);
+}
+
+/* مثال ۳ */
+.demo-repeat .mixed {
+  grid-template-columns: 200px repeat(3, 1fr);
+}
+
+/* مثال ۴ */
+.demo-repeat .school {
+  grid-template-columns: minmax(150px, 250px) 1fr;
+}
+
+/* مثال ۵ */
+.demo-repeat .cards {
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: minmax(80px, auto);
+}

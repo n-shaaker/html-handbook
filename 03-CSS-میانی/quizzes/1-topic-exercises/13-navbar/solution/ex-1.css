@@ -1,0 +1,33 @@
+body {
+  font-family: Tahoma, Arial, sans-serif;
+  margin: 0;
+  padding: 24px;
+}
+
+.side-menu {
+  width: 220px;
+  background-color: #f1f3f5;
+}
+
+/* حذف ظاهر پیش‌فرض فهرست */
+.side-menu ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.side-menu a {
+  display: block;
+  padding: 12px 16px;
+  color: #333;
+  text-decoration: none;
+}
+
+.side-menu a:hover {
+  background-color: #dde3ea;
+}
+
+.side-menu a.active {
+  color: white;
+  background-color: #1a5fb4;
+}

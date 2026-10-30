@@ -1,0 +1,72 @@
+/* کارت محصول واقعی */
+
+.demo-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+}
+
+@media (max-width: 800px) {
+  .demo-cards {
+    grid-template-columns: 1fr;
+  }
+}
+
+.product-card {
+  background: white;
+  border: 1px solid #d9e2ec;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(26, 58, 92, 0.06);
+}
+
+.product-card .thumb {
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  background-color: #eef1f5;
+}
+
+.product-card .thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.25s ease;
+}
+
+.product-card:hover .thumb img {
+  transform: scale(1.05);
+}
+
+.product-card .body {
+  padding: 12px 14px 16px;
+}
+
+.product-card h3 {
+  margin: 0 0 4px;
+  font-size: 1.05rem;
+  color: #1a3a5c;
+}
+
+.product-card .price {
+  color: #0b6e4f;
+  font-weight: bold;
+  margin: 0 0 10px;
+}
+
+.product-card .btn {
+  display: inline-block;
+  background-color: #1a3a5c;
+  color: white;
+  text-decoration: none;
+  padding: 6px 12px;
+  border: 0;
+  border-radius: 5px;
+  font: inherit;
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+
+.product-card .btn:hover {
+  background-color: #12304d;
+}

@@ -1,0 +1,38 @@
+/* تمرین ۲ — دکمه همیشه ته کارت (پاسخ) */
+
+body {
+  font-family: Tahoma, sans-serif;
+  margin: 20px;
+  background-color: #f8f9fa;
+  color: #212529;
+}
+
+.cards {
+  display: flex;
+  gap: 15px;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  width: 200px;
+  background-color: white;
+  border: 1px solid #dee2e6;
+  border-radius: 8px;
+  padding: 15px;
+}
+
+.card h2 {
+  margin-top: 0;
+}
+
+/* فضای خالی بالای دکمه را margin خودکار می‌گیرد */
+.btn {
+  margin-top: auto;
+  background-color: #1c7ed6;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  padding: 8px;
+  border-radius: 4px;
+}

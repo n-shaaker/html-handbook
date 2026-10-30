@@ -1,0 +1,120 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Tahoma, Arial, sans-serif;
+  line-height: 1.9;
+  color: #3b2314;
+  background-color: #fdf8f3;
+}
+
+h1, h2, h3 {
+  color: #7c2d12;
+}
+
+.container {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 24px 16px 48px;
+}
+
+h1 {
+  border-bottom: 3px solid #fb923c;
+}
+
+/* ===== برچسب‌ها: یک کلاس پایه + یک کلاس رنگ ===== */
+.tag {
+  display: inline-block;
+  padding: 0 10px;
+  border-radius: 10px;
+  font-size: 12px;
+  color: white;
+}
+
+.tag-veg {
+  background-color: #15803d;
+}
+
+.tag-hot {
+  background-color: #dc2626;
+}
+
+.tag-new {
+  background-color: #fde047;
+  color: #3b2314; /* متن سفید روی زرد خوانا نیست */
+}
+
+.tags {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* ===== راهنمای برچسب‌ها ===== */
+.tag-guide {
+  margin-bottom: 28px;
+  padding: 10px 20px;
+  border: 1px dashed #fdba74;
+  border-radius: 10px;
+  background-color: white;
+}
+
+.tag-guide dd {
+  margin-right: 0;
+  font-size: 14px;
+}
+
+/* ===== ردیف کارت‌ها با Flexbox ===== */
+.dish-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+/* ===== کارت غذا ===== */
+.dish-card {
+  flex: 1 1 260px;
+  display: flex;
+  flex-direction: column; /* تا قیمت بتواند به پایین کارت بچسبد */
+  overflow: hidden;       /* گوشه‌های عکس هم گرد شوند */
+  border: 1px solid #fed7aa;
+  border-radius: 12px;
+  background-color: white;
+}
+
+.dish-card img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover; /* عکس کش نیاید، فقط بریده شود */
+}
+
+.dish-card-body {
+  flex-grow: 1; /* بدنه فضای خالی کارت را پر کند */
+  display: flex;
+  flex-direction: column;
+  padding: 10px 18px 14px;
+}
+
+.dish-card h3 {
+  margin: 0 0 6px;
+}
+
+.price {
+  margin: auto 0 0; /* margin-top خودکار، قیمت را به ته کارت می‌برد */
+  font-size: 18px;
+  font-weight: bold;
+  color: #c2410c;
+}
+
+.price del {
+  font-size: 14px;
+  font-weight: normal;
+  color: #6b7280;
+}
+
+.price ins {
+  text-decoration: none;
+}

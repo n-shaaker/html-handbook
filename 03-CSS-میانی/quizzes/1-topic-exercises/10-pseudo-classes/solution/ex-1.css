@@ -1,0 +1,43 @@
+body {
+  font-family: Tahoma, Arial, sans-serif;
+  line-height: 1.8;
+  padding: 24px;
+}
+
+/* ترتیب مهم است: link، visited، hover، active */
+a:link {
+  color: #1a5fb4;
+}
+
+a:visited {
+  color: #7b3fa0;
+}
+
+a:hover {
+  color: #e63946;
+}
+
+a:active {
+  color: #0b6e4f;
+}
+
+.send-btn {
+  position: relative;
+  padding: 10px 24px;
+  font-family: inherit;
+  font-size: 16px;
+  color: white;
+  background-color: #0b6e4f;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.send-btn:hover {
+  background-color: #075239;
+}
+
+/* هنگام کلیک کمی پایین می‌رود */
+.send-btn:active {
+  top: 2px;
+}

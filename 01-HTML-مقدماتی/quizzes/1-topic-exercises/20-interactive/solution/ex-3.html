@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>سبد خرید</title>
+  </head>
+  <body>
+    <h1>سبد خرید</h1>
+
+    <p id="item">
+      هدفون بی‌سیم — ۱ میلیون و ۹۰۰ هزار تومان
+      <button type="button" onclick="document.getElementById('confirm').showModal()">حذف</button>
+    </p>
+
+    <dialog id="confirm">
+      <p>مطمئن هستید؟</p>
+      <!-- method="dialog": هر دکمه داخل این فرم، پنجره را می‌بندد -->
+      <form method="dialog">
+        <button>انصراف</button>
+        <button onclick="document.getElementById('item').hidden = true">بله، حذف شود</button>
+      </form>
+    </dialog>
+
+    <noscript>برای حذف کالا، JavaScript را فعال کنید.</noscript>
+  </body>
+</html>

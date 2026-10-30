@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>۱۸) فرم‌ها و اعتبارسنجی (Forms & Validation) | آموزش JavaScript سطح میانی</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <script src="../js/log.js" defer></script>
+  <script src="../js/demos/forms.js" defer></script>
+</head>
+
+<body>
+
+  <header class="page-header" id="top">
+    <h1>آموزش JavaScript — سطح میانی</h1>
+    <p>۱۸) فرم‌ها و اعتبارسنجی (Forms & Validation)</p>
+  </header>
+
+  <div class="container">
+
+    <nav class="page-nav" aria-label="ناوبری درس">
+      <a href="17-dom-elements.html">→ قبلی: DOM Elements</a>
+      <a href="../index.html">فهرست درس‌ها</a>
+      <a href="19-practice.html">بعدی: پروژه جمع‌بندی ←</a>
+    </nav>
+
+    <section class="lesson" id="forms">
+      <h2>۱۸) فرم‌ها و اعتبارسنجی (Forms & Validation)</h2>
+<p>برای کار با فرم، رویداد <code>submit</code> را روی خود <code>form</code> می‌گیریم (نه روی دکمه). مرورگر به‌طور پیش‌فرض بعد از submit صفحه را دوباره بارگذاری می‌کند؛ با <code>preventDefault()</code> جلویش را می‌گیریم.</p>
+
+<pre class="code"><code>&lt;form id="signup" novalidate&gt;
+  &lt;label for="su-name"&gt;نام کامل:&lt;/label&gt;
+  &lt;input type="text" id="su-name" name="fullname" autocomplete="name"&gt;
+
+  &lt;label for="su-email"&gt;ایمیل:&lt;/label&gt;
+  &lt;input type="email" id="su-email" name="email" autocomplete="email" dir="ltr"&gt;
+
+  &lt;label for="su-pass"&gt;رمز عبور:&lt;/label&gt;
+  &lt;input type="password" id="su-pass" name="password" autocomplete="new-password"&gt;
+
+  &lt;label for="su-pass2"&gt;تکرار رمز عبور:&lt;/label&gt;
+  &lt;input type="password" id="su-pass2" name="password2" autocomplete="new-password"&gt;
+
+  &lt;label for="su-level"&gt;سطح:&lt;/label&gt;
+  &lt;select id="su-level" name="level"&gt;
+    &lt;option value=""&gt;سطح خود را انتخاب کنید&lt;/option&gt;
+    &lt;option value="basic"&gt;پایه&lt;/option&gt;
+    &lt;option value="mid"&gt;میانی&lt;/option&gt;
+  &lt;/select&gt;
+
+  &lt;label&gt;&lt;input type="checkbox" name="rules"&gt; قوانین را می‌پذیرم&lt;/label&gt;
+  &lt;button type="submit"&gt;ثبت‌نام&lt;/button&gt;
+&lt;/form&gt;
+&lt;ul id="errors" aria-live="polite"&gt;&lt;/ul&gt;</code></pre>
+
+<p>این فرم فیلدهای نام، ایمیل، دو رمز، سطح و پذیرش قوانین را دارد. <code>for</code> هر برچسب با <code>id</code> فیلد یکی است تا کلیک روی نوشته هم کادر را فعال کند. <code>name</code> همان کلیدی است که بعداً از <code>form.elements</code> خوانده می‌شود. <code>novalidate</code> اعتبارسنجی آمادهٔ مرورگر را خاموش می‌کند تا قانون‌ها را خود برنامه با JavaScript بررسی کند. فهرست <code>errors</code> جای پیام‌هاست.</p>
+
+<pre class="code"><code>const form = document.getElementById("signup");
+const errorList = document.getElementById("errors");
+
+form.addEventListener("submit", (event) =&gt; {
+  event.preventDefault();                  // صفحه دوباره بارگذاری نشود
+
+  const name = form.elements.fullname.value.trim();
+  const email = form.elements.email.value.trim();
+  const password = form.elements.password.value;    // رمز را trim نمی‌کنیم
+  const password2 = form.elements.password2.value;
+  const level = form.elements.level.value;
+  const rules = form.elements.rules.checked;
+
+  const errors = [];
+  if (name.length &lt; 3) errors.push("نام باید حداقل ۳ حرف باشد.");
+  if (!email.includes("@") || !email.includes(".")) errors.push("ایمیل معتبر نیست (مثال: ali@example.com).");
+  if (password.length &lt; 8) errors.push("رمز عبور باید حداقل ۸ کاراکتر باشد.");
+  if (password !== password2) errors.push("رمز عبور و تکرار آن یکسان نیستند.");
+  if (level === "") errors.push("سطح را انتخاب کنید.");
+  if (!rules) errors.push("پذیرفتن قوانین الزامی است.");
+
+  errorList.textContent = "";              // پیام‌های قبلی پاک شود
+  if (errors.length &gt; 0) {
+    errors.forEach(message =&gt; {
+      const li = document.createElement("li");
+      li.className = "msg-error";
+      li.textContent = message;
+      errorList.append(li);
+    });
+  } else {
+    const li = document.createElement("li");
+    li.className = "msg-ok";
+    li.textContent = `✔ ${name} عزیز، ثبت‌نام انجام شد.`;   // متن کاربر ← textContent
+    errorList.append(li);
+    form.reset();
+  }
+});</code></pre>
+
+<p><code>submit</code> هم با دکمه و هم با Enter در کادر اجرا می‌شود. <code>preventDefault</code> جلوی بارگذاری دوبارهٔ صفحه را می‌گیرد تا پیام خطا پاک نشود. مقدار فیلدها از روی <code>name</code> خوانده می‌شود. نام و ایمیل فاصله‌های اضافه را از دست می‌دهند، ولی رمز بدون <code>trim</code> می‌ماند چون فاصله می‌تواند بخشی از رمز باشد. هر شرط نامعتبر یک جمله به آرایهٔ خطا اضافه می‌کند. اگر خطایی باشد، هر جمله یک <code>li</code> می‌شود؛ وگرنه پیام موفقیت با نام کاربر ساخته می‌شود و <code>form.reset</code> فیلدها را خالی می‌کند.</p>
+
+<div class="result">
+<form id="signup" novalidate>
+<label for="su-name">نام کامل:</label> <input type="text" id="su-name" name="fullname" autocomplete="name"><br>
+<label for="su-email">ایمیل:</label> <input type="email" id="su-email" name="email" autocomplete="email" dir="ltr"><br>
+<label for="su-pass">رمز عبور:</label> <input type="password" id="su-pass" name="password" autocomplete="new-password"><br>
+<label for="su-pass2">تکرار رمز عبور:</label> <input type="password" id="su-pass2" name="password2" autocomplete="new-password"><br>
+<label for="su-level">سطح:</label> <select id="su-level" name="level"><option value="">سطح خود را انتخاب کنید</option><option value="basic">پایه</option><option value="mid">میانی</option></select><br>
+<label><input type="checkbox" name="rules"> قوانین را می‌پذیرم</label><br>
+<button type="submit" class="btn">ثبت‌نام</button>
+</form>
+<ul id="errors" aria-live="polite"></ul>
+</div>
+
+<p class="tip"><code>form.elements.fullname</code> یعنی فیلدی از فرم که <code>name="fullname"</code> دارد؛ <code>form.elements</code> همه فیلدهای فرم را بر اساس <code>name</code> در اختیار می‌گذارد (شکل کوتاه‌تر <code>form.fullname</code> هم در مرورگرها کار می‌کند، ولی اگر اسم فیلد با یک ویژگی خود فرم مثل <code>action</code> یکی باشد، مشکل‌ساز می‌شود). بررسی ایمیل را ساده گرفته‌ایم: فقط اینکه <code>@</code> و نقطه داشته باشد.</p>
+
+<p class="tip">چرا پیام‌ها را با <code>createElement</code> ساختیم و نه <code>innerHTML</code>؟ پیام‌های خطا متن خودمان است و innerHTML هم کار می‌کرد، ولی عادت کردن به textContent باعث می‌شود وقتی متن کاربر را نشان می‌دهید (مثل پیام موفقیت که نام کاربر را دارد) دچار XSS نشوید.</p>
+
+<h3>خواندن مقدار انواع فیلد</h3>
+
+<table class="ref">
+<tr><th>فیلد</th><th>خواندن مقدار</th></tr>
+<tr><td>text / email / password / textarea</td><td><code>input.value</code></td></tr>
+<tr><td>number</td><td><code>Number(input.value)</code> یا <code>input.valueAsNumber</code></td></tr>
+<tr><td>checkbox</td><td><code>input.checked</code> (true/false)</td></tr>
+<tr><td>radio</td><td><code>form.querySelector('input[name="gender"]:checked').value</code></td></tr>
+<tr><td>select</td><td><code>select.value</code></td></tr>
+<tr><td>همه فیلدها با هم</td><td><code>new FormData(form)</code> و <code>Object.fromEntries(...)</code></td></tr>
+</table>
+
+<h3>اعتبارسنجی زنده هنگام تایپ</h3>
+
+<pre class="code"><code>const passInput = document.getElementById("pass-live");
+const strength = document.getElementById("strength");
+
+passInput.addEventListener("input", () =&gt; {
+  const len = passInput.value.length;
+  if (len === 0) {
+    strength.textContent = "";
+  } else if (len &lt; 8) {
+    strength.textContent = `ضعیف (${len} از حداقل ۸ کاراکتر)`;
+    strength.className = "msg-error";
+  } else {
+    strength.textContent = "قابل قبول";
+    strength.className = "msg-ok";
+  }
+});</code></pre>
+
+<p>رویداد <code>input</code> با هر تغییر کادر اجرا می‌شود، نه فقط هنگام خروج از آن. طول صفر پیام را پاک می‌کند. کمتر از ۸ نویسه پیام خطا و کلاس قرمز می‌گیرد. از ۸ به بالا پیام قابل‌قبول و کلاس دیگر جایگزین کلاس قبلی می‌شود، چون <code>className</code> کل کلاس‌ها را عوض می‌کند نه اینکه یکی اضافه کند.</p>
+
+<div class="result">
+<label for="pass-live">رمز عبور جدید:</label>
+<input type="password" id="pass-live" autocomplete="new-password">
+<strong id="strength" aria-live="polite"></strong>
+</div>
+
+<p class="tip">رویداد <code>input</code> با هر تغییر کادر (تایپ، پاک کردن، چسباندن) اجرا می‌شود؛ ولی رویداد <code>change</code> برای کادر متنی فقط وقتی اجرا می‌شود که کاربر از کادر خارج شود.</p>
+
+<p class="tip">ویژگی‌های HTML مثل <code>required</code>، <code>minlength</code> و <code>type="email"</code> هم اعتبارسنجی آماده دارند. ما اینجا با <code>novalidate</code> آن‌ها را خاموش کردیم تا اعتبارسنجی را خودمان با JavaScript بنویسیم.</p>
+
+<p class="tip">اعتبارسنجی در مرورگر فقط برای راحتی کاربر است. سرور هم باید همیشه داده را دوباره بررسی کند.</p>
+
+<p class="mistake"><strong>اشتباه رایج:</strong> گذاشتن رویداد <code>click</code> روی دکمه به جای <code>submit</code> روی فرم. با Enter زدن در کادر هم فرم ارسال می‌شود و رویداد click را از دست می‌دهید.</p>
+
+<p class="mistake"><strong>اشتباه رایج:</strong> مقایسه مقدار کادر عددی بدون تبدیل: <code>input.value &gt; 5</code>. مقدار <code>value</code> همیشه <strong>رشته</strong> است (حتی برای <code>type="number"</code>) و <code>"10" + 5</code> می‌شود <code>"105"</code>؛ اول با <code>Number(...)</code> تبدیل کنید.</p>
+
+<p class="mistake"><strong>اشتباه رایج:</strong> فراموش کردن <code>&lt;label&gt;</code> و اکتفا به <code>placeholder</code>. placeholder با شروع تایپ ناپدید می‌شود و صفحه‌خوان‌ها همیشه آن را نمی‌خوانند؛ هر فیلد باید یک label با <code>for</code> برابر <code>id</code> خودش داشته باشد (کلیک روی label هم کادر را فعال می‌کند).</p>
+
+<p class="exercise"><strong>تمرین:</strong> یک فرم «تماس با ما» با نام، ایمیل و پیام (textarea) و برای هر کدام یک label بسازید. هنگام submit: (الف) اگر نام خالی بود، (ب) ایمیل <code>@</code> یا نقطه نداشت یا (ج) پیام کمتر از ۱۰ حرف بود، پیام خطای مناسب را زیر فرم نشان دهید. وگرنه اطلاعات را با <code>Object.fromEntries(new FormData(form))</code> در Console چاپ کنید، پیام «پیام شما ارسال شد» را نشان دهید و فرم را خالی کنید.</p>
+    </section>
+
+    <nav class="page-nav" aria-label="ناوبری درس پایین">
+      <a href="17-dom-elements.html">→ قبلی: DOM Elements</a>
+      <a href="../index.html">فهرست درس‌ها</a>
+      <a href="19-practice.html">بعدی: پروژه جمع‌بندی ←</a>
+    </nav>
+
+  </div>
+
+  <footer class="page-footer">
+    آموزش JavaScript سطح میانی
+  </footer>
+
+</body>
+
+</html>

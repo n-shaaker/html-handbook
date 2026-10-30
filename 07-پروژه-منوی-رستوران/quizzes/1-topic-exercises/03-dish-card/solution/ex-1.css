@@ -1,0 +1,12 @@
+body {
+  font-family: Tahoma, Arial, sans-serif;
+  line-height: 1.9;
+}
+
+.dish {
+  max-width: 320px;
+}
+
+.dish img {
+  width: 100%;
+}

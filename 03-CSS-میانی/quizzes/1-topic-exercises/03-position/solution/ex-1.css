@@ -1,0 +1,15 @@
+body {
+  font-family: Tahoma, Arial, sans-serif;
+  line-height: 1.8;
+  padding: 24px;
+}
+
+.badge {
+  position: relative;
+  top: -10px; /* کمی بالاتر از جای خودش */
+  padding: 2px 8px;
+  font-size: 12px;
+  color: white;
+  background-color: #e63946;
+  border-radius: 10px;
+}

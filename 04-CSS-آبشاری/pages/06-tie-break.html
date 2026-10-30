@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>چند کلاس هم‌قدرت | آبشاری بودن CSS</title>
+  <link rel="stylesheet" href="../css/layout.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="../css/demos/tie-break.css">
+</head>
+
+<body>
+
+  <header class="page-header">
+    <h1>آبشاری بودن CSS</h1>
+    <p>۶) چند کلاس هم‌قدرت روی یک عنصر</p>
+  </header>
+
+  <div class="container">
+
+    <nav class="page-nav" aria-label="ناوبری">
+      <a href="05-important.html">→ قبلی: !important</a>
+      <a href="../index.html">فهرست</a>
+      <span></span>
+    </nav>
+
+    <section class="lesson">
+      <h2>۶) چند کلاس هم‌قدرت روی یک عنصر</h2>
+      <p>
+        یک عنصر می‌تواند هم‌زمان چند کلاس داشته باشد، مثلاً <code>class="red green blue"</code>. اگر برای هر کلاس یک قانون جدا نوشته باشید و قدرت همهٔ آن قانون‌ها برابر باشد، مرورگر به ترتیب اسم‌ها در HTML نگاه نمی‌کند.
+        <strong>ترتیب کلاس‌ها در صفت <code>class</code> هیچ اولویتی ایجاد نمی‌کند</strong>؛ نه کلاس سمت راست برنده است و نه کلاس سمت چپ.
+        چیزی که تصمیم می‌گیرد این است که کدام قانون در فایل CSS پایین‌تر نوشته شده باشد. همان قانون، برای ویژگی‌های مشترک، مقدار نهایی را تعیین می‌کند.
+      </p>
+      <p>
+        اگر یکی از کلاس‌ها اصلاً قانونی برای آن ویژگی نداشته باشد، از رقابت کنار می‌رود. در مثال زیر هر سه کلاس <code>color</code> دارند و قدرت‌شان یکی است، پس قانون <code>.blue</code> که آخر آمده رنگ را تعیین می‌کند، چه در HTML اول نوشته شده باشد و چه آخر.
+      </p>
+
+      <pre class="code"><code>/* tie-break.css — همه (0, 2, 0) هستند */
+.demo-tie .red   { color: #c92a2a; font-size: 20px; }
+.demo-tie .green { color: #0b6e4f; font-size: 20px; }
+.demo-tie .blue  { color: #1a5fb4; font-size: 20px; }   /* آخر → برنده برای color */</code></pre>
+
+      <pre class="code"><code>&lt;!-- ترتیب کلاس در HTML عوض شده، ولی نتیجه یکی است --&gt;
+&lt;p class="red green blue"&gt;...&lt;/p&gt;
+&lt;p class="blue green red"&gt;...&lt;/p&gt;</code></pre>
+
+      <div class="result demo-tie">
+        <p class="red green blue">کلاس‌ها: red green blue → رنگ آبی</p>
+        <p class="blue green red">کلاس‌ها: blue green red → باز هم آبی</p>
+        <p class="red green">کلاس‌ها: red green → سبز (چون green در CSS بعد از red است)</p>
+        <p class="green red">کلاس‌ها: green red → باز هم سبز</p>
+      </div>
+
+      <p class="tip">
+        برای به‌خاطرسپردن، در تداخل هم‌قدرت به ترتیب قانون‌ها در فایل CSS نگاه کنید، نه به ترتیب اسم کلاس‌ها داخل تگ HTML.
+        جابه‌جا کردن کلاس‌ها در <code>class</code> ظاهر را عوض نمی‌کند؛ جابه‌جا کردن بلوک‌ها در stylesheet عوض می‌کند.
+      </p>
+
+      <p class="mistake">
+        <strong>اشتباه رایج:</strong>
+        فکر کردن که کلاس سمت چپ یا راست در <code>class="..."</code> اولویت دارد. مرورگر صفت کلاس را فقط فهرست عضویت عنصر می‌داند و برای حل تداخل به محل قانون در CSS برمی‌گردد.
+      </p>
+
+      <h3>جمع‌بندی کل مجموعه</h3>
+      <ol>
+        <li>اول ببینید اعلانی <code>!important</code> دارد یا نه؛ اعلان مهم از اعلان عادی برنده است (و آن را فقط در موارد ضروری استفاده کنید).</li>
+        <li>اگر هیچ‌کدام <code>!important</code> نباشد، استایل درون‌خطی (<code>style="..."</code>) از هر انتخابگری که در فایل CSS نوشته شده قوی‌تر است.</li>
+        <li>بین قانون‌های عادی، قدرت انتخابگر را ستون به ستون مقایسه کنید: اول شناسه، بعد کلاس و شبه‌کلاس، و در آخر نام تگ.</li>
+        <li>فقط وقتی هر سه ستون قدرت برابر باشند، قانونی که دیرتر آمده برنده است؛ چه پایین‌تر در همان فایل باشد و چه در فایل CSSای که دیرتر لینک شده.</li>
+        <li>اگر هیچ قانونی برای آن ویژگی نبود، ویژگی‌های ارثی مقدار والد را می‌گیرند و بقیه مقدار اولیه را.</li>
+      </ol>
+
+      <p class="exercise">
+        <strong>تمرین:</strong> در <code>tie-break.css</code> قانون <code>.green</code> را به پایین فایل ببرید.
+        رنگ دو پاراگراف اول چه می‌شود؟
+      </p>
+    </section>
+
+    <nav class="page-nav" aria-label="ناوبری پایین">
+      <a href="05-important.html">→ قبلی: !important</a>
+      <a href="../index.html">فهرست</a>
+      <span></span>
+    </nav>
+
+  </div>
+
+  <footer class="page-footer">آبشاری بودن CSS</footer>
+
+</body>
+
+</html>

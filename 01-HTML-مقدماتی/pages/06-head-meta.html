@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>۶) عناصر head و meta | جزوه HTML</title>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+  <header class="page-header">
+    <h1>جزوه HTML مقدماتی</h1>
+    <p>۶) عناصر head و meta</p>
+  </header>
+
+  <div class="container">
+    <nav class="page-nav">
+      <a href="05-document-structure.html">→ درس قبل</a>
+      <a href="../index.html">فهرست مطالب</a>
+      <a href="07-text-tags.html">درس بعد ←</a>
+    </nav>
+
+    <section class="lesson">
+      <h2>۶) عناصر پرکاربرد داخل head</h2>
+
+      <div class="tag-card">
+        <h4>&lt;title&gt;</h4>
+        <p>
+          <strong>تعریف:</strong> عنوان صفحه است. این متن روی زبانهٔ مرورگر دیده می‌شود و موتورهای جستجو معمولاً همان را به‌عنوان نتیجه نشان می‌دهند. داخل بدنهٔ صفحه چاپ نمی‌شود.
+        </p>
+        <pre class="code"><code>&lt;title&gt;رزومه مریم احمدی | طراح وب&lt;/title&gt;</code></pre>
+        <p>
+          عنوان باید کوتاه (حدود ۵۰ تا ۶۰ نویسه)، یکتا برای هر صفحه و گویای محتوای همان صفحه باشد.
+          هر سند فقط یک <code>title</code> دارد.
+        </p>
+      </div>
+
+      <div class="tag-card">
+        <h4>&lt;meta charset="UTF-8"&gt;</h4>
+        <p>
+          <strong>تعریف:</strong> تعیین رمزگذاری نویسه‌ها.
+          برای نمایش صحیح حروف فارسی ضروری است و بهتر است <strong>نخستین</strong> عنصر داخل <code>head</code> باشد؛
+          در غیر این صورت ممکن است متن فارسی به‌صورت نویسه‌های نامفهوم (مثل <code>Ø³Ù„Ø§Ù…</code>) دیده شود.
+        </p>
+      </div>
+
+      <div class="tag-card">
+        <h4>&lt;meta name="viewport"&gt;</h4>
+        <p>
+          <strong>تعریف:</strong> عرض نمایش را با عرض دستگاه هماهنگ می‌کند
+          تا صفحه در تلفن همراه به‌صورت نامتناسب و بسیار کوچک دیده نشود.
+        </p>
+        <pre class="code"><code>&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;</code></pre>
+      </div>
+
+      <div class="tag-card">
+        <h4>&lt;meta name="description"&gt;</h4>
+        <p>
+          <strong>تعریف:</strong> توضیح کوتاه صفحه (حدود یک تا دو جمله) که موتورهای جستجو ممکن است زیر عنوان صفحه در نتایج نشان دهند.
+        </p>
+        <pre class="code"><code>&lt;meta name="description" content="رزومه و نمونه‌کارهای مریم احمدی، طراح و توسعه‌دهنده وب در تهران"&gt;</code></pre>
+      </div>
+
+      <div class="tag-card">
+        <h4>&lt;link rel="stylesheet"&gt;</h4>
+        <p><strong>تعریف:</strong> پرونده CSS را به سند HTML پیوند می‌دهد.</p>
+        <pre class="code"><code>&lt;link rel="stylesheet" href="../css/style.css"&gt;</code></pre>
+      </div>
+
+      <div class="tag-card">
+        <h4>&lt;link rel="icon"&gt;</h4>
+        <p>
+          <strong>تعریف:</strong> آیکون کوچک سایت (favicon) را مشخص می‌کند که کنار عنوان، در تب مرورگر دیده می‌شود.
+          معمولاً یک تصویر کوچک مربعی با پسوند <code>.ico</code> یا <code>.png</code> است.
+        </p>
+        <pre class="code"><code>&lt;link rel="icon" href="favicon.ico"&gt;</code></pre>
+      </div>
+
+      <div class="tag-card">
+        <h4>&lt;style&gt; و &lt;script&gt;</h4>
+        <p>
+          <strong>تعریف:</strong> برای نوشتن CSS داخلی (<code>style</code>) یا افزودن JavaScript (<code>script</code>) به‌کار می‌روند
+          و می‌توانند در <code>head</code> قرار گیرند. این دو در درس‌های ۱۶ و ۲۲ کامل‌تر بررسی می‌شوند.
+        </p>
+      </div>
+
+      <h3>یک head کامل و واقعی</h3>
+      <pre class="code"><code>&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+  &lt;title&gt;رزومه مریم احمدی | طراح وب&lt;/title&gt;
+  &lt;meta name="description" content="رزومه و نمونه‌کارهای مریم احمدی، طراح وب"&gt;
+  &lt;link rel="icon" href="favicon.png"&gt;
+  &lt;link rel="stylesheet" href="css/style.css"&gt;
+&lt;/head&gt;</code></pre>
+
+      <p class="tip">
+        <strong>نکته کاربردی:</strong>
+        در آغاز هر پروژه، سه مورد زیر را در <code>head</code> قرار دهید:
+        <code>charset</code>، <code>viewport</code> و <code>title</code>.
+      </p>
+
+      <p class="mistake">
+        <strong>خطای متداول:</strong>
+        نوشتن <code>&lt;title&gt;</code> داخل <code>body</code>، یا گذاشتن یک عنوان تکراری (مثل «صفحه اصلی») برای همه صفحه‌های سایت.
+      </p>
+    </section>
+
+    <nav class="page-nav">
+      <a href="05-document-structure.html">→ درس قبل</a>
+      <a href="../index.html">فهرست مطالب</a>
+      <a href="07-text-tags.html">درس بعد ←</a>
+    </nav>
+  </div>
+
+  <footer class="page-footer">جزوه HTML مقدماتی</footer>
+</body>
+
+</html>

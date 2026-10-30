@@ -1,0 +1,58 @@
+/* ۵) جای‌گذاری آیتم‌ها */
+
+/* شبکه ۴ ستونه مشترک همه مثال‌ها */
+.demo-place .grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+  background-color: #f1f3f5;
+  border: 1px solid #ced4da;
+  padding: 8px;
+}
+
+/* جعبه‌های رنگی شماره‌دار */
+.demo-place .box {
+  color: white;
+  font-weight: bold;
+  text-align: center;
+  padding: 12px 8px;
+  border-radius: 6px;
+}
+
+.demo-place .b1 { background-color: #1c7ed6; }
+.demo-place .b2 { background-color: #2f9e44; }
+.demo-place .b3 { background-color: #e8590c; }
+.demo-place .b4 { background-color: #ae3ec9; }
+.demo-place .b5 { background-color: #e03131; }
+.demo-place .b6 { background-color: #0c8599; }
+
+/* مثال ۱ */
+.demo-place .col-1-3 {
+  grid-column: 1 / 3;
+}
+
+/* مثال ۲ */
+.demo-place .span-col-2 {
+  grid-column: span 2;
+}
+
+.demo-place .span-row-2 {
+  grid-row: span 2;
+}
+
+/* مثال ۳ */
+.demo-place .full {
+  grid-column: 1 / -1;
+}
+
+/* مثال ۴ */
+.demo-place .side {
+  grid-column: 1;
+  grid-row: 1 / 4;
+}
+
+/* مثال ۵ */
+.demo-place .special {
+  grid-column: 4;
+  grid-row: 1;
+}

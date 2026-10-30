@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>object-fit | تصاویر در CSS</title>
+  <link rel="stylesheet" href="../css/layout.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="../css/demos/object-fit.css">
+</head>
+
+<body>
+  <header class="page-header">
+    <h1>تصاویر در CSS</h1>
+    <p>۵) object-fit برای کارت و گالری</p>
+  </header>
+
+  <div class="container">
+    <nav class="page-nav" aria-label="ناوبری درس‌ها">
+      <a href="04-avatar.html">→ قبلی</a>
+      <a href="../index.html">فهرست</a>
+      <a href="06-cards.html">بعدی: کارت محصول ←</a>
+    </nav>
+
+    <section class="lesson">
+      <h2>۵) <code>object-fit</code> — ناجی کارت‌های محصول</h2>
+      <p>
+        <code>object-fit</code> مشخص می‌کند محتوای یک عنصر جایگزین‌شونده، مثل <code>img</code> یا <code>video</code>، چطور داخل قابی جا بگیرد که خودتان عرض و ارتفاعش را تعیین کرده‌اید.
+        عکس‌های واقعی نسبت‌های متفاوتی دارند. اگر همه را در قابی هم‌اندازه بگذارید و <code>object-fit</code> ننویسید، مقدار پیش‌فرض <code>fill</code> است: مرورگر عکس را در هر دو جهت آن‌قدر می‌کشد یا جمع می‌کند که دقیقاً به اندازهٔ قاب شود، حتی اگر چهره یا غذا تغییر شکل بدهد.
+      </p>
+      <p>
+        این ویژگی فقط وقتی اثر دارد که هر دو بعد قاب مشخص باشد. اگر ارتفاع <code>auto</code> بماند، قاب همان نسبت خود عکس را می‌گیرد و دیگر چیزی برای بریدن یا جا دادن اضافه وجود ندارد.
+        سه مقدار پرکاربرد را در مثال زیر با یک عکس عمودی، داخل قاب افقی ۱۵۰ پیکسلی، کنار هم می‌بینید.
+      </p>
+
+      <pre class="code"><code>.demo-fit-card img {
+  width: 100%;
+  height: 150px;       /* هر دو بعد مشخص → حالا object-fit معنی دارد */
+  display: block;
+}
+
+.demo-fit-card .fill    { object-fit: fill; }     /* پیش‌فرض */
+.demo-fit-card .cover   { object-fit: cover; }    /* پرکاربردترین */
+.demo-fit-card .contain { object-fit: contain; }</code></pre>
+
+      <p>
+        هر سه کارت زیر <strong>یک عکس عمودی</strong> را در قابی افقی به ارتفاع ۱۵۰ پیکسل نشان می‌دهند.
+        عرض و ارتفاع قاب در هر سه یکی است؛ تنها تفاوت، مقدار <code>object-fit</code> است.
+        در <code>fill</code> عکس له می‌شود تا قاب پر شود، در <code>cover</code> قاب پر می‌شود ولی بالا و پایین عکس بریده می‌شود، و در <code>contain</code> همهٔ عکس دیده می‌شود و دو طرف قاب خالی می‌ماند.
+      </p>
+
+      <div class="result">
+        <div class="demo-fit-grid">
+          <article class="demo-fit-card">
+            <div class="frame"><img class="fill" src="../images/food-3.jpg" alt=""></div>
+            <p class="caption"><code>fill</code> — کش می‌آید (بد)</p>
+          </article>
+          <article class="demo-fit-card">
+            <div class="frame"><img class="cover" src="../images/food-3.jpg" alt=""></div>
+            <p class="caption"><code>cover</code> — قاب را پر می‌کند (عالی)</p>
+          </article>
+          <article class="demo-fit-card">
+            <div class="frame"><img class="contain" src="../images/food-3.jpg" alt=""></div>
+            <p class="caption"><code>contain</code> — کل عکس دیده می‌شود</p>
+          </article>
+        </div>
+      </div>
+
+      <table class="ref">
+        <thead>
+          <tr>
+            <th>مقدار</th>
+            <th>رفتار</th>
+            <th>کی استفاده شود؟</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>cover</code></td>
+            <td>قاب را پر می‌کند؛ ممکن است لبه‌ها بریده شوند</td>
+            <td>کارت محصول، گالری، تامبنیل، آواتار</td>
+          </tr>
+          <tr>
+            <td><code>contain</code></td>
+            <td>کل عکس دیده می‌شود؛ ممکن است فضای خالی بماند</td>
+            <td>لوگو، عکس فنی که نباید بریده شود</td>
+          </tr>
+          <tr>
+            <td><code>fill</code> (پیش‌فرض)</td>
+            <td>کش می‌آید تا دقیقاً اندازه قاب شود</td>
+            <td>تقریباً هرگز در UI واقعی</td>
+          </tr>
+          <tr>
+            <td><code>none</code></td>
+            <td>اندازه اصلی عکس، بدون تغییر؛ اضافه‌اش بریده می‌شود</td>
+            <td>به‌ندرت؛ مثلاً نمایش بخشی از عکس بزرگ</td>
+          </tr>
+          <tr>
+            <td><code>scale-down</code></td>
+            <td>کوچک‌ترِ <code>none</code> و <code>contain</code>؛ هرگز عکس را بزرگ‌تر نمی‌کند</td>
+            <td>آیکون یا لوگوی کوچکی که نباید تار شود</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p class="realuse">
+        <strong>در دنیای واقعی:</strong>
+        تامبنیل فروشگاه، کارت غذا و تصویر شبکه‌ای گالری تقریباً همیشه <code>object-fit: cover</code> دارند.
+        هدف این است که همهٔ قاب‌ها هم‌اندازه بمانند و هیچ نوار خالی بین عکس‌ها نیفتد، حتی اگر عکس اصلی مربعی، افقی یا عمودی باشد.
+        بهای این یکدستی این است که لبه‌های عکس ممکن است دیده نشوند؛ اگر بریده شدن قابل قبول نیست، <code>contain</code> انتخاب درست‌تری است.
+      </p>
+
+      <p class="tip">
+        <code>object-fit</code> روی عناصری مثل <code>img</code> و <code>video</code> کار می‌کند، نه روی <code>div</code>.
+        برای background از <code>background-size: cover</code> استفاده کنید — مفهومش شبیه است.
+        با <code>object-position</code> (مثلاً <code>object-position: top;</code>) تعیین می‌کنید با <code>cover</code>
+        کدام بخش عکس بماند؛ شبیه <code>background-position</code>.
+      </p>
+
+      <p class="mistake">
+        <strong>اشتباه رایج:</strong>
+        نوشتن <code>object-fit: cover</code> بدون تعیین هر دو بعد. اگر <code>height</code> مقدار
+        <code>auto</code> باشد، قاب دقیقاً هم‌نسبت عکس است و <code>object-fit</code> هیچ اثری نمی‌گذارد.
+      </p>
+
+      <p class="exercise">
+        <strong>تمرین:</strong> سه عکس با ارتفاع ثابت ۱۴۰ پیکسل و <code>object-fit: cover</code> در یک ردیف بچینید.
+      </p>
+    </section>
+
+    <nav class="page-nav" aria-label="ناوبری درس‌ها">
+      <a href="04-avatar.html">→ قبلی</a>
+      <a href="../index.html">فهرست</a>
+      <a href="06-cards.html">بعدی: کارت محصول ←</a>
+    </nav>
+  </div>
+  <footer class="page-footer">تصاویر در CSS</footer>
+</body>
+</html>

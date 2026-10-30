@@ -1,0 +1,96 @@
+body {
+  margin: 0;
+  font-family: Tahoma, Arial, sans-serif;
+  line-height: 1.9;
+}
+
+.site-header {
+  background-color: #3b2314;
+  padding: 14px 24px;
+  text-align: center;
+}
+
+.logo {
+  color: #fed7aa;
+  font-size: 22px;
+  text-decoration: none;
+}
+
+.logo strong {
+  color: #fb923c;
+}
+
+.main-nav a {
+  display: inline-block;
+  color: white;
+  text-decoration: none;
+  padding: 2px 12px;
+  border-radius: 20px;
+}
+
+.main-nav a:hover,
+.main-nav a:focus {
+  background-color: #c2410c;
+}
+
+.hero {
+  background-color: #3b2314;
+  background-image: url("../../../../images/hero.jpg");
+  background-size: cover;
+  background-position: center;
+  padding: 90px 16px;
+  text-align: center;
+}
+
+.hero-box {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 24px;
+  background-color: rgba(59, 35, 20, 0.75);
+  border-radius: 12px;
+  color: white;
+}
+
+.hero-box h1 {
+  font-size: 32px;
+  color: #fed7aa;
+  margin-top: 0;
+}
+
+.btn {
+  display: inline-block;
+  background-color: #c2410c;
+  color: white;
+  padding: 10px 22px;
+  margin: 4px;
+  border: 2px solid #c2410c;
+  border-radius: 8px;
+  text-decoration: none;
+}
+
+.btn-outline {
+  background-color: transparent;
+  border-color: #fed7aa;
+  color: #fed7aa;
+}
+
+/* همه تغییرهای موبایل در همین یک بلوک */
+@media (max-width: 600px) {
+  .main-nav a {
+    padding: 2px 8px;
+    font-size: 14px;
+  }
+
+  .hero {
+    padding: 40px 12px;
+  }
+
+  .hero-box h1 {
+    font-size: 24px;
+  }
+
+  .btn {
+    display: block;
+    margin: 8px 0;
+  }
+}

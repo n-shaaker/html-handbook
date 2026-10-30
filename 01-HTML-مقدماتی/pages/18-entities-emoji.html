@@ -1,0 +1,270 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>۱۸) نویسه‌های ویژه، نمادها و ایموجی | جزوه HTML</title>
+    <link rel="stylesheet" href="../css/style.css" />
+  </head>
+
+  <body>
+    <header class="page-header">
+      <h1>جزوه HTML مقدماتی</h1>
+      <p>۱۸) نویسه‌های ویژه (Entities)، نمادها و ایموجی</p>
+    </header>
+
+    <div class="container">
+      <nav class="page-nav">
+        <a href="17-formatting-code.html">→ درس قبل</a>
+        <a href="../index.html">فهرست مطالب</a>
+        <a href="19-forms-advanced.html">درس بعد ←</a>
+      </nav>
+
+      <section class="lesson">
+        <h2>۱۸) Entityها — نوشتن نویسه‌های رزروشده</h2>
+        <p>
+          بعضی نویسه‌ها در HTML معنای خاص دارند. اگر در متن صفحه بنویسید <code>&lt;p&gt;</code>، مرورگر آن را شروع یک عنصر می‌داند و به‌صورت متن نشان نمی‌دهد.
+          برای نمایش خود این نویسه‌ها از ارجاع نویسه (Entity) استفاده می‌کنیم. هر ارجاع با <code>&amp;</code> شروع می‌شود و با <code>;</code> تمام می‌شود.
+          دو شکل رایج دارد: نام، مثل <code>&amp;lt;</code>، و شماره، مثل <code>&amp;#60;</code>. هر دو یک نویسه را می‌سازند.
+        </p>
+
+        <table class="ref">
+          <thead>
+            <tr>
+              <th>نتیجه</th>
+              <th>توضیح</th>
+              <th>نام Entity</th>
+              <th>شماره Entity</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>&lt;</td>
+              <td>کوچک‌تر</td>
+              <td><code>&amp;lt;</code></td>
+              <td><code>&amp;#60;</code></td>
+            </tr>
+            <tr>
+              <td>&gt;</td>
+              <td>بزرگ‌تر</td>
+              <td><code>&amp;gt;</code></td>
+              <td><code>&amp;#62;</code></td>
+            </tr>
+            <tr>
+              <td>&amp;</td>
+              <td>و (امپرسند)</td>
+              <td><code>&amp;amp;</code></td>
+              <td><code>&amp;#38;</code></td>
+            </tr>
+            <tr>
+              <td>&quot;</td>
+              <td>نقل‌قول دوتایی</td>
+              <td><code>&amp;quot;</code></td>
+              <td><code>&amp;#34;</code></td>
+            </tr>
+            <tr>
+              <td>&apos;</td>
+              <td>نقل‌قول تکی</td>
+              <td><code>&amp;apos;</code></td>
+              <td><code>&amp;#39;</code></td>
+            </tr>
+            <tr>
+              <td>(فاصله)</td>
+              <td>فاصله نشکن (Non-Breaking Space)</td>
+              <td><code>&amp;nbsp;</code></td>
+              <td><code>&amp;#160;</code></td>
+            </tr>
+            <tr>
+              <td>&copy;</td>
+              <td>حق نشر</td>
+              <td><code>&amp;copy;</code></td>
+              <td><code>&amp;#169;</code></td>
+            </tr>
+            <tr>
+              <td>&reg;</td>
+              <td>علامت ثبت‌شده</td>
+              <td><code>&amp;reg;</code></td>
+              <td><code>&amp;#174;</code></td>
+            </tr>
+            <tr>
+              <td>&trade;</td>
+              <td>علامت تجاری</td>
+              <td><code>&amp;trade;</code></td>
+              <td><code>&amp;#8482;</code></td>
+            </tr>
+          </tbody>
+        </table>
+
+        <pre class="code"><code>&lt;p&gt;برای پاراگراف از تگ &amp;lt;p&amp;gt; استفاده می‌کنیم.&lt;/p&gt;
+&lt;p&gt;&amp;copy; ۱۴۰۵ — همه حقوق محفوظ است.&lt;/p&gt;</code></pre>
+        <div class="result">
+          <p>برای پاراگراف از تگ &lt;p&gt; استفاده می‌کنیم.</p>
+          <p>&copy; ۱۴۰۵ — همه حقوق محفوظ است.</p>
+        </div>
+
+        <div class="tag-card">
+          <h4>&amp;nbsp; — فاصله نشکن</h4>
+          <p>
+            فاصلهٔ نشکن (Non-Breaking Space) دو کاربرد دارد. اول، دو بخش را در یک خط نگه می‌دارد تا مرورگر بین‌شان خط نشکند، مثل عدد و واحد در <code>10&amp;nbsp;km</code>.
+            دوم، چون مرورگر فاصله‌های پیاپی را یکی می‌کند، چند <code>&amp;nbsp;</code> فاصلهٔ بیشتر نشان می‌دهد.
+            برای فاصله‌گذاری چیدمان بهتر است از CSS استفاده کنید، نه از ردیف فاصلهٔ نشکن.
+          </p>
+          <pre class="code"><code>&lt;p&gt;یک     دو&lt;/p&gt;
+&lt;p&gt;یک&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;دو&lt;/p&gt;
+&lt;p&gt;مسافت تهران تا قم: ۱۴۰&amp;nbsp;کیلومتر&lt;/p&gt;</code></pre>
+          <div class="result">
+            <p>یک     دو</p>
+            <p>یک&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;دو</p>
+            <p>مسافت تهران تا قم: ۱۴۰&nbsp;کیلومتر</p>
+          </div>
+        </div>
+
+        <div class="tag-card">
+          <h4>&amp;zwnj; — نیم‌فاصله (ویژه متن فارسی)</h4>
+          <p>
+            نیم‌فاصله (Zero Width Non-Joiner) دو حرف را از هم جدا می‌کند بدون اینکه فاصلهٔ کامل بگذارد.
+            در فارسی برای شکل درست «می‌روم»، «کتاب‌ها» و «دانشگاه‌ها» لازم است.
+            در ویرایشگر معمولاً با <kbd>Shift</kbd> + <kbd>Space</kbd> در صفحه‌کلید استاندارد فارسی تایپ می‌شود.
+            در HTML می‌توان همان نویسه را با <code>&amp;zwnj;</code> یا <code>&amp;#8204;</code> هم نوشت. اگر مستقیم تایپ شود و پرونده UTF-8 باشد، همان هم کافی است.
+          </p>
+          <pre class="code"><code>&lt;p&gt;بدون نیم‌فاصله: میروم ، کتابها&lt;/p&gt;
+&lt;p&gt;با نیم‌فاصله: می&amp;zwnj;روم ، کتاب&amp;zwnj;ها&lt;/p&gt;</code></pre>
+          <div class="result">
+            <p>بدون نیم‌فاصله: میروم ، کتابها</p>
+            <p>با نیم‌فاصله: می&zwnj;روم ، کتاب&zwnj;ها</p>
+          </div>
+        </div>
+
+        <p class="tip">
+          <strong>نکته:</strong>
+          کدهای داخل جعبه‌های این جزوه با <code>&amp;lt;</code> و <code>&amp;gt;</code> نوشته شده‌اند تا تگ‌ها اجرا نشوند و فقط دیده شوند.
+          منبع صفحه را با <kbd>Ctrl</kbd> + <kbd>U</kbd> باز کنید تا همین نویسه‌ها را در کد ببینید.
+        </p>
+      </section>
+
+      <section class="lesson">
+        <h2>نمادها (Symbols)</h2>
+        <p>نویسه‌هایی مثل نماد ارز، عملگر ریاضی و پیکان روی صفحه‌کلید معمولی نیستند، اما می‌توان آن‌ها را با نام یا شمارهٔ Entity نوشت. اگر پرونده UTF-8 باشد، خیلی از همین نمادها را می‌توان مستقیم هم تایپ کرد.</p>
+
+        <table class="ref">
+          <thead>
+            <tr>
+              <th>نماد</th>
+              <th>کد</th>
+              <th>نماد</th>
+              <th>کد</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>&euro;</td>
+              <td><code>&amp;euro;</code></td>
+              <td>&times;</td>
+              <td><code>&amp;times;</code></td>
+            </tr>
+            <tr>
+              <td>&pound;</td>
+              <td><code>&amp;pound;</code></td>
+              <td>&divide;</td>
+              <td><code>&amp;divide;</code></td>
+            </tr>
+            <tr>
+              <td>&larr;</td>
+              <td><code>&amp;larr;</code></td>
+              <td>&ne;</td>
+              <td><code>&amp;ne;</code></td>
+            </tr>
+            <tr>
+              <td>&rarr;</td>
+              <td><code>&amp;rarr;</code></td>
+              <td>&le; &ge;</td>
+              <td><code>&amp;le;</code> <code>&amp;ge;</code></td>
+            </tr>
+            <tr>
+              <td>&uarr; &darr;</td>
+              <td><code>&amp;uarr;</code> <code>&amp;darr;</code></td>
+              <td>&infin;</td>
+              <td><code>&amp;infin;</code></td>
+            </tr>
+            <tr>
+              <td>&hearts;</td>
+              <td><code>&amp;hearts;</code></td>
+              <td>&deg;</td>
+              <td><code>&amp;deg;</code></td>
+            </tr>
+            <tr>
+              <td>&#65020;</td>
+              <td><code>&amp;#65020;</code> (ریال)</td>
+              <td>&check;</td>
+              <td><code>&amp;check;</code></td>
+            </tr>
+          </tbody>
+        </table>
+
+        <pre class="code"><code>&lt;p&gt;۵ &amp;times; ۴ = ۲۰ و دمای هوا ۲۵&amp;deg; است.&lt;/p&gt;</code></pre>
+        <div class="result">
+          <p>۵ &times; ۴ = ۲۰ و دمای هوا ۲۵&deg; است.</p>
+        </div>
+      </section>
+
+      <section class="lesson">
+        <h2>ایموجی‌ها و Charset</h2>
+        <p>
+          ایموجی هم نویسه است، مثل حرف، نه پروندهٔ تصویر. چون صفحه با
+          <code>&lt;meta charset="UTF-8"&gt;</code>
+          ذخیره و خوانده می‌شود، می‌توانید ایموجی را مستقیم تایپ کنید یا با کد عددی بنویسید.
+          اگر رمزگذاری صفحه UTF-8 نباشد، هم فارسی و هم ایموجی به‌هم می‌ریزد.
+        </p>
+        <pre class="code"><code>&lt;p&gt;مستقیم: 😀 🎉 ❤️&lt;/p&gt;
+&lt;p&gt;با کد عددی: &amp;#128512; &amp;#127881; &amp;#128640;&lt;/p&gt;
+&lt;p style="font-size: 48px;"&gt;&amp;#128512;&lt;/p&gt;</code></pre>
+        <div class="result">
+          <p>مستقیم: 😀 🎉 ❤️</p>
+          <p>با کد عددی: &#128512; &#127881; &#128640;</p>
+          <p style="font-size: 48px; margin: 0">&#128512;</p>
+        </div>
+
+        <p class="tip">
+          <strong>نکته:</strong>
+          چون ایموجی نویسه است، با <code>font-size</code> بزرگ و کوچک می‌شود. کد عددی را می‌توان شانزده‌شانزدهی هم نوشت: <code>&amp;#x1F600;</code> همان <code>&amp;#128512;</code> است.
+          ظاهر ایموجی در ویندوز، اندروید و iOS کمی فرق دارد، چون هر سیستم‌عامل قلم ایموجی خودش را دارد. معنا یکی است، شکل دقیقاً یکی نیست.
+        </p>
+
+        <p class="mistake">
+          <strong>خطای متداول:</strong>
+          فراموش کردن <code>&lt;meta charset="UTF-8"&gt;</code>، یا ذخیرهٔ پرونده با رمزگذاری دیگری.
+          نتیجه این است که حروف فارسی و ایموجی به شکل نویسه‌های نامفهوم، مثل <code>Ø³Ù„Ø§Ù…</code>، دیده می‌شوند.
+          هم اعلام charset و هم رمز واقعی پرونده باید UTF-8 باشد.
+        </p>
+
+        <h3>کدگذاری URL (URL Encoding)</h3>
+        <p>
+          نشانی‌ای که واقعاً روی شبکه فرستاده می‌شود فقط نویسه‌های محدودی را بدون تبدیل می‌پذیرد. فاصله، حروف فارسی و بسیاری از نمادها به شکل <code>%</code> به‌علاوهٔ کد تبدیل می‌شوند. فاصله معمولاً <code>%20</code> می‌شود.
+          مرورگر ممکن است نشانی فارسی را خوانا نشان دهد، اما در درخواست همان شکل کدشده را می‌فرستد.
+          به همین دلیل نام پرونده‌ها را انگلیسی، با حرف کوچک و بدون فاصله بگذارید: <code class="text-ok">about-me.html</code> به‌جای <code class="text-bad">درباره من.html</code>.
+        </p>
+
+        <p class="exercise">
+          <strong>تمرین:</strong>
+          یک پاصفحه بسازید که با <code>&amp;copy;</code>، سال، نام شما و یک ایموجی قلب تمام شود.
+          سپس جملهٔ «تگ &lt;img&gt; تگ پایانی ندارد» را طوری بنویسید که خود تگ در صفحه دیده شود و مرورگر آن را عنصر تصویر حساب نکند.
+        </p>
+
+        <p>
+          مطالعه بیشتر:
+          <a href="https://developer.mozilla.org/en-US/docs/Glossary/Character_reference" target="_blank" rel="noopener">Character reference (MDN)</a>،
+          <a href="https://developer.mozilla.org/en-US/docs/Glossary/Entity" target="_blank" rel="noopener">Entity (MDN)</a>،
+          <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/meta#charset" target="_blank" rel="noopener">meta charset (MDN)</a>
+        </p>
+      </section>
+
+      <nav class="page-nav">
+        <a href="17-formatting-code.html">→ درس قبل</a>
+        <a href="../index.html">فهرست مطالب</a>
+        <a href="19-forms-advanced.html">درس بعد ←</a>
+      </nav>
+    </div>
+
+    <footer class="page-footer">جزوه HTML مقدماتی</footer>
+  </body>
+</html>

@@ -1,0 +1,21 @@
+/* اندازه پیش‌فرض html در مرورگر ۱۶ پیکسل است */
+.card {
+  font-size: 18px;
+  font-family: Tahoma, sans-serif;
+}
+
+/* rem: نسبت به html ← ۱٫۵ × ۱۶ = ۲۴ پیکسل */
+.card-title {
+  font: bold 1.5rem Tahoma, sans-serif;
+}
+
+/* em: نسبت به والد ← ۰٫۸ × ۱۸ = ۱۴٫۴ پیکسل */
+.small {
+  font-size: 0.8em;
+}
+
+/* em تودرتو: ۰٫۸ × ۱۴٫۴ = ۱۱٫۵۲ پیکسل */
+.tiny {
+  font-size: 0.8em;
+  font-style: italic;
+}

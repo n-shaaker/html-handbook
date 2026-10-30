@@ -1,0 +1,33 @@
+/* تمرین ۳ — نقشه خراب ناحیه‌ها (پاسخ) */
+
+body {
+  font-family: Tahoma, sans-serif;
+  margin: 20px;
+  background-color: #f8f9fa;
+  color: #212529;
+}
+
+.page {
+  display: grid;
+  grid-template-columns: 200px 1fr 1fr;
+  grid-template-rows: 60px 120px 120px 50px;
+  /* درست شد: هر ردیف سه نام، و sidebar یک مستطیل */
+  grid-template-areas:
+    "header  header header"
+    "sidebar main   main"
+    "sidebar main   main"
+    "footer  footer footer";
+  gap: 8px;
+}
+
+.header  { grid-area: header; }
+.sidebar { grid-area: sidebar; }
+/* درست شد: نام باید با نقشه یکی باشد */
+.main    { grid-area: main; }
+/* درست شد: grid-area نام را بدون گیومه می‌گیرد */
+.footer  { grid-area: footer; }
+
+.page > * {
+  padding: 10px;
+  background-color: #e6fcf5;
+}

@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>۱۴) منوی کشویی (Dropdowns) | آموزش CSS سطح میانی</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/demos/dropdowns.css">
+</head>
+
+<body>
+
+  <header class="page-header">
+    <h1>آموزش CSS — سطح میانی</h1>
+    <p>۱۴) منوی کشویی (Dropdowns)</p>
+  </header>
+
+  <div class="container">
+
+    <nav class="page-nav" aria-label="ناوبری درس">
+      <a href="13-navbar.html">→ قبلی: Navigation Bar</a>
+      <a href="../index.html">فهرست درس‌ها</a>
+      <a href="15-attr-selectors.html">بعدی: Attribute Selectors ←</a>
+    </nav>
+
+    <section class="lesson" id="dropdowns">
+      <h2>۱۴) منوی کشویی (Dropdowns)</h2>
+      <p>
+        منوی کشویی فهرستی است که در حالت عادی پنهان است و با تعامل کاربر زیر یک دکمه یا لینک باز می‌شود.
+        ساختن آن چهار رفتار را کنار هم می‌گذارد که در درس‌های قبلی آمده‌اند.
+        ظرف منو <code>position: relative</code> می‌گیرد تا مرجع جای منوی باز باشد. خود فهرست بازشونده اول <code>display: none</code> است و هنگام باز شدن <code>display: block</code> می‌شود.
+        همان فهرست <code>position: absolute</code> دارد تا از جریان صفحه خارج شود و روی محتوای زیرش بنشیند، نه اینکه بقیه صفحه را به پایین هل بدهد.
+        <code>z-index</code> آن را بالای محتوای معمولی نگه می‌دارد. باز شدن هم با <code>:hover</code> برای ماوس و با <code>:focus-within</code> برای صفحه‌کلید انجام می‌شود، تا کاربری که با Tab حرکت می‌کند هم بتواند به لینک‌های داخل منو برسد.
+      </p>
+
+      <h3>مثال ۱: منوی «دسته‌بندی‌ها» در یک فروشگاه</h3>
+      <pre class="code"><code>&lt;div class="dropdown"&gt;
+  &lt;button type="button"&gt;دسته‌بندی‌ها ▾&lt;/button&gt;
+  &lt;div class="dropdown-content"&gt;
+    &lt;a href="books.html"&gt;کتاب&lt;/a&gt;
+    &lt;a href="stationery.html"&gt;لوازم تحریر&lt;/a&gt;
+    &lt;a href="games.html"&gt;بازی&lt;/a&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+      <pre class="code"><code>.dropdown {
+  position: relative;      /* مرجع برای منوی بازشونده */
+  display: inline-block;   /* هم‌عرض دکمه شود، نه کل خط */
+}
+
+.dropdown-content {
+  display: none;           /* اول پنهان */
+  position: absolute;      /* زیر دکمه، روی بقیه محتوا */
+  right: 0;                /* در صفحه راست‌چین، از لبه راست دکمه باز شود */
+  min-width: 160px;
+  background-color: white;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  z-index: 10;
+}
+
+.dropdown-content a {
+  display: block;          /* هر لینک یک ردیف کامل و قابل کلیک */
+  padding: 10px 14px;
+}
+
+.dropdown:hover .dropdown-content,
+.dropdown:focus-within .dropdown-content {
+  display: block;          /* با ماوس یا با Tab ظاهر شود */
+}</code></pre>
+      <div class="result demo-dd">
+        <div class="dropdown">
+          <button class="dd-btn" type="button">دسته‌بندی‌ها ▾</button>
+          <div class="dropdown-content">
+            <a href="#dropdowns">کتاب</a>
+            <a href="#dropdowns">لوازم تحریر</a>
+            <a href="#dropdowns">بازی</a>
+          </div>
+        </div>
+      </div>
+      <p class="tip">
+        <code>:focus-within</code> یعنی «وقتی خود عنصر یا یکی از فرزندانش فوکوس دارد».
+        با آن، کاربری که با کلید Tab روی دکمه می‌رود هم منو را می‌بیند و می‌تواند بین لینک‌ها حرکت کند.
+        منویی که فقط با <code>:hover</code> باز شود، برای کاربران کیبورد غیرقابل استفاده است.
+      </p>
+
+      <h3>مثال ۲: منوی کشویی داخل نوار منو</h3>
+      <p>همان سه کلاس، این بار روی یکی از <code>li</code>های نوار منوی درس ۱۳:</p>
+      <pre class="code"><code>.bar &gt; li { display: inline-block; }
+
+.bar &gt; li.dropdown { position: relative; }
+
+.bar &gt; li:hover &gt; a,
+.bar &gt; li:focus-within &gt; a {
+  background-color: #0f2740;   /* آیتم والد هم پررنگ بماند */
+}</code></pre>
+      <div class="result demo-dd">
+        <nav aria-label="نمونه منو با زیرمنو">
+          <ul class="bar">
+            <li><a href="#dropdowns">خانه</a></li>
+            <li class="dropdown">
+              <a href="#dropdowns">آموزش‌ها ▾</a>
+              <div class="dropdown-content">
+                <a href="#dropdowns">HTML</a>
+                <a href="#dropdowns">CSS</a>
+                <a href="#dropdowns">JavaScript</a>
+              </div>
+            </li>
+            <li><a href="#dropdowns">تماس</a></li>
+          </ul>
+        </nav>
+      </div>
+
+      <h3>مثال ۳: کارت اطلاعات با hover روی تصویر پروفایل</h3>
+      <p>Dropdown فقط برای لینک نیست؛ هر محتوایی را می‌شود این‌طور نمایش داد. <code>tabindex="0"</code> باعث می‌شود با Tab هم بشود به آن رسید:</p>
+      <pre class="code"><code>.profile:hover .info,
+.profile:focus-within .info {
+  display: block;
+}</code></pre>
+      <div class="result demo-dd">
+        <div class="dropdown profile" tabindex="0">
+          <img src="../images/bg.jpg" alt="عکس پروفایل سارا محمدی" class="avatar">
+          <div class="dropdown-content info">
+            <strong>سارا محمدی</strong>
+            <p>طراح وب — شیراز</p>
+          </div>
+        </div>
+      </div>
+
+      <p class="tip">
+        جهت باز شدن منو را با <code>right: 0</code> یا <code>left: 0</code> روی <code>.dropdown-content</code> تعیین می‌کنید.
+        در سایت راست‌چین معمولاً <code>right: 0</code> درست است (منو از لبه راست دکمه به سمت چپ باز می‌شود).
+        ولی برای دکمه‌ای که در انتهای چپ نوار است (مثل «حساب کاربری»)، <code>left: 0</code> بگذارید تا منو از صفحه بیرون نزند.
+      </p>
+
+      <p class="mistake">
+        <strong>اشتباه رایج:</strong>
+        فراموش کردن <code>z-index</code>؛ منوی باز شده زیر محتوای بعدی صفحه پنهان می‌شود.
+      </p>
+
+      <p class="mistake">
+        <strong>اشتباه رایج:</strong>
+        <code>overflow: hidden</code> روی نوار منو یا یکی از پدرها؛ منوی کشویی که از لبه پدر بیرون می‌زند بریده و ناپدید می‌شود.
+        همچنین اگر بین دکمه و منو فاصله (<code>margin-top</code>) بگذارید، تا ماوس از آن فاصله رد شود hover قطع می‌شود و منو بسته می‌شود.
+      </p>
+
+      <p class="exercise">
+        <strong>تمرین:</strong> یک دکمه «حساب کاربری ▾» در انتهای چپ یک نوار منو بسازید که با hover و با Tab گزینه‌های «پروفایل»، «سفارش‌های من» و «خروج» را نشان دهد
+        و منو از لبه چپ دکمه باز شود.
+      </p>
+    </section>
+
+    <nav class="page-nav" aria-label="ناوبری درس پایین">
+      <a href="13-navbar.html">→ قبلی: Navigation Bar</a>
+      <a href="../index.html">فهرست درس‌ها</a>
+      <a href="15-attr-selectors.html">بعدی: Attribute Selectors ←</a>
+    </nav>
+
+  </div>
+
+  <footer class="page-footer">
+    آموزش CSS سطح میانی
+  </footer>
+
+</body>
+
+</html>

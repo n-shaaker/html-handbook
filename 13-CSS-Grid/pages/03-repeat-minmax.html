@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>۳) repeat() و minmax() | آموزش CSS Grid</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/demos/repeat-minmax.css">
+</head>
+
+<body>
+
+  <header class="page-header">
+    <h1>آموزش CSS Grid — چیدمان شبکه‌ای</h1>
+    <p>۳) repeat() و minmax()</p>
+  </header>
+
+  <div class="container">
+
+    <nav class="page-nav" aria-label="ناوبری درس">
+      <a href="02-columns-rows.html">→ قبلی: ستون‌ها و ردیف‌ها</a>
+      <a href="../index.html">فهرست درس‌ها</a>
+      <a href="04-gap.html">بعدی: فاصله (gap) ←</a>
+    </nav>
+
+    <section class="lesson" id="repeat-minmax">
+      <h2>۳) repeat() و minmax()</h2>
+      <p>
+        نوشتن <code>1fr 1fr 1fr 1fr 1fr 1fr</code> هم خسته‌کننده است و هم احتمال اشتباه دارد.
+        تابع <code>repeat()</code> تکرار را برای ما می‌نویسد، و تابع <code>minmax()</code> به یک ستون یا ردیف
+        <strong>کمترین</strong> و <strong>بیشترین</strong> اندازه می‌دهد.
+      </p>
+
+      <h3>مثال ۱: <code>repeat(تعداد, اندازه)</code></h3>
+      <p>
+        <code>repeat(4, 1fr)</code> همان چهار بار نوشتن <code>1fr</code> است: چهار ستون که هر کدام یک سهم برابر از عرض ظرف می‌گیرند.
+        عدد اول تعداد تکرار است و مقدار دوم اندازهٔ هر ستون. برای ویترین فروشگاه، این یعنی کارت‌ها در هر ردیف هم‌عرض می‌مانند و ردیف بعد خودش ساخته می‌شود.
+      </p>
+      <pre class="code"><code>.shop {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);   /* همان 1fr 1fr 1fr 1fr */
+  gap: 8px;
+}</code></pre>
+      <div class="result demo-repeat">
+        <div class="grid shop">
+          <div class="box b1">۱. کتاب</div>
+          <div class="box b2">۲. دفتر</div>
+          <div class="box b3">۳. خودکار</div>
+          <div class="box b4">۴. کوله</div>
+          <div class="box b5">۵. ماشین‌حساب</div>
+          <div class="box b6">۶. جامدادی</div>
+          <div class="box b1">۷. خط‌کش</div>
+          <div class="box b2">۸. پاک‌کن</div>
+        </div>
+      </div>
+
+      <h3>مثال ۲: تکرار یک الگو</h3>
+      <p>داخل <code>repeat</code> می‌شود چند اندازه نوشت؛ کل الگو تکرار می‌شود. اینجا «ستون باریک، ستون پهن» دو بار تکرار شده:</p>
+      <pre class="code"><code>.pattern {
+  display: grid;
+  grid-template-columns: repeat(2, 80px 1fr);   /* 80px 1fr 80px 1fr */
+  gap: 8px;
+}</code></pre>
+      <div class="result demo-repeat">
+        <div class="grid pattern">
+          <div class="box b3">۱ 🕘</div>
+          <div class="box b1">۲. شنبه: ۸ تا ۲۲</div>
+          <div class="box b3">۳ 🕘</div>
+          <div class="box b1">۴. یکشنبه: ۸ تا ۲۲</div>
+          <div class="box b3">۵ 🕘</div>
+          <div class="box b1">۶. دوشنبه: ۸ تا ۲۲</div>
+          <div class="box b3">۷ 🕘</div>
+          <div class="box b1">۸. جمعه: ۱۰ تا ۱۸</div>
+        </div>
+      </div>
+
+      <h3>مثال ۳: <code>repeat</code> کنار اندازه‌های دیگر</h3>
+      <pre class="code"><code>.mixed {
+  display: grid;
+  grid-template-columns: 200px repeat(3, 1fr);   /* یک ستون ثابت + سه ستون مساوی */
+  gap: 8px;
+}</code></pre>
+      <div class="result demo-repeat">
+        <div class="grid mixed">
+          <div class="box b4">۱. فیلتر (۲۰۰px)</div>
+          <div class="box b2">۲</div>
+          <div class="box b2">۳</div>
+          <div class="box b2">۴</div>
+        </div>
+      </div>
+
+      <h3>مثال ۴: <code>minmax(کمترین, بیشترین)</code> برای ستون</h3>
+      <p>
+        ستون کناری آموزشگاه نباید از ۱۵۰ پیکسل باریک‌تر شود (متن می‌شکند) و نه از ۲۵۰ پیکسل پهن‌تر (جای محتوا را می‌گیرد).
+        پنجره را باریک و پهن کنید:
+      </p>
+      <pre class="code"><code>.school {
+  display: grid;
+  grid-template-columns: minmax(150px, 250px) 1fr;
+  gap: 8px;
+}</code></pre>
+      <div class="result demo-repeat">
+        <div class="grid school">
+          <div class="box b5">۱. منوی دوره‌ها (بین ۱۵۰ تا ۲۵۰px)</div>
+          <div class="box b6">۲. معرفی دوره HTML و CSS</div>
+        </div>
+      </div>
+
+      <h3>مثال ۵: <code>minmax</code> برای ردیف — حداقل ارتفاع، ولی رشد با محتوا</h3>
+      <p>
+        اگر به ردیف ارتفاع ثابت بدهید و متن زیاد شود، متن بیرون می‌زند.
+        با <code>minmax(80px, auto)</code> ردیف حداقل ۸۰ پیکسل است ولی اگر لازم بود بلندتر می‌شود:
+      </p>
+      <pre class="code"><code>.cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: minmax(80px, auto);
+  gap: 8px;
+}</code></pre>
+      <div class="result demo-repeat">
+        <div class="grid cards">
+          <div class="box b1">۱. کوتاه</div>
+          <div class="box b2">۲. این کارت متن خیلی بیشتری دارد؛ نظر یکی از مشتری‌های کافه که از فضای دنج و موسیقی آرام آنجا تعریف کرده است.</div>
+          <div class="box b3">۳. کوتاه</div>
+        </div>
+      </div>
+      <p>هر سه کارت هم‌قد شدند، چون همه در یک ردیف هستند و ردیف به اندازه بلندترین کارت رشد کرد.</p>
+
+      <table class="ref">
+        <tr>
+          <th>کد</th>
+          <th>معادل / معنی</th>
+        </tr>
+        <tr>
+          <td><code>repeat(3, 1fr)</code></td>
+          <td><code>1fr 1fr 1fr</code></td>
+        </tr>
+        <tr>
+          <td><code>repeat(2, 100px 1fr)</code></td>
+          <td><code>100px 1fr 100px 1fr</code></td>
+        </tr>
+        <tr>
+          <td><code>minmax(150px, 1fr)</code></td>
+          <td>حداقل ۱۵۰ پیکسل، حداکثر یک سهم</td>
+        </tr>
+        <tr>
+          <td><code>minmax(80px, auto)</code></td>
+          <td>حداقل ۸۰ پیکسل، اگر محتوا زیاد بود بلندتر</td>
+        </tr>
+      </table>
+
+      <p class="mistake">
+        <strong>اشتباه رایج:</strong>
+        جا انداختن ویرگول داخل <code>repeat</code>: <code>repeat(3 1fr)</code>.
+        در <code>repeat</code> و <code>minmax</code> ویرگول <strong>لازم</strong> است (برخلاف خود <code>grid-template-columns</code> که ویرگول نمی‌خواهد).
+        بدون ویرگول کل خط نامعتبر است و شبکه یک‌ستونه می‌ماند.
+      </p>
+
+      <p class="mistake">
+        <strong>اشتباه رایج:</strong>
+        نوشتن <code>fr</code> به‌عنوان کمترین مقدار: <code>minmax(1fr, 200px)</code>.
+        مقدار اول <code>minmax</code> نمی‌تواند <code>fr</code> باشد؛ <code>fr</code> فقط در جای «بیشترین» معنی دارد.
+      </p>
+
+      <p class="exercise">
+        <strong>تمرین:</strong> جدول «برنامه کلاس‌های هفته» آموزشگاه را با یک شبکه بسازید:
+        یک ستون ۱۰۰ پیکسلی برای ساعت و بعد ۶ ستون مساوی برای شنبه تا پنجشنبه (با <code>repeat</code>).
+        ارتفاع ردیف‌ها حداقل ۶۰ پیکسل باشد ولی اگر اسم درس طولانی بود، بلندتر شود.
+      </p>
+    </section>
+
+    <nav class="page-nav" aria-label="ناوبری درس پایین">
+      <a href="02-columns-rows.html">→ قبلی: ستون‌ها و ردیف‌ها</a>
+      <a href="../index.html">فهرست درس‌ها</a>
+      <a href="04-gap.html">بعدی: فاصله (gap) ←</a>
+    </nav>
+
+  </div>
+
+  <footer class="page-footer">
+    آموزش CSS Grid
+  </footer>
+
+</body>
+
+</html>

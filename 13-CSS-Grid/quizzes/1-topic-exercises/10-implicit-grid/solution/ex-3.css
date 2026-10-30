@@ -1,0 +1,32 @@
+/* تمرین ۳ — گالری سوراخ‌سوراخ (پاسخ) */
+
+body {
+  font-family: Tahoma, sans-serif;
+  margin: 20px;
+  background-color: #f8f9fa;
+  color: #212529;
+}
+
+/*
+  درست شد: grid-template-rows فقط ردیف اول را می‌ساخت؛ grid-auto-rows همه را.
+  درست شد: dense خانه‌های خالی قبلی را با آیتم‌های بعدی پر می‌کند؛
+  یعنی ترتیب نمایش ممکن است با ترتیب HTML فرق کند.
+*/
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-auto-rows: 100px;
+  grid-auto-flow: dense;
+  gap: 8px;
+}
+
+.plant {
+  background-color: #8ce99a;
+  padding: 8px;
+}
+
+.wide {
+  grid-column: span 2;
+  background-color: #2f9e44;
+  color: white;
+}

@@ -1,0 +1,34 @@
+/* تمرین ۲ — auto-fill در برابر auto-fit (پاسخ) */
+
+body {
+  font-family: Tahoma, sans-serif;
+  margin: 20px;
+  background-color: #f8f9fa;
+  color: #212529;
+}
+
+/*
+  auto-fill ستون‌های خالی را نگه می‌دارد؛
+  auto-fit ستون‌های خالی را جمع می‌کند و کارت‌ها کش می‌آیند.
+*/
+.row {
+  display: grid;
+  gap: 10px;
+  background-color: #f1f3f5;
+  padding: 10px;
+}
+
+.fill {
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+}
+
+.fit {
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+}
+
+.card {
+  background-color: #4263eb;
+  color: white;
+  padding: 20px;
+  text-align: center;
+}

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>تمرین ۳ — فرم کامل رزرو</title>
+  <link rel="stylesheet" href="ex-3.css">
+</head>
+
+<body>
+  <main class="container">
+    <h1>رزرو میز</h1>
+    <form action="#" method="post" class="reserve-form">
+      <label for="name">نام و نام خانوادگی</label>
+      <input type="text" id="name" name="name" required>
+
+      <label for="phone">شماره موبایل</label>
+      <input type="tel" id="phone" name="phone" dir="ltr" placeholder="09123456789"
+        pattern="09[0-9]{9}" title="شماره موبایل ۱۱ رقمی که با ۰۹ شروع می‌شود" required>
+
+      <label for="date">تاریخ</label>
+      <input type="date" id="date" name="date" required>
+
+      <label for="time">ساعت (۱۲ تا ۲۳)</label>
+      <input type="time" id="time" name="time" min="12:00" max="23:00" required>
+
+      <label for="guests">تعداد نفرات</label>
+      <input type="number" id="guests" name="guests" min="1" max="20" value="2">
+
+      <label for="area">محل نشستن</label>
+      <select id="area" name="area">
+        <option value="hall">سالن اصلی</option>
+        <option value="bed">تخت سنتی</option>
+        <option value="yard">حیاط</option>
+      </select>
+
+      <fieldset>
+        <legend>مناسبت</legend>
+        <label class="inline"><input type="radio" name="occasion" value="birthday"> تولد</label>
+        <label class="inline"><input type="radio" name="occasion" value="anniversary"> سالگرد</label>
+        <label class="inline"><input type="radio" name="occasion" value="work"> کاری</label>
+        <label class="inline"><input type="radio" name="occasion" value="none" checked> هیچ‌کدام</label>
+      </fieldset>
+
+      <label for="note">توضیحات (اختیاری)</label>
+      <textarea id="note" name="note" rows="3" placeholder="مثلاً: صندلی کودک لازم داریم"></textarea>
+
+      <label class="inline"><input type="checkbox" name="rules" required> قوانین رزرو را می‌پذیرم</label>
+
+      <button type="submit" class="btn">ثبت رزرو</button>
+    </form>
+  </main>
+</body>
+
+</html>

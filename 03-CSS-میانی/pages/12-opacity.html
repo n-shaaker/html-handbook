@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>۱۲) شفافیت (Opacity) | آموزش CSS سطح میانی</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/demos/opacity.css">
+</head>
+
+<body>
+
+  <header class="page-header">
+    <h1>آموزش CSS — سطح میانی</h1>
+    <p>۱۲) شفافیت (Opacity)</p>
+  </header>
+
+  <div class="container">
+
+    <nav class="page-nav" aria-label="ناوبری درس">
+      <a href="11-pseudo-elements.html">→ قبلی: Pseudo-elements</a>
+      <a href="../index.html">فهرست درس‌ها</a>
+      <a href="13-navbar.html">بعدی: Navigation Bar ←</a>
+    </nav>
+
+    <section class="lesson" id="opacity">
+      <h2>۱۲) شفافیت (Opacity)</h2>
+      <p>
+        <code>opacity</code> میزان مات بودن کل عنصر را تعیین می‌کند. مقدار <code>1</code> کاملاً مات است و مقدار <code>0</code> کاملاً نامرئی. بین این دو، مثلاً <code>0.5</code> یا <code>50%</code>، عنصر نیمه‌شفاف دیده می‌شود.
+        این ویژگی روی خود عنصر و همه فرزندانش با هم اثر می‌گذارد. فرزند نمی‌تواند با <code>opacity: 1</code> از شفافیت پدر خارج شود، چون شفافیت‌ها در هم ضرب می‌شوند.
+        عنصری با <code>opacity: 0</code> دیده نمی‌شود، ولی هنوز جا دارد و می‌توان روی آن کلیک کرد. برای حذف از چیدمان باید از <code>display: none</code> استفاده کرد.
+        اگر فقط پس‌زمینه باید شفاف باشد و متن خوانا بماند، به‌جای <code>opacity</code> از رنگ <code>rgba</code> یا شکل جدید <code>rgb(… / …)</code> استفاده کنید.
+      </p>
+
+      <h3>مثال ۱: درجه‌های مختلف شفافیت</h3>
+      <pre class="code"><code>.o1 { opacity: 0.2; }
+.o2 { opacity: 0.5; }
+.o3 { opacity: 0.8; }
+.o4 { opacity: 1; }</code></pre>
+      <div class="result demo-op">
+        <img src="../images/bg.jpg" alt="تصویر با شفافیت ۰٫۲" class="pic o1">
+        <img src="../images/bg.jpg" alt="تصویر با شفافیت ۰٫۵" class="pic o2">
+        <img src="../images/bg.jpg" alt="تصویر با شفافیت ۰٫۸" class="pic o3">
+        <img src="../images/bg.jpg" alt="تصویر بدون شفافیت" class="pic o4">
+      </div>
+
+      <h3>مثال ۲: واضح شدن با hover (گالری محصولات)</h3>
+      <pre class="code"><code>.gallery img {
+  opacity: 0.5;
+  transition: opacity 0.3s;   /* تغییر نرم */
+}
+
+.gallery img:hover {
+  opacity: 1;
+}</code></pre>
+      <div class="result demo-op">
+        <div class="gallery">
+          <img src="../images/bg.jpg" alt="تصویر ۱">
+          <img src="../images/bg.jpg" alt="تصویر ۲">
+          <img src="../images/bg.jpg" alt="تصویر ۳">
+        </div>
+      </div>
+
+      <h3>مثال ۳: دکمه غیرفعال (مثلاً «افزودن به سبد» برای کالای ناموجود)</h3>
+      <pre class="code"><code>.btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}</code></pre>
+      <div class="result demo-op">
+        <button class="btn" type="button">افزودن به سبد</button>
+        <button class="btn" type="button" disabled>ناموجود</button>
+      </div>
+
+      <h3>مثال ۴: opacity یا rgba؟ (مهم)</h3>
+      <p>
+        <code>opacity</code> کل عنصر را <strong>همراه با متن داخلش</strong> کم‌رنگ می‌کند.
+        اگر فقط پس‌زمینه باید شفاف شود، از <code>rgba</code> استفاده کنید:
+      </p>
+      <pre class="code"><code>.box-op   { background: rgb(26, 95, 180); opacity: 0.4; }      /* متن هم کم‌رنگ شد */
+.box-rgba { background: rgba(26, 95, 180, 0.4); }               /* فقط پس‌زمینه */</code></pre>
+      <div class="result demo-op">
+        <div class="bg-photo">
+          <div class="box-op">با opacity — متن هم کم‌رنگ است</div>
+          <div class="box-rgba">با rgba — متن کاملاً واضح است</div>
+        </div>
+      </div>
+      <p class="tip">
+        در CSS امروزی همین را می‌توانید کوتاه‌تر هم بنویسید: <code>rgb(26 95 180 / 40%)</code> (بدون ویرگول و با <code>/</code> برای شفافیت).
+      </p>
+
+      <p class="mistake">
+        <strong>اشتباه رایج:</strong>
+        نوشتن عدد بزرگ‌تر از ۱ مثل <code>opacity: 50</code>. مقدار درست <code>0.5</code> یا به شکل درصد <code>50%</code> است.
+      </p>
+
+      <p class="mistake">
+        <strong>اشتباه رایج:</strong>
+        فکر کنیم می‌شود فرزند یک عنصر کم‌رنگ را با <code>opacity: 1</code> دوباره پررنگ کرد. نمی‌شود؛
+        <code>opacity</code> روی کل عنصر و همه فرزندانش با هم اعمال می‌شود. راه حل همان <code>rgba</code> برای پس‌زمینه است.
+      </p>
+
+      <p class="tip">
+        عنصری که <code>opacity: 0</code> دارد دیده نمی‌شود ولی هنوز جا دارد و <strong>کلیک‌پذیر</strong> است.
+        برای پنهان کردن واقعی از <code>display: none</code> یا <code>visibility: hidden</code> استفاده کنید.
+        همچنین برای دکمه غیرفعال، فقط کم‌رنگ کردن کافی نیست؛ ویژگی <code>disabled</code> در HTML لازم است تا واقعاً کلیک نشود.
+      </p>
+
+      <p class="exercise">
+        <strong>تمرین:</strong> یک کارت با تصویر پس‌زمینه بسازید که روی آن یک نوار متن با <code>rgba(0, 0, 0, 0.6)</code> قرار بگیرد.
+      </p>
+    </section>
+
+    <nav class="page-nav" aria-label="ناوبری درس پایین">
+      <a href="11-pseudo-elements.html">→ قبلی: Pseudo-elements</a>
+      <a href="../index.html">فهرست درس‌ها</a>
+      <a href="13-navbar.html">بعدی: Navigation Bar ←</a>
+    </nav>
+
+  </div>
+
+  <footer class="page-footer">
+    آموزش CSS سطح میانی
+  </footer>
+
+</body>
+
+</html>

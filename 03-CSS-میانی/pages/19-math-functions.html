@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>۱۹) توابع ریاضی (Math Functions) | آموزش CSS سطح میانی</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/demos/math-functions.css">
+</head>
+
+<body>
+
+  <header class="page-header">
+    <h1>آموزش CSS — سطح میانی</h1>
+    <p>۱۹) توابع ریاضی (Math Functions)</p>
+  </header>
+
+  <div class="container">
+
+    <nav class="page-nav" aria-label="ناوبری درس">
+      <a href="18-units.html">→ قبلی: Units</a>
+      <a href="../index.html">فهرست درس‌ها</a>
+      <a href="20-layout.html">بعدی: Website Layout ←</a>
+    </nav>
+
+    <section class="lesson" id="math-functions">
+      <h2>۱۹) توابع ریاضی (Math Functions)</h2>
+      <p>
+        تابع‌های ریاضی CSS اجازه می‌دهند طول را همان‌جا که می‌نویسیم حساب کنیم و واحدهای مختلف را در یک مقدار مخلوط کنیم؛ مثلاً درصدی از عرض پدر را منهای چند پیکسل ثابت.
+        <code>calc()</code> یک عبارت با جمع، تفریق، ضرب و تقسیم را حساب می‌کند. دور علامت‌های <code>+</code> و <code>-</code> باید فاصله باشد، وگرنه مرورگر عبارت را نامعتبر می‌خواند.
+        <code>min()</code> از بین چند مقدار، کوچک‌ترین را برمی‌گزیند و <code>max()</code> بزرگ‌ترین را. <code>clamp(کمینه, دلخواه, بیشینه)</code> مقدار دلخواه را بین یک کف و یک سقف نگه می‌دارد: اگر دلخواه از کمینه کوچک‌تر شود، کمینه اعمال می‌شود و اگر از بیشینه بزرگ‌تر شود، بیشینه.
+      </p>
+      <table class="ref">
+        <tr>
+          <th>تابع</th>
+          <th>به زبان ساده</th>
+        </tr>
+        <tr>
+          <td><code>calc()</code></td>
+          <td>یک محاسبه انجام بده (+ − × ÷)</td>
+        </tr>
+        <tr>
+          <td><code>min()</code></td>
+          <td>از بین چند مقدار، <strong>کوچک‌ترین</strong> را بردار</td>
+        </tr>
+        <tr>
+          <td><code>max()</code></td>
+          <td>از بین چند مقدار، <strong>بزرگ‌ترین</strong> را بردار</td>
+        </tr>
+        <tr>
+          <td><code>clamp(کمینه, دلخواه, بیشینه)</code></td>
+          <td>مقدار دلخواه را بین یک حداقل و حداکثر نگه دار</td>
+        </tr>
+      </table>
+
+      <h3>مثال ۱: <code>calc()</code> — عرض منهای یک مقدار ثابت</h3>
+      <pre class="code"><code>.layout  { display: flex; }               /* دو ستون کنار هم */
+.sidebar { width: 120px; }
+.main    { width: calc(100% - 120px); }   /* بقیه جا */</code></pre>
+      <div class="result demo-math">
+        <div class="layout">
+          <div class="sidebar">ستون کناری ۱۲۰px</div>
+          <div class="main">ستون اصلی: calc(100% - 120px)</div>
+        </div>
+      </div>
+      <p class="mistake">
+        <strong>اشتباه رایج:</strong>
+        دور <code>+</code> و <code>-</code> در <code>calc</code> حتماً باید فاصله باشد: <code>calc(100%-120px)</code> کار نمی‌کند
+        (چون <code>-120px</code> یک عدد منفی خوانده می‌شود). برای <code>*</code> و <code>/</code> فاصله الزامی نیست، ولی برای خوانایی بهتر است بگذارید.
+      </p>
+      <p class="tip">
+        در <code>calc</code> ضرب و تقسیم باید با «عدد بدون واحد» باشد: <code>calc(100% / 3)</code> درست است، ولی <code>calc(100% / 3px)</code> نامعتبر است.
+      </p>
+
+      <h3>مثال ۲: <code>calc()</code> — سه ستون با فاصله دقیق</h3>
+      <pre class="code"><code>.cols {
+  display: flex;
+  gap: 20px;                        /* دو فاصله ۲۰ پیکسلی بین سه ستون */
+}
+
+.col {
+  width: calc((100% - 40px) / 3);   /* دو فاصله کم شود، بقیه تقسیم بر ۳ */
+}</code></pre>
+      <div class="result demo-math">
+        <div class="cols">
+          <div class="col">۱</div>
+          <div class="col">۲</div>
+          <div class="col">۳</div>
+        </div>
+      </div>
+      <p class="tip">
+        در عمل، با Flexbox می‌توانید به‌جای این حساب فقط <code>flex: 1</code> بنویسید (درس ۲۰).
+        <code>calc</code> وقتی لازم است که عرض دقیق بخواهید؛ مثلاً هر کارت دقیقاً یک‌سوم ردیف باشد حتی اگر تعداد کارت‌های ردیف آخر کمتر باشد.
+      </p>
+
+      <h3>مثال ۳: <code>min()</code> — حداکثر عرض بدون max-width</h3>
+      <p>
+        <code>min(90%, 400px)</code> هر دو مقدار را حساب می‌کند و کوچک‌تر را برمی‌گزیند. در صفحه پهن، ۴۰۰ پیکسل کوچک‌تر از ۹۰ درصد است، پس عرض ۴۰۰ می‌ماند. در صفحه باریک، ۹۰ درصد کوچک‌تر می‌شود و همان اعمال می‌شود.
+        نتیجه شبیه ترکیب <code>width: 90%</code> و <code>max-width: 400px</code> است: یک سقف پیکسلی، با جمع شدن در عرض کم.
+      </p>
+      <pre class="code"><code>.card-min {
+  width: min(90%, 400px);   /* هر کدام کوچک‌تر بود */
+  margin: 0 auto;
+}</code>      </pre>
+      <div class="result demo-math">
+        <div class="card-min">در صفحه بزرگ ۴۰۰px، در موبایل ۹۰٪</div>
+      </div>
+
+      <h3>مثال ۴: <code>max()</code> — حداقل اندازه</h3>
+      <pre class="code"><code>.note-max { font-size: max(14px, 1.2vw); }   /* هیچ‌وقت کمتر از ۱۴px نشود */</code></pre>
+      <p>
+        نام تابع‌ها از دید ریاضی است، نه از دید «حداکثر عرض طراحی». <code>min()</code> کوچک‌ترین عدد را برمی‌دارد، پس در عمل سقف اندازه را می‌سازد. <code>max()</code> بزرگ‌ترین عدد را برمی‌دارد، پس اندازه از کف تعیین‌شده پایین‌تر نمی‌رود.
+        در این مثال، <code>max(14px, 1.2vw)</code> یعنی اگر ۱٫۲ درصد عرض پنجره از ۱۴ پیکسل کوچک‌تر شد، همان ۱۴ پیکسل استفاده شود تا متن ناخوانا ریز نشود.
+      </p>
+      <div class="result demo-math">
+        <p class="note-max">این متن در صفحه کوچک هم خوانا می‌ماند.</p>
+      </div>
+
+      <h3>مثال ۵: <code>clamp()</code> — فونت واکنش‌گرا</h3>
+      <pre class="code"><code>.clamp-title {
+  font-size: clamp(18px, 5vw, 40px);
+  /* حداقل 18px، معمولاً 5vw، حداکثر 40px */
+}</code></pre>
+      <div class="result demo-math">
+        <p class="clamp-title">پنجره را بزرگ و کوچک کنید</p>
+      </div>
+
+      <p class="tip">
+        <code>clamp()</code> یکی از کاربردی‌ترین ابزارهای CSS مدرن است؛ با یک خط، فونت در موبایل و دسکتاپ هر دو مناسب می‌شود.
+        برای اینکه فونت با زوم مرورگر هم بزرگ شود، در مقدار وسط <code>rem</code> را با <code>vw</code> جمع کنید:
+        <code>clamp(1.125rem, 1rem + 2vw, 2.5rem)</code>. داخل <code>clamp</code>، <code>min</code> و <code>max</code> نیازی به نوشتن <code>calc</code> نیست.
+      </p>
+
+      <p class="mistake">
+        <strong>اشتباه رایج:</strong>
+        جابه‌جا نوشتن ترتیب آرگومان‌های <code>clamp</code>. ترتیب همیشه «کمینه، مقدار دلخواه، بیشینه» است؛
+        اگر کمینه از بیشینه بزرگ‌تر باشد، همیشه کمینه برنده می‌شود و مقدار هرگز تغییر نمی‌کند.
+      </p>
+
+      <p class="exercise">
+        <strong>تمرین:</strong> یک تیتر بسازید که با <code>clamp(20px, 4vw, 48px)</code> اندازه‌اش تغییر کند و یک جعبه با <code>width: calc(100% - 40px)</code>.
+      </p>
+    </section>
+
+    <nav class="page-nav" aria-label="ناوبری درس پایین">
+      <a href="18-units.html">→ قبلی: Units</a>
+      <a href="../index.html">فهرست درس‌ها</a>
+      <a href="20-layout.html">بعدی: Website Layout ←</a>
+    </nav>
+
+  </div>
+
+  <footer class="page-footer">
+    آموزش CSS سطح میانی
+  </footer>
+
+</body>
+
+</html>

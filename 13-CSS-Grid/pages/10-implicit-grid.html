@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>۱۰) شبکه ضمنی (grid-auto) | آموزش CSS Grid</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/demos/implicit-grid.css">
+</head>
+
+<body>
+
+  <header class="page-header">
+    <h1>آموزش CSS Grid — چیدمان شبکه‌ای</h1>
+    <p>۱۰) شبکه ضمنی (grid-auto)</p>
+  </header>
+
+  <div class="container">
+
+    <nav class="page-nav" aria-label="ناوبری درس">
+      <a href="09-auto-fit-fill.html">→ قبلی: auto-fill و auto-fit</a>
+      <a href="../index.html">فهرست درس‌ها</a>
+      <a href="11-grid-vs-flex.html">بعدی: Grid یا Flexbox؟ ←</a>
+    </nav>
+
+    <section class="lesson" id="implicit-grid">
+      <h2>۱۰) شبکه ضمنی (grid-auto)</h2>
+      <p>
+        ستون‌ها و ردیف‌هایی که خودمان با <code>grid-template-...</code> می‌نویسیم <strong>شبکه صریح (explicit)</strong> هستند.
+        اگر آیتم‌ها از خانه‌های این شبکه بیشتر باشند، مرورگر <strong>خودش</strong> ردیف (یا ستون) تازه می‌سازد.
+        به این ردیف‌های خودکار <strong>شبکه ضمنی (implicit)</strong> می‌گوییم. در این درس یاد می‌گیریم اندازه و جهت آن‌ها را کنترل کنیم.
+      </p>
+
+      <h3>مثال ۱: ردیف اضافه‌ای که خودمان ننوشتیم</h3>
+      <p>فقط دو ردیف ۷۰ پیکسلی نوشته‌ایم، ولی ۸ آیتم داریم. ردیف سوم خودکار ساخته شده و ارتفاعش فقط به اندازه متن است:</p>
+      <pre class="code"><code>.explicit {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: 70px 70px;   /* فقط دو ردیف */
+  gap: 8px;
+}</code></pre>
+      <div class="result demo-implicit">
+        <div class="grid explicit">
+          <div class="box b1">۱</div>
+          <div class="box b2">۲</div>
+          <div class="box b3">۳</div>
+          <div class="box b4">۴</div>
+          <div class="box b5">۵</div>
+          <div class="box b6">۶</div>
+          <div class="box b1">۷ (ردیف ضمنی)</div>
+          <div class="box b2">۸ (ردیف ضمنی)</div>
+        </div>
+      </div>
+      <p class="mistake">
+        <strong>اشتباه رایج:</strong>
+        برای لیست محصولاتی که تعدادش از دیتابیس می‌آید، <code>grid-template-rows</code> می‌نویسیم.
+        وقتی محصول‌ها زیاد شوند، ردیف‌های جدید ارتفاع ما را نمی‌گیرند (مثل آیتم ۷ و ۸). وقتی تعداد ردیف را نمی‌دانید از <code>grid-auto-rows</code> استفاده کنید.
+      </p>
+
+      <h3>مثال ۲: <code>grid-auto-rows</code> — اندازه همه ردیف‌های خودکار</h3>
+      <pre class="code"><code>.auto-rows {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-auto-rows: 70px;   /* هر ردیفی که ساخته شود */
+  gap: 8px;
+}</code></pre>
+      <div class="result demo-implicit">
+        <div class="grid auto-rows">
+          <div class="box b1">۱</div>
+          <div class="box b2">۲</div>
+          <div class="box b3">۳</div>
+          <div class="box b4">۴</div>
+          <div class="box b5">۵</div>
+          <div class="box b6">۶</div>
+          <div class="box b1">۷</div>
+          <div class="box b2">۸</div>
+        </div>
+      </div>
+      <p class="tip">
+        بهتر از عدد ثابت، <code>grid-auto-rows: minmax(70px, auto);</code> است: حداقل ۷۰ پیکسل، ولی اگر متن کارت زیاد شد بلندتر می‌شود.
+      </p>
+
+      <h3>مثال ۳: <code>grid-auto-flow: column</code> — پر کردن ستونی</h3>
+      <p>
+        حالت پیش‌فرض <code>row</code> است: آیتم‌ها ردیف به ردیف پر می‌شوند. با <code>column</code> ستون به ستون پر می‌شوند
+        و ستون‌های تازه ساخته می‌شوند؛ اندازه آن ستون‌ها را <code>grid-auto-columns</code> تعیین می‌کند:
+      </p>
+      <pre class="code"><code>.flow-column {
+  display: grid;
+  grid-template-rows: repeat(2, 60px);   /* دو ردیف */
+  grid-auto-flow: column;                /* ستونی پر شود */
+  grid-auto-columns: 100px;              /* هر ستون تازه ۱۰۰ پیکسل */
+  gap: 8px;
+}</code></pre>
+      <div class="result demo-implicit">
+        <div class="grid flow-column">
+          <div class="box b1">۱</div>
+          <div class="box b2">۲</div>
+          <div class="box b3">۳</div>
+          <div class="box b4">۴</div>
+          <div class="box b5">۵</div>
+          <div class="box b6">۶</div>
+          <div class="box b1">۷</div>
+        </div>
+      </div>
+      <p>به ترتیب شماره‌ها دقت کنید: ۱ و ۲ زیر هم در ستون راست، بعد ۳ و ۴ در ستون بعدی، و همین‌طور به سمت چپ.</p>
+
+      <h3>مثال ۴: سوراخ‌های شبکه و <code>grid-auto-flow: dense</code></h3>
+      <p>
+        وقتی بعضی آیتم‌ها دو ستون می‌گیرند و در ادامه ردیف جا نمی‌شوند، به ردیف بعد می‌روند و یک خانه خالی (سوراخ) جا می‌گذارند.
+        با <code>dense</code> مرورگر آیتم‌های کوچک بعدی را برمی‌گرداند تا سوراخ‌ها را پر کند:
+      </p>
+      <pre class="code"><code>.wide { grid-column: span 2; }
+
+.holes { grid-auto-flow: row; }     /* پیش‌فرض */
+.dense { grid-auto-flow: dense; }   /* پر کردن سوراخ‌ها */</code></pre>
+      <div class="result demo-implicit">
+        <p class="label">بدون dense (به خانه‌های خالی دقت کنید):</p>
+        <div class="grid holes">
+          <div class="box b1">۱</div>
+          <div class="box b4 wide">۲ (پهن)</div>
+          <div class="box b4 wide">۳ (پهن)</div>
+          <div class="box b2">۴</div>
+          <div class="box b3">۵</div>
+          <div class="box b4 wide">۶ (پهن)</div>
+          <div class="box b5">۷</div>
+        </div>
+        <p class="label">با dense:</p>
+        <div class="grid dense">
+          <div class="box b1">۱</div>
+          <div class="box b4 wide">۲ (پهن)</div>
+          <div class="box b4 wide">۳ (پهن)</div>
+          <div class="box b2">۴</div>
+          <div class="box b3">۵</div>
+          <div class="box b4 wide">۶ (پهن)</div>
+          <div class="box b5">۷</div>
+        </div>
+      </div>
+      <p class="mistake">
+        <strong>اشتباه رایج:</strong>
+        استفاده از <code>dense</code> برای محتوایی که ترتیبش مهم است (مثل مراحل ثبت‌نام یا اخبار به ترتیب تاریخ).
+        <code>dense</code> ترتیب دیداری را به‌هم می‌زند؛ فقط برای چیزهایی مثل گالری عکس که ترتیب مهم نیست مناسب است.
+      </p>
+
+      <table class="ref">
+        <tr>
+          <th>ویژگی</th>
+          <th>کار</th>
+        </tr>
+        <tr>
+          <td><code>grid-auto-rows</code></td>
+          <td>ارتفاع ردیف‌هایی که خودکار ساخته می‌شوند</td>
+        </tr>
+        <tr>
+          <td><code>grid-auto-columns</code></td>
+          <td>پهنای ستون‌هایی که خودکار ساخته می‌شوند</td>
+        </tr>
+        <tr>
+          <td><code>grid-auto-flow: row</code></td>
+          <td>پر کردن ردیف به ردیف (پیش‌فرض)</td>
+        </tr>
+        <tr>
+          <td><code>grid-auto-flow: column</code></td>
+          <td>پر کردن ستون به ستون</td>
+        </tr>
+        <tr>
+          <td><code>grid-auto-flow: dense</code></td>
+          <td>پر کردن خانه‌های خالی با آیتم‌های بعدی</td>
+        </tr>
+      </table>
+
+      <p class="exercise">
+        <strong>تمرین:</strong> یک «دیوار عکس» برای صفحه اینستاگرام یک کافه بسازید: ۴ ستون، <code>grid-auto-rows: 120px</code>،
+        ۱۲ عکس که سه‌تایشان <code>span 2</code> ستون هستند. یک بار بدون <code>dense</code> و یک بار با آن نگاه کنید و تعداد خانه‌های خالی را بشمارید.
+      </p>
+    </section>
+
+    <nav class="page-nav" aria-label="ناوبری درس پایین">
+      <a href="09-auto-fit-fill.html">→ قبلی: auto-fill و auto-fit</a>
+      <a href="../index.html">فهرست درس‌ها</a>
+      <a href="11-grid-vs-flex.html">بعدی: Grid یا Flexbox؟ ←</a>
+    </nav>
+
+  </div>
+
+  <footer class="page-footer">
+    آموزش CSS Grid
+  </footer>
+
+</body>
+
+</html>

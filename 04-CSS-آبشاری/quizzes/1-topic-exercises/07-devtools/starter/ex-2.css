@@ -1,0 +1,15 @@
+body {
+  font-family: Tahoma, sans-serif;
+  font-size: 16px;
+  color: #212529;
+}
+
+.article {
+  color: #343a40;
+  font-size: 18px;
+  line-height: 1.9;
+}
+
+.intro {
+  font-size: 1.1em;
+}

@@ -1,0 +1,50 @@
+/* تمرین ۳ — کارت پروفایل با جهت‌های تودرتو (پاسخ) */
+
+body {
+  font-family: Tahoma, sans-serif;
+  margin: 20px;
+  background-color: #f8f9fa;
+  color: #212529;
+}
+
+/* کل کارت: زیر هم */
+.profile {
+  display: flex;
+  flex-direction: column;
+  width: 280px;
+  background-color: white;
+  border: 1px solid #dee2e6;
+  border-radius: 10px;
+  padding: 15px;
+  text-align: center;
+}
+
+.avatar {
+  background-color: #ae3ec9;
+  color: white;
+  font-size: 36px;
+  padding: 15px;
+  border-radius: 10px;
+}
+
+.profile h2,
+.profile p {
+  margin: 8px 0;
+}
+
+/* آمارها: کنار هم */
+.stats {
+  display: flex;
+  flex-direction: row;
+}
+
+/* هر آمار: عدد بالا، عنوان پایین */
+.stat {
+  display: flex;
+  flex-direction: column;
+  background-color: #f1f3f5;
+  padding: 8px;
+  margin: 3px;
+  border-radius: 6px;
+  font-size: 13px;
+}

@@ -1,0 +1,18 @@
+/* ۱) CSS چیست
+   در صفحه واقعی این قانون‌ها روی body، h1 و p نوشته می‌شوند؛
+   اینجا به جعبه مثال محدود شده‌اند تا ظاهر کل صفحه آموزشی تغییر نکند. */
+
+.demo-intro-styled {
+  background-color: lightblue;
+  padding: 10px;
+}
+
+.demo-intro-styled h1 {
+  color: #1a3a5c;
+  text-align: center;
+}
+
+.demo-intro-styled p {
+  font-family: Tahoma, sans-serif;
+  font-size: 20px;
+}

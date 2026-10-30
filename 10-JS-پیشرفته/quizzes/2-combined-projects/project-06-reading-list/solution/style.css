@@ -1,0 +1,114 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 24px 16px;
+  font-family: Tahoma, Arial, sans-serif;
+  line-height: 1.9;
+  color: #292524;
+  background-color: #faf7f2;
+}
+
+.page {
+  max-width: 680px;
+  margin: 0 auto;
+}
+
+h1 {
+  color: #7c2d12;
+}
+
+.book-form {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 0 16px;
+  align-items: end;
+  padding: 12px 16px;
+  background-color: white;
+  border: 1px solid #e7e5e4;
+  border-radius: 12px;
+}
+
+.book-form p {
+  margin: 4px 0;
+}
+
+label {
+  display: block;
+  font-size: 14px;
+}
+
+input,
+button {
+  width: 100%;
+  font-family: inherit;
+  font-size: 15px;
+  padding: 6px 10px;
+}
+
+button {
+  border: none;
+  border-radius: 8px;
+  background-color: #b45309;
+  color: white;
+  cursor: pointer;
+}
+
+.field-error {
+  display: block;
+  min-height: 1.5em;
+  color: #b91c1c;
+  font-size: 13px;
+}
+
+.stats {
+  font-weight: bold;
+}
+
+.book-list {
+  list-style-type: none;
+  padding: 0;
+}
+
+.book-list li {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+  padding: 10px 14px;
+  margin-bottom: 8px;
+  background-color: white;
+  border: 1px solid #e7e5e4;
+  border-radius: 10px;
+}
+
+.book-list .info {
+  flex: 1;
+}
+
+.book-list .status {
+  font-size: 13px;
+  color: #78716c;
+}
+
+.book-list button {
+  width: auto;
+  padding: 4px 12px;
+  font-size: 13px;
+}
+
+.book-list button[data-action="delete"] {
+  background-color: #e7e5e4;
+  color: #44403c;
+}
+
+.book-list li.is-read {
+  background-color: #f0fdf4;
+  border-color: #bbf7d0;
+}
+
+.book-list li.is-read .status {
+  color: #15803d;
+}

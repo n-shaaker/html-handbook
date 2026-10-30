@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>۱) Grid چیست؟ | آموزش CSS Grid</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/demos/intro.css">
+</head>
+
+<body>
+
+  <header class="page-header">
+    <h1>آموزش CSS Grid — چیدمان شبکه‌ای</h1>
+    <p>۱) Grid چیست؟ (مقدمه و اصطلاحات)</p>
+  </header>
+
+  <div class="container">
+
+    <nav class="page-nav" aria-label="ناوبری درس">
+      <a href="../../03-CSS-میانی/index.html">→ دوره CSS میانی</a>
+      <a href="../index.html">فهرست درس‌ها</a>
+      <a href="02-columns-rows.html">بعدی: ستون‌ها و ردیف‌ها ←</a>
+    </nav>
+
+    <section class="lesson" id="intro">
+      <h2>۱) Grid چیست؟ (مقدمه و اصطلاحات)</h2>
+      <p>
+        <strong>Grid</strong> یعنی «شبکه» یا «جدول نامرئی». شما روی یک عنصر پدر می‌گویید چند ستون و چند ردیف داشته باشد،
+        و فرزندهایش خودکار داخل خانه‌های این جدول می‌نشینند. شبیه جدول برنامه هفتگی آموزشگاه یا قفسه‌های یک کتابخانه.
+      </p>
+      <p>
+        به عنصری که <code>display: grid</code> می‌گیرد <strong>ظرف شبکه (grid container)</strong> می‌گوییم
+        و به فرزندهای مستقیمش <strong>آیتم‌های شبکه (grid items)</strong>. فقط فرزندهای مستقیم آیتم حساب می‌شوند، نه نوه‌ها.
+      </p>
+
+      <h3>مثال ۱: اولین شبکه — سه ستون مساوی</h3>
+      <p>
+        منوی کافه شش نوشیدنی دارد و باید در سه ستون هم‌اندازه بنشیند. هر دو خط را روی پدر می‌نویسیم و خود آیتم‌ها عرض جداگانه‌ای نمی‌گیرند.
+        <code>display: grid</code> ظرف را شبکه می‌کند و <code>grid-template-columns: 1fr 1fr 1fr</code> سه ستون می‌سازد که هر کدام یک سهم از عرض ظرف را می‌گیرد.
+        چون شش فرزند داریم و فقط سه ستون تعریف شده، مرورگر خودش ردیف دوم را می‌سازد و سه تای باقی‌مانده را در آن می‌گذارد.
+      </p>
+      <pre class="code"><code>.menu {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;   /* سه ستون هم‌اندازه */
+}</code></pre>
+      <div class="result demo-intro">
+        <div class="menu">
+          <div class="box b1">۱. اسپرسو</div>
+          <div class="box b2">۲. لاته</div>
+          <div class="box b3">۳. کاپوچینو</div>
+          <div class="box b4">۴. چای ماسالا</div>
+          <div class="box b5">۵. شیر کاکائو</div>
+          <div class="box b6">۶. آب‌پرتقال</div>
+        </div>
+      </div>
+      <p>
+        دقت کنید: چون صفحه راست‌چین است، آیتم ۱ در <strong>سمت راست</strong> نشسته و ردیف‌ها از راست به چپ پر می‌شوند.
+        واحد <code>fr</code> را در درس بعد کامل توضیح می‌دهیم؛ فعلاً بدانید یعنی «یک سهم».
+      </p>
+
+      <h3>مثال ۲: فقط <code>display: grid</code> بدون ستون</h3>
+      <pre class="code"><code>.menu-one {
+  display: grid;   /* ستون تعیین نشده */
+}</code></pre>
+      <div class="result demo-intro">
+        <div class="menu-one">
+          <div class="box b1">۱. اسپرسو</div>
+          <div class="box b2">۲. لاته</div>
+          <div class="box b3">۳. کاپوچینو</div>
+        </div>
+      </div>
+      <p class="mistake">
+        <strong>اشتباه رایج:</strong>
+        فقط <code>display: grid</code> می‌نویسیم و تعجب می‌کنیم که چرا آیتم‌ها هنوز زیر هم هستند.
+        Grid تا وقتی <code>grid-template-columns</code> را ننویسید، فقط <strong>یک ستون</strong> دارد.
+      </p>
+
+      <h3>مثال ۳: اصطلاحات Grid روی یک شکل</h3>
+      <p>
+        این شبکه ۴ ستون و ۳ ردیف دارد. هر رنگ یکی از اصطلاحات را نشان می‌دهد
+        (اینجا فقط رنگ خانه‌ها را عوض کرده‌ایم تا شکل را ببینید):
+      </p>
+      <pre class="code"><code>.terms {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;   /* ۴ ستون */
+  grid-template-rows: 60px 60px 60px;       /* ۳ ردیف */
+}</code></pre>
+      <div class="result demo-intro">
+        <div class="lines-ruler">
+          <span>↓ خط ۱</span>
+          <span>↓ خط ۲</span>
+          <span>↓ خط ۳</span>
+          <span class="last-ruler"><span>↓ خط ۴</span><span>خط ۵ ↓</span></span>
+        </div>
+        <div class="terms">
+          <div class="cell is-column">ستون</div>
+          <div class="cell">خانه خالی</div>
+          <div class="cell is-area">ناحیه</div>
+          <div class="cell is-area">ناحیه</div>
+          <div class="cell is-column">ستون</div>
+          <div class="cell is-cell">یک خانه</div>
+          <div class="cell is-area">ناحیه</div>
+          <div class="cell is-area">ناحیه</div>
+          <div class="cell is-column">ستون</div>
+          <div class="cell is-row">ردیف</div>
+          <div class="cell is-row">ردیف</div>
+          <div class="cell is-row">ردیف</div>
+        </div>
+      </div>
+
+      <table class="ref">
+        <tr>
+          <th>اصطلاح</th>
+          <th>انگلیسی</th>
+          <th>معنی</th>
+        </tr>
+        <tr>
+          <td>خط</td>
+          <td>grid line</td>
+          <td>خط‌های نامرئی بین ستون‌ها و ردیف‌ها. ۴ ستون یعنی ۵ خط عمودی. با شماره خط‌ها آیتم‌ها را جابه‌جا می‌کنیم (درس ۵).</td>
+        </tr>
+        <tr>
+          <td>ستون</td>
+          <td>column</td>
+          <td>فضای عمودی بین دو خط عمودی کنار هم (آبی در شکل).</td>
+        </tr>
+        <tr>
+          <td>ردیف</td>
+          <td>row</td>
+          <td>فضای افقی بین دو خط افقی کنار هم (سبز در شکل).</td>
+        </tr>
+        <tr>
+          <td>مسیر</td>
+          <td>track</td>
+          <td>اسم کلی برای «یک ستون» یا «یک ردیف».</td>
+        </tr>
+        <tr>
+          <td>خانه</td>
+          <td>cell</td>
+          <td>محل برخورد یک ستون و یک ردیف؛ کوچک‌ترین قسمت شبکه (نارنجی در شکل).</td>
+        </tr>
+        <tr>
+          <td>ناحیه</td>
+          <td>area</td>
+          <td>چند خانه کنار هم که یک مستطیل بسازند (بنفش در شکل). در درس ۶ به ناحیه‌ها اسم می‌دهیم.</td>
+        </tr>
+      </table>
+
+      <h3>مثال ۴: راست‌چین و چپ‌چین — خط ۱ کجاست؟</h3>
+      <p>
+        در صفحه فارسی (<code>dir="rtl"</code>) <strong>خط ستون شماره ۱ سمت راست</strong> است و شماره‌ها به سمت چپ زیاد می‌شوند.
+        در صفحه انگلیسی (<code>dir="ltr"</code>) برعکس است. همان کد مثال ۱ را در یک بخش چپ‌چین ببینید:
+      </p>
+      <pre class="code"><code>&lt;div class="menu" dir="ltr"&gt;
+  ...
+&lt;/div&gt;</code></pre>
+      <div class="result demo-intro">
+        <div class="menu" dir="ltr">
+          <div class="box b1">1. Espresso</div>
+          <div class="box b2">2. Latte</div>
+          <div class="box b3">3. Cappuccino</div>
+          <div class="box b4">4. Masala Tea</div>
+          <div class="box b5">5. Cocoa</div>
+          <div class="box b6">6. Orange Juice</div>
+        </div>
+      </div>
+      <p class="tip">
+        در همه درس‌های این دوره صفحه راست‌چین است؛ پس هر جا گفتیم «خط ۱» یعنی <strong>لبه راست</strong> شبکه.
+      </p>
+
+      <h3>Grid یا Flexbox؟ در یک جمله</h3>
+      <p>
+        <strong>Flexbox</strong> برای چیدن آیتم‌ها در <strong>یک جهت</strong> است (یک ردیف یا یک ستون)،
+        ولی <strong>Grid</strong> برای چیدن در <strong>دو جهت با هم</strong> (ردیف و ستون) ساخته شده است.
+        مقایسه کامل را در <a href="11-grid-vs-flex.html">درس ۱۱</a> می‌بینید.
+      </p>
+
+      <p class="mistake">
+        <strong>اشتباه رایج:</strong>
+        <code>display: grid</code> را روی خود آیتم‌ها (فرزندها) می‌نویسیم. این ویژگی همیشه روی <strong>پدر</strong> نوشته می‌شود؛
+        فرزندها خودشان آیتم می‌شوند.
+      </p>
+
+      <p class="exercise">
+        <strong>تمرین:</strong> یک بخش «ساعت کاری کافه» بسازید که هفت روز هفته (شنبه تا جمعه) را در یک شبکه چهارستونه نشان دهد.
+        بعد شبکه را دوستونه کنید و ببینید آیتم‌ها چطور خودشان جابه‌جا می‌شوند. روز اول (شنبه) باید سمت راست باشد.
+      </p>
+    </section>
+
+    <nav class="page-nav" aria-label="ناوبری درس پایین">
+      <a href="../../03-CSS-میانی/index.html">→ دوره CSS میانی</a>
+      <a href="../index.html">فهرست درس‌ها</a>
+      <a href="02-columns-rows.html">بعدی: ستون‌ها و ردیف‌ها ←</a>
+    </nav>
+
+  </div>
+
+  <footer class="page-footer">
+    آموزش CSS Grid
+  </footer>
+
+</body>
+
+</html>

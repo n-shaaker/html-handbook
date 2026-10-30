@@ -1,0 +1,22 @@
+/* تمرین ۳ — ستون‌هایی که جا نمی‌شوند (نسخه خراب — درستش کنید) */
+
+body {
+  font-family: Tahoma, sans-serif;
+  margin: 20px;
+  background-color: #f8f9fa;
+  color: #212529;
+}
+
+.news {
+  display: grid;
+  grid-template-column: 200px 200px 200px;
+  grid-template-rows: 120px;
+  background-color: #f1f3f5;
+}
+
+.item {
+  background-color: #0c8599;
+  color: white;
+  padding: 10px;
+  border: 2px solid white;
+}

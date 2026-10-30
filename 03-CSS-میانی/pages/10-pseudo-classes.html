@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>۱۰) شبه‌کلاس‌ها (Pseudo-classes) | آموزش CSS سطح میانی</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/demos/pseudo-classes.css">
+</head>
+
+<body>
+
+  <header class="page-header">
+    <h1>آموزش CSS — سطح میانی</h1>
+    <p>۱۰) شبه‌کلاس‌ها (Pseudo-classes)</p>
+  </header>
+
+  <div class="container">
+
+    <nav class="page-nav" aria-label="ناوبری درس">
+      <a href="09-combinators.html">→ قبلی: Combinators</a>
+      <a href="../index.html">فهرست درس‌ها</a>
+      <a href="11-pseudo-elements.html">بعدی: Pseudo-elements ←</a>
+    </nav>
+
+    <section class="lesson" id="pseudo-classes">
+      <h2>۱۰) شبه‌کلاس‌ها (Pseudo-classes)</h2>
+      <p>
+        شبه‌کلاس حالتی از عنصر را انتخاب می‌کند که در HTML به‌صورت کلاس نوشته نشده است. مرورگر آن حالت را از تعامل کاربر یا از جایگاه عنصر در میان خواهر و برادرها تشخیص می‌دهد.
+        شبه‌کلاس با یک دونقطه به انتخابگر می‌چسبد و بین آن‌ها نباید فاصله باشد: <code>a:hover</code> یعنی خود لینک وقتی ماوس روی آن است.
+        اگر فاصله بگذارید (<code>a :hover</code>)، معنی عوض می‌شود و مرورگر به دنبال عنصر hoverشده داخل لینک می‌گردد.
+      </p>
+      <pre class="code"><code>selector:pseudo-class {
+  property: value;
+}</code></pre>
+
+      <h3>مثال ۱: <code>:hover</code> و <code>:active</code> — دکمه زنده</h3>
+      <pre class="code"><code>.btn:hover  { background-color: #0b6e4f; }  /* ماوس روی دکمه */
+.btn:active { transform: scale(0.95); }     /* لحظه کلیک */</code></pre>
+      <div class="result demo-pc">
+        <button class="btn" type="button">ماوس را بیاور و کلیک کن</button>
+      </div>
+
+      <h3>مثال ۲: <code>:focus</code> — کادری که فعال است</h3>
+      <pre class="code"><code>input:focus {
+  border-color: #1a5fb4;
+  background-color: #e8f4fd;
+  outline: 3px solid #a5d8ff;   /* حلقه فوکوس واضح؛ هرگز بدون جایگزین حذفش نکنید */
+}</code></pre>
+      <div class="result demo-pc">
+        <input type="text" class="field" placeholder="روی من کلیک کن" aria-label="کادر نمونه اول">
+        <input type="text" class="field" placeholder="یا روی من" aria-label="کادر نمونه دوم">
+      </div>
+      <p class="tip">
+        <code>:focus-visible</code> نسخه هوشمند <code>:focus</code> است: حلقه فوکوس را فقط وقتی نشان می‌دهد که کاربر با کیبورد (کلید Tab) حرکت می‌کند،
+        نه وقتی با ماوس روی دکمه کلیک می‌کند. برای دکمه‌ها و لینک‌ها معمولاً <code>:focus-visible</code> انتخاب بهتری است.
+        در همین جزوه، با Tab زدن روی لینک‌ها کادر نارنجی را می‌بینید.
+      </p>
+
+      <h3>مثال ۳: <code>:first-child</code> و <code>:last-child</code></h3>
+      <pre class="code"><code>li:first-child { color: green; font-weight: bold; }
+li:last-child  { color: red; }</code></pre>
+      <div class="result demo-pc">
+        <ul class="list-fl">
+          <li>نفر اول (برنده)</li>
+          <li>نفر دوم</li>
+          <li>نفر سوم</li>
+          <li>نفر آخر</li>
+        </ul>
+      </div>
+
+      <h3>مثال ۴: <code>:nth-child()</code> — انتخاب با شماره</h3>
+      <p>
+        <code>:nth-child()</code> عنصر را با شماره جایگاهش بین همه فرزندان والد انتخاب می‌کند، نه فقط بین عنصرهای هم‌نوع.
+        شمارش از ۱ شروع می‌شود. <code>odd</code> جایگاه‌های فرد را می‌گیرد و <code>even</code> جایگاه‌های زوج را.
+        <code>3n</code> یعنی هر سومین جایگاه: ۳، ۶، ۹. اگر قبل از <code>li</code> عنصر دیگری باشد، شماره <code>li</code> با شماره «سومین آیتم فهرست» یکی نخواهد بود. در آن حالت <code>:nth-of-type()</code> فقط بین عنصرهای همان نوع می‌شمارد.
+      </p>
+      <pre class="code"><code>li:nth-child(odd)  { background: #f1f3f5; }  /* فردها: ۱، ۳، ۵ */
+li:nth-child(3n)   { color: #c92a2a; }      /* هر سومی: ۳، ۶، ۹ */
+li:nth-child(2)    { font-weight: bold; }   /* فقط دومی */</code></pre>
+      <div class="result demo-pc">
+        <ol class="list-nth">
+          <li>آیتم</li>
+          <li>آیتم</li>
+          <li>آیتم</li>
+          <li>آیتم</li>
+          <li>آیتم</li>
+          <li>آیتم</li>
+          <li>آیتم</li>
+        </ol>
+      </div>
+
+      <h3>مثال ۵: <code>:not()</code> — همه به‌جز ...</h3>
+      <pre class="code"><code>.tabs a:not(.active) {
+  opacity: 0.5;
+}</code></pre>
+      <div class="result demo-pc">
+        <div class="tabs">
+          <a href="#pseudo-classes">توضیحات</a>
+          <a href="#pseudo-classes" class="active">نظرات</a>
+          <a href="#pseudo-classes">مشخصات</a>
+        </div>
+      </div>
+
+      <h3>مثال ۶: نمایش پیام با hover روی والد</h3>
+      <p>در گوشی ماوس وجود ندارد و کاربر کیبورد هم hover ندارد؛ پس همیشه کنار <code>:hover</code> یک حالت <code>:focus</code> هم بگذارید:</p>
+      <pre class="code"><code>.hint p        { display: none; }
+.hint:hover p,
+.hint:focus p  { display: block; }  /* با ماوس یا با Tab، پیام ظاهر شود */</code></pre>
+      <div class="result demo-pc">
+        <div class="hint" tabindex="0">
+          ماوس را اینجا بیاور (یا با Tab به اینجا بیا)
+          <p>سلام! من پیام مخفی هستم.</p>
+        </div>
+      </div>
+
+      <h3>مثال ۷: <code>:checked</code> — چک‌باکس انتخاب‌شده</h3>
+      <pre class="code"><code>input:checked + label {
+  color: green;
+  text-decoration: line-through;
+}</code></pre>
+      <div class="result demo-pc">
+        <div class="todo">
+          <input type="checkbox" id="t1"><label for="t1">خرید نان</label><br>
+          <input type="checkbox" id="t2"><label for="t2">تمرین CSS</label><br>
+          <input type="checkbox" id="t3"><label for="t3">ورزش</label>
+        </div>
+      </div>
+
+      <p class="mistake">
+        <strong>اشتباه رایج:</strong>
+        گذاشتن فاصله قبل از دونقطه: <code>a :hover</code> اشتباه است؛ درستش <code>a:hover</code> است (بدون فاصله).
+        با فاصله، معنی عوض می‌شود: «هر عنصرِ hover شده‌ای که داخل a است».
+      </p>
+
+      <h3>ترتیب درست حالت‌های لینک</h3>
+      <p>
+        برای لینک‌ها چهار حالت داریم و ترتیب نوشتنشان مهم است، چون قانونی که دیرتر بیاید برنده می‌شود.
+        اگر <code>:hover</code> را قبل از <code>:visited</code> بنویسید، لینک‌های بازدیدشده دیگر رنگ hover نمی‌گیرند.
+      </p>
+      <pre class="code"><code>a:link    { color: #1a5fb4; }   /* لینک دیده‌نشده */
+a:visited { color: #6741d9; }   /* لینک بازدیدشده */
+a:hover   { color: #0b6e4f; }   /* ماوس روی لینک */
+a:active  { color: #c92a2a; }   /* لحظه کلیک */</code></pre>
+      <p class="tip">
+        برای به خاطر سپردن ترتیب: <strong>L</strong>o<strong>V</strong>e <strong>HA</strong>te (Link، Visited، Hover، Active).
+      </p>
+
+      <p class="mistake">
+        <strong>اشتباه رایج:</strong>
+        <code>:first-child</code> یعنی «عنصری که اولین فرزند پدرش است»، نه «اولین li».
+        اگر قبل از اولین <code>li</code> یک تگ دیگر (مثلاً <code>h4</code>) باشد، <code>li:first-child</code> هیچ چیزی را انتخاب نمی‌کند؛
+        در این حالت از <code>li:first-of-type</code> استفاده کنید.
+      </p>
+
+      <p class="exercise">
+        <strong>تمرین:</strong> یک جدول بسازید که ردیف‌های زوجش رنگی باشد (<code>:nth-child(even)</code>) و ردیف زیر ماوس پررنگ شود (<code>:hover</code>).
+      </p>
+    </section>
+
+    <nav class="page-nav" aria-label="ناوبری درس پایین">
+      <a href="09-combinators.html">→ قبلی: Combinators</a>
+      <a href="../index.html">فهرست درس‌ها</a>
+      <a href="11-pseudo-elements.html">بعدی: Pseudo-elements ←</a>
+    </nav>
+
+  </div>
+
+  <footer class="page-footer">
+    آموزش CSS سطح میانی
+  </footer>
+
+</body>
+
+</html>

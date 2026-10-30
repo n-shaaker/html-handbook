@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>۲۰) چیدمان سایت (Website Layout) | آموزش CSS سطح میانی</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/demos/layout.css">
+</head>
+
+<body>
+
+  <header class="page-header">
+    <h1>آموزش CSS — سطح میانی</h1>
+    <p>۲۰) چیدمان سایت (Website Layout)</p>
+  </header>
+
+  <div class="container">
+
+    <nav class="page-nav" aria-label="ناوبری درس">
+      <a href="19-math-functions.html">→ قبلی: Math Functions</a>
+      <a href="../index.html">فهرست درس‌ها</a>
+      <a href="21-practice.html">بعدی: تمرین جمع‌بندی ←</a>
+    </nav>
+
+    <section class="lesson" id="layout">
+      <h2>۲۰) چیدمان سایت (Website Layout)</h2>
+      <p>
+        چیدمان سایت یعنی مشخص کردن جای بخش‌های تکرارشونده صفحه: سربرگ، منو، محتوای اصلی، ستون کناری و پانویس.
+        این بخش‌ها را با عنصرهای معنایی HTML می‌سازیم تا ساختار صفحه برای مرورگر و صفحه‌خوان روشن باشد، و اندازه و کنار هم نشستنشان را با CSS تعیین می‌کنیم.
+        <code>header</code> معمولاً نام و نشانه سایت را دارد، <code>nav</code> لینک صفحه‌ها را، <code>main</code> مطلب اصلی را، <code>aside</code> مطلب جانبی را و <code>footer</code> اطلاعات پایانی را.
+        در هر صفحه فقط یک <code>main</code> مجاز است. برای کنار هم گذاشتن ستون‌ها، روش پایدار امروزی Flexbox یا Grid است. Float را در این درس فقط می‌بینید تا چیدمان‌های قدیمی را بشناسید.
+      </p>
+      <table class="ref">
+        <tr>
+          <th>بخش</th>
+          <th>تگ پیشنهادی</th>
+          <th>کار</th>
+        </tr>
+        <tr>
+          <td>سربرگ</td>
+          <td><code>header</code></td>
+          <td>لوگو و نام سایت</td>
+        </tr>
+        <tr>
+          <td>منو</td>
+          <td><code>nav</code></td>
+          <td>لینک صفحه‌ها</td>
+        </tr>
+        <tr>
+          <td>محتوا</td>
+          <td><code>main</code> (فقط یکی در هر صفحه)، داخلش <code>article</code> و <code>section</code></td>
+          <td>مطالب اصلی</td>
+        </tr>
+        <tr>
+          <td>ستون کناری</td>
+          <td><code>aside</code></td>
+          <td>مطالب جانبی، تبلیغ، دسته‌بندی</td>
+        </tr>
+        <tr>
+          <td>پانویس</td>
+          <td><code>footer</code></td>
+          <td>کپی‌رایت، راه‌های تماس</td>
+        </tr>
+      </table>
+      <p class="tip">
+        در هر صفحه فقط <strong>یک</strong> <code>main</code> مجاز است. چون این صفحه آموزشی چند نمونه سایت را با هم نشان می‌دهد،
+        در مثال‌های زیر به‌جای <code>main</code> از <code>article</code> با کلاس <code>l-main</code> استفاده شده؛ در سایت خودتان همان <code>main</code> را بنویسید.
+      </p>
+
+      <h3>مثال ۱: چیدمان ساده یک‌ستونه (مثل وبلاگ)</h3>
+      <pre class="code"><code>header, nav, main, footer { padding: 16px; }
+header { background: #1a3a5c; color: white; text-align: center; }
+nav    { background: #333; }
+footer { background: #ddd; text-align: center; }</code></pre>
+      <div class="result demo-layout">
+        <div class="site one-col">
+          <header class="l-header">وبلاگ من</header>
+          <nav class="l-nav" aria-label="منوی وبلاگ نمونه">
+            <a href="#layout">خانه</a>
+            <a href="#layout">مطالب</a>
+            <a href="#layout">درباره من</a>
+          </nav>
+          <article class="l-main">
+            <h4>عنوان مطلب</h4>
+            <p>متن مطلب در یک ستون کامل نمایش داده می‌شود. این ساده‌ترین چیدمان است و در موبایل هم عالی کار می‌کند.</p>
+          </article>
+          <footer class="l-footer">© ۱۴۰۵ — وبلاگ من</footer>
+        </div>
+      </div>
+
+      <h3>مثال ۲: محتوا + ستون کناری (با Flexbox)</h3>
+      <p>پدرِ دو ستون <code>flex</code> می‌شود؛ ستون‌ها خودکار کنار هم و هم‌قد می‌نشینند. در صفحه راست‌چین، اولین فرزند (محتوا) سمت راست قرار می‌گیرد:</p>
+      <pre class="code"><code>.row  { display: flex; }
+main  { width: 70%; }
+aside { width: 30%; }</code></pre>
+      <div class="result demo-layout">
+        <div class="site">
+          <header class="l-header">فروشگاه کتاب</header>
+          <nav class="l-nav" aria-label="منوی فروشگاه نمونه">
+            <a href="#layout">خانه</a>
+            <a href="#layout">کتاب‌ها</a>
+            <a href="#layout">تماس</a>
+          </nav>
+          <div class="row">
+            <article class="l-main w70">
+              <h4>کتاب‌های جدید</h4>
+              <p>اینجا محتوای اصلی صفحه است که ۷۰٪ عرض را گرفته.</p>
+            </article>
+            <aside class="l-aside w30">
+              <h4>دسته‌بندی</h4>
+              <p>رمان<br>علمی<br>کودک</p>
+            </aside>
+          </div>
+          <footer class="l-footer">© فروشگاه کتاب</footer>
+        </div>
+      </div>
+
+      <h3>مثال ۳: سه ستون برابر با Grid (بخش خدمات)</h3>
+      <p>Grid برای ردیف کارت‌ها عالی است: تعداد ستون و فاصله را یک‌جا روی پدر تعیین می‌کنید. واحد <code>fr</code> یعنی «یک سهم از فضای باقی‌مانده»:</p>
+      <pre class="code"><code>.grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);   /* سه ستون مساوی */
+  gap: 12px;
+}</code></pre>
+      <div class="result demo-layout">
+        <div class="grid-3">
+          <div class="c1">
+            <h4>طراحی</h4>
+            <p>طراحی رابط کاربری زیبا</p>
+          </div>
+          <div class="c2">
+            <h4>برنامه‌نویسی</h4>
+            <p>ساخت سایت سریع و امن، با کدی که بعداً هم راحت تغییر کند.</p>
+          </div>
+          <div class="c3">
+            <h4>پشتیبانی</h4>
+            <p>همراهی ۲۴ ساعته</p>
+          </div>
+        </div>
+      </div>
+
+      <h3>مثال ۴: همان سه ستون با float (روش قدیمی)</h3>
+      <p>قبل از Flexbox و Grid، ستون‌ها را این‌طور می‌ساختند. کد بیشتری لازم دارد، ستون‌ها هم‌قد نمی‌شوند و پدر باید <code>flow-root</code> شود:</p>
+      <pre class="code"><code>.row-float { display: flow-root; }   /* پدر جمع نشود */
+
+.column {
+  float: right;
+  width: 33.33%;
+  padding: 15px;
+}</code></pre>
+      <div class="result demo-layout">
+        <div class="row-float">
+          <div class="column c1">
+            <h4>طراحی</h4>
+            <p>طراحی رابط کاربری زیبا</p>
+          </div>
+          <div class="column c2">
+            <h4>برنامه‌نویسی</h4>
+            <p>ساخت سایت سریع و امن، با کدی که بعداً هم راحت تغییر کند.</p>
+          </div>
+          <div class="column c3">
+            <h4>پشتیبانی</h4>
+            <p>همراهی ۲۴ ساعته</p>
+          </div>
+        </div>
+      </div>
+      <p>تفاوت را ببینید: در مثال ۳ هر سه کارت هم‌قدند، ولی اینجا ارتفاع هر ستون به اندازه متن خودش است.</p>
+
+      <h3>مثال ۵: Flexbox با <code>flex: 1</code></h3>
+      <p>Flexbox بعداً مفصل آموزش داده می‌شود؛ فعلاً فقط ببینید بدون حساب درصد، ستون‌ها چطور فضا را بین خودشان تقسیم می‌کنند:</p>
+      <pre class="code"><code>.row-flex {
+  display: flex;
+  gap: 12px;
+}
+
+.row-flex &gt; div {
+  flex: 1;   /* همه ستون‌ها هم‌اندازه */
+}</code></pre>
+      <div class="result demo-layout">
+        <div class="row-flex">
+          <div class="c1">ستون ۱</div>
+          <div class="c2">ستون ۲ با متن بیشتر؛ ارتفاع همه ستون‌ها خودکار برابر می‌شود.</div>
+          <div class="c3">ستون ۳</div>
+        </div>
+      </div>
+
+      <h3>در موبایل چه کنیم؟</h3>
+      <p>
+        ستون‌های کنار هم در گوشی خیلی باریک می‌شوند. با <strong>Media Query</strong> می‌گوییم «اگر عرض صفحه کم بود، ستون‌ها زیر هم بیایند».
+        جزئیات را در درس‌های طراحی واکنش‌گرا (Responsive) یاد می‌گیریم؛ فعلاً شکل کلی‌اش را ببینید
+        (پنجره را باریک کنید تا مثال‌های ۲ و ۳ و ۵ این صفحه زیر هم بیایند):
+      </p>
+      <pre class="code"><code>@media (max-width: 600px) {
+  .row, .row-flex   { flex-direction: column; }        /* ستون‌ها زیر هم */
+  main, aside       { width: 100%; }
+  .grid-3           { grid-template-columns: 1fr; }    /* یک ستون */
+}</code></pre>
+
+      <p class="mistake">
+        <strong>اشتباه رایج:</strong>
+        در روش float یا عرض‌های درصدی، جمع عرض ستون‌ها بیشتر از ۱۰۰٪ می‌شود (مثلاً <code>70% + 30%</code> به‌علاوه margin یا padding بدون border-box)
+        و ستون آخر به خط بعد می‌افتد. با <code>box-sizing: border-box</code> و حساب دقیق (یا <code>calc</code>) حل می‌شود؛
+        و در Flexbox و Grid با <code>gap</code> و <code>fr</code> اصلاً پیش نمی‌آید.
+      </p>
+
+      <p class="exercise">
+        <strong>تمرین:</strong> اسکلت یک سایت «رستوران» بسازید: هدر با نام رستوران، منو، محتوا (۷۰٪) با معرفی غذاها، ستون کناری (۳۰٪) با ساعت کاری، و فوتر.
+        ستون‌ها را با Flexbox کنار هم بچینید و بخش «غذاهای ویژه» را با Grid سه‌ستونه بسازید.
+      </p>
+    </section>
+
+    <nav class="page-nav" aria-label="ناوبری درس پایین">
+      <a href="19-math-functions.html">→ قبلی: Math Functions</a>
+      <a href="../index.html">فهرست درس‌ها</a>
+      <a href="21-practice.html">بعدی: تمرین جمع‌بندی ←</a>
+    </nav>
+
+  </div>
+
+  <footer class="page-footer">
+    آموزش CSS سطح میانی
+  </footer>
+
+</body>
+
+</html>

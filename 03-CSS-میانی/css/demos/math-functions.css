@@ -1,0 +1,56 @@
+/* ۱۹) Math Functions */
+
+.demo-math .layout {
+  display: flex;
+}
+
+.demo-math .sidebar,
+.demo-math .main {
+  padding: 16px 8px;
+  color: white;
+  text-align: center;
+}
+
+.demo-math .sidebar {
+  width: 120px;
+  background-color: #495057;
+}
+
+.demo-math .main {
+  width: calc(100% - 120px);
+  background-color: #1a5fb4;
+}
+
+.demo-math .cols {
+  display: flex;
+  gap: 20px;
+}
+
+.demo-math .col {
+  width: calc((100% - 40px) / 3);
+  background-color: #ffd8a8;
+  border: 1px solid #e8590c;
+  padding: 16px 0;
+  text-align: center;
+}
+
+.demo-math .card-min {
+  width: min(90%, 400px);
+  margin: 0 auto;
+  background-color: #d3f9d8;
+  border: 1px solid #2b8a3e;
+  padding: 12px;
+  text-align: center;
+}
+
+.demo-math .note-max {
+  font-size: max(14px, 1.2vw);
+  margin: 0;
+}
+
+.demo-math .clamp-title {
+  font-size: clamp(18px, 5vw, 40px);
+  font-weight: bold;
+  color: #0b6e4f;
+  margin: 0;
+}

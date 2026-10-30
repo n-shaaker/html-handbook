@@ -1,0 +1,34 @@
+/* دکمه اصلی: فام و اشباع ثابت، فقط روشنایی عوض می‌شود */
+.btn-main {
+  background-color: hsl(150, 60%, 35%);
+  color: hsl(0, 0%, 100%);
+}
+
+.btn-main:hover {
+  background-color: hsl(150, 60%, 28%);
+}
+
+.btn-main:active {
+  background-color: hsl(150, 60%, 22%);
+}
+
+/* دکمه دوم: پس‌زمینه خیلی روشن از همان رنگ */
+.btn-outline {
+  background-color: hsl(150, 60%, 97%);
+  color: hsl(150, 60%, 25%);
+  border: 2px solid hsl(150, 60%, 35%);
+}
+
+.btn-outline:hover {
+  background-color: hsl(150, 60%, 90%);
+}
+
+.btn-outline:active {
+  background-color: hsl(150, 60%, 82%);
+}
+
+.btn-main:focus-visible,
+.btn-outline:focus-visible {
+  outline: 3px solid hsl(150, 60%, 60%);
+  outline-offset: 2px;
+}

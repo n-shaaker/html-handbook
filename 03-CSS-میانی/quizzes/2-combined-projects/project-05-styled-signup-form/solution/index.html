@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>عضویت در باشگاه کتاب‌خوانی ورق</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <main class="page">
+    <h1>عضویت در باشگاه کتاب ورق</h1>
+    <p class="intro">ماهی یک کتاب، یک جلسه گفت‌وگو و کلی هم‌کتاب تازه.</p>
+
+    <form class="signup" action="#" method="post">
+
+      <fieldset>
+        <legend>اطلاعات حساب</legend>
+
+        <label for="email">ایمیل</label>
+        <input type="email" id="email" name="email"
+          placeholder="name@example.com" dir="ltr" required>
+
+        <label for="password">رمز عبور (حداقل ۸ کاراکتر)</label>
+        <input type="password" id="password" name="password"
+          minlength="8" placeholder="••••••••" dir="ltr" required>
+      </fieldset>
+
+      <fieldset>
+        <legend>اطلاعات شخصی</legend>
+
+        <label for="full-name">نام و نام خانوادگی</label>
+        <input type="text" id="full-name" name="full-name"
+          placeholder="مثلاً: مریم احمدی" required>
+
+        <label for="mobile">شماره موبایل (اختیاری)</label>
+        <input type="tel" id="mobile" name="mobile"
+          pattern="09[0-9]{9}" placeholder="09123456789" dir="ltr"
+          title="شماره ۱۱ رقمی که با ۰۹ شروع می‌شود">
+
+        <label for="city">شهر</label>
+        <select id="city" name="city">
+          <option value="tehran">تهران</option>
+          <option value="shiraz">شیراز</option>
+          <option value="isfahan">اصفهان</option>
+          <option value="tabriz">تبریز</option>
+          <option value="mashhad">مشهد</option>
+        </select>
+      </fieldset>
+
+      <fieldset>
+        <legend>علاقه‌مندی‌ها</legend>
+
+        <p class="group-title">چه ژانرهایی دوست دارید؟</p>
+
+        <div class="check">
+          <input type="checkbox" id="genre-novel" name="genres" value="novel">
+          <label for="genre-novel">رمان</label>
+        </div>
+        <div class="check">
+          <input type="checkbox" id="genre-history" name="genres" value="history">
+          <label for="genre-history">تاریخ</label>
+        </div>
+        <div class="check">
+          <input type="checkbox" id="genre-poetry" name="genres" value="poetry">
+          <label for="genre-poetry">شعر</label>
+        </div>
+        <div class="check">
+          <input type="checkbox" id="genre-science" name="genres" value="science">
+          <label for="genre-science">علمی</label>
+        </div>
+
+        <div class="check check-terms">
+          <input type="checkbox" id="terms" name="terms" required>
+          <label for="terms">قوانین باشگاه را خوانده‌ام و می‌پذیرم</label>
+        </div>
+      </fieldset>
+
+      <div class="actions">
+        <button type="submit" class="btn btn-primary">ثبت عضویت</button>
+        <button type="button" class="btn btn-secondary" disabled>ورود با حساب گوگل (به‌زودی)</button>
+      </div>
+
+    </form>
+  </main>
+
+</body>
+
+</html>

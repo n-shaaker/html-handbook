@@ -1,0 +1,49 @@
+/* تمرین ۳ — قیمت ناهم‌تراز و کارت‌های ناهم‌قد (پاسخ) */
+
+body {
+  font-family: Tahoma, sans-serif;
+  margin: 20px;
+  background-color: #f8f9fa;
+  color: #212529;
+}
+
+/* درست شد: برای هم‌خط شدن کفِ متن‌های با اندازه متفاوت، baseline لازم است */
+.prices {
+  display: flex;
+  align-items: baseline;
+  background-color: white;
+  padding: 10px;
+}
+
+.amount {
+  font-size: 40px;
+  font-weight: bold;
+  color: #2f9e44;
+  margin-left: 8px;
+}
+
+.unit {
+  font-size: 14px;
+  margin-left: 12px;
+}
+
+.old {
+  font-size: 13px;
+  color: #868e96;
+  text-decoration: line-through;
+}
+
+/* درست شد: stretch (پیش‌فرض) کارت‌ها را هم‌قد می‌کند */
+.cards {
+  display: flex;
+  align-items: stretch;
+  margin-top: 20px;
+}
+
+.card {
+  width: 200px;
+  background-color: white;
+  border: 1px solid #dee2e6;
+  padding: 10px;
+  margin: 5px;
+}

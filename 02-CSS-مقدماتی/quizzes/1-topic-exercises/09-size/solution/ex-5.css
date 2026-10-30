@@ -1,0 +1,36 @@
+/* دکمه: padding با em تا با فونت بزرگ شود */
+
+.btn {
+  padding: 0.5em 1em;
+  border: none;
+  border-radius: 0.3em;
+  background-color: #0b6e4f;
+  color: white;
+  font-family: inherit;
+  cursor: pointer;
+  margin-left: 8px;
+  margin-bottom: 8px;
+}
+
+.small {
+  font-size: 12px;
+}
+
+.medium {
+  font-size: 16px;
+}
+
+.large {
+  font-size: 24px;
+}
+
+/* فهرست: rem تا تودرتو درشت نشود */
+
+.menu {
+  font-size: 1rem;
+}
+
+.menu li {
+  font-size: 1rem; /* نه 1.2em — وگرنه هر سطح بزرگ‌تر می‌شود */
+  margin: 0.25rem 0;
+}

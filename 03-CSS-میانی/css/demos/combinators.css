@@ -1,0 +1,52 @@
+/* ۹) Combinators */
+
+.demo-comb p {
+  margin: 4px 0;
+  padding: 2px 8px;
+}
+
+.demo-comb section {
+  margin-right: 24px;
+}
+
+.demo-comb .post p {
+  background-color: yellow;
+}
+
+.demo-comb .card > p {
+  background-color: lightgreen;
+}
+
+.demo-comb .ex3 h4 {
+  margin: 0;
+}
+
+.demo-comb .ex3 h4 + p {
+  font-weight: bold;
+  color: #0b6e4f;
+}
+
+.demo-comb .ex4 h4 {
+  margin: 4px 0;
+}
+
+.demo-comb .ex4 h4 ~ p {
+  border-right: 4px solid orange;
+}
+
+.demo-comb .ex5 > ul {
+  margin: 0;
+  padding: 0;
+  background-color: #1a3a5c;
+}
+
+.demo-comb .ex5 > ul > li {
+  display: inline-block;
+}
+
+.demo-comb .ex5 > ul > li > a {
+  display: inline-block;
+  color: white;
+  text-decoration: none;
+  padding: 8px 16px;
+}

@@ -1,0 +1,23 @@
+/* تمرین ۱ — صفحه‌کلید عددی وسط کادر (پاسخ) */
+
+body {
+  font-family: Tahoma, sans-serif;
+  margin: 20px;
+  background-color: #f8f9fa;
+  color: #212529;
+}
+
+/* ستون‌ها ثابت‌اند و جای خالی می‌ماند؛ justify-content کل شبکه را وسط می‌برد */
+.keypad {
+  display: grid;
+  grid-template-columns: repeat(3, 70px);
+  gap: 6px;
+  justify-content: center;
+  background-color: #343a40;
+  padding: 15px;
+}
+
+.keypad button {
+  height: 50px;
+  font-size: 18px;
+}

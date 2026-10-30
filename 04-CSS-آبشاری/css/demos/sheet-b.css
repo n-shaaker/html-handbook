@@ -1,0 +1,10 @@
+/* فایل B — دیرتر لینک می‌شود و برای .msg برنده است */
+
+.demo-sheets .msg {
+  color: #0b6e4f;
+}
+
+.demo-sheets .from-b {
+  background-color: #c3fae8;
+  padding: 10px;
+}

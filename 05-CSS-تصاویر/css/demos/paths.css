@@ -1,0 +1,180 @@
+/* دیاگرام مسیر فایل */
+
+.diagram-img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  border: 1px solid #cfd8e3;
+  margin: 12px 0;
+}
+
+.folder-tree {
+  direction: ltr;
+  text-align: left;
+  font-family: Consolas, "Courier New", monospace;
+  background: #0f1720;
+  color: #d7e0ea;
+  border-radius: 10px;
+  padding: 16px 18px;
+  line-height: 1.7;
+  overflow-x: auto;
+  margin: 12px 0;
+}
+
+.folder-tree .root {
+  color: #7dd3fc;
+  font-weight: bold;
+}
+
+.folder-tree .folder {
+  color: #fbbf24;
+}
+
+.folder-tree .file {
+  color: #a7f3d0;
+}
+
+/* برچسب‌های رنگی داخل درخت پوشه */
+.folder-tree .here-html,
+.folder-tree .here-css,
+.folder-tree .target {
+  padding: 0 4px;
+  border-radius: 3px;
+}
+
+.folder-tree .here-html {
+  background: rgba(59, 130, 246, 0.25);
+  color: #93c5fd;
+}
+
+.folder-tree .here-css {
+  background: rgba(16, 185, 129, 0.25);
+  color: #6ee7b7;
+}
+
+.folder-tree .target {
+  background: rgba(251, 191, 36, 0.3);
+  color: #fde68a;
+}
+
+.steps {
+  margin: 14px 0;
+}
+
+/* دایره شماره سمت راست، متن کنارش */
+.step {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 10px;
+  background: #f8fafc;
+  border: 1px solid #d9e2ec;
+  border-radius: 8px;
+  padding: 12px 14px;
+}
+
+.step-num {
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  line-height: 40px;
+  text-align: center;
+  border-radius: 50%;
+  background: #1a3a5c;
+  color: white;
+  font-weight: bold;
+}
+
+.step h4 {
+  margin: 0 0 4px;
+  color: #1a3a5c;
+}
+
+.step p {
+  margin: 0;
+  color: #444;
+}
+
+.path-walk {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+  margin: 12px 0;
+  direction: ltr;
+}
+
+.path-chip {
+  background: #1a3a5c;
+  color: white;
+  padding: 6px 10px;
+  border-radius: 6px;
+  font-family: Consolas, "Courier New", monospace;
+  font-size: 0.9rem;
+}
+
+.path-chip.up {
+  background: #c92a2a;
+}
+
+.path-chip.into {
+  background: #0b6e4f;
+}
+
+.path-arrow {
+  color: #666;
+  font-weight: bold;
+}
+
+.vs-box {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin: 14px 0;
+}
+
+@media (max-width: 700px) {
+  .vs-box {
+    grid-template-columns: 1fr;
+  }
+}
+
+.vs-card {
+  border-radius: 8px;
+  padding: 14px;
+  border: 1px solid #cfd8e3;
+}
+
+.vs-card.html-side {
+  background: #e8f4fd;
+  border-color: #93c5fd;
+}
+
+.vs-card.css-side {
+  background: #ebfbee;
+  border-color: #8ce99a;
+}
+
+.vs-card h4 {
+  margin: 0 0 8px;
+}
+
+.live-ok {
+  max-width: 160px;
+  border-radius: 8px;
+  display: block;
+}
+
+.broken-box {
+  min-height: 80px;
+  border: 2px dashed #c92a2a;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #c92a2a;
+  background: #fff5f5;
+  font-size: 0.92rem;
+  padding: 10px;
+  text-align: center;
+}

@@ -1,0 +1,24 @@
+/* ۳) Selectors
+   پیشوند .demo-sel فقط برای این است که قانون‌ها به جعبه نتیجه محدود بمانند
+   و روی پاراگراف‌های خود صفحه آموزشی اثر نگذارند. */
+
+.demo-sel p {
+  color: #c92a2a;
+}
+
+.demo-sel #lead {
+  color: #1a5fb4;
+}
+
+.demo-sel .center {
+  text-align: center;
+}
+
+.demo-sel p.large {
+  font-size: 24px;
+}
+
+.demo-sel h3,
+.demo-sel h4 {
+  color: #0b6e4f;
+}

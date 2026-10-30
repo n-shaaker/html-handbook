@@ -1,0 +1,40 @@
+/* تمرین ۳ — لوگوی له‌شده و کارت‌های نیمه‌پر (نسخه خراب — درستش کنید) */
+
+body {
+  font-family: Tahoma, sans-serif;
+  margin: 20px;
+  background-color: #f8f9fa;
+  color: #212529;
+}
+
+.header {
+  display: flex;
+  gap: 10px;
+  background-color: #343a40;
+  padding: 10px;
+}
+
+.logo {
+  width: 140px;
+  background-color: #fab005;
+  padding: 8px;
+  font-weight: bold;
+}
+
+.header a {
+  color: white;
+  padding: 8px;
+}
+
+.cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.card {
+  width: 200px;
+  background-color: #e6fcf5;
+  padding: 20px;
+}

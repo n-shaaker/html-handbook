@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>۱۱) جدول‌ها | جزوه HTML</title>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+  <header class="page-header">
+    <h1>جزوه HTML مقدماتی</h1>
+    <p>۱۱) جدول‌ها</p>
+  </header>
+
+  <div class="container">
+    <nav class="page-nav">
+      <a href="10-lists.html">→ درس قبل</a>
+      <a href="../index.html">فهرست مطالب</a>
+      <a href="12-forms.html">درس بعد ←</a>
+    </nav>
+
+    <section class="lesson">
+      <h2>۱۱) جدول‌ها — عناصر پرکاربرد</h2>
+      <p>
+        جدول داده‌هایی را نشان می‌دهد که در ردیف و ستون معنا دارند، مانند کارنامه، قیمت کالا یا برنامهٔ هفتگی.
+        جدول ابزار چیدمان کلی صفحه نیست. چیدمان صفحه با CSS انجام می‌شود. اگر داده واقعاً جدولی نباشد، استفاده از <code>table</code> ساختار را برای صفحه‌خوان گمراه‌کننده می‌کند.
+      </p>
+
+      <table class="ref">
+        <thead>
+          <tr>
+            <th>عنصر</th>
+            <th>تعریف</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>table</code></td>
+            <td>عنصر <code>table</code> ظرف اصلی جدول است و ردیف‌ها داخل آن قرار می‌گیرند.</td>
+          </tr>
+          <tr>
+            <td><code>thead</code></td>
+            <td>عنصر <code>thead</code> بخش عنوان ستون‌ها را جدا می‌کند تا معلوم باشد کدام ردیف سرستون است.</td>
+          </tr>
+          <tr>
+            <td><code>tbody</code></td>
+            <td>عنصر <code>tbody</code> بدنهٔ جدول است و ردیف‌های داده داخل آن نوشته می‌شوند.</td>
+          </tr>
+          <tr>
+            <td><code>tr</code></td>
+            <td>عنصر <code>tr</code> یک ردیف می‌سازد. سلول‌های آن ردیف داخل همین عنصر قرار می‌گیرند.</td>
+          </tr>
+          <tr>
+            <td><code>th</code></td>
+            <td>عنصر <code>th</code> سلول عنوان است و معمولاً ضخیم و وسط‌چین دیده می‌شود. این ظاهر پیش‌فرض است؛ نقش آن معرفی ستون یا ردیف است.</td>
+          </tr>
+          <tr>
+            <td><code>td</code></td>
+            <td>عنصر <code>td</code> سلول داده است و مقدار واقعی همان خانه را نگه می‌دارد.</td>
+          </tr>
+          <tr>
+            <td><code>caption</code></td>
+            <td>عنصر <code>caption</code> عنوان توصیفی کل جدول است و باید اولین فرزند <code>table</code> باشد. این عنوان برای کاربر و صفحه‌خوان توضیح می‌دهد جدول چه چیزی را نشان می‌دهد.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <pre class="code"><code>&lt;table&gt;
+  &lt;caption&gt;کارنامه نیم‌سال اول — درس طراحی وب&lt;/caption&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;شماره دانشجویی&lt;/th&gt;
+      &lt;th&gt;نام&lt;/th&gt;
+      &lt;th&gt;نمره&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;۴۰۱۱۲۳۴&lt;/td&gt;
+      &lt;td&gt;سارا رضایی&lt;/td&gt;
+      &lt;td&gt;۱۸&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;۴۰۱۱۲۳۵&lt;/td&gt;
+      &lt;td&gt;علی محمدی&lt;/td&gt;
+      &lt;td&gt;۱۷&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;</code></pre>
+
+      <div class="result">
+        <table class="ref">
+          <caption>کارنامه نیم‌سال اول — درس طراحی وب</caption>
+          <thead>
+            <tr>
+              <th>شماره دانشجویی</th>
+              <th>نام</th>
+              <th>نمره</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>۴۰۱۱۲۳۴</td>
+              <td>سارا رضایی</td>
+              <td>۱۸</td>
+            </tr>
+            <tr>
+              <td>۴۰۱۱۲۳۵</td>
+              <td>علی محمدی</td>
+              <td>۱۷</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p>
+        هر <code>tr</code> یک ردیف است و سلول‌ها به ترتیب داخل آن نوشته می‌شوند. تعداد سلول‌های ردیف‌ها باید با هم جور باشد، مگر جایی که با <code>colspan</code> یا <code>rowspan</code> خانه‌ها را ادغام کرده باشید.
+        در صفحهٔ راست‌به‌چپ، نخستین سلول در سمت راست قرار می‌گیرد. مرورگر اگر سلولی کم باشد گاهی خانهٔ خالی می‌سازد، اما بهتر است شبکه را خودتان کامل بنویسید.
+      </p>
+
+      <h3>ویژگی <code>scope</code> برای سرستون‌ها</h3>
+      <p>
+        ویژگی <code>scope</code> مشخص می‌کند هر <code>th</code> عنوان یک ستون است (<code>col</code>) یا عنوان یک ردیف (<code>row</code>).
+        ظاهر جدول با این ویژگی عوض نمی‌شود. فایده‌اش برای صفحه‌خوان است تا هنگام خواندن یک خانه، عنوان مربوط به آن را هم بگوید.
+      </p>
+      <pre class="code"><code>&lt;thead&gt;
+  &lt;tr&gt;
+    &lt;th scope="col"&gt;کالا&lt;/th&gt;
+    &lt;th scope="col"&gt;قیمت&lt;/th&gt;
+    &lt;th scope="col"&gt;موجودی&lt;/th&gt;
+  &lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+  &lt;tr&gt;
+    &lt;th scope="row"&gt;هدفون بی‌سیم&lt;/th&gt;
+    &lt;td&gt;۱٬۲۰۰٬۰۰۰ تومان&lt;/td&gt;
+    &lt;td&gt;موجود&lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/tbody&gt;</code></pre>
+
+      <h3>ادغام سلول‌ها: <code>colspan</code> و <code>rowspan</code></h3>
+      <p>
+        <code>colspan="2"</code> یعنی این سلول به اندازهٔ دو ستون پهن شود و جای دو خانه را بگیرد.
+        <code>rowspan="2"</code> یعنی همین سلول به اندازهٔ دو ردیف بلند شود.
+        هر خانه‌ای که ادغام شد، در ردیف یا ستون بعدی نباید دوباره نوشته شود؛ وگرنه جدول یک خانه اضافه پیدا می‌کند و چیدمان به‌هم می‌ریزد.
+      </p>
+      <pre class="code"><code>&lt;table&gt;
+  &lt;tr&gt;
+    &lt;th&gt;روز&lt;/th&gt;
+    &lt;th colspan="2"&gt;کلاس‌ها&lt;/th&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td rowspan="2"&gt;شنبه&lt;/td&gt;
+    &lt;td&gt;HTML&lt;/td&gt;
+    &lt;td&gt;CSS&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td&gt;JavaScript&lt;/td&gt;
+    &lt;td&gt;پروژه&lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;</code></pre>
+      <div class="result">
+        <table class="ref">
+          <tr>
+            <th>روز</th>
+            <th colspan="2">کلاس‌ها</th>
+          </tr>
+          <tr>
+            <td rowspan="2">شنبه</td>
+            <td>HTML</td>
+            <td>CSS</td>
+          </tr>
+          <tr>
+            <td>JavaScript</td>
+            <td>پروژه</td>
+          </tr>
+        </table>
+      </div>
+
+      <h3><code>tfoot</code> و <code>colgroup</code></h3>
+      <p>
+        عنصر <code>tfoot</code> بخش پایانی جدول است و برای جمع کل یا یادداشت پایانی به‌کار می‌رود. مرورگر آن را معمولاً پایین جدول نشان می‌دهد، حتی اگر در کد پیش از <code>tbody</code> نوشته شود.
+        <code>colgroup</code> همراه <code>col</code> اجازه می‌دهد به یک یا چند ستون کامل، یکجا استایل بدهید، بدون اینکه ویژگی را روی تک‌تک سلول‌ها تکرار کنید.
+      </p>
+      <pre class="code"><code>&lt;table&gt;
+  &lt;colgroup&gt;
+    &lt;col style="background-color: #e8f4fd"&gt;
+    &lt;col&gt;
+  &lt;/colgroup&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;&lt;th&gt;کالا&lt;/th&gt;&lt;th&gt;قیمت&lt;/th&gt;&lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;&lt;td&gt;دفتر&lt;/td&gt;&lt;td&gt;۵۰&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr&gt;&lt;td&gt;خودکار&lt;/td&gt;&lt;td&gt;۲۰&lt;/td&gt;&lt;/tr&gt;
+  &lt;/tbody&gt;
+  &lt;tfoot&gt;
+    &lt;tr&gt;&lt;td&gt;جمع (هزار تومان)&lt;/td&gt;&lt;td&gt;۷۰&lt;/td&gt;&lt;/tr&gt;
+  &lt;/tfoot&gt;
+&lt;/table&gt;</code></pre>
+      <div class="result">
+        <table class="ref">
+          <colgroup>
+            <col style="background-color: #e8f4fd">
+            <col>
+          </colgroup>
+          <thead>
+            <tr><th>کالا</th><th>قیمت</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>دفتر</td><td>۵۰</td></tr>
+            <tr><td>خودکار</td><td>۲۰</td></tr>
+          </tbody>
+          <tfoot>
+            <tr><td>جمع (هزار تومان)</td><td>۷۰</td></tr>
+          </tfoot>
+        </table>
+      </div>
+
+      <p class="tip">
+        <strong>نکته:</strong>
+        جدول خام HTML به‌طور پیش‌فرض حاشیهٔ مشخصی ندارد. برای خط‌کشی از CSS استفاده می‌کنیم:
+        <code>border: 1px solid</code> روی <code>th</code> و <code>td</code>، و
+        <code>border-collapse: collapse</code> روی <code>table</code> تا خط دو سلول مجاور یکی شود و دو خط چسبیده دیده نشود.
+      </p>
+
+      <p class="mistake">
+        <strong>خطای متداول:</strong>
+        چیدن کل صفحه با جدول، که روش قدیمی دههٔ نود میلادی بود. جدول برای داده است و چیدمان صفحه با CSS، مثلاً Flexbox و Grid، انجام می‌شود.
+        ویژگی‌های قدیمی <code>border</code>، <code>cellpadding</code> و <code>bgcolor</code> روی <code>table</code> هم منسوخ شده‌اند و جای آن‌ها CSS است.
+      </p>
+
+      <p class="exercise">
+        <strong>تمرین:</strong>
+        برنامهٔ هفتگی کلاس‌های خود را با جدول بسازید. یک <code>caption</code> برای عنوان جدول بگذارید، سرستون روزها را با <code>scope="col"</code> مشخص کنید
+        و برای کلاس دو ساعته از <code>rowspan</code> استفاده کنید تا یک خانه دو ردیف را بپوشاند.
+      </p>
+    </section>
+
+    <nav class="page-nav">
+      <a href="10-lists.html">→ درس قبل</a>
+      <a href="../index.html">فهرست مطالب</a>
+      <a href="12-forms.html">درس بعد ←</a>
+    </nav>
+  </div>
+
+  <footer class="page-footer">جزوه HTML مقدماتی</footer>
+</body>
+
+</html>

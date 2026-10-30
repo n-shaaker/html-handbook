@@ -1,0 +1,29 @@
+/* تمرین ۲ — فرم دوستونه (پاسخ) */
+
+body {
+  font-family: Tahoma, sans-serif;
+  margin: 20px;
+  background-color: #f8f9fa;
+  color: #212529;
+}
+
+.form {
+  display: grid;
+  grid-template-columns: 150px 1fr;
+  gap: 10px;
+  align-items: center;
+  max-width: 500px;
+  background-color: white;
+  padding: 20px;
+}
+
+.form input {
+  padding: 8px;
+}
+
+/* دکمه فقط زیر ستون فیلدها */
+.form button {
+  grid-column: 2;
+  justify-self: start;
+  padding: 8px 20px;
+}

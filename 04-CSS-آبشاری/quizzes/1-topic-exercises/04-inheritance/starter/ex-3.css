@@ -1,0 +1,22 @@
+h2 {
+  border-bottom: 2px solid #dee2e6;
+  padding-bottom: 4px;
+}
+
+.promo {
+  padding: 16px;
+  color: #5f3dc4;
+  text-align: center;
+  border: 2px solid currentColor;
+}
+
+.promo p {
+  color: #333333;
+}
+
+.site-footer {
+  margin-top: 24px;
+  padding: 12px;
+  background-color: #212529;
+  color: #f1f3f5;
+}

@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>۱۴) اعداد (Numbers) | آموزش JavaScript سطح پایه</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <script src="../js/log.js" defer></script>
+  <script src="../js/demos/numbers.js" defer></script>
+</head>
+
+<body>
+
+  <header class="page-header" id="top">
+    <h1>آموزش JavaScript — سطح پایه</h1>
+    <p>۱۴) اعداد (Numbers)</p>
+  </header>
+
+  <div class="container">
+
+    <nav class="page-nav" aria-label="ناوبری درس">
+      <a href="13-template-literals.html">→ قبلی: Template Literals</a>
+      <a href="../index.html">فهرست درس‌ها</a>
+      <a href="15-booleans-comparisons.html">بعدی: Comparisons ←</a>
+    </nav>
+
+    <section class="lesson" id="numbers">
+      <h2>۱۴) اعداد (Numbers)</h2>
+<p>در JavaScript عدد صحیح و اعشاری نوع جدا ندارند؛ هر دو <code>number</code> هستند. همین نوع برای شمارش، قیمت، نمره و نتیجهٔ تقسیم به کار می‌رود. علاوه بر نوشتن معمولی عدد، می‌توانید توان ده را با حرف <code>e</code> بنویسید. در ادامه می‌بینید چرا بعضی جمع‌های اعشاری دقیقاً همان عددی که روی کاغذ انتظار دارید نمی‌شوند و چطور متنی که کاربر تایپ کرده به عدد قابل محاسبه تبدیل می‌شود.</p>
+
+<pre class="code"><code>let a = 25;
+let b = 3.75;
+let c = 2.5e3;      // 2.5 × 1000
+console.log(a, b, c);   // 25 3.75 2500</code></pre>
+
+<div class="result">
+<pre class="console" id="out-1"></pre>
+</div>
+
+<p><code>25</code> عدد صحیح است و <code>3.75</code> اعشاری، ولی <code>typeof</code> هر دو را <code>"number"</code> گزارش می‌کند. <code>2.5e3</code> یعنی ۲٫۵ ضربدر ۱۰ به توان ۳، یعنی ۲۵۰۰. این شکل برای عددهای خیلی بزرگ یا خیلی کوچک خواناتر از نوشتن صفرهای طولانی است.</p>
+
+<h3>دقت اعشار</h3>
+
+<p>کامپیوتر عددها را در مبنای ۲ ذخیره می‌کند و بعضی کسرهای ساده مثل <code>0.1</code> در مبنای ۲ دقیق نوشته نمی‌شوند (مثل <code>1/3</code> که در مبنای ۱۰ می‌شود ...0.333). این مشکل مخصوص JavaScript نیست و در اکثر زبان‌ها وجود دارد. (در کد زیر <code>===</code> یعنی «آیا دقیقاً برابر است؟»؛ در درس بعد کامل توضیح داده می‌شود.)</p>
+
+<pre class="code"><code>console.log(0.1 + 0.2);                  // 0.30000000000000004 ← نه دقیقاً 0.3!
+console.log(0.1 + 0.2 === 0.3);          // false
+console.log((0.1 + 0.2).toFixed(2));     // 0.30 ← گرد کردن تا 2 رقم اعشار (خروجی رشته است)
+console.log(Number((0.1 + 0.2).toFixed(2)) === 0.3);   // true ← بعد از گرد کردن و تبدیل به عدد</code></pre>
+
+<div class="result">
+<pre class="console" id="out-2"></pre>
+</div>
+
+<p>جمع <code>0.1</code> و <code>0.2</code> در حافظهٔ دودویی دقیقاً <code>0.3</code> ذخیره نمی‌شود، پس مقایسهٔ سخت‌گیرانه false می‌شود. <code>toFixed(2)</code> عدد را تا دو رقم اعشار گرد می‌کند، ولی نتیجه را به‌صورت متن برمی‌گرداند. اگر بخواهید دوباره با عدد مقایسه کنید، باید همان متن را با <code>Number</code> به عدد برگردانید.</p>
+
+<p class="tip"><strong>نکته برای حساب پول:</strong> مبلغ‌ها را تا جای ممکن به صورت عدد صحیح (تومان یا ریال) نگه دارید و درصدها را به شکل <code>price * 9 / 100</code> حساب کنید. فقط در لحظه نمایش، عدد را گرد کنید.</p>
+
+<h3>NaN و Infinity</h3>
+
+<pre class="code"><code>console.log(100 / "سیب");             // NaN = Not a Number
+console.log(10 / 0);                  // Infinity
+console.log(NaN === NaN);             // false ← NaN با هیچ چیز، حتی خودش، برابر نیست!
+console.log(Number.isNaN(NaN));       // true  ← روش درست برای تشخیص NaN
+console.log(isNaN("سلام"));           // true  ← isNaN قدیمی اول متن را به عدد تبدیل می‌کند
+console.log(Number.isNaN("سلام"));    // false ← "سلام" یک رشته است، نه مقدار NaN</code></pre>
+
+<div class="result">
+<pre class="console" id="out-3"></pre>
+</div>
+
+<p><code>NaN</code> نتیجهٔ محاسبه‌ای است که جواب عددی معتبر ندارد، مثل تقسیم عدد بر متن. <code>10 / 0</code> در این زبان خطا نمی‌دهد و <code>Infinity</code> می‌شود. چون <code>NaN</code> با هیچ مقداری، حتی با خودش، برابر نیست، برای تشخیصش از <code>Number.isNaN</code> استفاده می‌کنیم. تابع قدیمی‌تر <code>isNaN</code> اول مقدار را به عدد تبدیل می‌کند؛ به همین دلیل متن «سلام» را هم true گزارش می‌کند، در حالی که خود آن متن مقدار <code>NaN</code> نیست.</p>
+
+<p class="tip">برای اینکه بفهمید ورودی کاربر عدد معتبر است یا نه، اول آن را با <code>Number()</code> تبدیل کنید و بعد <code>Number.isNaN(n)</code> را بررسی کنید.</p>
+
+<h3>تبدیل متن به عدد</h3>
+
+<table class="ref">
+<tr><th>تابع</th><th>مثال</th><th>نتیجه</th></tr>
+<tr><td><code>Number()</code></td><td><code>Number("12.5")</code></td><td>12.5</td></tr>
+<tr><td><code>Number()</code></td><td><code>Number("12px")</code></td><td>NaN</td></tr>
+<tr><td><code>parseInt()</code></td><td><code>parseInt("12.5px")</code></td><td>12</td></tr>
+<tr><td><code>parseFloat()</code></td><td><code>parseFloat("12.5px")</code></td><td>12.5</td></tr>
+<tr><td><code>Number()</code></td><td><code>Number("")</code> یا <code>Number(" ")</code></td><td>0 (نه NaN!)</td></tr>
+<tr><td><code>parseInt()</code></td><td><code>parseInt("px12")</code></td><td>NaN (باید با عدد شروع شود)</td></tr>
+</table>
+
+<p class="tip"><code>Number()</code> سخت‌گیر است: کل متن باید عدد باشد. <code>parseInt</code> و <code>parseFloat</code> از اول متن تا جایی که عدد است را می‌خوانند و بقیه را رها می‌کنند.</p>
+
+<h3>متدهای مفید عدد</h3>
+
+<pre class="code"><code>let price = 1250000;
+let x = 9.656;
+
+console.log(x.toFixed(1));                       // 9.7 ← یک رقم اعشار، گرد شده (رشته)
+console.log(Number.isInteger(5));                // true
+console.log(Number.isInteger(5.5));              // false
+console.log(price.toLocaleString("en-US"));      // 1,250,000 ← با جداکننده هزارگان
+console.log(price.toLocaleString("fa-IR"));      // ۱٬۲۵۰٬۰۰۰ ← با رقم‌های فارسی</code></pre>
+
+<p class="tip">اگر داخل پرانتز <code>toLocaleString()</code> چیزی ننویسید، شکل خروجی به زبان و تنظیمات مرورگر کاربر بستگی دارد. برای نتیجه یکسان، زبان را مشخص کنید.</p>
+
+<div class="result">
+<pre class="console" id="out-4"></pre>
+</div>
+
+<p><code>toFixed(1)</code> تا یک رقم اعشار گرد می‌کند و رشته برمی‌گرداند، نه عدد. <code>Number.isInteger</code> فقط وقتی true است که مقدار عدد صحیح باشد؛ اعشاری false می‌شود. <code>toLocaleString</code> شکل نمایش را برای خواندن انسان عوض می‌کند: با <code>"en-US"</code> جداکنندهٔ هزارگان انگلیسی می‌گذارد و با <code>"fa-IR"</code> رقم‌ها را فارسی می‌کند. خود مقدار عددی متغیر عوض نمی‌شود.</p>
+
+<h3>مثال: ماشین‌حساب جمع</h3>
+
+<pre class="code"><code>const num1 = document.getElementById("num1");
+const num2 = document.getElementById("num2");
+const sumBtn = document.getElementById("sum-btn");
+const sumOut = document.getElementById("sum-out");
+
+sumBtn.addEventListener("click", function () {
+  const n1 = Number(num1.value);
+  const n2 = Number(num2.value);
+  sumOut.textContent = `نتیجه: ${n1 + n2}`;
+});</code></pre>
+
+<div class="result">
+<input type="number" id="num1" value="12" aria-label="عدد اول">
++
+<input type="number" id="num2" value="30" aria-label="عدد دوم">
+<button class="btn" id="sum-btn" aria-label="محاسبه جمع">=</button>
+<p class="demo-box" id="sum-out" aria-live="polite">نتیجه:</p>
+</div>
+
+<p>مقدار هر کادر متن است، حتی اگر کاربر فقط رقم تایپ کرده باشد. <code>Number</code> آن متن را به عدد تبدیل می‌کند تا <code>+</code> جمع کند، نه اینکه دو رشته را به هم بچسباند. نتیجه داخل یک رشتهٔ قالبی نوشته می‌شود تا برچسب «نتیجه» و عدد در یک جمله باشند.</p>
+
+<p class="tip">اگر یکی از کادرها را خالی بگذارید، <code>Number("")</code> صفر می‌شود و جمع بدون هیچ پیامی انجام می‌شود. در درس «شرط‌ها» یاد می‌گیریم چطور ورودی خالی را بررسی کنیم.</p>
+
+<p class="mistake"><strong>اشتباه رایج:</strong> فراموش کردن <code>Number()</code> برای مقدار <code>input</code>. بدون آن <code>"12" + "30"</code> می‌شود <code>"1230"</code>!</p>
+
+<p class="exercise"><strong>تمرین:</strong> یک ماشین‌حساب تخفیف بسازید: دو input برای قیمت و درصد تخفیف و یک دکمه. با کلیک، مبلغ تخفیف (<code>price * percent / 100</code>) و قیمت نهایی را با <code>toLocaleString("fa-IR")</code> و کلمه «تومان» داخل صفحه نشان دهید. مثال: قیمت ۱۸۰۰۰۰۰ با ۱۵٪ تخفیف ← ۱٬۵۳۰٬۰۰۰ تومان.</p>
+    </section>
+
+    <nav class="page-nav" aria-label="ناوبری درس پایین">
+      <a href="13-template-literals.html">→ قبلی: Template Literals</a>
+      <a href="../index.html">فهرست درس‌ها</a>
+      <a href="15-booleans-comparisons.html">بعدی: Comparisons ←</a>
+    </nav>
+
+  </div>
+
+  <footer class="page-footer">
+    آموزش JavaScript سطح پایه
+  </footer>
+
+</body>
+
+</html>

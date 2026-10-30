@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>۹) ترکیب‌کننده‌ها (Combinators) | آموزش CSS سطح میانی</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/demos/combinators.css">
+</head>
+
+<body>
+
+  <header class="page-header">
+    <h1>آموزش CSS — سطح میانی</h1>
+    <p>۹) ترکیب‌کننده‌ها (Combinators)</p>
+  </header>
+
+  <div class="container">
+
+    <nav class="page-nav" aria-label="ناوبری درس">
+      <a href="08-align.html">→ قبلی: Align</a>
+      <a href="../index.html">فهرست درس‌ها</a>
+      <a href="10-pseudo-classes.html">بعدی: Pseudo-classes ←</a>
+    </nav>
+
+    <section class="lesson" id="combinators">
+      <h2>۹) ترکیب‌کننده‌ها (Combinators)</h2>
+      <p>
+        ترکیب‌کننده رابطه‌ای است که بین دو انتخابگر نوشته می‌شود و می‌گوید عنصر دوم نسبت به عنصر اول کجای درخت HTML باشد.
+        فاصله (<code>A B</code>) همه نسل‌ها را می‌گیرد: فرزند، نوه و عمیق‌تر. علامت <code>&gt;</code> فقط فرزند مستقیم را می‌گیرد.
+        علامت <code>+</code> فقط اولین هم‌سطحی را می‌گیرد که بلافاصله بعد از عنصر اول آمده و پدر مشترک دارند.
+        علامت <code>~</code> همه هم‌سطح‌های بعدی را می‌گیرد، حتی اگر بینشان عنصر دیگری باشد. این دو علامت فقط به‌سمت بعد نگاه می‌کنند و عنصرهای قبلی، یا عنصرهای داخل یک هم‌سطح، را انتخاب نمی‌کنند.
+      </p>
+      <table class="ref">
+        <tr>
+          <th>علامت</th>
+          <th>نام</th>
+          <th>معنی ساده</th>
+        </tr>
+        <tr>
+          <td><code>A B</code> (فاصله)</td>
+          <td>نسل (descendant)</td>
+          <td>همه B هایی که هر جایی داخل A هستند (فرزند، نوه، ...)</td>
+        </tr>
+        <tr>
+          <td><code>A &gt; B</code></td>
+          <td>فرزند مستقیم (child)</td>
+          <td>فقط B هایی که مستقیماً داخل A هستند</td>
+        </tr>
+        <tr>
+          <td><code>A + B</code></td>
+          <td>همسایه بعدی (adjacent sibling)</td>
+          <td>فقط اولین B که بلافاصله بعد از A آمده</td>
+        </tr>
+        <tr>
+          <td><code>A ~ B</code></td>
+          <td>همه هم‌سطح‌های بعدی (general sibling)</td>
+          <td>همه B هایی که بعد از A و هم‌سطح آن هستند</td>
+        </tr>
+      </table>
+
+      <h3>مثال ۱: نسل — <code>.post p</code></h3>
+      <pre class="code"><code>.post p {
+  background-color: yellow;
+}</code></pre>
+      <div class="result demo-comb">
+        <div class="post">
+          <p>پاراگراف فرزند ✔</p>
+          <section>
+            <p>پاراگراف نوه (داخل section) ✔</p>
+          </section>
+        </div>
+        <p>پاراگراف بیرون از <code>.post</code> ✘</p>
+      </div>
+
+      <h3>مثال ۲: فرزند مستقیم — <code>.card &gt; p</code></h3>
+      <pre class="code"><code>.card &gt; p {
+  background-color: lightgreen;
+}</code></pre>
+      <div class="result demo-comb">
+        <div class="card">
+          <p>پاراگراف فرزند مستقیم ✔</p>
+          <section>
+            <p>پاراگراف نوه ✘ (مستقیم نیست)</p>
+          </section>
+          <p>پاراگراف فرزند مستقیم دیگر ✔</p>
+        </div>
+      </div>
+
+      <h3>مثال ۳: همسایه بعدی — <code>h4 + p</code></h3>
+      <p>
+        ترکیب‌کننده <code>+</code> فقط اولین عنصری را می‌گیرد که بلافاصله بعد از انتخابگر اول آمده و با آن هم‌سطح است.
+        در مقاله، این الگو پاراگراف مقدمه را درست بعد از تیتر پررنگ می‌کند و پاراگراف‌های بعدی را دست‌نخورده می‌گذارد.
+      </p>
+      <pre class="code"><code>h4 + p {
+  font-weight: bold;
+  color: #0b6e4f;
+}</code></pre>
+      <div class="result demo-comb">
+        <div class="ex3">
+          <h4>تیتر مقاله</h4>
+          <p>اولین پاراگراف بعد از تیتر ✔ (خلاصه مقاله)</p>
+          <p>پاراگراف دوم ✘</p>
+          <p>پاراگراف سوم ✘</p>
+        </div>
+      </div>
+
+      <h3>مثال ۴: همه هم‌سطح‌های بعدی — <code>h4 ~ p</code></h3>
+      <pre class="code"><code>h4 ~ p {
+  border-right: 4px solid orange;
+}</code></pre>
+      <div class="result demo-comb">
+        <div class="ex4">
+          <p>قبل از تیتر ✘</p>
+          <h4>تیتر</h4>
+          <p>بعد از تیتر ✔</p>
+          <span>یک span وسط</span>
+          <p>این هم بعد از تیتر است ✔</p>
+        </div>
+      </div>
+
+      <h3>مثال ۵: کاربرد ترکیبی — منو</h3>
+      <p>در منوهای چندسطحی، با <code>&gt;</code> می‌توانیم فقط لینک‌های سطح اول را انتخاب کنیم و لینک‌های زیرمنو (که داخل یک <code>ul</code> دیگرند) دست‌نخورده بمانند:</p>
+      <pre class="code"><code>nav &gt; ul &gt; li &gt; a {
+  color: white;   /* فقط لینک‌های سطح اول منو */
+}</code></pre>
+      <div class="result demo-comb">
+        <nav class="ex5">
+          <ul>
+            <li><a href="#combinators">خانه</a></li>
+            <li><a href="#combinators">آموزش</a></li>
+            <li><a href="#combinators">تماس</a></li>
+          </ul>
+        </nav>
+      </div>
+
+      <p class="mistake">
+        <strong>اشتباه رایج:</strong>
+        فراموش کردن فاصله: <code>div.box</code> (یعنی divی که کلاس box دارد) با <code>div .box</code> (یعنی عنصری با کلاس box داخل div) فرق دارد.
+      </p>
+
+      <p class="mistake">
+        <strong>اشتباه رایج:</strong>
+        انتظار اینکه <code>+</code> و <code>~</code> عنصرهای <strong>قبلی</strong> یا عنصرهای داخل خواهر/برادر را هم بگیرند.
+        هر دو فقط هم‌سطح‌هایی را انتخاب می‌کنند که <strong>بعد</strong> از A آمده‌اند و پدر مشترک دارند.
+      </p>
+
+      <p class="tip">
+        انتخابگرهای خیلی طولانی (مثل <code>body div ul li a span</code>) شکننده‌اند؛ با کوچک‌ترین تغییر HTML از کار می‌افتند.
+        معمولاً یک کلاس به‌علاوه حداکثر یک یا دو ترکیب‌کننده کافی است.
+      </p>
+
+      <p class="exercise">
+        <strong>تمرین:</strong> یک مقاله با چند تیتر <code>h3</code> بنویسید و با <code>h3 + p</code> پاراگراف اول بعد از هر تیتر را بزرگ‌تر کنید.
+      </p>
+    </section>
+
+    <nav class="page-nav" aria-label="ناوبری درس پایین">
+      <a href="08-align.html">→ قبلی: Align</a>
+      <a href="../index.html">فهرست درس‌ها</a>
+      <a href="10-pseudo-classes.html">بعدی: Pseudo-classes ←</a>
+    </nav>
+
+  </div>
+
+  <footer class="page-footer">
+    آموزش CSS سطح میانی
+  </footer>
+
+</body>
+
+</html>

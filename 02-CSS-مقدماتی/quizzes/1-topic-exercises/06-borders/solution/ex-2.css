@@ -1,0 +1,12 @@
+/* خط جداکننده فقط پایین تیتر */
+.section-title {
+  border-bottom: 2px solid #dee2e6;
+  padding-bottom: 8px;
+}
+
+/* نوار رنگی سمت شروع متن (در فارسی: راست) */
+.quote {
+  border-inline-start: 4px solid #0b7285;
+  background-color: #f1f8f9;
+  padding: 10px;
+}

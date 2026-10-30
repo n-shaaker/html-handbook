@@ -1,0 +1,189 @@
+/* ۱۱) عرض، ارتفاع و واحدها (px / em / rem)
+   رنگ و فاصله فقط برای دیده شدن مثال‌هاست. */
+
+/* ===== عرض و ارتفاع ===== */
+
+.fixed {
+  width: 220px;
+  height: 80px;
+  background-color: #e3d7ff;
+  margin-bottom: 10px;
+}
+
+.percent {
+  width: 50%;
+  background-color: #c3fae8;
+  margin-bottom: 10px;
+  padding: 8px;
+}
+
+.max {
+  width: 100%;
+  max-width: 400px;
+  background-color: #ffd8a8;
+  padding: 8px;
+}
+
+.article-img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* ===== مقایسه px برای فونت ===== */
+
+.demo-units .px12 {
+  font-size: 12px;
+}
+
+.demo-units .px16 {
+  font-size: 16px;
+}
+
+.demo-units .px24 {
+  font-size: 24px;
+}
+
+.demo-units .px32 {
+  font-size: 32px;
+}
+
+/* ===== rem نسبت به ریشه ===== */
+
+.demo-units .rem-box {
+  background-color: #e7f5ff;
+  border: 1px solid #1c7ed6;
+  padding: 10px;
+  margin-bottom: 8px;
+}
+
+.demo-units .rem-1 {
+  font-size: 1rem;     /* معمولاً ۱۶px */
+}
+
+.demo-units .rem-125 {
+  font-size: 1.25rem;  /* معمولاً ۲۰px */
+}
+
+.demo-units .rem-15 {
+  font-size: 1.5rem;   /* معمولاً ۲۴px */
+}
+
+.demo-units .rem-2 {
+  font-size: 2rem;     /* معمولاً ۳۲px */
+}
+
+/* ===== em نسبت به والد ===== */
+
+.demo-units .em-parent {
+  font-size: 20px;
+  background-color: #fff3bf;
+  border: 1px solid #f59f00;
+  padding: 10px;
+}
+
+.demo-units .em-child {
+  font-size: 1.5em;    /* ۱.۵ × ۲۰ = ۳۰px */
+  color: #c92a2a;
+}
+
+.demo-units .rem-child {
+  font-size: 1.5rem;   /* ۱.۵ × ۱۶ = ۲۴px — والد مهم نیست */
+  color: #1a5fb4;
+}
+
+/* ===== تله em تودرتو ===== */
+
+.demo-units .nest {
+  font-size: 1.2em;
+  background-color: #ffe3e3;
+  border: 1px solid #fa5252;
+  padding: 6px 10px;
+  margin: 6px 0;
+}
+
+/* ===== دکمه با padding بر حسب em ===== */
+
+.demo-units .btn {
+  padding: 0.5em 1em;
+  background-color: #7048e8;
+  color: white;
+  border: none;
+  border-radius: 0.3em;
+  font-family: inherit;
+  cursor: pointer;
+  margin-left: 8px;
+  margin-bottom: 6px;
+}
+
+.demo-units .btn-sm {
+  font-size: 12px;
+}
+
+.demo-units .btn-md {
+  font-size: 16px;
+}
+
+.demo-units .btn-lg {
+  font-size: 24px;
+}
+
+/* ===== کارت با rem برای فاصله و فونت ===== */
+
+.demo-units .card {
+  max-width: 280px;
+  padding: 1rem;           /* ۱۶px */
+  margin-bottom: 0.75rem;  /* ۱۲px */
+  background-color: #f8f0fc;
+  border: 2px solid #9c36b5;
+  border-radius: 0.5rem;   /* ۸px */
+}
+
+.demo-units .card-title {
+  font-size: 1.25rem;      /* ۲۰px */
+  margin: 0 0 0.5rem;
+}
+
+.demo-units .card-text {
+  font-size: 1rem;
+  margin: 0 0 0.75rem;
+}
+
+.demo-units .card-price {
+  font-size: 1.5rem;       /* ۲۴px */
+  font-weight: bold;
+  color: #862e9c;
+  margin: 0;
+}
+
+/* ===== کنار هم گذاشتن سه واحد ===== */
+
+.demo-units .compare {
+  display: block;
+  margin-bottom: 8px;
+  padding: 8px 12px;
+  background-color: #f1f3f5;
+}
+
+.demo-units .compare-px {
+  width: 200px;
+  font-size: 16px;
+  border-right: 4px solid #e8590c;
+}
+
+.demo-units .compare-em {
+  width: 12.5em;           /* اگر فونت ۱۶ باشد = ۲۰۰px */
+  font-size: 1em;
+  border-right: 4px solid #2b8a3e;
+}
+
+.demo-units .compare-rem {
+  width: 12.5rem;          /* ۱۲.۵ × ۱۶ = ۲۰۰px */
+  font-size: 1rem;
+  border-right: 4px solid #1c7ed6;
+}
+
+.demo-units .label {
+  font-size: 13px;
+  color: #495057;
+  margin: 0 0 4px;
+}

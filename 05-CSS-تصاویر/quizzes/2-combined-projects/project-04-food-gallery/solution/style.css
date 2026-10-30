@@ -1,0 +1,97 @@
+/* ===== تنظیمات کلی ===== */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Tahoma, Arial, sans-serif;
+  line-height: 1.9;
+  color: #2b2b2b;
+  background-color: #faf7f2;
+}
+
+/* قانون طلایی: هیچ عکسی از ظرفش بزرگ‌تر نشود و نسبتش حفظ شود */
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+.container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 32px 16px 48px;
+}
+
+h1,
+h2 {
+  color: #7c2d12;
+}
+
+.post-meta {
+  color: #78716c;
+  font-size: 14px;
+}
+
+/* ===== چیدمان گالری ===== */
+.gallery {
+  margin-top: 40px;
+}
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+/* ===== هر آیتم گالری ===== */
+.gallery-item {
+  margin: 0; /* figure به‌طور پیش‌فرض margin دارد */
+  background-color: white;
+  border-radius: 10px;
+}
+
+/* قاب: نسبت ثابت؛ هر چیزی که هنگام زوم بیرون بزند بریده می‌شود */
+.gallery-frame {
+  display: block;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  border-radius: 10px 10px 0 0;
+}
+
+/* این انتخابگر از img کلی قوی‌تر است، پس height: 100% برنده می‌شود */
+.gallery-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s;
+}
+
+/* استکان چای عمودی است؛ بالای عکس را نگه می‌داریم */
+.gallery-frame .focus-top {
+  object-position: center 15%;
+}
+
+.gallery-frame:hover img,
+.gallery-frame:focus-visible img {
+  transform: scale(1.08);
+}
+
+.gallery-frame:focus-visible {
+  outline: 3px solid #ea580c;
+  outline-offset: 3px;
+}
+
+.gallery-item figcaption {
+  padding: 8px 14px;
+  color: #57534e;
+  font-size: 14px;
+}
+
+/* ===== موبایل ===== */
+@media (max-width: 600px) {
+  .gallery-grid {
+    grid-template-columns: 1fr;
+  }
+}

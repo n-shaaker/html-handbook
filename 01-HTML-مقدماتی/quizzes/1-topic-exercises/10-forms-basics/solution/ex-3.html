@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>تماس با ما | دیجی‌خانه</title>
+  </head>
+  <body>
+    <h1>تماس با پشتیبانی دیجی‌خانه</h1>
+
+    <form action="#" method="post">
+      <p>
+        <label for="fullname">نام و نام خانوادگی:</label>
+        <input type="text" id="fullname" name="fullname" />
+      </p>
+      <p>
+        <label for="email">ایمیل:</label>
+        <input type="email" id="email" name="email" />
+      </p>
+      <p>
+        <label for="order">شماره سفارش:</label>
+        <input type="number" id="order" name="order" />
+      </p>
+      <p>
+        <label for="subject">موضوع:</label>
+        <select id="subject" name="subject">
+          <option value="tracking">پیگیری سفارش</option>
+          <option value="return">مرجوعی</option>
+          <option value="idea">پیشنهاد</option>
+        </select>
+      </p>
+      <p>
+        روش پاسخ:
+        <!-- name یکسان: فقط یکی انتخاب می‌شود -->
+        <input type="radio" id="reply-email" name="reply" value="email" />
+        <label for="reply-email">ایمیل</label>
+        <input type="radio" id="reply-phone" name="reply" value="phone" />
+        <label for="reply-phone">تلفن</label>
+      </p>
+      <p>
+        <label for="message">متن پیام:</label><br />
+        <textarea id="message" name="message"></textarea>
+      </p>
+      <p>
+        <button type="submit">ارسال پیام</button>
+      </p>
+    </form>
+  </body>
+</html>

@@ -1,0 +1,262 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>۲۳) واکنش‌گرایی، دسترس‌پذیری و راهنمای سبک | جزوه HTML</title>
+    <link rel="stylesheet" href="../css/style.css" />
+  </head>
+
+  <body>
+    <header class="page-header">
+      <h1>جزوه HTML مقدماتی</h1>
+      <p>۲۳) طراحی واکنش‌گرا، دسترس‌پذیری و راهنمای سبک کدنویسی</p>
+    </header>
+
+    <div class="container">
+      <nav class="page-nav">
+        <a href="22-interactive.html">→ درس قبل</a>
+        <a href="../index.html">فهرست مطالب</a>
+        <a href="24-practice.html">درس بعد ←</a>
+      </nav>
+
+      <section class="lesson">
+        <h2>۲۳) طراحی واکنش‌گرا (Responsive)</h2>
+        <p>
+          صفحهٔ واکنش‌گرا روی موبایل، تبلت و رایانه درست خوانده می‌شود و لازم نیست کاربر برای دیدن محتوا مدام بزرگ‌نمایی کند.
+          بخش اصلی این کار با CSS انجام می‌شود، اما چند تصمیم HTML پایهٔ آن است. پنج مورد زیر را از همان اول در نظر بگیرید:
+        </p>
+
+        <h3>۱) تگ viewport (همیشه!)</h3>
+        <pre class="code"><code>&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;</code></pre>
+        <p>بدون این خط، بسیاری از مرورگرهای موبایل صفحه را مثل یک نمایشگر حدود ۹۸۰ پیکسل فرض می‌کنند و بعد آن را کوچک نشان می‌دهند، برای همین متن ریز می‌شود. <code>width=device-width</code> عرض صفحه را با عرض دستگاه یکی می‌کند و <code>initial-scale=1.0</code> بزرگ‌نمایی اولیه را روی ۱ می‌گذارد.</p>
+
+        <h3>۲) تصویر انعطاف‌پذیر</h3>
+        <pre class="code"><code>&lt;img src="photo.jpg" alt="..." style="max-width: 100%; height: auto;"&gt;</code></pre>
+        <p>
+          <code>max-width: 100%</code> یعنی تصویر از عرض ظرف خودش پهن‌تر نشود. <code>height: auto</code> نسبت تصویر را حفظ می‌کند تا عکس له نشود.
+          این قاعده تصویر را بزرگ‌تر از اندازهٔ اصلی پرونده نمی‌کند، مگر اینکه CSS دیگری آن را بکشد.
+        </p>
+
+        <h3>۳) تصویر متناسب با صفحه — srcset</h3>
+        <pre class="code"><code>&lt;img src="backpack-500.jpg"
+     srcset="backpack-500.jpg 500w, backpack-1000.jpg 1000w"
+     sizes="(max-width: 600px) 500px, 1000px"
+     alt="کوله‌پشتی سفری ضدآب، رنگ سرمه‌ای"&gt;</code></pre>
+        <p>
+          در <code>srcset</code> هر پرونده همراه با عرض واقعی‌اش معرفی می‌شود. <code>500w</code> یعنی عرض ذاتی تصویر ۵۰۰ پیکسل است، نه عرض نمایش.
+          <code>sizes</code> می‌گوید تصویر در هر عرض صفحه تقریباً چقدر جا می‌گیرد. مرورگر با این دو اطلاعات، پروندهٔ مناسب را انتخاب می‌کند تا روی صفحهٔ کوچک حجم کمتری بارگیری شود.
+          <code>src</code> پشتیبان مرورگرهایی است که <code>srcset</code> را نمی‌شناسند. روش دیگر، عنصر <code>picture</code> در درس ۲۰ است که وقتی خود تصویر باید عوض شود، مناسب‌تر است.
+        </p>
+
+        <h3>۴) واحدهای نسبی</h3>
+        <p>
+          به‌جای عرض ثابت مثل <code>width: 900px</code>، از درصد، <code>max-width</code>، <code>rem</code> و <code>vw</code> استفاده کنید.
+          <code>vw</code> واحدی نسبت به عرض پنجره است و <code>4vw</code> یعنی چهار درصد عرض پنجره. این واحد برای عنوان‌های خیلی بزرگ باید با احتیاط به‌کار برود، چون در صفحهٔ خیلی باریک ممکن است متن بیش از حد کوچک شود.
+        </p>
+        <pre class="code"><code>&lt;h3 style="font-size: 4vw;"&gt;این تیتر با عرض پنجره بزرگ و کوچک می‌شود&lt;/h3&gt;</code></pre>
+        <div class="result">
+          <h3 style="font-size: 4vw; margin: 0">این تیتر با عرض پنجره بزرگ و کوچک می‌شود</h3>
+        </div>
+
+        <h3>۵) چیدمان منعطف و Media Query</h3>
+        <p>با CSS، و معمولاً Flexbox یا Grid، ستون‌ها در صفحهٔ پهن کنار هم و در صفحهٔ باریک زیر هم قرار می‌گیرند. پنجره را باریک کنید:</p>
+        <pre class="code"><code>&lt;div class="row"&gt;
+  &lt;div&gt;🍕 پیتزا مخصوص — ۲۸۰ هزار تومان&lt;/div&gt;
+  &lt;div&gt;🍔 همبرگر ذغالی — ۲۱۰ هزار تومان&lt;/div&gt;
+  &lt;div&gt;🥗 سالاد سزار — ۱۶۰ هزار تومان&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;style&gt;
+  .row       { display: flex; flex-wrap: wrap; gap: 10px; }
+  .row &gt; div { flex: 1 1 200px; }
+
+  /* فقط در صفحه‌های کوچک‌تر از ۶۰۰ پیکسل */
+  @media (max-width: 600px) {
+    body { font-size: 14px; }
+  }
+&lt;/style&gt;</code></pre>
+        <div class="result">
+          <div class="demo-responsive">
+            <div>🍕 پیتزا مخصوص — ۲۸۰ هزار تومان</div>
+            <div>🍔 همبرگر ذغالی — ۲۱۰ هزار تومان</div>
+            <div>🥗 سالاد سزار — ۱۶۰ هزار تومان</div>
+          </div>
+        </div>
+        <p>
+          <code>flex: 1 1 200px</code> یعنی هر ستون حداقل حدود ۲۰۰ پیکسل جا می‌خواهد؛ اگر جا نبود، با کمک
+          <code>flex-wrap: wrap</code> به خط بعد می‌رود. <code>@media</code> هم قانون‌هایی را فقط در عرض‌های مشخص اعمال می‌کند.
+          (جزئیات این ویژگی‌ها در درس CSS آموزش داده می‌شود.)
+        </p>
+
+        <p class="tip">
+          <strong>نکته:</strong>
+          در مرورگر <kbd>F12</kbd> را بزنید و با <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>M</kbd> حالت
+          موبایل را فعال کنید تا صفحه را در اندازه‌های مختلف ببینید.
+        </p>
+      </section>
+
+      <section class="lesson">
+        <h2>دسترس‌پذیری (Accessibility)</h2>
+        <p>
+          صفحه باید برای کسانی هم قابل استفاده باشد که صفحه را نمی‌بینند و با صفحه‌خوان می‌شنوند، یا فقط با صفحه‌کلید کار می‌کنند.
+          دسترس‌پذیری یک لایهٔ جدا بعد از اتمام طراحی نیست. همان عنصرهای معنایی و متن‌های جایگزین که در درس‌های قبل دیدید، پایهٔ آن هستند.
+        </p>
+        <table class="ref">
+          <thead>
+            <tr>
+              <th>قانون</th>
+              <th>چرا</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>برای تصویر محتوایی همیشه <code>alt</code> معنادار بنویسید.</td>
+              <td>صفحه‌خوان همان متن را به‌جای تصویر می‌خواند.</td>
+            </tr>
+            <tr>
+              <td>روی عنصر <code>html</code> زبان را با <code>lang="fa"</code> مشخص کنید.</td>
+              <td>صفحه‌خوان با دانستن زبان، تلفظ درست را انتخاب می‌کند.</td>
+            </tr>
+            <tr>
+              <td>از عنصرهای معنایی مانند <code>header</code>، <code>nav</code> و <code>main</code> استفاده کنید.</td>
+              <td>کاربر صفحه‌خوان می‌تواند مستقیم به بخش‌های اصلی بپرد.</td>
+            </tr>
+            <tr>
+              <td>عنوان‌ها را به‌ترتیب <code>h1</code>، <code>h2</code> و <code>h3</code> بچینید.</td>
+              <td>از همین ترتیب، فهرست صفحه برای صفحه‌خوان ساخته می‌شود.</td>
+            </tr>
+            <tr>
+              <td>برای هر فیلد فرم یک <code>label</code> متصل بگذارید.</td>
+              <td>کاربر می‌فهمد هر فیلد برای چیست، حتی اگر فقط برچسب‌ها را بشنود.</td>
+            </tr>
+            <tr>
+              <td>برای عمل و رفتن به صفحه از <code>button</code> و <code>a</code> واقعی استفاده کنید.</td>
+              <td>این عنصرها با Tab و Enter کار می‌کنند. <code>div</code> کلیک‌پذیر به‌خودی‌خود این رفتار را ندارد.</td>
+            </tr>
+            <tr>
+              <td>متن پیوند را گویا بنویسید.</td>
+              <td>عبارت «اینجا کلیک کنید» وقتی جدا از جمله خوانده شود معنایی ندارد.</td>
+            </tr>
+            <tr>
+              <td>میان متن و پس‌زمینه تضاد رنگی کافی بگذارید.</td>
+              <td>متن برای کم‌بینایان و زیر نور زیاد خوانا می‌ماند.</td>
+            </tr>
+            <tr>
+              <td>اطلاعات را فقط با رنگ نرسانید.</td>
+              <td>کاربر کوررنگ ممکن است «فیلد قرمز» را تشخیص ندهد. کنار رنگ، متن خطا هم بنویسید.</td>
+            </tr>
+            <tr>
+              <td>برای ویدیو زیرنویس <code>track</code> بگذارید.</td>
+              <td>کاربر ناشنوا، یا کسی که بدون صدا تماشا می‌کند، محتوا را از دست نمی‌دهد.</td>
+            </tr>
+          </tbody>
+        </table>
+        <p class="tip">
+          <strong>امتحان کنید:</strong>
+          ماوس را کنار بگذارید و فقط با <kbd>Tab</kbd>، <kbd>Shift</kbd>+<kbd>Tab</kbd> و
+          <kbd>Enter</kbd> در صفحه خودتان حرکت کنید. آیا همه‌چیز در دسترس است؟
+        </p>
+      </section>
+
+      <section class="lesson">
+        <h2>راهنمای سبک کدنویسی (Style Guide)</h2>
+        <p>کد خوانا اشکال‌یابی و کار گروهی را ساده‌تر می‌کند. موردهای زیر قرارداد رایج میان توسعه‌دهندگان هستند. بعضی از آن‌ها در HTML الزام سخت نیستند، اما رعایت‌شان کد را یکدست می‌کند:</p>
+
+        <table class="ref">
+          <thead>
+            <tr>
+              <th>قانون</th>
+              <th class="text-ok">درست</th>
+              <th class="text-bad">نادرست</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>همیشه DOCTYPE بنویسید</td>
+              <td><code>&lt;!DOCTYPE html&gt;</code> در خط اول</td>
+              <td>فراموش کردن آن</td>
+            </tr>
+            <tr>
+              <td>تگ و ویژگی با حروف کوچک</td>
+              <td><code>&lt;p class="x"&gt;</code></td>
+              <td><code>&lt;P CLASS="x"&gt;</code></td>
+            </tr>
+            <tr>
+              <td>عنصری که محتوا دارد باید بسته شود. عنصر تهی مانند <code>br</code>، <code>img</code> و <code>meta</code> تگ پایانی ندارد.</td>
+              <td><code>&lt;p&gt;متن&lt;/p&gt;</code></td>
+              <td><code>&lt;p&gt;متن</code></td>
+            </tr>
+            <tr>
+              <td>مقدار ویژگی داخل نقل‌قول</td>
+              <td><code>class="main box"</code></td>
+              <td><code>class=main box</code></td>
+            </tr>
+            <tr>
+              <td>تودرتویی درست تگ‌ها</td>
+              <td><code>&lt;strong&gt;&lt;em&gt;متن&lt;/em&gt;&lt;/strong&gt;</code></td>
+              <td><code>&lt;strong&gt;&lt;em&gt;متن&lt;/strong&gt;&lt;/em&gt;</code></td>
+            </tr>
+            <tr>
+              <td>دور علامت مساوی فاصله نگذارید. HTML فاصله را می‌پذیرد، اما این شکل خواناتر و رایج‌تر است.</td>
+              <td><code>href="a.html"</code></td>
+              <td><code>href = "a.html"</code></td>
+            </tr>
+            <tr>
+              <td>تورفتگی منظم (۲ فاصله)</td>
+              <td>هر سطح داخلی ۲ فاصله جلوتر</td>
+              <td>همه کد در یک خط یا نامرتب</td>
+            </tr>
+            <tr>
+              <td>نام فایل انگلیسی، کوچک، بدون فاصله</td>
+              <td><code>about-me.html</code></td>
+              <td><code>About Me.HTML</code></td>
+            </tr>
+            <tr>
+              <td>صفحه اصلی سایت</td>
+              <td><code>index.html</code></td>
+              <td><code>home-page-final2.html</code></td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h3>HTML و XHTML</h3>
+        <p>
+          XHTML نسخهٔ سخت‌گیرتری از HTML بود: عنصرهای دارای محتوا باید بسته می‌شدند، عنصر تهی را با اسلش می‌نوشتند، مثل <code>&lt;br /&gt;</code>، و نام‌ها با حروف کوچک بودند.
+          HTML5 این سخت‌گیری‌ها را اجباری نمی‌کند. اسلش پایانی در <code>&lt;br /&gt;</code> وقتی صفحه به‌صورت HTML سرو شود معنای XML ندارد و اختیاری است. حروف کوچک و بستن عنصرهای دارای محتوا هنوز عادت خوبی است.
+        </p>
+
+        <h3>بررسی درستی کد</h3>
+        <p>
+          کد را در
+          <a href="https://validator.w3.org/" target="_blank" rel="noopener">W3C Validator</a>
+          بررسی کنید تا خطاهایی مثل عنصر بسته‌نشده یا ویژگی اشتباه پیدا شود. برای دیدن ساختار صفحه در مرورگر روی عنصر راست‌کلیک کنید و Inspect را بزنید.
+          اعتبارسنج خطاهای HTML را پیدا می‌کند، اما به‌تنهایی نمی‌گوید طراحی یا متن آموزشی شما خوب است.
+        </p>
+
+        <p class="exercise">
+          <strong>تمرین:</strong>
+          یکی از صفحه‌هایی که تا حالا ساخته‌اید را با جدول بالا بازبینی کنید، در W3C Validator بررسی و
+          خطاهایش را رفع کنید. سپس آن را در حالت موبایل (<kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>M</kbd>)
+          امتحان کنید.
+        </p>
+
+        <p>
+          مطالعه بیشتر:
+          <a href="https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/CSS_layout/Responsive_Design" target="_blank" rel="noopener">Responsive design (MDN)</a>،
+          <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Guides/Responsive_images" target="_blank" rel="noopener">Responsive images (MDN)</a>،
+          <a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility" target="_blank" rel="noopener">Accessibility (MDN)</a>،
+          <a href="https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Accessibility/HTML" target="_blank" rel="noopener">HTML: A good basis for accessibility (MDN)</a>
+        </p>
+      </section>
+
+      <nav class="page-nav">
+        <a href="22-interactive.html">→ درس قبل</a>
+        <a href="../index.html">فهرست مطالب</a>
+        <a href="24-practice.html">درس بعد ←</a>
+      </nav>
+    </div>
+
+    <footer class="page-footer">جزوه HTML مقدماتی</footer>
+  </body>
+</html>

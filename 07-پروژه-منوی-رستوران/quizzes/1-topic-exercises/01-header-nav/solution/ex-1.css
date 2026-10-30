@@ -1,0 +1,11 @@
+body {
+  margin: 0;
+  font-family: Tahoma, Arial, sans-serif;
+  line-height: 1.9;
+}
+
+/* هر بخش بلند است تا پرش لینک‌ها دیده شود */
+section {
+  min-height: 300px;
+  padding: 0 16px;
+}

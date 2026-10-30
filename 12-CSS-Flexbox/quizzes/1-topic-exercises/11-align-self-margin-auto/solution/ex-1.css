@@ -1,0 +1,31 @@
+/* تمرین ۱ — دکمه ورود در انتهای منو (پاسخ) */
+
+body {
+  font-family: Tahoma, sans-serif;
+  margin: 20px;
+  background-color: #f8f9fa;
+  color: #212529;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  background-color: white;
+  border: 1px solid #dee2e6;
+  padding: 10px 15px;
+}
+
+.nav a {
+  color: #212529;
+  text-decoration: none;
+}
+
+/* margin خودکار همه فضای خالی را می‌گیرد و دکمه را به انتها هل می‌دهد */
+.nav .login {
+  margin-inline-start: auto;
+  background-color: #2f9e44;
+  color: white;
+  padding: 6px 14px;
+  border-radius: 4px;
+}

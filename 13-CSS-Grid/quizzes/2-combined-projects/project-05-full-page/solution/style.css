@@ -1,0 +1,203 @@
+/* پروژه ۵ — صفحه کامل: Grid برای اسکلت، Flex داخل اجزا (پاسخ) */
+
+body {
+  margin: 0;
+  font-family: Tahoma, sans-serif;
+  background-color: #f8f9fa;
+  color: #212529;
+}
+
+/* ---------- اسکلت صفحه: Grid ---------- */
+.page {
+  display: grid;
+  grid-template-columns: 1fr 250px;
+  grid-template-areas:
+    "header  header"
+    "hero    hero"
+    "courses news"
+    "footer  footer";
+  gap: 20px;
+}
+
+.site-header { grid-area: header; }
+.hero        { grid-area: hero; }
+.courses     { grid-area: courses; }
+.news        { grid-area: news; }
+.site-footer { grid-area: footer; }
+
+/* ---------- سربرگ: یک ردیف ← Flexbox ---------- */
+.site-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 15px;
+  background-color: #c92a2a;
+  padding: 12px 20px;
+}
+
+.logo {
+  color: white;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.menu {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.menu a {
+  color: white;
+  text-decoration: none;
+}
+
+.signup {
+  margin-inline-start: auto;
+  background-color: white;
+  color: #c92a2a;
+  text-decoration: none;
+  padding: 6px 14px;
+  border-radius: 4px;
+}
+
+.menu a:hover,
+.menu a:focus-visible,
+.signup:hover,
+.signup:focus-visible {
+  text-decoration: underline;
+}
+
+/* ---------- بنر: وسط کامل ← Grid ---------- */
+.hero {
+  display: grid;
+  place-items: center;
+  min-height: 280px;
+  background-image: url("../../../../../05-CSS-تصاویر/images/hero.jpg");
+  background-size: cover;
+  background-position: center;
+}
+
+.hero-box {
+  background-color: white;
+  text-align: center;
+  padding: 20px 30px;
+  border-radius: 10px;
+  margin: 20px;
+}
+
+/* ---------- کارت دوره‌ها: شبکه خودکار ← Grid ---------- */
+.courses {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 15px;
+  padding-inline-start: 20px;
+}
+
+.section-title {
+  grid-column: 1 / -1;
+  margin: 0;
+}
+
+/* داخل کارت: ستونی ← Flexbox */
+.course {
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  border-radius: 8px;
+  padding: 12px;
+}
+
+.course img {
+  width: 100%;
+  height: 140px;
+  object-fit: cover;
+  border-radius: 6px;
+}
+
+.course h3 {
+  margin: 10px 0 5px;
+}
+
+.course p {
+  margin: 0 0 10px;
+  color: #495057;
+}
+
+.course-footer {
+  margin-top: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.price {
+  font-weight: bold;
+  color: #c92a2a;
+}
+
+.btn {
+  background-color: #c92a2a;
+  color: white;
+  text-decoration: none;
+  padding: 6px 12px;
+  border-radius: 4px;
+}
+
+/* ---------- اطلاعیه‌ها ---------- */
+.news {
+  align-self: start;
+  background-color: #fff3bf;
+  border-radius: 8px;
+  padding: 12px;
+  margin-inline-end: 20px;
+}
+
+.news h2 {
+  margin-top: 0;
+  font-size: 18px;
+}
+
+/* ---------- پانویس: سه ستون ← Grid ---------- */
+.site-footer {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  background-color: #343a40;
+  color: white;
+  text-align: center;
+  padding: 10px 20px;
+}
+
+/* ---------- گوشی: همه زیر هم ---------- */
+@media (max-width: 700px) {
+  .page {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "header"
+      "hero"
+      "news"
+      "courses"
+      "footer";
+  }
+
+  .signup {
+    margin-inline-start: 0;
+  }
+
+  .courses {
+    padding: 0 20px;
+  }
+
+  .news {
+    margin: 0 20px;
+  }
+
+  .site-footer {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+}

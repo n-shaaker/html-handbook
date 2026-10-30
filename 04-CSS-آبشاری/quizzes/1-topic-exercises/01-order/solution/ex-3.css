@@ -1,0 +1,19 @@
+/* کوتاه‌نویسی (font، padding، border) همه زیرویژگی‌ها را دوباره تنظیم می‌کند؛
+   برای همین اول کوتاه‌نویسی، بعد ویژگی تکی */
+.lead {
+  font: 18px Tahoma, sans-serif;
+  font-weight: bold;
+  line-height: 2;
+}
+
+.card {
+  padding: 12px;
+  padding-top: 32px;
+  background-color: #fff4e6;
+}
+
+.tab {
+  border: 1px solid #dee2e6;
+  border-bottom: 3px solid #1a5fb4;
+  padding: 4px 10px;
+}

@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>۵) سرریز (Overflow) | آموزش CSS سطح میانی</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/demos/overflow.css">
+</head>
+
+<body>
+
+  <header class="page-header">
+    <h1>آموزش CSS — سطح میانی</h1>
+    <p>۵) سرریز (Overflow)</p>
+  </header>
+
+  <div class="container">
+
+    <nav class="page-nav" aria-label="ناوبری درس">
+      <a href="04-z-index.html">→ قبلی: Z-index</a>
+      <a href="../index.html">فهرست درس‌ها</a>
+      <a href="06-float.html">بعدی: Float ←</a>
+    </nav>
+
+    <section class="lesson" id="overflow">
+      <h2>۵) سرریز (Overflow)</h2>
+      <p>
+        سرریز وقتی رخ می‌دهد که محتوا از جعبه بزرگ‌تر باشد؛ مثلاً متن بلند در جعبه‌ای با <code>height</code> یا <code>max-height</code> محدود.
+        ویژگی <code>overflow</code> می‌گوید با قسمت اضافه چه شود.
+        <code>visible</code> مقدار پیش‌فرض است و اضافه را بیرون جعبه نشان می‌دهد. <code>hidden</code> اضافه را می‌برد و پنهان می‌کند.
+        <code>scroll</code> نوار اسکرول را حتی اگر محتوا جا شود نشان می‌دهد. <code>auto</code> فقط وقتی محتوا واقعاً جا نشود نوار اسکرول می‌آورد و معمولاً انتخاب مناسب‌تری است.
+        اگر ارتفاع جعبه آزاد باشد و با محتوا بزرگ شود، سرریز عمودی پیش نمی‌آید و <code>overflow</code> اثری برای بریدن متن ندارد.
+      </p>
+
+      <h3>مثال ۱: چهار مقدار اصلی</h3>
+      <pre class="code"><code>.box { height: 90px; }
+
+.v { overflow: visible; }  /* پیش‌فرض: بیرون می‌زند */
+.h { overflow: hidden; }   /* اضافه بریده و پنهان می‌شود */
+.s { overflow: scroll; }   /* همیشه اسکرول دارد */
+.a { overflow: auto; }     /* فقط اگر لازم بود اسکرول می‌آید */</code></pre>
+      <div class="result demo-of">
+        <div class="grid">
+          <div class="box v"><strong>visible</strong> متن زیادی که در این جعبه کوچک جا نمی‌شود و از پایین آن بیرون می‌زند و روی بقیه می‌افتد.</div>
+          <div class="box h"><strong>hidden</strong> متن زیادی که در این جعبه کوچک جا نمی‌شود و قسمت اضافه‌اش بریده می‌شود و دیده نمی‌شود.</div>
+          <div class="box s"><strong>scroll</strong> متن زیادی که در این جعبه کوچک جا نمی‌شود؛ برای همین نوار اسکرول داریم تا بقیه را ببینیم.</div>
+          <div class="box a"><strong>auto</strong> متن زیادی که در این جعبه کوچک جا نمی‌شود؛ اسکرول فقط وقتی ظاهر می‌شود که لازم باشد.</div>
+        </div>
+      </div>
+
+      <h3>مثال ۲: فقط اسکرول افقی با <code>overflow-x</code></h3>
+      <p>برای جدول‌ها یا ردیف کارت‌ها و برچسب‌های پهن در موبایل خیلی کاربردی است (در این مثال، ردیف برچسب‌ها <code>direction: ltr</code> دارد تا از چپ شروع شود):</p>
+      <pre class="code"><code>.row {
+  overflow-x: auto;     /* اسکرول افقی */
+  white-space: nowrap;  /* آیتم‌ها به خط بعد نروند */
+}</code></pre>
+      <div class="result demo-of">
+        <div class="row">
+          <span class="chip">HTML</span>
+          <span class="chip">CSS</span>
+          <span class="chip">JavaScript</span>
+          <span class="chip">React</span>
+          <span class="chip">Vue</span>
+          <span class="chip">Node.js</span>
+          <span class="chip">Python</span>
+          <span class="chip">Git</span>
+          <span class="chip">Figma</span>
+          <span class="chip">SQL</span>
+        </div>
+      </div>
+
+      <h3>مثال ۳: سه‌نقطه برای متن طولانی</h3>
+      <p>
+        وقتی عنوان کارت باید در یک خط بماند، متن اضافه را با سه‌نقطه نشان می‌دهیم. <code>white-space: nowrap</code> جلوی رفتن به خط بعد را می‌گیرد، <code>overflow: hidden</code> بخش بیرون‌زده را پنهان می‌کند و <code>text-overflow: ellipsis</code> به‌جای آن سه‌نقطه می‌گذارد.
+        اگر عرض جعبه محدود نباشد، متن جایی برای بریده شدن ندارد و سه‌نقطه ظاهر نمی‌شود.
+      </p>
+      <pre class="code"><code>.ellipsis {
+  width: 250px;
+  white-space: nowrap;      /* در یک خط بماند */
+  overflow: hidden;         /* اضافه پنهان شود */
+  text-overflow: ellipsis;  /* به‌جایش ... بیاید */
+}</code></pre>
+      <div class="result demo-of">
+        <p class="ellipsis">آموزش کامل طراحی سایت با HTML و CSS از صفر تا صد همراه با پروژه عملی</p>
+      </div>
+
+      <p class="tip">
+        هر سه ویژگی لازم است: بدون <code>white-space: nowrap</code> متن به خط بعد می‌رود و بدون <code>overflow: hidden</code> بیرون می‌زند؛
+        در هر دو حالت سه‌نقطه ظاهر نمی‌شود. عنصر هم باید عرض محدود داشته باشد (block یا inline-block با width).
+        در متن فارسی سه‌نقطه به‌درستی در سمت چپ (انتهای جمله) می‌آید.
+      </p>
+
+      <p class="mistake">
+        <strong>اشتباه رایج:</strong>
+        استفاده از <code>overflow: scroll</code> وقتی محتوا کم است؛ نوار اسکرول خالی و زشت دیده می‌شود.
+        معمولاً <code>auto</code> انتخاب بهتری است.
+      </p>
+
+      <p class="mistake">
+        <strong>اشتباه رایج:</strong>
+        گذاشتن <code>overflow: hidden</code> روی پدر یک منوی کشویی یا برچسب absolute؛ هر چیزی که از لبه پدر بیرون بزند بریده می‌شود
+        و منو «ناپدید» به نظر می‌رسد. همچنین <code>overflow</code> بدون <code>height</code> یا <code>max-height</code> معمولاً اثری ندارد،
+        چون جعبه هم‌قد محتوایش بزرگ می‌شود.
+      </p>
+
+      <p class="exercise">
+        <strong>تمرین:</strong> یک جعبه «قوانین سایت» با ارتفاع ۱۵۰ پیکسل بسازید که متن بلندش با <code>overflow: auto</code> اسکرول شود.
+      </p>
+    </section>
+
+    <nav class="page-nav" aria-label="ناوبری درس پایین">
+      <a href="04-z-index.html">→ قبلی: Z-index</a>
+      <a href="../index.html">فهرست درس‌ها</a>
+      <a href="06-float.html">بعدی: Float ←</a>
+    </nav>
+
+  </div>
+
+  <footer class="page-footer">
+    آموزش CSS سطح میانی
+  </footer>
+
+</body>
+
+</html>

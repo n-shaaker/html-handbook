@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>۴) ساختار نوشتن و توضیحات (Syntax &amp; Comments) | آموزش JavaScript سطح پایه</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <script src="../js/log.js" defer></script>
+  <script src="../js/demos/syntax.js" defer></script>
+</head>
+
+<body>
+
+  <header class="page-header" id="top">
+    <h1>آموزش JavaScript — سطح پایه</h1>
+    <p>۴) ساختار نوشتن و توضیحات (Syntax &amp; Comments)</p>
+  </header>
+
+  <div class="container">
+
+    <nav class="page-nav" aria-label="ناوبری درس">
+      <a href="03-output.html">→ قبلی: Output</a>
+      <a href="../index.html">فهرست درس‌ها</a>
+      <a href="05-variables.html">بعدی: Variables ←</a>
+    </nav>
+
+    <section class="lesson" id="syntax">
+      <h2>۴) ساختار نوشتن و توضیحات (Syntax &amp; Comments)</h2>
+<p>برنامهٔ JavaScript مجموعه‌ای از <strong>دستورها (Statements)</strong> است. مرورگر آن‌ها را یکی‌یکی و از بالا به پایین می‌خواند و اجرا می‌کند. هر دستور یک کار مشخص انجام می‌دهد: ساختن یک متغیر، محاسبه، یا نشان دادن نتیجه. اگر ترتیب را عوض کنید، نتیجه هم عوض می‌شود، چون هر خط به مقدارهایی تکیه دارد که خط‌های قبلی ساخته‌اند.</p>
+
+<pre class="code"><code>let price = 85000;            // دستور ۱: قیمت یک دفتر (تومان)
+let count = 3;                // دستور ۲: تعداد
+let total = price * count;    // دستور ۳: قیمت کل
+console.log(total);           // دستور ۴  →  255000</code></pre>
+
+<div class="result">
+<pre class="console" id="out-1"></pre>
+</div>
+
+<p>خط اول با <code>let</code> جعبه‌ای به نام <code>price</code> می‌سازد و عدد ۸۵۰۰۰ را در آن می‌گذارد. خط دوم تعداد را نگه می‌دارد. خط سوم از عملگر <code>*</code> استفاده می‌کند تا قیمت را در تعداد ضرب کند و حاصل را در <code>total</code> ذخیره کند. <code>console.log</code> همان حاصل را در Console نشان می‌دهد. متن‌هایی که با <code>//</code> شروع شده‌اند توضیح هستند و اجرا نمی‌شوند.</p>
+
+<h3>قوانین مهم</h3>
+
+<table class="ref">
+<tr><th>قانون</th><th>توضیح</th><th>مثال</th></tr>
+<tr><td>سمی‌کالن</td><td>آخر هر دستور <code>;</code> می‌گذاریم (اختیاری ولی پیشنهادی)</td><td><code>let a = 1;</code></td></tr>
+<tr><td>حساس به حروف</td><td><code>name</code> و <code>Name</code> دو چیز متفاوت‌اند</td><td><code>lastName ≠ lastname</code></td></tr>
+<tr><td>فاصله</td><td>فاصله‌های اضافه مهم نیست؛ برای خوانایی بگذارید</td><td><code>x = 5 + 2;</code></td></tr>
+<tr><td>بلوک کد</td><td>دستورهای مرتبط داخل <code>{ }</code> قرار می‌گیرند</td><td><code>function f() { ... }</code></td></tr>
+<tr><td>رشته (متن)</td><td>داخل <code>"..."</code> یا <code>'...'</code> (علامت باز و بسته باید یکی باشد)</td><td><code>"سارا"</code></td></tr>
+<tr><td>علامت‌ها</td><td>کد را همیشه با صفحه‌کلید انگلیسی بنویسید؛ <code>؛</code> و <code>،</code> و گیومه فارسی <code>«»</code> در کد خطا می‌دهند</td><td><code>;</code> نه <code>؛</code></td></tr>
+</table>
+
+<h3>مقدار ثابت (Literal) و متغیر (Variable)</h3>
+
+<pre class="code"><code>10.5          // عدد
+"سارا"        // متن (رشته)
+let age = 20; // age یک متغیر است که مقدار 20 را نگه می‌دارد</code></pre>
+
+<p>مقدار ثابتی که مستقیم در کد نوشته می‌شود <strong>لیترال</strong> نام دارد؛ مثل عدد <code>10.5</code> یا متن <code>"سارا"</code>. متغیر اسمی است که به یک مقدار اشاره می‌کند تا بعداً بتوانیم همان مقدار را با آن اسم بخوانیم یا عوض کنیم. در خط سوم، <code>20</code> لیترال است و <code>age</code> متغیر.</p>
+
+<h3>نام‌گذاری camelCase</h3>
+
+<p>در JavaScript رسم است نام‌های چندکلمه‌ای را به شکل <strong>camelCase</strong> بنویسیم: کلمه اول با حرف کوچک، بقیه با حرف بزرگ.</p>
+
+<pre class="code"><code>let firstName = "علی";      // ✔ camelCase
+let first_name = "علی";     // کار می‌کند ولی رسم JS نیست
+let first-name = "علی";     // ✖ خطا! خط تیره مجاز نیست</code></pre>
+
+<p>در <code>firstName</code> کلمهٔ اول با حرف کوچک شروع می‌شود و هر کلمهٔ بعدی با حرف بزرگ. این شکل را camelCase می‌نامند و در JavaScript رسم رایج است. خط تیره در نام متغیر مجاز نیست، چون مرورگر آن را علامت تفریق می‌خواند و کد را خراب می‌بیند. زیرخط (<code>first_name</code>) از نظر دستوری درست است، ولی در این زبان کمتر برای نام متغیر به کار می‌رود.</p>
+
+<h3>توضیحات (Comments)</h3>
+
+<p>توضیح‌ها اجرا نمی‌شوند و برای یادداشت یا غیرفعال کردن موقت کد هستند.</p>
+
+<pre class="code"><code>// توضیح یک‌خطی
+
+/*
+  توضیح
+  چندخطی
+*/
+
+let price = 100; // توضیح در انتهای خط
+// console.log("این خط اجرا نمی‌شود");
+console.log("قیمت:", price);</code></pre>
+
+<div class="result">
+<pre class="console" id="out-2"></pre>
+</div>
+
+<p>هر چه بعد از <code>//</code> تا پایان همان خط باشد اجرا نمی‌شود. بلوک بین <code>/*</code> و <code>*/</code> می‌تواند چند خط را توضیح کند. اگر یک دستور را با <code>//</code> غیرفعال کنید، آن خط موقتاً از برنامه خارج می‌شود و بقیهٔ دستورها همچنان اجرا می‌شوند. توضیح برای انسان است، نه برای مرورگر.</p>
+
+<p class="tip">در VS Code با <code>Ctrl + /</code> خط انتخاب‌شده توضیح (کامنت) می‌شود و دوباره از حالت توضیح خارج می‌شود.</p>
+
+<p class="mistake"><strong>اشتباه رایج:</strong> نوشتن <code>Console.log</code> یا <code>console.Log</code>. چون JavaScript به حروف بزرگ و کوچک حساس است، فقط <code>console.log</code> درست است.</p>
+
+<p class="exercise"><strong>تمرین:</strong> سه دستور بنویسید: متغیر <code>width</code> (عرض اتاق) با مقدار ۴، متغیر <code>length</code> (طول اتاق) با مقدار ۵، و چاپ مساحت اتاق (حاصل‌ضرب آن‌ها) در Console. بالای هر خط یک توضیح فارسی بنویسید.</p>
+    </section>
+
+    <nav class="page-nav" aria-label="ناوبری درس پایین">
+      <a href="03-output.html">→ قبلی: Output</a>
+      <a href="../index.html">فهرست درس‌ها</a>
+      <a href="05-variables.html">بعدی: Variables ←</a>
+    </nav>
+
+  </div>
+
+  <footer class="page-footer">
+    آموزش JavaScript سطح پایه
+  </footer>
+
+</body>
+
+</html>

@@ -1,0 +1,23 @@
+#p1 {
+  color: #1a5fb4;
+}
+
+.note {
+  color: #333333;
+}
+
+.warn {
+  color: #e67700 !important;
+}
+
+.box {
+  color: #7b2cbf;
+}
+
+.info {
+  color: #0b7285;
+}
+
+p.alert {
+  color: #c92a2a;
+}

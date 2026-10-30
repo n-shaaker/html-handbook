@@ -1,0 +1,39 @@
+body {
+  font-family: Tahoma, Arial, sans-serif;
+  line-height: 1.8;
+  padding: 24px;
+}
+
+form {
+  max-width: 420px;
+  margin: 0 auto;
+}
+
+/* کادرهای متنی تمام‌عرض */
+input[type="text"],
+input[type="email"],
+input[type="tel"] {
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 8px;
+  margin: 4px 0 14px;
+  font-family: inherit;
+  border: 1px solid #bbb;
+  border-radius: 4px;
+}
+
+/* کادرهای اجباری */
+input[required] {
+  border-right: 5px solid #e63946;
+}
+
+input[type="submit"] {
+  padding: 10px 24px;
+  font-family: inherit;
+  color: white;
+  background-color: #1a5fb4;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>نمایش انتخاب‌گرهای CSS</title>
+
+    <!-- Internal CSS: good for tiny demos, not for real projects -->
+    <style>
+      /* Element selector: targets all <p> tags */
+      p {
+        color: #334155;
+        line-height: 1.5;
+      }
+
+      /* Class selector: reusable (specificity 0-1-0) */
+      .highlight {
+        background-color: #fef3c7;
+        padding: 0.5rem 0.75rem;
+      }
+
+      /* ID selector: unique on the page (specificity 1-0-0) */
+      #warning {
+        color: #b91c1c;
+        font-weight: 700;
+      }
+
+      /* Cascade example: later rules win when specificity is equal */
+      .box {
+        border: 2px solid #94a3b8;
+        padding: 1rem;
+      }
+
+      .box {
+        border-color: #2563eb;
+      }
+
+      /* Specificity example: the ID rule wins even though .note comes later */
+      #special {
+        color: #7c3aed;
+      }
+
+      .note {
+        color: #ea580c;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>روش‌های اعمال CSS</h1>
+    <p>
+      CSS را به سه شکل به صفحه وصل می‌کنید. استایل اینلاین داخل ویژگی
+      <code>style</code> همان عنصر نوشته می‌شود. استایل داخلی داخل عنصر
+      <code>style</code> در <code>head</code> است، مثل قانون‌های همین صفحه.
+      استایل خارجی یک فایل جداست که با
+      <code>&lt;link rel="stylesheet"&gt;</code> به صفحه وصل می‌شود. در پروژهٔ
+      واقعی روش سوم را به کار ببرید، چون یک فایل برای چند صفحه استفاده می‌شود و
+      مرورگر آن را در حافظهٔ موقت نگه می‌دارد.
+    </p>
+
+    <!--
+      Inline CSS: beats any selector in a stylesheet (only !important can override it)
+      and is the hardest to maintain — avoid in projects.
+    -->
+    <p style="color: #0f766e">
+      این پاراگراف رنگش را از CSS اینلاین گرفته است. قانون اینلاین از هر
+      انتخاب‌گری در فایل CSS قوی‌تر است و فقط <code>!important</code> بر آن
+      غلبه می‌کند. چون این رنگ داخل خود عنصر قفل شده، عوض کردنش در پروژهٔ بزرگ
+      سخت است.
+    </p>
+
+    <p class="highlight">
+      این پاراگراف با انتخاب‌گر کلاس (<code>.highlight</code>) رنگ زمینه گرفته
+      است. کلاس را می‌توانید روی چند عنصر تکرار کنید، پس برای ظاهر مشترک، مثل
+      برجسته‌کردن چند نکته، انتخاب مناسب است.
+    </p>
+
+    <p id="warning">
+      این پاراگراف با انتخاب‌گر شناسه (<code>#warning</code>) قرمز و پررنگ شده
+      است. شناسه در هر صفحه باید یکتا باشد. آن را برای استایل نگه ندارید؛ برای
+      مقصد پیوندهای داخلی و برای JavaScript مفیدتر است.
+    </p>
+
+    <div class="box">
+      این جعبه آبشار (Cascade) را نشان می‌دهد. دو قانون <code>.box</code> اختصاصی‌بودن
+      یکسانی دارند، پس قانونی که دیرتر در <code>style</code> نوشته شده برنده
+      است و رنگ حاشیه را از خاکستری به آبی عوض می‌کند.
+    </div>
+
+    <p id="special" class="note">
+      این پاراگراف هم کلاس <code>note</code> دارد و هم شناسهٔ
+      <code>special</code>. رنگ بنفش شناسه برنده است، چون اختصاصی‌بودن انتخاب‌گر
+      (Specificity) شناسه از کلاس بیشتر است. دیرتر نوشته شدن
+      <code>.note</code> این برتری را عوض نمی‌کند. اختصاصی‌بودن را مثل امتیاز
+      ببینید: شناسه از کلاس سنگین‌تر است و کلاس از نام عنصر.
+    </p>
+  </body>
+</html>

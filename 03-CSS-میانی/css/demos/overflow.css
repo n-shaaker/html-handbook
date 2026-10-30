@@ -1,0 +1,60 @@
+/* ۵) Overflow */
+
+/* جعبه‌ها با grid کنار هم می‌نشینند؛ فاصله ردیف‌ها زیاد است
+   تا متن بیرون‌زده جعبه visible روی جعبه ردیف بعد نیفتد. */
+.demo-of .grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 180px);
+  gap: 70px 12px;
+  padding-bottom: 60px;
+}
+
+.demo-of .box {
+  height: 90px;
+  padding: 6px;
+  background-color: #fff4e6;
+  border: 2px solid #e8590c;
+  font-size: 14px;
+}
+
+.demo-of .v {
+  overflow: visible;
+}
+
+.demo-of .h {
+  overflow: hidden;
+}
+
+.demo-of .s {
+  overflow: scroll;
+}
+
+.demo-of .a {
+  overflow: auto;
+}
+
+.demo-of .row {
+  overflow-x: auto;
+  white-space: nowrap;
+  border: 1px solid #ced4da;
+  padding: 10px;
+  direction: ltr;
+}
+
+.demo-of .chip {
+  display: inline-block;
+  background-color: #1a3a5c;
+  color: white;
+  padding: 6px 18px;
+  margin-right: 8px;
+  border-radius: 20px;
+}
+
+.demo-of .ellipsis {
+  width: 250px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  border: 1px dashed #868e96;
+  padding: 4px 8px;
+}

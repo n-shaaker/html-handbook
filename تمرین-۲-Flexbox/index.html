@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>تمرین ۲ | مثال‌های کاربردی Flexbox</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+  <!-- ===================== Example 1: Navbar ===================== -->
+  <!-- Used in: almost every website (Digikala, Snapp, GitHub, ...) -->
+  <header class="navbar" id="top">
+    <a class="logo" href="index.html">فلکس‌شاپ</a>
+
+    <nav aria-label="منوی اصلی">
+      <ul class="nav-links">
+        <li><a href="#cards">محصولات</a></li>
+        <li><a href="#pricing">تعرفه‌ها</a></li>
+        <li><a href="#chat">پشتیبانی</a></li>
+        <li><a href="#footer">تماس</a></li>
+      </ul>
+    </nav>
+
+    <!-- Actions (open a login/sign-up form), not links to another section: so <button> -->
+    <div class="nav-actions">
+      <button type="button" class="btn btn-outline">ورود</button>
+      <button type="button" class="btn">ثبت‌نام</button>
+    </div>
+  </header>
+
+  <!-- ===================== Example 2: Hero (center everything) ===================== -->
+  <!-- Used in: landing pages, first section of most sites -->
+  <section class="hero">
+    <h1>یادگیری Flexbox با مثال‌های واقعی</h1>
+    <p>هر بخش این صفحه یک الگوی رایج در سایت‌های واقعی است که با flex ساخته شده.</p>
+
+    <!-- Example 3: Search bar (input grows, button stays fixed) -->
+    <form class="search-bar" role="search">
+      <label for="q" class="visually-hidden">جستجوی محصول</label>
+      <input type="search" id="q" name="q" placeholder="جستجوی محصول...">
+      <button type="submit">جستجو</button>
+    </form>
+  </section>
+
+  <main class="container">
+
+    <!-- ===================== Example 4: Tags / Chips ===================== -->
+    <!-- Used in: Stack Overflow tags, Divar filters, blog categories -->
+    <!-- Clickable filters are <button>s (keyboard + screen reader support for free), not <span>s -->
+    <section class="section">
+      <h2>۱. تگ‌ها و فیلترها <code>flex-wrap + gap</code></h2>
+      <div class="tags" role="group" aria-label="دسته‌بندی محصولات">
+        <button type="button" class="tag active" aria-pressed="true">همه</button>
+        <button type="button" class="tag" aria-pressed="false">موبایل</button>
+        <button type="button" class="tag" aria-pressed="false">لپ‌تاپ</button>
+        <button type="button" class="tag" aria-pressed="false">هدفون</button>
+        <button type="button" class="tag" aria-pressed="false">ساعت هوشمند</button>
+        <button type="button" class="tag" aria-pressed="false">کنسول بازی</button>
+        <button type="button" class="tag" aria-pressed="false">دوربین</button>
+        <button type="button" class="tag" aria-pressed="false">لوازم جانبی</button>
+        <button type="button" class="tag" aria-pressed="false">تبلت</button>
+      </div>
+    </section>
+
+    <!-- ===================== Example 5: Stats ===================== -->
+    <!-- Used in: dashboards, "about us" sections -->
+    <section class="section">
+      <h2>۲. آمار سایت <code>flex: 1</code></h2>
+      <div class="stats">
+        <div class="stat">
+          <strong>+۱۲۰۰</strong>
+          <span>دانشجو</span>
+        </div>
+        <div class="stat">
+          <strong>۴۵</strong>
+          <span>دوره آموزشی</span>
+        </div>
+        <div class="stat">
+          <strong>۹۸٪</strong>
+          <span>رضایت</span>
+        </div>
+        <div class="stat">
+          <strong>۲۴/۷</strong>
+          <span>پشتیبانی</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== Example 6: Product cards ===================== -->
+    <!-- Used in: online shops; buttons always stay at the bottom of the card -->
+    <section class="section" id="cards">
+      <h2>۳. کارت محصول <code>flex-direction: column + margin-top: auto</code></h2>
+      <div class="cards">
+        <article class="card">
+          <div class="card-img img-1" aria-hidden="true">موبایل</div>
+          <h3>گوشی موبایل مدل A</h3>
+          <p>توضیح کوتاه.</p>
+          <div class="card-footer">
+            <span class="price">۱۲٬۵۰۰٬۰۰۰ تومان</span>
+            <button type="button" class="btn" aria-label="خرید گوشی موبایل مدل A">خرید</button>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-img img-2" aria-hidden="true">لپ‌تاپ</div>
+          <h3>لپ‌تاپ مدل B</h3>
+          <p>این محصول توضیح طولانی‌تری دارد تا ببینید که حتی با متن بیشتر، دکمه خرید همچنان در پایین کارت و هم‌تراز با بقیه کارت‌ها می‌ماند.</p>
+          <div class="card-footer">
+            <span class="price">۴۵٬۰۰۰٬۰۰۰ تومان</span>
+            <button type="button" class="btn" aria-label="خرید لپ‌تاپ مدل B">خرید</button>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-img img-3" aria-hidden="true">هدفون</div>
+          <h3>هدفون بی‌سیم C</h3>
+          <p>توضیح متوسط درباره کیفیت صدا و باتری.</p>
+          <div class="card-footer">
+            <span class="price">۳٬۲۰۰٬۰۰۰ تومان</span>
+            <button type="button" class="btn" aria-label="خرید هدفون بی‌سیم C">خرید</button>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- ===================== Example 7: Media object (comment) ===================== -->
+    <!-- Used in: comments, Twitter posts, notifications -->
+    <section class="section">
+      <h2>۴. نظرات کاربران <code>align-items: flex-start + flex-shrink: 0</code></h2>
+
+      <div class="comment">
+        <img class="avatar" src="images/profile.jpg" alt="عکس پروفایل نسرین" width="52" height="52">
+        <div class="comment-body">
+          <div class="comment-header">
+            <strong>نسرین</strong>
+            <small>۲ ساعت پیش</small>
+          </div>
+          <p>محصول خیلی خوبی بود. ارسال سریع بود و بسته‌بندی هم عالی. پیشنهاد می‌کنم حتماً امتحان کنید.</p>
+        </div>
+      </div>
+
+      <div class="comment">
+        <!-- Decorative: the name is written right next to it, so screen readers skip it -->
+        <div class="avatar avatar-letter" aria-hidden="true">ع</div>
+        <div class="comment-body">
+          <div class="comment-header">
+            <strong>علی</strong>
+            <small>دیروز</small>
+          </div>
+          <p>قیمتش نسبت به کیفیت مناسب است.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== Example 8: Pricing table ===================== -->
+    <!-- Used in: SaaS sites, hosting, VPN, online courses -->
+    <section class="section" id="pricing">
+      <h2>۵. جدول تعرفه <code>align-items: center + order</code></h2>
+      <div class="pricing">
+        <div class="plan">
+          <h3>پایه</h3>
+          <p class="plan-price">رایگان</p>
+          <ul>
+            <li>۱ پروژه</li>
+            <li>۱ گیگ فضا</li>
+          </ul>
+          <button type="button" class="btn btn-outline" aria-label="شروع با پلن پایه">شروع</button>
+        </div>
+
+        <div class="plan plan-featured">
+          <span class="badge">محبوب‌ترین</span>
+          <h3>حرفه‌ای</h3>
+          <p class="plan-price">۹۹ هزار تومان</p>
+          <ul>
+            <li>۱۰ پروژه</li>
+            <li>۲۰ گیگ فضا</li>
+            <li>پشتیبانی سریع</li>
+          </ul>
+          <button type="button" class="btn" aria-label="خرید پلن حرفه‌ای">خرید</button>
+        </div>
+
+        <div class="plan">
+          <h3>سازمانی</h3>
+          <p class="plan-price">۲۹۹ هزار تومان</p>
+          <ul>
+            <li>پروژه نامحدود</li>
+            <li>۱۰۰ گیگ فضا</li>
+          </ul>
+          <!-- Goes to the contact info in the footer: a real link -->
+          <a class="btn btn-outline" href="#footer">تماس</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== Example 9: Sidebar layout ===================== -->
+    <!-- Used in: admin panels, documentation sites, user dashboards -->
+    <section class="section">
+      <h2>۶. پنل کاربری با سایدبار <code>flex: 0 0 200px + flex: 1</code></h2>
+      <div class="dashboard">
+        <!-- In a real panel these switch the content on the right, so they are buttons -->
+        <aside class="sidebar" aria-label="منوی پنل کاربری">
+          <button type="button" class="active" aria-current="page">داشبورد</button>
+          <button type="button">سفارش‌ها</button>
+          <button type="button">آدرس‌ها</button>
+          <button type="button">علاقه‌مندی‌ها</button>
+          <button type="button">خروج</button>
+        </aside>
+        <div class="dashboard-content">
+          <h3>خوش آمدید!</h3>
+          <p>سایدبار عرض ثابت دارد و این بخش تمام فضای باقی‌مانده را پر می‌کند.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== Example 10: Chat messages ===================== -->
+    <!-- Used in: Telegram web, WhatsApp web, support chats -->
+    <section class="section" id="chat">
+      <h2>۷. صفحه چت <code>align-self</code></h2>
+      <div class="chat">
+        <div class="message received">سلام، سفارشم کی می‌رسه؟</div>
+        <div class="message sent">سلام، وقت بخیر. سفارش شما فردا تحویل داده می‌شود.</div>
+        <div class="message received">ممنون!</div>
+        <div class="message sent">خواهش می‌کنم.</div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ===================== Example 11: Footer columns ===================== -->
+  <!-- Used in: footer of almost every website -->
+  <footer class="footer" id="footer">
+    <div class="footer-cols">
+      <div class="footer-col">
+        <h2>فلکس‌شاپ</h2>
+        <p>یک فروشگاه آزمایشی برای تمرین Flexbox.</p>
+      </div>
+      <nav class="footer-col" aria-label="دسترسی سریع">
+        <h2>دسترسی سریع</h2>
+        <a href="#cards">محصولات</a>
+        <a href="#pricing">تعرفه‌ها</a>
+        <a href="#chat">پشتیبانی</a>
+      </nav>
+      <div class="footer-col">
+        <h2>تماس با ما</h2>
+        <!-- tel: and mailto: open the phone dialer / email app -->
+        <a href="tel:+982112345678">۰۲۱-۱۲۳۴۵۶۷۸</a>
+        <a href="mailto:info@flexshop.ir">info@flexshop.ir</a>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <span>© ۱۴۰۵ تمامی حقوق محفوظ است.</span>
+      <a href="#top">برگشت به بالا ↑</a>
+    </div>
+  </footer>
+
+</body>
+
+</html>

@@ -1,0 +1,58 @@
+/* ۳) flex-wrap */
+
+/* جعبه‌های رنگی شماره‌دار با عرض ثابت */
+.demo-wrap .box {
+  width: 150px;
+  padding: 10px 0;
+  margin: 4px;
+  color: white;
+  font-weight: bold;
+  text-align: center;
+  border-radius: 6px;
+}
+
+.demo-wrap .b1 { background-color: #1c7ed6; }
+.demo-wrap .b2 { background-color: #2b8a3e; }
+.demo-wrap .b3 { background-color: #e8590c; }
+.demo-wrap .b4 { background-color: #ae3ec9; }
+.demo-wrap .b5 { background-color: #c92a2a; }
+.demo-wrap .b6 { background-color: #0ca678; }
+
+/* ظرف مشترک */
+.demo-wrap .parent {
+  display: flex;
+  background-color: #f1f3f5;
+  border: 2px solid #868e96;
+  padding: 4px;
+}
+
+.demo-wrap .nowrap {
+  flex-wrap: nowrap;
+}
+
+.demo-wrap .wrap {
+  flex-wrap: wrap;
+}
+
+.demo-wrap .wrap-reverse {
+  flex-wrap: wrap-reverse;
+}
+
+.demo-wrap .flow {
+  flex-flow: row wrap;
+}
+
+/* برچسب‌های فروشگاه */
+.demo-wrap .tags {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.demo-wrap .tag {
+  background-color: #e7f5ff;
+  color: #1864ab;
+  border: 1px solid #74c0fc;
+  border-radius: 20px;
+  padding: 4px 14px;
+  margin: 4px;
+}

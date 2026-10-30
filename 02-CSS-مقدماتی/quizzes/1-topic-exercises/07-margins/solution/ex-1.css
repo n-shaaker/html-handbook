@@ -1,0 +1,27 @@
+/* والد رنگی است تا فاصله margin دیده شود */
+.parent {
+  background-color: #ffd8a8;
+  border: 1px solid #e67700;
+}
+
+.m1, .m2, .m3, .m4 {
+  background-color: #1a3a5c;
+  color: white;
+  padding: 8px;
+}
+
+.m1 {
+  margin: 20px;
+}
+
+.m2 {
+  margin: 10px 40px;
+}
+
+.m3 {
+  margin: 10px 20px 30px;
+}
+
+.m4 {
+  margin: 0 0 20px 60px;
+}

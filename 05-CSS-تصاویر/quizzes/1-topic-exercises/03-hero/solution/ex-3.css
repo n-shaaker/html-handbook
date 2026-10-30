@@ -1,0 +1,56 @@
+body {
+  font-family: Tahoma, Arial, sans-serif;
+  line-height: 1.8;
+  margin: 0;
+}
+
+.hero {
+  min-height: 80vh;
+  padding: 15vh 24px 40px;
+  box-sizing: border-box;
+  color: white;
+  /* سمت چپ تیره (جای متن)، سمت راست شفاف (جای غذا) */
+  background-image:
+    linear-gradient(to left, rgba(0, 0, 0, 0) 30%, rgba(0, 0, 0, 0.8)),
+    url("../../../../images/hero.jpg");
+  background-size: cover;
+  background-position: right center; /* غذا سمت راست عکس است */
+}
+
+/* در صفحه راست‌چین، margin-right: auto جعبه را به چپ می‌برد */
+.hero-text {
+  max-width: 420px;
+  margin-right: auto;
+}
+
+.btn {
+  display: inline-block;
+  padding: 10px 22px;
+  color: white;
+  background-color: #b5452a;
+  border-radius: 6px;
+  text-decoration: none;
+}
+
+.btn:hover {
+  background-color: #8f3520;
+}
+
+.content {
+  padding: 16px 24px;
+}
+
+/* گوشی: بنر کوتاه‌تر، متن تمام‌عرض */
+@media (max-width: 600px) {
+  .hero {
+    min-height: 60vh;
+    padding-top: 10vh;
+    background-image:
+      linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.8)),
+      url("../../../../images/hero.jpg");
+  }
+
+  .hero-text {
+    max-width: none;
+  }
+}

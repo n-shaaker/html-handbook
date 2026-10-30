@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>۲۰) تمرین جمع‌بندی | آموزش JavaScript سطح پایه</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <script src="../js/log.js" defer></script>
+  <script src="../js/demos/practice.js" defer></script>
+</head>
+
+<body>
+
+  <header class="page-header" id="top">
+    <h1>آموزش JavaScript — سطح پایه</h1>
+    <p>۲۰) تمرین جمع‌بندی</p>
+  </header>
+
+  <div class="container">
+
+    <nav class="page-nav" aria-label="ناوبری درس">
+      <a href="19-while-break.html">→ قبلی: While</a>
+      <a href="../index.html">فهرست درس‌ها</a>
+      <span></span>
+    </nav>
+
+    <section class="lesson" id="practice">
+      <h2>۲۰) تمرین جمع‌بندی</h2>
+<p>این صفحه درس تازه نیست؛ جایی است که ابزارهای دوره را کنار هم به کار می‌برید. اول یک نمونهٔ حل‌شده را خط‌به‌خط می‌خوانید تا ببینید متغیر، تابع، تبدیل عدد، شرط و رویداد چطور در یک کار واقعی به هم وصل می‌شوند. بعد تمرین‌ها را خودتان می‌نویسید. اگر جایی گیر کردید، به درس همان موضوع برگردید و همان مفهوم را دوباره با مثال خودش بخوانید.</p>
+
+<h3>نمونه حل‌شده: محاسبه شاخص توده بدنی (BMI)</h3>
+
+<p>این مثال تقریباً همه مباحث این دوره را با هم دارد: متغیر، تابع، عدد، شرط، رویداد و Template Literal.</p>
+
+<p>فرمول: وزن (کیلوگرم) تقسیم بر مجذور قد (متر). مثلاً برای ۶۵ کیلو و ۱۷۰ سانتی‌متر: <code>65 / (1.7 ** 2)</code> که حدود ۲۲٫۵ می‌شود.</p>
+
+<pre class="code"><code>&lt;!-- HTML --&gt;
+&lt;label for="weight"&gt;وزن (کیلوگرم):&lt;/label&gt;
+&lt;input type="number" id="weight"&gt;
+&lt;label for="height"&gt;قد (سانتی‌متر):&lt;/label&gt;
+&lt;input type="number" id="height"&gt;
+&lt;button id="bmi-btn"&gt;محاسبه&lt;/button&gt;
+&lt;p id="bmi-result"&gt;&lt;/p&gt;</code></pre>
+
+<p>هر کادر یک <code>label</code> دارد که با <code>for</code> به <code>id</code> همان کادر وصل است، تا هم کلیک روی برچسب کادر را فعال کند و هم معنی فیلد برای خواننده روشن باشد. دکمه و پاراگراف نتیجه هم شناسه دارند تا JavaScript همان عنصرها را پیدا کند. واحد وزن کیلوگرم است و قد سانتی‌متر؛ تبدیل قد به متر داخل تابع انجام می‌شود.</p>
+
+<pre class="code"><code>// js/app.js
+const weightInput = document.getElementById("weight");
+const heightInput = document.getElementById("height");
+const bmiBtn = document.getElementById("bmi-btn");
+const bmiResult = document.getElementById("bmi-result");
+
+function calculateBMI(weight, heightCm) {
+  const heightM = heightCm / 100;
+  return weight / (heightM ** 2);
+}
+
+function getStatus(bmi) {
+  if (bmi &lt; 18.5) {
+    return "کمبود وزن";
+  } else if (bmi &lt; 25) {
+    return "وزن طبیعی";
+  } else if (bmi &lt; 30) {
+    return "اضافه وزن";
+  } else {
+    return "چاقی";
+  }
+}
+
+bmiBtn.addEventListener("click", function () {
+  const weight = Number(weightInput.value);
+  const height = Number(heightInput.value);
+
+  if (weight &lt;= 0 || height &lt;= 0) {
+    bmiResult.textContent = "لطفاً وزن و قد را درست وارد کنید.";
+    return;   // ادامه نده؛ تابع همین‌جا تمام می‌شود
+  }
+
+  const bmi = calculateBMI(weight, height);
+  bmiResult.textContent = `BMI شما ${bmi.toFixed(1)} است: ${getStatus(bmi)}`;
+});</code></pre>
+
+<div class="result">
+<label for="weight">وزن (کیلوگرم):</label>
+<input type="number" id="weight" value="65" min="1">
+<label for="height">قد (سانتی‌متر):</label>
+<input type="number" id="height" value="170" min="1">
+<button class="btn" id="bmi-btn">محاسبه</button>
+<p class="demo-box" id="bmi-result" aria-live="polite">...</p>
+</div>
+
+<p>دو تابع کار محاسبه را از کار نمایش جدا کرده‌اند. <code>calculateBMI</code> قد را از سانتی‌متر به متر تبدیل می‌کند و وزن را بر مجذور قد تقسیم می‌کند. <code>getStatus</code> فقط عدد شاخص را می‌گیرد و با چند بازه یکی از چهار برچسب را برمی‌گرداند. با کلیک، هر دو کادر به عدد تبدیل می‌شوند. اگر وزن یا قد صفر یا منفی باشد، پیام خطا نوشته می‌شود و <code>return</code> جلوی محاسبه را می‌گیرد. در غیر این صورت شاخص تا یک رقم اعشار و وضعیت کنار هم در صفحه قرار می‌گیرند.</p>
+
+<p class="tip">کادر خالی با <code>Number("")</code> صفر می‌شود، پس شرط <code>&lt;= 0</code> آن را هم می‌گیرد. <code>return</code> بدون مقدار هم یعنی «از تابع بیرون برو»؛ این‌طوری لازم نیست بقیه کد را داخل <code>else</code> بنویسیم.</p>
+
+<h3>تمرین‌ها (به ترتیب سختی)</h3>
+
+<ol>
+<li><strong>معرفی:</strong> متغیرهای نام، سال تولد شمسی و شهر بسازید، سن را حساب کنید (سال جاری: ۱۴۰۵) و با Template Literal یک جمله معرفی مثل «من سارا هستم، ۲۵ ساله، از شیراز» داخل یک پاراگراف صفحه بنویسید.</li>
+<li><strong>زوج یا فرد:</strong> یک input و دکمه بسازید که بگوید عدد وارد شده زوج است یا فرد (با <code>%</code>). اگر کادر خالی بود، پیام «یک عدد وارد کنید» نشان دهد.</li>
+<li><strong>تبدیل دما:</strong> یک input و دو دکمه بسازید: «سانتی‌گراد به فارنهایت» (<code>c * 9 / 5 + 32</code>) و «فارنهایت به سانتی‌گراد» (<code>(f - 32) * 5 / 9</code>). هر تبدیل را در یک تابع جدا بنویسید و نتیجه را با یک رقم اعشار (<code>toFixed(1)</code>) نشان دهید.</li>
+<li><strong>بزرگ‌ترین عدد:</strong> سه input بگیرید و فقط با <code>if</code> و <code>&amp;&amp;</code> (بدون <code>Math.max</code>) بزرگ‌ترین عدد را نشان دهید. فراموش نکنید مقدارها را با <code>Number()</code> تبدیل کنید.</li>
+<li><strong>ماشین‌حساب:</strong> دو input و یک select با گزینه‌های <code>+ - × ÷</code> بسازید و با switch نتیجه را حساب کنید. تقسیم بر صفر را با پیام خطا مدیریت کنید.</li>
+<li><strong>شمارش معکوس:</strong> با حلقه for (با گام <code>i--</code>) اعداد ۱۰ تا ۱ را به صورت <code>&lt;li&gt;</code> داخل یک <code>ul</code> بسازید و آخرش بنویسید «پرتاب! 🚀».</li>
+<li><strong>قدرت رمز عبور:</strong> با رویداد <code>input</code> رمز را بررسی کنید: کمتر از ۶ حرف «ضعیف»، ۶ تا ۱۰ حرف «متوسط» و بیشتر از ۱۰ حرف «قوی». امتیازی: اگر رمز حداقل یک رقم دارد (با حلقه و <code>"0123456789".includes(...)</code> مثل درس ۱۹) یک سطح بالاتر ببرید. رنگ پیام را با <code>classList</code> و کلاس‌های <code>msg-error</code> و <code>msg-ok</code> عوض کنید.</li>
+<li><strong>فرم ورود ساده:</strong> دو input برای نام کاربری و رمز و یک دکمه «ورود» بسازید. اگر یکی خالی بود «همه فیلدها را پر کنید»، اگر نام کاربری <code>admin</code> و رمز <code>1234</code> بود «خوش آمدید»، وگرنه «نام کاربری یا رمز اشتباه است» نشان دهید (فاصله‌های اضافه را با <code>trim()</code> حذف کنید).</li>
+<li><strong>حدس عدد:</strong> برنامه یک عدد تصادفی بین ۱ تا ۱۰۰ انتخاب کند (این خط آماده را کپی کنید: <code>const secret = Math.floor(Math.random() * 100) + 1;</code>) و کاربر با input حدس بزند؛ پیام «بزرگ‌تر»، «کوچک‌تر» یا «درست!» بدهد و تعداد تلاش‌ها را بشمارد (راهنما: شمارنده را با <code>let</code> بیرون از تابع رویداد تعریف کنید تا با هر کلیک صفر نشود).</li>
+</ol>
+
+<p class="tip">قبل از کد زدن، مراحل را به فارسی روی کاغذ بنویسید: «۱. مقدار input را بگیر ۲. به عدد تبدیل کن ۳. اگر ... بود ...». به این کار <strong>شبه‌کد</strong> می‌گویند.</p>
+
+<p class="tip"><strong>بعد از این دوره:</strong> آرایه‌ها، کار با DOM، فرم‌ها و ... در <a href="../../09-JS-میانی/index.html">دوره JavaScript سطح میانی</a> ادامه پیدا می‌کند.</p>
+    </section>
+
+    <nav class="page-nav" aria-label="ناوبری درس پایین">
+      <a href="19-while-break.html">→ قبلی: While</a>
+      <a href="../index.html">فهرست درس‌ها</a>
+      <span></span>
+    </nav>
+
+  </div>
+
+  <footer class="page-footer">
+    آموزش JavaScript سطح پایه
+  </footer>
+
+</body>
+
+</html>

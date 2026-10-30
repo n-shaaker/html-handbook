@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>۲) متدهای آرایه (Array Methods) | آموزش JavaScript سطح میانی</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <script src="../js/log.js" defer></script>
+  <script src="../js/demos/array-methods.js" defer></script>
+</head>
+
+<body>
+
+  <header class="page-header" id="top">
+    <h1>آموزش JavaScript — سطح میانی</h1>
+    <p>۲) متدهای آرایه (Array Methods)</p>
+  </header>
+
+  <div class="container">
+
+    <nav class="page-nav" aria-label="ناوبری درس">
+      <a href="01-arrays.html">→ قبلی: Arrays</a>
+      <a href="../index.html">فهرست درس‌ها</a>
+      <a href="03-array-search-sort.html">بعدی: Search & Sort ←</a>
+    </nav>
+
+    <section class="lesson" id="array-methods">
+      <h2>۲) متدهای آرایه (Array Methods)</h2>
+<p>خواندن عضو با شماره کافی نیست؛ اغلب باید عضوی را به ابتدا یا انتها اضافه کنید، از وسط حذف کنید یا از آرایه یک متن بسازید. متدهای آرایه همین کارها را انجام می‌دهند. بعضی‌ها همان آرایه را عوض می‌کنند و بعضی یک آرایه یا رشتهٔ تازه برمی‌گردانند و اصل را دست نمی‌زنند. قبل از استفاده باید بدانید نتیجه را کجا می‌گیرید و آیا فهرست قبلی هنوز سر جایش است یا نه.</p>
+<table class="ref">
+<tr><th>متد</th><th>کار</th><th>آرایه اصلی تغییر می‌کند؟</th></tr>
+<tr><td><code>push(x)</code></td><td>اضافه به <strong>آخر</strong></td><td>بله</td></tr>
+<tr><td><code>pop()</code></td><td>حذف از آخر (و برگرداندن آن)</td><td>بله</td></tr>
+<tr><td><code>unshift(x)</code></td><td>اضافه به <strong>اول</strong></td><td>بله</td></tr>
+<tr><td><code>shift()</code></td><td>حذف از اول (و برگرداندن آن)</td><td>بله</td></tr>
+<tr><td><code>splice(i, n, ...)</code></td><td>حذف/اضافه از وسط (عضوهای حذف‌شده را برمی‌گرداند)</td><td>بله</td></tr>
+<tr><td><code>slice(start, end)</code></td><td>کپی یک بخش</td><td>خیر</td></tr>
+<tr><td><code>concat(arr)</code></td><td>چسباندن دو آرایه</td><td>خیر</td></tr>
+<tr><td><code>join(sep)</code></td><td>تبدیل به رشته</td><td>خیر</td></tr>
+<tr><td><code>reverse()</code></td><td>برعکس کردن ترتیب</td><td>بله</td></tr>
+</table>
+
+<h3>push، pop، unshift، shift</h3>
+
+<pre class="code"><code>const list = ["ب", "پ"];
+list.push("ت");       // ["ب","پ","ت"]
+list.unshift("الف");  // ["الف","ب","پ","ت"]
+console.log(list);
+
+const last = list.pop();      // "ت" را حذف می‌کند و برمی‌گرداند
+const first = list.shift();   // "الف" را حذف می‌کند و برمی‌گرداند
+console.log(last, first);
+console.log(list);            // ["ب","پ"]</code></pre>
+
+<div class="result">
+<pre class="console" id="out-1"></pre>
+</div>
+
+<p><code>push</code> مقدار را به انتهای آرایه اضافه می‌کند و <code>unshift</code> آن را در ابتدا می‌گذارد؛ با اضافه شدن به ابتدا، شمارهٔ بقیهٔ عضو‌ها یکی جلو می‌رود. <code>pop</code> آخرین عضو را هم حذف می‌کند و هم به‌عنوان نتیجه برمی‌گرداند. <code>shift</code> همین کار را با عضو اول انجام می‌دهد. اگر فقط آرایه را چاپ کنید عضو حذف‌شده را نمی‌بینید؛ باید مقدار برگشتی را در متغیر نگه دارید.</p>
+
+<h3>splice — حذف و اضافه از وسط</h3>
+
+<pre class="code"><code>const nums = [1, 2, 3, 4, 5];
+const removed = nums.splice(1, 2);   // از شماره 1، دو عضو حذف کن
+console.log(removed);                // [2, 3] — عضوهای حذف‌شده
+console.log(nums);                   // [1, 4, 5]
+
+nums.splice(1, 0, "x", "y");  // از شماره 1، صفر حذف، x و y اضافه
+console.log(nums);            // [1, "x", "y", 4, 5]</code></pre>
+
+<div class="result">
+<pre class="console" id="out-2"></pre>
+</div>
+
+<p>آرگومان اول <code>splice</code> شمارهٔ شروع است و آرگومان دوم تعداد عضوی که باید حذف شود. عضوهای حذف‌شده در یک آرایهٔ تازه برمی‌گردند و از آرایهٔ اصلی کم می‌شوند. اگر تعداد حذف صفر باشد و بعد از آن مقدارهای تازه بیایند، چیزی پاک نمی‌شود و همان مقدارها از آن شماره به بعد درج می‌شوند.</p>
+
+<h3>slice، concat، join</h3>
+
+<pre class="code"><code>const letters = ["a", "b", "c", "d", "e"];
+console.log(letters.slice(1, 3));            // ["b","c"] - اصلی دست نمی‌خورد
+console.log(letters.concat(["f", "g"]));
+console.log(letters.join(" - "));
+console.log(letters);</code></pre>
+
+<div class="result">
+<pre class="console" id="out-3"></pre>
+</div>
+
+<p><code>slice(1, 3)</code> از شمارهٔ ۱ تا قبل از شمارهٔ ۳ را در آرایهٔ جدید کپی می‌کند و <code>letters</code> را عوض نمی‌کند. <code>concat</code> عضوهای آرایهٔ دوم را به کپی آرایهٔ اول می‌چسباند. <code>join</code> عضو‌ها را با جداکننده‌ای که می‌دهید به یک رشته تبدیل می‌کند. چاپ آخر نشان می‌دهد آرایهٔ اصلی هنوز پنج حرف اول است.</p>
+
+<h3>مثال زنده: صف انتظار</h3>
+
+<pre class="code"><code>const queue = [];
+
+function render() {
+  view.textContent = "صف: " + queue.join("، ");
+}
+
+addBtn.addEventListener("click", function () {
+  let name = nameInput.value.trim();
+  if (name === "") {
+    name = "مهمان";
+  }
+  queue.push(name);
+  nameInput.value = "";
+  render();
+});
+
+nextBtn.addEventListener("click", function () {
+  if (queue.length === 0) {
+    info.textContent = "صف خالی است.";
+  } else {
+    const person = queue.shift();
+    info.textContent = `نوبت ${person} است.`;
+  }
+  render();
+});</code></pre>
+
+<div class="result">
+<label for="q-name">نام مراجعه‌کننده:</label>
+<input type="text" id="q-name" placeholder="مثلاً سارا">
+<button type="button" class="btn" id="q-add">ورود به صف (push)</button>
+<button type="button" class="btn secondary" id="q-next">نفر بعدی (shift)</button>
+<p id="q-info" aria-live="polite">صف خالی است.</p>
+<pre class="console" id="q-view"></pre>
+</div>
+
+<p>صف یک آرایهٔ خالی است. نام کادر اگر بعد از <code>trim</code> خالی باشد، به‌جای آن «مهمان» گذاشته می‌شود و با <code>push</code> به انتهای صف می‌رود. دکمهٔ نفر بعدی با <code>shift</code> کسی را که زودتر آمده از ابتدای صف برمی‌دارد. <code>join</code> نام‌های باقی‌مانده را برای نمایش به یک متن تبدیل می‌کند. اگر صف خالی باشد، <code>shift</code> صدا زده نمی‌شود تا پیام «نوبت undefined» ساخته نشود.</p>
+
+<p class="tip"><code>slice</code> (بدون p) کپی می‌گیرد و اصلی را تغییر نمی‌دهد؛ <code>splice</code> (با p) آرایه اصلی را تغییر می‌دهد. این دو را با هم اشتباه نگیرید.</p>
+
+<p class="mistake"><strong>اشتباه رایج:</strong> نوشتن <code>arr = arr.push(5)</code>. خروجی push «طول جدید آرایه» است نه خود آرایه؛ پس arr عدد می‌شود!</p>
+
+<p class="exercise"><strong>تمرین:</strong> آرایه <code>["شنبه", "یکشنبه", "دوشنبه"]</code> را بسازید، «جمعه» را به آخر و «پنجشنبه» را قبل از جمعه اضافه کنید (با push و splice) و نتیجه را با join و «، » چاپ کنید.</p>
+    </section>
+
+    <nav class="page-nav" aria-label="ناوبری درس پایین">
+      <a href="01-arrays.html">→ قبلی: Arrays</a>
+      <a href="../index.html">فهرست درس‌ها</a>
+      <a href="03-array-search-sort.html">بعدی: Search & Sort ←</a>
+    </nav>
+
+  </div>
+
+  <footer class="page-footer">
+    آموزش JavaScript سطح میانی
+  </footer>
+
+</body>
+
+</html>

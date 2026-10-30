@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>تمرین ۳ — بررسی خوانایی متن</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="ex-3.js" defer></script>
+</head>
+
+<body>
+  <main>
+    <h1>خوانایی کارت نقل‌قول</h1>
+
+    <label for="bg-light">روشنایی پس‌زمینه: <span id="bg-value">95%</span></label>
+    <input type="range" id="bg-light" min="0" max="100" value="95">
+
+    <label for="text-light">روشنایی متن: <span id="text-value">20%</span></label>
+    <input type="range" id="text-light" min="0" max="100" value="20">
+
+    <blockquote class="result" id="quote-card">
+      «توانا بود هر که دانا بود / ز دانش دل پیر برنا بود» — فردوسی
+    </blockquote>
+
+    <p id="status" aria-live="polite"></p>
+  </main>
+</body>
+
+</html>

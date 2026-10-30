@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>۲) ستون‌ها و ردیف‌ها | آموزش CSS Grid</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/demos/columns-rows.css">
+</head>
+
+<body>
+
+  <header class="page-header">
+    <h1>آموزش CSS Grid — چیدمان شبکه‌ای</h1>
+    <p>۲) ستون‌ها و ردیف‌ها (fr و px و %)</p>
+  </header>
+
+  <div class="container">
+
+    <nav class="page-nav" aria-label="ناوبری درس">
+      <a href="01-intro.html">→ قبلی: Grid چیست؟</a>
+      <a href="../index.html">فهرست درس‌ها</a>
+      <a href="03-repeat-minmax.html">بعدی: repeat و minmax ←</a>
+    </nav>
+
+    <section class="lesson" id="columns-rows">
+      <h2>۲) ستون‌ها و ردیف‌ها (fr و px و %)</h2>
+      <p>
+        با <code>grid-template-columns</code> تعداد و پهنای ستون‌ها را می‌گوییم و با <code>grid-template-rows</code> تعداد و ارتفاع ردیف‌ها را.
+        هر مقداری که با فاصله می‌نویسید یعنی <strong>یک ستون</strong> (یا یک ردیف). پس <code>100px 200px</code> یعنی دو ستون.
+      </p>
+      <p class="tip">
+        در کدهای این درس <code>gap: 8px</code> هم آمده تا جعبه‌ها به هم نچسبند. <code>gap</code> را در <a href="04-gap.html">درس ۴</a> کامل می‌خوانیم.
+      </p>
+
+      <h3>مثال ۱: ستون با پیکسل (<code>px</code>)</h3>
+      <p>پهنای هر ستون دقیقاً ثابت است، چه صفحه پهن باشد چه باریک:</p>
+      <pre class="code"><code>.grid-px {
+  display: grid;
+  grid-template-columns: 150px 150px 150px;
+  gap: 8px;
+}</code></pre>
+      <div class="result demo-cols">
+        <div class="grid grid-px">
+          <div class="box b1">۱</div>
+          <div class="box b2">۲</div>
+          <div class="box b3">۳</div>
+          <div class="box b4">۴</div>
+          <div class="box b5">۵</div>
+          <div class="box b6">۶</div>
+        </div>
+      </div>
+      <p>سمت چپ شبکه جای خالی مانده؛ چون جمع ستون‌ها از عرض ظرف کمتر است. در موبایل هم برعکس، ممکن است از صفحه بیرون بزند.</p>
+
+      <h3>مثال ۲: ستون با درصد (<code>%</code>)</h3>
+      <pre class="code"><code>.grid-percent {
+  display: grid;
+  grid-template-columns: 50% 25% 25%;
+}</code></pre>
+      <div class="result demo-cols">
+        <div class="grid grid-percent">
+          <div class="box b1">۱ (۵۰٪)</div>
+          <div class="box b2">۲ (۲۵٪)</div>
+          <div class="box b3">۳ (۲۵٪)</div>
+        </div>
+      </div>
+      <p class="mistake">
+        <strong>اشتباه رایج:</strong>
+        ستون‌های درصدی را با <code>gap</code> ترکیب می‌کنیم: <code>50% 25% 25%</code> به‌علاوه دو فاصله ۸ پیکسلی می‌شود
+        <strong>۱۰۰٪ + ۱۶px</strong> و شبکه از ظرف بیرون می‌زند. به همین دلیل در مثال ۲ عمداً <code>gap</code> ننوشتیم.
+        راه درست واحد <code>fr</code> است (مثال ۳).
+      </p>
+
+      <h3>مثال ۳: واحد <code>fr</code> — سهم از فضای خالی</h3>
+      <p>
+        <code>fr</code> مخفف fraction یعنی «سهم» است. مرورگر اول فاصله‌ها را کم می‌کند، بعد بقیه جا را بین سهم‌ها تقسیم می‌کند.
+        <code>2fr 1fr 1fr</code> یعنی کل جا ۴ سهم است: ستون اول ۲ سهم، بقیه هر کدام ۱ سهم.
+      </p>
+      <pre class="code"><code>.grid-fr {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 8px;
+}</code></pre>
+      <div class="result demo-cols">
+        <div class="grid grid-fr">
+          <div class="box b1">۱ (۲fr) — کیک شکلاتی ویژه</div>
+          <div class="box b2">۲ (۱fr)</div>
+          <div class="box b3">۳ (۱fr)</div>
+        </div>
+      </div>
+
+      <h3>مثال ۴: ترکیب پیکسل و <code>fr</code> — ستون کناری ثابت</h3>
+      <p>ستون کناری فروشگاه همیشه ۲۰۰ پیکسل است و محتوا <strong>بقیه جا</strong> را می‌گیرد:</p>
+      <pre class="code"><code>.grid-mix {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  gap: 8px;
+}</code></pre>
+      <div class="result demo-cols">
+        <div class="grid grid-mix">
+          <div class="box b4">۱. دسته‌بندی‌ها (۲۰۰px)</div>
+          <div class="box b1">۲. محصولات فروشگاه (۱fr = بقیه جا)</div>
+        </div>
+      </div>
+
+      <h3>مثال ۵: <code>auto</code> — به اندازه محتوا</h3>
+      <p>
+        ستون <code>auto</code> به اندازه محتوایش پهن می‌شود. برای یک ردیف از منوی کافه: آیکون و قیمت به اندازه خودشان، اسم غذا بقیه جا:
+      </p>
+      <pre class="code"><code>.grid-auto {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 8px;
+}</code></pre>
+      <div class="result demo-cols">
+        <div class="grid grid-auto">
+          <div class="box b3">☕</div>
+          <div class="box b2 text-right">کاپوچینو با شیر بادام</div>
+          <div class="box b5">۹۵ هزار تومان</div>
+          <div class="box b3">🍰</div>
+          <div class="box b2 text-right">چیزکیک</div>
+          <div class="box b5">۱۱۰ هزار تومان</div>
+        </div>
+      </div>
+
+      <h3>مثال ۶: ردیف‌ها با <code>grid-template-rows</code></h3>
+      <p>ردیف اول ۶۰ پیکسل، ردیف دوم ۱۲۰ پیکسل. اگر ردیف تعیین نکنید، ارتفاع هر ردیف به اندازه محتوایش می‌شود:</p>
+      <pre class="code"><code>.grid-rows {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 60px 120px;
+  gap: 8px;
+}</code></pre>
+      <div class="result demo-cols">
+        <div class="grid grid-rows">
+          <div class="box b1">۱</div>
+          <div class="box b2">۲</div>
+          <div class="box b3">۳</div>
+          <div class="box b4">۴ (ردیف ۱۲۰px)</div>
+          <div class="box b5">۵</div>
+          <div class="box b6">۶</div>
+        </div>
+      </div>
+
+      <table class="ref">
+        <tr>
+          <th>واحد</th>
+          <th>معنی</th>
+          <th>کی استفاده کنیم؟</th>
+        </tr>
+        <tr>
+          <td><code>px</code></td>
+          <td>اندازه ثابت</td>
+          <td>ستون کناری، آیکون، چیزهایی که نباید تغییر کنند</td>
+        </tr>
+        <tr>
+          <td><code>%</code></td>
+          <td>درصدی از عرض ظرف</td>
+          <td>کم؛ با <code>gap</code> مشکل سرریز دارد</td>
+        </tr>
+        <tr>
+          <td><code>fr</code></td>
+          <td>سهم از فضای باقی‌مانده</td>
+          <td>بیشتر وقت‌ها؛ بهترین انتخاب برای ستون‌های منعطف</td>
+        </tr>
+        <tr>
+          <td><code>auto</code></td>
+          <td>به اندازه محتوا</td>
+          <td>برچسب، دکمه، قیمت</td>
+        </tr>
+      </table>
+
+      <p class="mistake">
+        <strong>اشتباه رایج:</strong>
+        نوشتن ویرگول بین ستون‌ها: <code>grid-template-columns: 1fr, 1fr, 1fr;</code>
+        این مقدار نامعتبر است و مرورگر کل خط را نادیده می‌گیرد. مقدارها فقط با <strong>فاصله</strong> از هم جدا می‌شوند.
+      </p>
+
+      <p class="exercise">
+        <strong>تمرین:</strong> برای صفحه «دوره‌های آموزشگاه» یک شبکه بسازید که ستون راست ۲۵۰ پیکسل (فیلتر دوره‌ها)،
+        ستون وسط دو سهم (لیست دوره‌ها) و ستون چپ یک سهم (سبد خرید) باشد. ردیف اول را ۸۰ پیکسل بگذارید.
+        بعد پنجره را باریک و پهن کنید و ببینید کدام ستون تغییر اندازه می‌دهد.
+      </p>
+    </section>
+
+    <nav class="page-nav" aria-label="ناوبری درس پایین">
+      <a href="01-intro.html">→ قبلی: Grid چیست؟</a>
+      <a href="../index.html">فهرست درس‌ها</a>
+      <a href="03-repeat-minmax.html">بعدی: repeat و minmax ←</a>
+    </nav>
+
+  </div>
+
+  <footer class="page-footer">
+    آموزش CSS Grid
+  </footer>
+
+</body>
+
+</html>

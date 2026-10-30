@@ -1,0 +1,31 @@
+/* ۱۳) Outline */
+
+.box {
+  border: 2px solid #1a3a5c;
+  outline: 3px dashed tomato;
+  outline-offset: 6px;
+  margin: 16px;
+  padding: 10px;
+}
+
+/* فرم جستجوی نمونه */
+.search-input,
+.search-btn {
+  font: inherit;
+  padding: 6px 10px;
+  border: 1px solid #9fb3c8;
+  border-radius: 4px;
+}
+
+.search-btn {
+  background-color: #1a5fb4;
+  border-color: #1a5fb4;
+  color: white;
+  cursor: pointer;
+}
+
+.search-btn:focus-visible,
+.search-input:focus-visible {
+  outline: 3px solid #e6a700;
+  outline-offset: 2px;
+}

@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>img یا background؟ | تصاویر در CSS</title>
+  <link rel="stylesheet" href="../css/layout.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="../css/demos/compare.css">
+</head>
+
+<body>
+  <header class="page-header">
+    <h1>تصاویر در CSS</h1>
+    <p>۱) تگ img یا تصویر پس‌زمینه؟</p>
+  </header>
+
+  <div class="container">
+    <nav class="page-nav" aria-label="ناوبری درس‌ها">
+      <span></span>
+      <a href="../index.html">فهرست</a>
+      <a href="02-paths.html">بعدی: مسیر فایل ←</a>
+    </nav>
+
+    <section class="lesson">
+      <h2>۱) تگ <code>img</code> یا <code>background-image</code>؟</h2>
+      <p>
+        هر تصویری که در صفحه می‌بینید از یکی از این دو راه آمده است: یا یک عنصر <code>img</code> داخل HTML است، یا با <code>background-image</code> پشت یک جعبه کشیده شده است.
+        این انتخاب اولین تصمیم واقعی هنگام گذاشتن عکس در پروژه است، چون این دو راه از نظر معنا، دسترسی‌پذیری و سئو یکی نیستند.
+        اگر عکس خودش بخشی از محتواست، باید در HTML باشد تا صفحه‌خوان و موتور جستجو آن را ببینند. اگر فقط فضا را زیبا می‌کند و حذفش به معنی صفحه آسیب نمی‌زند، پس‌زمینهٔ CSS مناسب‌تر است.
+      </p>
+      <p>
+        انتخاب اشتباه معمولاً ظاهر را همان لحظه خراب نمی‌کند، اما بعداً خودش را نشان می‌دهد: عکس محصولی که فقط پس‌زمینه باشد <code>alt</code> ندارد، در نتایج جستجو به‌عنوان تصویر ایندکس نمی‌شود، و اگر CSS لود نشود اصلاً دیده نمی‌شود.
+      </p>
+
+      <div class="compare demo-compare">
+        <div>
+          <h3>محتوا → <code>img</code></h3>
+          <pre class="code"><code>&lt;img src="../images/food-1.jpg"
+     alt="چلو کباب کوبیده"&gt;</code></pre>
+          <div class="result">
+            <img class="content-img" src="../images/food-1.jpg" alt="چلو کباب کوبیده">
+          </div>
+        </div>
+        <div>
+          <h3>دکوراسیون → background</h3>
+          <pre class="code"><code>/* css/demos/compare.css */
+.decor-bg {
+  min-height: 160px;
+  background-image: url("../../images/hero.jpg");
+  background-size: cover;
+  background-position: center;
+}</code></pre>
+          <div class="result">
+            <div class="decor-bg">متن روی پس‌زمینه</div>
+          </div>
+        </div>
+      </div>
+
+      <p class="realuse">
+        <strong>در دنیای واقعی:</strong>
+        فروشگاه اینترنتی برای عکس محصول حتماً <code>img</code> می‌گذارد (سئو + alt).
+        بنر تمام‌صفحه اول سایت معمولاً <code>background-image</code> یا ترکیب تصویر + لایه تیره است.
+      </p>
+
+      <table class="ref">
+        <thead>
+          <tr>
+            <th>سؤال</th>
+            <th>اگر بله</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>آیا عکس خودش بخشی از معنی صفحه است، مثل عکس غذا یا محصول؟</td>
+            <td>از <code>img</code> استفاده کنید تا عکس در محتوا بماند و <code>alt</code> داشته باشد.</td>
+          </tr>
+          <tr>
+            <td>آیا اگر عکس را بردارید، خواننده اطلاعات مهمی را از دست می‌دهد؟</td>
+            <td>باز هم <code>img</code> درست است، چون پس‌زمینه برای صفحه‌خوان نامرئی است.</td>
+          </tr>
+          <tr>
+            <td>آیا عکس فقط فضا را زیبا می‌کند و متنِ کنارش همان معنی را می‌رساند؟</td>
+            <td><code>background-image</code> مناسب است و نباید با <code>img</code> بدون <code>alt</code> شلوغش کنید.</td>
+          </tr>
+          <tr>
+            <td>آیا متن باید روی تصویر بنشیند، مثل بنر اول صفحه؟</td>
+            <td>معمولاً تصویر را پس‌زمینه می‌گذارند و یک لایهٔ تیرهٔ نیمه‌شفاف زیر متن می‌گذارند تا نوشته خوانا بماند.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p class="mistake">
+        <strong>اشتباه رایج:</strong>
+        گذاشتن عکس محصول فقط با <code>background-image</code>. موتور جستجو آن را به‌عنوان محتوای تصویری صفحه نمی‌بیند، صفحه‌خوان چیزی برای خواندن ندارد، و تصویر پس‌زمینه اصلاً <code>alt</code> نمی‌گیرد.
+        اگر عکس باید توضیح داشته باشد، جایش در <code>img</code> است.
+      </p>
+
+      <p class="tip">
+        به مسیرها دقت کنید: در <code>img</code> مسیر نسبت به <strong>فایل HTML</strong> (<code>pages/</code>) حساب می‌شود،
+        پس <code>../images/</code> کافی است؛ اما <code>url()</code> داخل فایل CSS نسبت به <strong>خود فایل CSS</strong>
+        (<code>css/demos/</code>) حساب می‌شود و دو بار <code>../</code> لازم دارد. درس بعد همین را کامل توضیح می‌دهد.
+      </p>
+
+      <p class="exercise">
+        <strong>تمرین:</strong> برای صفحه معرفی شخصی، عکس پروفایل را با <code>img</code> بگذارید و پس‌زمینه هدر را با
+        <code>background-image</code>.
+      </p>
+    </section>
+
+    <nav class="page-nav" aria-label="ناوبری درس‌ها">
+      <span></span>
+      <a href="../index.html">فهرست</a>
+      <a href="02-paths.html">بعدی: مسیر فایل ←</a>
+    </nav>
+  </div>
+  <footer class="page-footer">تصاویر در CSS</footer>
+</body>
+</html>

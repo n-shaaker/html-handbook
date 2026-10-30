@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>۶) شناور کردن (Float و Clear) | آموزش CSS سطح میانی</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/demos/float.css">
+</head>
+
+<body>
+
+  <header class="page-header">
+    <h1>آموزش CSS — سطح میانی</h1>
+    <p>۶) شناور کردن (Float و Clear)</p>
+  </header>
+
+  <div class="container">
+
+    <nav class="page-nav" aria-label="ناوبری درس">
+      <a href="05-overflow.html">→ قبلی: Overflow</a>
+      <a href="../index.html">فهرست درس‌ها</a>
+      <a href="07-inline-block.html">بعدی: Inline-block ←</a>
+    </nav>
+
+    <section class="lesson" id="float">
+      <h2>۶) شناور کردن (Float و Clear)</h2>
+      <p>
+        <code>float</code> عنصر را به سمت راست یا چپ فیزیکی هل می‌دهد و می‌گذارد متن دور آن بپیچد؛ مثل عکس کنار ستون روزنامه.
+        مقدار <code>right</code> و <code>left</code> با جهت صفحه عوض نمی‌شود: در صفحه فارسی هم <code>float: right</code> تصویر را به لبه راست می‌برد.
+        کاربرد مناسب امروزی float همین پیچیدن متن دور تصویر است. ساختن ستون و منو با float روش قدیمی است و در کدهای قدیمی دیده می‌شود؛ برای چیدمان تازه از Flexbox و Grid استفاده می‌کنیم.
+        عنصر شناور از جریان عادی ارتفاع پدر خارج می‌شود. اگر همه فرزندان شناور باشند، ارتفاع پدر ممکن است صفر شود، مگر اینکه پدر با <code>display: flow-root</code> یا روش مشابه، شناورها را در بر بگیرد.
+      </p>
+
+      <h3>مثال ۱: عکس کنار متن</h3>
+      <pre class="code"><code>.news-img {
+  float: right;        /* عکس برود سمت راست */
+  width: 140px;
+  margin-left: 12px;   /* فاصله عکس تا متن */
+}</code></pre>
+      <div class="result demo-float">
+        <div class="news">
+          <img src="../images/bg.jpg" alt="تصویر خبر" class="news-img">
+          <p>
+            این یک متن خبری نمونه است. چون عکس <code>float: right</code> دارد، متن به‌جای اینکه زیر عکس برود،
+            کنار آن قرار می‌گیرد و دورش می‌چرخد. وقتی متن از ارتفاع عکس بیشتر شود، خط‌های بعدی در کل عرض ادامه پیدا می‌کنند.
+            این روش برای مقاله‌ها و وبلاگ‌ها بسیار رایج است. متن بیشتر برای دیدن چرخیدن خط‌ها دور تصویر و ادامه آن در پایین.
+          </p>
+        </div>
+      </div>
+
+      <h3>مثال ۲: جعبه‌های کنار هم — روش قدیمی (float) و روش امروزی (flex)</h3>
+      <p>این روش را در کدهای قدیمی زیاد می‌بینید؛ برای همین باید بشناسیدش. پدر حتماً باید <code>flow-root</code> شود (مثال ۴):</p>
+      <pre class="code"><code>.clearfix { display: flow-root; }  /* پدر جمع نشود */
+
+.item {
+  float: right;
+  width: 30%;
+  margin-left: 3%;   /* ۳ × (۳۰٪ + ۳٪) = ۹۹٪؛ اگر بیشتر از ۱۰۰٪ شود، ستون آخر به خط بعد می‌افتد */
+}</code></pre>
+      <div class="result demo-float">
+        <div class="clearfix">
+          <div class="item">ستون ۱</div>
+          <div class="item">ستون ۲</div>
+          <div class="item">ستون ۳</div>
+        </div>
+      </div>
+      <p>همین چیدمان با Flexbox؛ بدون حساب درصد، بدون مشکل جمع شدن پدر، و ستون‌ها خودکار هم‌قد می‌شوند:</p>
+      <pre class="code"><code>.flex-row {
+  display: flex;
+  gap: 3%;
+}
+
+.flex-row .item {
+  flex: 1;   /* همه ستون‌ها هم‌اندازه */
+}</code></pre>
+      <div class="result demo-float">
+        <div class="flex-row">
+          <div class="item">ستون ۱</div>
+          <div class="item">ستون ۲ با متن بیشتر؛ ستون‌های دیگر هم هم‌قد من می‌شوند.</div>
+          <div class="item">ستون ۳</div>
+        </div>
+      </div>
+
+      <h3>مثال ۳: <code>clear</code> — دیگر کنار نیا!</h3>
+      <p>اگر بخواهیم عنصری <strong>زیر</strong> عنصرهای شناور بیاید (نه کنارشان)، از <code>clear</code> استفاده می‌کنیم:</p>
+      <pre class="code"><code>.with-clear {
+  clear: both;   /* نه شناورِ راست کنارم باشد، نه شناورِ چپ */
+}</code></pre>
+      <div class="result demo-float">
+        <div class="tag-float">شناور ۱</div>
+        <div class="tag-float">شناور ۲</div>
+        <p class="no-clear">بدون clear: من کنار جعبه‌ها چسبیدم.</p>
+        <div class="tag-float">شناور ۳</div>
+        <div class="tag-float">شناور ۴</div>
+        <p class="with-clear">با clear: both — من زیر جعبه‌ها آمدم.</p>
+      </div>
+
+      <h3>مثال ۴: مشکل «پدر جمع‌شده» و راه حل</h3>
+      <p>عنصر شناور از جریان عادی صفحه بیرون می‌رود؛ پس وقتی همه فرزندان شناور باشند، پدر آن‌ها را «نمی‌بیند»، ارتفاعش صفر می‌شود و حاشیه‌اش جمع می‌شود. راه حل امروزی:</p>
+      <pre class="code"><code>.parent {
+  display: flow-root;   /* یا: overflow: auto; */
+}</code></pre>
+      <p>
+        در کدهای قدیمی به‌جای آن «clearfix» با شبه‌عنصر می‌بینید که همین کار را می‌کند:
+      </p>
+      <pre class="code"><code>.parent::after { content: ""; display: block; clear: both; }</code></pre>
+      <div class="result demo-float">
+        <p><strong>بدون راه حل:</strong></p>
+        <div class="parent-bad">
+          <div class="item">فرزند شناور</div>
+        </div>
+        <p class="spacer"><strong>با display: flow-root:</strong></p>
+        <div class="parent-good">
+          <div class="item">فرزند شناور</div>
+        </div>
+      </div>
+
+      <p class="tip">
+        برای چیدمان ستونی، منو و ردیف کارت‌ها از Flexbox و Grid استفاده کنید؛
+        <code>float</code> فقط برای «عکس کنار متن» (مثل مقاله و خبر) هنوز بهترین گزینه است.
+      </p>
+
+      <p class="mistake">
+        <strong>اشتباه رایج:</strong>
+        فراموش کردن <code>margin</code> سمت متن؛ در صفحه راست‌چین، عکسی که <code>float: right</code> دارد باید <code>margin-left</code> بگیرد
+        (و عکسی که <code>float: left</code> دارد، <code>margin-right</code>)، وگرنه متن به عکس می‌چسبد.
+      </p>
+
+      <p class="exercise">
+        <strong>تمرین:</strong> یک پاراگراف درباره شهرتان بنویسید و یک عکس با <code>float: left</code> و فاصله مناسب کنارش بگذارید.
+        سپس یک تیتر بعد از آن بگذارید که با <code>clear</code> حتماً زیر عکس بیاید.
+      </p>
+    </section>
+
+    <nav class="page-nav" aria-label="ناوبری درس پایین">
+      <a href="05-overflow.html">→ قبلی: Overflow</a>
+      <a href="../index.html">فهرست درس‌ها</a>
+      <a href="07-inline-block.html">بعدی: Inline-block ←</a>
+    </nav>
+
+  </div>
+
+  <footer class="page-footer">
+    آموزش CSS سطح میانی
+  </footer>
+
+</body>
+
+</html>

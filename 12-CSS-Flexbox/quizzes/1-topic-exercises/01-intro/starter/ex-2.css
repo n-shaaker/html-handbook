@@ -1,0 +1,30 @@
+/* تمرین ۲ — منوی خراب: flex روی عنصر اشتباه (نسخه خراب — درستش کنید) */
+
+body {
+  font-family: Tahoma, sans-serif;
+  margin: 20px;
+  background-color: #f8f9fa;
+  color: #212529;
+}
+
+.topbar {
+  background-color: #343a40;
+  padding: 10px;
+}
+
+.logo {
+  color: #ffd43b;
+  font-weight: bold;
+  margin: 5px;
+}
+
+.links {
+  margin: 5px;
+}
+
+.links a {
+  display: flex;
+  color: white;
+  text-decoration: none;
+  margin: 0 10px;
+}

@@ -1,0 +1,114 @@
+/* ۱۱) Grid یا Flexbox؟ */
+
+.demo-vs .label {
+  margin: 8px 0 4px;
+  font-size: 14px;
+  color: #495057;
+}
+
+/* کارت‌های رنگی شماره‌دار */
+.demo-vs .card {
+  color: white;
+  font-weight: bold;
+  text-align: center;
+  padding: 14px 8px;
+  border-radius: 6px;
+}
+
+.demo-vs .b1 { background-color: #1c7ed6; }
+.demo-vs .b2 { background-color: #2f9e44; }
+.demo-vs .b3 { background-color: #e8590c; }
+.demo-vs .b4 { background-color: #ae3ec9; }
+.demo-vs .b5 { background-color: #e03131; }
+
+/* مثال ۱ */
+.demo-vs .cards-flex {
+  display: flex;
+  gap: 10px;
+}
+
+.demo-vs .cards-flex .card {
+  flex: 1;
+}
+
+.demo-vs .cards-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+
+/* مثال ۲ */
+.demo-vs .wrap-flex {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.demo-vs .wrap-flex .card {
+  flex: 1 1 30%;
+}
+
+.demo-vs .wrap-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+
+/* مثال ۳: منو */
+.demo-vs .nav-flex {
+  display: flex;
+  gap: 6px;
+}
+
+.demo-vs .nav-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 6px;
+}
+
+.demo-vs .nav-flex a,
+.demo-vs .nav-grid a {
+  background-color: #1a3a5c;
+  color: white;
+  text-decoration: none;
+  padding: 6px 12px;
+  border-radius: 4px;
+  text-align: center;
+}
+
+/* مثال ۴: Grid بیرون، Flexbox داخل کارت */
+.demo-vs .menu-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 12px;
+}
+
+.demo-vs .menu-card {
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  border: 1px solid #dee2e6;
+  border-top: 5px solid #e8590c;
+  border-radius: 6px;
+  padding: 10px 12px;
+}
+
+.demo-vs .menu-card h4 {
+  margin: 0 0 6px;
+  color: #1a3a5c;
+}
+
+.demo-vs .menu-card p {
+  margin: 0 0 10px;
+  font-size: 14px;
+}
+
+.demo-vs .menu-card .order {
+  margin-top: auto;
+  background-color: #2f9e44;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  padding: 6px;
+  border-radius: 4px;
+}

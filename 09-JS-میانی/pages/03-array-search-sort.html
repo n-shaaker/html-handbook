@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>۳) جستجو و مرتب‌سازی آرایه (Search & Sort) | آموزش JavaScript سطح میانی</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <script src="../js/log.js" defer></script>
+  <script src="../js/demos/array-search-sort.js" defer></script>
+</head>
+
+<body>
+
+  <header class="page-header" id="top">
+    <h1>آموزش JavaScript — سطح میانی</h1>
+    <p>۳) جستجو و مرتب‌سازی آرایه (Search & Sort)</p>
+  </header>
+
+  <div class="container">
+
+    <nav class="page-nav" aria-label="ناوبری درس">
+      <a href="02-array-methods.html">→ قبلی: Array Methods</a>
+      <a href="../index.html">فهرست درس‌ها</a>
+      <a href="04-array-iteration.html">بعدی: Array Iteration ←</a>
+    </nav>
+
+    <section class="lesson" id="array-search-sort">
+      <h2>۳) جستجو و مرتب‌سازی آرایه (Search & Sort)</h2>
+<p>وقتی فهرست طولانی است، پیدا کردن یک عضو با چشم یا با حلقه‌ای که خودتان از صفر می‌نویسید هم کندتر خوانده می‌شود و هم راحت‌تر اشتباه می‌شود. متدهای جستجو یا شمارهٔ عضو را می‌دهند، یا خود عضو را، یا فقط می‌گویند آن مقدار هست یا نه. مرتب‌سازی ترتیب نمایش را عوض می‌کند، ولی قاعده‌اش برای متن، عدد و شیء یکی نیست. اگر تابع مقایسه را درست ننویسید، عددی مثل ۱۰۰ ممکن است قبل از ۲۵ قرار بگیرد.</p>
+
+<h3>جستجو</h3>
+
+<table class="ref">
+<tr><th>متد</th><th>خروجی</th></tr>
+<tr><td><code>indexOf(x)</code></td><td>شماره اولین x؛ اگر نبود <code>-1</code></td></tr>
+<tr><td><code>includes(x)</code></td><td><code>true</code> یا <code>false</code></td></tr>
+<tr><td><code>find(fn)</code></td><td><strong>اولین عضو</strong>ی که شرط را دارد (یا undefined)</td></tr>
+<tr><td><code>findIndex(fn)</code></td><td>شماره اولین عضوی که شرط را دارد (یا -1)</td></tr>
+</table>
+
+<pre class="code"><code>const nums = [4, 9, 16, 25, 29];
+
+console.log(nums.indexOf(16));
+console.log(nums.indexOf(100));
+console.log(nums.includes(25));
+
+const firstBig = nums.find(function (n) {
+  return n &gt; 10;
+});
+console.log(firstBig);
+console.log(nums.findIndex(function (n) { return n &gt; 10; }));</code></pre>
+
+<div class="result">
+<pre class="console" id="out-1"></pre>
+</div>
+
+<p><code>indexOf</code> با برابری دقیق دنبال مقدار می‌گردد و شمارهٔ اولین مورد را برمی‌گرداند؛ اگر نباشد نتیجه <code>-1</code> است، نه <code>undefined</code>. <code>includes</code> فقط هست یا نیست را با true و false می‌گوید. <code>find</code> تابعی می‌گیرد و آن را روی عضو‌ها اجرا می‌کند تا اولین عضوی که شرطش true شود را برگرداند. <code>findIndex</code> به‌جای خود عضو، شمارهٔ همان عضو را می‌دهد.</p>
+
+<p class="tip"><code>find</code> یک تابع می‌گیرد و آن را برای تک‌تک عضوها اجرا می‌کند. اولین عضوی که تابع برایش <code>true</code> برگرداند، جواب است. اگر <strong>همه</strong> عضوهای منطبق را می‌خواهید، از <code>filter</code> (درس بعد) استفاده کنید.</p>
+
+<h3>مرتب‌سازی متن</h3>
+
+<p><code>sort()</code> بدون ورودی، عضوها را به <strong>رشته</strong> تبدیل می‌کند و بر اساس کد یونیکد کاراکترها (مثل ترتیب واژه‌نامه، ولی حرف به حرف) مرتب می‌کند. برای همین حروف بزرگ انگلیسی قبل از حروف کوچک می‌آیند.</p>
+
+<pre class="code"><code>const names = ["Sara", "Ali", "Maryam", "Reza"];
+names.sort();
+console.log(names);        // ["Ali","Maryam","Reza","Sara"]
+names.reverse();           // فقط ترتیب فعلی را برعکس می‌کند
+console.log(names);        // ["Sara","Reza","Maryam","Ali"]
+
+const mixedCase = ["banana", "Cherry", "apple"];
+console.log(mixedCase.sort());   // ["Cherry","apple","banana"] — حرف بزرگ اول!
+
+const cities = ["مشهد", "گرگان", "تبریز", "پاوه", "اصفهان", "چالوس"];
+console.log(cities.slice().sort());  // ✖ پ، چ و گ آخر رفتند (ترتیب یونیکد، نه الفبای فارسی)
+
+// مرتب‌سازی درست متن (فارسی یا انگلیسی) با localeCompare
+cities.sort(function (a, b) { return a.localeCompare(b, "fa"); });
+console.log(cities);              // ✔ اصفهان، پاوه، تبریز، چالوس، گرگان، مشهد</code></pre>
+
+<p class="tip">حروف «پ، چ، ژ، گ» و «ک، ی» فارسی در جدول یونیکد بعد از حروف عربی آمده‌اند؛ برای همین <code>sort()</code> ساده آن‌ها را جای اشتباه می‌گذارد. <code>a.localeCompare(b, "fa")</code> طبق الفبای فارسی مقایسه می‌کند.</p>
+
+<div class="result">
+<pre class="console" id="out-2"></pre>
+</div>
+
+<p><code>sort</code> بدون تابع، عضو‌ها را به متن تبدیل می‌کند و بر اساس کد یونیکد مرتب می‌کند؛ به همین دلیل <code>Cherry</code> قبل از <code>apple</code> می‌آید. <code>reverse</code> فقط ترتیب فعلی را برمی‌گرداند و خودش قاعدهٔ الفبا ندارد. <code>slice()</code> قبل از <code>sort</code> یک کپی می‌سازد تا آزمایش ترتیب یونیکد، آرایهٔ اصلی شهرها را عوض نکند. <code>localeCompare</code> با زبان <code>"fa"</code> دو متن را طبق الفبای فارسی مقایسه می‌کند و عددی منفی، صفر یا مثبت برمی‌گرداند که <code>sort</code> با آن جابه‌جایی را انجام می‌دهد.</p>
+
+<h3>مرتب‌سازی عدد — حتماً تابع مقایسه بدهید</h3>
+
+<p>تابع مقایسه دو عضو <code>a</code> و <code>b</code> را می‌گیرد و یک عدد برمی‌گرداند: اگر <strong>منفی</strong> بود <code>a</code> اول می‌آید، اگر <strong>مثبت</strong> بود <code>b</code> اول می‌آید و اگر <strong>صفر</strong> بود ترتیبشان عوض نمی‌شود. <code>a - b</code> دقیقاً همین را برای عددها می‌سازد.</p>
+
+<pre class="code"><code>const scores = [40, 100, 1, 5, 25, 10];
+
+scores.sort();
+console.log(scores);              // ✖ غلط! [1,10,100,25,40,5] — مثل متن مرتب شد
+
+scores.sort(function (a, b) { return a - b; });
+console.log(scores);              // ✔ صعودی: [1,5,10,25,40,100]
+
+scores.sort(function (a, b) { return b - a; });
+console.log(scores);              // ✔ نزولی: [100,40,25,10,5,1]</code></pre>
+
+<div class="result">
+<pre class="console" id="out-3"></pre>
+</div>
+
+<p>همان <code>sort</code> بدون تابع، عدد ۱۰۰ را به متن <code>"100"</code> تبدیل می‌کند. چون نویسهٔ <code>1</code> قبل از <code>2</code> است، ۱۰۰ قبل از ۲۵ قرار می‌گیرد. تابع <code>a - b</code> اگر نتیجه منفی باشد <code>a</code> را جلوتر می‌گذارد و ترتیب صعودی می‌سازد. <code>b - a</code> علامت را برعکس می‌کند و ترتیب نزولی می‌شود. هر بار <code>sort</code> همان آرایهٔ <code>scores</code> را عوض می‌کند.</p>
+
+<h3>sort آرایه اصلی را تغییر می‌دهد</h3>
+
+<pre class="code"><code>const prices = [300, 120, 450];
+const sorted = prices.sort(function (a, b) { return a - b; });
+console.log(prices);              // [120,300,450] — اصلی هم عوض شد!
+console.log(sorted === prices);   // true — هر دو یک آرایه‌اند
+
+const original = [300, 120, 450];
+const sortedCopy = original.slice().sort(function (a, b) { return a - b; });
+console.log(original);            // [300,120,450] — دست نخورد
+console.log(sortedCopy);          // [120,300,450]</code></pre>
+
+<div class="result">
+<pre class="console" id="out-6"></pre>
+</div>
+
+<p>مقدار برگشتی <code>sort</code> خود همان آرایه است، نه فهرست تازه. به همین دلیل <code>sorted === prices</code> برابر true است و چاپ <code>prices</code> هم ترتیب مرتب‌شده را نشان می‌دهد. اگر ترتیب قبلی را لازم دارید، اول <code>slice()</code> آرایه‌ای جدید با همان عضو‌ها می‌سازد و <code>sort</code> فقط روی آن کپی اثر می‌گذارد.</p>
+
+<p class="tip"><code>slice()</code> بدون ورودی (درس ۲) یک <strong>کپی</strong> از کل آرایه می‌سازد. پس <code>arr.slice().sort(...)</code> کپی را مرتب می‌کند و آرایه اصلی دست نمی‌خورد.</p>
+
+<h3>مرتب‌سازی آرایه‌ای از اشیا</h3>
+
+<pre class="code"><code>const products = [
+  { name: "کتاب", price: 120 },
+  { name: "خودکار", price: 15 },
+  { name: "کیف", price: 450 }
+];
+
+products.sort(function (a, b) { return a.price - b.price; });   // ارزان به گران
+console.log(products);
+
+const cheap = products.find(function (p) { return p.price &lt; 100; });
+console.log(cheap.name);
+
+const missing = products.find(function (p) { return p.price &gt; 1000; });
+console.log(missing);             // undefined — چیزی پیدا نشد</code></pre>
+
+<div class="result">
+<pre class="console" id="out-4"></pre>
+</div>
+
+<p>تابع مقایسه این بار ویژگی <code>price</code> دو شیء را از هم کم می‌کند، پس ملاک مرتب‌سازی قیمت است نه نام. بعد از مرتب شدن، <code>find</code> اولین کالایی را برمی‌گرداند که قیمتش کمتر از ۱۰۰ باشد. اگر هیچ عضوی شرط را نداشته باشد، نتیجه <code>undefined</code> است و نباید مستقیم ویژگی‌ای مثل <code>name</code> را از آن بخوانید.</p>
+
+<h3>کمترین و بیشترین</h3>
+
+<pre class="code"><code>const temps = [4, 9, 2];
+console.log(Math.min(...temps));   // ... (Spread) آرایه را باز می‌کند — درس ۱۱
+console.log(Math.max(...temps));
+console.log(Math.max(temps));      // NaN — آرایه را بدون ... نمی‌پذیرد</code></pre>
+
+<div class="result">
+<pre class="console" id="out-5"></pre>
+</div>
+
+<p><code>Math.min</code> و <code>Math.max</code> عددها را به‌صورت آرگومان جدا می‌خواهند. سه‌نقطه آرایه را باز می‌کند و هر عضو را یک آرگومان جدا می‌فرستد. اگر خود آرایه را بدون باز کردن بدهید، این تابع‌ها عضو‌ها را با هم مقایسه نمی‌کنند و نتیجه <code>NaN</code> می‌شود. کار سه‌نقطه در درس باز کردن آرایه کامل توضیح داده می‌شود؛ اینجا فقط برای پیدا کردن کمینه و بیشینه به آن نیاز است.</p>
+
+<h3>مثال زنده: مرتب‌سازی محصولات فروشگاه</h3>
+
+<pre class="code"><code>const shopItems = [
+  { name: "هدفون", price: 1850000 },
+  { name: "کابل شارژ", price: 240000 },
+  { name: "پاوربانک", price: 1290000 },
+  { name: "قاب گوشی", price: 350000 }
+];
+
+const sortSelect = document.getElementById("sort-select");
+const shopList = document.getElementById("shop-list");
+
+function showProducts() {
+  if (sortSelect.value === "cheap") {
+    shopItems.sort(function (a, b) { return a.price - b.price; });
+  } else if (sortSelect.value === "expensive") {
+    shopItems.sort(function (a, b) { return b.price - a.price; });
+  } else {
+    shopItems.sort(function (a, b) { return a.name.localeCompare(b.name, "fa"); });
+  }
+
+  let html = "";
+  for (const item of shopItems) {
+    html += `&lt;li&gt;&lt;span&gt;${item.name}&lt;/span&gt;&lt;span&gt;${item.price.toLocaleString("fa-IR")} تومان&lt;/span&gt;&lt;/li&gt;`;
+  }
+  shopList.innerHTML = html;   // داده‌ها مال خودمان است، نه ورودی کاربر
+}
+
+sortSelect.addEventListener("change", showProducts);
+showProducts();</code></pre>
+
+<div class="result">
+<label for="sort-select">مرتب‌سازی بر اساس:</label>
+<select id="sort-select">
+<option value="cheap">ارزان‌ترین</option>
+<option value="expensive">گران‌ترین</option>
+<option value="name">نام (الفبایی)</option>
+</select>
+<ul class="js-list" id="shop-list"></ul>
+</div>
+
+<p>با هر تغییر فهرست، <code>showProducts</code> بر اساس مقدار انتخاب‌شده یکی از سه مقایسه را اجرا می‌کند: قیمت از کم به زیاد، قیمت از زیاد به کم، یا نام با <code>localeCompare</code>. حلقه نام و قیمت را به صورت آیتم فهرست جمع می‌کند و یک‌بار داخل <code>ul</code> می‌گذارد. چون داده‌ها از آرایهٔ خود برنامه می‌آیند، نه از متن آزاد کاربر، قرار دادن این HTML در صفحه در این مثال خطر تزریق ندارد.</p>
+
+<p class="mistake"><strong>اشتباه رایج:</strong> <code>sort()</code> بدون تابع مقایسه برای عددها. چون عددها مثل متن مقایسه می‌شوند، <code>100</code> قبل از <code>25</code> می‌آید.</p>
+
+<p class="mistake"><strong>اشتباه رایج:</strong> برگرداندن <code>true</code>/<code>false</code> از تابع مقایسه (مثلاً <code>return a &gt; b;</code>). تابع مقایسه باید <strong>عدد</strong> (منفی، صفر یا مثبت) برگرداند؛ وگرنه نتیجه در مرورگرهای مختلف درست نیست.</p>
+
+<p class="mistake"><strong>اشتباه رایج:</strong> استفاده از <code>find</code> و بعد خواندن ویژگی بدون بررسی: اگر چیزی پیدا نشود <code>find</code> مقدار <code>undefined</code> برمی‌گرداند و <code>result.name</code> خطای TypeError می‌دهد. اول بررسی کنید: <code>if (result) { ... }</code>.</p>
+
+<p class="exercise"><strong>تمرین:</strong> آرایه‌ای از اشیای دانشجو (<code>name</code>، <code>score</code>) با حداقل ۵ عضو بسازید. (الف) با <code>slice().sort(...)</code> بر اساس نمره نزولی مرتب کنید و اسم نفر اول را چاپ کنید (آرایه اصلی نباید عوض شود). (ب) با <code>find</code> اولین دانشجوی مردود (نمره زیر ۱۰) را پیدا کنید و اگر کسی مردود نبود، پیام «همه قبول شدند» را چاپ کنید. (ج) با <code>localeCompare</code> فهرست را بر اساس نام الفبایی مرتب کنید.</p>
+    </section>
+
+    <nav class="page-nav" aria-label="ناوبری درس پایین">
+      <a href="02-array-methods.html">→ قبلی: Array Methods</a>
+      <a href="../index.html">فهرست درس‌ها</a>
+      <a href="04-array-iteration.html">بعدی: Array Iteration ←</a>
+    </nav>
+
+  </div>
+
+  <footer class="page-footer">
+    آموزش JavaScript سطح میانی
+  </footer>
+
+</body>
+
+</html>

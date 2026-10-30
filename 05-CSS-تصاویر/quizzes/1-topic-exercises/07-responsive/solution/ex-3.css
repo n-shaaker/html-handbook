@@ -1,0 +1,40 @@
+body {
+  font-family: Tahoma, Arial, sans-serif;
+  line-height: 1.9;
+  margin: 0;
+}
+
+.page {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 16px;
+}
+
+/* عکس معمولی: با صفحه کوچک می‌شود */
+.photo {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+.hint {
+  font-size: 14px;
+  color: #666;
+}
+
+/* فقط همین قاب اسکرول افقی می‌خورد */
+.scroll-frame {
+  overflow-x: auto;
+  padding: 8px;
+  border: 1px solid #cfd8e3;
+  border-radius: 8px;
+}
+
+/* نمودار کوچک‌تر از ۷۰۰ پیکسل نمی‌شود تا نوشته‌هایش خوانا بماند */
+.diagram {
+  display: block;
+  width: 100%;
+  min-width: 700px;
+  height: auto;
+}

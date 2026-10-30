@@ -1,0 +1,22 @@
+/* تمرین ۳ — فاصله‌های دوبرابر و شبکه سرریز (نسخه خراب — درستش کنید) */
+
+body {
+  font-family: Tahoma, sans-serif;
+  margin: 20px;
+  background-color: #f8f9fa;
+  color: #212529;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: 33.33% 33.33% 33.33%;
+  gap: 20px;
+  background-color: #e9ecef;
+}
+
+.card {
+  background-color: white;
+  padding: 20px;
+  margin: 10px;
+  border-radius: 6px;
+}

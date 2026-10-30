@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>۱۶) شرط‌ها (If...Else) | آموزش JavaScript سطح پایه</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <script src="../js/log.js" defer></script>
+  <script src="../js/demos/if-else.js" defer></script>
+</head>
+
+<body>
+
+  <header class="page-header" id="top">
+    <h1>آموزش JavaScript — سطح پایه</h1>
+    <p>۱۶) شرط‌ها (If...Else)</p>
+  </header>
+
+  <div class="container">
+
+    <nav class="page-nav" aria-label="ناوبری درس">
+      <a href="15-booleans-comparisons.html">→ قبلی: Comparisons</a>
+      <a href="../index.html">فهرست درس‌ها</a>
+      <a href="17-switch.html">بعدی: Switch ←</a>
+    </nav>
+
+    <section class="lesson" id="if-else">
+      <h2>۱۶) شرط‌ها (If...Else)</h2>
+<p>برنامه بدون شرط همیشه یک مسیر را اجرا می‌کند. با <code>if</code> می‌گویید: اگر این شرط درست بود، دستورهای داخل آکولاد اول را اجرا کن. <code>else</code> مسیر جایگزین است و فقط وقتی اجرا می‌شود که شرط غلط باشد. شرط باید عبارتی باشد که به درست یا غلط تعبیر شود؛ معمولاً همان مقایسه‌هایی که در درس قبل دیدید.</p>
+
+<pre class="code"><code>let hour = 14;
+
+if (hour &lt; 12) {
+  console.log("صبح بخیر");
+} else {
+  console.log("عصر بخیر");     // این اجرا می‌شود، چون 14 &lt; 12 غلط است
+}</code></pre>
+
+<div class="result">
+<pre class="console" id="out-1"></pre>
+</div>
+
+<p>مقدار <code>hour</code> برابر ۱۴ است. شرط <code>hour &lt; 12</code> غلط است، پس بلوک اول رد می‌شود و فقط بلوک <code>else</code> اجرا می‌شود. اگر ساعت را به عددی کوچک‌تر از ۱۲ عوض کنید، پیام صبح چاپ می‌شود و بلوک دوم اصلاً اجرا نمی‌شود. در هر اجرا فقط یکی از این دو مسیر انتخاب می‌شود.</p>
+
+<h3>else if — چند حالت</h3>
+
+<pre class="code"><code>let score = 16;
+
+if (score &gt;= 17) {
+  console.log("عالی");
+} else if (score &gt;= 14) {
+  console.log("خوب");
+} else if (score &gt;= 10) {
+  console.log("قبول");
+} else {
+  console.log("مردود");
+}</code></pre>
+
+<div class="result">
+<pre class="console" id="out-2"></pre>
+</div>
+
+<p><code>else if</code> یک شرط تازه را فقط وقتی بررسی می‌کند که شرط‌های قبلی غلط بوده باشند. نمرهٔ ۱۶ از ۱۷ کوچک‌تر است، پس شاخهٔ «عالی» رد می‌شود. شرط بعدی، بزرگ‌تر یا مساوی ۱۴، درست است و «خوب» چاپ می‌شود. شرط‌های پایین‌تر دیگر دیده نمی‌شوند، حتی اگر آن‌ها هم از نظر ریاضی درست باشند.</p>
+
+<p class="tip">شرط‌ها از بالا به پایین بررسی می‌شوند و <strong>اولین</strong> شرط درست اجرا می‌شود؛ بقیه نادیده گرفته می‌شوند. پس ترتیب شرط‌ها مهم است. نمره ۱۶ هم از ۱۰ بزرگ‌تر است، ولی چون شرط <code>score &gt;= 14</code> زودتر درست شده، فقط «خوب» چاپ می‌شود.</p>
+
+<p class="mistake"><strong>اشتباه رایج:</strong> نوشتن شرط‌ها به ترتیب اشتباه: اگر اول <code>score &gt;= 10</code> را بنویسید، نمره ۱۹ هم «قبول» می‌شود و هرگز به «عالی» نمی‌رسد. از سخت‌ترین شرط شروع کنید.</p>
+
+<h3>مثال کاربردی: هزینه ارسال سفارش</h3>
+
+<pre class="code"><code>function shippingCost(cartTotal, city) {
+  if (cartTotal &gt;= 500000) {
+    return 0;                          // خرید بالای ۵۰۰ هزار تومان: ارسال رایگان
+  } else if (city === "تهران") {
+    return 30000;
+  } else {
+    return 45000;
+  }
+}
+
+console.log(shippingCost(650000, "شیراز"));   // 0
+console.log(shippingCost(200000, "تهران"));   // 30000
+console.log(shippingCost(200000, "تبریز"));   // 45000</code></pre>
+
+<div class="result">
+<pre class="console" id="out-3"></pre>
+</div>
+
+<p>تابع دو ورودی می‌گیرد: مبلغ سبد و نام شهر. اگر مبلغ به آستانه رسیده باشد، همان اول صفر برمی‌گرداند و بقیهٔ شرط‌ها بررسی نمی‌شوند. فقط وقتی خرید از آستانه کمتر باشد، شهر بررسی می‌شود. تهران یک هزینه دارد و هر شهر دیگری هزینهٔ شاخهٔ آخر را می‌گیرد. <code>return</code> هم نتیجه را برمی‌گرداند و هم اجرای تابع را تمام می‌کند.</p>
+
+<p class="tip">وقتی داخل تابع به <code>return</code> می‌رسیم، تابع همان‌جا تمام می‌شود؛ برای همین می‌شد <code>else</code>ها را هم ننوشت. ولی برای شروع، نوشتن کامل <code>else if</code> خواناتر است.</p>
+
+<h3>مثال: کارنامه زنده</h3>
+
+<pre class="code"><code>const scoreInput = document.getElementById("score-input");
+const checkBtn = document.getElementById("check-btn");
+const message = document.getElementById("score-msg");
+
+checkBtn.addEventListener("click", function () {
+  const score = Number(scoreInput.value);
+
+  if (scoreInput.value === "") {
+    message.textContent = "لطفاً یک نمره وارد کنید";
+  } else if (score &lt; 0 || score &gt; 20) {
+    message.textContent = "نمره باید بین ۰ تا ۲۰ باشد";
+  } else if (score &gt;= 17) {
+    message.textContent = "عالی 🎉";
+  } else if (score &gt;= 10) {
+    message.textContent = "قبول";
+  } else {
+    message.textContent = "مردود";
+  }
+});</code></pre>
+
+<div class="result">
+<label for="score-input">نمره (۰ تا ۲۰):</label>
+<input type="number" id="score-input" value="18" min="0" max="20" step="0.25">
+<button class="btn" id="check-btn">بررسی</button>
+<p class="demo-box" id="score-msg" aria-live="polite">...</p>
+</div>
+
+<p>اول متن خام کادر بررسی می‌شود، چون کادر خالی با <code>Number</code> به صفر تبدیل می‌شود و اگر این بررسی نباشد، خالی بودن با نمرهٔ صفر قاطی می‌شود. بعد بازه چک می‌شود تا عدد بیرون از ۰ تا ۲۰ پیام جدا بگیرد. فقط اگر هر دو مشکل نبود، نمره با آستانه‌های عالی و قبول مقایسه می‌شود.</p>
+
+<p class="tip">ویژگی‌های <code>min</code> و <code>max</code> در HTML فقط پیشنهاد هستند و کاربر باز هم می‌تواند عدد بیرون از بازه تایپ کند. برای همین در JavaScript دوباره بازه را بررسی کرده‌ایم. اول هم خالی بودن کادر را بررسی کردیم، چون <code>Number("")</code> صفر می‌شود و بدون این شرط، کادر خالی «مردود» نشان داده می‌شد.</p>
+
+<h3>عملگر سه‌تایی (Ternary) — if کوتاه</h3>
+
+<pre class="code"><code>// شرط ? مقدار اگر درست : مقدار اگر غلط
+let age = 20;
+let status = age &gt;= 18 ? "بزرگسال" : "کودک";
+console.log(status);                              // بزرگسال
+
+let stock = 0;
+console.log(stock &gt; 0 ? "موجود" : "ناموجود");    // ناموجود</code></pre>
+
+<div class="result">
+<pre class="console" id="out-4"></pre>
+</div>
+
+<p>شکل کلی این عملگر سه بخش دارد: شرط، مقداری که اگر شرط درست باشد انتخاب می‌شود، و مقداری که اگر غلط باشد. نتیجه را می‌توان در متغیر ریخت یا مستقیم چاپ کرد. این عملگر دستور اضافه اجرا نمی‌کند؛ فقط یکی از دو مقدار را برمی‌گرداند. برای چند حالت یا چند خط دستور، <code>if</code> خواناتر می‌ماند.</p>
+
+<p class="tip">عملگر سه‌تایی برای انتخاب بین <strong>دو مقدار</strong> عالی است. اگر چند حالت دارید یا باید چند دستور اجرا کنید، از همان <code>if...else</code> استفاده کنید تا کد خوانا بماند.</p>
+
+<p class="mistake"><strong>اشتباه رایج:</strong> گذاشتن سمی‌کالن بعد از پرانتز شرط: <code>if (x &gt; 5); { ... }</code>. در این حالت بلوک همیشه اجرا می‌شود.</p>
+
+<p class="exercise"><strong>تمرین:</strong> (۱) برنامه‌ای بنویسید که ساعت فعلی را بگیرد (<code>new Date().getHours()</code> عددی بین ۰ تا ۲۳ برمی‌گرداند) و بر اساس آن پیام مناسب را داخل صفحه نشان دهد: ساعت ۵ تا ۱۱ «صبح بخیر»، ۱۲ تا ۱۴ «ظهر بخیر»، ۱۵ تا ۱۹ «عصر بخیر» و بقیه ساعت‌ها «شب بخیر». (۲) با یک input سال تولد شمسی کاربر را بگیرید، سن او را حساب کنید (سال جاری را ۱۴۰۵ در نظر بگیرید) و اگر ۱۸ سال یا بیشتر بود بنویسید «می‌توانید ثبت‌نام کنید»، وگرنه بنویسید چند سال دیگر باید صبر کند.</p>
+    </section>
+
+    <nav class="page-nav" aria-label="ناوبری درس پایین">
+      <a href="15-booleans-comparisons.html">→ قبلی: Comparisons</a>
+      <a href="../index.html">فهرست درس‌ها</a>
+      <a href="17-switch.html">بعدی: Switch ←</a>
+    </nav>
+
+  </div>
+
+  <footer class="page-footer">
+    آموزش JavaScript سطح پایه
+  </footer>
+
+</body>
+
+</html>

@@ -1,0 +1,40 @@
+/* ۹) Margins */
+
+/* والد رنگی فقط برای دیده شدن margin */
+.m-outer {
+  background-color: #ffe8cc;
+  border: 1px solid #e67700;
+}
+
+.box {
+  margin: 20px 40px;
+  background-color: #1a3a5c;
+  color: white;
+  padding: 10px;
+}
+
+.login-card {
+  width: 60%;
+  margin: 10px auto;
+  background-color: #0b6e4f;
+  color: white;
+  padding: 10px;
+  text-align: center;
+}
+
+/* فروریختن margin */
+.m-collapse {
+  background-color: #ffe8cc;
+  border: 1px solid #e67700;
+  padding: 0 10px;
+}
+
+.news-1,
+.news-2 {
+  background-color: #1a3a5c;
+  color: white;
+  padding: 8px;
+}
+
+.news-1 { margin-top: 10px; margin-bottom: 30px; }
+.news-2 { margin-top: 20px; margin-bottom: 10px; }

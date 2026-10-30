@@ -1,0 +1,22 @@
+.stage {
+  background-color: hsl(25, 90%, 55%);
+  padding: 30px;
+  margin-bottom: 16px;
+}
+
+.label {
+  color: #fff;
+  font-size: 22px;
+  padding: 10px;
+}
+
+/* فقط پس‌زمینه نیمه‌شفاف است؛ متن کاملاً سفید می‌ماند */
+.label-rgba {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+/* کل عنصر (پس‌زمینه و متن) نیمه‌شفاف می‌شود */
+.label-opacity {
+  background-color: #000;
+  opacity: 0.5;
+}

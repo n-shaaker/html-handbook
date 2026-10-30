@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>۳) انتخابگرها (Selectors) | آموزش CSS از صفر</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/demos/selectors.css">
+</head>
+
+<body>
+
+  <header class="page-header">
+    <h1>آموزش CSS از صفر</h1>
+    <p>۳) انتخابگرها (Selectors)</p>
+  </header>
+
+  <div class="container">
+
+    <nav class="page-nav" aria-label="ناوبری درس">
+      <a href="02-syntax.html">→ قبلی: Syntax</a>
+      <a href="../index.html">فهرست درس‌ها</a>
+      <a href="04-howto.html">بعدی: سه روش افزودن CSS ←</a>
+    </nav>
+
+    <section class="lesson" id="selectors">
+      <h2>۳) انتخابگرها (Selectors)</h2>
+      <p>
+        انتخابگر مشخص می‌کند قانون CSS روی کدام عنصرهای HTML اعمال شود. بدون انتخابگر، مرورگر نمی‌داند رنگ یا اندازه را به کدام بخش صفحه بدهد.
+        انتخابگرهای پایه را با یک صفحه مقاله ساده یاد می‌گیریم.
+      </p>
+      <p>
+        ساده‌ترین انتخابگر، نام خود تگ است؛ مثلاً <code>p</code> همه پاراگراف‌ها را انتخاب می‌کند.
+        اگر فقط یک عنصر خاص مدنظر باشد، در HTML به آن <code>id</code> می‌دهیم و در CSS با علامت <code>#</code> انتخابش می‌کنیم. هر شناسه در یک صفحه باید یکتا باشد.
+        اگر بخواهیم یک ظاهر را روی چند عنصر تکرار کنیم، از <code>class</code> استفاده می‌کنیم و در CSS آن را با نقطه می‌نویسیم. یک کلاس را می‌توان به هر تعداد عنصر داد.
+        نام تگ و کلاس را هم می‌توان بدون فاصله به هم چسباند تا فقط همان نوع عنصر، در صورتی که آن کلاس را داشته باشد، انتخاب شود.
+        چند انتخابگر را نیز می‌توان با ویرگول در یک قانون نوشت تا ظاهر مشترک بگیرند.
+      </p>
+
+      <h3>کد HTML</h3>
+      <pre class="code"><code>&lt;h3&gt;چطور یک فنجان قهوه خوب دم کنیم؟&lt;/h3&gt;
+&lt;p id="lead"&gt;در این مقاله پنج نکته ساده برای دم کردن قهوه را می‌خوانید.&lt;/p&gt;
+&lt;p&gt;اول از همه، دانه قهوه را درست قبل از دم کردن آسیاب کنید.&lt;/p&gt;
+&lt;p class="center"&gt;«قهوه تازه، نصف موفقیت است.»&lt;/p&gt;
+&lt;p class="center large"&gt;نکته مهم: آب جوش را مستقیم روی قهوه نریزید.&lt;/p&gt;
+&lt;h4&gt;منابع&lt;/h4&gt;</code></pre>
+
+      <h3>کد CSS</h3>
+      <pre class="code"><code>/* ۱. انتخابگر عنصر (نام تگ): همه pها */
+p {
+  color: #c92a2a;
+}
+
+/* ۲. انتخابگر id: فقط عنصری که id="lead" دارد */
+#lead {
+  color: #1a5fb4;
+}
+
+/* ۳. انتخابگر class: همه عنصرهایی که کلاس center دارند */
+.center {
+  text-align: center;
+}
+
+/* ۴. عنصر + کلاس: فقط pهایی که کلاس large دارند */
+p.large {
+  font-size: 24px;
+}
+
+/* ۵. گروهی: چند انتخابگر با یک قانون (با ویرگول جدا می‌شوند) */
+h3, h4 {
+  color: #0b6e4f;
+}</code></pre>
+
+      <div class="result demo-sel">
+        <h3>چطور یک فنجان قهوه خوب دم کنیم؟</h3>
+        <p id="lead">در این مقاله پنج نکته ساده برای دم کردن قهوه را می‌خوانید.</p>
+        <p>اول از همه، دانه قهوه را درست قبل از دم کردن آسیاب کنید.</p>
+        <p class="center">«قهوه تازه، نصف موفقیت است.»</p>
+        <p class="center large">نکته مهم: آب جوش را مستقیم روی قهوه نریزید.</p>
+        <h4>منابع</h4>
+      </div>
+
+      <p>
+        به پاراگراف پنجم دقت کنید: <code>class="center large"</code> یعنی این عنصر <strong>دو کلاس</strong> دارد
+        (با فاصله از هم جدا می‌شوند)، پس هم قانون <code>.center</code> و هم قانون <code>p.large</code> روی آن اعمال می‌شود.
+      </p>
+
+      <h3>انتخابگر همگانی (<code>*</code>)</h3>
+      <pre class="code"><code>/* همه عنصرهای صفحه */
+* {
+  box-sizing: border-box;
+}</code></pre>
+      <p>
+        ستاره همه عنصرها را انتخاب می‌کند. بیشتر برای تنظیم‌های کلی ابتدای فایل استفاده می‌شود؛ مثل همین قانون که
+        فایل <code>style.css</code> این مجموعه با آن شروع شده (در درس ۱۲ معنی‌اش را می‌بینید). آن را در مثال بالا
+        اعمال نکرده‌ایم، چون روی کل صفحه اثر می‌گذارد.
+      </p>
+
+      <table class="ref">
+        <thead>
+          <tr>
+            <th>انتخابگر</th>
+            <th>نوشتن</th>
+            <th>انتخاب می‌کند</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>عنصر</td>
+            <td><code>p</code></td>
+            <td>همه پاراگراف‌ها</td>
+          </tr>
+          <tr>
+            <td>id</td>
+            <td><code>#lead</code></td>
+            <td>تنها عنصری که این id را دارد (id در هر صفحه باید یکتا باشد)</td>
+          </tr>
+          <tr>
+            <td>class</td>
+            <td><code>.center</code></td>
+            <td>همه عنصرهای دارای آن کلاس (یک کلاس را می‌شود به هر تعداد عنصر داد)</td>
+          </tr>
+          <tr>
+            <td>عنصر + کلاس</td>
+            <td><code>p.large</code></td>
+            <td>فقط pهایی که کلاس large دارند (بدون فاصله نوشته می‌شود)</td>
+          </tr>
+          <tr>
+            <td>گروهی</td>
+            <td><code>h3, h4</code></td>
+            <td>هر دو نوع با یک قانون</td>
+          </tr>
+          <tr>
+            <td>همگانی</td>
+            <td><code>*</code></td>
+            <td>همه عنصرها</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p class="tip">
+        چرا پاراگراف <code>#lead</code> آبی شد و قرمز نماند، با اینکه قانون <code>p</code> هم شامل آن می‌شود؟ چون
+        انتخابگر id از انتخابگر نام تگ <strong>قوی‌تر</strong> است (به این قدرت «Specificity» یا «اولویت انتخابگر» می‌گویند).
+        ترتیب قدرت: <code>id</code> &gt; <code>class</code> &gt; نام تگ.
+        اگر دو انتخابگر هم‌قدرت باشند، قانونی که <strong>پایین‌تر</strong> نوشته شده برنده است.
+      </p>
+
+      <p class="tip">
+        <strong>class یا id؟</strong> برای ظاهر دادن تقریباً همیشه از <strong>class</strong> استفاده کنید؛ چون قابل
+        استفاده دوباره است و قدرتش آن‌قدر زیاد نیست که بعداً تغییر ظاهر را سخت کند. id را بیشتر برای لینک به یک بخش
+        صفحه (مثل <code>href="#lead"</code>) و جاوااسکریپت نگه دارید.
+      </p>
+
+      <p class="mistake">
+        <strong>اشتباه رایج:</strong>
+        جابه‌جا نوشتن نقطه (برای class) و <code>#</code> (برای id)، یا نوشتن نقطه در HTML (<code>class=".center"</code> غلط است).
+        نام کلاس و id به حروف بزرگ و کوچک حساس است (<code>.Center</code> با <code>.center</code> فرق دارد)، نباید
+        فاصله داشته باشد و نباید با عدد شروع شود (مثل <code>.1box</code>).
+      </p>
+
+      <p class="exercise">
+        <strong>تمرین:</strong> در یک صفحه خبری، به دو پاراگراف که «خبر فوری» هستند کلاس <code>urgent</code> بدهید و با
+        CSS پس‌زمینه زرد روشن و متن ضخیم برایشان بگذارید. بعد با <code>h2, h3</code> رنگ همه تیترها را یکی کنید.
+      </p>
+    </section>
+
+
+    <nav class="page-nav" aria-label="ناوبری درس پایین">
+      <a href="02-syntax.html">→ قبلی: Syntax</a>
+      <a href="../index.html">فهرست درس‌ها</a>
+      <a href="04-howto.html">بعدی: سه روش افزودن CSS ←</a>
+    </nav>
+
+  </div>
+
+  <footer class="page-footer">
+    آموزش CSS از صفر
+  </footer>
+
+</body>
+
+</html>

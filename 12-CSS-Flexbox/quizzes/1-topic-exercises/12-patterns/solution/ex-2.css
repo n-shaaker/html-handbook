@@ -1,0 +1,30 @@
+/* تمرین ۲ — فوتر چسبان (پاسخ) */
+
+/* کل صفحه یک ستون فلکسی به ارتفاع پنجره */
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  margin: 0;
+  font-family: Tahoma, sans-serif;
+  background-color: #f8f9fa;
+}
+
+.header {
+  background-color: #1c7ed6;
+  color: white;
+  padding: 15px;
+}
+
+/* main هرچه جا ماند را می‌گیرد و فوتر را پایین هل می‌دهد */
+.main {
+  flex: 1;
+  padding: 15px;
+}
+
+.footer {
+  background-color: #343a40;
+  color: white;
+  padding: 15px;
+  text-align: center;
+}

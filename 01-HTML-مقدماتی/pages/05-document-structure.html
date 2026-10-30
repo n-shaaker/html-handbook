@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>۵) ساختار سند HTML | جزوه HTML</title>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+  <header class="page-header">
+    <h1>جزوه HTML مقدماتی</h1>
+    <p>۵) ساختار سند HTML</p>
+  </header>
+
+  <div class="container">
+    <nav class="page-nav">
+      <a href="04-html-intro.html">→ درس قبل</a>
+      <a href="../index.html">فهرست مطالب</a>
+      <a href="06-head-meta.html">درس بعد ←</a>
+    </nav>
+
+    <section class="lesson">
+      <h2>۵) ساختار کامل یک سند HTML</h2>
+      <p>
+        تقریباً هر صفحهٔ استاندارد وب از چند لایهٔ ثابت ساخته می‌شود: اعلام نوع سند، عنصر ریشه،
+        بخش اطلاعات صفحه و بخش محتوای دیدنی. نمونهٔ کامل را ببینید و بعد نقش هر خط را بخوانید:
+      </p>
+      <pre class="code"><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="fa" dir="rtl"&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+  &lt;title&gt;عنوان زبانه مرورگر&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;h1&gt;سلام دنیا&lt;/h1&gt;
+  &lt;p&gt;نخستین صفحه من.&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+
+      <div class="tag-card">
+        <h4>&lt;!DOCTYPE html&gt;</h4>
+        <p>
+          <strong>تعریف:</strong> به مرورگر اعلام می‌کند این سند را طبق قواعد HTML5 بخواند و باید نخستین خط پرونده باشد.
+          این خط تگ نیست، محتوا ندارد و بسته نمی‌شود. اگر حذف شود، بعضی مرورگرها صفحه را در «حالت سازگاری قدیمی» (Quirks Mode) نشان می‌دهند
+          و اندازه و فاصله‌ها ممکن است با انتظار شما فرق کند.
+        </p>
+      </div>
+      <div class="tag-card">
+        <h4>&lt;html&gt;</h4>
+        <p>
+          <strong>تعریف:</strong> عنصر ریشه است و بقیهٔ سند داخل آن قرار می‌گیرد.
+          ویژگی <code>lang="fa"</code> به مرورگر و صفحه‌خوان می‌گوید زبان محتوا فارسی است.
+          ویژگی <code>dir="rtl"</code> جهت نوشتار را راست‌به‌چپ می‌کند تا متن فارسی از سمت درست چیده شود.
+        </p>
+      </div>
+      <div class="tag-card">
+        <h4>&lt;head&gt;</h4>
+        <p>
+          <strong>تعریف:</strong> اطلاعات دربارهٔ خود صفحه را نگه می‌دارد، مانند عنوان، تنظیم نویسه‌ها و پیوند به CSS.
+          این اطلاعات به مرورگر و موتور جستجو کمک می‌کند، اما معمولاً داخل بدنهٔ صفحه دیده نمی‌شود.
+        </p>
+      </div>
+      <div class="tag-card">
+        <h4>&lt;body&gt;</h4>
+        <p>
+          <strong>تعریف:</strong> جایی است که محتوای قابل دیدن قرار می‌گیرد، از جمله متن، تصویر، پیوند و جدول.
+          هر چیزی که می‌خواهید کاربر در صفحه بخواند یا ببیند، داخل <code>body</code> نوشته می‌شود.
+        </p>
+      </div>
+
+      <h3>تفاوت head و body</h3>
+      <table class="ref">
+        <thead>
+          <tr>
+            <th>مورد</th>
+            <th>head</th>
+            <th>body</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>نقش</td>
+            <td><code>head</code> اطلاعات خود سند را نگه می‌دارد.</td>
+            <td><code>body</code> محتوای دیدنی صفحه را نگه می‌دارد.</td>
+          </tr>
+          <tr>
+            <td>مثال</td>
+            <td><code>title</code>، <code>meta</code>، <code>link</code>، <code>style</code></td>
+            <td><code>h1</code>، <code>p</code>، <code>img</code>، <code>div</code></td>
+          </tr>
+          <tr>
+            <td>آیا کاربر مستقیم می‌بیند؟</td>
+            <td>معمولاً نه؛ فقط متن <code>title</code> در زبانهٔ مرورگر دیده می‌شود.</td>
+            <td>بله، محتوای <code>body</code> همان چیزی است که در صفحه نمایش داده می‌شود.</td>
+          </tr>
+        </tbody>
+      </table>
+      <p class="tip">
+        <strong>نکته:</strong>
+        به زبانهٔ مرورگر نگاه کنید. متن «۵) ساختار سند HTML | جزوه HTML» همان <code>title</code> داخل <code>head</code> این صفحه است و داخل بدنهٔ صفحه تکرار نشده است.
+      </p>
+
+      <p class="mistake">
+        <strong>خطای متداول:</strong>
+        گذاشتن متن و تصویر داخل <code>head</code>، چون آنجا نمایش داده نمی‌شود.
+        هر سند فقط یک <code>head</code> و یک <code>body</code> دارد. فراموش کردن تگ پایانی هم باعث می‌شود مرورگر حدس بزند عنصر کجا تمام شده و ساختار به‌هم بریزد.
+      </p>
+
+      <p class="tip">
+        <strong>نکته:</strong>
+        تورفتگی کد برای مرورگر لازم نیست و در نمایش صفحه اثری ندارد. برای انسان لازم است، چون نشان می‌دهد کدام عنصر داخل کدام عنصر قرار گرفته و بعداً اصلاح کد را ساده‌تر می‌کند.
+      </p>
+    </section>
+
+    <nav class="page-nav">
+      <a href="04-html-intro.html">→ درس قبل</a>
+      <a href="../index.html">فهرست مطالب</a>
+      <a href="06-head-meta.html">درس بعد ←</a>
+    </nav>
+  </div>
+
+  <footer class="page-footer">جزوه HTML مقدماتی</footer>
+</body>
+
+</html>

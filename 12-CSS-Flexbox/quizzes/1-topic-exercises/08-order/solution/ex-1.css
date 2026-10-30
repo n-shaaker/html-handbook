@@ -1,0 +1,27 @@
+/* تمرین ۱ — پیشنهاد ویژه، اول ردیف (پاسخ) */
+
+body {
+  font-family: Tahoma, sans-serif;
+  margin: 20px;
+  background-color: #f8f9fa;
+  color: #212529;
+}
+
+.products {
+  display: flex;
+  gap: 10px;
+}
+
+.product {
+  background-color: white;
+  border: 1px solid #dee2e6;
+  padding: 15px;
+  border-radius: 6px;
+}
+
+/* پیش‌فرض order همه صفر است؛ منفی یعنی قبل از همه */
+.special {
+  order: -1;
+  background-color: #fff3bf;
+  border-color: #fab005;
+}

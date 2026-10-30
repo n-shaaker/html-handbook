@@ -1,0 +1,29 @@
+/* همه این کلاس‌ها (0, 1, 0) هستند؛ پس ترتیب تعیین می‌کند: پایه ← نوع ← حالت */
+
+/* ===== پایه ===== */
+.btn {
+  display: inline-block;
+  padding: 8px 18px;
+  background-color: #e9ecef;
+  color: #212529;
+  text-decoration: none;
+  border-radius: 6px;
+}
+
+/* ===== نوع ===== */
+.btn-primary {
+  background-color: #1a5fb4;
+  color: white;
+}
+
+.btn-danger {
+  background-color: #c92a2a;
+  color: white;
+}
+
+/* ===== حالت (باید از همه نوع‌ها ببرد) ===== */
+.is-disabled {
+  background-color: #ced4da;
+  color: #868e96;
+  cursor: not-allowed;
+}

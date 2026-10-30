@@ -1,0 +1,32 @@
+/* تمرین ۳ — پیام سنجاق‌شده‌ای که آخر می‌آید (نسخه خراب — درستش کنید) */
+
+body {
+  font-family: Tahoma, sans-serif;
+  margin: 20px;
+  background-color: #f8f9fa;
+  color: #212529;
+}
+
+.inbox {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  max-width: 400px;
+}
+
+.msg {
+  background-color: white;
+  border: 1px solid #dee2e6;
+  padding: 10px;
+  border-radius: 6px;
+}
+
+.pinned {
+  order: 1;
+  background-color: #fff3bf;
+}
+
+.archived {
+  order: -1;
+  color: #868e96;
+}

@@ -1,0 +1,15 @@
+.page {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 16px;
+}
+
+.note {
+  width: 640px;
+  background-color: #e7f5ff;
+  padding: 8px;
+}
+
+.photo {
+  width: 900px;
+}

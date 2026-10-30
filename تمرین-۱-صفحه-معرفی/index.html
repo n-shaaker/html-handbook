@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>تمرین ۱ | صفحه معرفی من</title>
+
+  <!-- Persian web font from Google Fonts (preconnect = start the connection early) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;700&display=swap" rel="stylesheet">
+
+  <!-- Method 1: External CSS (the best way) -->
+  <link rel="stylesheet" href="css/style.css">
+
+  <!-- Method 2: Internal CSS (only for this small example) -->
+  <style>
+    .internal-example {
+      color: purple;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Header with a background image -->
+  <header class="hero" id="top">
+    <h1>سلام، من نسرین هستم</h1>
+    <p class="subtitle">دانشجوی طراحی وب</p>
+    <a class="btn" href="#projects">مشاهده پروژه‌ها</a>
+  </header>
+
+  <!-- Menu: a list without bullets + links -->
+  <nav aria-label="منوی اصلی">
+    <ul class="menu">
+      <li><a href="#about">درباره من</a></li>
+      <li><a href="#skills">مهارت‌ها</a></li>
+      <li><a href="#box">مدل جعبه‌ای</a></li>
+      <li><a href="#goals">اهداف</a></li>
+      <li><a href="#projects">پروژه‌ها</a></li>
+    </ul>
+  </nav>
+
+  <!-- Main content (centered with max-width and margin auto) -->
+  <main class="container">
+
+    <!-- About me: image, text and fonts -->
+    <section class="card" id="about">
+      <h2>درباره من</h2>
+      <!-- width/height = real size of the file, so the page does not jump while loading -->
+      <img class="profile" src="images/profile.jpg" alt="عکس پروفایل نسرین" width="400" height="400">
+      <p class="intro">
+        من در حال یادگیری HTML و CSS هستم. در این صفحه تمام چیزهایی که در کلاس CSS یاد گرفتم را تمرین می‌کنم.
+        این پاراگراف تراز دوطرفه است و فاصله بین خط‌هایش زیاد است تا خواندنش راحت‌تر باشد.
+      </p>
+
+      <h3>نمونه‌های متن</h3>
+      <p class="highlight">این متن ضخیم است و سایه دارد.</p>
+      <p id="special">این پاراگراف با id انتخاب شده است.</p>
+      <p class="internal-example">رنگ این متن از CSS داخلی (تگ style) آمده است.</p>
+      <!-- Method 3: Inline CSS (only for this small example) -->
+      <p style="color: darkorange;">رنگ این متن از CSS اینلاین آمده است.</p>
+      <p class="english">hello css</p>
+    </section>
+
+    <!-- Skills: each box uses a different way of writing colors -->
+    <section class="card" id="skills">
+      <h2>مهارت‌های من</h2>
+      <div class="color-box c-name">HTML</div>
+      <div class="color-box c-rgb">CSS</div>
+      <div class="color-box c-hex">فتوشاپ</div>
+      <div class="color-box c-hsl">تایپ سریع</div>
+      <div class="color-box c-rgba">کار تیمی</div>
+    </section>
+
+    <!-- Box model: margin, border, padding, width, outline -->
+    <section class="card" id="box">
+      <h2>مدل جعبه‌ای</h2>
+      <div class="box">
+        این جعبه عرض، فاصله داخلی، حاشیه و فاصله بیرونی دارد.
+      </div>
+      <div class="outline-box">
+        این جعبه علاوه بر حاشیه، یک outline خط‌چین هم دارد.
+      </div>
+      <div class="half-box">این جعبه نصف عرض والدش است.</div>
+    </section>
+
+    <!-- Lists -->
+    <section class="card" id="goals">
+      <h2>اهداف من</h2>
+      <ol class="persian-list">
+        <li>یادگیری کامل CSS</li>
+        <li>یادگیری JavaScript</li>
+        <li>ساخت اولین سایت شخصی</li>
+      </ol>
+
+      <h3>علاقه‌مندی‌ها</h3>
+      <ul class="square-list">
+        <li>طراحی صفحه‌های زیبا</li>
+        <li>کتاب خواندن</li>
+        <li>عکاسی</li>
+      </ul>
+    </section>
+
+    <!-- Table -->
+    <section class="card" id="projects">
+      <h2>پروژه‌ها</h2>
+      <table>
+        <caption>پروژه‌های کلاس و وضعیت هرکدام</caption>
+        <thead>
+          <tr>
+            <th scope="col">نام پروژه</th>
+            <th scope="col">جلسه</th>
+            <th scope="col">وضعیت</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>اولین صفحه HTML</td>
+            <td>۱</td>
+            <td><span class="status done">انجام شد</span></td>
+          </tr>
+          <tr>
+            <td>صفحه معرفی</td>
+            <td>۲</td>
+            <td><span class="status done">انجام شد</span></td>
+          </tr>
+          <tr>
+            <td>فرم ثبت‌نام</td>
+            <td>۳</td>
+            <td><span class="status doing">در حال انجام</span></td>
+          </tr>
+          <tr>
+            <td>تمرین CSS</td>
+            <td>۴</td>
+            <td><span class="status doing">در حال انجام</span></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <!-- A link styled like a button -->
+      <a class="btn" href="#top">برگشت به بالا</a>
+    </section>
+
+  </main>
+
+  <footer>
+    ساخته شده با HTML و CSS
+  </footer>
+
+</body>
+
+</html>

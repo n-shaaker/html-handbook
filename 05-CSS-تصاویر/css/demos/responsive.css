@@ -1,0 +1,25 @@
+/* تصویر واکنش‌گرا */
+
+.demo-resp .broken {
+  /* عرض ثابت — در موبایل از صفحه بیرون می‌زند */
+  width: 900px;
+  max-width: none;
+  height: auto;
+  display: block;
+  border-radius: 8px;
+}
+
+.demo-resp .fluid {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 8px;
+}
+
+.demo-resp .frame-scroll {
+  overflow-x: auto;
+  border: 1px solid #cfd8e3;
+  border-radius: 8px;
+  padding: 8px;
+  background: #fff5f5;
+}

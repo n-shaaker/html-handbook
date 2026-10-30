@@ -1,0 +1,41 @@
+/*
+  اصلاح‌ها:
+  ۱) عکس کباب alt نداشت → alt توصیفی اضافه شد.
+  ۲) alt="عکس" برای زرشک‌پلو هیچ اطلاعاتی نمی‌داد → توصیف واقعی غذا.
+  ۳) alt="image1.jpg" نام فایل بود → توصیف استکان چای.
+  ۴) خط تزئینی با img و alt طولانی آمده بود → به background-image در CSS منتقل شد.
+*/
+
+body {
+  font-family: Tahoma, Arial, sans-serif;
+  line-height: 1.8;
+  margin: 0;
+}
+
+.menu {
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 16px;
+}
+
+/* تزئین: جایش در CSS است، نه در HTML */
+.divider {
+  height: 60px;
+  background-image: url("../../../../images/pattern.jpg");
+  background-size: cover;
+  background-position: center;
+  border-radius: 8px;
+}
+
+.item img {
+  display: block;
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.item h2 {
+  margin-bottom: 0;
+  font-size: 1.1rem;
+}
