@@ -66,3 +66,9 @@
 html {
   font-family: var(--font-ui);
 }
+
+/* شماره‌های فهرست‌ها به ارقام فارسی: ۱، ۲، ۳، … */
+ol,
+.toc ol {
+  list-style-type: persian;
+}

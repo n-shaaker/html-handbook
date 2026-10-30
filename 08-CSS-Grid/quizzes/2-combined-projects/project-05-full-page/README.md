@@ -3,7 +3,7 @@
 - **سطح:** ⭐⭐⭐
 - **زمان پیشنهادی:** ۱۲۰ دقیقه
 - **هدف پروژه:** یک صفحه کامل و واقعی را **از صفر** بسازید و برای هر بخش ابزار درست را انتخاب کنید: Grid برای اسکلت صفحه، بنر و شبکه کارت‌ها؛ Flexbox برای سربرگ و چیدمان داخل هر کارت.
-- **مباحث ترکیب‌شده (بخش ۱):** [۰۵ جای‌گذاری با شماره خط](../../1-topic-exercises/05-placement/README.md) · [۰۶ template-areas](../../1-topic-exercises/06-template-areas/README.md) · [۰۷ تراز آیتم داخل خانه](../../1-topic-exercises/07-align-items/README.md) · [۰۹ auto-fill و auto-fit](../../1-topic-exercises/09-auto-fit-fill/README.md) · [۱۱ Grid یا Flexbox؟](../../1-topic-exercises/11-grid-vs-flex/README.md) · [۱۲ الگوهای پرکاربرد](../../1-topic-exercises/12-patterns/README.md) · [۱۳ Grid واکنش‌گرا](../../1-topic-exercises/13-responsive/README.md) · و از دوره Flexbox: [margin خودکار](../../../../12-CSS-Flexbox/quizzes/1-topic-exercises/11-align-self-margin-auto/README.md)
+- **مباحث ترکیب‌شده (بخش ۱):** [۰۵ جای‌گذاری با شماره خط](../../1-topic-exercises/05-placement/README.md) · [۰۶ template-areas](../../1-topic-exercises/06-template-areas/README.md) · [۰۷ تراز آیتم داخل خانه](../../1-topic-exercises/07-align-items/README.md) · [۰۹ auto-fill و auto-fit](../../1-topic-exercises/09-auto-fit-fill/README.md) · [۱۱ Grid یا Flexbox؟](../../1-topic-exercises/11-grid-vs-flex/README.md) · [۱۲ الگوهای پرکاربرد](../../1-topic-exercises/12-patterns/README.md) · [۱۳ Grid واکنش‌گرا](../../1-topic-exercises/13-responsive/README.md) · و از دوره Flexbox: [margin خودکار](../../../../07-CSS-Flexbox/quizzes/1-topic-exercises/11-align-self-margin-auto/README.md)
 - **فایل شروع:** ندارد؛ HTML و CSS را خودتان بنویسید.
 
 ## صورت مسئله

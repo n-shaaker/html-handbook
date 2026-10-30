@@ -38,8 +38,8 @@ function insertIntro(file, paragraph) {
   console.log("intro", file.split("/").pop());
 }
 
-const mid = "09-JS-میانی/pages/";
-const adv = "10-JS-پیشرفته/pages/";
+const mid = "11-JS-میانی/pages/";
+const adv = "12-JS-پیشرفته/pages/";
 
 insertIntro(mid + "11-destructuring-spread.html", "تجزیه (Destructuring) یعنی عضوهای یک آرایه یا ویژگی‌های یک شیء را همان موقع خواندن، در متغیرهای جدا بریزید. پخش (Spread) با سه نقطه یک فهرست یا شیء را باز می‌کند تا داخل فهرست یا شیء دیگری کپی شود. Rest برعکس عمل می‌کند و بقیهٔ مقدارها را در یک آرایه یا شیء جمع می‌کند. این سه شکل کد را کوتاه‌تر می‌کنند، به شرطی که معلوم باشد کدام بخش واقعاً کپی شده و کدام هنوز به دادهٔ اصلی وصل است.");
 insertIntro(mid + "15-dom-changing.html", "بعد از پیدا کردن عنصر، معمولاً می‌خواهید متن، ویژگی HTML یا کلاس CSS آن را عوض کنید. متنی که از کاربر آمده را با <code>textContent</code> بنویسید تا به‌صورت نوشته دیده شود. کلاس‌ها ظاهر را از CSS می‌گیرند و JavaScript فقط بود و نبود آن‌ها را عوض می‌کند. ویژگی‌هایی مثل <code>href</code>، <code>value</code> و <code>disabled</code> رفتار خود عنصر را تغییر می‌دهند.");
