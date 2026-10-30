@@ -1,0 +1,30 @@
+.pe-box {
+  width: 300px;
+  padding: 12px;
+  background: #eef2f7;
+  border-radius: 6px;
+  font-size: 16px;
+}
+.pe-box .half {
+  width: 50%; /* نصف عرض والد = ۱۵۰px */
+  background: #1a5fb4;
+  color: #fff;
+  padding: 8px;
+  border-radius: 4px;
+  margin-bottom: 10px;
+}
+.pe-box .em-pad {
+  font-size: 1.5em; /* نسبت به فونت والد pe-box */
+  padding: 0.5em;   /* نسبت به فونت خود همین عنصر */
+  background: #0b6e4f;
+  color: #fff;
+  border-radius: 4px;
+}
+.pe-box .rem-pad {
+  font-size: 1.5rem; /* نسبت به html */
+  padding: 0.5rem;
+  background: #1a3a5c;
+  color: #fff;
+  border-radius: 4px;
+  margin-top: 10px;
+}

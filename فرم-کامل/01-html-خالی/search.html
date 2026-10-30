@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>جستجو | فرم</title>
+</head>
+<body>
+  <p class="nav-bar">
+    <a href="../index.html">خانه فرم کامل</a>
+    ·
+    <a href="index.html">فهرست این مرحله</a>
+    ·
+    <a href="../02-با-css/search.html">همین فرم با CSS</a>
+  </p>
+  <p class="stage"><small>HTML خالی — ظاهر پیش‌فرض مرورگر</small></p>
+  <h1>فرم جستجو (method=get)</h1>
+
+  <p class="hint">بعد از ارسال، پارامترها به انتهای آدرس اضافه می‌شوند.</p>
+  <form action="" method="get">
+    <p>
+      <label for="q">عبارت جستجو</label><br>
+      <input type="search" id="q" name="q" placeholder="مثلاً منوی رستوران" required>
+    </p>
+    <p>
+      <label for="cat">دسته</label><br>
+      <select id="cat" name="cat">
+        <option value="all">همه</option>
+        <option value="html">HTML</option>
+        <option value="css">CSS</option>
+        <option value="js">JavaScript</option>
+      </select>
+    </p>
+    <p class="actions">
+      <button type="submit">جستجو</button>
+    </p>
+  </form>
+
+</body>
+</html>

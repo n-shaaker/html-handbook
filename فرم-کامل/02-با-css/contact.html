@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>تماس با ما | فرم (CSS)</title>
+  <link rel="stylesheet" href="css/forms.css">
+</head>
+<body>
+  <p class="nav-bar">
+    <a href="../index.html">خانه فرم کامل</a>
+    ·
+    <a href="index.html">فهرست این مرحله</a>
+    ·
+    <a href="../01-html-خالی/contact.html">نسخه HTML خالی</a>
+  </p>
+  <p class="stage"><small>نسخه با CSS</small></p>
+  <h1>فرم تماس با ما</h1>
+
+  <form action="#" method="post">
+    <p>
+      <label for="fullname">نام و نام خانوادگی</label><br>
+      <input type="text" id="fullname" name="fullname" placeholder="مثلاً سارا رضایی" required autocomplete="name">
+    </p>
+    <p>
+      <label for="email">رایانامه</label><br>
+      <input type="email" id="email" name="email" placeholder="name@example.com" required autocomplete="email">
+    </p>
+    <p>
+      <label for="phone">تلفن (اختیاری)</label><br>
+      <input type="tel" id="phone" name="phone" placeholder="0912…" autocomplete="tel">
+    </p>
+    <p>
+      <label for="topic">موضوع</label><br>
+      <select id="topic" name="topic" required>
+        <option value="">انتخاب کنید</option>
+        <option value="order">پیگیری سفارش</option>
+        <option value="support">پشتیبانی</option>
+        <option value="other">سایر</option>
+      </select>
+    </p>
+    <p>
+      <label for="message">پیام</label><br>
+      <textarea id="message" name="message" rows="5" placeholder="پیام خود را بنویسید" required></textarea>
+    </p>
+    <p class="actions">
+      <button type="submit">ارسال پیام</button>
+      <button type="reset">پاک کردن</button>
+    </p>
+  </form>
+
+</body>
+</html>

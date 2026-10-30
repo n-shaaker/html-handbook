@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>رزرو | فرم</title>
+</head>
+<body>
+  <p class="nav-bar">
+    <a href="../index.html">خانه فرم کامل</a>
+    ·
+    <a href="index.html">فهرست این مرحله</a>
+    ·
+    <a href="../02-با-css/booking.html">همین فرم با CSS</a>
+  </p>
+  <p class="stage"><small>HTML خالی — ظاهر پیش‌فرض مرورگر</small></p>
+  <h1>فرم رزرو میز / جلسه</h1>
+
+  <form action="#" method="post">
+    <p>
+      <label for="b-name">نام</label><br>
+      <input type="text" id="b-name" name="name" required autocomplete="name">
+    </p>
+    <p>
+      <label for="b-email">رایانامه</label><br>
+      <input type="email" id="b-email" name="email" required autocomplete="email">
+    </p>
+    <p>
+      <label for="b-date">تاریخ</label><br>
+      <input type="date" id="b-date" name="date" required>
+    </p>
+    <p>
+      <label for="b-time">ساعت</label><br>
+      <input type="time" id="b-time" name="time" required>
+    </p>
+    <p>
+      <label for="b-guests">تعداد نفرات</label><br>
+      <input type="number" id="b-guests" name="guests" min="1" max="20" value="2" required>
+    </p>
+    <p>
+      <label for="b-place">محل</label><br>
+      <select id="b-place" name="place" required>
+        <option value="">انتخاب کنید</option>
+        <option value="hall">سالن اصلی</option>
+        <option value="garden">فضای باز</option>
+        <option value="vip">VIP</option>
+      </select>
+    </p>
+    <p>
+      <label for="b-note">توضیحات</label><br>
+      <textarea id="b-note" name="note" rows="3" placeholder="مثلاً تولد / آلرژی غذایی"></textarea>
+    </p>
+    <p class="actions">
+      <button type="submit">ثبت رزرو</button>
+    </p>
+  </form>
+
+</body>
+</html>

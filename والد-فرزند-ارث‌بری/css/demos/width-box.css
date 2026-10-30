@@ -1,0 +1,25 @@
+.wb-parent {
+  width: 80%;
+  max-width: 420px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 4px solid #1a5fb4;
+  background: #e8f4fd;
+  border-radius: 8px;
+}
+.wb-parent .kid {
+  /* عمداً width نمی‌دهیم تا ببینید 80% ارث نمی‌برد */
+  background: #fff;
+  border: 2px dashed #e8590c;
+  padding: 8px;
+  border-radius: 4px;
+  margin-top: 10px;
+}
+.wb-parent .kid-wide {
+  width: 50%;
+  background: #fff8e7;
+  border: 2px solid #e6a700;
+  padding: 8px;
+  margin-top: 10px;
+  border-radius: 4px;
+}

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ثبت‌نام | فرم (CSS)</title>
+  <link rel="stylesheet" href="css/forms.css">
+</head>
+<body>
+  <p class="nav-bar">
+    <a href="../index.html">خانه فرم کامل</a>
+    ·
+    <a href="index.html">فهرست این مرحله</a>
+    ·
+    <a href="../01-html-خالی/register.html">نسخه HTML خالی</a>
+  </p>
+  <p class="stage"><small>نسخه با CSS</small></p>
+  <h1>فرم ثبت‌نام</h1>
+
+  <form action="#" method="post" autocomplete="on">
+    <fieldset>
+      <legend>اطلاعات حساب</legend>
+      <p>
+        <label for="reg-name">نام کامل</label><br>
+        <input type="text" id="reg-name" name="fullname" required autocomplete="name">
+      </p>
+      <p>
+        <label for="reg-email">رایانامه</label><br>
+        <input type="email" id="reg-email" name="email" required autocomplete="email">
+      </p>
+      <p>
+        <label for="reg-pass">گذرواژه</label><br>
+        <input type="password" id="reg-pass" name="password" required minlength="8" autocomplete="new-password">
+      </p>
+      <p>
+        <label for="reg-pass2">تکرار گذرواژه</label><br>
+        <input type="password" id="reg-pass2" name="password2" required minlength="8" autocomplete="new-password">
+      </p>
+    </fieldset>
+    <fieldset>
+      <legend>پروفایل</legend>
+      <p>
+        <label for="reg-city">شهر</label><br>
+        <input type="text" id="reg-city" name="city" list="cities" autocomplete="address-level2">
+        <datalist id="cities">
+          <option value="تهران"></option>
+          <option value="اصفهان"></option>
+          <option value="شیراز"></option>
+          <option value="مشهد"></option>
+        </datalist>
+      </p>
+      <p>
+        <label for="reg-age">سن</label><br>
+        <input type="number" id="reg-age" name="age" min="13" max="120">
+      </p>
+      <p class="radio-row">
+        <span>سطح آشنایی با وب:</span><br>
+        <input type="radio" id="lvl-begin" name="level" value="beginner" required>
+        <label for="lvl-begin">مبتدی</label>
+        <input type="radio" id="lvl-mid" name="level" value="mid">
+        <label for="lvl-mid">متوسط</label>
+        <input type="radio" id="lvl-pro" name="level" value="pro">
+        <label for="lvl-pro">پیشرفته</label>
+      </p>
+    </fieldset>
+    <p class="check-row">
+      <input type="checkbox" id="terms" name="terms" value="yes" required>
+      <label for="terms">قوانین را می‌پذیرم</label>
+    </p>
+    <p class="actions">
+      <button type="submit">ثبت‌نام</button>
+    </p>
+  </form>
+
+</body>
+</html>

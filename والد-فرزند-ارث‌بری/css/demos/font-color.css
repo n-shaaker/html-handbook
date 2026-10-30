@@ -1,0 +1,18 @@
+.fc-parent {
+  color: #0b6e4f;
+  font-size: 1.25rem;
+  font-family: Georgia, "Times New Roman", serif;
+  padding: 12px;
+  background: #f3faf6;
+  border-radius: 6px;
+}
+.fc-parent .keep { background: #fff; padding: 8px; margin-top: 8px; border-radius: 4px; }
+.fc-parent .change {
+  color: #c92a2a;
+  font-size: 1rem;
+  font-family: Tahoma, Arial, sans-serif;
+  background: #fff5f5;
+  padding: 8px;
+  margin-top: 8px;
+  border-radius: 4px;
+}

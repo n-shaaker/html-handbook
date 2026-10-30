@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>۴) عرض و جعبه | ارث‌بری</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/demos/width-box.css">
+</head>
+<body>
+  <header class="page-header">
+    <h1>والد، فرزند و ارث‌بری</h1>
+    <p>۴) چرا عرض و جعبه ارث نمی‌برند؟</p>
+  </header>
+  <div class="container">
+    <nav class="page-nav">
+      <a href="03-font-color.html">→ قبلی</a>
+      <a href="../index.html">فهرست</a>
+      <a href="05-percent-em.html">بعدی: ٪ و em ←</a>
+    </nav>
+
+    <section class="lesson">
+      <h2>۴) width / margin / padding / border ارثی نیستند</h2>
+      <p>
+        اگر والد <code>width: 80%</code> داشته باشد، فرزند همان ۸۰٪ را «کپی» نمی‌کند.
+        فرزند بلوکی معمولاً <strong>عرض موجود داخل والد</strong> را پر می‌کند (<code>auto</code>) — این ارث نیست؛ رفتار پیش‌فرض block است.
+      </p>
+
+      <pre class="code"><code>.wb-parent { width: 80%; padding: 20px; border: 4px solid #1a5fb4; }
+.wb-parent .kid { /* بدون width */ }
+.wb-parent .kid-wide { width: 50%; } /* نصف عرض والد */</code></pre>
+
+      <div class="result">
+        <div class="wb-parent">
+          والد: ۸۰٪ عرض صفحه + padding + border آبی
+          <div class="kid">فرزند بدون width — پهن داخل محتوا (نه «ارث ۸۰٪»)</div>
+          <div class="kid-wide">فرزند با width: 50% — نصف <em>عرض والد</em></div>
+        </div>
+      </div>
+
+      <table class="ref">
+        <thead><tr><th>ویژگی</th><th>ارث؟</th><th>یادداشت جونیور</th></tr></thead>
+        <tbody>
+          <tr><td><code>width</code> / <code>height</code></td><td>خیر</td><td>٪ یعنی نسبت به والد، نه کپی عدد والد</td></tr>
+          <tr><td><code>margin</code> / <code>padding</code></td><td>خیر</td><td>هر جعبه فاصله خودش را دارد</td></tr>
+          <tr><td><code>border</code></td><td>خیر</td><td>کادر والد روی فرزند ظاهر نمی‌شود</td></tr>
+          <tr><td><code>background</code></td><td>خیر</td><td>ممکن است از پشت دیده شود اگر فرزند شفاف باشد</td></tr>
+        </tbody>
+      </table>
+
+      <p class="tip">
+        مدل جعبه:
+        <a href="../../02-CSS-مقدماتی/pages/12-boxmodel.html">Box Model</a>
+        · اندازه:
+        <a href="../../02-CSS-مقدماتی/pages/11-size.html">width / height</a>
+      </p>
+    </section>
+
+    <nav class="page-nav">
+      <a href="03-font-color.html">→ قبلی</a>
+      <a href="../index.html">فهرست</a>
+      <a href="05-percent-em.html">بعدی: ٪ و em ←</a>
+    </nav>
+  </div>
+  <footer class="page-footer">والد، فرزند و ارث‌بری</footer>
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>۶) لغو ارث | ارث‌بری</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/demos/override.css">
+</head>
+<body>
+  <header class="page-header">
+    <h1>والد، فرزند و ارث‌بری</h1>
+    <p>۶) لغو ارث و کلمهٔ inherit</p>
+  </header>
+  <div class="container">
+    <nav class="page-nav">
+      <a href="05-percent-em.html">→ قبلی</a>
+      <a href="../index.html">فهرست</a>
+      <a href="07-cheatsheet.html">بعدی: چک‌لیست ←</a>
+    </nav>
+
+    <section class="lesson">
+      <h2>۶) چطور ارث را عوض کنیم؟</h2>
+      <ol>
+        <li>روی فرزند مقدار جدید بنویسید → ارث برای همان ویژگی قطع می‌شود.</li>
+        <li><code>inherit</code> یعنی «عمداً همان مقدار محاسبه‌شدهٔ والد را بگیر».</li>
+      </ol>
+
+      <pre class="code"><code>.ov-parent { color: #1a3a5c; }
+.ov-parent .own  { color: #c92a2a; }
+.ov-parent .force { color: inherit; }</code></pre>
+
+      <div class="result">
+        <div class="ov-parent">
+          والد: رنگ سرمه‌ای
+          <div class="own">فرزند با رنگ خودش (قرمز)</div>
+          <div class="force">فرزند با <code>color: inherit</code> → دوباره سرمه‌ای والد</div>
+        </div>
+      </div>
+
+      <p class="tip">
+        <code>inherit</code> برای ویژگی‌های غیرارثی هم کار می‌کند (مثلاً مجبور کردن border به گرفتن از والد — نادر، ولی ممکن).
+        برای اولویت قوانین (کدام کلاس برنده است) بروید به
+        <a href="../../04-CSS-آبشاری/index.html">آبشاری</a>.
+      </p>
+      <p class="mistake">
+        ارث‌بری ≠ specificity. اول می‌پرسند «مقداری نوشته شده؟» بعد «کدام قانون قوی‌تر است؟»
+      </p>
+    </section>
+
+    <nav class="page-nav">
+      <a href="05-percent-em.html">→ قبلی</a>
+      <a href="../index.html">فهرست</a>
+      <a href="07-cheatsheet.html">بعدی: چک‌لیست ←</a>
+    </nav>
+  </div>
+  <footer class="page-footer">والد، فرزند و ارث‌بری</footer>
+</body>
+</html>

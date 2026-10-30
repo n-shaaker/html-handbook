@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>نظرسنجی | فرم (CSS)</title>
+  <link rel="stylesheet" href="css/forms.css">
+</head>
+<body>
+  <p class="nav-bar">
+    <a href="../index.html">خانه فرم کامل</a>
+    ·
+    <a href="index.html">فهرست این مرحله</a>
+    ·
+    <a href="../01-html-خالی/survey.html">نسخه HTML خالی</a>
+  </p>
+  <p class="stage"><small>نسخه با CSS</small></p>
+  <h1>فرم نظرسنجی</h1>
+
+  <form action="#" method="post">
+    <p>
+      <label for="s-name">نام (اختیاری)</label><br>
+      <input type="text" id="s-name" name="name">
+    </p>
+    <fieldset>
+      <legend>از دوره چقدر راضی هستید؟</legend>
+      <p class="radio-row">
+        <input type="radio" id="r1" name="satisfaction" value="1" required>
+        <label for="r1">۱</label>
+        <input type="radio" id="r2" name="satisfaction" value="2">
+        <label for="r2">۲</label>
+        <input type="radio" id="r3" name="satisfaction" value="3">
+        <label for="r3">۳</label>
+        <input type="radio" id="r4" name="satisfaction" value="4">
+        <label for="r4">۴</label>
+        <input type="radio" id="r5" name="satisfaction" value="5">
+        <label for="r5">۵</label>
+      </p>
+    </fieldset>
+    <fieldset>
+      <legend>کدام بخش‌ها را خوانده‌اید؟</legend>
+      <p class="check-stack">
+        <input type="checkbox" id="c-html" name="topics" value="html">
+        <label for="c-html">HTML</label><br>
+        <input type="checkbox" id="c-css" name="topics" value="css">
+        <label for="c-css">CSS</label><br>
+        <input type="checkbox" id="c-js" name="topics" value="js">
+        <label for="c-js">JavaScript</label>
+      </p>
+    </fieldset>
+    <p>
+      <label for="difficulty">سختی مطالب (۱ آسان — ۱۰ سخت)</label><br>
+      <input type="range" id="difficulty" name="difficulty" min="1" max="10" value="5">
+    </p>
+    <p>
+      <label for="color">رنگ مورد علاقه برای تم سایت</label><br>
+      <input type="color" id="color" name="theme_color" value="#1a5fb4">
+    </p>
+    <p>
+      <label for="s-msg">پیشنهاد</label><br>
+      <textarea id="s-msg" name="feedback" rows="4"></textarea>
+    </p>
+    <p class="actions">
+      <button type="submit">ثبت نظر</button>
+    </p>
+  </form>
+
+</body>
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>۲) چه چیز ارث می‌برد؟ | ارث‌بری</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/demos/inherits.css">
+</head>
+<body>
+  <header class="page-header">
+    <h1>والد، فرزند و ارث‌بری</h1>
+    <p>۲) چه چیزی ارث می‌برد؟ چه چیزی نه؟</p>
+  </header>
+  <div class="container">
+    <nav class="page-nav">
+      <a href="01-parent-child.html">→ قبلی</a>
+      <a href="../index.html">فهرست</a>
+      <a href="03-font-color.html">بعدی: فونت و رنگ ←</a>
+    </nav>
+
+    <section class="lesson">
+      <h2>۲) قانون سرانگشتی</h2>
+      <p>
+        اگر روی فرزند برای یک ویژگی چیزی ننویسید، بعضی ویژگی‌ها از والد می‌آیند (<strong>ارثی</strong>).
+        بقیه باید خودتان بنویسید.
+      </p>
+
+      <table class="ref">
+        <thead><tr><th>معمولاً ارث می‌برد (متن)</th><th>معمولاً ارث نمی‌برد (جعبه)</th></tr></thead>
+        <tbody>
+          <tr>
+            <td><code>color</code> · <code>font-family</code> · <code>font-size</code> · <code>line-height</code> · <code>text-align</code> · <code>direction</code></td>
+            <td><code>width</code> · <code>height</code> · <code>margin</code> · <code>padding</code> · <code>border</code> · <code>background</code> · <code>display</code></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3>مثال: متن ارث می‌برد، کادر نه</h3>
+      <pre class="code"><code>.parent {
+  color: #1a3a5c;
+  font-family: Georgia, serif;
+  border: 2px solid #1a3a5c;
+  padding: 12px;
+}
+/* فرزند: color و font می‌آید؛ border نمی‌آید */</code></pre>
+      <div class="result">
+        <div class="demo-yes">
+          والد: رنگ + فونت + کادر
+          <div class="kid">فرزند: رنگ و فونت را گرفته — کادر سرمه‌ای والد را ندارد.</div>
+        </div>
+      </div>
+
+      <h3>مثال: عرض ارث نمی‌برد</h3>
+      <div class="result">
+        <div class="demo-no">
+          والد: width حدود ۷۰٪ + حاشیه قرمز
+          <div class="kid">فرزند: عرض والد را «ارث» نبرده؛ فقط به‌اندازه محتواست (مگر خودتان width بدهید).</div>
+        </div>
+      </div>
+
+      <p class="tip">
+        جزئیات بیشتر در
+        <a href="../../04-CSS-آبشاری/pages/04-inheritance.html">وراثت — آبشاری</a>.
+        استثناها وجود دارد؛ جدول بالا برای شروع جونیور کافی است.
+      </p>
+      <p class="mistake">
+        <strong>اشتباه رایج:</strong>
+        فکر کردن که <code>width: 50%</code> روی والد یعنی همه فرزندان هم ۵۰٪ می‌شوند. نه — هر کدام جدا حساب می‌شوند.
+      </p>
+    </section>
+
+    <nav class="page-nav">
+      <a href="01-parent-child.html">→ قبلی</a>
+      <a href="../index.html">فهرست</a>
+      <a href="03-font-color.html">بعدی: فونت و رنگ ←</a>
+    </nav>
+  </div>
+  <footer class="page-footer">والد، فرزند و ارث‌بری</footer>
+</body>
+</html>

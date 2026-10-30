@@ -1,0 +1,29 @@
+.demo-yes {
+  color: #1a3a5c;
+  font-family: Georgia, "Times New Roman", serif;
+  line-height: 2;
+  padding: 12px;
+  border: 2px solid #1a3a5c;
+  border-radius: 6px;
+  background: #fafbfd;
+}
+.demo-yes .kid {
+  background: #e8f4fd;
+  padding: 8px;
+  margin-top: 8px;
+  border-radius: 4px;
+}
+.demo-no {
+  width: 70%;
+  margin: 12px;
+  padding: 16px;
+  border: 3px solid #c92a2a;
+  background: #fff5f5;
+  border-radius: 6px;
+}
+.demo-no .kid {
+  /* هیچ width/margin/padding/border از والد نمی‌آید */
+  background: #e8f4fd;
+  padding: 6px;
+  border-radius: 4px;
+}

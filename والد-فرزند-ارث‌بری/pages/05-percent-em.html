@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>۵) درصد و em | ارث‌بری</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/demos/percent-em.css">
+</head>
+<body>
+  <header class="page-header">
+    <h1>والد، فرزند و ارث‌بری</h1>
+    <p>۵) ٪ نسبت به والد · em نسبت به فونت</p>
+  </header>
+  <div class="container">
+    <nav class="page-nav">
+      <a href="04-width-box.html">→ قبلی</a>
+      <a href="../index.html">فهرست</a>
+      <a href="06-override.html">بعدی: لغو ارث ←</a>
+    </nav>
+
+    <section class="lesson">
+      <h2>۵) دو گیجی پرتکرار: ٪ و em</h2>
+
+      <table class="ref">
+        <thead><tr><th>واحد</th><th>نسبت به چیست؟</th></tr></thead>
+        <tbody>
+          <tr><td><code>width: 50%</code></td><td>معمولاً <strong>عرض والد</strong></td></tr>
+          <tr><td><code>font-size: 1.5em</code></td><td><strong>فونت والد</strong></td></tr>
+          <tr><td><code>padding: 0.5em</code></td><td><strong>فونت خود همان عنصر</strong></td></tr>
+          <tr><td><code>1.5rem</code></td><td>فونت ریشه (<code>html</code>) — وابسته به والد وسط نیست</td></tr>
+        </tbody>
+      </table>
+
+      <pre class="code"><code>.pe-box { width: 300px; font-size: 16px; }
+.half   { width: 50%; }      /* ≈ ۱۵۰px */
+.em-pad { font-size: 1.5em; padding: 0.5em; }</code></pre>
+
+      <div class="result">
+        <div class="pe-box">
+          والد: عرض ۳۰۰px · فونت ۱۶px
+          <div class="half">۵۰٪ عرض والد</div>
+          <div class="em-pad">فونت ۱٫۵em · پدینگ ۰٫۵em (نسبت به فونت خودش)</div>
+          <div class="rem-pad">با rem — از ریشه، نه از والد وسط</div>
+        </div>
+      </div>
+
+      <p class="mistake">
+        <strong>گیج نشوید:</strong>
+        <code>50%</code> روی فونت ≠ نصف عرض. درصد برای <code>font-size</code> نسبت به فونت والد است؛ برای <code>width</code> نسبت به عرض والد.
+      </p>
+      <p class="tip">
+        درس واحدها:
+        <a href="../../02-CSS-مقدماتی/pages/11-size.html">px / em / rem</a>
+      </p>
+    </section>
+
+    <nav class="page-nav">
+      <a href="04-width-box.html">→ قبلی</a>
+      <a href="../index.html">فهرست</a>
+      <a href="06-override.html">بعدی: لغو ارث ←</a>
+    </nav>
+  </div>
+  <footer class="page-footer">والد، فرزند و ارث‌بری</footer>
+</body>
+</html>

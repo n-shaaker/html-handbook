@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>۳) فونت و رنگ | ارث‌بری</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/demos/font-color.css">
+</head>
+<body>
+  <header class="page-header">
+    <h1>والد، فرزند و ارث‌بری</h1>
+    <p>۳) ارث فونت و رنگ</p>
+  </header>
+  <div class="container">
+    <nav class="page-nav">
+      <a href="02-what-inherits.html">→ قبلی</a>
+      <a href="../index.html">فهرست</a>
+      <a href="04-width-box.html">بعدی: عرض و جعبه ←</a>
+    </nav>
+
+    <section class="lesson">
+      <h2>۳) فونت و رنگ از والد می‌آیند</h2>
+      <p>روی <code>body</code> یا یک ظرف بنویسید؛ متن داخل معمولاً همان را می‌گیرد تا خودتان عوض کنید.</p>
+
+      <pre class="code"><code>.fc-parent {
+  color: #0b6e4f;
+  font-size: 1.25rem;
+  font-family: Georgia, serif;
+}
+.fc-parent .change {
+  color: #c92a2a;              /* لغو ارث رنگ */
+  font-family: Tahoma, sans-serif;
+}</code></pre>
+
+      <div class="result">
+        <div class="fc-parent">
+          والد: سبز + Georgia + کمی درشت
+          <div class="keep">فرزند بدون قانون اضافه → همان رنگ و فونت والد</div>
+          <div class="change">فرزند با قانون خودش → قرمز و Tahoma</div>
+        </div>
+      </div>
+
+      <p class="tip">
+        برای کل سایت معمولاً روی <code>body</code> (یا <code>:root</code>) فونت و رنگ متن پایه را می‌گذارند.
+        درس رنگ:
+        <a href="../../02-CSS-مقدماتی/pages/06-colors.html">Colors</a>
+        · فونت:
+        <a href="../../02-CSS-مقدماتی/pages/15-fonts.html">Fonts</a>
+      </p>
+      <p class="mistake">
+        <code>background-color</code> مثل <code>color</code> نیست — پس‌زمینه ارث نمی‌برد. فرزند شفاف است و رنگ والد از «پشت» دیده می‌شود، نه اینکه background را ارث برده باشد.
+      </p>
+    </section>
+
+    <nav class="page-nav">
+      <a href="02-what-inherits.html">→ قبلی</a>
+      <a href="../index.html">فهرست</a>
+      <a href="04-width-box.html">بعدی: عرض و جعبه ←</a>
+    </nav>
+  </div>
+  <footer class="page-footer">والد، فرزند و ارث‌بری</footer>
+</body>
+</html>

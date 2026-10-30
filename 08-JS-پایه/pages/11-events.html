@@ -27,6 +27,9 @@
 
     <section class="lesson" id="events">
       <h2>۱۱) رویدادها (Events)</h2>
+<p class="recall"><strong>پیش‌نیاز:</strong> اول عنصر را پیدا کنید —
+  <a href="10-dom-basics.html">DOM چیست؟</a>
+  بعد رویداد وصل کنید. بدون DOM، <code>addEventListener</code> جایی برای نشستن ندارد.</p>
 <p>رویداد یعنی اتفاقی که در صفحه می‌افتد: کلیک، تایپ، رفتن ماوس روی عنصر یا ارسال فرم. خودبه‌خود بعد از این اتفاق‌ها کدی اجرا نمی‌شود. با <code>addEventListener</code> به یک عنصر می‌گویید: «وقتی این اتفاق افتاد، این تابع را اجرا کن.» تابعی که این‌طور به رویداد وصل می‌شود، شنونده (listener) نام دارد و تا وقتی صفحه باز است منتظر همان اتفاق می‌ماند.</p>
 
 <pre class="code"><code>element.addEventListener("نام رویداد", function () {

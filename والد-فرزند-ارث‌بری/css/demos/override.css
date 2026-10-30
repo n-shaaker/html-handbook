@@ -1,0 +1,21 @@
+.ov-parent {
+  color: #1a3a5c;
+  padding: 12px;
+  background: #eef2f7;
+  border-radius: 6px;
+}
+.ov-parent .force {
+  color: inherit; /* عمداً همان رنگ والد */
+  background: #fff;
+  padding: 8px;
+  margin-top: 8px;
+  border-radius: 4px;
+  border: 1px solid #cfd8e3;
+}
+.ov-parent .own {
+  color: #c92a2a;
+  background: #fff5f5;
+  padding: 8px;
+  margin-top: 8px;
+  border-radius: 4px;
+}

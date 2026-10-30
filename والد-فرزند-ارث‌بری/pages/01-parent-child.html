@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>۱) والد و فرزند | ارث‌بری</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/demos/family.css">
+</head>
+<body>
+  <header class="page-header">
+    <h1>والد، فرزند و ارث‌بری</h1>
+    <p>۱) والد، فرزند، نسل، خواهر/برادر</p>
+  </header>
+  <div class="container">
+    <nav class="page-nav" aria-label="ناوبری">
+      <span></span>
+      <a href="../index.html">فهرست</a>
+      <a href="02-what-inherits.html">بعدی: چه چیز ارث می‌برد ←</a>
+    </nav>
+
+    <section class="lesson">
+      <h2>۱) والد، فرزند، نسل، خواهر/برادر</h2>
+      <p>HTML یک <strong>درخت</strong> است. هر تگ داخل تگ دیگر = رابطهٔ خانوادگی.</p>
+
+      <figure style="text-align:center;margin:12px 0">
+        <img src="../images/parent-child.svg" width="440" height="180" alt="درخت والد و فرزند" style="max-width:100%;height:auto;border:1px solid #cfd8e3;border-radius:6px">
+      </figure>
+
+      <table class="ref">
+        <thead><tr><th>نام</th><th>یعنی چه؟</th><th>مثال</th></tr></thead>
+        <tbody>
+          <tr><td>والد (parent)</td><td>ظرف مستقیم</td><td><code>div</code> دور <code>p</code></td></tr>
+          <tr><td>فرزند (child)</td><td>مستقیم داخل والد</td><td><code>p</code> داخل همان <code>div</code></td></tr>
+          <tr><td>نسل (descendant)</td><td>فرزند یا نوه یا …</td><td>هر چیزی تو در تو داخل والد</td></tr>
+          <tr><td>خواهر/برادر (sibling)</td><td>هم‌سطح، یک والد مشترک</td><td>دو <code>p</code> کنار هم</td></tr>
+        </tbody>
+      </table>
+
+      <pre class="code"><code>&lt;div class="parent-box"&gt;          <!-- والد -->
+  &lt;p class="child-box"&gt;فرزند&lt;/p&gt;
+  &lt;section class="child-box"&gt;     <!-- فرزند -->
+    &lt;span class="grand-box"&gt;نوه&lt;/span&gt;
+  &lt;/section&gt;
+&lt;/div&gt;</code></pre>
+
+      <div class="result demo-tree">
+        <div class="box parent-box">
+          <span class="label">والد</span> جعبه بیرونی
+          <div class="box child-box"><span class="label">فرزند</span> پاراگراف‌مانند</div>
+          <div class="box child-box">
+            <span class="label">فرزند</span> بخش
+            <div class="box grand-box"><span class="label">نوه</span> داخل فرزند</div>
+          </div>
+        </div>
+      </div>
+
+      <p class="tip">
+        انتخابگر <code>div p</code> یعنی «هر p نسلی داخل div» — نه فقط فرزند مستقیم.
+        فرزند مستقیم: <code>div &gt; p</code>.
+        درس کامل:
+        <a href="../../03-CSS-میانی/pages/09-combinators.html">ترکیب‌کننده‌ها</a>
+      </p>
+
+      <p class="mistake">
+        <strong>گیج نشوید:</strong>
+        «والد/فرزند» ساختار HTML است. «ارث‌بری» یعنی بعضی ویژگی‌های CSS خودبه‌خود به پایین درخت می‌رسند. این دو یکی نیستند.
+      </p>
+    </section>
+
+    <nav class="page-nav" aria-label="ناوبری پایین">
+      <span></span>
+      <a href="../index.html">فهرست</a>
+      <a href="02-what-inherits.html">بعدی: چه چیز ارث می‌برد ←</a>
+    </nav>
+  </div>
+  <footer class="page-footer">والد، فرزند و ارث‌بری</footer>
+</body>
+</html>

@@ -222,10 +222,29 @@ code {
    نکته، اشتباه رایج، تمرین — فاصله و گوشه گرد یکسان. */
 .tip,
 .mistake,
-.exercise {
+.exercise,
+.recall {
   padding: 10px 14px;
   margin: 12px 0;
   border-radius: 4px;
+}
+
+.recall {
+  background-color: #f3faf6;
+  border-right: 5px solid #0b6e4f;
+}
+
+.recall figure {
+  margin: 10px 0 6px;
+  text-align: center;
+}
+
+.recall img {
+  max-width: 100%;
+  height: auto;
+  border: 1px solid #cfd8e3;
+  border-radius: 6px;
+  background: #fff;
 }
 
 /* نکته (آبی):
