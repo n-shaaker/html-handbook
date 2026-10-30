@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>۲۰) اسلایدر عکس | آموزش JavaScript سطح میانی</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Vazirmatn:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../../shared/fonts.css" />
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/demos/image-slider.css">
+  <script src="../js/demos/image-slider.js" defer></script>
+</head>
+
+<body>
+
+  <header class="page-header" id="top">
+    <h1>آموزش JavaScript — سطح میانی</h1>
+    <p>۲۰) اسلایدر عکس (Image Slider)</p>
+  </header>
+
+  <div class="container">
+
+    <nav class="page-nav" aria-label="ناوبری درس">
+      <a href="19-debugging-intro.html">→ قبلی: Debugging</a>
+      <a href="../index.html">فهرست درس‌ها</a>
+      <a href="21-ui-patterns.html">بعدی: الگوهای UI ←</a>
+    </nav>
+
+    <section class="lesson" id="image-slider">
+      <h2>۲۰) اسلایدر عکس</h2>
+
+      <p>
+        اسلایدر چند تصویر را یکی‌یکی نشان می‌دهد. با دکمه جلو/عقب، نقطه‌ها، و در صورت تمایل پخش خودکار جابه‌جا می‌شود.
+        این درس آرایه، اندیس، DOM، رویداد و <code>setInterval</code> را کنار هم می‌گذارد.
+      </p>
+
+      <h3>ایدهٔ کلی</h3>
+      <ol>
+        <li>لیست اسلایدها را در یک <strong>آرایه</strong> نگه می‌داریم (آدرس عکس + توضیح).</li>
+        <li>یک متغیر <code>index</code> می‌گوید الان کدام اسلاید دیده می‌شود.</li>
+        <li>تابع <code>showSlide</code> همان اسلاید را روی <code>img</code> و متن توضیح می‌گذارد.</li>
+        <li>دکمه‌ها فقط <code>index</code> را عوض می‌کنند و دوباره <code>showSlide</code> را صدا می‌زنند.</li>
+      </ol>
+
+      <h3>نسخه زنده</h3>
+      <div class="result">
+        <p class="slider-meta" id="slider-counter" aria-live="polite">۱ / ۴</p>
+        <div class="slider" role="region" aria-roledescription="carousel" aria-label="اسلایدر نمونه">
+          <div class="slider-viewport">
+            <img id="slider-img" src="../images/slide-1.jpg" alt="اسلاید ۱ — غذای اول" width="560" height="350">
+          </div>
+          <p class="slider-caption" id="slider-caption">اسلاید ۱ — غذای اول</p>
+          <div class="slider-controls">
+            <button type="button" class="btn" id="slider-prev">قبلی</button>
+            <div class="slider-dots" id="slider-dots" aria-label="انتخاب اسلاید"></div>
+            <button type="button" class="btn" id="slider-next">بعدی</button>
+          </div>
+          <div class="slider-controls">
+            <button type="button" class="btn secondary" id="slider-play" aria-pressed="false">پخش خودکار</button>
+          </div>
+        </div>
+      </div>
+
+      <h3>۱) داده اسلایدها</h3>
+      <pre class="code"><code>const slides = [
+  { src: "../images/slide-1.jpg", caption: "اسلاید ۱ — غذای اول" },
+  { src: "../images/slide-2.jpg", caption: "اسلاید ۲ — غذای دوم" },
+  { src: "../images/slide-3.jpg", caption: "اسلاید ۳ — غذای سوم" },
+  { src: "../images/slide-4.jpg", caption: "اسلاید ۴ — تصویر هیرو" },
+];
+
+let index = 0;</code></pre>
+
+      <h3>۲) نمایش یک اسلاید</h3>
+      <pre class="code"><code>function showSlide(i) {
+  // اگر از ۰ کمتر یا از طول بیشتر شد، دور بزند
+  index = (i + slides.length) % slides.length;
+  const slide = slides[index];
+
+  img.src = slide.src;
+  img.alt = slide.caption;
+  caption.textContent = slide.caption;
+  counter.textContent = `${index + 1} / ${slides.length}`;
+}</code></pre>
+      <p class="tip">
+        عملگر <code>%</code> (باقی‌مانده) باعث می‌شود بعد از آخرین اسلاید دوباره به اول برگردید
+        و قبل از اولی به آخر بروید.
+      </p>
+
+      <h3>۳) دکمه‌ها و نقطه‌ها</h3>
+      <pre class="code"><code>prevBtn.addEventListener("click", () =&gt; showSlide(index - 1));
+nextBtn.addEventListener("click", () =&gt; showSlide(index + 1));
+
+// هر نقطه یک دکمه است که مستقیم به همان اندیس می‌رود
+dot.addEventListener("click", () =&gt; showSlide(n));</code></pre>
+
+      <h3>۴) پخش خودکار با <code>setInterval</code></h3>
+      <pre class="code"><code>let timerId = null;
+
+function startAutoplay() {
+  timerId = setInterval(() =&gt; showSlide(index + 1), 3000); // هر ۳ ثانیه
+}
+
+function stopAutoplay() {
+  clearInterval(timerId);
+  timerId = null;
+}</code></pre>
+      <p class="mistake">
+        <strong>خطای متداول:</strong>
+        چند بار پشت‌سرهم <code>setInterval</code> را بدون <code>clearInterval</code> صدا بزنید؛
+        چند تایمر همزمان می‌مانند و اسلاید تند تند عوض می‌شود.
+      </p>
+
+      <h3>جمع‌بندی</h3>
+      <ul>
+        <li>آرایه = لیست اسلایدها</li>
+        <li><code>index</code> = اسلاید فعلی</li>
+        <li><code>showSlide</code> = یک جا برای به‌روز کردن DOM</li>
+        <li>رویداد کلیک = عوض کردن اندیس</li>
+        <li><code>setInterval</code> / <code>clearInterval</code> = پخش و توقف خودکار</li>
+      </ul>
+
+      <p class="exercise">
+        <strong>تمرین:</strong>
+        ۱) یک اسلاید پنجم اضافه کنید.
+        ۲) با کلیدهای جهت‌دار صفحه‌کلید (<code>ArrowLeft</code> / <code>ArrowRight</code>) جلو و عقب بروید.
+        ۳) وقتی ماوس روی اسلایدر است پخش خودکار را متوقف کنید.
+      </p>
+    </section>
+
+    <nav class="page-nav" aria-label="ناوبری پایین">
+      <a href="19-debugging-intro.html">→ قبلی: Debugging</a>
+      <a href="../index.html">فهرست درس‌ها</a>
+      <a href="21-ui-patterns.html">بعدی: الگوهای UI ←</a>
+    </nav>
+  </div>
+
+  <footer class="page-footer">آموزش JavaScript سطح میانی</footer>
+</body>
+
+</html>

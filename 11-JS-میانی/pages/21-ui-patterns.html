@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>۲۱) الگوهای رایج UI | آموزش JavaScript سطح میانی</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Vazirmatn:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../../shared/fonts.css" />
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/demos/ui-patterns.css">
+  <script src="../js/demos/ui-patterns.js" defer></script>
+</head>
+
+<body>
+
+  <header class="page-header" id="top">
+    <h1>آموزش JavaScript — سطح میانی</h1>
+    <p>۲۱) الگوهای رایج UI در سایت‌ها</p>
+  </header>
+
+  <div class="container">
+
+    <nav class="page-nav" aria-label="ناوبری درس">
+      <a href="20-image-slider.html">→ قبلی: اسلایدر</a>
+      <a href="../index.html">فهرست درس‌ها</a>
+      <a href="22-practice.html">بعدی: Todo ←</a>
+    </nav>
+
+    <section class="lesson" id="ui-patterns">
+      <h2>۲۱) الگوهای رایج UI</h2>
+      <p>
+        بیشتر سایت‌ها چند الگوی تکراری دارند: سوالات متداول، تب، پنجره پاپ‌آپ، پیام کوتاه، منوی موبایل، جستجوی فوری و دکمه برگشت به بالا.
+        در این درس هر کدام را با یک مثال زنده و کد کوتاه می‌بینید.
+      </p>
+
+      <!-- ۱ -->
+      <h3>۱) آکاردئون / FAQ</h3>
+      <p>با کلیک روی سؤال، فقط همان جواب باز می‌شود. ایده: کلاس <code>is-open</code> را روی آیتم عوض کنید.</p>
+      <div class="result ui-demo">
+        <div class="accordion" data-accordion>
+          <div class="accordion-item is-open">
+            <button type="button" class="accordion-trigger" aria-expanded="true">هزینه ارسال چقدر است؟</button>
+            <div class="accordion-panel">برای سفارش‌های بالای ۵۰۰ هزار تومان رایگان است؛ در غیر این صورت ۴۵ هزار تومان.</div>
+          </div>
+          <div class="accordion-item">
+            <button type="button" class="accordion-trigger" aria-expanded="false">چند روزه می‌رسد؟</button>
+            <div class="accordion-panel">معمولاً ۲ تا ۴ روز کاری در شهرهای بزرگ.</div>
+          </div>
+          <div class="accordion-item">
+            <button type="button" class="accordion-trigger" aria-expanded="false">امکان مرجوعی هست؟</button>
+            <div class="accordion-panel">تا ۷ روز پس از تحویل، در صورت سالم بودن کالا.</div>
+          </div>
+        </div>
+      </div>
+      <pre class="code"><code>btn.addEventListener("click", () =&gt; {
+  const item = btn.closest(".accordion-item");
+  item.classList.toggle("is-open");
+});</code></pre>
+
+      <!-- ۲ -->
+      <h3>۲) تب‌ها (Tabs)</h3>
+      <p>چند بخش محتوا، یک فضا. تب فعال با <code>aria-selected</code> مشخص می‌شود.</p>
+      <div class="result ui-demo">
+        <div class="tabs" data-tabs>
+          <div class="tab-list" role="tablist" aria-label="نمونه تب">
+            <button type="button" role="tab" id="tab-desc" aria-controls="panel-desc" aria-selected="true">توضیحات</button>
+            <button type="button" role="tab" id="tab-specs" aria-controls="panel-specs" aria-selected="false" tabindex="-1">مشخصات</button>
+            <button type="button" role="tab" id="tab-review" aria-controls="panel-review" aria-selected="false" tabindex="-1">نظرات</button>
+          </div>
+          <div class="tab-panel is-active" role="tabpanel" id="panel-desc" aria-labelledby="tab-desc">
+            این محصول برای استفاده روزمره طراحی شده و گارانتی ۱۲ ماهه دارد.
+          </div>
+          <div class="tab-panel" role="tabpanel" id="panel-specs" aria-labelledby="tab-specs">
+            وزن: ۳۲۰ گرم · رنگ: سرمه‌ای · جنس: پلاستیک مقاوم
+          </div>
+          <div class="tab-panel" role="tabpanel" id="panel-review" aria-labelledby="tab-review">
+            «کیفیت خوبی داشت.» — سارا · «ارسال سریع بود.» — علی
+          </div>
+        </div>
+      </div>
+      <pre class="code"><code>tab.addEventListener("click", () =&gt; {
+  // همه تب‌ها را خاموش کن، فقط همین را روشن کن
+  // پنل متناظر را با aria-controls پیدا کن
+});</code></pre>
+
+      <!-- ۳ -->
+      <h3>۳) مودال (پنجره پاپ‌آپ)</h3>
+      <p>برای تأیید حذف، ورود، یا پیام مهم. با کلیک بیرون یا کلید <code>Escape</code> بسته شود.</p>
+      <div class="result ui-demo">
+        <button type="button" class="btn" id="open-modal">باز کردن مودال</button>
+      </div>
+      <div class="modal-backdrop" id="modal-backdrop" aria-hidden="true">
+        <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title" tabindex="-1">
+          <h3 id="modal-title">حذف حساب؟</h3>
+          <p>این کار برگشت‌پذیر نیست. مطمئن هستید؟</p>
+          <div class="modal-actions">
+            <button type="button" class="btn danger" data-close-modal>بله، حذف شود</button>
+            <button type="button" class="btn secondary" data-close-modal>انصراف</button>
+          </div>
+        </div>
+      </div>
+      <pre class="code"><code>function openModal() {
+  backdrop.classList.add("is-open");
+  document.body.classList.add("modal-open"); // اسکرول صفحه قفل شود
+}
+
+document.addEventListener("keydown", (e) =&gt; {
+  if (e.key === "Escape") closeModal();
+});</code></pre>
+
+      <!-- ۴ -->
+      <h3>۴) توست (پیام کوتاه گوشه صفحه)</h3>
+      <p>بعد از ذخیره یا خطا، یک پیام چندثانیه‌ای نشان دهید و بعد حذفش کنید.</p>
+      <div class="result ui-demo">
+        <button type="button" class="btn" id="toast-ok">توست موفقیت</button>
+        <button type="button" class="btn danger" id="toast-err">توست خطا</button>
+      </div>
+      <div class="toast-stack" id="toast-stack" aria-live="polite"></div>
+      <pre class="code"><code>function showToast(message) {
+  const el = document.createElement("div");
+  el.className = "toast";
+  el.textContent = message;
+  stack.append(el);
+  setTimeout(() =&gt; el.remove(), 2800);
+}</code></pre>
+
+      <!-- ۵ -->
+      <h3>۵) منوی همبرگری (موبایل)</h3>
+      <p>در عرض کم، لینک‌ها پشت دکمه «منو» پنهان می‌شوند. کلاس <code>is-open</code> منو را باز می‌کند.</p>
+      <div class="result">
+        <div class="site-bar">
+          <span class="brand">فروشگاه نمونه</span>
+          <button type="button" class="menu-toggle" id="menu-toggle" aria-expanded="false" aria-controls="site-nav">منو</button>
+          <nav class="site-nav" id="site-nav">
+            <a href="#top">خانه</a>
+            <a href="#ui-patterns">محصولات</a>
+            <a href="#top">درباره</a>
+            <a href="#top">تماس</a>
+          </nav>
+        </div>
+        <p class="tip" style="margin-top:10px">پنجره را باریک کنید تا دکمه منو دیده شود؛ در عرض بزرگ لینک‌ها کنار هم می‌آیند.</p>
+      </div>
+      <pre class="code"><code>menuToggle.addEventListener("click", () =&gt; {
+  const open = siteNav.classList.toggle("is-open");
+  menuToggle.setAttribute("aria-expanded", open);
+});</code></pre>
+
+      <!-- ۶ -->
+      <h3>۶) فیلتر زنده (جستجوی لیست)</h3>
+      <p>با هر حرفی که کاربر تایپ می‌کند، آیتم‌های نامرتبط مخفی می‌شوند. پایه بسیاری از جستجوهای ساده سایت است.</p>
+      <div class="result ui-demo">
+        <div class="filter-box">
+          <label for="live-filter">جستجو در محصولات:</label>
+          <input type="search" id="live-filter" placeholder="مثلاً چای یا کباب..." autocomplete="off">
+        </div>
+        <ul class="product-list" id="product-list">
+          <li>چای ایرانی ممتاز</li>
+          <li>کباب کوبیده</li>
+          <li>فسنجان خانگی</li>
+          <li>دوغ محلی</li>
+          <li>بستنی سنتی</li>
+          <li>سالاد شیرازی</li>
+        </ul>
+        <p class="filter-empty" id="filter-empty">موردی پیدا نشد.</p>
+      </div>
+      <pre class="code"><code>filterInput.addEventListener("input", () =&gt; {
+  const q = filterInput.value.trim().toLowerCase();
+  items.forEach((li) =&gt; {
+    li.classList.toggle("is-hidden", !li.textContent.toLowerCase().includes(q));
+  });
+});</code></pre>
+
+      <!-- ۷ -->
+      <h3>۷) دکمه برگشت به بالا</h3>
+      <p>بعد از اسکرول زیاد ظاهر می‌شود و با کلیک نرم به ابتدای صفحه می‌رود.</p>
+      <div class="result ui-demo">
+        <p>صفحه را پایین بکشید تا دکمه آبی گوشه ظاهر شود.</p>
+      </div>
+      <pre class="code"><code>window.addEventListener("scroll", () =&gt; {
+  backTop.classList.toggle("is-visible", window.scrollY &gt; 400);
+});
+
+backTop.addEventListener("click", () =&gt; {
+  window.scrollTo({ top: 0, behavior: "smooth" });
+});</code></pre>
+
+      <button type="button" class="back-top" id="back-top" aria-label="برگشت به بالا">↑ بالا</button>
+
+      <h3>جمع‌بندی</h3>
+      <table class="ref">
+        <thead>
+          <tr>
+            <th>الگو</th>
+            <th>ایده JS</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>آکاردئون</td>
+            <td>کلیک → کلاس باز/بسته</td>
+          </tr>
+          <tr>
+            <td>تب</td>
+            <td>کلیک → پنل فعال + <code>aria-selected</code></td>
+          </tr>
+          <tr>
+            <td>مودال</td>
+            <td>نمایش لایه + Escape / کلیک بیرون</td>
+          </tr>
+          <tr>
+            <td>توست</td>
+            <td><code>createElement</code> + <code>setTimeout</code> برای حذف</td>
+          </tr>
+          <tr>
+            <td>منوی موبایل</td>
+            <td><code>classList.toggle("is-open")</code></td>
+          </tr>
+          <tr>
+            <td>فیلتر زنده</td>
+            <td>رویداد <code>input</code> + مقایسه متن</td>
+          </tr>
+          <tr>
+            <td>برگشت بالا</td>
+            <td>رویداد <code>scroll</code> + <code>scrollTo</code></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p class="exercise">
+        <strong>تمرین:</strong>
+        ۱) در آکاردئون اجازه دهید چند آیتم هم‌زمان باز بمانند.
+        ۲) به مودال یک فیلد ایمیل و دکمه «ارسال» اضافه کنید که بعد از کلیک توست نشان دهد و مودال را ببندد.
+        ۳) فیلتر را طوری عوض کنید که هم نام محصول و هم دسته‌بندی (<code>data-cat</code>) را جستجو کند.
+      </p>
+    </section>
+
+    <nav class="page-nav" aria-label="ناوبری پایین">
+      <a href="20-image-slider.html">→ قبلی: اسلایدر</a>
+      <a href="../index.html">فهرست درس‌ها</a>
+      <a href="22-practice.html">بعدی: Todo ←</a>
+    </nav>
+  </div>
+
+  <footer class="page-footer">آموزش JavaScript سطح میانی</footer>
+</body>
+
+</html>

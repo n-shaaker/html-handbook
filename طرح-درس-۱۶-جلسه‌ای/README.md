@@ -37,7 +37,7 @@
 | ۱۰ | [`sessions/10-objects-modern-js`](./sessions/10-objects-modern-js/) | User Cards | [08 objects](../10-JS-پایه/pages/09-objects.html) · [09 destructuring](../11-JS-میانی/pages/11-destructuring-spread.html) |
 | ۱۱ | [`sessions/11-dom`](./sessions/11-dom/) | Dynamic Product Cards | [08 DOM](../10-JS-پایه/pages/10-dom-basics.html) · [09 DOM](../11-JS-میانی/pages/14-dom-selecting.html) |
 | ۱۲ | [`sessions/12-events-forms`](./sessions/12-events-forms/) | Login + Validation | [08 events](../10-JS-پایه/pages/11-events.html) · [09 forms](../11-JS-میانی/pages/18-forms.html) |
-| ۱۳ | [`sessions/13-todo-app-project`](./sessions/13-todo-app-project/) | Todo + LocalStorage | [09 Todo](../11-JS-میانی/pages/20-practice.html) · [10 storage](../12-JS-پیشرفته/pages/13-web-storage.html) |
+| ۱۳ | [`sessions/13-todo-app-project`](./sessions/13-todo-app-project/) | Todo + LocalStorage | [09 Todo](../11-JS-میانی/pages/22-practice.html) · [10 storage](../12-JS-پیشرفته/pages/13-web-storage.html) |
 | ۱۴ | [`sessions/14-async-api`](./sessions/14-async-api/) | Fetch users demo | [10 fetch](../12-JS-پیشرفته/pages/11-fetch.html) |
 | ۱۵ | [`sessions/15-movie-search-project`](./sessions/15-movie-search-project/) | Show Search (TVMaze) | [10 async + fetch](../12-JS-پیشرفته/) |
 | ۱۶ | [`sessions/16-mini-ecommerce-final`](./sessions/16-mini-ecommerce-final/) | Mini E-commerce | [10 فروشگاه](../12-JS-پیشرفته/pages/20-practice.html) · [11 رستوران JS](../13-پروژه-منوی-رستوران-JS/) · [Deploy](../12-JS-پیشرفته/pages/19-deploy.html) |
