@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Live — Flex intro (navbar)</title>
+  <style>
+    body {
+      font-family: Tahoma, sans-serif;
+      padding: 1.5rem;
+      background: #f8fafc;
+    }
+    h1 { font-size: 1.1rem; color: #475569; }
+    .navbar {
+      background: #fff;
+      border: 2px dashed #94a3b8;
+      padding: 0.5rem;
+      /* مرحله ۱: بدون flex — itemها block هستند */
+      /* مرحله ۲: display: flex; */
+      /* display: flex; */
+      gap: 0.5rem;
+    }
+    .navbar a,
+    .navbar button {
+      background: #e2e8f0;
+      color: #0f172a;
+      padding: 0.5rem 1rem;
+      text-decoration: none;
+      border: none;
+      font: inherit;
+      cursor: pointer;
+    }
+    .logo { font-weight: bold; background: #cbd5e1 !important; }
+  </style>
+</head>
+<body>
+  <h1>Navbar — اول block، بعد یک خط flex</h1>
+  <nav class="navbar">
+    <a class="logo" href="#">لوگو</a>
+    <a href="#">محصولات</a>
+    <a href="#">درباره</a>
+    <button type="button">ورود</button>
+  </nav>
+  <p style="margin-top:1rem;color:#64748b;font-size:0.9rem">
+    در CSS کامنت <code>display: flex</code> را بردارید و Refresh کنید.
+  </p>
+</body>
+</html>

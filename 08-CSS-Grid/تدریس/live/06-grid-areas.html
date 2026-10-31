@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Live — Grid template areas</title>
+  <style>
+    body {
+      font-family: Tahoma, sans-serif;
+      margin: 0;
+      padding: 1rem;
+      background: #f1f5f9;
+    }
+    .page {
+      display: grid;
+      grid-template-areas:
+        "head head"
+        "side main"
+        "foot foot";
+      grid-template-columns: 200px 1fr;
+      grid-template-rows: auto 1fr auto;
+      gap: 0.75rem;
+      min-height: 70vh;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    header { grid-area: head; background: #1e293b; color: #fff; padding: 1rem; border-radius: 8px; }
+    aside { grid-area: side; background: #e2e8f0; padding: 1rem; border-radius: 8px; }
+    main { grid-area: main; background: #fff; padding: 1rem; border-radius: 8px; }
+    footer { grid-area: foot; background: #64748b; color: #fff; padding: 0.75rem 1rem; border-radius: 8px; }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header>سربرگ — head</header>
+    <aside>منوی کناری — side</aside>
+    <main>محتوای اصلی — main</main>
+    <footer>پاورقی — foot</footer>
+  </div>
+</body>
+</html>

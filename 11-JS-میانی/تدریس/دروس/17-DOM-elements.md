@@ -1,0 +1,197 @@
+# سناریوی تدریس درس 17: DOM elements
+
+**صفحه جزوه:** [`pages/17-dom-elements.html`](../../pages/17-dom-elements.html)
+**پیش‌نیاز مفهومی:** درس 16
+**مدت پیشنهادی:** حدود 50 دقیقه
+**هدف جلسه:** درس 17 — 17-dom-elements.html
+
+**چرخه ثابت تدریس (در کل جلسه تکرار کن):**  
+مفهوم → کد → نتیجه در مرورگر/Console → سؤال چالشی → راه‌حل
+
+| موضوع | زمان |
+|------|------|
+| شروع و مسئله واقعی | ۸–۱۰ دقیقه |
+| Live Coding | ۲۰–۲۵ دقیقه |
+| نمایش و DevTools | ۸ دقیقه |
+| سؤالات کلاسی | ۱۰ دقیقه |
+| mini-project / جمع‌بندی | ۱۰–۱۵ دقیقه |
+| **مجموع** | **~50 دقیقه** |
+
+---
+
+## ۱) شروع کلاس؛ مسئله قبل از تعریف
+
+اول با **مسئله** شروع کن — نه با لیست property.
+
+«صفحه فقط از عنصرهایی که از اول در HTML نوشته شده‌اند ساخته نمی‌شود. با createElement عنصر تازه می‌سازید، با textContent متن امن داخلش می‌گذارید و با append آن را به عنصری که از قبل وجود دارد وصل می‌کنید. حذف و پیدا کردن پدر یا همسایه هم روی همین درخت انجام می‌شود.»
+
+«const container = document.getElementById("card-container"); const card = document.createElement("div"); card.className = "js-card"; const title = document.createElement("h4"); title.textContent = "کارت جدید"; const text = document.createElement("p"); text.textContent = "این کارت کاملاً با JavaScript ساخته شد."; card.append(title, text); container.append(card); createElement عنصر را در حافظه می‌سازد و هنوز آن را روی صفحه نشان نمی‌دهد. className کلاس CSS را می‌گذارد و textContent متن را. card.append عنوان و پاراگراف را داخل کارت می‌گذارد. container.append آخرین مرحله است: کارت را به عنصری که در HTML وجود دارد وصل می‌کند و همان لحظه دیده می‌شود.»
+
+«const itemInput = document.getElementById("item-input"); const addBtn = document.getElementById("item-add"); const list = document.getElementById("shop-list"); addBtn.addEventListener("click", () => { const value = itemInput.value.trim(); if (value === "") return; const li = document.createElement("li"); const span = document.createElement("span"); span.textContent = value; // متن کاربر ← textContent (امن) const del = document.createElement("button"); del.type = "button"; del.textContent = "حذف"; del.className = "btn danger"; del.addEventListener("click", () => li.remove()); li.append(span, del); list.append(li); itemInput.value = ""; itemInput.focus(); }); itemInput.addEventListener("keydown", (e) => { if (e.key === "Enter") addBtn.click(); // با Enter هم اضافه شود }); اگر متن بعد از trim خالی باشد، return جلوی ساختن آیتم خالی را می‌گیرد. برای هر کالا یک li ، یک span و یک دکمه ساخته می‌شود. متن کاربر با textContent وارد می‌شود تا تگ اجرا نشود. دکمه با li.remove() همان ردیف را از درخت حذف می‌کند. خالی کردن کادر و focus کاربر را برای کالای بعدی آماده می‌کند. کلید Enter هم همان کلیک دکمه را صدا می‌زند.»
+
+«برای متنی که کاربر وارد کرده از createElement و textContent استفاده کنید نه innerHTML ؛ این‌طوری اگر کاربر تگ HTML بنویسد، اجرا نمی‌شود (برای امتحان، <b>نان</b> را اضافه کنید). در اینجا روی هر دکمه «حذف» جداگانه listener گذاشتیم؛ روش دیگر Event Delegation است که در درس ۱۶ دیدید.»
+
+**روی جزوه این عناوین را دنبال کنید:** *۱۷) DOM: ساختن و حذف عنصرها* · *مثال ۱: ساختن یک عنصر کامل* · *مثال ۲: فهرست خرید (اضافه و حذف)* · *پیمایش درخت DOM*
+
+**چرخه این بخش:** نشان بده → دانشجو حدس بزند → یک خط کد → refresh.
+
+---
+
+## ۲) مفهوم — حرف قابل گفتن سر کلاس
+
+«بچه‌ها، جزوه را باز کنید؛ من روی همان مثال live جلو می‌روم. هر بار که property عوض می‌شود، در DevTools overlay (Flex/Grid) یا Computed styles را نگاه کنید.»
+
+«const container = document.getElementById("card-container"); const card = document.createElement("div"); card.className = "js-card"; const title = document.createElement("h4"); title.textContent = "کارت جدید"; const text = document.createElement("p"); text.textContent = "این کارت کاملاً با JavaScript ساخته شد."; card.append(title, text); container.append(card); createElement عنصر را در حافظه می‌سازد و هنوز آن را روی صفحه نشان نمی‌دهد. className کلاس CSS را می‌گذارد و textContent متن را. card.append عنوان و پاراگراف را داخل کارت می‌گذارد. container.append آخرین مرحله است: کارت را به عنصری که در HTML وجود دارد وصل می‌کند و همان لحظه دیده می‌شود.»
+
+«const itemInput = document.getElementById("item-input"); const addBtn = document.getElementById("item-add"); const list = document.getElementById("shop-list"); addBtn.addEventListener("click", () => { const value = itemInput.value.trim(); if (value === "") return; const li = document.createElement("li"); const span = document.createElement("span"); span.textContent = value; // متن کاربر ← textContent (امن) const del = document.createElement("button"); del.type = "button"; del.textContent = "حذف"; del.className = "btn danger"; del.addEventListener("click", () => li.remove()); li.append(span, del); list.append(li); itemInput.value = ""; itemInput.focus(); }); itemInput.addEventListener("keydown", (e) => { if (e.key === "Enter") addBtn.click(); // با Enter هم اضافه شود }); اگر متن بعد از trim خالی باشد، return جلوی ساختن آیتم خالی را می‌گیرد. برای هر کالا یک li ، یک span و یک دکمه ساخته می‌شود. متن کاربر با textContent وارد می‌شود تا تگ اجرا نشود. دکمه با li.remove() همان ردیف را از درخت حذف می‌کند. خالی کردن کادر و focus کاربر را برای کالای بعدی آماده می‌کند. کلید Enter هم همان کلیک دکمه را صدا می‌زند.»
+
+«برای متنی که کاربر وارد کرده از createElement و textContent استفاده کنید نه innerHTML ؛ این‌طوری اگر کاربر تگ HTML بنویسد، اجرا نمی‌شود (برای امتحان، <b>نان</b> را اضافه کنید). در اینجا روی هر دکمه «حذف» جداگانه listener گذاشتیم؛ روش دیگر Event Delegation است که در درس ۱۶ دیدید.»
+
+اگر دانشجو گفت «حفظ کنم؟» بگو: «نه — **مسئله** را بشناسید؛ property نامش را بعداً هم از MDN پیدا می‌کنید.»
+
+---
+
+## ۳) Live Coding — مرحله‌به‌مرحله
+
+«فایل live جدا می‌سازم تا index پروژه قاطی نشود — مثلاً `تدریس/live/` در همین ماژول.»
+
+**مرحله 1 — روی صفحه بگو:** «الان این قطعه را اضافه می‌کنم و نتیجه را با هم می‌بینیم.»
+
+```javascript
+const container = document.getElementById("card-container");
+
+const card = document.createElement("div");
+card.className = "js-card";
+
+const title = document.createElement("h4");
+title.textContent = "کارت جدید";
+
+const text = document.createElement("p");
+text.textContent = "این کارت کاملاً با JavaScript ساخته شد.";
+
+card.append(title, text);
+container.append(card);
+```
+
+**مرحله 2 — روی صفحه بگو:** «الان این قطعه را اضافه می‌کنم و نتیجه را با هم می‌بینیم.»
+
+```javascript
+const itemInput = document.getElementById("item-input");
+const addBtn = document.getElementById("item-add");
+const list = document.getElementById("shop-list");
+
+addBtn.addEventListener("click", () => {
+  const value = itemInput.value.trim();
+  if (value === "") return;
+
+  const li = document.createElement("li");
+  const span = document.createElement("span");
+  span.textContent = value;                 // متن کاربر ← textContent (امن)
+
+  const del = document.createElement("button");
+  del.type = "button";
+  del.textContent = "حذف";
+  del.className = "btn danger";
+  del.addEventListener("click", () => li.remove());
+
+  li.append(span, del);
+  list.append(li);
+  itemInput.value = "";
+  itemInput.focus();
+});
+
+itemInput.addEventListener("keydown", (e) => {
+  if (e.key === "Enter") addBtn.click();    // با Enter هم اضافه شود
+});
+```
+
+**مرحله 3 — روی صفحه بگو:** «الان این قطعه را اضافه می‌کنم و نتیجه را با هم می‌بینیم.»
+
+```javascript
+const middle = document.querySelector("#nav-demo .mid");
+console.log(middle.parentElement.id);                      // nav-demo
+console.log(middle.previousElementSibling.textContent);    // اول
+console.log(middle.nextElementSibling.textContent);        // آخر
+console.log(middle.parentElement.children.length);         // 3
+console.log(middle.closest("section").className);          // lesson-demo
+```
+
+
+**در حین تایپ بگو:** «الان فقط یک تغییر — save — refresh — چه فرقی دیدید؟»
+
+**اشتباه عمدی (یک بار):** یک selector اشتباه یا property روی فرزند نادرست — خطا را با کلاس debug کنید.
+
+---
+
+## ۴) نمایش در مرورگر و DevTools
+
+- جزوه `17-dom-elements.html` را کنار live بگذارید و پارagraph به paragraph جلو بروید.
+- DevTools → Elements → computed styles؛ برای Flex/Grid overlay را فعال کنید.
+- عرض viewport را باریک و پهن کنید — رفتار واکنش‌گرا را **قبل** media query هم بحث کنید اگر relevant است.
+
+---
+
+## ۵) سؤال کلاسی
+
+- «ایده اصلی این درس در یک جمله چیست؟»  
+  **پاسخ:** صفحه فقط از عنصرهایی که از اول در HTML نوشته شده‌اند ساخته نمی‌شود. با createElement عنصر تازه می‌سازید، با textContent …
+- «اگر کد را روی عنصر اشتباه بگذاریم چه می‌شود؟»  
+  **پاسخ:** معمولاً هیچ تغییری نمی‌بینیم یا layout غیرمنتظره می‌شود — DevTools کمک می‌کند.
+
+---
+
+## ۶) اشتباهات رایج
+
+- deep clone cost
+
+---
+
+## ۷) mini-project جلسه
+
+«۵–۱۰ دقیقه: همان ایده را در یک کامپوننت کوچک **خودتان** تکرار کنید — مثلاً navbar، کارت، یا یک تابع JS — بدون کپی کامل از جزوه. فقط وقتی گیر کردید به Live کلاس نگاه کنید.»
+
+اگر ماژول پروژه است (۰۹ یا ۱۳): «یک section از `index.html` پروژه را امروز complete کنید و در Elements outline معنایی را چک کنید.»
+
+---
+
+
+---
+
+## ۸) جمع‌بندی مدرس و سؤالات پایانی
+
+1. مهم‌ترین ایده این جلسه چه بود؟  
+   **پاسخ راهنما:** از بخش مفهوم و سؤالات کلاسی بالا.
+
+2. یک اشتباه رایج که امروز دیدیم؟  
+   **پاسخ راهنما:** از بخش اشتباهات.
+
+3. چطور در پروژه خودتان همین الگو را به کار می‌برید؟  
+   **پاسخ راهنما:** mini-project انتهای درس.
+
+**پیام پایانی:**
+
+«هدف حفظ تعریف نبود — هدف این بود که بتوانید همین ایده را در پروژه خودتان پیاده کنید؛ با Console و DevTools باز.»
+
+---
+
+## تمرین‌ها (ساده → چالشی)
+
+### ساده
+1. همان مثال Live را بدون نگاه کردن یک بار دیگر بنویسید.
+2. جزوه را باز کنید و خروجی مرورگر/Console را با پیش‌بینی خودتان مقایسه کنید.
+
+### متوسط
+3. یک variation کوچک روی مثال کلاس (مقدار دیگر، یک selector دیگر، یک عنصر DOM دیگر).
+4. تمرین موضوعی در [`quizzes/`](../../quizzes/README.md) همان ماژول.
+
+### چالشی
+5. mini-project انتهای درس را کامل کنید و برای یک همکلاسی توضیح دهید **چرا** این راه‌حل کار می‌کند.
+
+---
+
+## انتقال به درس بعد
+
+«forms»
+---
+
+---

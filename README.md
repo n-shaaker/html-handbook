@@ -24,21 +24,36 @@
 
 ## نقشه ماژول‌ها
 
-| # | پوشه | درس‌ها | تمرین‌ها |
-| ---: | --- | --- | --- |
-| ۱ | [01-HTML-مقدماتی](01-HTML-مقدماتی/) | [index](01-HTML-مقدماتی/index.html) | [quizzes](01-HTML-مقدماتی/quizzes/README.md) |
-| ۲ | [02-CSS-مقدماتی](02-CSS-مقدماتی/) | [index](02-CSS-مقدماتی/index.html) | [quizzes](02-CSS-مقدماتی/quizzes/README.md) |
-| ۳ | [03-CSS-میانی](03-CSS-میانی/) | [index](03-CSS-میانی/index.html) | [quizzes](03-CSS-میانی/quizzes/README.md) |
-| ۴ | [04-CSS-آبشاری](04-CSS-آبشاری/) | [index](04-CSS-آبشاری/index.html) | [quizzes](04-CSS-آبشاری/quizzes/README.md) |
-| ۵ | [05-CSS-تصاویر](05-CSS-تصاویر/) | [index](05-CSS-تصاویر/index.html) | [quizzes](05-CSS-تصاویر/quizzes/README.md) |
-| ۶ | [06-آزمایشگاه-رنگ](06-آزمایشگاه-رنگ/) | [index](06-آزمایشگاه-رنگ/index.html) | [quizzes](06-آزمایشگاه-رنگ/quizzes/README.md) |
-| ۷ | [07-CSS-Flexbox](07-CSS-Flexbox/) | [index](07-CSS-Flexbox/index.html) | [quizzes](07-CSS-Flexbox/quizzes/README.md) |
-| ۸ | [08-CSS-Grid](08-CSS-Grid/) | [index](08-CSS-Grid/index.html) | [quizzes](08-CSS-Grid/quizzes/README.md) |
-| ۹ | [09-پروژه-منوی-رستوران](09-پروژه-منوی-رستوران/) | نمونه پروژه | [quizzes](09-پروژه-منوی-رستوران/quizzes/README.md) |
-| ۱۰ | [10-JS-پایه](10-JS-پایه/) | [index](10-JS-پایه/index.html) | [quizzes](10-JS-پایه/quizzes/README.md) |
-| ۱۱ | [11-JS-میانی](11-JS-میانی/) | [index](11-JS-میانی/index.html) | [quizzes](11-JS-میانی/quizzes/README.md) |
-| ۱۲ | [12-JS-پیشرفته](12-JS-پیشرفته/) | [index](12-JS-پیشرفته/index.html) | [quizzes](12-JS-پیشرفته/quizzes/README.md) |
-| ۱۳ | [13-پروژه-منوی-رستوران-JS](13-پروژه-منوی-رستوران-JS/) | نمونه پروژه | [quizzes](13-پروژه-منوی-رستوران-JS/quizzes/README.md) |
+| # | پوشه | درس‌ها | تدریس (سناریو کلاس) | تمرین‌ها |
+| ---: | --- | --- | --- | --- |
+| ۱ | [01-HTML-مقدماتی](01-HTML-مقدماتی/) | [index](01-HTML-مقدماتی/index.html) | [تدریس](01-HTML-مقدماتی/تدریس/) | [quizzes](01-HTML-مقدماتی/quizzes/README.md) |
+| ۲ | [02-CSS-مقدماتی](02-CSS-مقدماتی/) | [index](02-CSS-مقدماتی/index.html) | [تدریس](02-CSS-مقدماتی/تدریس/) | [quizzes](02-CSS-مقدماتی/quizzes/README.md) |
+| ۳ | [03-CSS-میانی](03-CSS-میانی/) | [index](03-CSS-میانی/index.html) | [تدریس](03-CSS-میانی/تدریس/) | [quizzes](03-CSS-میانی/quizzes/README.md) |
+| ۴ | [04-CSS-آبشاری](04-CSS-آبشاری/) | [index](04-CSS-آبشاری/index.html) | [تدریس](04-CSS-آبشاری/تدریس/) | [quizzes](04-CSS-آبشاری/quizzes/README.md) |
+| ۵ | [05-CSS-تصاویر](05-CSS-تصاویر/) | [index](05-CSS-تصاویر/index.html) | [تدریس](05-CSS-تصاویر/تدریس/) | [quizzes](05-CSS-تصاویر/quizzes/README.md) |
+| ۶ | [06-آزمایشگاه-رنگ](06-آزمایشگاه-رنگ/) | [index](06-آزمایشگاه-رنگ/index.html) | [تدریس](06-آزمایشگاه-رنگ/تدریس/) | [quizzes](06-آزمایشگاه-رنگ/quizzes/README.md) |
+| ۷ | [07-CSS-Flexbox](07-CSS-Flexbox/) | [index](07-CSS-Flexbox/index.html) | [تدریس](07-CSS-Flexbox/تدریس/) | [quizzes](07-CSS-Flexbox/quizzes/README.md) |
+| ۸ | [08-CSS-Grid](08-CSS-Grid/) | [index](08-CSS-Grid/index.html) | [تدریس](08-CSS-Grid/تدریس/) | [quizzes](08-CSS-Grid/quizzes/README.md) |
+| ۹ | [09-پروژه-منوی-رستوران](09-پروژه-منوی-رستوران/) | نمونه پروژه | [تدریس](09-پروژه-منوی-رستوران/تدریس/) | [quizzes](09-پروژه-منوی-رستوران/quizzes/README.md) |
+| ۱۰ | [10-JS-پایه](10-JS-پایه/) | [index](10-JS-پایه/index.html) | [تدریس](10-JS-پایه/تدریس/) | [quizzes](10-JS-پایه/quizzes/README.md) |
+| ۱۱ | [11-JS-میانی](11-JS-میانی/) | [index](11-JS-میانی/index.html) | [تدریس](11-JS-میانی/تدریس/) | [quizzes](11-JS-میانی/quizzes/README.md) |
+| ۱۲ | [12-JS-پیشرفته](12-JS-پیشرفته/) | [index](12-JS-پیشرفته/index.html) | [تدریس](12-JS-پیشرفته/تدریس/) | [quizzes](12-JS-پیشرفته/quizzes/README.md) |
+| ۱۳ | [13-پروژه-منوی-رستوران-JS](13-پروژه-منوی-رستوران-JS/) | نمونه پروژه | [تدریس](13-پروژه-منوی-رستوران-JS/تدریس/) | [quizzes](13-پروژه-منوی-رستوران-JS/quizzes/README.md) |
+
+### برای مدرس
+
+داخل هر ماژول پوشهٔ **تدریس/** هست:
+
+| فایل / پوشه | نقش |
+|-------------|-----|
+| [`تدریس/README.md`](02-CSS-مقدماتی/تدریس/README.md) | فهرست درس‌ها + زمان‌بندی جلسه |
+| [`تدریس/دروس/`](02-CSS-مقدماتی/تدریس/دروس/) | **اسکریپت کامل هر درس** (مسئله واقعی → Live Coding → مرورگر → سؤال → راه‌حل) |
+| `تدریس/سناریو-تدریس.md` | فقط نقشهٔ مسیر؛ متن درس اینجا نیست |
+| `تدریس/live/` | فایل‌های دمو برای کدنویسی زنده (در برخی ماژول‌ها) |
+
+**الگوی طلایی تدریس:** [`02-CSS-مقدماتی/تدریس/دروس/11-عرض-ارتفاع-واحدها.md`](02-CSS-مقدماتی/تدریس/دروس/11-عرض-ارتفاع-واحدها.md) — اول مسئله، بعد مفهوم؛ نه خلاصهٔ جزوه.
+
+مسیر ۱۶جلسهٔ فشرده: [طرح-درس-۱۶-جلسه‌ای](طرح-درس-۱۶-جلسه‌ای/README.md).
 
 ### منابع کمکی
 

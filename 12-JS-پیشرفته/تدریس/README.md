@@ -1,0 +1,47 @@
+# تدریس زنده — 12-JS-پیشرفته
+
+اسکریپت **کلاس Live** برای [`12-JS-پیشرفته`](../index.html) — هم‌راستا با جزوه و [`quizzes/`](../quizzes/README.md).
+
+## رویکرد تدریس — مسئله اول، بعد مفهوم
+
+اسکریپت کامل هر درس در پوشه [`دروس/`](./دروس/) است. فایل [`سناریو-تدریس.md`](./سناریو-تدریس.md) فقط فهرست و راهنمای مسیر است، نه متن درس.
+
+| اصل | معنی برای مدرس |
+|-----|----------------|
+| **مسئله اول** | دکمه بی‌رفتار، لیست قیمت، فرم بدون validation — بعد مفهوم JS/DOM |
+| **دیالوگ فارسی** | جمله‌های قابل خواندن سر کلاس — نه bullet telegraphic |
+| **چرخه ثابت** | مفهوم → Live code → Console/مرورگر → سؤال → راه‌حل |
+| **const / let** | در Live Coding فقط const/let؛ var در جزوه قدیمی — تقلید نکنید |
+| **پایان درس** | mini-project + سؤالات + تمرین + اشتباهات + پل درس بعد |
+
+**الگوی طلایی:** [`../../02-CSS-مقدماتی/تدریس/دروس/11-عرض-ارتفاع-واحدها.md`](../../02-CSS-مقدماتی/تدریس/دروس/11-عرض-ارتفاع-واحدها.md)
+
+## فهرست سناریوها (ترتیب درس)
+
+| # | سناریو | جزوه |
+|---|--------|------|
+| 1 | [`01-Params-rest-spread.md`](./دروس/01-Params-rest-spread.md) | [01-function-params.html](../pages/01-function-params.html) |
+| 2 | [`02-Closures.md`](./دروس/02-Closures.md) | [02-closures.html](../pages/02-closures.html) |
+| 3 | [`03-call-apply-bind.md`](./دروس/03-call-apply-bind.md) | [03-call-apply-bind.html](../pages/03-call-apply-bind.html) |
+| 4 | [`04-Classes.md`](./دروس/04-Classes.md) | [04-classes.html](../pages/04-classes.html) |
+| 5 | [`05-Inheritance.md`](./دروس/05-Inheritance.md) | [05-inheritance.html](../pages/05-inheritance.html) |
+| 6 | [`06-Set-Map.md`](./دروس/06-Set-Map.md) | [06-sets-maps.html](../pages/06-sets-maps.html) |
+| 7 | [`07-Timing.md`](./دروس/07-Timing.md) | [07-timing.html](../pages/07-timing.html) |
+| 8 | [`08-Callbacks.md`](./دروس/08-Callbacks.md) | [08-callbacks.html](../pages/08-callbacks.html) |
+| 9 | [`09-Promises.md`](./دروس/09-Promises.md) | [09-promises.html](../pages/09-promises.html) |
+| 10 | [`10-async-await.md`](./دروس/10-async-await.md) | [10-async-await.html](../pages/10-async-await.html) |
+| 11 | [`11-fetch.md`](./دروس/11-fetch.md) | [11-fetch.html](../pages/11-fetch.html) |
+| 12 | [`12-Modules.md`](./دروس/12-Modules.md) | [12-modules.html](../pages/12-modules.html) |
+| 13 | [`13-Web-Storage.md`](./دروس/13-Web-Storage.md) | [13-web-storage.html](../pages/13-web-storage.html) |
+| 14 | [`14-RegExp.md`](./دروس/14-RegExp.md) | [14-regexp.html](../pages/14-regexp.html) |
+| 15 | [`15-Event-delegation.md`](./دروس/15-Event-delegation.md) | [15-event-delegation.html](../pages/15-event-delegation.html) |
+| 16 | [`16-Modern-syntax.md`](./دروس/16-Modern-syntax.md) | [16-modern-syntax.html](../pages/16-modern-syntax.html) |
+| 17 | [`17-Debugging-pro.md`](./دروس/17-Debugging-pro.md) | [17-debugging.html](../pages/17-debugging.html) |
+| 18 | [`18-a11y-JS.md`](./دروس/18-a11y-JS.md) | [18-a11y-js.html](../pages/18-a11y-js.html) |
+| 19 | [`19-Deploy.md`](./دروس/19-Deploy.md) | [19-deploy.html](../pages/19-deploy.html) |
+| 20 | [`20-فروشگاه-practice.md`](./دروس/20-فروشگاه-practice.md) | [20-practice.html](../pages/20-practice.html) |
+| 21 | [`21-پروژه-shop-جلسه.md`](./دروس/21-پروژه-shop-جلسه.md) | [20-practice.html](../pages/20-practice.html) |
+
+## navigator کوتاه
+
+[`سناریو-تدریس.md`](./سناریو-تدریس.md) — فقط لینk به `دروس/*.md`؛ **محتوای تدریس آنجا تکرار نمی‌شود.**

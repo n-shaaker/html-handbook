@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Live Coding — عرض، ارتفاع و واحدها</title>
+  <style>
+    /* مرحله ۱ کلاس: فقط پس‌زمینه — بدون width/height */
+    * { box-sizing: border-box; }
+    body {
+      font-family: Tahoma, "Vazirmatn", sans-serif;
+      margin: 0;
+      padding: 1.5rem;
+      background: #f1f5f9;
+      line-height: 1.6;
+    }
+    h1 { font-size: 1.25rem; margin-top: 0; }
+    section {
+      margin-block: 2rem;
+      padding: 1rem;
+      background: #fff;
+      border-radius: 0.5rem;
+      border: 1px solid #e2e8f0;
+    }
+    code { background: #e2e8f0; padding: 0.1em 0.35em; border-radius: 0.25em; }
+
+    /* --- مرحله شروع: کارت بدون اندازه صریح --- */
+    .card-demo {
+      background-color: lightblue;
+    }
+
+    /* مرحله ۲ را در کلاس از کامنت دربیاورید:
+    .card-demo {
+      width: 300px;
+      height: 150px;
+      background-color: lightblue;
+    }
+    */
+
+    /* مرحله ۴ — واکنش‌گرا:
+    .card-demo {
+      width: 100%;
+      max-width: 400px;
+      background-color: lightblue;
+    }
+    */
+
+    /* --- مقایسه em / rem --- */
+    .parent-compare {
+      font-size: 20px;
+      padding: 0.75rem;
+      background: #e0f2fe;
+      border-radius: 0.35rem;
+    }
+    .child-em { font-size: 1.5em; }
+    .child-rem { font-size: 1.5rem; }
+
+    /* --- تله em --- */
+    .nested-trap li { font-size: 1.2em; }
+
+    /* --- دکمه‌ها با padding بر حسب em --- */
+    .btn {
+      padding: 0.5em 1em;
+      border: none;
+      border-radius: 0.35em;
+      background: #2563eb;
+      color: #fff;
+      cursor: pointer;
+      margin-inline-end: 0.5rem;
+      margin-block-end: 0.5rem;
+    }
+    .btn.small { font-size: 12px; }
+    .btn.medium { font-size: 16px; }
+    .btn.large { font-size: 24px; }
+
+    /* --- پروژه پایانی: کارت محصول --- */
+    .product-card {
+      width: 100%;
+      max-width: 300px;
+      padding: 1rem;
+      border-radius: 0.5rem;
+      background-color: #f5f5f5;
+    }
+    .card-title {
+      font-size: 1.25rem;
+      margin: 0 0 0.5rem;
+    }
+    .card-description {
+      font-size: 1rem;
+      margin: 0 0 1rem;
+      color: #475569;
+    }
+    .card-price {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: #0f766e;
+    }
+  </style>
+</head>
+<body>
+  <h1>Live — درس ۱۱: عرض، ارتفاع و واحدها</h1>
+  <p>این فایل همراه سناریوی <code>دروس/11-عرض-ارتفاع-واحدها.md</code> است. مراحل را در کلاس از کامنت دربیاورید یا CSS را زنده عوض کنید.</p>
+
+  <section>
+    <h2>۱) کارت بدون عرض/ارتفاع</h2>
+    <div class="card-demo">
+      <h2>آموزش CSS</h2>
+      <p>یادگیری طراحی صفحات وب</p>
+    </div>
+    <p>سؤال کلاس: مرورگر این اندازه را از کجا آورده؟</p>
+  </section>
+
+  <section>
+    <h2>۲) مقایسه em و rem (والد ۲۰px، ریشه معمولاً ۱۶px)</h2>
+    <div class="parent-compare">
+      <p>متن والد (۲۰px)</p>
+      <p class="child-em">فرزند 1.5em → حدود ۳۰px</p>
+      <p class="child-rem">فرزند 1.5rem → حدود ۲۴px</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>۳) تله em در لیست تو در تو</h2>
+    <ul class="nested-trap">
+      <li>سطح ۱
+        <ul>
+          <li>سطح ۲
+            <ul>
+              <li>سطح ۳</li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>۴) padding با em روی دکمه</h2>
+    <button type="button" class="btn small">کوچک</button>
+    <button type="button" class="btn medium">متوسط</button>
+    <button type="button" class="btn large">بزرگ</button>
+  </section>
+
+  <section>
+    <h2>۵) پروژه — کارت محصول</h2>
+    <div class="product-card">
+      <h2 class="card-title">کتاب آموزش CSS</h2>
+      <p class="card-description">آموزش طراحی صفحات وب از صفر تا پیشرفته</p>
+      <span class="card-price">۲۴۰٬۰۰۰ تومان</span>
+    </div>
+    <p>عرض مرورگر را کم کنید؛ بعد در DevTools مقدار <code>html</code> → <code>font-size</code> را عوض کنید.</p>
+  </section>
+</body>
+</html>
