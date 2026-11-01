@@ -160,13 +160,15 @@
 
       <p class="tip">
         <strong>نکته:</strong>
-        در هر صفحه معمولاً یک عنصر <code>main</code> کافی است و نباید آن را داخل <code>article</code> یا <code>section</code> پنهان کنید.
+        در هر صفحه معمولاً یک عنصر <code>main</code> کافی است و نباید آن را داخل <code>header</code>، <code>footer</code>، <code>nav</code>، <code>aside</code> یا <code>article</code> بگذارید.
+        استاندارد HTML گذاشتن <code>main</code> داخل <code>section</code> را ممنوع نکرده است، ولی الگوی رایج این است که <code>main</code> هم‌سطح سرصفحه و پاصفحه باشد و <code>section</code>ها داخل خود <code>main</code> باشند.
         <code>header</code> و <code>footer</code> می‌توانند بیش از یکی باشند؛ مثلاً سرصفحهٔ کل سایت و سرصفحهٔ یک مقاله جدا هستند.
       </p>
 
       <p class="mistake">
         <strong>خطای متداول:</strong>
         قرار دادن <code>main</code> داخل <code>header</code>، <code>footer</code> یا <code>article</code>.
+        همین محدودیت برای <code>nav</code> و <code>aside</code> هم هست.
         <code>main</code> باید محتوای اصلی صفحه را در بر بگیرد و معمولاً هم‌سطح سرصفحه و پاصفحه است.
         همچنین هر دستهٔ کوچکی از پیوندها را <code>nav</code> نکنید؛ <code>nav</code> برای ناوبری اصلی صفحه یا سایت است.
       </p>

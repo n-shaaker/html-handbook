@@ -39,6 +39,8 @@
 <tr><td><code>element.innerHTML</code></td><td>داخل عنصر، همراه با تگ HTML</td><td>وقتی تگ هم لازم است</td></tr>
 <tr><td><code>console.log()</code></td><td>Console مرورگر (F12)</td><td>تست و پیدا کردن خطا توسط برنامه‌نویس</td></tr>
 <tr><td><code>alert()</code></td><td>پنجره هشدار</td><td>پیام فوری (کم استفاده کنید)</td></tr>
+<tr><td><code>prompt()</code></td><td>پنجره دریافت متن</td><td>ورودی سادهٔ آزمایشی؛ در صفحهٔ واقعی از فرم استفاده کنید</td></tr>
+<tr><td><code>confirm()</code></td><td>پنجره بله/خیر</td><td>تأیید یک کار حساس، باز هم بهتر است داخل خود صفحه باشد</td></tr>
 <tr><td><code>document.write()</code></td><td>مستقیم در صفحه</td><td>فقط برای تست؛ استفاده نکنید</td></tr>
 </table>
 
@@ -95,7 +97,19 @@ alertButton.addEventListener("click", function () {
 
 <p class="mistake"><strong>اشتباه رایج:</strong> استفاده از <code>innerHTML</code> برای نوشتن متنی که کاربر تایپ کرده. اگر کاربر تگ HTML (یا کد مخرب) بنویسد، مرورگر آن را اجرا می‌کند؛ به این مشکل امنیتی <strong>XSS</strong> می‌گویند. برای متن ساده همیشه <code>textContent</code> امن‌تر است.</p>
 
-<p class="exercise"><strong>تمرین:</strong> یک پاراگراف با id برابر <code>result</code> بسازید و با JavaScript داخلش بنویسید «امروز JavaScript یاد گرفتم». هم‌زمان با <code>console.log</code> سال جاری (مثلاً <code>1405</code>) را در Console چاپ کنید.</p>
+<h3>ورودی ساده با prompt و confirm</h3>
+
+<p>خروجی را دیدید. برای تمرین‌های اول، مرورگر دو پنجرهٔ ورودی هم دارد. <code>prompt</code> یک متن از کاربر می‌گیرد و آن را به صورت رشته برمی‌گرداند. اگر کاربر لغو کند، نتیجه <code>null</code> است نه رشتهٔ خالی. آرگومان دوم، متنی است که از قبل داخل کادر نوشته شده است.</p>
+
+<pre class="code"><code>const name = prompt("نام شما چیست؟", "سارا");
+console.log(name);   // اگر لغو شود null، وگرنه همان متن
+
+const ok = confirm("این مورد حذف شود؟");
+console.log(ok);     // true اگر تأیید شود، false اگر لغو شود</code></pre>
+
+<p><code>confirm</code> فقط بله یا خیر می‌گیرد و مقدار بولین برمی‌گرداند. هر دو تابع، مثل <code>alert</code>، صفحه را تا بسته شدن پنجره متوقف می‌کنند. برای فرم واقعی، جستجو، یا هر ورودی‌ای که باید در صفحه بماند، از عنصرهای فرم HTML استفاده کنید. <code>prompt</code> فقط برای آزمایش سریع در Console یا یک تمرین کوچک مناسب است. مقدار <code>prompt</code> همیشه رشته است، مگر اینکه کاربر لغو کند و <code>null</code> برگردد. اگر عدد می‌خواهید باید آن را تبدیل کنید، همان‌طور که در درس انواع داده می‌آید. شاخه‌زدن بر اساس این مقدار را بعد از درس شرط‌ها می‌نویسند.</p>
+
+<p class="exercise"><strong>تمرین:</strong> یک پاراگراف با id برابر <code>result</code> بسازید و با JavaScript داخلش بنویسید «امروز JavaScript یاد گرفتم». هم‌زمان با <code>console.log</code> سال جاری (مثلاً <code>1405</code>) را در Console چاپ کنید. سپس با <code>prompt</code> نام کاربر را بگیرید و خود مقدار برگشتی را در Console چاپ کنید؛ یک بار نام بنویسید و یک بار Cancel را بزنید تا فرق رشته و <code>null</code> را ببینید.</p>
     </section>
 
     <nav class="page-nav" aria-label="ناوبری درس پایین">

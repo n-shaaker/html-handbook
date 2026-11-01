@@ -21,7 +21,7 @@
 
 ## نقشه جلسات + پیوند به جزوه
 
-برای تکلیف بیشتر یا جبران عقب‌ماندگی، دانشجو را به صفحات جزوه بفرستید (ترتیب: `01–13` به شماره پوشه).
+برای تکلیف بیشتر یا جبران عقب‌ماندگی، دانشجو را به صفحهٔ همان ردیف در جدول بفرستید. ترتیب خودآموز جزوه همان نمودار README ریشه است: بعد از فرم‌های ۰۳، Flex و Grid (۰۷ و ۰۸) قبل از ادامهٔ ۰۳ و قبل از ۰۴ تا ۰۶ می‌آیند. شمارهٔ پشت‌سرهم پوشه به‌تنهایی مسیر کلاس نیست.
 
 | # | فولدر جلسه | خروجی | جزوه پیشنهادی |
 |---|--------|--------|--------|
@@ -31,16 +31,16 @@
 | ۴ | [`sessions/04-box-model-display-position`](./sessions/04-box-model-display-position/) | Product Card | [02 box model](../02-CSS-مقدماتی/pages/12-boxmodel.html) · [03 display/position](../03-CSS-میانی/) |
 | ۵ | [`sessions/05-flexbox`](./sessions/05-flexbox/) | Navbar + Pricing | [07 Flexbox](../07-CSS-Flexbox/) · [تمرین ۲](../تمرین-۲-Flexbox/) |
 | ۶ | [`sessions/06-grid-responsive`](./sessions/06-grid-responsive/) | Responsive Grid | [08 Grid](../08-CSS-Grid/) · [03 Media Queries](../03-CSS-میانی/pages/21-media-queries.html) |
-| ۷ | [`sessions/07-landing-page-project`](./sessions/07-landing-page-project/) | Landing Page + Git init | [07 رستوران استاتیک](../09-پروژه-منوی-رستوران/) (الگو) |
+| ۷ | [`sessions/07-landing-page-project`](./sessions/07-landing-page-project/) | Landing Page + Git init | [09 پروژه رستوران استاتیک](../09-پروژه-منوی-رستوران/) (الگو) |
 | ۸ | [`sessions/08-javascript-fundamentals`](./sessions/08-javascript-fundamentals/) | Conditional exercises | [10 JS پایه](../10-JS-پایه/) |
-| ۹ | [`sessions/09-functions-arrays`](./sessions/09-functions-arrays/) | Products array practice | [08 functions](../10-JS-پایه/pages/08-functions.html) · [09 arrays](../11-JS-میانی/) |
-| ۱۰ | [`sessions/10-objects-modern-js`](./sessions/10-objects-modern-js/) | User Cards | [08 objects](../10-JS-پایه/pages/09-objects.html) · [09 destructuring](../11-JS-میانی/pages/11-destructuring-spread.html) |
-| ۱۱ | [`sessions/11-dom`](./sessions/11-dom/) | Dynamic Product Cards | [08 DOM](../10-JS-پایه/pages/10-dom-basics.html) · [09 DOM](../11-JS-میانی/pages/14-dom-selecting.html) |
-| ۱۲ | [`sessions/12-events-forms`](./sessions/12-events-forms/) | Login + Validation | [08 events](../10-JS-پایه/pages/11-events.html) · [09 forms](../11-JS-میانی/pages/18-forms.html) |
-| ۱۳ | [`sessions/13-todo-app-project`](./sessions/13-todo-app-project/) | Todo + LocalStorage | [09 Todo](../11-JS-میانی/pages/22-practice.html) · [10 storage](../12-JS-پیشرفته/pages/13-web-storage.html) |
-| ۱۴ | [`sessions/14-async-api`](./sessions/14-async-api/) | Fetch users demo | [10 fetch](../12-JS-پیشرفته/pages/11-fetch.html) |
-| ۱۵ | [`sessions/15-movie-search-project`](./sessions/15-movie-search-project/) | Show Search (TVMaze) | [10 async + fetch](../12-JS-پیشرفته/) |
-| ۱۶ | [`sessions/16-mini-ecommerce-final`](./sessions/16-mini-ecommerce-final/) | Mini E-commerce | [10 فروشگاه](../12-JS-پیشرفته/pages/20-practice.html) · [11 رستوران JS](../13-پروژه-منوی-رستوران-JS/) · [Deploy](../12-JS-پیشرفته/pages/19-deploy.html) |
+| ۹ | [`sessions/09-functions-arrays`](./sessions/09-functions-arrays/) | Products array practice | [10 توابع](../10-JS-پایه/pages/08-functions.html) · [11 آرایه‌ها](../11-JS-میانی/) |
+| ۱۰ | [`sessions/10-objects-modern-js`](./sessions/10-objects-modern-js/) | User Cards | [10 اشیا](../10-JS-پایه/pages/09-objects.html) · [11 تجزیه](../11-JS-میانی/pages/11-destructuring-spread.html) |
+| ۱۱ | [`sessions/11-dom`](./sessions/11-dom/) | Dynamic Product Cards | [10 DOM پایه](../10-JS-پایه/pages/10-dom-basics.html) · [11 انتخاب DOM](../11-JS-میانی/pages/14-dom-selecting.html) |
+| ۱۲ | [`sessions/12-events-forms`](./sessions/12-events-forms/) | Login + Validation | [10 رویدادها](../10-JS-پایه/pages/11-events.html) · [11 فرم‌ها](../11-JS-میانی/pages/18-forms.html) |
+| ۱۳ | [`sessions/13-todo-app-project`](./sessions/13-todo-app-project/) | Todo + LocalStorage | [11 فهرست کارها](../11-JS-میانی/pages/22-practice.html) · [12 ذخیره‌سازی](../12-JS-پیشرفته/pages/13-web-storage.html) |
+| ۱۴ | [`sessions/14-async-api`](./sessions/14-async-api/) | Fetch users demo | [12 Fetch](../12-JS-پیشرفته/pages/11-fetch.html) |
+| ۱۵ | [`sessions/15-movie-search-project`](./sessions/15-movie-search-project/) | Show Search (TVMaze) | [12 ناهمگام و Fetch](../12-JS-پیشرفته/) |
+| ۱۶ | [`sessions/16-mini-ecommerce-final`](./sessions/16-mini-ecommerce-final/) | Mini E-commerce | [12 فروشگاه](../12-JS-پیشرفته/pages/20-practice.html) · [13 پروژه رستوران JS](../13-پروژه-منوی-رستوران-JS/) · [Deploy](../12-JS-پیشرفته/pages/19-deploy.html) |
 
 ## Git تدریجی
 

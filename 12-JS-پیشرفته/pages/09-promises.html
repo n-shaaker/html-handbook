@@ -103,6 +103,8 @@ wait(500, 1)
 
 <p>JavaScript اول همه کدهای <strong>همگام</strong> فعلی را تا آخر اجرا می‌کند. بعد سراغ صف <strong>microtask</strong>ها می‌رود (callbackهای <code>then</code>/<code>catch</code>/<code>finally</code> و ادامه توابع async بعد از await) و همه آن‌ها را خالی می‌کند. فقط بعد از آن نوبت <strong>تایمرها</strong> (setTimeout و setInterval) و رویدادها می‌رسد. به این چرخه <strong>Event Loop</strong> می‌گویند.</p>
 
+<p>موتور در هر لحظه یک کار را روی پشتهٔ فراخوانی (call stack) اجرا می‌کند و کد همگام همان لحظه روی این پشته است. <code>setTimeout</code> تابع را در صف کار بعدی (macrotask) می‌گذارد و <code>then</code> را در صف microtask. هر بار که پشته خالی شد، حلقهٔ رویداد اول کل صف microtask را خالی می‌کند و بعد فقط یک macrotask برمی‌دارد. رویداد کلیک هم مثل تایمر است: وسط یک تابع همگام اجرا نمی‌شود و تا تمام شدن کار همگام و microtaskهای منتظر صبر می‌کند. به همین دلیل تأخیر صفر در <code>setTimeout</code> به معنی «همین لحظه» نیست.</p>
+
 <pre class="code"><code>log("1: همگام");
 setTimeout(() =&gt; log("4: setTimeout با تأخیر 0"), 0);
 Promise.resolve().then(() =&gt; log("3: then (microtask)"));
