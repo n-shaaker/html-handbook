@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>آکادمی وب — نمونهٔ نهایی مسیر CSS میانی</title>
+  <meta name="description" content="نمونهٔ هدف دوره: هدر، منو، هیرو، کارت دوره، مقاله، فرم و واکنش‌گرایی">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">پرش به محتوا</a>
+
+  <p class="demo-banner">
+    <strong>نمونهٔ نهایی کلاس:</strong>
+    این همان سایتی است که در مسیر CSS میانی، تکه‌تکه می‌سازیم.
+  </p>
+
+  <header class="site-header">
+    <div class="container header-bar">
+      <a class="logo" href="./index.html">آکادمی <span>وب</span></a>
+      <nav aria-label="منوی اصلی">
+        <ul class="main-nav">
+          <li>
+            <a class="active" href="#main" aria-current="page">خانه</a>
+          </li>
+          <li class="has-sub">
+            <a href="#courses">دوره‌ها</a>
+            <ul class="sub-nav">
+              <li><a href="#courses">مقدماتی</a></li>
+              <li><a href="#courses">میانی</a></li>
+              <li><a href="#courses">پیشرفته</a></li>
+            </ul>
+          </li>
+          <li><a href="#blog">بلاگ</a></li>
+          <li><a href="#signup">ثبت‌نام</a></li>
+          <li>
+            <a href="https://developer.mozilla.org/fa/docs/Web/CSS" target="_blank" rel="noopener">منابع</a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero" aria-label="معرفی آکادمی وب">
+    <div class="container">
+      <div class="hero-copy">
+        <p class="hero-kicker">مسیر CSS سطح میانی</p>
+        <h1>آکادمی وب</h1>
+        <p class="lead">
+          از رفتار جعبه‌ها تا منو، فرم و واکنش‌گرایی — همان صفحه‌ای که سر کلاس قدم‌به‌قدم می‌سازیم.
+        </p>
+        <a class="btn btn-accent" href="#courses">مشاهده دوره‌ها</a>
+        <a class="btn btn-ghost" href="#signup">ثبت‌نام رایگان</a>
+      </div>
+    </div>
+    <p class="hero-caption-bar">ثبت‌نام بهاره — ۲۰٪ تخفیف تا پایان هفته</p>
+  </section>
+
+  <main id="main">
+    <section class="section" id="courses" aria-labelledby="courses-title">
+      <div class="container">
+        <div class="section-head">
+          <h2 id="courses-title">دوره‌های فعال</h2>
+          <p>کارت با برچسب گوشه، تصویر بریده‌شده، عنوان سه‌نقطه‌ای و چیدمان شبکه‌ای.</p>
+        </div>
+
+        <div class="filters" role="group" aria-label="فیلتر دوره‌ها">
+          <button type="button" class="tag is-active">همه</button>
+          <button type="button" class="tag">رایگان</button>
+          <button type="button" class="tag">جدید</button>
+          <button type="button" class="tag is-dim">تخفیف</button>
+        </div>
+
+        <div class="courses">
+          <article class="course-card">
+            <span class="badge">جدید</span>
+            <div class="media">
+              <img
+                src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=800&q=80"
+                alt="لپ‌تاپ روی میز کار برنامه‌نویسی"
+                width="800"
+                height="500"
+              >
+            </div>
+            <h3>CSS میانی: از نمایش تا منو و فرم در پروژه واقعی آکادمی</h3>
+            <p>display، max-width، position، overflow، انتخابگرها و نوار منو.</p>
+            <div class="meta">
+              <p class="price">۱٬۲۰۰٬۰۰۰ تومان</p>
+              <a class="link" href="#signup">شروع یادگیری</a>
+            </div>
+          </article>
+
+          <article class="course-card">
+            <span class="badge offer">۲۰٪</span>
+            <div class="media">
+              <img
+                src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=800&q=80"
+                alt="کد روی مانیتور"
+                width="800"
+                height="500"
+              >
+            </div>
+            <h3>HTML مقدماتی</h3>
+            <p>ساختار معنایی، فهرست، لینک، تصویر و فرم پایه.</p>
+            <div class="meta">
+              <p class="price">رایگان</p>
+              <a class="link" href="#signup">مشاهده سرفصل</a>
+            </div>
+          </article>
+
+          <article class="course-card">
+            <div class="media">
+              <img
+                src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=800&q=80"
+                alt="ویرایشگر کد تاریک"
+                width="800"
+                height="500"
+              >
+            </div>
+            <h3>آمادگی Flexbox و Grid</h3>
+            <p>بعد از این ماژول، چیدمان حرفه‌ای را در ۰۷ و ۰۸ عمیق می‌کنید.</p>
+            <div class="meta">
+              <p class="price">۹۸۰٬۰۰۰ تومان</p>
+              <a class="link" href="#signup">رزرو جای</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section blog" id="blog" aria-labelledby="blog-title">
+      <div class="container">
+        <div class="section-head">
+          <h2 id="blog-title">از وبلاگ آکادمی</h2>
+          <p>نمونهٔ مقاله با تصویر شناور و متنی که دورش می‌پیچد.</p>
+        </div>
+
+        <article class="post">
+          <img
+            class="post-figure"
+            src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=400&q=80"
+            alt="لپ‌تاپ باز روی میز چوبی"
+            width="400"
+            height="300"
+          >
+          <h2>چرا قبل از Flex باید جعبه را بفهمیم؟</h2>
+          <p>
+            خیلی‌ها مستقیم سراغ Flexbox می‌روند و وقتی برچسب گوشهٔ کارت جابه‌جا نمی‌شود یا منوی کشویی بریده می‌شود، گیج می‌شوند.
+            مسیر میانی اول رفتار جعبه، سقف عرض، موقعیت و سرریز را محکم می‌کند.
+          </p>
+          <p>
+            در آکادمی وب همین صفحه را قدم‌به‌قدم جلو می‌بریم: اول نوع نمایش، بعد قاب امن، بعد برچسب absolute، بعد لایه‌ها و overflow،
+            بعد منو و فرم، و در نهایت media query تا روی موبایل اسکرول افقی نماند.
+          </p>
+          <aside class="post-note">
+            float را برای پیچیدن متن دور تصویر بشناسید؛ چیدمان اصلی صفحه را با Flex و Grid بسازید.
+          </aside>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="signup" aria-labelledby="signup-title">
+      <div class="container">
+        <div class="form-wrap">
+          <h2 id="signup-title">ثبت‌نام در دوره</h2>
+          <p class="hint">فرم تمیز، برچسب‌دار، با فوکوس قابل‌دیدن — بدون نیاز به جاوااسکریپت.</p>
+          <form class="signup" action="#" method="get">
+            <label>
+              نام
+              <input type="text" name="name" required autocomplete="name" placeholder="مثلاً سارا">
+            </label>
+            <label>
+              ایمیل
+              <input type="email" name="email" required autocomplete="email" placeholder="you@example.com">
+            </label>
+            <label class="check">
+              <input type="checkbox" name="rules" required>
+              قوانین دوره را خواندم
+            </label>
+            <div class="signup-actions">
+              <button type="submit">ارسال درخواست</button>
+              <button type="button">انصراف</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p><strong>آکادمی وب</strong> — نمونهٔ هدف دوره CSS سطح میانی</p>
+      <p>
+        اسکریپت تدریس:
+        <a href="../اسکریپت-کامل-تدریس.md">اسکریپت-کامل-تدریس.md</a>
+      </p>
+    </div>
+  </footer>
+
+  <a class="to-top" href="#" aria-label="بازگشت به بالای صفحه">↑</a>
+</body>
+</html>

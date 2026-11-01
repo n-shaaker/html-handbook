@@ -1,0 +1,724 @@
+/* آکادمی وب — نمونهٔ نهایی مسیر CSS میانی
+   تکنیک‌هایی که در اسکریپت تدریس ساخته می‌شود اینجاست. */
+
+:root {
+  --ink: #0b1f33;
+  --ink-soft: #16324f;
+  --paper: #f3f6f9;
+  --surface: #ffffff;
+  --line: #d5dee8;
+  --muted: #5b6b7c;
+  --brand: #0e7490;
+  --brand-deep: #0a5c70;
+  --accent: #e8a317;
+  --danger: #c23131;
+  --radius: 0.65rem;
+  --shadow: 0 14px 40px rgb(11 31 51 / 0.12);
+  --z-dropdown: 10;
+  --z-sticky-header: 100;
+  --z-to-top: 50;
+  --container: 72rem;
+  --font: "Vazirmatn", "Inter", Tahoma, sans-serif;
+  --display: "Vazirmatn", Tahoma, sans-serif;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font);
+  background: var(--paper);
+  color: var(--ink);
+  line-height: 1.75;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+a {
+  color: var(--brand-deep);
+}
+
+a[target="_blank"]::after {
+  content: " ↗";
+  font-size: 0.85em;
+}
+
+:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.container {
+  width: 100%;
+  max-width: var(--container);
+  margin-inline: auto;
+  padding-inline: 1rem;
+}
+
+.skip-link {
+  position: absolute;
+  inset-inline-start: 1rem;
+  top: -3rem;
+  z-index: 200;
+  padding: 0.5rem 0.85rem;
+  background: var(--accent);
+  color: var(--ink);
+  text-decoration: none;
+  border-radius: 0.35rem;
+  font-weight: 700;
+}
+
+.skip-link:focus {
+  top: 1rem;
+}
+
+/* —— هدر / منو / کشویی —— */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: var(--z-sticky-header);
+  background: rgb(11 31 51 / 0.94);
+  color: #fff;
+  backdrop-filter: blur(10px);
+}
+
+.header-bar {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.85rem;
+  padding-block: 0.85rem;
+}
+
+.logo {
+  color: #fff;
+  text-decoration: none;
+  font-family: var(--display);
+  font-weight: 800;
+  font-size: 1.35rem;
+  letter-spacing: -0.02em;
+}
+
+.logo span {
+  color: var(--accent);
+}
+
+.main-nav {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.2rem 1rem;
+}
+
+.main-nav > li {
+  position: relative;
+}
+
+.main-nav > li > a {
+  color: #dbe7f2;
+  text-decoration: none;
+  padding: 0.35rem 0.15rem;
+  display: inline-block;
+  transition: color 0.2s ease;
+}
+
+.main-nav > li > a:hover,
+.main-nav > li > a:focus-visible {
+  color: #fff;
+}
+
+.main-nav a.active {
+  color: #fff;
+  font-weight: 700;
+  border-bottom: 2px solid var(--accent);
+}
+
+.has-sub .sub-nav {
+  position: absolute;
+  inset-inline-start: 0;
+  top: 100%;
+  z-index: var(--z-dropdown);
+  min-width: 12rem;
+  margin: 0;
+  padding: 0.4rem;
+  list-style: none;
+  background: var(--surface);
+  color: var(--ink);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  display: none;
+}
+
+.has-sub:hover .sub-nav,
+.has-sub:focus-within .sub-nav {
+  display: block;
+}
+
+.sub-nav a {
+  display: block;
+  padding: 0.5rem 0.75rem;
+  color: inherit;
+  text-decoration: none;
+  border-radius: 0.35rem;
+  transition: background-color 0.2s ease;
+}
+
+.sub-nav a:hover,
+.sub-nav a:focus-visible {
+  background: #e8f4f7;
+}
+
+/* —— هیرو تمام‌عرض —— */
+.hero {
+  position: relative;
+  min-height: min(78vh, 40rem);
+  display: grid;
+  align-items: end;
+  color: #fff;
+  background:
+    linear-gradient(160deg, rgb(11 31 51 / 0.55), rgb(14 116 144 / 0.72)),
+    url("https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1600&q=80")
+      center / cover no-repeat;
+  isolation: isolate;
+}
+
+.hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background:
+    radial-gradient(circle at 20% 20%, rgb(232 163 23 / 0.28), transparent 40%),
+    linear-gradient(to top, rgb(11 31 51 / 0.85), transparent 55%);
+}
+
+.hero-copy {
+  width: 100%;
+  max-width: 40rem;
+  padding: 3.5rem 0 3rem;
+  text-align: center;
+  margin-inline: auto;
+  animation: rise 0.8s ease both;
+}
+
+.hero-kicker {
+  display: inline-block;
+  margin: 0 0 0.75rem;
+  padding: 0.25rem 0.7rem;
+  border: 1px solid rgb(255 255 255 / 0.35);
+  border-radius: 999px;
+  font-size: 0.85rem;
+  letter-spacing: 0.04em;
+}
+
+.hero-copy h1 {
+  margin: 0 0 0.75rem;
+  font-family: var(--display);
+  font-size: clamp(1.8rem, 4vw, 3rem);
+  line-height: 1.25;
+  font-weight: 800;
+}
+
+.hero-copy .lead {
+  margin: 0 auto 1.4rem;
+  max-width: 32rem;
+  color: #e8eef5;
+  font-size: 1.05rem;
+}
+
+.btn {
+  display: inline-block;
+  padding: 0.7rem 1.25rem;
+  border-radius: 0.45rem;
+  text-decoration: none;
+  font-weight: 700;
+  border: 0;
+  cursor: pointer;
+  font: inherit;
+  transition: transform 0.2s ease, background-color 0.2s ease, color 0.2s ease;
+}
+
+.btn:hover {
+  transform: translateY(-1px);
+}
+
+.btn-accent {
+  background: var(--accent);
+  color: var(--ink);
+}
+
+.btn-accent:hover {
+  background: #f0b53a;
+}
+
+.btn-ghost {
+  background: rgb(255 255 255 / 0.12);
+  color: #fff;
+  border: 1px solid rgb(255 255 255 / 0.35);
+  margin-inline-start: 0.5rem;
+}
+
+.btn-ghost:hover {
+  background: rgb(255 255 255 / 0.22);
+}
+
+.hero-caption-bar {
+  position: absolute;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  z-index: 2;
+  margin: 0;
+  padding: 0.75rem 1rem;
+  text-align: center;
+  color: #fff;
+  background: rgb(0 0 0 / 0.55);
+  font-size: 0.95rem;
+}
+
+/* —— بخش‌ها —— */
+.section {
+  padding-block: 3rem;
+}
+
+.section-head {
+  max-width: 40rem;
+  margin: 0 auto 1.5rem;
+  text-align: center;
+}
+
+.section-head h2 {
+  margin: 0 0 0.4rem;
+  font-size: clamp(1.4rem, 2.5vw, 1.9rem);
+}
+
+.section-head h2::before {
+  content: "";
+  display: inline-block;
+  width: 0.45rem;
+  height: 1em;
+  margin-inline-end: 0.55rem;
+  background: var(--brand);
+  vertical-align: -0.12em;
+  border-radius: 999px;
+}
+
+.section-head p {
+  margin: 0;
+  color: var(--muted);
+}
+
+/* فیلترها */
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+}
+
+.tag {
+  display: inline-block;
+  min-width: 5.5rem;
+  padding: 0.45rem 0.85rem;
+  text-align: center;
+  background: #e2eaf1;
+  border-radius: 999px;
+  border: 0;
+  font: inherit;
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease, opacity 0.2s ease;
+}
+
+.tag:hover,
+.tag:focus-visible,
+.tag.is-active {
+  background: var(--brand);
+  color: #fff;
+}
+
+.tag.is-dim {
+  opacity: 0.45;
+}
+
+.tag.is-dim:hover {
+  opacity: 1;
+}
+
+/* کارت دوره‌ها */
+.courses {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+
+.course-card {
+  position: relative;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 1rem;
+  padding-top: 1.35rem;
+  box-shadow: 0 1px 0 rgb(11 31 51 / 0.04);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.course-card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow);
+}
+
+.course-card:nth-child(even) {
+  background: #fbfcfe;
+}
+
+.course-card .badge {
+  position: absolute;
+  top: -0.45rem;
+  inset-inline-start: -0.35rem;
+  z-index: 2;
+  padding: 0.28rem 0.65rem;
+  background: var(--danger);
+  color: #fff;
+  font-size: 0.8rem;
+  font-weight: 700;
+  border-radius: 0.3rem;
+  box-shadow: 0 6px 16px rgb(194 49 49 / 0.35);
+}
+
+.course-card .badge.offer {
+  background: var(--brand);
+  box-shadow: 0 6px 16px rgb(14 116 144 / 0.35);
+}
+
+.course-card .media {
+  height: 10rem;
+  overflow: hidden;
+  border-radius: 0.45rem;
+  margin-bottom: 0.85rem;
+  background: #c5d4e0;
+}
+
+.course-card .media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.45s ease;
+}
+
+.course-card:hover .media img {
+  transform: scale(1.06);
+}
+
+.course-card h3 {
+  margin: 0 0 0.4rem;
+  font-size: 1.1rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.course-card h3::before {
+  content: "";
+  display: inline-block;
+  width: 0.35rem;
+  height: 0.9em;
+  margin-inline-end: 0.4rem;
+  background: var(--brand);
+  vertical-align: -0.08em;
+}
+
+.course-card p {
+  margin: 0 0 0.85rem;
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+.course-card .price {
+  margin: 0;
+  font-weight: 800;
+  color: var(--ink-soft);
+  font-size: 1.15rem;
+}
+
+.course-card .meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 0.85rem;
+}
+
+.course-card .link {
+  text-decoration: none;
+  font-weight: 700;
+  color: var(--brand-deep);
+}
+
+.course-card .link:hover {
+  text-decoration: underline;
+}
+
+/* مقاله با float */
+.blog {
+  background: #eaf1f5;
+}
+
+.post {
+  max-width: 48rem;
+  margin-inline: auto;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 1.25rem;
+}
+
+.post::after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.post-figure {
+  float: inline-start;
+  width: min(8.5rem, 38%);
+  margin-inline-end: 1rem;
+  margin-bottom: 0.5rem;
+  border-radius: 0.45rem;
+  overflow: hidden;
+}
+
+.post h2 {
+  margin: 0 0 0.6rem;
+  font-size: 1.35rem;
+}
+
+.post p {
+  color: #334155;
+}
+
+.post h2 + p {
+  font-size: 1.05rem;
+  color: var(--ink);
+}
+
+.post-note {
+  clear: both;
+  margin-top: 1rem;
+  background: #fff3bf;
+  padding: 0.75rem 1rem;
+  border-radius: 0.4rem;
+}
+
+.post-note::before {
+  content: "نکته: ";
+  font-weight: 800;
+}
+
+/* فرم */
+.form-wrap {
+  max-width: 28rem;
+  margin-inline: auto;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 1.5rem;
+  box-shadow: var(--shadow);
+}
+
+.form-wrap h2 {
+  margin: 0 0 0.35rem;
+  text-align: center;
+}
+
+.form-wrap .hint {
+  margin: 0 0 1.25rem;
+  text-align: center;
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+.signup label {
+  display: block;
+  margin-bottom: 1rem;
+  font-weight: 700;
+}
+
+.signup input[type="text"],
+.signup input[type="email"] {
+  display: block;
+  width: 100%;
+  margin-top: 0.35rem;
+  padding: 0.65rem 0.75rem;
+  border: 1px solid var(--line);
+  border-radius: 0.4rem;
+  font: inherit;
+  background: #fff;
+}
+
+.signup input:focus-visible {
+  border-color: var(--brand);
+}
+
+.signup .check {
+  font-weight: 400;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.signup-actions {
+  display: grid;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.signup-actions button {
+  display: block;
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: 0;
+  border-radius: 0.4rem;
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.signup-actions [type="submit"] {
+  background: var(--brand);
+  color: #fff;
+}
+
+.signup-actions [type="submit"]:hover {
+  background: var(--brand-deep);
+}
+
+.signup-actions [type="button"] {
+  background: #e8eef3;
+  color: var(--ink);
+}
+
+.signup-actions [type="button"]:hover {
+  background: #d7e1ea;
+}
+
+/* فوتر */
+.site-footer {
+  background: var(--ink);
+  color: #cbd5e1;
+  padding: 2.5rem 0;
+  margin-top: 1rem;
+  text-align: center;
+}
+
+.site-footer a {
+  color: #fff;
+}
+
+.site-footer p {
+  margin: 0.35rem 0;
+}
+
+.demo-banner {
+  background: #16324f;
+  color: #fff;
+  text-align: center;
+  padding: 0.55rem 1rem;
+  font-size: 0.9rem;
+}
+
+.demo-banner strong {
+  color: var(--accent);
+}
+
+.to-top {
+  position: fixed;
+  inset-inline-end: 1rem;
+  bottom: 1rem;
+  z-index: var(--z-to-top);
+  width: 2.75rem;
+  height: 2.75rem;
+  border: 0;
+  border-radius: 999px;
+  background: var(--ink);
+  color: #fff;
+  font-size: 1.2rem;
+  cursor: pointer;
+  box-shadow: var(--shadow);
+  transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.to-top:hover {
+  transform: translateY(-2px);
+  background: var(--brand);
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+/* —— واکنش‌گرا: پایه موبایل، از اینجا بزرگ‌تر —— */
+@media (min-width: 48rem) {
+  .header-bar {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .hero-copy {
+    text-align: start;
+    margin-inline: 0;
+    padding-block: 5rem 4rem;
+  }
+
+  .hero-copy .lead {
+    margin-inline: 0;
+  }
+
+  .courses {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .signup-actions {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .signup-actions [type="submit"] {
+    width: auto;
+  }
+}
