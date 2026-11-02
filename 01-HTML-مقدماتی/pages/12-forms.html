@@ -350,6 +350,54 @@
           placeholder فقط راهنمای کمکی داخل کادر است و جای برچسب دائمی را نمی‌گیرد.
         </p>
 
+        <h3>نمونه: انتخاب یکی، یا چند مورد با هم</h3>
+        <p>
+          <code>radio</code> و <code>checkbox</code> هر دو ورودی‌اند، ولی گروهشان فرق دارد.
+          چند <code>radio</code> با <code>name</code> یکسان فقط یک انتخاب را نگه می‌دارند؛
+          <code>value</code> همان چیزی است که فرستاده می‌شود و متن <code>label</code> برای دیدن کاربر است.
+          هر <code>checkbox</code> مستقل است. اگر چند مورد را با یک نام بفرستید، سرور می‌تواند چند مقدار هم‌نام بگیرد.
+          گروه‌بندی دیداری با <code>fieldset</code> و <code>legend</code> در درس ۱۹ است؛ اینجا خود رفتار انتخاب را ببینید.
+        </p>
+        <pre class="code"><code>&lt;p&gt;غذای اصلی&lt;/p&gt;
+&lt;label for="meal-kebab"&gt;
+  &lt;input id="meal-kebab" type="radio" name="meal" value="kebab"&gt;
+  کباب
+&lt;/label&gt;
+&lt;label for="meal-stew"&gt;
+  &lt;input id="meal-stew" type="radio" name="meal" value="stew"&gt;
+  خورشت
+&lt;/label&gt;
+
+&lt;p&gt;افزودنی‌ها&lt;/p&gt;
+&lt;label for="extra-bread"&gt;
+  &lt;input id="extra-bread" type="checkbox" name="extra" value="bread"&gt;
+  نان اضافه
+&lt;/label&gt;
+&lt;label for="extra-salad"&gt;
+  &lt;input id="extra-salad" type="checkbox" name="extra" value="salad"&gt;
+  سالاد
+&lt;/label&gt;</code></pre>
+        <div class="result">
+          <p>غذای اصلی</p>
+          <label for="meal-kebab">
+            <input id="meal-kebab" type="radio" name="meal" value="kebab" />
+            کباب
+          </label>
+          <label for="meal-stew">
+            <input id="meal-stew" type="radio" name="meal" value="stew" />
+            خورشت
+          </label>
+          <p>افزودنی‌ها</p>
+          <label for="extra-bread">
+            <input id="extra-bread" type="checkbox" name="extra" value="bread" />
+            نان اضافه
+          </label>
+          <label for="extra-salad">
+            <input id="extra-salad" type="checkbox" name="extra" value="salad" />
+            سالاد
+          </label>
+        </div>
+
         <p class="exercise">
           <strong>تمرین:</strong>
           فرم جستجوی یک کتاب‌فروشی آنلاین بسازید که با

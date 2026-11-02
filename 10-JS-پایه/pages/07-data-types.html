@@ -100,7 +100,7 @@ console.log(Boolean(0), Boolean(1), Boolean(""));   // false true false</code></
 
 <p class="mistake"><strong>اشتباه رایج:</strong> انتظار داشتن اینکه <code>typeof []</code> بگوید <code>array</code>. برای تشخیص آرایه از <code>Array.isArray(x)</code> استفاده کنید.</p>
 
-<p class="mistake"><strong>اشتباه رایج:</strong> فکر کردن اینکه <code>typeof null</code> برابر <code>"null"</code> است. برای بررسی null مستقیم مقایسه کنید: <code>x === null</code>.</p>
+<p class="mistake"><strong>اشتباه رایج:</strong> فکر کردن اینکه <code>typeof null</code> برابر <code>"null"</code> است. خروجی واقعی <code>"object"</code> است. این رفتار قدیمی زبان است و نوع <code>null</code> را نشان نمی‌دهد. برای بررسی null مستقیم مقایسه کنید: <code>x === null</code>.</p>
 
 <p class="exercise"><strong>تمرین:</strong> (۱) برای هر کدام از مقدارهای <code>"12"</code>، <code>12</code>، <code>false</code>، <code>null</code> و <code>[]</code> قبل از اجرا حدس بزنید <code>typeof</code> چه می‌گوید، بعد امتحان کنید. (۲) سن کاربر به صورت متن <code>"19"</code> رسیده است؛ آن را به عدد تبدیل کنید، یک سال به آن اضافه کنید و نتیجه و نوعش را چاپ کنید.</p>
     </section>
